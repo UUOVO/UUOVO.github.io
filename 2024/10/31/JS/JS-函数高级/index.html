@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="原型 | 原型链原型 prototype 定义：每个函数都有一个 prototype 属性, 它默认指向一个 Object 空对象(即称为: 原型对象) 当函数以构造函数的形式调用时，它所创建的对象中都会有一个隐含的属性执行该原型对象，指向该构造函数的原型对象，这个隐含的属性可以通过对象.proto来访问。 原型对象中有一个属性 constructor, 它指向函数对象 理解： 原型对象就相当于一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS-函数高级">
+<meta property="og:url" content="http://example.com/2024/10/31/JS/JS-%E5%87%BD%E6%95%B0%E9%AB%98%E7%BA%A7/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="原型 | 原型链原型 prototype 定义：每个函数都有一个 prototype 属性, 它默认指向一个 Object 空对象(即称为: 原型对象) 当函数以构造函数的形式调用时，它所创建的对象中都会有一个隐含的属性执行该原型对象，指向该构造函数的原型对象，这个隐含的属性可以通过对象.proto来访问。 原型对象中有一个属性 constructor, 它指向函数对象 理解： 原型对象就相当于一">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/404.jpg">
+<meta property="og:image" content="http://example.com/img/404.jpg">
+<meta property="article:published_time" content="2024-10-31T03:05:32.052Z">
+<meta property="article:modified_time" content="2024-10-31T04:00:20.749Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/404.jpg">
+
+    <meta name="keywords" content="js, 函数,原型链">
+
+
+<title >JS-函数高级</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-10-31 12:00:20"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            UUOVO<span>个人站点</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/test1/" target="">
+                            test1
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            JS-函数高级
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+        <a href="https://zh-hans.react.dev/" title="React" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-react"></i>
+        </a>
+    
+        <a href="https://zh.javascript.info/" title="Javascript" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node-js"></i>
+        </a>
+    
+        <a href="https://nodejs.cn/" title="Node" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            10/31
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            11:05
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="原型-原型链"><a href="#原型-原型链" class="headerlink" title="原型 | 原型链"></a>原型 | 原型链</h2><h3 id="原型-prototype"><a href="#原型-prototype" class="headerlink" title="原型 prototype"></a>原型 prototype</h3><ul>
+<li>定义：每个函数都有一个 prototype 属性, 它默认指向一个 Object 空对象(即称为: 原型对象)</li>
+<li>当函数<code>以构造函数</code>的形式调用时，它所创建的对象中都会有一个隐含的属性执行该原型对象，<code>指向该构造函数的原型对象</code>，这个隐含的属性可以通过对象.<strong>proto</strong>来访问。</li>
+<li>原型对象中有一个属性 constructor, 它指向函数对象</li>
+<li>理解：<ul>
+<li>原型对象就相当于一个公共区域，所有同一个类的实例都可以访问到这个原型对象</li>
+<li>创建构造函数时，可以将对象共有的属性和方法，统一添加到构造函数的原型对象中，可以使每个对象都具有这些属性和方法，也不会影响到全局作用域</li>
+</ul>
+</li>
+<li>函数的所有实例对象自动拥有原型中的属性(方法)</li>
+<li>示例</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">MyClass</span>(<span class="params"></span>) &#123;&#125; <span class="comment">// 普通函数</span></span><br><span class="line"><span class="title class_">MyClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">a</span> = <span class="number">123</span> <span class="comment">// 向MyClass的原型中添加属性a</span></span><br><span class="line"><span class="title class_">MyClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">sayHello</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">	<span class="comment">// 向MyClass的原型中添加一个方法</span></span><br><span class="line">	<span class="title function_">alert</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> mc = <span class="keyword">new</span> <span class="title class_">MyClass</span>() <span class="comment">// 创建一个构造函数</span></span><br><span class="line">此时mc.<span class="property">__proto__</span> == <span class="title class_">MyClass</span>.<span class="property"><span class="keyword">prototype</span></span>,</span><br><span class="line">	可以从<span class="title class_">MyClass</span>的原型上拿属性a和方法sayHello</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>hasOwnProperty()：检查对象自身中是否含有该属性，只有当对象自身中含有属性时，才会返回 true</li>
+</ul>
+<h3 id="显示原型-隐式原型"><a href="#显示原型-隐式原型" class="headerlink" title="显示原型 | 隐式原型"></a>显示原型 | 隐式原型</h3><ul>
+<li>每个函数<code>function</code>都有一个特别的属性:<code>prototype</code>，即<code>显式原型</code>(属性)</li>
+<li>每个<code>实例对象</code>都有一个特别的属性:<code>__proto__</code>，可称为<code>隐式原型</code>(属性)</li>
+<li>对象的隐式原型的值为其对应构造函数的显式原型的值<br><img src="/img/%E6%98%BE%E5%BC%8F%E5%8E%9F%E5%9E%8B%E4%B8%8E%E9%9A%90%E5%BC%8F%E5%8E%9F%E5%9E%8B.png" alt="内存结构"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+<li>总结:<ul>
+<li>函数的<code>prototype</code>属性: 在<code>定义函数时自动添加</code>的, <code>默认值</code>是一个<code>空Object对象</code></li>
+<li>实例对象的<code>__proto__</code>属性: <code>创建对象时自动添加</code>的, <code>默认值</code>为<code>构造函数的prototype属性值</code></li>
+<li>程序员能直接操作显式原型, 但不能直接操作隐式原型(ES6 之前)</li>
+<li><code>原型对象即为当前实例对象的父对象</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="原型链-隐式原型链"><a href="#原型链-隐式原型链" class="headerlink" title="原型链(隐式原型链)"></a>原型链(隐式原型链)</h3><p><img src="/../../img/js/%E5%8E%9F%E5%9E%8B%E9%93%BE%E5%88%86%E6%9E%90.png" alt="原型链"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<ul>
+<li>定义：<ul>
+<li><code>当访问一个对象的属性或方法时</code>，<code>会先在自身属性中寻找</code>，找到返回，</li>
+<li>如果没有则<code>去原型对象prototype</code>中寻找，如果没有则<code>去原型的原型__proto__</code>中寻找,<code>直到找到Object对象的原型Object.prototype</code>，</li>
+<li>如果在 Object 原型中<code>依然没有</code>找到，则<code>返回undefined</code>，这样通过<strong>proto</strong>属性就形成了一个链的结构</li>
+</ul>
+</li>
+<li>作用: 查找对象的属性(方法)</li>
+<li>注：<ul>
+<li>原型对象 prototype 也是对象，所以它也有原型</li>
+<li><code>Object对象的原型没有原型</code>，Object.prototype.<strong>proto</strong> &#x3D; null</li>
+<li>Function 是通过 new 自己产生的实例，所有函数都是 Function 的实例(包含 Function)</li>
+<li>所有的实例对象都有<strong>proto</strong>属性, 它指向的就是原型对象，Function.<strong>proto</strong>&#x3D;&#x3D;&#x3D;Function.prototype</li>
+<li>当给对象属性赋值时不会使用原型链, 而只是在当前对象中进行操作</li>
+<li><code>读取对象的属性值时: 会自动到原型链中查找</code></li>
+<li><code>设置对象的属性值</code>时: 不会查找原型链,<code> 如果当前对象中没有</code>此属性, <code>直接添加此属性并设置其值</code></li>
+<li><code>方法一般定义在原型</code>中,<code> 属性</code>一般<code>通过构造函数定义在对象本身上</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="执行上下文与执行上下文栈"><a href="#执行上下文与执行上下文栈" class="headerlink" title="执行上下文与执行上下文栈"></a>执行上下文与执行上下文栈</h2><h3 id="变量提升与函数提升"><a href="#变量提升与函数提升" class="headerlink" title="变量提升与函数提升"></a>变量提升与函数提升</h3><ul>
+<li>变量提升: 在变量定义语句之前, 就可以访问到这个变量(undefined)</li>
+<li>函数提升: 在函数定义语句之前, 就执行该函数(函数定义对象)</li>
+<li>先有变量提升, 再有函数提升</li>
+</ul>
+<h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><ul>
+<li>执行上下文: 由 js 引擎自动创建的对象, 包含对应作用域中的所有变量属性</li>
+<li>执行上下文栈: 用来管理产生的多个执行上下文</li>
+<li>分类:<ul>
+<li>全局: window</li>
+<li>函数: 对程序员来说是透明的</li>
+</ul>
+</li>
+<li>生命周期<ul>
+<li>全局 : 准备执行全局代码前产生, 当页面刷新&#x2F;关闭页面时死亡</li>
+<li>函数 : 调用函数时产生, 函数执行完时死亡</li>
+</ul>
+</li>
+</ul>
+<h3 id="全局执行上下文"><a href="#全局执行上下文" class="headerlink" title="全局执行上下文"></a>全局执行上下文</h3><ul>
+<li>在执行全局代码前将 window 确定为全局执行上下文</li>
+<li>对全局数据进行预处理<ul>
+<li>var 定义的全局变量&#x3D;&#x3D;&gt;undefined, 添加为 window 的属性</li>
+<li>function 声明的全局函数&#x3D;&#x3D;&gt;赋值(fun), 添加为 window 的方法</li>
+<li>this&#x3D;&#x3D;&gt;赋值(window)</li>
+</ul>
+</li>
+<li>开始执行全局代码</li>
+</ul>
+<h3 id="函数执行上下文"><a href="#函数执行上下文" class="headerlink" title="函数执行上下文"></a>函数执行上下文</h3><ul>
+<li>在调用函数, 准备执行函数体之前, 创建对应的函数执行上下文对象(虚拟的, 存在于栈中)</li>
+<li>对局部数据进行预处理<ul>
+<li>形参变量&#x3D;&#x3D;&gt;赋值(对应实参)&#x3D;&#x3D;&gt;添加为执行上下文的属性</li>
+<li>arguments&#x3D;&#x3D;&gt;赋值(实参列表的伪数组), 添加为执行上下文的属性</li>
+<li>var 定义的局部变量&#x3D;&#x3D;&gt;undefined, 添加为执行上下文的属性</li>
+<li>function 声明的函数 &#x3D;&#x3D;&gt;赋值(fun), 添加为执行上下文的方法</li>
+<li>this&#x3D;&#x3D;&gt;赋值(调用函数的对象, 如果没有指定就是 window )</li>
+</ul>
+</li>
+<li>开始执行函数体代码</li>
+</ul>
+<h3 id="执行上下文栈"><a href="#执行上下文栈" class="headerlink" title="执行上下文栈"></a>执行上下文栈</h3><ul>
+<li>在全局代码执行前, JS 引擎就会创建一个栈来存储管理所有的执行上下文对象</li>
+<li>在全局执行上下文(window)确定后, 将其添加到栈中(压栈)</li>
+<li>在函数执行上下文创建后, 将其添加到栈中(压栈)</li>
+<li>在当前函数执行完后,将栈顶的对象移除(出栈)</li>
+<li>当所有的代码执行完后, 栈中只剩下 window</li>
+</ul>
+<h3 id="执行上下文创建和初始化的过程"><a href="#执行上下文创建和初始化的过程" class="headerlink" title="执行上下文创建和初始化的过程"></a>执行上下文创建和初始化的过程</h3><ul>
+<li>全局:</li>
+<li>在全局代码执行前最先创建一个全局执行上下文(window)</li>
+<li>收集一些全局变量, 并初始化</li>
+<li>将这些变量设置为 window 的属性</li>
+<li>函数:</li>
+<li>在调用函数时, 在执行函数体之前先创建一个函数执行上下文</li>
+<li>收集一些局部变量, 并初始化</li>
+<li>将这些变量设置为执行上下文的属性</li>
+</ul>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p><a target="_blank" rel="noopener" href="https://gitee.com/ovouu/study-notes/blob/master/javascript/exercise/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E4%B8%8E%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88%E9%9D%A2%E8%AF%95%E9%A2%98.html">执行上下文与执行上下文栈面试题</a></p>
+<h2 id="作用域与作用域链"><a href="#作用域与作用域链" class="headerlink" title="作用域与作用域链"></a>作用域与作用域链</h2><h3 id="理解-1"><a href="#理解-1" class="headerlink" title="理解:"></a>理解:</h3><ul>
+<li>作用域: 一块代码区域, 在编码时就确定了, 不会再变化</li>
+<li>作用域链: 多个上下级关系(嵌套)的作用域形成的链, 它的方向是从下向上的(从内到外)，查找变量时就是沿着作用域链来查找的</li>
+<li>分类:<ul>
+<li>全局</li>
+<li>函数</li>
+<li>js 没有块作用域(在 ES6 之前)</li>
+</ul>
+</li>
+<li>作用<ul>
+<li>作用域: 隔离变量, 可以在不同作用域定义同名的变量不冲突</li>
+<li>作用域链: 查找变量</li>
+</ul>
+</li>
+</ul>
+<h3 id="区别作用域与执行上下文"><a href="#区别作用域与执行上下文" class="headerlink" title="区别作用域与执行上下文"></a>区别作用域与执行上下文</h3><ul>
+<li>区别<ul>
+<li>全局作用域之外，每个函数都会创建自己的作用域，作用域在函数定义时就已经确定了。而不是在函数调用时</li>
+<li>全局执行上下文环境是在全局作用域确定之后, js 代码马上执行之前创建</li>
+<li>函数执行上下文是在调用函数时, 函数体代码执行之前创建</li>
+<li>作用域是静态的, 只要函数定义好了就一直存在, 且不会再变化</li>
+<li>执行上下文是动态的, 调用函数时创建, 函数调用结束时就会自动释放</li>
+</ul>
+</li>
+<li>联系<ul>
+<li>执行上下文(对象)是从属于所在的作用域</li>
+<li>全局上下文环境&#x3D;&#x3D;&gt;全局作用域</li>
+<li>函数上下文环境&#x3D;&#x3D;&gt;对应的函数使用域</li>
+</ul>
+</li>
+</ul>
+<h3 id="作用域链查找一个变量的规则"><a href="#作用域链查找一个变量的规则" class="headerlink" title="作用域链查找一个变量的规则"></a>作用域链查找一个变量的规则</h3><ul>
+<li>在当前作用域下的执行上下文中查找对应的属性, 如果有直接返回, 否则进入上一层作用域查找</li>
+<li>在上一级作用域的执行上下文中查找对应的属性, 如果有直接返回, 否则进入上一层作用域查找</li>
+<li>以此类推, 直到全局作用域, 如果还找不到就抛出找不到的异常</li>
+</ul>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h3 id="理解-2"><a href="#理解-2" class="headerlink" title="理解"></a>理解</h3><ul>
+<li>当<code>嵌套的内部函数``引用</code>了<code>外部函数的变量</code>时就产生了闭包</li>
+<li>通过 chrome 工具得知: 闭包<code>本质</code>是内部函数中的一个<code>对象</code>, 这个对象中<code>包含引用的变量属性</code></li>
+</ul>
+<h3 id="产生闭包的条件"><a href="#产生闭包的条件" class="headerlink" title="产生闭包的条件?"></a>产生闭包的条件?</h3><ul>
+<li>函数嵌套</li>
+<li>内部函数引用了外部函数的数据(变量&#x2F;函数)</li>
+<li>执行外部函数</li>
+</ul>
+<h3 id="常见的闭包"><a href="#常见的闭包" class="headerlink" title="常见的闭包"></a>常见的闭包</h3><ul>
+<li>将函数作为另一个函数的返回值</li>
+<li>将函数作为实参传递给另一个函数调用</li>
+<li>示例：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 将函数作为另一个函数的返回值</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn1</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">2</span>   <span class="comment">//此时闭包产生了，因为函数提升</span></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">fn2</span>(<span class="params"></span>) &#123;</span><br><span class="line">    a++</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> fn2</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f = <span class="title function_">fn1</span>()</span><br><span class="line"><span class="title function_">f</span>() <span class="comment">// 3</span></span><br><span class="line"><span class="title function_">f</span>() <span class="comment">// 4</span></span><br><span class="line">结果：从以上函数克制，该函数产生多少个闭包，看调用了几次外部函数</span><br><span class="line"><span class="comment">// 2. 将函数的实参传递给内部的函数调用</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">showDelay</span>(<span class="params">msg, time</span>) &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(msg)</span><br><span class="line">  &#125;, time)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">showDelay</span>(<span class="string">&#x27;atguigu&#x27;</span>, <span class="number">2000</span>)</span><br><span class="line">结论：有产生闭包，一外部函数里面嵌套内部函数，二内部函数调用外部函数的值msg，如果没有msg就不会产生闭包</span><br></pre></td></tr></table></figure>
+
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用:"></a>作用:</h3><ul>
+<li>使用函数内部的变量在函数执行完后, 仍然存活在内存中(延长了局部变量的生命周期)</li>
+<li>让函数外部可以操作(读写)到函数内部的数据(变量&#x2F;函数)</li>
+<li>注：<ul>
+<li>函数<code>执行完后</code>, 函数<code>内部</code>声明的局部<code>变量</code>一般是<code>不存在</code>, 存在于<code>闭包中的变量</code>才可能<code>存在</code></li>
+<li>在函数<code>外部不能直接</code>访问函数<code>内部</code>的局部<code>变量,</code> 但我们可以<code>通过闭包</code>让外部<code>操作</code>它</li>
+</ul>
+</li>
+</ul>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><ul>
+<li>产生: 在嵌套内部函数定义执行完时就产生了(不是在调用)</li>
+<li>死亡: 在嵌套的内部函数成为垃圾对象时(让包含闭包的函数对象&#x3D;null)</li>
+</ul>
+<h3 id="闭包应用"><a href="#闭包应用" class="headerlink" title="闭包应用"></a>闭包应用</h3><ul>
+<li>模块化: 封装一些数据以及操作数据的函数, 向外暴露一些行为(对象或函数)</li>
+<li>模块的使用者, 只需要通过模块暴露的对象调用方法来实现对应的功能</li>
+<li>循环遍历加监听</li>
+<li>JS 框架(jQuery)大量使用了闭包</li>
+</ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>函数执行完后, 函数内的局部变量没有释放, 占用内存时间会变长</li>
+<li>可能导致内存泄露</li>
+<li>解决:<ul>
+<li>及时释放 : f &#x3D; null; &#x2F;&#x2F;让内部函数对象成为垃圾对象</li>
+</ul>
+</li>
+</ul>
+<h2 id="内存溢出与内存泄露"><a href="#内存溢出与内存泄露" class="headerlink" title="内存溢出与内存泄露"></a>内存溢出与内存泄露</h2><h3 id="内存溢出"><a href="#内存溢出" class="headerlink" title="内存溢出"></a>内存溢出</h3><ul>
+<li>一种程序运行出现的错误</li>
+<li>当程序运行需要的内存超过了剩余的内存时, 就出抛出内存溢出的错误</li>
+</ul>
+<h3 id="内存泄露"><a href="#内存泄露" class="headerlink" title="内存泄露"></a>内存泄露</h3><ul>
+<li>占用的内存没有及时释放</li>
+<li>内存泄露积累多了就容易导致内存溢出</li>
+<li>常见的内存泄露:<ul>
+<li>意外的全局变量</li>
+<li>没有及时清理的计时器或回调函数</li>
+<li>闭包</li>
+</ul>
+</li>
+<li>示例：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 内存溢出</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10000</span>; i++) &#123;</span><br><span class="line">	obj[i] = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">10000000</span>)</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;-----&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 2. 内存泄露</span></span><br><span class="line"><span class="comment">// 意外的全局变量</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">	a = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">10000000</span>)</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>()</span><br><span class="line"><span class="comment">// 没有及时清理的计时器或回调函数</span></span><br><span class="line"><span class="keyword">var</span> intervalId = <span class="built_in">setInterval</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">	<span class="comment">//启动循环定时器后不清理</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;----&#x27;</span>)</span><br><span class="line">&#125;, <span class="number">1000</span>)</span><br><span class="line"><span class="comment">// 闭包</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn1</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="keyword">var</span> a = <span class="number">4</span></span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">fn2</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(++a)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> fn2</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f = <span class="title function_">fn1</span>()</span><br><span class="line"><span class="title function_">f</span>()</span><br></pre></td></tr></table></figure>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/31/JS/JS-%E7%BA%BF%E7%A8%8B%E6%9C%BA%E5%88%B6%E4%B8%8E%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/js/">
+                    js
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/31/JS/JS-%E7%BA%BF%E7%A8%8B%E6%9C%BA%E5%88%B6%E4%B8%8E%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6/" class="trm-anima-link">
+                    JS-线程机制与事件机制
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/31</li>
+                <li>11:05</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/31/JS/JS-%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/js/">
+                    js
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/31/JS/JS-%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7/" class="trm-anima-link">
+                    JS-对象高级
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/31</li>
+                <li>11:05</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            基于大数据，学习参考、练习，网站正在逐步完善中...
+        </div>
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

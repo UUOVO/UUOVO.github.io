@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="线程与进程进程: 程序的一次执行, 它占有一片独有的内存空间 可以通过 windows 任务管理器查看进程  线程: 是进程内的一个独立执行单元 是程序执行的一个完整流程 是 CPU 的最小的调度单元  关系 一个进程中一般至少有一个运行的线程: 主线程 一个进程中也可以同时运行多个线程, 我们会说程序是多线程运行的 一个进程内的数据可以供其中的多个线程直接共享 多个进程之间的数据是不能直接共享的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS-线程机制与事件机制">
+<meta property="og:url" content="http://example.com/2024/10/31/JS/JS-%E7%BA%BF%E7%A8%8B%E6%9C%BA%E5%88%B6%E4%B8%8E%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="线程与进程进程: 程序的一次执行, 它占有一片独有的内存空间 可以通过 windows 任务管理器查看进程  线程: 是进程内的一个独立执行单元 是程序执行的一个完整流程 是 CPU 的最小的调度单元  关系 一个进程中一般至少有一个运行的线程: 主线程 一个进程中也可以同时运行多个线程, 我们会说程序是多线程运行的 一个进程内的数据可以供其中的多个线程直接共享 多个进程之间的数据是不能直接共享的">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/404.jpg">
+<meta property="og:image" content="http://example.com/img/404.jpg">
+<meta property="article:published_time" content="2024-10-31T03:05:32.059Z">
+<meta property="article:modified_time" content="2024-10-31T03:58:22.549Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/404.jpg">
+
+    <meta name="keywords" content="js,线程, 事件机制">
+
+
+<title >JS-线程机制与事件机制</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-10-31 11:58:22"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            UUOVO<span>个人站点</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/test1/" target="">
+                            test1
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            JS-线程机制与事件机制
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+        <a href="https://zh-hans.react.dev/" title="React" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-react"></i>
+        </a>
+    
+        <a href="https://zh.javascript.info/" title="Javascript" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node-js"></i>
+        </a>
+    
+        <a href="https://nodejs.cn/" title="Node" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            10/31
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            11:05
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="线程与进程"><a href="#线程与进程" class="headerlink" title="线程与进程"></a>线程与进程</h2><h3 id="进程"><a href="#进程" class="headerlink" title="进程:"></a>进程:</h3><ul>
+<li>程序的一次执行, 它占有一片独有的内存空间</li>
+<li>可以通过 windows 任务管理器查看进程</li>
+</ul>
+<h3 id="线程"><a href="#线程" class="headerlink" title="线程:"></a>线程:</h3><ul>
+<li>是进程内的一个独立执行单元</li>
+<li>是程序执行的一个完整流程</li>
+<li>是 CPU 的最小的调度单元</li>
+</ul>
+<h3 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h3><ul>
+<li>一个进程中一般至少有一个运行的线程: 主线程</li>
+<li>一个进程中也可以同时运行多个线程, 我们会说程序是多线程运行的</li>
+<li>一个进程内的数据可以供其中的多个线程直接共享</li>
+<li>多个进程之间的数据是不能直接共享的</li>
+</ul>
+<h3 id="浏览器运行是单进程还是多进程"><a href="#浏览器运行是单进程还是多进程" class="headerlink" title="浏览器运行是单进程还是多进程?"></a>浏览器运行是单进程还是多进程?</h3><ul>
+<li>有的是单进程<ul>
+<li>firefox</li>
+<li>老版 IE</li>
+</ul>
+</li>
+<li>有的是多进程<ul>
+<li>chrome</li>
+<li>新版 IE</li>
+</ul>
+</li>
+<li>如何查看浏览器是否是多进程运行的呢?<ul>
+<li>任务管理器&#x3D;&#x3D;&gt;进程</li>
+</ul>
+</li>
+<li>浏览器运行都是<code>多线程</code>运行的</li>
+<li>单线程是局限与一个进程的概念，判断是否是单线程，看它是否在一个进程里面只有一个线程</li>
+</ul>
+<h2 id="浏览器内核模块组成"><a href="#浏览器内核模块组成" class="headerlink" title="浏览器内核模块组成"></a>浏览器内核模块组成</h2><ul>
+<li>浏览器内核：支持浏览器运行的最核心的程序</li>
+</ul>
+<h3 id="不同浏览器的内核"><a href="#不同浏览器的内核" class="headerlink" title="不同浏览器的内核"></a>不同浏览器的内核</h3><ul>
+<li>Chrome, Safari: webkit</li>
+<li>firefox: Gecko</li>
+<li>IE: Trident</li>
+<li>360,搜狗等国内浏览器: Trident + webkit</li>
+</ul>
+<h3 id="内核的组成"><a href="#内核的组成" class="headerlink" title="内核的组成"></a>内核的组成</h3><ul>
+<li>主线程<ul>
+<li>js 引擎模块 : 负责 js 程序的编译与运行</li>
+<li>html,css 文档解析模块 : 负责页面文本的解析</li>
+<li>DOM&#x2F;CSS 模块 : 负责 dom&#x2F;css 在内存中的相关处理</li>
+<li>布局和渲染模块 : 负责页面的布局和效果的绘制(内存中的对象)</li>
+</ul>
+</li>
+<li>分线程<ul>
+<li>定时器模块：负责定时器的管理</li>
+<li>DOM 事件模块：负责事件的管理</li>
+<li>网络请求模块：负责服务器请求(常规&#x2F;Ajax)</li>
+</ul>
+</li>
+</ul>
+<h2 id="js-线程"><a href="#js-线程" class="headerlink" title="js 线程"></a>js 线程</h2><ul>
+<li>js 是单线程执行的(回调函数也是在主线程)</li>
+<li>使用 H5 中的 Web Worker 是可以多线程运行</li>
+<li>只能是主线程更新界面</li>
+</ul>
+<h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><ol>
+<li>如何证明 js 执行是单线程的?</li>
+</ol>
+<ul>
+<li>setTimeout()的回调函数是在主线程执行的</li>
+<li>定时器回调函数只有在运行栈中的代码全部执行完后才有可能执行</li>
+</ul>
+<ol start="2">
+<li>为什么 js 要用单线程模式, 而不用多线程模式?</li>
+</ol>
+<ul>
+<li>JavaScript 的单线程，与它的用途有关。</li>
+<li>作为浏览器脚本语言，JavaScript 的主要用途是与用户互动，以及操作 DOM。</li>
+<li>这决定了它只能是单线程，否则会带来很复杂的同步问题</li>
+</ul>
+<ol start="3">
+<li>代码的分类:</li>
+</ol>
+<ul>
+<li>初始化代码</li>
+<li>回调代码</li>
+</ul>
+<ol start="4">
+<li>js 引擎执行代码的基本流程</li>
+</ol>
+<ul>
+<li>先执行初始化代码: 包含一些特别的代码<ul>
+<li>回调函数(异步执行)</li>
+<li>设置定时器</li>
+<li>绑定事件监听</li>
+<li>发送 ajax 请求</li>
+</ul>
+</li>
+<li>后面在某个时刻才会执行回调代码</li>
+</ul>
+<h2 id="定时器问题"><a href="#定时器问题" class="headerlink" title="定时器问题:"></a>定时器问题:</h2><ul>
+<li>定时器并<code>不能保证</code>真正<code>完全定时</code></li>
+<li>如果在主线程执行了一个长时间的操作, 可能导致延时才处理</li>
+<li>定时器回调函数是在主线程执行的, js 是单线程的</li>
+<li>定时器的实现：事件循环模型</li>
+</ul>
+<h2 id="事件循环模型"><a href="#事件循环模型" class="headerlink" title="事件循环模型"></a>事件循环模型</h2><p><img src="/../../img/js/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%A8%A1%E5%9E%8B.png" alt="事件循环模型"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<ul>
+<li>代码分类<ul>
+<li>初始化执行代码(同步代码): 包含绑定 dom 事件监听, 设置定时器, 发送 ajax 请求的代码</li>
+<li>回调执行代码(异步代码): 处理回调逻辑</li>
+</ul>
+</li>
+<li>js 引擎执行代码的基本流程:<ul>
+<li>初始化代码&#x3D;&#x3D;&#x3D;&gt;回调代码</li>
+</ul>
+</li>
+<li>模型的 2 个重要组成部分:<ul>
+<li>事件(定时器&#x2F;DOM 事件&#x2F;Ajax)管理模块</li>
+<li>回调队列</li>
+</ul>
+</li>
+<li>模型的运转流程<ul>
+<li>执行初始化代码, 将事件回调函数交给对应模块管理</li>
+<li>当事件发生时, 管理模块会将回调函数及其数据添加到回调列队中</li>
+<li>只有当初始化代码执行完后(可能要一定时间), 才会遍历读取回调队列中的回调函数执行</li>
+</ul>
+</li>
+</ul>
+<h2 id="H5-Web-Workers-js-分线程的实现"><a href="#H5-Web-Workers-js-分线程的实现" class="headerlink" title="H5 Web Workers (js 分线程的实现)"></a>H5 Web Workers (js 分线程的实现)</h2><ul>
+<li>可以让 js 在分线程执行</li>
+</ul>
+<p><img src="/../../img/js/H5%20Web%20Workers(%E5%A4%9A%E7%BA%BF%E7%A8%8B).png" alt="Web Workers"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<h3 id="相关-API"><a href="#相关-API" class="headerlink" title="相关 API"></a>相关 API</h3><ul>
+<li>Worker: 构造函数, 加载分线程执行的 js 文件</li>
+<li>Worker.prototype.onmessage: 用于接收另一个线程的回调函数</li>
+<li>Worker.prototype.postMessage: 向另一个线程发送消息</li>
+</ul>
+<h3 id="不足"><a href="#不足" class="headerlink" title="不足:"></a>不足:</h3><ul>
+<li>worker 内代码不能操作 DOM 更新 UI</li>
+<li>不是每个浏览器都支持这个新特性</li>
+<li>不能跨域加载 JS</li>
+<li>示例</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"># 封装的worker.<span class="property">js</span>文件</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fibonacci</span>(<span class="params">n</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> n&lt;=<span class="number">2</span> ? <span class="number">1</span> : <span class="title function_">fibonacci</span>(n-<span class="number">1</span>) + <span class="title function_">fibonacci</span>(n-<span class="number">2</span>)  <span class="comment">//递归调用</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>)</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">onmessage</span> = <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> number = event.<span class="property">data</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;分线程接收到主线程发送的数据: &#x27;</span>+number)</span><br><span class="line">  <span class="comment">//计算</span></span><br><span class="line">  <span class="keyword">var</span> result = <span class="title function_">fibonacci</span>(number)</span><br><span class="line">  <span class="title function_">postMessage</span>(result)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;分线程向主线程返回数据: &#x27;</span>+result)</span><br><span class="line">  <span class="comment">// alert(result)  alert是window的方法, 在分线程不能调用</span></span><br><span class="line">  <span class="comment">// 分线程中的全局对象不再是window, 所以在分线程中不可能更新界面</span></span><br><span class="line">&#125;</span><br><span class="line"># 使用示例</span><br><span class="line"></span><br><span class="line">&lt;input type=<span class="string">&quot;text&quot;</span> placeholder=<span class="string">&quot;数值&quot;</span> id=<span class="string">&quot;number&quot;</span>&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;btn&quot;</span>&gt;</span>计算<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	<span class="keyword">var</span> input = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;number&#x27;</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;btn&#x27;</span>).<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	  <span class="keyword">var</span> number = input.<span class="property">value</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	  <span class="comment">//创建一个Worker对象</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	  <span class="keyword">var</span> worker = <span class="keyword">new</span> <span class="title class_">Worker</span>(<span class="string">&#x27;worker.js&#x27;</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	  <span class="comment">// 绑定接收消息的监听</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	  worker.<span class="property">onmessage</span> = <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;主线程接收分线程返回的数据: &#x27;</span>+event.<span class="property">data</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	    <span class="title function_">alert</span>(event.<span class="property">data</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	  &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	  <span class="comment">// 向分线程发送消息</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	  worker.<span class="title function_">postMessage</span>(number)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;主线程向分线程发送数据: &#x27;</span>+number)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>) <span class="comment">// window</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/31/JS/JS-%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E4%BE%8B%E5%AD%90/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/js/">
+                    js
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/31/JS/JS-%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E4%BE%8B%E5%AD%90/" class="trm-anima-link">
+                    案例-常用例子
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/31</li>
+                <li>11:05</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/31/JS/JS-%E5%87%BD%E6%95%B0%E9%AB%98%E7%BA%A7/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/js/">
+                    js
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/31/JS/JS-%E5%87%BD%E6%95%B0%E9%AB%98%E7%BA%A7/" class="trm-anima-link">
+                    JS-函数高级
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/31</li>
+                <li>11:05</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            基于大数据，学习参考、练习，网站正在逐步完善中...
+        </div>
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="JQuery 定义：一个JS函数库，封装简化DOM操作(CRUD) | Ajax 优势： 强大选择器: 方便快速查找DOM元素 隐式遍历(迭代): 一次操作多个元素 读写合一: 读数据 | 写数据用的是一个函数 链式调用: 可以通过.不断调用jQuery对象的方法 事件处理 DOM操作(CUD) 样式操作 动画 浏览器兼容   使用： 引入jQuery库 本地引入与CDN远程引入 测试版与生产版(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JQuery基础">
+<meta property="og:url" content="http://example.com/2024/10/31/JQuery/JQuery%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="JQuery 定义：一个JS函数库，封装简化DOM操作(CRUD) | Ajax 优势： 强大选择器: 方便快速查找DOM元素 隐式遍历(迭代): 一次操作多个元素 读写合一: 读数据 | 写数据用的是一个函数 链式调用: 可以通过.不断调用jQuery对象的方法 事件处理 DOM操作(CUD) 样式操作 动画 浏览器兼容   使用： 引入jQuery库 本地引入与CDN远程引入 测试版与生产版(">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-31T07:42:38.183Z">
+<meta property="article:modified_time" content="2024-10-31T07:45:51.606Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="JQuery">
+
+
+<title >JQuery基础</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-10-31 15:45:51"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            UUOVO<span>个人站点</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/test1/" target="">
+                            test1
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            JQuery基础
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+        <a href="https://zh-hans.react.dev/" title="React" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-react"></i>
+        </a>
+    
+        <a href="https://zh.javascript.info/" title="Javascript" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node-js"></i>
+        </a>
+    
+        <a href="https://nodejs.cn/" title="Node" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            10/31
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            15:42
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h1 id="JQuery"><a href="#JQuery" class="headerlink" title="JQuery"></a>JQuery</h1><ul>
+<li>定义：一个JS函数库，封装简化DOM操作(CRUD) | Ajax</li>
+<li>优势：<ul>
+<li>强大选择器: 方便快速查找DOM元素</li>
+<li>隐式遍历(迭代): 一次操作多个元素</li>
+<li>读写合一: 读数据 | 写数据用的是一个函数</li>
+<li>链式调用: 可以通过.不断调用jQuery对象的方法</li>
+<li>事件处理</li>
+<li>DOM操作(CUD)</li>
+<li>样式操作</li>
+<li>动画</li>
+<li>浏览器兼容</li>
+</ul>
+</li>
+<li>使用：<ul>
+<li>引入jQuery库<ul>
+<li>本地引入与CDN远程引入</li>
+<li>测试版与生产版(压缩版)</li>
+</ul>
+</li>
+<li>使用jQuery<ul>
+<li>使用jQuery函数: $ | jQuery</li>
+<li>使用jQuery对象: $xxx(执行$()得到的)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="JQuery的2把利器"><a href="#JQuery的2把利器" class="headerlink" title="JQuery的2把利器"></a>JQuery的2把利器</h2><h3 id="jQuery函数-jQuery"><a href="#jQuery函数-jQuery" class="headerlink" title="jQuery函数: $ | jQuery"></a><code>jQuery函数: $ | jQuery</code></h3><blockquote>
+<p>jQuery向外暴露的就是jQuery函数, 可以直接使用</p>
+</blockquote>
+<ul>
+<li><code>函数使用: $(param)</code><ul>
+<li>param是<code>function</code>: 相当于window.onload &#x3D; function(DOM加载完成后，执行此回调函数)</li>
+<li>param是选择器字符串: 查找所有匹配的DOM元素, 返回包含所有DOM元素的jQuery对象</li>
+<li>param是<code>DOM对象</code>: 将DOM元素对象包装为jQuery对象返回</li>
+<li>param是<code>html标签字符串</code>: 创建标签DOM元素对象并封装为jQuery对象返回</li>
+</ul>
+</li>
+<li><code>对象使用: $.xxx()</code></li>
+</ul>
+<h3 id="jQuery对象"><a href="#jQuery对象" class="headerlink" title="jQuery对象: $()"></a><code>jQuery对象: $()</code></h3><blockquote>
+<p>包含所有匹配的n个DOM元素的伪数组对象,执行$()返回的就是jQuery对象</p>
+</blockquote>
+<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/jquery/jquery_ref_selectors.asp">选择器</a></h2><blockquote>
+<p>有特定语法规则(css选择器)的字符串</p>
+</blockquote>
+<ul>
+<li>用法：查找某个&#x2F;些DOM元素: $(selector)</li>
+</ul>
+<h3 id="基本选择器"><a href="#基本选择器" class="headerlink" title="基本选择器"></a>基本选择器</h3><ul>
+<li><code>#id</code>：id选择器</li>
+<li><code>tagName</code>：元素选择器</li>
+<li><code>.class</code>：属性选择器</li>
+<li><code>*</code>：任意标签</li>
+<li><code>s1,s2,s3</code>：多个选择器的并集(组合选择器)</li>
+<li><code>s1s2s3</code>：多个选择器的交集(相交选择器)</li>
+</ul>
+<h3 id="层次选择器"><a href="#层次选择器" class="headerlink" title="层次选择器"></a>层次选择器</h3><ul>
+<li>查找子元素, 后代元素, 兄弟元素的选择器</li>
+<li><code>parent &gt; child</code>：在给定的父元素下匹配所有的子元素</li>
+<li><code>ancestor descendant</code>：在给定的祖先元素下匹配所有的后代元素</li>
+<li><code>prev + next</code>：匹配所有紧接在 prev 元素后的 next 元素</li>
+<li><code>prev ~ siblings</code>：匹配 prev 元素之后的所有 siblings 元素</li>
+</ul>
+<h3 id="选择器的过滤修饰符"><a href="#选择器的过滤修饰符" class="headerlink" title="选择器的过滤修饰符"></a>选择器的过滤修饰符</h3><ul>
+<li><code>:first</code>：选择第一个元素</li>
+<li><code>:last</code>：选择最后一个元素</li>
+<li><code>:eq(index)</code>：选择第index个元素，index从0开始</li>
+<li><code>:lt(index)</code>：选择前index个元素</li>
+<li><code>:gt(index)</code>：选择前index个之后的所有元素</li>
+<li><code>:odd</code>：选择所有奇数的元素</li>
+<li><code>:even</code>：选择所有偶数的元素</li>
+<li><code>:not(selector)</code>：选择所有不为selector的元素</li>
+<li><code>:hidden</code>：选择隐藏的属性</li>
+<li><code>:visible</code>：所有可见的元素</li>
+<li><code>[attrName]</code>：选择有attrName属性的元素</li>
+<li><code>[attrName=value]</code>：选择所有attrName&#x3D;value的元素</li>
+<li><code>:contains(content)</code>：选择内容为content的元素</li>
+<li><code>:header</code>：所有标题元素 h1 - h6</li>
+<li><code>:animated</code>：所有动画元素</li>
+</ul>
+<h3 id="表单选择器的修饰符"><a href="#表单选择器的修饰符" class="headerlink" title="表单选择器的修饰符"></a>表单选择器的修饰符</h3><ul>
+<li><code>:input</code>：所有input元素</li>
+<li><code>:text</code>：所有 type&#x3D;”text” 的 input 元素</li>
+<li><code>:checkbox</code>：所有 type&#x3D;”checkbox” 的 input 元素<ul>
+<li>eg：点击’全选’按钮实现<span style="color:red">全选&#x2F;全不选</span>(按钮的点击事件里面应用)<ul>
+<li>$(‘:checkbox’).prop(‘checked’, true)</li>
+<li>$(‘:checkbox’).prop(‘checked’, false)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>:submit</code>、<code>:reset</code>、<code>:button</code>、<code>:image</code>、<code>:file</code>、<code>:password</code>、<code>:radio</code>：所有 type&#x3D;”xxx” 的 input 元素</li>
+<li><code>:checked</code>：所有被选中的 input 元素</li>
+<li><code>:enabled</code>：所有激活的 input 元素</li>
+<li><code>:disabled</code>：所有禁用的 input 元素</li>
+<li><code>:selected</code>：所有禁用的 input 元素</li>
+</ul>
+<h2 id="文档操作"><a href="#文档操作" class="headerlink" title="文档操作"></a><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/jquery/jquery_ref_prop.asp">文档操作</a></h2><ul>
+<li>操作标签的属性, 标签体文本</li>
+</ul>
+<h3 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h3><ul>
+<li><code>attr(name) | attr(name, value)</code>: 设置或返回匹配元素的属性和值<ul>
+<li>eg：读取<span style="color:red">第一个</span>div的<span style="color:red">title属性</span><ul>
+<li>$(‘div:first’).attr(‘title’)</li>
+</ul>
+</li>
+<li>eg：给<span style="color:red">所有</span>的div<span style="color:red">设置name属性值</span>为222<ul>
+<li>$(‘div’).attr(‘name’,’222’)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>val() | val(value)</code>: 读写标签的value<ul>
+<li>eg: 得到输入框中的value值 <ul>
+<li>$(‘:text’).val()</li>
+</ul>
+</li>
+<li>eg: 将输入框的值<span style="color:red">设置</span>为aaaaaa <ul>
+<li>$(‘:text’).val(‘aaaaaa’)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>html() | html(htmlString)</code>: 读写标签体文本<ul>
+<li>eg: 得到<span style="color:red">最后一个</span>li的标签体文本<ul>
+<li>$(‘li:last’).html()</li>
+</ul>
+</li>
+<li>eg: <span style="color: red">设置第一个</span>li的标签体为”<h1>mmmmmmmmm</h1>“<ul>
+<li>$(‘li:first’).html(‘<h1>mmmmmmmmm</h1>‘)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>text()</code>: 设置或返回匹配元素的内容</li>
+<li><code>insertAfter()</code>: 把匹配的元素插入到另一个指定的元素集合的后面。</li>
+</ul>
+<h3 id="增加"><a href="#增加" class="headerlink" title="增加"></a>增加</h3><ul>
+<li><code>append() | appendTo()</code>: 元素插入末尾</li>
+<li><code>prepend() | prependTo()</code>: 元素插入开头</li>
+<li><code>before()</code>: 在每个匹配的元素之前插入内容</li>
+<li><code>after()</code>: 在匹配的元素之后插入内容</li>
+<li><code>addClass(classValue)</code>: 添加class</li>
+<li><code>insertBefore()</code>: 把匹配的元素插入到另一个指定的元素集合的前面。</li>
+</ul>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><ul>
+<li><code>remove()</code>: 删除所有匹配元素的子元素</li>
+<li><code>empty()</code>: 除自己外删除所有匹配元素的子元素</li>
+<li><code>removeAttr(name)</code>: 删除属性<ul>
+<li>eg: 移除<span style="color:red">所有</span>div的<span style="color:red">title属性&lt;?span&gt;<ul>
+<li>$(‘div’).removeAttr(‘title’)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>removeClass(classValue)</code>: 移除指定class</li>
+<li><code>toggleClass()</code>: 从匹配的元素中添加或删除一个类</li>
+</ul>
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><ul>
+<li><code>replaceWith() | replaceAll()</code>: 用新内容替换匹配的元素</li>
+</ul>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/jquery/jquery_ref_prop.asp">事件</a></h2><h3 id="绑定事件"><a href="#绑定事件" class="headerlink" title="绑定事件"></a>绑定事件</h3><ul>
+<li><code>eventName(function()&#123;&#125;)</code>：绑定对应事件名的监听<ul>
+<li>eg: $(‘#div’).click(function(){});</li>
+</ul>
+</li>
+<li><code>on(&#39;eventName&#39;, function()&#123;&#125;)</code>：通用的绑定事件监听<ul>
+<li>eg: $(‘#div’).on(‘click’, function(){})</li>
+</ul>
+</li>
+<li>优缺点：<ul>
+<li>eventName: 编码方便, 但只能加一个监听, 且有的事件监听不支持</li>
+<li>on: 编码不方便, 可以添加多个监听, 且更通用</li>
+</ul>
+</li>
+</ul>
+<h3 id="解绑事件"><a href="#解绑事件" class="headerlink" title="解绑事件"></a>解绑事件</h3><ul>
+<li><code>off(&#39;eventName&#39;)</code></li>
+</ul>
+<h3 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h3><ul>
+<li>理解: 将子元素的事件委托给父辈元素处理<ul>
+<li>事件监听绑定在父元素上, 但事件发生在子元素上</li>
+<li>事件会冒泡到父元素</li>
+<li>但最终调用的事件回调函数的是子元素: event.target</li>
+</ul>
+</li>
+<li>好处<ul>
+<li><code>新增的元素没有事件监听</code></li>
+<li>减少监听的数量(n&#x3D;&#x3D;&gt;1)</li>
+</ul>
+</li>
+<li>事件<ul>
+<li><code>$(parentSelector).delegate(childselector, eventName, callback)</code>：给对应选择器添加事件委托</li>
+<li><code>$(parentSelector).undelegate(eventName)</code>：给该元素移除事件委托</li>
+</ul>
+</li>
+</ul>
+<h3 id="事件坐标"><a href="#事件坐标" class="headerlink" title="事件坐标"></a>事件坐标</h3><ul>
+<li><code>event.offsetX, event.offsetY</code>: 相对于事件元素左上角</li>
+<li><code>event.clientX, event.clientY</code>: 相对于视口的左上角</li>
+<li><code>event.pageX, event.pageY</code>: 相对于页面的左上角</li>
+</ul>
+<h3 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h3><ul>
+<li>   <code>keydown()</code>：键盘按下时触发</li>
+<li>   <code>keyup()</code>：键盘松开时触发</li>
+</ul>
+<h3 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h3><ul>
+<li>   <code>mousedown()</code>： 鼠标点击按下触发</li>
+<li>   <code>mouseenter()</code>：鼠标移动到当前元素时触发</li>
+<li>   <code>mouseleave()</code>：鼠标离开该元素触发</li>
+<li>   <code>mousemove()</code>：鼠标在该元素内移动触发</li>
+<li>   <code>mouseout()</code>：鼠标移动到该元素或其子元素之外时触发</li>
+<li>   <code>mouseover()</code>：鼠标移入该元素的子元素也会触发</li>
+<li>   <code>mouseup()</code>：鼠标松开点击按钮的时候触发</li>
+<li><code>hover(function()&#123;&#125;, function()&#123;&#125;)</code>：参数一相当于mouseenter(),参数二相当于mouseleave()</li>
+</ul>
+<h3 id="点击-触发"><a href="#点击-触发" class="headerlink" title="点击&#x2F;触发"></a>点击&#x2F;触发</h3><ul>
+<li>   <code>load()</code>：进入页面时触发</li>
+<li><code>unload()</code>：卸载&#x2F;离开页面时触发</li>
+<li><code>change()</code>：事件改变就触发</li>
+<li><code>click()</code>：单机事件</li>
+<li><code>dblclick()</code>：双击事件</li>
+<li><code>toggle()</code>：绑定两个或多个事件处理器函数，当发生轮流的 click 事件时执行。</li>
+</ul>
+<h3 id="滚动"><a href="#滚动" class="headerlink" title="滚动"></a>滚动</h3><ul>
+<li><code>scroll()</code>：滚动事件</li>
+<li><code>scrollTop() | scrollLeft()</code>: 读&#x2F;写元素&#x2F;页面的滚动条位置</li>
+<li><code>$(document.body).scrollTop()+$(document.documentElement).scrollTop()</code>: 读取页面滚动条的Y坐标(兼容chrome和IE)</li>
+<li><code>$(&#39;body,html&#39;).scrollTop(60)</code>: 页面滚动条滚动到指定位置(兼容chrome和IE)</li>
+</ul>
+<h3 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h3><ul>
+<li><code>blur()</code>：失去焦点的时候触发</li>
+<li><code>select()</code>：选中时触发</li>
+<li><code>submit()</code>：点击提交时触发</li>
+<li><code>focus()</code>：聚焦触发</li>
+<li>阻止事件的默认行为: <code>event.preventDefault()</code></li>
+<li>   <code>trigger()</code>：所有匹配元素的指定事件</li>
+<li><code>triggerHandler()</code>：第一个被匹配元素的指定事件</li>
+</ul>
+<h2 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h2><h3 id="style样式"><a href="#style样式" class="headerlink" title="style样式"></a>style样式</h3><ul>
+<li><code>css(styleName)</code>: 根据样式名得到对应的值</li>
+<li><code>css(styleName, value)</code>: 设置一个样式</li>
+<li><code>css(&#123;多个样式以键值对的形式存在&#125;)</code>: 设置多个样式</li>
+</ul>
+<h3 id="位置坐标"><a href="#位置坐标" class="headerlink" title="位置坐标"></a>位置坐标</h3><ul>
+<li><code>offset()</code>: 读&#x2F;写当前元素坐标(原点是页面左上角)</li>
+<li><code>position()</code>: 读当前元素坐标(原点是父元素左上角)</li>
+</ul>
+<h3 id="尺寸"><a href="#尺寸" class="headerlink" title="尺寸"></a>尺寸</h3><ul>
+<li>width() | height(): width | height</li>
+<li>innerWidth() | innerHeight(): width + padding</li>
+<li>outerWidth() | outerHeight(): width + padding + border</li>
+</ul>
+<h2 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h2><h3 id="基本遍历"><a href="#基本遍历" class="headerlink" title="基本遍历"></a>基本遍历</h3><ul>
+<li><code>map()</code>: 会返回一个新数组</li>
+<li><code>each()</code></li>
+</ul>
+<h3 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h3><blockquote>
+<p>在jQuery对象内部的元素中找出部分匹配的元素, 并封装成新的jQuery对象返回</p>
+</blockquote>
+<ul>
+<li><code>first()</code>：选中第一个元素</li>
+<li><code>last()</code>：选中最后一个元素</li>
+<li><code>eq(index)</code>: 选中第index个元素</li>
+<li><code>filter(selector)</code>: 对当前元素提要求<ul>
+<li>eg: ul下li标签中title属性为hello的<ul>
+<li>const $lis&#x3D; $(‘ul &gt; li’)</li>
+<li>$lis.filter(‘[title&#x3D;hello]’)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>not(selector)</code>: 对当前元素提要求, 并取反<ul>
+<li>eg: ul下li标签中title属性不为hello的<ul>
+<li>$lis.not(‘[title&#x3D;hello]’)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>has(selector)</code>: 对子孙元素提要求<ul>
+<li>eg: ul下li标签中有span子标签<ul>
+<li>$lis.has(‘span’)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><blockquote>
+<p>查找jQuery对象内部的元素的子孙&#x2F;兄弟&#x2F;父母元素, 并封装成新的jQuery对象返回</p>
+</blockquote>
+<ul>
+<li><code>parent()</code>: 父元素</li>
+<li><code>children(selector)</code>: 子元素中找</li>
+<li><code>find(selector)</code>: 后代元素中找</li>
+<li><code>prevAll(selector)</code>: 前面所有的兄弟标签<ul>
+<li>可以跟children()一起用，用链式连接</li>
+</ul>
+</li>
+<li><code>nextAll()</code> : 后面所有的兄弟标签<ul>
+<li>可以跟children()一起用，用链式连接</li>
+</ul>
+</li>
+<li><code>siblings(selector)</code>: 所有兄弟<ul>
+<li>可以跟children()一起用，用链式连接</li>
+</ul>
+</li>
+</ul>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><ul>
+<li>在一定的时间内, 不断改变元素样式</li>
+<li><code>slideDown()/slideUp()/slideToggle()</code>： 滑动，按顺序使用</li>
+<li><code>fadeOut()/fadeIn()/fadeToggle()</code>：淡入淡出，按顺序使用</li>
+<li><code>show()/hide()/toggle()</code>：显隐</li>
+<li><code>animate(&#123;结束时的样式&#125;, time)</code>：自定义动画</li>
+<li><code>stop()</code>：停止动画</li>
+</ul>
+<h2 id="工具函数"><a href="#工具函数" class="headerlink" title="工具函数:"></a>工具函数:</h2><ul>
+<li><code>length/size()</code>: 得到dom元素的个数</li>
+<li><code>[index]/get(index)</code>: 得到指定下标对应的dom元素</li>
+<li><code>index()</code>: 得到当前dom元素在所有兄弟中的下标<br>  - eg：$(‘当前的选择器’)index() </li>
+<li><code>type(obj)</code>：得到数据的类型</li>
+<li><code>isArray(obj)</code>: 判断是否是数组</li>
+<li><code>isFunction(obj)</code>: 判断是否是函数</li>
+<li><code>parseJSON(json)</code>: 解析json字符串转换为js对象&#x2F;数组<ul>
+<li>json对象: {key1:value1 , key2:value2}</li>
+<li>json数组: [value1, value2]</li>
+</ul>
+</li>
+<li><code>hasClass()</code>: 检查匹配的元素是否拥有指定的类</li>
+</ul>
+<h2 id="插件机制"><a href="#插件机制" class="headerlink" title="插件机制"></a>插件机制</h2><ul>
+<li>扩展jQuery函数对象的方法<ul>
+<li>定义：$.extend({ xxx: fuction(){} &#x2F;&#x2F;this是$ })</li>
+<li>使用：$.xxx()</li>
+</ul>
+</li>
+<li>扩展jQuery对象的方法<ul>
+<li>定义：$.fn.extend({ xxx: function(){} &#x2F;&#x2F;this是jQuery对象 })</li>
+<li>使用：$obj.xxx()</li>
+</ul>
+</li>
+<li>多库共存<ul>
+<li><code>jQuery.noConflict()</code>：jQuery库释放$的使用权, 让另一个库正常使用, 此时jQuery库只能使用jQuery了</li>
+</ul>
+</li>
+</ul>
+<h2 id="window-onload与-document-ready"><a href="#window-onload与-document-ready" class="headerlink" title="window.onload与 $(document).ready()"></a>window.onload与 $(document).ready()</h2><ul>
+<li>window.onload<ul>
+<li>包括页面的图片加载完后才会回调(晚)</li>
+<li>只能有一个监听回调</li>
+</ul>
+</li>
+<li>$(document).ready()<ul>
+<li>等同于: $(function(){})</li>
+<li>页面加载完就回调(早)</li>
+<li>可以有多个监听回调</li>
+</ul>
+</li>
+</ul>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/31/ajax/AJAX-orther/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/ajax/">
+                    ajax
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/31/ajax/AJAX-orther/" class="trm-anima-link">
+                    AJAX-orther
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/31</li>
+                <li>15:48</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/31/JQuery/%E5%BA%94%E7%94%A8/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/JQuery/">
+                    JQuery
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/31/JQuery/%E5%BA%94%E7%94%A8/" class="trm-anima-link">
+                    JQuery应用
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/31</li>
+                <li>15:42</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            基于大数据，学习参考、练习，网站正在逐步完善中...
+        </div>
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

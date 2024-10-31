@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="目录 水平居中 ↔️ 使用 text-align 属性 定宽块级元素水平居中 — 方式一 定宽块级元素水平居中 — 方式二 定宽块级元素水平居中 — 方式三 定宽块级元素水平居中 — 方式四 Flex Grid   垂直居中 ↕️ 行内块级元素垂直居中 定位方式 — 方式一 定位方式 — 方式二 定位方式 — 方式三 Flex Grid   水平垂直居中 ➕ 行内块级 定位 — 方式一 定位 —">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Html-元素布局篇">
+<meta property="og:url" content="http://example.com/2024/10/30/HTMLCSS/html-%E5%85%83%E7%B4%A0%E5%B8%83%E5%B1%80%E7%AF%87/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="目录 水平居中 ↔️ 使用 text-align 属性 定宽块级元素水平居中 — 方式一 定宽块级元素水平居中 — 方式二 定宽块级元素水平居中 — 方式三 定宽块级元素水平居中 — 方式四 Flex Grid   垂直居中 ↕️ 行内块级元素垂直居中 定位方式 — 方式一 定位方式 — 方式二 定位方式 — 方式三 Flex Grid   水平垂直居中 ➕ 行内块级 定位 — 方式一 定位 —">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-30T07:29:11.173Z">
+<meta property="article:modified_time" content="2024-10-30T09:23:18.052Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="html, 水平居中,垂直居中">
+
+
+<title >Html-元素布局篇</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-10-30 17:23:18"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            UUOVO<span>个人站点</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/test1/" target="">
+                            test1
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            Html-元素布局篇
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+        <a href="https://zh-hans.react.dev/" title="React" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-react"></i>
+        </a>
+    
+        <a href="https://zh.javascript.info/" title="Javascript" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node-js"></i>
+        </a>
+    
+        <a href="https://nodejs.cn/" title="Node" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            10/30
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            15:29
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li><a href="#ref1">水平居中 ↔️</a><ul>
+<li>使用 text-align 属性</li>
+<li>定宽块级元素水平居中 — 方式一</li>
+<li>定宽块级元素水平居中 — 方式二</li>
+<li>定宽块级元素水平居中 — 方式三</li>
+<li>定宽块级元素水平居中 — 方式四</li>
+<li>Flex</li>
+<li>Grid</li>
+</ul>
+</li>
+<li><a href="#ref2">垂直居中 ↕️</a><ul>
+<li>行内块级元素垂直居中</li>
+<li>定位方式 — 方式一</li>
+<li>定位方式 — 方式二</li>
+<li>定位方式 — 方式三</li>
+<li>Flex</li>
+<li>Grid</li>
+</ul>
+</li>
+<li><a href="#ref3">水平垂直居中 ➕</a><ul>
+<li>行内块级</li>
+<li>定位 — 方式一</li>
+<li>定位 — 方式二</li>
+<li>定位 — 方式三</li>
+<li>定位 — 方式四</li>
+<li>Flex</li>
+<li>Grid</li>
+</ul>
+</li>
+<li><a href="#ref4">两列布局</a><blockquote>
+<p>两列布局: 一列定宽(也有可能由子元素决定宽度)，一列自适应的布局。</p>
+</blockquote>
+<ul>
+<li>float + calc()</li>
+<li>float + margin-left</li>
+<li>absolute + margin-left</li>
+<li>float + overflow</li>
+<li>Flex</li>
+<li>Grid</li>
+</ul>
+</li>
+<li><a href="#ref5">三列布局</a><blockquote>
+<p>一种是前两列定宽，最后一列自适应，与两列布局差不多<br>一种是前后两列定宽，中间自适应 (以下讨论这个)</p>
+</blockquote>
+<ul>
+<li>Float — 方式一</li>
+<li>Float — 方式二</li>
+<li>Position</li>
+<li>Flex</li>
+<li>Grid</li>
+</ul>
+</li>
+<li><a href="#ref6">等分布局</a><blockquote>
+<p>一个容器均匀分配几个空间</p>
+</blockquote>
+<ul>
+<li>浮动 + 百分比</li>
+<li>行内块级 + 百分比</li>
+<li>Flex</li>
+<li>Grid</li>
+</ul>
+</li>
+<li><a href="#ref7">Sticky Footer 布局</a><blockquote>
+<p>内容没有超过窗口时，底部一直在底部<br>内容超过窗口时， 底部在内容后面</p>
+</blockquote>
+<ul>
+<li>绝对定位</li>
+<li>calc()</li>
+<li>Flex</li>
+<li>Grid</li>
+</ul>
+</li>
+<li><a href="#ref8">全屏布局</a><blockquote>
+<p>头 header 尾 footer 中间左导航 右自适应</p>
+</blockquote>
+<ul>
+<li>calc()</li>
+<li>Flex</li>
+<li>Grid</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="注意：有用到-float-的，记得在父容器添加-clearfix"><a href="#注意：有用到-float-的，记得在父容器添加-clearfix" class="headerlink" title="注意：有用到 float 的，记得在父容器添加 clearfix"></a>注意：有用到 float 的，记得在父容器添加 clearfix</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">clearfix</span>:after &#123;</span><br><span class="line">  <span class="attr">content</span>: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="attr">display</span>: block;</span><br><span class="line">  <span class="attr">height</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attr">clear</span>: both;</span><br><span class="line">  <span class="attr">visibility</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a><p id="ref1" style="color: green">水平居中</p></h2><h3 id="1-使用-text-align-属性"><a href="#1-使用-text-align-属性" class="headerlink" title="1. 使用 text-align 属性"></a>1. 使用 text-align 属性</h3><ul>
+<li>当<span style="color:purple">子元素</span>为行内块元素，即 <code>display:inline-block;</code></li>
+<li><span style="color:red">父元素</span>设置 <code>text-align: center</code>，即可实现水平居中</li>
+</ul>
+<h3 id="2-定宽块级元素水平居中-—-方式一"><a href="#2-定宽块级元素水平居中-—-方式一" class="headerlink" title="2. 定宽块级元素水平居中 — 方式一"></a>2. 定宽块级元素水平居中 — 方式一</h3><ul>
+<li><span style="color:purple">子元素</span>使用 <code>margin：0 auto;</code></li>
+</ul>
+<h3 id="3-定宽块级元素水平居中-—-方式二"><a href="#3-定宽块级元素水平居中-—-方式二" class="headerlink" title="3. 定宽块级元素水平居中 — 方式二"></a>3. 定宽块级元素水平居中 — 方式二</h3><ul>
+<li><span style="color:purple">子元素</span>使用 <code>relative;left:50%;margin-left:-(子元素width/2);</code></li>
+</ul>
+<h3 id="4-定宽块级元素水平居中-—-方式三"><a href="#4-定宽块级元素水平居中-—-方式三" class="headerlink" title="4. 定宽块级元素水平居中 — 方式三"></a>4. 定宽块级元素水平居中 — 方式三</h3><ul>
+<li><span style="color:red">父元素</span>使用 <code>relative;height:子元素height;</code></li>
+<li><span style="color:purple">子元素</span>使用 <code>absolute;left:0;right:0;width:子元素原宽度;margin:auto;</code></li>
+</ul>
+<h3 id="5-定宽块级元素水平居中-—-方式四"><a href="#5-定宽块级元素水平居中-—-方式四" class="headerlink" title="5. 定宽块级元素水平居中 — 方式四"></a>5. 定宽块级元素水平居中 — 方式四</h3><ul>
+<li><span style="color:red">父元素</span>使用 <code>relative</code></li>
+<li><span style="color:purple">子元素</span>使用 <code>absolute;left:50%;transform:translateX(-50%)</code></li>
+</ul>
+<h3 id="6-flex"><a href="#6-flex" class="headerlink" title="6. flex"></a>6. flex</h3><ul>
+<li><span style="color:red">父元素</span>使用<code>height:子元素高度;diaplay:flex;justify-content:center;</code></li>
+<li><span style="color:purple">子元素</span>使用<code>margin:auto</code></li>
+</ul>
+<h3 id="7-Grid"><a href="#7-Grid" class="headerlink" title="7. Grid"></a>7. Grid</h3><ul>
+<li>除了把 flex 改为 grid，其它跟 6 一样</li>
+</ul>
+<h2 id="垂直布局"><a href="#垂直布局" class="headerlink" title="垂直布局"></a><p id="ref2" style="color: green">垂直布局</p></h2><h3 id="1-行内块级元素垂直居中"><a href="#1-行内块级元素垂直居中" class="headerlink" title="1. 行内块级元素垂直居中"></a>1. 行内块级元素垂直居中</h3><ul>
+<li><span style="color:red">父元素</span>设置<code>line-height: 父元素高度;</code></li>
+<li><span style="color:purple">子元素</span>设置<code>display:inline-block; vertical-align:middle;</code></li>
+</ul>
+<h3 id="2-定位方式-—-方式一"><a href="#2-定位方式-—-方式一" class="headerlink" title="2. 定位方式 — 方式一"></a>2. 定位方式 — 方式一</h3><ul>
+<li><span style="color:red">父元素</span>设置<code>relative</code></li>
+<li><span style="color:purple">子元素</span>设置<code>absolute;top:50%;margin-top: -(子元素高度 / 2)px</code></li>
+</ul>
+<h3 id="3-定位方式-—-方式二"><a href="#3-定位方式-—-方式二" class="headerlink" title="3. 定位方式 — 方式二"></a>3. 定位方式 — 方式二</h3><ul>
+<li><span style="color:red">父元素</span>设置<code>relative</code></li>
+<li><span style="color:purple">子元素</span>设置<code>absolute;top:0;bottom:0;margin:auto;height: 子元素高度</code></li>
+</ul>
+<h3 id="4-定位方式-—-方式三"><a href="#4-定位方式-—-方式三" class="headerlink" title="4. 定位方式 — 方式三"></a>4. 定位方式 — 方式三</h3><ul>
+<li><span style="color:red">父元素</span>设置<code>relative</code></li>
+<li><span style="color:purple">子元素</span>设置<code>absolute;top:50%;transform:translateY(-50%)</code></li>
+</ul>
+<h3 id="5-Flex"><a href="#5-Flex" class="headerlink" title="5. Flex"></a>5. Flex</h3><ul>
+<li><span style="color:red">父元素</span>设置<code>display:flex;</code><ul>
+<li>方法一：aligin-items:center;</li>
+</ul>
+</li>
+<li><span style="color:purple">子元素</span>设置<ul>
+<li>方法二：margin:auto</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-Grid"><a href="#6-Grid" class="headerlink" title="6. Grid"></a>6. Grid</h3><ul>
+<li><span style="color:red">父元素</span>设置<code>display:grid;</code><ul>
+<li>方法一：<code>aligin-items:center</code></li>
+</ul>
+</li>
+<li><span style="color:purple">子元素</span>设置<ul>
+<li>方法二：<code>margin:auto;</code></li>
+<li>方法三：<code>align-self:center</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="水平垂直居中-➕"><a href="#水平垂直居中-➕" class="headerlink" title="水平垂直居中 ➕"></a><p id="ref3" style="color: green">水平垂直居中 ➕</p></h2><h3 id="1-行内块级"><a href="#1-行内块级" class="headerlink" title="1. 行内块级"></a>1. 行内块级</h3><ul>
+<li><span style="color:red">父元素</span>设置 <code>line-height: 父元素高度;text-align:center</code></li>
+<li><span style="color:purple">子元素</span>设置<code>display:inline-block;vertical-align:middle;</code></li>
+</ul>
+<h3 id="2-定位-—-方式一"><a href="#2-定位-—-方式一" class="headerlink" title="2. 定位 — 方式一"></a>2. 定位 — 方式一</h3><ul>
+<li><span style="color:red">父元素</span>设置<code>relative</code></li>
+<li><span style="color:purple">子元素</span>设置<code>absolute;left:calc(50%-(子元素宽度/2)px);top:calc(50% - (子元素高度/2)px)</code></li>
+</ul>
+<h3 id="3-定位-—-方式二"><a href="#3-定位-—-方式二" class="headerlink" title="3. 定位 — 方式二"></a>3. 定位 — 方式二</h3><ul>
+<li><span style="color:red">父元素</span>设置<code>relative</code></li>
+<li><span style="color:purple">子元素</span>设置<code>absolute;left:50%;top:50%;margin-left: -(子元素宽度 / 2)px;margin-top: -(子元素高度/2)px</code></li>
+</ul>
+<h3 id="4-定位-—-方式三"><a href="#4-定位-—-方式三" class="headerlink" title="4. 定位 — 方式三"></a>4. 定位 — 方式三</h3><ul>
+<li><span style="color:red">父元素</span>设置<code>relative</code></li>
+<li><span style="color:purple">子元素</span>设置<code>absolute;left:0;top:0;right:0;bottom:0;margin: auto</code></li>
+</ul>
+<h3 id="5-定位-—-方式四"><a href="#5-定位-—-方式四" class="headerlink" title="5. 定位 — 方式四"></a>5. 定位 — 方式四</h3><ul>
+<li><span style="color:red">父元素</span>设置<code>relative</code></li>
+<li><span style="color:purple">子元素</span>设置<code>absolute;left:50%;top:50%;transform:translate(-50%,-50%)</code></li>
+</ul>
+<h3 id="6-Flex"><a href="#6-Flex" class="headerlink" title="6. Flex"></a>6. Flex</h3><ul>
+<li><span style="color:red">父元素</span>设置<code>display:flex;</code><ul>
+<li>方法一：<code>align-items:center;justify-content:center</code></li>
+</ul>
+</li>
+<li><span style="color:purple">子元素</span>设置<code>方法二：margin:auto;</code></li>
+</ul>
+<h3 id="7-Grid-1"><a href="#7-Grid-1" class="headerlink" title="7. Grid"></a>7. Grid</h3><ul>
+<li><span style="color:red">父元素</span>设置<code>display:grid;</code><ul>
+<li>方法一：<code>place-items:center;</code></li>
+<li>方法二:<code>place-content:center;</code></li>
+</ul>
+</li>
+<li><span style="color:purple">子元素</span>设置<ul>
+<li>方法三：<code>margin:auto;</code></li>
+<li>方法四：<code>place-self:center</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="两列布局"><a href="#两列布局" class="headerlink" title="两列布局"></a><p id="ref4" style="color: green">两列布局</p></h2><blockquote>
+<p>两列布局: 一列定宽(也有可能由子元素决定宽度)，一列自适应的布局。(以左列定宽，右列自适应为例，高度一样)</p>
+</blockquote>
+<h3 id="1-float-calc-–-左容器宽度不可以由子元素撑起"><a href="#1-float-calc-–-左容器宽度不可以由子元素撑起" class="headerlink" title="1. float + calc() – 左容器宽度不可以由子元素撑起"></a>1. float + calc() – 左容器宽度不可以由子元素撑起</h3><ul>
+<li><span style="color:blue">左容器</span>设置<code>float: left;</code></li>
+<li><span style="color:brown">右容器</span>设置<code>float:left; width:calc(100% - 左容器的宽度)</code></li>
+</ul>
+<h3 id="2-float-margin-left-–-左容器宽度不可以由子元素撑起"><a href="#2-float-margin-left-–-左容器宽度不可以由子元素撑起" class="headerlink" title="2. float + margin-left – 左容器宽度不可以由子元素撑起"></a>2. float + margin-left – 左容器宽度不可以由子元素撑起</h3><ul>
+<li><span style="color:blue">左容器</span>设置<code>float: left;</code></li>
+<li><span style="color:brown">右容器</span>设置<code>margin-left:左容器的宽度</code></li>
+</ul>
+<h3 id="3-absolute-margin-left-–-左容器宽度不可以由子元素撑起"><a href="#3-absolute-margin-left-–-左容器宽度不可以由子元素撑起" class="headerlink" title="3. absolute + margin-left – 左容器宽度不可以由子元素撑起"></a>3. absolute + margin-left – 左容器宽度不可以由子元素撑起</h3><ul>
+<li><span style="color:blue">左容器</span>设置<code>position: absolute</code></li>
+<li><span style="color:brown">右容器</span>设置<code>margin-left: 左容器的宽度</code></li>
+</ul>
+<h3 id="4-float-overflow-–-无限制"><a href="#4-float-overflow-–-无限制" class="headerlink" title="4. float + overflow – 无限制"></a>4. float + overflow – 无限制</h3><ul>
+<li><span style="color:blue">左容器</span>设置<code>float: left</code></li>
+<li><span style="color:brown">右容器</span>设置<code>overflow: hidden</code></li>
+</ul>
+<h3 id="5-Flex-–-无限制"><a href="#5-Flex-–-无限制" class="headerlink" title="5. Flex – 无限制"></a>5. Flex – 无限制</h3><ul>
+<li><span style="color:pink">左右父级容器</span>设置<code>display:flex</code></li>
+<li><span style="color:brown">右容器</span>设置<code>flex: 1</code></li>
+</ul>
+<h3 id="4-Grid-–-无限制"><a href="#4-Grid-–-无限制" class="headerlink" title="4. Grid – 无限制"></a>4. Grid – 无限制</h3><ul>
+<li><span style="color:pink">左右父级容器</span>设置<code>display:grid;grid-template-columns: auto 1fr</code></li>
+</ul>
+<h2 id="三列布局"><a href="#三列布局" class="headerlink" title="三列布局"></a><p id="ref5" style="color: green">三列布局</p></h2><h3 id="1-Float-—-方式一"><a href="#1-Float-—-方式一" class="headerlink" title="1. Float — 方式一"></a>1. Float — 方式一</h3><ul>
+<li><span style="color:blue">左容器</span>设置<code>float:left;</code></li>
+<li><span style="color:brown">右容器</span>设置：<code>float: right;</code></li>
+<li><span style="color:pink">中间</span>设置：<code>overflow: hidden</code></li>
+</ul>
+<h3 id="2-Float-—-方式二"><a href="#2-Float-—-方式二" class="headerlink" title="2. Float — 方式二"></a>2. Float — 方式二</h3><ul>
+<li><span style="color:blue">左容器</span>设置<code>float:left;</code></li>
+<li><span style="color:brown">右容器</span>设置：<code>float: right;</code></li>
+<li><span style="color:pink">中间</span>设置：<code>width：calc(100% -左右宽度之和)</code></li>
+</ul>
+<h3 id="3-Position"><a href="#3-Position" class="headerlink" title="3. Position"></a>3. Position</h3><ul>
+<li><span style="color:blue">左容器</span>设置<code>position:absolute;left:0;top:0;</code></li>
+<li><span style="color:brown">右容器</span>设置：<code>position:absolute;right:0;top:0;</code></li>
+<li><span style="color:pink">中间</span>设置：<code>width：calc(100% -左右宽度之和); margin-left: 左容器宽度;  margin-right: 有容器宽度;</code></li>
+</ul>
+<h3 id="4-Flex"><a href="#4-Flex" class="headerlink" title="4. Flex"></a>4. Flex</h3><ul>
+<li><span style="color:red">父容器</span>设置<code>display:flex;</code></li>
+<li><span style="color:brown">右容器</span>设置：<code>flex:1;</code></li>
+</ul>
+<h3 id="5-Grid"><a href="#5-Grid" class="headerlink" title="5. Grid"></a>5. Grid</h3><ul>
+<li><span style="color:red">父容器</span>设置<code>display:grid; grid-template-columns: auto ifr auto;</code></li>
+</ul>
+<h2 id="等分布局"><a href="#等分布局" class="headerlink" title="等分布局"></a><p id="ref6" style="color: green">等分布局</p></h2><h3 id="1-浮动-百分比"><a href="#1-浮动-百分比" class="headerlink" title="1. 浮动 + 百分比"></a>1. 浮动 + 百分比</h3><ul>
+<li><span style="color:purple">子元素共有类</span>设置<code>width: 25%; float: left;</code></li>
+</ul>
+<h3 id="2-行内块级-百分比"><a href="#2-行内块级-百分比" class="headerlink" title="2. 行内块级 + 百分比"></a>2. 行内块级 + 百分比</h3><ul>
+<li><span style="color:purple">子元素共有类</span>设置<code>width: 24.5%; display:inline-block;</code></li>
+</ul>
+<h3 id="3-Flex"><a href="#3-Flex" class="headerlink" title="3. Flex"></a>3. Flex</h3><ul>
+<li><span style="color: red">父容器</span>设置<code>display:flex</code></li>
+<li><span style="color:purple">子元素共有类</span>设置<code>flex:1;</code></li>
+</ul>
+<h3 id="4-Grid"><a href="#4-Grid" class="headerlink" title="4. Grid"></a>4. Grid</h3><ul>
+<li><span style="color: red">父容器</span>设置<code>display:grid;grid-template-columns:repeat(4, 1fr)</code></li>
+</ul>
+<h2 id="Sticky-Footer-布局"><a href="#Sticky-Footer-布局" class="headerlink" title="Sticky Footer 布局"></a><p id="ref7" style="color: green">Sticky Footer 布局</p></h2><h3 id="1-绝对定位"><a href="#1-绝对定位" class="headerlink" title="1. 绝对定位"></a>1. 绝对定位</h3><ul>
+<li><span style="color:pink">html,body</span>设置<code>height: 100%</code></li>
+<li><span style="color:red">父级容器</span>设置<code>position: relative; height:100%</code></li>
+<li><span style="color:brown">中间容器</span>设置<code>padding-bottom: 底部的高度</code></li>
+<li><span style="color:purple">底部</span>设置<code>absolute;width:100%;bottom:0</code></li>
+</ul>
+<h3 id="2-calc"><a href="#2-calc" class="headerlink" title="2. calc()"></a>2. calc()</h3><ul>
+<li><span style="color:brown">中间容器</span>设置<code>min-height: calc(100vh- 底部高度)</code></li>
+</ul>
+<h3 id="3-Flex-1"><a href="#3-Flex-1" class="headerlink" title="3. Flex"></a>3. Flex</h3><ul>
+<li><span style="color:red">父级容器</span>设置<code>display: flex; flex-flow: column; min- height: 100vh</code></li>
+<li><span style="color:brown">中间容器</span>设置<code>flex:1</code></li>
+</ul>
+<h3 id="4-Grid-1"><a href="#4-Grid-1" class="headerlink" title="4. Grid"></a>4. Grid</h3><ul>
+<li><span style="color:red">父级容器</span>设置<code>display: grid; grid-template-rows: auto 1fr auto; min-height: 100vh;</code></li>
+</ul>
+<h2 id="全屏布局"><a href="#全屏布局" class="headerlink" title="全屏布局"></a><p id="ref8" style="color: green">全屏布局</p></h2><h3 id="1-calc"><a href="#1-calc" class="headerlink" title="1. calc()"></a>1. calc()</h3><ul>
+<li><span style="color:red">中间父容器</span>设置<code>overflow: hidden; height: calc(100vh - 底部高度)</code></li>
+<li><span style="color:purple">中间左</span>设置<code>height: 100%</code></li>
+<li><span style="color:brown">中间右</span>设置<code>overflow:auto;height: 100%;</code></li>
+<li><span style="color:pink">中间右内容器</span>设置<code>height: 任意高度</code></li>
+</ul>
+<h3 id="2-Flex"><a href="#2-Flex" class="headerlink" title="2. Flex"></a>2. Flex</h3><ul>
+<li><span style="color:brown">父容器</span>设置<code>display:flex;flex-flow:column</code></li>
+<li><span style="color:red">中间父容器</span>设置<code>overflow:auto;flex:1</code></li>
+<li><span style="color:pink">中间右内容器</span>设置<code>height: 任意高度</code></li>
+</ul>
+<h3 id="2-Grid"><a href="#2-Grid" class="headerlink" title="2. Grid"></a>2. Grid</h3><ul>
+<li><span style="color:brown">父容器</span>设置<code>display:grid;grid-template-rows: auto 1fr auto</code></li>
+<li><span style="color:red">中间父容器</span>设置<code>overflow:auto;</code></li>
+<li><span style="color:pink">中间右内容器</span>设置<code>height: 任意高度</code></li>
+</ul>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/30/HTMLCSS/html5%E5%92%8CCSS3%E6%96%B0%E7%89%B9%E6%80%A7/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/html/">
+                    html
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/30/HTMLCSS/html5%E5%92%8CCSS3%E6%96%B0%E7%89%B9%E6%80%A7/" class="trm-anima-link">
+                    Html-html5和CSS3新特性
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/30</li>
+                <li>15:29</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/30/HTMLCSS/html-%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80%E6%8A%80%E6%9C%AF%E7%AF%87/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/html/">
+                    html
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/30/HTMLCSS/html-%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80%E6%8A%80%E6%9C%AF%E7%AF%87/" class="trm-anima-link">
+                    Html-页面布局技术篇
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/30</li>
+                <li>15:29</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            基于大数据，学习参考、练习，网站正在逐步完善中...
+        </div>
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

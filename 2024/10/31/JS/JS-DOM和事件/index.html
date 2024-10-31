@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="目录 DOM 事件 文档的加载 BOM  DOM( Document Object Model) 文档对象模型，通过 DOM 可以来任意来修改网页中各个内容   文档：指的是网页，一个网页就是一个文档 对象：指将网页中的每一个节点都转换为对象，转换完后，以一种纯面向对象的形式来操作网页 模型：用来表示节点和节点之间的关系，方便操作页面 节点(Node)：构成网页的最基本的单元，网页中的每一个部分都">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS-DOM和事件">
+<meta property="og:url" content="http://example.com/2024/10/31/JS/JS-DOM%E5%92%8C%E4%BA%8B%E4%BB%B6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="目录 DOM 事件 文档的加载 BOM  DOM( Document Object Model) 文档对象模型，通过 DOM 可以来任意来修改网页中各个内容   文档：指的是网页，一个网页就是一个文档 对象：指将网页中的每一个节点都转换为对象，转换完后，以一种纯面向对象的形式来操作网页 模型：用来表示节点和节点之间的关系，方便操作页面 节点(Node)：构成网页的最基本的单元，网页中的每一个部分都">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-31T03:05:32.024Z">
+<meta property="article:modified_time" content="2024-10-31T06:13:11.423Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="DOM, 事件">
+
+
+<title >JS-DOM和事件</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-10-31 14:13:11"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            UUOVO<span>个人站点</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/test1/" target="">
+                            test1
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            JS-DOM和事件
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+        <a href="https://zh-hans.react.dev/" title="React" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-react"></i>
+        </a>
+    
+        <a href="https://zh.javascript.info/" title="Javascript" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node-js"></i>
+        </a>
+    
+        <a href="https://nodejs.cn/" title="Node" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            10/31
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            11:05
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li><a href="#ref1">DOM</a></li>
+<li><a href="#ref2">事件</a></li>
+<li><a href="#ref3">文档的加载</a></li>
+<li><a href="#ref4">BOM</a></li>
+</ul>
+<h1 id="DOM-Document-Object-Model"><a href="#DOM-Document-Object-Model" class="headerlink" title="DOM( Document Object Model)"></a><p id="ref1">DOM( Document Object Model)</p></h1><blockquote>
+<p>文档对象模型，通过 DOM 可以来任意来修改网页中各个内容</p>
+</blockquote>
+<ul>
+<li><code>文档</code>：指的是网页，一个网页就是一个文档</li>
+<li><code>对象</code>：指将网页中的每一个节点都转换为对象，转换完后，以一种纯面向对象的形式来操作网页</li>
+<li><code>模型</code>：用来表示节点和节点之间的关系，方便操作页面</li>
+<li><code>节点(Node)</code>：构成网页的最基本的单元，网页中的每一个部分都可以称为是一个节点<ul>
+<li>常用的节点(每个节点的类型都不一样)<ul>
+<li><code>文档节点(Document)</code>，代表整个网页</li>
+<li><code>元素节点(Element)</code>，代表网页中的标签</li>
+<li><code>属性节点(Attribute)</code>，代表标签中的属性</li>
+<li><code>文本节点(Text)</code>，代表网页中的文本内容</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="DOM-操作"><a href="#DOM-操作" class="headerlink" title="DOM 操作"></a>DOM 操作</h2><ul>
+<li>DOM 查询</li>
+<li>在网页中浏览器已经为我们提供了 document 对象，</li>
+<li>它代表的是整个网页，它是 window 对象的属性，可以在页面中直接使用。</li>
+</ul>
+<h3 id="document-查询方法："><a href="#document-查询方法：" class="headerlink" title="document 查询方法："></a>document 查询方法：</h3><ul>
+<li>根据元素的 id 属性查询一个元素节点对象：<ul>
+<li><code>document.getElementById(&quot;id属性值&quot;)</code>;</li>
+</ul>
+</li>
+<li>根据元素的 name 属性值查询一组元素节点对象:<ul>
+<li><code>document.getElementsByName(&quot;name属性值&quot;)</code>;</li>
+</ul>
+</li>
+<li>根据标签名来查询一组元素节点对象：<ul>
+<li><code>document.getElementsByTagName(&quot;标签名&quot;)</code>;</li>
+</ul>
+</li>
+<li>获取页面中 html 根元素：<ul>
+<li><code>document.documentElement</code></li>
+</ul>
+</li>
+<li>获取页面中的 body 元素：<ul>
+<li><code>document.body</code></li>
+</ul>
+</li>
+<li>根据元素的 class 属性值查询一组元素节点对象：<ul>
+<li><code>document.getElementsByClassName()</code></li>
+<li>不支持 IE8 及以下的浏览器</li>
+</ul>
+</li>
+<li>返回文档中与指定选择器或选择器组匹配的第一个 Element 对象：<ul>
+<li><code>document.querySelector()</code></li>
+<li>根据 CSS 选择器去页面中查询一个元素</li>
+<li>IE8 使用 querySelector()代替</li>
+<li>如果匹配到的元素有多个，那么它只会返回查询到的第一个元素</li>
+<li>示例：var div &#x3D; document.querySelector(“.box1 div”);</li>
+</ul>
+</li>
+<li>返回与指定的选择器组匹配的文档中的元素列表：<ul>
+<li><code>document.querySelectorAll()</code></li>
+<li>根据 CSS 选择器去页面中查询一组元素</li>
+<li>会将匹配到所有元素封装到一个数组中返回，即使只匹配到一个</li>
+</ul>
+</li>
+</ul>
+<h3 id="具体的元素节点查询"><a href="#具体的元素节点查询" class="headerlink" title="具体的元素节点查询"></a>具体的元素节点查询</h3><ul>
+<li><code>元素.getElementsByTagName()</code> — 通过标签名查询当前元素的指定后代元素</li>
+<li><code>元素.childNodes</code> — 获取当前元素的所有子节点，会获取到空白的文本子节点</li>
+<li><code>元素.children</code> — 获取当前元素的所有子元素</li>
+<li><code>元素.firstChild</code> — 获取当前元素的第一个子节点</li>
+<li><code>元素.lastChild</code> — 获取当前元素的最后一个子节点</li>
+<li><code>元素.parentNode</code> — 获取当前元素的父元素</li>
+<li><code>元素.previousSibling</code> — 获取当前元素的前一个兄弟节点</li>
+<li><code>元素.nextSibling</code> — 获取当前元素的后一个兄弟节点</li>
+<li>innerHTML 和 innerText<ul>
+<li>两个属性作用类似，都可以获取到标签内部的内容，</li>
+<li>不同是<code>innerHTML会获取到html标签</code>，而<code>innerText会自动去除标签</code></li>
+</ul>
+</li>
+<li>读取标签内部的文本内容<ul>
+<li>示例：<code>&lt;h1&gt;h1中的文本内容&lt;/h1&gt;</code></li>
+<li>元素.firstChild.nodeValue</li>
+</ul>
+</li>
+</ul>
+<h3 id="DOM-修改"><a href="#DOM-修改" class="headerlink" title="DOM 修改"></a>DOM 修改</h3><ul>
+<li><code>document.createElement()</code><ul>
+<li>可以根据标签名创建一个元素节点对象</li>
+</ul>
+</li>
+<li><code>document.createTextNode()</code><ul>
+<li>可以根据文本内容创建一个文本节点对象</li>
+</ul>
+</li>
+<li><code>父节点.appendChild(子节点)</code><ul>
+<li>向父节点中添加指定的子节点</li>
+</ul>
+</li>
+<li><code>父节点.insertBefore(新节点,旧节点)</code><ul>
+<li>将一个新的节点插入到旧节点的前边</li>
+</ul>
+</li>
+<li><code>父节点.replaceChild(新节点,旧节点)</code><ul>
+<li>使用一个新的节点去替换旧节点</li>
+</ul>
+</li>
+<li><code>父节点.removeChild(子节点)</code><ul>
+<li>删除指定的子节点</li>
+<li>推荐方式：子节点.parentNode.removeChild(子节点)</li>
+</ul>
+</li>
+</ul>
+<h3 id="元素的属性"><a href="#元素的属性" class="headerlink" title="元素的属性"></a>元素的属性</h3><ul>
+<li><code>读取</code>元素的属性：<ul>
+<li>语法：元素.属性名</li>
+</ul>
+</li>
+<li><code>修改</code>元素的属性：<ul>
+<li>语法：元素.属性名 &#x3D; 属性值</li>
+</ul>
+</li>
+</ul>
+<h3 id="使用-DOM-操作-CSS"><a href="#使用-DOM-操作-CSS" class="headerlink" title="使用 DOM 操作 CSS"></a>使用 DOM 操作 CSS</h3><ul>
+<li><code>修改</code>元素的样式 — 内联样式<ul>
+<li>语法：元素.style.样式名 &#x3D; 样式值</li>
+<li>注意：如果 CSS 的样式名中含有-，需要将这种样式名修改为驼峰命名法，aaBB</li>
+<li>尽量不要为样式添加!important</li>
+</ul>
+</li>
+<li><code>读取</code>元素的样式 — 内联样式<ul>
+<li>语法：元素.style.样式名</li>
+</ul>
+</li>
+<li><code>读取</code>元素的<code>当前显示的样式</code><ul>
+<li>正常浏览器 — <code>使用getComputedStyle()</code><ul>
+<li>这个方法是 window 对象的方法，可以返回一个对象，这个对象中保存着当前元素生效样式</li>
+<li>可以通过对象.样式名来读取样式，如果获取的样式没有设置，则会获取到真实的值，而不是默认值</li>
+<li>参数：<ol>
+<li>要获取样式的元素</li>
+<li>可以传递一个伪元素，一般传 null</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>IE8<ul>
+<li>语法：<code>元素.currentStyle.样式名</code>(IE 浏览器支持)</li>
+<li>可以用来读取当前元素正在显示的样式，如果当前元素没有设置该样式，则获取它的默认值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>定义一个函数，用来获取指定元素的当前的样式<ul>
+<li>参数<ul>
+<li>obj：要获取样式的元素</li>
+<li>name：要获取的样式名</li>
+</ul>
+</li>
+<li>例子：</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getStyle</span>(<span class="params">obj, name</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="variable language_">window</span>.<span class="property">getComputedStyle</span></span><br><span class="line">		? <span class="title function_">getComputedStyle</span>(obj, <span class="literal">null</span>)[name]</span><br><span class="line">		: obj.<span class="property">currentStyle</span>[name]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>clientWidth | clientHeight</code><ul>
+<li>这两个属性可以获取元素的<code>可见宽度和高度，包括内容区和内边距</code></li>
+<li>不带单位</li>
+</ul>
+</li>
+<li><code>offsetWidth | offsetHeight</code></li>
+<li>获取元素的<code>整个的宽度和高度，包括内容区、内边距和边框</code></li>
+<li><code>offsetParent</code><ul>
+<li>可以用来获取当前元素的定位父元素</li>
+<li>会获取到离当前元素最近的开启了定位的祖先元素</li>
+<li>如果所有的祖先元素都没有开启定位，则返回 body</li>
+</ul>
+</li>
+<li><code>offsetLeft | offsetTop</code><ul>
+<li>当前元素相对于其定位父元素的<code>水平</code>或<code>垂直偏移量</code></li>
+</ul>
+</li>
+<li><code>scrollWidth | scrollHeight</code><ul>
+<li>可以获取元素整个滚动区域的宽度和高度</li>
+</ul>
+</li>
+<li><code>scrollLeft | scrollTop</code><ul>
+<li>可以获取<code>水平</code>或<code>垂直</code>滚动条<code>滚动的距离</code></li>
+</ul>
+</li>
+<li>判断滚动条是否到底<ul>
+<li><code>垂直滚动条滚动到底：scrollHeight - scrollTop == clientHeight</code></li>
+<li><code>水平滚动条滚动到底：scrollWidth - scrollLeft == clientWidth</code></li>
+</ul>
+</li>
+<li><code>元素.setCapture()</code><ul>
+<li>这个元素将会把<code>下一次所有的鼠标按下相关的事件捕获到自身</code>上</li>
+</ul>
+</li>
+</ul>
+<h1 id="事件（Event）"><a href="#事件（Event）" class="headerlink" title="事件（Event）"></a><p id="ref2">事件（Event）</p></h1><blockquote>
+<p>事件指的是用户和浏览器之间的交互行为。比如：点击按钮、关闭窗口、鼠标移动等</p>
+</blockquote>
+<hr>
+<h2 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h2><ul>
+<li>当响应函数被调用时，浏览器每次都会将一个事件对象作为实参传递进响应函数中，这个事件对象中封装了当前事件的相关信息，比如：鼠标的坐标、按键，键盘的按键，滚轮的方向等</li>
+<li>在响应函数中定义一个形参，来使用事件对象，但是在 IE8 及以下的浏览器中，是将事件对象作为 window 对象的属性保存的</li>
+<li><code>解决事件对象的兼容性问题</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">元素.事件 = <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">	event = event || <span class="variable language_">window</span>.<span class="property">event</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>clientX 可以获取鼠标指针的水平坐标,cilentY 可以获取鼠标指针的垂直坐标</li>
+<li><code>获取滚动条滚动的距离</code><ul>
+<li>chrome 认为浏览器的滚动条是 body 的，可以通过 body.scrollTop 来获取</li>
+<li>火狐等浏览器认为浏览器的滚动条是 html 的，</li>
+<li><code>解决兼容问题：st = document.body.scrollTop || document.documentElement.scrollTop;</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="事件的冒泡（Bubble）"><a href="#事件的冒泡（Bubble）" class="headerlink" title="事件的冒泡（Bubble）"></a>事件的冒泡（Bubble）</h2><ul>
+<li>释义：指的是事件向上传导，当后代元素上的事件被触发时，将会导致其祖先元素上的同类事件也会触发。</li>
+<li>如果需要取消冒泡，可以将事件对象的 cancelBubble 设置为 true</li>
+<li>示例：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">元素.事件 = <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">	event = event || <span class="variable language_">window</span>.<span class="property">event</span></span><br><span class="line">	event.<span class="property">cancelBubble</span> = <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="事件的委派"><a href="#事件的委派" class="headerlink" title="事件的委派"></a>事件的委派</h2><ul>
+<li>释义：指将事件统一绑定给元素的共同的祖先元素，这样当后代元素上的事件触发时，会一直冒泡到祖先元素从而通过祖先元素的响应函数来处理事件。</li>
+<li>事件委派是利用了冒泡，通过委派可以减少事件绑定的次数，提高程序的性能</li>
+<li>target — event 中的 target 表示的触发事件的对象</li>
+</ul>
+<h2 id="事件的绑定"><a href="#事件的绑定" class="headerlink" title="事件的绑定"></a>事件的绑定</h2><ul>
+<li>使用 对象.事件 &#x3D; 函数 的形式绑定响应函数，</li>
+<li>只能同时为一个元素的一个事件绑定一个响应函数，</li>
+<li>不能绑定多个，如果绑定了多个，则后边会覆盖掉前边的</li>
+<li>绑定事件的方式：<ol>
+<li>可以在标签的事件属性中设置相应的 JS 代码(<code>不建议</code>)<ul>
+<li>示例：<code>&lt;button onclick=&quot;js代码。。。&quot;&gt;按钮&lt;/button&gt;</code></li>
+</ul>
+</li>
+<li>可以通过为对象的指定事件属性设置回调函数的形式来处理事件<ul>
+<li>示例：</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;button id=<span class="string">&quot;btn&quot;</span>&gt;按钮&lt;/button&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	<span class="keyword">var</span> btn = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;btn&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	btn.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">		<span class="title function_">alert</span>(<span class="string">&quot;你还点~~~&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	&#125;;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>addEventListener()</code> — 不支持 IE8 及以下的浏览器<ul>
+<li>可以为元素绑定响应函数</li>
+<li>参数：<ol>
+<li>事件的字符串，不要 on</li>
+<li>回调函数，当事件触发时该函数会被调用</li>
+<li>是否在捕获阶段触发事件，需要一个布尔值，一般都传 false</li>
+</ol>
+</li>
+<li>使用 addEventListener()可以同时为一个元素的相同事件同时绑定多个响应函数，</li>
+<li>这样当事件被触发时，响应函数将会按照函数的绑定顺序执行</li>
+<li>示例：</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">btn01.<span class="title function_">addEventListener</span>(</span><br><span class="line">	<span class="string">&#x27;click&#x27;</span>,</span><br><span class="line">	<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">		<span class="title function_">alert</span>(<span class="number">1</span>)</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="literal">false</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>attachEvent()</code><ul>
+<li>在<code>IE8</code>中可以使用 attachEvent()来绑定事件</li>
+<li>参数：<ol>
+<li>事件的字符串，要 on</li>
+<li>回调函数</li>
+</ol>
+</li>
+<li>这个方法也可以同时为一个事件绑定多个处理函数，</li>
+<li>不同的是它是后绑定先执行，执行顺序和 addEventListener()相反</li>
+<li>示例：</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">btn01.<span class="title function_">attachEvent</span>(<span class="string">&#x27;onclick&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">	<span class="title function_">alert</span>(<span class="number">1</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>定义一个函数，用来为指定元素绑定响应函数<ul>
+<li>addEventListener()中的 this，是绑定事件的对象</li>
+<li>attachEvent()中的 this，是 window</li>
+<li>需要统一两个方法 this</li>
+<li>参数：<ul>
+<li>obj 要绑定事件的对象</li>
+<li>eventStr 事件的字符串(不要 on)</li>
+<li>callback 回调函数</li>
+</ul>
+</li>
+<li>示例：</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">bind</span>(<span class="params">obj, eventStr, callback</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> (obj.<span class="property">addEventListener</span>) &#123;</span><br><span class="line">		<span class="comment">//大部分浏览器兼容的方式</span></span><br><span class="line">		obj.<span class="title function_">addEventListener</span>(eventStr, callback, <span class="literal">false</span>)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">//IE8及以下</span></span><br><span class="line">		obj.<span class="title function_">attachEvent</span>(<span class="string">&#x27;on&#x27;</span> + eventStr, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">			<span class="comment">//在匿名函数中调用回调函数</span></span><br><span class="line">			callback.<span class="title function_">call</span>(obj)</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="事件的传播"><a href="#事件的传播" class="headerlink" title="事件的传播"></a>事件的传播</h2><ul>
+<li>微软认为事件应该是由内向外传播，也就是当事件触发时，应该先触发当前元素上的事件，<br>然后再向当前元素的祖先元素上传播，也就说事件应该在冒泡阶段执行。</li>
+<li>网景认为事件应该是由外向内传播的，也就是当前事件触发时，应该先触发当前元素的最外层的祖先元素的事件，然后在向内传播给后代元素</li>
+<li>W3C 综合了两个公司的方案，将事件传播分成了三个阶段<ol>
+<li>捕获阶段<ul>
+<li>在捕获阶段时从最外层的祖先元素，向目标元素进行事件的捕获，但是默认此时不会触发事件</li>
+</ul>
+</li>
+<li>目标阶段<ul>
+<li>事件捕获到目标元素，捕获结束开始在目标元素上触发事件</li>
+</ul>
+</li>
+<li>冒泡阶段<ul>
+<li>事件从目标元素向他的祖先元素传递，依次触发祖先元素上的事件</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>如果希望在捕获阶段就触发事件，可以将 addEventListener()的第三个参数设置为 true<ul>
+<li>一般情况下我们不会希望在捕获阶段触发事件，所以这个参数一般都是 false</li>
+</ul>
+</li>
+<li>IE8 及以下的浏览器中没有捕获阶段</li>
+</ul>
+<h2 id="滚轮事件"><a href="#滚轮事件" class="headerlink" title="滚轮事件"></a>滚轮事件</h2><ul>
+<li>onmousewheel 鼠标滚轮滚动的事件，会在滚轮滚动时触发，但是火狐不支持该属性</li>
+<li>在<code>火狐</code>中需要使用 DOMMouseScroll 且通过 addEventListener()来绑定滚动事件</li>
+<li>示例：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">box1.<span class="property">onmousewheel</span> = <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">	event = event || <span class="variable language_">window</span>.<span class="property">event</span></span><br><span class="line">	<span class="comment">//event.wheelDelta 可以获取鼠标滚轮滚动的方向</span></span><br><span class="line">	<span class="comment">//向上滚 120   向下滚 -120</span></span><br><span class="line">	<span class="comment">//wheelDelta这个值不看大小，只看正负</span></span><br><span class="line">	<span class="comment">//wheelDelta这个属性火狐中不支持</span></span><br><span class="line">	<span class="comment">//在火狐中使用event.detail来获取滚动的方向</span></span><br><span class="line">	<span class="comment">//向上滚 -3  向下滚 3</span></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 当鼠标滚轮向下滚动时，box1变长</span></span><br><span class="line"><span class="comment">	 * 	当滚轮向上滚动时，box1变短</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="comment">//判断鼠标滚轮滚动的方向</span></span><br><span class="line">	<span class="keyword">if</span> (event.<span class="property">wheelDelta</span> &gt; <span class="number">0</span> || event.<span class="property">detail</span> &lt; <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="comment">//向上滚，box1变短</span></span><br><span class="line">		box1.<span class="property">style</span>.<span class="property">height</span> = box1.<span class="property">clientHeight</span> - <span class="number">10</span> + <span class="string">&#x27;px&#x27;</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">//向下滚，box1变长</span></span><br><span class="line">		box1.<span class="property">style</span>.<span class="property">height</span> = box1.<span class="property">clientHeight</span> + <span class="number">10</span> + <span class="string">&#x27;px&#x27;</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 使用addEventListener()方法绑定响应函数，取消默认行为时不能使用return false</span></span><br><span class="line"><span class="comment">	 * 需要使用event来取消默认行为event.preventDefault();</span></span><br><span class="line"><span class="comment">	 * 但是IE8不支持event.preventDefault();这个玩意，如果直接调用会报错</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	event.<span class="property">preventDefault</span> &amp;&amp; event.<span class="title function_">preventDefault</span>()</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 当滚轮滚动时，如果浏览器有滚动条，滚动条会随之滚动，</span></span><br><span class="line"><span class="comment">	 * 这是浏览器的默认行为，如果不希望发生，则可以取消默认行为</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//为火狐绑定滚轮事件</span></span><br><span class="line"><span class="title function_">bind</span>(box1, <span class="string">&#x27;DOMMouseScroll&#x27;</span>, box1.<span class="property">onmousewheel</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h2><ul>
+<li><code>onkeydown</code> — 按键被按下<ul>
+<li>对于 onkeydown 来说如果一直按着某个按键不松手，则事件会一直触发</li>
+<li>当 onkeydown 连续触发时，第一次和第二次之间会间隔稍微长一点，其他的会非常的快，这种设计是为了防止误操作的发生。</li>
+</ul>
+</li>
+<li><code>onkeyup</code> — 按键被松开</li>
+<li>键盘事件一般都会绑定给一些可以获取到焦点的对象或者是 document</li>
+<li>可以通过 keyCode 来获取按键的编码，通过它可以判断哪个按键被按下</li>
+<li><code>altKey、ctrlKey、shiftKey </code><ul>
+<li>这个三个用来判断 alt、ctrl 和 shift 是否被按下，如果按下则返回 true，否则返回 false</li>
+<li>示例</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="property">onkeyup</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;按键松开了&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line">input.<span class="property">onkeydown</span> = <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">	event = event || <span class="variable language_">window</span>.<span class="property">event</span></span><br><span class="line">	<span class="comment">//数字 48 - 57</span></span><br><span class="line">	<span class="comment">//使文本框中不能输入数字</span></span><br><span class="line">	<span class="keyword">if</span> (event.<span class="property">keyCode</span> &gt;= <span class="number">48</span> &amp;&amp; event.<span class="property">keyCode</span> &lt;= <span class="number">57</span>) &#123;</span><br><span class="line">		<span class="comment">//在文本框中输入内容，属于onkeydown的默认行为</span></span><br><span class="line">		<span class="comment">//如果在onkeydown中取消了默认行为，则输入的内容，不会出现在文本框中</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="拖拽事件"><a href="#拖拽事件" class="headerlink" title="拖拽事件"></a>拖拽事件</h2><ul>
+<li>拖拽的流程<ol>
+<li>当鼠标在被拖拽元素上按下时，开始拖拽 <code>onmousedown</code></li>
+<li>当鼠标移动时被拖拽元素跟随鼠标移动 <code>onmousemove</code></li>
+<li>当鼠标松开时，被拖拽元素固定在当前位置 <code>onmouseup</code></li>
+</ol>
+</li>
+<li>示例：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> box1 = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;box1&quot;</span>);</span><br><span class="line">	<span class="keyword">var</span> box2 = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;box2&quot;</span>);</span><br><span class="line">	<span class="keyword">var</span> img1 = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;img1&quot;</span>);</span><br><span class="line">	<span class="comment">//开启box1的拖拽</span></span><br><span class="line">	<span class="title function_">drag</span>(box1);</span><br><span class="line">	<span class="comment">//开启box2的</span></span><br><span class="line">	<span class="title function_">drag</span>(box2);</span><br><span class="line">	<span class="title function_">drag</span>(img1);</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	* 提取一个专门用来设置拖拽的函数</span></span><br><span class="line"><span class="comment">	* 参数：开启拖拽的元素</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">drag</span>(<span class="params">obj</span>)&#123;</span><br><span class="line">		obj.<span class="property">onmousedown</span> = <span class="keyword">function</span>(<span class="params">event</span>)&#123;</span><br><span class="line">		<span class="comment">// 设置box1捕获所有鼠标按下的事件</span></span><br><span class="line">		<span class="comment">/*</span></span><br><span class="line"><span class="comment">		 * setCapture()</span></span><br><span class="line"><span class="comment">		 * 	- 只有IE支持，但是在火狐中调用时不会报错，而如果使用chrome调用，会报错</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		obj.<span class="property">setCapture</span> &amp;&amp; obj.<span class="title function_">setCapture</span>();</span><br><span class="line">		event = event || <span class="variable language_">window</span>.<span class="property">event</span>;</span><br><span class="line">		<span class="comment">// div的偏移量 鼠标.clentX - 元素.offsetLeft</span></span><br><span class="line">		<span class="comment">// div的偏移量 鼠标.clentY - 元素.offsetTop</span></span><br><span class="line">		<span class="keyword">var</span> ol = event.<span class="property">clientX</span> - obj.<span class="property">offsetLeft</span>;</span><br><span class="line">		<span class="keyword">var</span> ot = event.<span class="property">clientY</span> - obj.<span class="property">offsetTop</span>;</span><br><span class="line">		<span class="comment">// 为document绑定一个onmousemove事件</span></span><br><span class="line">		<span class="variable language_">document</span>.<span class="property">onmousemove</span> = <span class="keyword">function</span>(<span class="params">event</span>)&#123;</span><br><span class="line">			event = event || <span class="variable language_">window</span>.<span class="property">event</span>;</span><br><span class="line">			<span class="comment">// 当鼠标移动时被拖拽元素跟随鼠标移动 onmousemove</span></span><br><span class="line">			<span class="comment">// 获取鼠标的坐标</span></span><br><span class="line">			<span class="keyword">var</span> left = event.<span class="property">clientX</span> - ol;</span><br><span class="line">			<span class="keyword">var</span> top = event.<span class="property">clientY</span> - ot;</span><br><span class="line">			<span class="comment">// 修改box1的位置</span></span><br><span class="line">			obj.<span class="property">style</span>.<span class="property">left</span> = left+<span class="string">&quot;px&quot;</span>;</span><br><span class="line">			obj.<span class="property">style</span>.<span class="property">top</span> = top+<span class="string">&quot;px&quot;</span>;</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="comment">// 为document绑定一个鼠标松开事件</span></span><br><span class="line">		<span class="variable language_">document</span>.<span class="property">onmouseup</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">			<span class="comment">// 当鼠标松开时，被拖拽元素固定在当前位置	onmouseup</span></span><br><span class="line">			<span class="comment">// 取消document的onmousemove事件</span></span><br><span class="line">			<span class="variable language_">document</span>.<span class="property">onmousemove</span> = <span class="literal">null</span>;</span><br><span class="line">			<span class="comment">// 取消document的onmouseup事件</span></span><br><span class="line">			<span class="variable language_">document</span>.<span class="property">onmouseup</span> = <span class="literal">null</span>;</span><br><span class="line">			<span class="comment">// 当鼠标松开时，取消对事件的捕获</span></span><br><span class="line">			obj.<span class="property">releaseCapture</span> &amp;&amp; obj.<span class="title function_">releaseCapture</span>();</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="comment">/*</span></span><br><span class="line"><span class="comment">		 * 当我们拖拽一个网页中的内容时，浏览器会默认去搜索引擎中搜索内容，</span></span><br><span class="line"><span class="comment">		 * 	此时会导致拖拽功能的异常，这个是浏览器提供的默认行为，</span></span><br><span class="line"><span class="comment">		 * 	可以通过return false来取消默认行为，但是这招对IE8不起作用</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="文档的加载"><a href="#文档的加载" class="headerlink" title="文档的加载"></a><p id="ref3">文档的加载</p></h1><ul>
+<li>浏览器在加载一个页面时，是按照自上向下的顺序加载的，加载一行执行一行。</li>
+<li>如果将 js 代码编写到页面的上边，当代码执行时，页面中的 DOM 对象还没有加载，<br>此时将会无法正常获取到 DOM 对象，导致 DOM 操作失败。</li>
+<li>解决方式一：<ul>
+<li>可以将 js 代码编写到 body 里，放在最下边执行</li>
+<li>示例：</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">	<span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&#x27;btn&#x27;</span>&gt;</span>按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">	<span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">		<span class="keyword">var</span> btn = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;btn&quot;</span>); btn.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;&#125;;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>解决方式二：<ul>
+<li>将 js 代码编写到 window.onload &#x3D; function(){}中</li>
+<li>window.onload 对应的回调函数会在整个页面加载完毕以后才执行，<br>所以可以确保代码执行时，DOM 对象已经加载完毕了</li>
+<li>示例</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	<span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">		<span class="keyword">var</span> btn = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;btn&quot;</span>);</span><br><span class="line">		btn.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;&#125;;</span><br><span class="line">	&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a><p id="ref4">BOM</p></h1><blockquote>
+<p>浏览器对象模型</p>
+</blockquote>
+<ul>
+<li>BOM 可以使我们通过 JS 来操作浏览器,在 BOM 中提供了一组对象，用来完成对浏览器的操作</li>
+</ul>
+<h2 id="BOM-对象"><a href="#BOM-对象" class="headerlink" title="BOM 对象"></a>BOM 对象</h2><ul>
+<li><code>Window</code>：代表的是整个浏览器的窗口，同时 window 也是网页中的全局对象</li>
+<li><code>userAgent</code>：是一个字符串，通过这个字符串来判断不同的浏览器<ul>
+<li>火狐的 userAgent<ul>
+<li>Mozilla&#x2F;5.0 (Windows NT 6.1; WOW64; rv:50.0) Gecko&#x2F;20100101 Firefox&#x2F;50.0</li>
+</ul>
+</li>
+<li>Chrome 的 userAgent<ul>
+<li>Mozilla&#x2F;5.0 (Windows NT 6.1; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;52.0.2743.82 Safari&#x2F;537.36</li>
+</ul>
+</li>
+<li>IE8-10<ul>
+<li>Mozilla&#x2F;4.0 (compatible; MSIE 8&#x2F;9&#x2F;10.0; Windows NT 6.1; WOW64; Trident&#x2F;7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)</li>
+</ul>
+</li>
+<li>IE11<ul>
+<li>Mozilla&#x2F;5.0 (Windows NT 6.1; WOW64; Trident&#x2F;7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; rv:11.0) like Gecko</li>
+</ul>
+</li>
+<li>注意：<code>在IE11中已经将微软和IE相关的标识都已经去除了，所以我们基本已经不能通过UserAgent来识别一个浏览器是否是IE</code></li>
+<li>示例</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="regexp">/firefox/i</span>.<span class="title function_">test</span>(ua)) &#123;</span><br><span class="line">	<span class="title function_">alert</span>(<span class="string">&#x27;你是火狐！！！&#x27;</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="regexp">/chrome/i</span>.<span class="title function_">test</span>(ua)) &#123;</span><br><span class="line">	<span class="title function_">alert</span>(<span class="string">&#x27;你是Chrome&#x27;</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="regexp">/msie/i</span>.<span class="title function_">test</span>(ua)) &#123;</span><br><span class="line">	<span class="title function_">alert</span>(<span class="string">&#x27;你是IE浏览器~~~&#x27;</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">&#x27;ActiveXObject&#x27;</span> <span class="keyword">in</span> <span class="variable language_">window</span>) &#123;</span><br><span class="line">	<span class="title function_">alert</span>(<span class="string">&#x27;你是IE11，枪毙了你~~~&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//  如果通过UserAgent不能判断，还可以通过一些浏览器中特有的对象，来判断浏览器的信息</span></span><br><span class="line"><span class="comment">// 比如：ActiveXObject</span></span><br><span class="line"><span class="keyword">if</span> (<span class="string">&#x27;ActiveXObject&#x27;</span> <span class="keyword">in</span> <span class="variable language_">window</span>) &#123;</span><br><span class="line">	<span class="title function_">alert</span>(<span class="string">&#x27;你是IE，我已经抓住你了~~~&#x27;</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="title function_">alert</span>(<span class="string">&#x27;你不是IE~~~&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Location</code>：代表当前浏览器的地址栏信息，或者操作浏览器跳转页面<ul>
+<li>直接修改 location 属性，页面会自动跳转到该路径，并且会生成相应的历史记录<ul>
+<li>示例：location &#x3D; “<a target="_blank" rel="noopener" href="http://www.baidu.com/">http://www.baidu.com</a>“;</li>
+</ul>
+</li>
+<li>assign() — 用来跳转到其他的页面，作用和直接修改 location 一样<ul>
+<li>示例：location.assign(“<a target="_blank" rel="noopener" href="http://www.baidu.com/">http://www.baidu.com</a>“);</li>
+</ul>
+</li>
+<li>reload() — 用于重新加载当前页面，作用和刷新按钮一样<ul>
+<li>如果在方法中传递一个 true，作为参数，则会强制清空缓存刷新页面</li>
+<li>示例：location.reload(true);</li>
+</ul>
+</li>
+<li>replace() — 可以使用一个新的页面替换当前页面，调用完毕也会跳转页面<ul>
+<li>不会生成历史记录，不能使用回退按钮回退</li>
+<li>示例：location.replace(“01.BOM.html”);</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>History</code>：代表浏览器的历史记录，可以通过该对象来操作浏览器的历史记录<ul>
+<li>由于隐私原因，该对象不能获取到具体的历史记录，只能操作浏览器向前或向后翻页,而且该操作只在当次访问时有效</li>
+</ul>
+<ul>
+<li>length — 可以获取到当成访问的链接数量</li>
+<li>back() — 可以用来回退到上一个页面，作用和浏览器的回退按钮一样</li>
+<li>forward() — 可以跳转下一个页面，作用和浏览器的前进按钮一样</li>
+<li>go() — 可以用来跳转到指定的页面<ul>
+<li>它需要一个整数作为参数</li>
+<li>1:表示向前跳转一个页面 相当于 forward()</li>
+<li>正整数:表示向前跳转 n 个页面</li>
+<li>负整数:表示向后跳转 n 个页面</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Screen：代表用户的屏幕的信息，通过该对象可以获取到用户的显示器的相关的信息</li>
+<li><code>这些BOM对象在浏览器中都是作为window对象的属性保存的，可以通过window对象来使用，也可以直接使用</code></li>
+</ul>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/31/JS/JS-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/js/">
+                    js
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/31/JS/JS-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="trm-anima-link">
+                    JS-正则表达式
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/31</li>
+                <li>11:05</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/31/JS/JS-%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%B9%E6%B3%95/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/js/">
+                    js
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/31/JS/JS-%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%B9%E6%B3%95/" class="trm-anima-link">
+                    JS-工具函数和方法
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/31</li>
+                <li>11:05</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            基于大数据，学习参考、练习，网站正在逐步完善中...
+        </div>
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="爬虫介绍 通过模拟浏览器的请求，服务器就会根据我们的请求返回我们想要的数据，将数据解析出来，并且进行保存  node文件执行命令： node . 文件名爬虫流程1.目标：确认想要获取的数据 1.确定想要的数据在什么页面上(一般详细的数据会在详情页) 2.确定在那些页面可以链接到这些页面(一般分类列表页面会有详情页的链接数据) 3.寻找页面之间和数据之间的规律  2.分析页面 1.获取数据的方式(正">
+<meta property="og:type" content="article">
+<meta property="og:title" content="爬虫总结">
+<meta property="og:url" content="http://example.com/2024/10/31/node/3%E7%88%AC%E8%99%AB/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="爬虫介绍 通过模拟浏览器的请求，服务器就会根据我们的请求返回我们想要的数据，将数据解析出来，并且进行保存  node文件执行命令： node . 文件名爬虫流程1.目标：确认想要获取的数据 1.确定想要的数据在什么页面上(一般详细的数据会在详情页) 2.确定在那些页面可以链接到这些页面(一般分类列表页面会有详情页的链接数据) 3.寻找页面之间和数据之间的规律  2.分析页面 1.获取数据的方式(正">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-31T09:15:22.528Z">
+<meta property="article:modified_time" content="2024-10-31T09:36:53.082Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="js">
+
+
+<title >爬虫总结</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-10-31 17:36:53"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            UUOVO<span>个人站点</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/test1/" target="">
+                            test1
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            爬虫总结
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+        <a href="https://zh-hans.react.dev/" title="React" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-react"></i>
+        </a>
+    
+        <a href="https://zh.javascript.info/" title="Javascript" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node-js"></i>
+        </a>
+    
+        <a href="https://nodejs.cn/" title="Node" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            10/31
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            17:15
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="爬虫介绍"><a href="#爬虫介绍" class="headerlink" title="爬虫介绍"></a>爬虫介绍</h2><ul>
+<li>通过模拟浏览器的请求，服务器就会根据我们的请求返回我们想要的数据，将数据解析出来，并且进行保存</li>
+</ul>
+<h2 id="node文件执行命令：-node-文件名"><a href="#node文件执行命令：-node-文件名" class="headerlink" title="node文件执行命令： node . 文件名"></a>node文件执行命令： node . 文件名</h2><h2 id="爬虫流程"><a href="#爬虫流程" class="headerlink" title="爬虫流程"></a>爬虫流程</h2><h3 id="1-目标：确认想要获取的数据"><a href="#1-目标：确认想要获取的数据" class="headerlink" title="1.目标：确认想要获取的数据"></a>1.目标：确认想要获取的数据</h3><ul>
+<li>1.确定想要的数据在什么页面上(一般详细的数据会在详情页)</li>
+<li>2.确定在那些页面可以链接到这些页面(一般分类列表页面会有详情页的链接数据)</li>
+<li>3.寻找页面之间和数据之间的规律</li>
+</ul>
+<h3 id="2-分析页面"><a href="#2-分析页面" class="headerlink" title="2.分析页面"></a>2.分析页面</h3><ul>
+<li>1.获取数据的方式(正则，cherrio)</li>
+<li>2.分析数据是通过ajax请求的数据，还是html里自带的数据</li>
+<li>3.如果是通过AJAX请求的数据，那么需要获取ajax请求的链接，一般请求到的数据都为JSON格式数据，那么就会比较容易解析</li>
+<li>4.如过数据在HTML里面，那么就用cherrio通过选择器将内容选中</li>
+</ul>
+<h3 id="3-编写单个数据获取的案例"><a href="#3-编写单个数据获取的案例" class="headerlink" title="3.编写单个数据获取的案例"></a>3.编写单个数据获取的案例</h3><ul>
+<li>1.解析出分类页的链接地址</li>
+<li>2.解析出列表页的链接地址</li>
+<li>3.解析出详情页的链接地址</li>
+<li>4.解析详情页里面想要获取的数据</li>
+<li>5.将数据进行保存到本地或者数据库</li>
+</ul>
+<h3 id="4-如果遇到阻碍进行反爬虫对抗"><a href="#4-如果遇到阻碍进行反爬虫对抗" class="headerlink" title="4.如果遇到阻碍进行反爬虫对抗"></a>4.如果遇到阻碍进行反爬虫对抗</h3><ul>
+<li>1.User-Agent是否为正常浏览器的信息(如果时axios者只为header)</li>
+<li>2.将请求头设置为跟浏览器一样的内容</li>
+<li>3.因为爬虫的爬取速度过快，会导致封号。(1.降低速度解决 2. 使用代理解决)</li>
+<li>4.如果设置需要凭证，那么可以采用无界浏览器真实模拟</li>
+</ul>
+<h2 id="请求的数据的库"><a href="#请求的数据的库" class="headerlink" title="请求的数据的库"></a>请求的数据的库</h2><ul>
+<li>request：通过库，帮助我们快速实现HTTP请求包的打包<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">request.<span class="title function_">get</span>(<span class="string">&#x27;请求地址&#x27;</span>, &#123;</span><br><span class="line">	<span class="string">&#x27;请求头字段&#x27;</span>:<span class="string">&#x27;请求头的value值&#x27;</span></span><br><span class="line">&#125;,<span class="function">(<span class="params">res</span>)=&gt;</span> &#123;处理返回的内容&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>axios：通过库，帮助我们快速实现HTTP请求包的打包,比request更好，前后端通杀，前后端调用方式一致<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">axios</span>(&#123;</span><br><span class="line">	<span class="attr">method</span>: <span class="string">&#x27;get&#x27;</span>,</span><br><span class="line">	<span class="attr">url</span>: <span class="string">&#x27;请求地址&#x27;</span>,</span><br><span class="line">	<span class="attr">resposeType</span>: <span class="string">&#x27;stream&#x27;</span></span><br><span class="line">&#125;)</span><br><span class="line">.<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">response</span>) &#123;</span><br><span class="line">	response.<span class="property">data</span>.<span class="title function_">pipe</span>(fs.<span class="title function_">createWriteStream</span>(<span class="string">&#x27;写入的文件名&#x27;</span>))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>puppeteer: 完全模拟浏览器<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 打开浏览器</span></span><br><span class="line"><span class="keyword">let</span> options = &#123;</span><br><span class="line">	<span class="attr">defaultViewport</span>: &#123;</span><br><span class="line">		<span class="attr">width</span>: <span class="number">1400</span>,<span class="comment">// 设置视窗宽高</span></span><br><span class="line">		<span class="attr">height</span>:<span class="number">800</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">headless</span>: <span class="literal">true</span>,<span class="comment">// 设置为无界面</span></span><br><span class="line">	<span class="attr">slowMo</span>: <span class="number">250</span>,<span class="comment">// 调试时设置放慢每个步骤的毫秒数</span></span><br><span class="line">	timeout：<span class="number">3000</span>, <span class="comment">// 默认超时3秒钟</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> browser = <span class="keyword">await</span> puppeteer.<span class="title function_">launch</span>(options)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 打开新标签页</span></span><br><span class="line"><span class="keyword">let</span> page = <span class="keyword">await</span> browser.<span class="title function_">newPage</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取多有浏览器的页面</span></span><br><span class="line"><span class="keyword">let</span> pages = <span class="keyword">await</span> browser.<span class="title function_">pages</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 关闭浏览器</span></span><br><span class="line">browser.<span class="title function_">close</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将页面跳转至</span></span><br><span class="line"><span class="keyword">await</span> page.<span class="title function_">goto</span>(url)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取页面的对象，并进行操作</span></span><br><span class="line"><span class="keyword">let</span> btn = <span class="keyword">await</span> page.$(selector)</span><br><span class="line"><span class="keyword">let</span> input = <span class="keyword">await</span>.<span class="property">page</span>.$(selector)</span><br><span class="line"><span class="comment">// 点击按钮</span></span><br><span class="line">btn.<span class="title function_">click</span>()</span><br><span class="line"><span class="comment">// 聚焦到输入框</span></span><br><span class="line">input.<span class="title function_">focus</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在页面上写入内容或者键盘按键</span></span><br><span class="line"><span class="keyword">await</span> page.<span class="property">keyboard</span>.<span class="title function_">type</span>(<span class="string">&#x27;content&#x27;</span>)</span><br><span class="line"><span class="keyword">await</span> page.<span class="property">keyboard</span>.<span class="title function_">press</span>(<span class="string">&#x27;content&#x27;</span>)</span><br><span class="line"><span class="keyword">await</span> page.<span class="property">keyboard</span>.<span class="title function_">tdown</span>(<span class="string">&#x27;content&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置鼠标的移动</span></span><br><span class="line"><span class="keyword">await</span> page.<span class="property">mouse</span>.<span class="title function_">move</span>(<span class="number">0</span>,<span class="number">0</span>)</span><br><span class="line"><span class="keyword">await</span> page.<span class="property">mouse</span>.<span class="title function_">down</span>()</span><br><span class="line"><span class="keyword">await</span> page.<span class="property">mouse</span>.<span class="title function_">move</span>(<span class="number">0</span>,<span class="number">100</span>)</span><br><span class="line"><span class="keyword">await</span> page.<span class="property">mouse</span>.<span class="title function_">move</span>(<span class="number">100</span>,<span class="number">0</span>)</span><br><span class="line"><span class="keyword">await</span> page.<span class="property">mouse</span>.<span class="title function_">move</span>(<span class="number">100</span>,<span class="number">1000</span>)</span><br><span class="line"><span class="keyword">await</span> page.<span class="property">mouse</span>.<span class="title function_">up</span>()</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 截获页面请求</span></span><br><span class="line"><span class="keyword">await</span> page.<span class="title function_">setRequestInterception</span>(<span class="literal">true</span>)</span><br><span class="line">	<span class="comment">// 监听请求事件并对请求进行拦截</span></span><br><span class="line">	page.<span class="title function_">on</span>(<span class="string">&#x27;request&#x27;</span>,<span class="function"><span class="params">request</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">// 通过url模块对请求的地址进行解析</span></span><br><span class="line">		request.<span class="title function_">url</span>() <span class="comment">// 可以获取请求的网址，request包含了所有的请求信息</span></span><br><span class="line">		<span class="keyword">if</span>(想要的条件)&#123;</span><br><span class="line">			request.<span class="title function_">continue</span>()</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">			request.<span class="title function_">abort</span>([errorCode])</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;) </span><br><span class="line">	</span><br><span class="line"><span class="comment">// 获取浏览器的信息和内容</span></span><br><span class="line">page.$eval(selector,<span class="function">(<span class="params">item</span>)=&gt;</span> item)</span><br><span class="line">page.$$eval(selector,<span class="function">(<span class="params">item</span>)=&gt;</span> item)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="反爬虫策略："><a href="#反爬虫策略：" class="headerlink" title="反爬虫策略："></a>反爬虫策略：</h2><ol>
+<li><p>几秒钟请求的次数达到一定程度，就会发送验证码、返回其它数据等方式来检验是否有问题<br>解决方式： 使用代理proxy</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">proxy</span>: &#123;</span><br><span class="line">	<span class="attr">host</span>: <span class="string">&#x27;127.0.0.1&#x27;</span>,</span><br><span class="line">	<span class="attr">port</span>: <span class="number">9000</span>,</span><br><span class="line">	<span class="attr">auth</span>: &#123;</span><br><span class="line">		<span class="attr">username</span>: <span class="string">&#x27;mikeymike&#x27;</span>,</span><br><span class="line">		<span class="attr">password</span>: <span class="string">&#x27;rapunz3l&#x27;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>代理获取途径： 花钱，或者找免费代理，但需要一个个ping ip是否响应<br>代理IP：117.69.201.242  端口：9999<br>代理IP：125.73.220.108  端口：9999<br>代理IP：113.124.85.162  端口：9999<br>代理IP：114.230.69.33   端口：9999</p>
+</li>
+<li><p>获取到的字体图标的数据是乱码的，需要下载它的字体图标并解码，花费时间和精力多，需要考虑清除是否一定要去解码</p>
+</li>
+<li><p>网页不能直接获取源代码，这种叫前端渲染网页，无法爬取。</p>
+<ul>
+<li>   示例：易点租网页。后端渲染的网页可以爬取</li>
+<li>需要分析请求的接口对应哪些内容是<br>let res &#x3D; await axios.get(httpUrl,  {proxy: {<br> host: ‘127.0.0.1’, &#x2F;&#x2F; 找的代理和端口<br> port: 9000,<br>},<br>})</li>
+</ul>
+</li>
+</ol>
+<h2 id="Puppeteer-—-无界面模式"><a href="#Puppeteer-—-无界面模式" class="headerlink" title="Puppeteer — 无界面模式"></a>Puppeteer — 无界面模式</h2><ul>
+<li>不用打开Chrome界面就可以操作Chrome界面</li>
+<li>作用：可以通过api直接控制Cheome模拟大部分用户操作来进行UI Test或者作为爬虫访问页面来收集数据<ul>
+<li>生成页面PDF</li>
+<li>抓取SPA并生成预渲染内容（SSR）</li>
+<li>自动提交表单，进行UI测试，键盘输入</li>
+</ul>
+</li>
+<li>解决了网页为前端渲染，，无法直接爬取的问题。直接将页面直接渲染到源码</li>
+<li>使用方式：<ul>
+<li>使用Chrome打开这个网页打开F12就可以看到详细的网页源代码</li>
+<li>然后直接在控制台中输入document.querySelector(“选择器”).getAttribute(“src”)就可以直接获取对应信息</li>
+<li>图像识别</li>
+</ul>
+</li>
+</ul>
+<h3 id="截屏"><a href="#截屏" class="headerlink" title="截屏"></a>截屏</h3><ul>
+<li>await page.screenshot({path: ‘example.png’});	&#x2F;&#x2F; 打开页面的时候截屏,path为截屏的图片名字</li>
+</ul>
+<h3 id="跳转到新页面的方式"><a href="#跳转到新页面的方式" class="headerlink" title="跳转到新页面的方式"></a>跳转到新页面的方式</h3><ul>
+<li>方式一：获取对应信息并自动打开对应链接<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取页面内容</span></span><br><span class="line"><span class="comment">// $$eval函数使得回调函数可以运行在浏览器中，并可以通过浏览器的方式进行输出</span></span><br><span class="line"><span class="keyword">let</span> eles = <span class="keyword">await</span> page.$$eval(<span class="string">&quot;#menu li a&quot;</span>, <span class="function">(<span class="params">elements</span>)=&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">let</span> eleArr = []</span><br><span class="line">	elements.<span class="title function_">forEach</span>(<span class="function">(<span class="params">item,i</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">var</span> eleObj = &#123;</span><br><span class="line">			<span class="attr">href</span>: item.<span class="title function_">getAttribute</span>(<span class="string">&quot;herf&quot;</span>),</span><br><span class="line">			<span class="attr">text</span>: item.<span class="property">innerText</span></span><br><span class="line">		&#125;</span><br><span class="line">		eleArr.<span class="title function_">push</span>(eleObj)</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">return</span> eleArr</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 自动打开国内电影的页面</span></span><br><span class="line"><span class="keyword">let</span> gnPage = <span class="keyword">await</span> browser.<span class="property">newPage</span></span><br><span class="line"><span class="keyword">await</span> gnPage.<span class="title function_">goto</span>(eles[<span class="number">2</span>].<span class="property">href</span>)	</span><br></pre></td></tr></table></figure></li>
+<li>方式二：点击跳转<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过点击页面跳转的方式</span></span><br><span class="line">elementHandles = <span class="keyword">await</span> page.$$(<span class="string">&quot;menu li a&quot;</span>)</span><br><span class="line">elementHandles[<span class="number">2</span>].<span class="title function_">click</span>()</span><br></pre></td></tr></table></figure></li>
+<li>方式三：自动打开搜索内容的页面<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过表单输入进行搜索(看文档是否为promise对象，是+await)</span></span><br><span class="line">inputEle = <span class="keyword">await</span> page.$(<span class="string">&quot;.searchl .formhue&quot;</span>)</span><br><span class="line"><span class="comment">// 让光标进入到输入框</span></span><br><span class="line"><span class="keyword">await</span> inputEle.<span class="title function_">focus</span>()</span><br><span class="line"><span class="comment">// 往输入框输入内容</span></span><br><span class="line"><span class="keyword">await</span> page.<span class="property">keyboard</span>.<span class="title function_">type</span>(<span class="string">&quot;热烈&quot;</span>)</span><br><span class="line"><span class="comment">// 绑定事件，取消冒泡 --- 因为点击按钮，自动冒泡打开了广告</span></span><br><span class="line"><span class="keyword">await</span> page.$eval(<span class="string">&#x27;.bd3rl&gt; .searchr&#x27;</span>, <span class="function">(<span class="params">element</span>) =&gt;</span> &#123;</span><br><span class="line">	element.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">		e.<span class="property">cancelBubble</span> = <span class="literal">true</span></span><br><span class="line">	&#125;)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 点击按钮(找到按钮的选择器)</span></span><br><span class="line"><span class="keyword">let</span> btnEle = <span class="keyword">await</span> page.$(<span class="string">&#x27;.searchr input[name=&quot;Submit&quot;]&#x27;</span>)</span><br><span class="line"><span class="keyword">await</span> btnEle.<span class="title function_">click</span>()</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>【参考】<a target="_blank" rel="noopener" href="https://blog.csdn.net/BLee_0123/article/details/131427517">爬虫基本原理</a><br>【参考】<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1i7411G7kW/?p=13&spm_id_from=pageDriver&vd_source=7ff3c1c4d72a6d5534ee6ccf76c617ce">B站视频</a></p>
+<!-- 【案例】位于练习的p_four文件夹下的utils目录的test_cherrio.js , 这个基本上是成功，出来数据多图片加载不出来
+【案例】位于练习的p_four文件夹下的utils目录的test_reg.js，这个没有完成遍历所有页面
+【案例】位于练习的p_four文件夹下的utils目录的test_puppeteer.js -->
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/31/node/4%E6%90%AD%E5%BB%BA%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/Node/">
+                    Node
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/31/node/4%E6%90%AD%E5%BB%BA%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="trm-anima-link">
+                    搭建最简单的服务器
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/31</li>
+                <li>17:15</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/31/node/2node%E7%9A%84%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/Node/">
+                    Node
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/31/node/2node%E7%9A%84%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="trm-anima-link">
+                    Node的文件系统
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/31</li>
+                <li>17:15</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            基于大数据，学习参考、练习，网站正在逐步完善中...
+        </div>
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="大纲 版本控制 底层命令 初始化配置和文件的 UDR 命令 分支 撤销与回退操作 checkout 深入 远程协作 rebase 和 merge git 修改默认 pull 的参数 修改全局配置项 基本概念 工作原理   版本控制 集中式(svn) svn 因为每次存的都是差异，需要的硬盘空间会相对的小一点，但回滚的速度会很慢 优点: 代码存放在单一的服务器上 便于项目的管理 缺点: 服务器宕机，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git知识">
+<meta property="og:url" content="http://example.com/2024/10/30/Engineering/Git%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="大纲 版本控制 底层命令 初始化配置和文件的 UDR 命令 分支 撤销与回退操作 checkout 深入 远程协作 rebase 和 merge git 修改默认 pull 的参数 修改全局配置项 基本概念 工作原理   版本控制 集中式(svn) svn 因为每次存的都是差异，需要的硬盘空间会相对的小一点，但回滚的速度会很慢 优点: 代码存放在单一的服务器上 便于项目的管理 缺点: 服务器宕机，">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/404.jpg">
+<meta property="og:image" content="http://example.com/img/404.jpg">
+<meta property="article:published_time" content="2024-10-30T06:56:43.971Z">
+<meta property="article:modified_time" content="2024-10-31T03:02:59.525Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/404.jpg">
+
+    <meta name="keywords" content="Git">
+
+
+<title >Git知识</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-10-31 11:02:59"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            UUOVO<span>个人站点</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/test1/" target="">
+                            test1
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            Git知识
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+        <a href="https://zh-hans.react.dev/" title="React" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-react"></i>
+        </a>
+    
+        <a href="https://zh.javascript.info/" title="Javascript" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node-js"></i>
+        </a>
+    
+        <a href="https://nodejs.cn/" title="Node" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            10/30
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            14:56
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h2><ul>
+<li><a href="ref1">版本控制</a></li>
+<li><a href="ref2">底层命令</a></li>
+<li><a href="ref3">初始化配置和文件的 UDR 命令</a></li>
+<li><a href="ref4">分支</a></li>
+<li><a href="ref5">撤销与回退操作</a></li>
+<li><a href="ref6">checkout 深入</a></li>
+<li><a href="ref7">远程协作</a></li>
+<li><a href="ref8">rebase 和 merge</a></li>
+<li><a href="ref9">git 修改默认 pull 的参数</a></li>
+<li><a href="ref10">修改全局配置项</a></li>
+<li><a href="ref11">基本概念</a></li>
+<li><a href="ref12">工作原理</a></li>
+</ul>
+<hr>
+<h2 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a><p id="ref1">版本控制</p></h2><ul>
+<li><h3 id="集中式-svn"><a href="#集中式-svn" class="headerlink" title="集中式(svn)"></a>集中式(svn)</h3><ul>
+<li>svn 因为每次存的都是差异，需要的硬盘空间会相对的小一点，但回滚的速度会很慢</li>
+<li>优点: 代码存放在单一的服务器上 便于项目的管理</li>
+<li>缺点: 服务器宕机，数据就存在丢失的风险</li>
+</ul>
+</li>
+<li><h3 id="分布式-git"><a href="#分布式-git" class="headerlink" title="分布式(git)"></a>分布式(git)</h3><ul>
+<li>git 每次存的都是项目的完整<code>快照</code>，需要的硬盘空间会相对大一点<br>(Git 团队对代码做了极致的压缩，最终需要的实际空间比 svn 多一点，但回滚速度极快)</li>
+<li>优点: 完全的分布式</li>
+<li>缺点: 学习起来比 SVN 陡峭</li>
+</ul>
+</li>
+</ul>
+<h2 id="底层命令"><a href="#底层命令" class="headerlink" title="底层命令"></a><p id="ref2">底层命令</p></h2><ul>
+<li><h3 id="git-对象"><a href="#git-对象" class="headerlink" title="git 对象"></a>git 对象</h3><ul>
+<li>生成一个 hash 值:压缩后的文件内容的键值对存到.git&#x2F;objects：<code>git hash-object -w fileUrl</code></li>
+</ul>
+</li>
+<li><h3 id="tree-对象"><a href="#tree-对象" class="headerlink" title="tree 对象"></a>tree 对象</h3><ul>
+<li>往暂存区添加一条记录(让 git 对象对应上文件名)存到.git&#x2F;index：<code>git update-index --add --cacheinfo 100644 hash test.txt</code></li>
+<li>生成树对象存到.git&#x2F;objects: <code>git write-tree</code></li>
+</ul>
+</li>
+<li><h3 id="commit-对象"><a href="#commit-对象" class="headerlink" title="commit 对象"></a>commit 对象</h3><ul>
+<li>生成一个提交对象存到.git&#x2F;objects: <code>echo &#39;first commit&#39; | git commit-tree treehash</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="初始化配置和文件的-UDR-命令"><a href="#初始化配置和文件的-UDR-命令" class="headerlink" title="初始化配置和文件的 UDR 命令"></a><p id="ref3">初始化配置和文件的 UDR 命令</p></h2><ul>
+<li><h3 id="初始化配置"><a href="#初始化配置" class="headerlink" title="初始化配置"></a>初始化配置</h3><ul>
+<li>配置用户名：<code>git config --global user.name &quot;name&quot;</code></li>
+<li>配置邮箱：<code>git config --global user.email name@example.com</code></li>
+<li>获取设置配置列表：<code>git config --list</code></li>
+<li>初始化仓库: <code>git init</code></li>
+</ul>
+</li>
+<li><h3 id="U-修改提交操作"><a href="#U-修改提交操作" class="headerlink" title="U(修改提交操作)"></a>U(修改提交操作)</h3><ul>
+<li>将单个文件从工作区添加到暂存区: <code>git add &lt;file&gt;</code></li>
+<li>将所有文件添加到暂存区: <code>git add .</code></li>
+<li>将暂存区的文件提交到本地仓库: <code>git commit -m &quot;msg&quot;</code></li>
+</ul>
+</li>
+<li><h3 id="D-删除-重命名"><a href="#D-删除-重命名" class="headerlink" title="D(删除 &amp; 重命名)"></a>D(删除 &amp; 重命名)</h3><ul>
+<li>删除：<code>git rm 要删除的文件</code></li>
+<li>重命名：<code>git mv 老文件名 新文件民</code></li>
+</ul>
+</li>
+<li><h3 id="R-查询操作"><a href="#R-查询操作" class="headerlink" title="R(查询操作)"></a>R(查询操作)</h3><ul>
+<li>查看工作目录中文件的状态: <code>git status</code>(已跟踪(已提交 已暂存 已修改) 未跟踪)</li>
+<li>查看未暂存的修改,比较文件不同，即暂存区和工作区的差异: <code>git diff</code></li>
+<li>查看未提交的暂存: <code>git diff --cache</code></li>
+<li>查看提交记录: <code>git log --oneline</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a><p id="ref4">分支</p></h2><blockquote>
+<p>分支的本质其实就是一个提交对象!!!</p>
+</blockquote>
+<ul>
+<li><p>HEAD:</p>
+<ul>
+<li>一个指针，它默认指向 master 分支，切换分支时其实就是让 HEAD 指向不同的分支</li>
+<li>每次有新的提交时 HEAD 都会带着当前指向的分支，一起往前移动</li>
+</ul>
+</li>
+<li><h3 id="git-分支命令"><a href="#git-分支命令" class="headerlink" title="git 分支命令"></a>git 分支命令</h3><ul>
+<li>查看整个项目的分支图: <code>git log [--oneline | --decorate | --graph | --all]</code></li>
+</ul>
+</li>
+<li><h3 id="查看分支"><a href="#查看分支" class="headerlink" title="查看分支"></a>查看分支</h3><ul>
+<li>查看分支列表: <code>git branch</code></li>
+<li>查看所有分支: <code>git branch -a</code></li>
+<li>查看分支指向的最新的提交: <code>git branch -v</code></li>
+<li>查看合并到当前分支的分支列表: <code>git branch --merged</code>(一旦出现在这个列表中就应该考虑删除已合并的分支)</li>
+<li>查看没有合并到当前分支的分支列表: <code>git branch --no-merged</code>(一旦出现在这个列表中就应该观察一下是否需要合并)</li>
+</ul>
+</li>
+<li><h3 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h3><ul>
+<li>⭐ 创建分支: <code>git branch &lt;name&gt;</code></li>
+<li>在指定的提交对象上创建新的分支: <code>git branch &lt;name&gt; commithash</code> — 版本穿梭(时光机)</li>
+</ul>
+</li>
+<li><h3 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h3><ul>
+<li>⭐ 删除本地分支: <code>git branch -d &lt;name&gt;</code></li>
+<li>强制删除分支: <code>git branch -D &lt;name&gt;</code></li>
+<li>⭐ 删除远程分支: <code>git push origin -d &lt;name&gt;</code></li>
+</ul>
+</li>
+<li><h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><ul>
+<li>⭐ 切换分支: <code>git checkout &lt;name&gt;</code></li>
+<li>创建并切换到新分支: <code>git checkout -b &lt;name&gt;</code></li>
+</ul>
+</li>
+<li><h3 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h3><ul>
+<li>合并某个分支到当前分支，默认 fast forward: <code>git merge &lt;name&gt;</code><ul>
+<li>快进合并 –&gt; 不会产生冲突</li>
+<li>典型合并 –&gt; 有机会产生冲突</li>
+<li>解决冲突 –&gt; 打开冲突的文件 进行修改 add commit</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="git-分支的注意点"><a href="#git-分支的注意点" class="headerlink" title="git 分支的注意点"></a>git 分支的注意点</h3><ul>
+<li>在切换的时候 一定要保证当前分支是干净的!!!</li>
+<li><code>允许</code>切换分支:<ul>
+<li>分支上所有的内容处于<code>已提交状态</code></li>
+<li>(避免)分支上的内容是初始化创建 处于未跟踪状态</li>
+<li>(避免)分支上的内容是初始化创建 第一次处于已暂存状态</li>
+</ul>
+</li>
+<li><code>不允许</code>切分支:<ul>
+<li>分支上所有的内容处于<code>已修改状态</code>或第二次以后的<code>已暂存状态</code></li>
+</ul>
+</li>
+<li>在分支上的工作做到一半时 如果有切换分支的需求, 我们应该将现有的工作<code>贮藏</code>起来</li>
+</ul>
+</li>
+<li><h3 id="贮藏"><a href="#贮藏" class="headerlink" title="贮藏"></a>贮藏</h3><ul>
+<li>⭐ 将当前工作区改过的文件贮藏到栈中，贮藏后当前库是上一个已提交的状态: <code>git stash</code></li>
+<li>⭐ 查看当前贮藏列表的文件：<code>git stash list</code></li>
+<li>将栈顶的工作内容恢复，但不让任何内容出栈：<code>git stash apply &lt;name&gt;</code></li>
+<li>取出栈顶的工作内容后就应该将其删除(出栈): <code>git stash drop</code></li>
+<li>⭐ 恢复贮藏起来的文件并把列表中对应文件删除，是 apply+drop 操作：<code>git stash pop &lt;name&gt;</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="撤销与回退操作-后悔药"><a href="#撤销与回退操作-后悔药" class="headerlink" title="撤销与回退操作(后悔药)"></a><p id="ref5">撤销与回退操作(后悔药)</p></h2><h3 id="撤销：当修改了工作区-暂存区的文件，想要撤销之前的操作"><a href="#撤销：当修改了工作区-暂存区的文件，想要撤销之前的操作" class="headerlink" title="撤销：当修改了工作区&#x2F;暂存区的文件，想要撤销之前的操作"></a>撤销：当修改了工作区&#x2F;暂存区的文件，想要撤销之前的操作</h3><ul>
+<li><p>场景 1：(撤销工作目录的修改)当改乱了工作区某个文件的内容，但还未 add 到暂存区</p>
+<ul>
+<li>撤销指定文件的修改：<code>git checkout -- 文件名</code>(<code>--</code> 表示是文件名不是分支名，不混淆可不用)</li>
+<li>撤销所有工作区的修改：<code>git checkout .</code></li>
+<li>撤销工作区和暂存区的所有修改：<code>git checkout -f</code></li>
+</ul>
+</li>
+<li><p>场景 2：(撤销暂存区的修改)当乱改了工作区某个文件的内容，并且 git add 到了暂存区</p>
+<ul>
+<li>第 1 步，将暂存区的文件修改撤销掉：<code>git reset HEAD &lt;file&gt;</code></li>
+<li>第 2 步，将工作区的文件修改撤销掉：<code>git checkout &lt;file&gt;</code></li>
+</ul>
+</li>
+<li><p>场景 3：乱改了很多文件，想回到最新一次提交时的状态</p>
+<ul>
+<li>撤销工作区中所有未提交文件的修改内容：<code>git reset --hard HEAD</code></li>
+</ul>
+</li>
+<li><p>场景 4：(撤销提交)在当前最后一次提交的 commit 信息，还没有 push 到远程</p>
+<ul>
+<li><code>git commit --amend</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="回退：当已经进行了-commit-操作，需要回退到之前的版本："><a href="#回退：当已经进行了-commit-操作，需要回退到之前的版本：" class="headerlink" title="回退：当已经进行了 commit 操作，需要回退到之前的版本："></a>回退：当已经进行了 commit 操作，需要回退到之前的版本：</h3><ul>
+<li>查看每一步操作的记录: <code>git reflog</code> (谨慎！！！每次改变都会记录)</li>
+<li>设置为某一 id 的记录: <code>git reset id</code></li>
+<li>设置为对应 id 记录: <code>git reset --hard id </code></li>
+<li>回退到上次提交的状态: <code>git reset --hard HEAD^</code></li>
+<li>回退到 n 个版本前的状态: <code>git reset --hard HEAD~n</code></li>
+<li>回退到某一个 commitid 的状态及内容，只改变 HEAD：<code>git reset --soft HEAD commitid</code></li>
+<li>回退到某一个 commitid 的状态，并保留工作区的内容：<code>git reset --mixed(默认) HEAD commitid</code></li>
+<li>回退到某一个 commitid 的状态及内容，并重置暂存区和工作目录：<code>git reset --hard HEAD commitid</code></li>
+</ul>
+<h2 id="checkout-深入"><a href="#checkout-深入" class="headerlink" title="checkout 深入"></a><p id="ref6">checkout 深入</p></h2><ul>
+<li>git checkout brancname 跟 git reset –hard commithash 特别像</li>
+<li>共同点<ul>
+<li>都需要重置 HEAD 暂存区 工作目录</li>
+</ul>
+</li>
+<li>区别<ul>
+<li>checkout 对工作目录是安全的 reset –hard 是强制覆盖</li>
+<li>checkout 动 HEAD 时不会带着分支走而是切换分支</li>
+<li>reset –hard 时是带着分支走</li>
+</ul>
+</li>
+<li>checkout + 路径<ul>
+<li>git checkout commithash filename<ul>
+<li>重置暂存区</li>
+<li>重置工作目录</li>
+</ul>
+</li>
+<li>git checkout – filename<ul>
+<li>重置工作目录</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="远程协作"><a href="#远程协作" class="headerlink" title="远程协作"></a><p id="ref7">远程协作</p></h2><h3 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h3><ol>
+<li><p>项目经理初始化远程仓库</p>
+<ul>
+<li>一定要初始化一个空的仓库; 在 github 上操作</li>
+</ul>
+</li>
+<li><p>项目经理创建本地仓库</p>
+<ul>
+<li>git remote 别名 仓库地址(https)</li>
+<li>git init; 将源码复制进来</li>
+<li>修改用户名 修改邮箱</li>
+<li>git add</li>
+<li>git commit</li>
+</ul>
+</li>
+<li><p>项目经理推送本地仓库到远程仓库</p>
+<ul>
+<li>清理 windows 凭据</li>
+<li>git push 别名 分支 (输入用户名密码;推完之后会附带生成远程跟踪分支)</li>
+</ul>
+</li>
+<li><p>项目邀请成员 &amp; 成员接受邀请</p>
+<ul>
+<li>在 github 上操作</li>
+</ul>
+</li>
+<li><p>成员克隆远程仓库</p>
+<ul>
+<li>git clone 仓库地址 (在本地生成.git 文件 默认为远程仓库配了别名 orgin)</li>
+<li>只有在克隆的时候 本地分支 master 和 远程跟踪分支别名&#x2F;master 是有同步关系的</li>
+</ul>
+</li>
+<li><p>成员做出贡献</p>
+<ul>
+<li>修改源码文件</li>
+<li>git add</li>
+<li>git commit</li>
+<li>git push 别名 分支 (输入用户名 密码;推完之后会附带生成远程跟踪分支)</li>
+</ul>
+</li>
+<li><p>项目经理更新修改</p>
+<ul>
+<li>git fetch 别名 (将修改同步到远程跟踪分支上)</li>
+<li>git merge 远程跟踪分支</li>
+</ul>
+</li>
+</ol>
+<h3 id="做远程跟踪"><a href="#做远程跟踪" class="headerlink" title="做远程跟踪"></a>做远程跟踪</h3><ul>
+<li>克隆仓库时会自动为 master 做跟踪</li>
+<li>本地没有分支: <code>git checkout --track remote/分支名</code></li>
+<li>本地已经创建了分支: <code>git branch -u remote/分支名</code></li>
+</ul>
+<h3 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h3><ul>
+<li>⭐ 刷新远程分支信息: <code>git fetch</code></li>
+<li>将本地 master 分支推送到远程对应分支: <code>git push origin master</code></li>
+<li>下载远程代码并合并: <code>git pull</code></li>
+<li>拉取远程最新代码并合并，不会产生 Merge: <code>git pull --rebase</code></li>
+<li>推送本地代码到远程分支上: <code>git push</code></li>
+<li>将远程仓库和本地仓库关联起来: <code>git remote add origin &lt;url&gt;</code></li>
+<li>查看远程库信息: <code>git remote -v</code></li>
+</ul>
+<h2 id="rebase-和-merge"><a href="#rebase-和-merge" class="headerlink" title="rebase 和 merge"></a><p id="ref8">rebase 和 merge</p></h2><ul>
+<li><h3 id="rebase-把分叉的提交历史“整理”成一条直线，看上去更直观"><a href="#rebase-把分叉的提交历史“整理”成一条直线，看上去更直观" class="headerlink" title="rebase: 把分叉的提交历史“整理”成一条直线，看上去更直观"></a>rebase: 把分叉的提交历史“整理”成一条直线，看上去更直观</h3><ul>
+<li>⭐ 变基：<code>git rebase</code></li>
+<li>将当前分支移植到指定分支或者 commit 之上：<code>git rebase -i &lt;commit&gt; </code></li>
+<li>从远程回退到未提交状态：<code>git reset HEAD^</code></li>
+</ul>
+</li>
+<li><h3 id="merge：-每次操作都会产生一条-merge-记录，从日志上看的，会产生分叉，日志看起来杂乱"><a href="#merge：-每次操作都会产生一条-merge-记录，从日志上看的，会产生分叉，日志看起来杂乱" class="headerlink" title="merge： 每次操作都会产生一条 merge 记录，从日志上看的，会产生分叉，日志看起来杂乱"></a>merge： 每次操作都会产生一条 merge 记录，从日志上看的，会产生分叉，日志看起来杂乱</h3></li>
+</ul>
+<h2 id="git-修改默认-pull-的参数"><a href="#git-修改默认-pull-的参数" class="headerlink" title="git 修改默认 pull 的参数"></a><p id="ref9">git 修改默认 pull 的参数</p></h2><ul>
+<li>git pull &#x3D; git fetch + git merge</li>
+<li>全局修改 pull 的命令: <code>git config --global --add pull.rebase true</code></li>
+<li>查看命令是否修改成功：<code>git config --global -l </code></li>
+<li>如果之前向全局配置文件修改过 pull 的配置项，但修改错了，使用<code>--unset</code></li>
+<li>使用–unset 后，发现提示有多个值，则使用<code>--replace-all</code><ul>
+<li>示例： git config –global –replace-all pull.rebase true</li>
+</ul>
+</li>
+</ul>
+<h2 id="修改全局配置项"><a href="#修改全局配置项" class="headerlink" title="修改全局配置项"></a><p id="ref10">修改全局配置项</p></h2><ul>
+<li><h3 id="新增一个配置项：-add"><a href="#新增一个配置项：-add" class="headerlink" title="新增一个配置项：--add"></a>新增一个配置项：<code>--add</code></h3><ul>
+<li>格式：<code>git config --local/--global/--system --add section.key value</code></li>
+<li>示例: git config –global –add pull.rebase true</li>
+</ul>
+</li>
+<li><h3 id="获取一个配置项：-get"><a href="#获取一个配置项：-get" class="headerlink" title="获取一个配置项：--get"></a>获取一个配置项：<code>--get</code></h3><ul>
+<li>格式：<code>git config --local/--global/--system --get section.key</code></li>
+</ul>
+</li>
+<li><h3 id="删除一个配置项：-unset"><a href="#删除一个配置项：-unset" class="headerlink" title="删除一个配置项：--unset"></a>删除一个配置项：<code>--unset</code></h3><ul>
+<li>格式：<code>git config --local/--global/--system --unset section.key</code></li>
+<li>示例：git config –global –unset pull.rebase</li>
+</ul>
+</li>
+<li><h3 id="查看配置文件：-list-l"><a href="#查看配置文件：-list-l" class="headerlink" title="查看配置文件：--list/-l"></a>查看配置文件：<code>--list/-l</code></h3><ul>
+<li>查看仓库级的 config：<code>git config --local -l</code></li>
+<li>查看全局级的 config：<code>git config --global -l</code></li>
+<li>查看系统级的 config：<code>git config --system -l</code></li>
+<li>查看当前生效的配置：<code>git config -l</code></li>
+</ul>
+</li>
+<li><h3 id="编辑配置文件：-edit-e"><a href="#编辑配置文件：-edit-e" class="headerlink" title="编辑配置文件：--edit/-e"></a>编辑配置文件：<code>--edit/-e</code></h3><ul>
+<li>编辑仓库级的 config: <code>git config --local -e</code></li>
+<li>编辑全局级的 config：<code>git config --global -e</code></li>
+<li>编辑系统级的 config：<code>git config --system -e</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a><p id="ref11">基本概念</p></h2><ul>
+<li>本地仓库：本地仓库上存放所有相关的文件，具体可分为工作区、暂存区和仓库区，工作区即项目文件夹下不包含.git 文件夹的所有文件，<code>暂存区和仓库区则在.git文件夹下</code></li>
+<li>工作区：即我们工作的文件夹，在里面进行文件的增删改操作</li>
+<li>暂存区：临时保存工作区上的改动，通过<code>git add</code>操作将工作区的修改同步到<code>暂存区</code></li>
+<li>仓库区：当执行<code>git commit</code>操作时，将暂存区上的所有变动同步到<code>本地仓库</code></li>
+<li>远程仓库：GitHub&#x2F;GitLab 上保存的仓库，通过 git push 将本地仓库同步到远程仓库，也可以通过 git fetch&#x2F;pull 将远程仓库同步到本地仓库</li>
+<li>快照：git 将顶级目录中的文件和文件夹称作集合，并通过一系列快照来管理历史记录。在 git 的术语中，<code>文件被称为blob对象(数据对象)</code>，也就是一组数据。<code>目录则被称为tree(树)</code>,目录可以包含文件和子目录。<code>快照统称“commit”</code>，每个快照都有一系列的父辈。<code>每次commit都是创建一个全新的记录</code></li>
+<li>master 引用通常会指向<code>主分支</code>的<code>最新一次 commit</code>.在 Git 中，<code>当前的位置</code>有一个特殊的索引，它就是<code>“HEAD”</code>。</li>
+</ul>
+<h3 id="checkout-可以用于切换分支，可以从历史提交或暂存区中拷贝文件到工作目录"><a href="#checkout-可以用于切换分支，可以从历史提交或暂存区中拷贝文件到工作目录" class="headerlink" title="checkout 可以用于切换分支，可以从历史提交或暂存区中拷贝文件到工作目录"></a>checkout 可以用于切换分支，可以从历史提交或暂存区中拷贝文件到工作目录</h3><ul>
+<li>当给定某个文件名时，git 会从指定的提交中拷贝文件到暂存区域和工作目录。</li>
+</ul>
+<h3 id="HEAD-标识处于分离状态的提交操作"><a href="#HEAD-标识处于分离状态的提交操作" class="headerlink" title="HEAD 标识处于分离状态的提交操作"></a>HEAD 标识处于分离状态的提交操作</h3><ul>
+<li>可以正常提交，但不会更新任何命名分支，一旦切换到别的分支，这个提交节点再也不会被引用就会被丢弃</li>
+<li>如果想保存这个状态，可以用 git checkout -b name 来创建一个新的分支</li>
+</ul>
+<h3 id="Reset"><a href="#Reset" class="headerlink" title="Reset"></a>Reset</h3><ul>
+<li>也用来从仓库中复制文件到索引，而不动工作目录</li>
+<li>如果不给选项，那么当前分支指向到那个提交。如果用–hard 选项，那么工作目录也更新，如果用–soft 选项，都不变</li>
+<li>如果没有给出提交点的版本号，那么默认用 HEAD。分支执行不变，但是索引会回滚到最后一次提交。如果用–hard 选项，工作目录也同样</li>
+</ul>
+<h3 id="Merge"><a href="#Merge" class="headerlink" title="Merge"></a>Merge</h3><ul>
+<li>merge 命令把不同分支合并起来。<code>合并前，索引必须和当前提交相同。</code></li>
+<li>cherry-pick 复制一个提交节点并在当前分支做一次完全一样的新提交</li>
+</ul>
+<h3 id="Rebase"><a href="#Rebase" class="headerlink" title="Rebase"></a>Rebase</h3><ul>
+<li>合并分支。本质上，是线性化的自动的 cherry-pick</li>
+</ul>
+<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a><p id="ref12">工作原理</p></h2><p><img src="/../../img/Engineering/git%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%9B%BE.webp" alt="git工作原理图"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line">	工作区==git add files==&gt;暂存区/索引</span><br><span class="line">	暂存区/索引==git checkout -- files==&gt;工作区</span><br><span class="line">	暂存区/索引==git commit==&gt;仓库区</span><br><span class="line">	仓库区==git reset -- files==&gt;暂存区/索引</span><br><span class="line">  仓库区==git checkout HEAD -- files==&gt;工作区</span><br><span class="line">  工作区==git commit files==&gt;仓库区</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="工作区-–-暂存区-–-仓库区-–-就走完本地仓库-–-推送到远程仓库"><a href="#工作区-–-暂存区-–-仓库区-–-就走完本地仓库-–-推送到远程仓库" class="headerlink" title="工作区 –&gt; 暂存区 –&gt; 仓库区 –&gt; 就走完本地仓库 –&gt; 推送到远程仓库"></a>工作区 –&gt; 暂存区 –&gt; 仓库区 –&gt; 就走完本地仓库 –&gt; 推送到远程仓库</h3></li>
+<li>.git</li>
+</ul>
+<p><img src="/../../img/Engineering/git%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.webp" alt=".git目录结构"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<ul>
+<li>查看每个 SHA-1 的类型: <code>git cat-file -t</code></li>
+<li>查看每个对象的内容和简单的数据结构: <code>git cat-file -p</code></li>
+<li>把当前文件放入暂存区: <code>git add files</code></li>
+<li>把暂存区生成快照并提交本地仓库: <code>git commit</code></li>
+<li>⭐ 用来<code>撤销暂存区</code>的某一文件, git reset 撤销所有暂存区的文件: <code>git reset -- files</code></li>
+<li>把文件从暂存区复制到仓库区，用来丢弃本地修改: <code>git checkout -- files</code></li>
+<li>回滚到复制最后一次提交: <code>git checkout HEAD -- files</code></li>
+<li>相当于运行 git add 把工作区的所有文件加入暂存区再提交到仓库区: <code>git commit -a</code></li>
+<li>进行最后一次提交+工作目录中文件快照的提交，并且文件被添加到暂存区：<code>git commit files</code></li>
+<li>比较两次提交记录的差异： <code>git diff commitId commitId</code></li>
+<li>比较跟远程分支的差异: <code>git diff HEAD</code></li>
+<li>比较跟暂存区的记录的差异: <code>git diff</code></li>
+<li>比较跟某一分支记录的差异: <code>git diff 分支名</code></li>
+<li>使用与当前提交相同的父节点进行一次新提交，旧的提交会被取消: <code>git commit --amend</code></li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/142289703">点击跳转，去了解更多 git 底层原理</a></p>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/30/HTMLCSS/css%20-%203D%E5%8F%98%E6%8D%A2%E4%B8%AD%E7%9A%84%E6%94%B9%E5%8F%98%E5%B1%82%E7%BA%A7%E7%9A%84%E5%B1%9E%E6%80%A7/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/css/">
+                    css
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/30/HTMLCSS/css%20-%203D%E5%8F%98%E6%8D%A2%E4%B8%AD%E7%9A%84%E6%94%B9%E5%8F%98%E5%B1%82%E7%BA%A7%E7%9A%84%E5%B1%9E%E6%80%A7/" class="trm-anima-link">
+                    CSS-3D变换中的改变层级的属性
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/30</li>
+                <li>15:29</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/30/Engineering/Git%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/Git/">
+                    Git
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/30/Engineering/Git%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="trm-anima-link">
+                    Git在项目中遇到的问题
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/30</li>
+                <li>14:28</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            基于大数据，学习参考、练习，网站正在逐步完善中...
+        </div>
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>
