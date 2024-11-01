@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="大纲 相对 vs. 非相对模块导入 模块解析策略 附加的模块解析标记 跟踪模块解析 使用–noResolve 常见问题  相对 vs. 非相对模块导入 相对导入是以&#x2F;，.&#x2F;或..&#x2F;开头的,其它的都为非相对导入  模块解析策略 共有两种可用的模块解析策略：Node和Classic。 使用 –moduleResolution标记来指定使用哪种模块解析策略。 若未指定，那在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TS-模块解析">
+<meta property="og:url" content="http://example.com/2024/11/01/TS/%E5%8D%81%E4%B8%80%E3%80%81%E6%A8%A1%E5%9D%97%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="大纲 相对 vs. 非相对模块导入 模块解析策略 附加的模块解析标记 跟踪模块解析 使用–noResolve 常见问题  相对 vs. 非相对模块导入 相对导入是以&#x2F;，.&#x2F;或..&#x2F;开头的,其它的都为非相对导入  模块解析策略 共有两种可用的模块解析策略：Node和Classic。 使用 –moduleResolution标记来指定使用哪种模块解析策略。 若未指定，那在">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-11-01T03:40:57.340Z">
+<meta property="article:modified_time" content="2024-11-01T04:00:03.560Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="ts">
+
+
+<title >TS-模块解析</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-01 12:00:03"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            UUOVO<span>个人站点</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/test1/" target="">
+                            test1
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            TS-模块解析
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+        <a href="https://zh-hans.react.dev/" title="React" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-react"></i>
+        </a>
+    
+        <a href="https://zh.javascript.info/" title="Javascript" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node-js"></i>
+        </a>
+    
+        <a href="https://nodejs.cn/" title="Node" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            11/01
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            11:40
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h2><ul>
+<li><a href="#ref1">相对 vs. 非相对模块导入</a></li>
+<li><a href="#ref2">模块解析策略</a></li>
+<li><a href="#ref3">附加的模块解析标记</a></li>
+<li><a href="#ref4">跟踪模块解析</a></li>
+<li><a href="#ref5">使用–noResolve</a></li>
+<li><a href="#ref10">常见问题</a></li>
+</ul>
+<h2 id="相对-vs-非相对模块导入"><a href="#相对-vs-非相对模块导入" class="headerlink" title="相对 vs. 非相对模块导入"></a><p id="ref1">相对 vs. 非相对模块导入</p></h2><ul>
+<li>相对导入是以&#x2F;，.&#x2F;或..&#x2F;开头的,其它的都为非相对导入</li>
+</ul>
+<h2 id="模块解析策略"><a href="#模块解析策略" class="headerlink" title="模块解析策略"></a><p id="ref2">模块解析策略</p></h2><ul>
+<li>共有两种可用的模块解析策略：<code>Node</code>和<code>Classic</code>。</li>
+<li>使用 –moduleResolution标记来指定使用哪种模块解析策略。</li>
+<li>若未指定，那在使用 –module AMD | System | ES2015时的默认值为Classic，其它情况时则为Node</li>
+</ul>
+<h3 id="Classic解析流程"><a href="#Classic解析流程" class="headerlink" title="Classic解析流程"></a>Classic解析流程</h3><ul>
+<li><h3 id="相对导入-相对与导入它的文件进行解析"><a href="#相对导入-相对与导入它的文件进行解析" class="headerlink" title="相对导入: 相对与导入它的文件进行解析"></a>相对导入: 相对与导入它的文件进行解析</h3></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; b &#125; <span class="keyword">from</span> <span class="string">&quot;./moduleB&quot;</span></span><br><span class="line">/root/src/folder/moduleB.<span class="property">ts</span></span><br><span class="line">/root/src/folder/moduleB.<span class="property">d</span>.<span class="property">ts</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="非相对的导入-从包含导入文件的目录开始依次向上级目录遍历，尝试定位匹配的声明文件"><a href="#非相对的导入-从包含导入文件的目录开始依次向上级目录遍历，尝试定位匹配的声明文件" class="headerlink" title="非相对的导入: 从包含导入文件的目录开始依次向上级目录遍历，尝试定位匹配的声明文件"></a>非相对的导入: 从包含导入文件的目录开始依次向上级目录遍历，尝试定位匹配的声明文件</h3></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; b &#125; <span class="keyword">from</span> <span class="string">&quot;moduleB</span></span><br><span class="line"><span class="string">/root/src/folder/moduleB.ts</span></span><br><span class="line"><span class="string">/root/src/folder/moduleB.d.ts</span></span><br><span class="line"><span class="string">/root/src/moduleB.ts</span></span><br><span class="line"><span class="string">/root/src/moduleB.d.ts</span></span><br><span class="line"><span class="string">/root/moduleB.ts</span></span><br><span class="line"><span class="string">/root/moduleB.d.ts</span></span><br><span class="line"><span class="string">/moduleB.ts</span></span><br><span class="line"><span class="string">/moduleB.d.ts</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Node-解析流程"><a href="#Node-解析流程" class="headerlink" title="Node 解析流程"></a>Node 解析流程</h3><ul>
+<li>var x&#x3D; require(“.&#x2F;moduleB”)</li>
+<li><h3 id="相对的"><a href="#相对的" class="headerlink" title="相对的:"></a>相对的:</h3><ul>
+<li>检查该文件是否存在  </li>
+<li>–&gt; 检查该目录是否包含package.json,且package.json指定一个main模块，就引入这个main指定模块</li>
+<li>–&gt; 检查该目录下是否有index.js文件(隐式的当作main模块)</li>
+</ul>
+</li>
+<li><h3 id="非相对"><a href="#非相对" class="headerlink" title="非相对:"></a>非相对:</h3><ul>
+<li>在node_module查找对应的模块的js,package.json,index.js,在步骤4和7会往上跳一级目录</li>
+</ul>
+</li>
+</ul>
+<h3 id="Typescript-解析流程"><a href="#Typescript-解析流程" class="headerlink" title="Typescript 解析流程"></a>Typescript 解析流程</h3><ul>
+<li>在Node解析逻辑基础上增加了TypeScript源文件的扩展名(.ts，.tsx和.d.ts)。</li>
+<li>TypeScript在 package.json里使用字段”types”来表示类似”main”的意义 - 编译器会使用它来找到要使用的”main”定义文件。</li>
+<li>TypeScript只是在步骤（8）和（15）向上跳了两次目录</li>
+</ul>
+<h2 id="附加的模块解析标记"><a href="#附加的模块解析标记" class="headerlink" title="附加的模块解析标记"></a><p id="ref3">附加的模块解析标记</p></h2><h3 id="Base-URL-设置baseUrl来告诉编译器到哪里去查找模块。"><a href="#Base-URL-设置baseUrl来告诉编译器到哪里去查找模块。" class="headerlink" title="Base URL: 设置baseUrl来告诉编译器到哪里去查找模块。"></a>Base URL: 设置baseUrl来告诉编译器到哪里去查找模块。</h3><blockquote>
+<p>所有非相对模块导入都会被当做相对于 baseUrl,相对模块的导入不会被baseUrl所影响</p>
+</blockquote>
+<ul>
+<li>baseUrl的值由以下两者之一决定：<ol>
+<li>命令行中baseUrl的值(给定的路径是相对的，那么将相对于当前路径进行计算)</li>
+<li>‘tsconfig.json’里的baseUrl属性(给定的路径是相对的，那么将相对于’tsconfig.json’路径进行计算)</li>
+</ol>
+</li>
+</ul>
+<h3 id="路径映射"><a href="#路径映射" class="headerlink" title="路径映射"></a>路径映射</h3><ul>
+<li>TS编译器通过使用tsconfig.json文件里的”paths”来支持模块不是直接放在baseUrl下面的声明映射。(“paths”是相对于”baseUrl”进行解析)</li>
+</ul>
+<h3 id="rootDirs指定虚拟目录"><a href="#rootDirs指定虚拟目录" class="headerlink" title="rootDirs指定虚拟目录:"></a>rootDirs指定虚拟目录:</h3><ul>
+<li>多个目录下的工程源文件在编译时会进行合并放在某个输出目录下。 相当于源目录创建了一个“虚拟”目录。</li>
+<li>利用rootDirs，可以告诉编译器生成这个虚拟目录的roots</li>
+<li>在逻辑上合并的物理目录列表,提供的数组可以包含任意数量的任何名字的目录，不论它们是否存在</li>
+</ul>
+<h2 id="跟踪模块解析-tsc-–traceResolution"><a href="#跟踪模块解析-tsc-–traceResolution" class="headerlink" title="跟踪模块解析: tsc –traceResolution"></a><p id="ref4">跟踪模块解析: tsc –traceResolution</p></h2><h2 id="使用–noResolve-不要添加任何不是在命令行上传入的文件到编译列表"><a href="#使用–noResolve-不要添加任何不是在命令行上传入的文件到编译列表" class="headerlink" title="使用–noResolve: 不要添加任何不是在命令行上传入的文件到编译列表"></a><p id="ref5">使用–noResolve: 不要添加任何不是在命令行上传入的文件到编译列表</p></h2><ul>
+<li><code>tsc app.ts moduleA.ts --noResolve</code> &#x2F;&#x2F;指定了moduleA.ts 找到它就编译,是其它不编译</li>
+</ul>
+<h2 id="常见问题-—-为什么在exclude列表里的模块还会被编译器使用"><a href="#常见问题-—-为什么在exclude列表里的模块还会被编译器使用" class="headerlink" title="常见问题 — 为什么在exclude列表里的模块还会被编译器使用?"></a>常见问题 — 为什么在exclude列表里的模块还会被编译器使用?</h2><ul>
+<li>想利用 “exclude”排除某些文件，甚至想指定所有要编译的文件列表，请使用“files”</li>
+<li>要从编译列表中排除一个文件，需要在排除它的同时，还要排除所有对它进行<code>import</code>或使用了<code>/// &lt;reference path=&quot;...&quot; /&gt;</code>指令的文件</li>
+</ul>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/TS/%E5%8D%81%E4%BA%94%E3%80%81js%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/ts/">
+                    ts
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/TS/%E5%8D%81%E4%BA%94%E3%80%81js%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5/" class="trm-anima-link">
+                    TS-JS文件类型检查
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>11:40</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/TS/%E5%8D%81%E4%BA%8C%E3%80%81%E5%A3%B0%E6%98%8E%E5%90%88%E5%B9%B6/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/ts/">
+                    ts
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/TS/%E5%8D%81%E4%BA%8C%E3%80%81%E5%A3%B0%E6%98%8E%E5%90%88%E5%B9%B6/" class="trm-anima-link">
+                    TS-声明合并
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>11:40</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            基于大数据，学习参考、练习，网站正在逐步完善中...
+        </div>
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

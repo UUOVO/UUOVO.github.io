@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="Hook 在不写class的情况下使用state以及生命周期等其它特性 定义一个数组里面有一个参数和修改参数的方法 &#x3D; useState(),而这个参数相当于state 优点：没有破坏性改动—完全可选,100%向后兼容 动机：便于复用状态逻辑和理解  State Hook: 声明多个state变量: 可以在一个组件中多次使用State Hook  Effect Hook: “副作用”:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React-高阶HOOK">
+<meta property="og:url" content="http://example.com/2024/11/01/react/2.%E9%AB%98%E9%98%B6-Hook/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Hook 在不写class的情况下使用state以及生命周期等其它特性 定义一个数组里面有一个参数和修改参数的方法 &#x3D; useState(),而这个参数相当于state 优点：没有破坏性改动—完全可选,100%向后兼容 动机：便于复用状态逻辑和理解  State Hook: 声明多个state变量: 可以在一个组件中多次使用State Hook  Effect Hook: “副作用”:">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-11-01T01:41:47.787Z">
+<meta property="article:modified_time" content="2024-11-01T01:58:44.982Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="react, hook">
+
+
+<title >React-高阶HOOK</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-01 09:58:44"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            UUOVO<span>个人站点</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/test1/" target="">
+                            test1
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            React-高阶HOOK
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+        <a href="https://zh-hans.react.dev/" title="React" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-react"></i>
+        </a>
+    
+        <a href="https://zh.javascript.info/" title="Javascript" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node-js"></i>
+        </a>
+    
+        <a href="https://nodejs.cn/" title="Node" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            11/01
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            09:41
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h1 id="Hook"><a href="#Hook" class="headerlink" title="Hook"></a>Hook</h1><ul>
+<li>在不写class的情况下使用state以及生命周期等其它特性</li>
+<li>定义一个数组里面有一个参数和修改参数的方法 &#x3D; useState(),而这个参数相当于state</li>
+<li>优点：没有破坏性改动—完全可选,100%向后兼容</li>
+<li>动机：便于复用状态逻辑和理解</li>
+</ul>
+<h3 id="State-Hook"><a href="#State-Hook" class="headerlink" title="State Hook:"></a>State Hook:</h3><ul>
+<li>声明多个state变量: 可以在一个组件中多次使用State Hook</li>
+</ul>
+<h3 id="Effect-Hook"><a href="#Effect-Hook" class="headerlink" title="Effect Hook:"></a>Effect Hook:</h3><ul>
+<li>“副作用”: 在 React 组件中执行过数据获取、订阅或者手动修改过 DOM</li>
+<li>useEffect 就是一个 Effect Hook，给函数组件增加了操作副作用的能力&#x3D;挂载+更新+卸载的用途</li>
+<li>通过返回一个函数来指定如何“清除”副作用<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;<span class="comment">// 每次渲染都调用</span></span><br><span class="line">	<span class="title class_">ChatAPI</span>.<span class="title function_">subscribeToFriendStatus</span>(props.<span class="property">friend</span>.<span class="property">id</span>,handleStatusChange);<span class="comment">//挂载+更新</span></span><br><span class="line">		<span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="title class_">ChatAPI</span>.<span class="title function_">unsubscribeFromFriendStatus</span>(props.<span class="property">friend</span>.<span class="property">id</span>,handleStatusChange);<span class="comment">//卸载</span></span><br><span class="line">	&#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>同一组件可以多次使用</li>
+</ul>
+<h3 id="使用规则"><a href="#使用规则" class="headerlink" title="使用规则"></a>使用规则</h3><ul>
+<li>只能在函数最外层调用 Hook</li>
+<li>只能在 React 的函数组件中调用 Hook 和 自定义的 Hook 中</li>
+</ul>
+<h3 id="自定义Hook"><a href="#自定义Hook" class="headerlink" title="自定义Hook"></a>自定义Hook</h3><ul>
+<li>封装一个组件里面包含State Hook 和Effect Hook且包含了一些共同的方法</li>
+<li>其它组件可以调用它来使用这个方法,每一个组件使用hook的state都是独立</li>
+</ul>
+<h3 id="其它Hook"><a href="#其它Hook" class="headerlink" title="其它Hook"></a>其它Hook</h3><ul>
+<li>useContent()不使用组件嵌套就可以订阅React的Content</li>
+<li>useRenduser()可以通过reducer来管理组件本地的复杂state</li>
+</ul>
+<h3 id="使用State-Hook"><a href="#使用State-Hook" class="headerlink" title="使用State Hook"></a>使用State Hook</h3><ul>
+<li>Hook在class内部时不起作用的</li>
+<li>例：const [count, setCount] &#x3D; useState(0) &#x2F;&#x2F;说明count的初始值为0</li>
+<li>存储几个state变量就要调用几次useState</li>
+<li>在函数中使用,可以直接用count:<code>&lt;p&gt;&#123;count&#125;&lt;/p&gt;</code></li>
+<li>更新：onClick &#x3D; {() &#x3D;&gt; setCount(count+1)},在函数直接setCount()和this.setState()</li>
+</ul>
+<h3 id="使用Effect-Hook"><a href="#使用Effect-Hook" class="headerlink" title="使用Effect Hook"></a>使用Effect Hook</h3><ul>
+<li>不需要清除的effect:<ul>
+<li>在 React 更新 DOM 之后运行一些额外的代码</li>
+<li>传递给 useEffect 的函数在每次渲染中都会有所不同,防止过期</li>
+</ul>
+</li>
+<li>需要清除的effect:<ul>
+<li>订阅外部数据源,防止内存泄露</li>
+<li>在订阅的时候return() &#x3D;&gt; { 模块.un方法(参数,方法)}</li>
+</ul>
+</li>
+<li>使用多个Effect实现关注点分离<ul>
+<li>挂载和更新内容不同,挂载和卸载内容不同</li>
+<li>使用多个useEffect把相同的内容放在一起</li>
+</ul>
+</li>
+<li>每次更新的时候都要运行Effect：防止显示的还是没更新前的状态</li>
+<li>订阅和清除顺序按顺序执行</li>
+<li>通过跳过 Effect 进行性能优化</li>
+<li>如果某些特定值在两次重渲染之间没有发生变化，跳过对 effect 的调用，只要传递数组作为useEffect 的第二个可选参数即可：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">	<span class="variable language_">document</span>.<span class="property">title</span> = <span class="string">`You clicked <span class="subst">$&#123;count&#125;</span> times`</span>;</span><br><span class="line">&#125;, [count]); <span class="comment">// 仅在 count 更改时更新</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Hook规则"><a href="#Hook规则" class="headerlink" title="Hook规则"></a>Hook规则</h3><ul>
+<li>只在最顶层使用 Hook：不要在循环，条件或嵌套函数中调用 Hook</li>
+<li>只在 React 函数中调用 Hook</li>
+</ul>
+<h3 id="自定义组件"><a href="#自定义组件" class="headerlink" title="自定义组件"></a>自定义组件</h3><ul>
+<li>在 React 中有两种流行的方式来共享组件之间的状态逻辑: render props 和高阶组件，自定义 Hook</li>
+</ul>
+<h3 id="useDeferredValue"><a href="#useDeferredValue" class="headerlink" title="useDeferredValue"></a>useDeferredValue</h3><blockquote>
+<p>在新内容加载期间显示旧内容，延迟更新 UI 的某些部分</p>
+</blockquote>
+<ul>
+<li><code>const deferredValue = useDeferredValue(value)</code></li>
+<li>如在input中流程先输入 -&gt; 开始渲染 -&gt; 渲染完成前输入 -&gt; 渲染中断 -&gt; 执行新的渲染，在渲染完前这期间可以随时中断渲染</li>
+<li>这个value可以使用useState的变量</li>
+</ul>
+<h3 id="useOptimistic"><a href="#useOptimistic" class="headerlink" title="useOptimistic"></a>useOptimistic</h3><ul>
+<li><code> const [optimisticState, addOptimistic] = useOptimistic(state, updateFn);</code></li>
+<li>接受一个状态state，以及加工函数updateFn，其中updateFn在state更新时返回你想要的乐观结果,updateFn &#x3D; (currentState, optimisticValue) &#x3D;&gt; {}</li>
+</ul>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/react/4.%E8%87%AA%E5%B7%B1%E5%B0%81%E8%A3%85hook/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/react/">
+                    react
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/react/4.%E8%87%AA%E5%B7%B1%E5%B0%81%E8%A3%85hook/" class="trm-anima-link">
+                    React-如何封装HOOK
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>09:41</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/react/1.%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/react/">
+                    react
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/react/1.%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="trm-anima-link">
+                    React-基础知识
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>09:41</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            基于大数据，学习参考、练习，网站正在逐步完善中...
+        </div>
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

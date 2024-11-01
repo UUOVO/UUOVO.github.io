@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="自动获取源自应用state的数据 机制：事件调用actions，使用actions来修改state，然后自动更新，更新的值会触发对应的值变化 安装：mobx的介绍 搭档：React 通过提供机制把应用状态转换为可渲染组件树并对其进行渲染。而MobX提供机制来存储和更新应用状态供 React 使用。  核心概念 Observable state(可观察的状态) Computed values(计算">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mobx库">
+<meta property="og:url" content="http://example.com/2024/11/01/Engineering/mobx%E5%BA%93/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="自动获取源自应用state的数据 机制：事件调用actions，使用actions来修改state，然后自动更新，更新的值会触发对应的值变化 安装：mobx的介绍 搭档：React 通过提供机制把应用状态转换为可渲染组件树并对其进行渲染。而MobX提供机制来存储和更新应用状态供 React 使用。  核心概念 Observable state(可观察的状态) Computed values(计算">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-11-01T08:52:16.683Z">
+<meta property="article:modified_time" content="2024-11-01T09:04:36.900Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="Mobx库">
+
+
+<title >Mobx库</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-01 17:04:36"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            UUOVO<span>个人站点</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/test1/" target="">
+                            test1
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            Mobx库
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+        <a href="https://zh-hans.react.dev/" title="React" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-react"></i>
+        </a>
+    
+        <a href="https://zh.javascript.info/" title="Javascript" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node-js"></i>
+        </a>
+    
+        <a href="https://nodejs.cn/" title="Node" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            11/01
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            16:52
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <ul>
+<li>自动获取源自应用state的数据</li>
+<li>机制：事件调用actions，使用actions来修改state，然后自动更新，更新的值会触发对应的值变化</li>
+<li>安装：<a target="_blank" rel="noopener" href="https://cn.mobx.js.org/">mobx的介绍</a></li>
+<li>搭档：React 通过提供机制把应用状态转换为可渲染组件树并对其进行渲染。而MobX提供机制来存储和更新应用状态供 React 使用。</li>
+</ul>
+<h2 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h2><ul>
+<li><a href="#ref1">Observable state(可观察的状态)</a></li>
+<li><a href="#ref2">Computed values(计算值)</a></li>
+<li><a href="#ref3">React组件-@observer</a></li>
+<li><a href="#ref4">Reactions(反应)</a></li>
+<li><a href="#ref5">Actions(动作)</a></li>
+<li>自定义reactions<ul>
+<li>使用<a href="#ref6">autorun</a>、<a href="#ref7">reaction</a>和<a href="#ref8">when</a>来创建</li>
+</ul>
+</li>
+</ul>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>简单，可扩展</li>
+<li>保证参照完整性</li>
+<li>高效</li>
+</ul>
+<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ul>
+<li>将应用变成响应式的三个步骤<ul>
+<li>定义状态并使其可观察<ul>
+<li>使用observable</li>
+</ul>
+</li>
+<li>创建视图以响应状态的变化<ul>
+<li>使用@observer</li>
+</ul>
+</li>
+<li>更改状态</li>
+</ul>
+</li>
+</ul>
+<h2 id="observable"><a href="#observable" class="headerlink" title="observable"></a><b id="ref1" style="color: green">observable</b></h2><ul>
+<li>定义：使用<code>@observable</code>装饰器给现有的数据结构添加<code>可观察功能</code></li>
+</ul>
+<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><ul>
+<li><p>observable(value)</p>
+</li>
+<li><p>@observable classProperty &#x3D; value</p>
+</li>
+<li><h3 id="value"><a href="#value" class="headerlink" title="value"></a>value</h3><ul>
+<li><code>Map</code>: 会返回一个新的Observable Map<ul>
+<li>eg：const map &#x3D; observable.map({ key: “value”});map.set(“key”, “new value”);</li>
+</ul>
+</li>
+<li><code>数组</code>：会返回一个Observable Array<ul>
+<li>eg：const list &#x3D; observable([1,2,3])</li>
+</ul>
+</li>
+<li><code>没有原型的对象</code>： 会被克隆并且所有属性都会被转换成可观察的<ul>
+<li>eg:</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> person = <span class="title function_">observable</span>(&#123;</span><br><span class="line">	<span class="comment">// 观察的属性</span></span><br><span class="line">	<span class="attr">name</span>: <span class="string">&quot;cc&quot;</span>,</span><br><span class="line">	<span class="attr">age</span>: <span class="string">&#x27;23&#x27;</span>,</span><br><span class="line">	<span class="attr">show</span>: <span class="literal">false</span>,</span><br><span class="line">	<span class="comment">// 计算属性</span></span><br><span class="line">	<span class="keyword">get</span> <span class="title function_">labelText</span>() &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">show</span> ? <span class="string">`<span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span> age: <span class="subst">$&#123;<span class="variable language_">this</span>.age&#125;</span>`</span> : <span class="variable language_">this</span>.<span class="property">name</span> </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 动作</span></span><br><span class="line">	<span class="title function_">setAge</span>(<span class="params">age</span>) &#123;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">age</span> = age</span><br><span class="line">	&#125;</span><br><span class="line">&#125;, &#123;</span><br><span class="line">	<span class="attr">setAge</span>: action</span><br><span class="line">&#125;)</span><br><span class="line"><span class="title function_">autorun</span>(<span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(person.<span class="property">labelTExt</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>有原型的对象</code>(原值类型值和引用类型值)：会返回一个Boxed Observable。在构造函数中使用extendObservable 或在类中使用@observable<ul>
+<li>使用<code>.get()</code>可以<code>获取当前值</code>，使用<code>.set()</code>可以<code>更新值</code>，使用<code>antorun(()=&gt;&#123;&#125;)</code>来<code>监听</code>追踪值的<code>更改</code></li>
+<li>eg： const temperature &#x3D; observable.box(20);temperature.set(25)</li>
+</ul>
+</li>
+</ul>
+<h3 id="decorators"><a href="#decorators" class="headerlink" title="decorators"></a>decorators</h3><ul>
+<li>不使用observable，然后单独使用decorate来另外定义<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">	name = <span class="string">&quot;John&quot;</span></span><br><span class="line">	age = <span class="number">42</span></span><br><span class="line">	showAge = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">get</span> <span class="title function_">labelText</span>() &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">showAge</span> ? <span class="string">`<span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span> (age: <span class="subst">$&#123;<span class="variable language_">this</span>.age&#125;</span>)`</span> : <span class="variable language_">this</span>.<span class="property">name</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="title function_">setAge</span>(<span class="params">age</span>) &#123;</span><br><span class="line">			<span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用 decorate 时，所有字段都应该指定</span></span><br><span class="line"><span class="title function_">decorate</span>(<span class="title class_">Person</span>, &#123;</span><br><span class="line">	<span class="attr">name</span>: observable,</span><br><span class="line">	<span class="attr">age</span>: observable,</span><br><span class="line">	<span class="attr">showAge</span>: observable,</span><br><span class="line">	<span class="attr">labelText</span>: computed,</span><br><span class="line">	<span class="attr">setAge</span>: action</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="computed"><a href="#computed" class="headerlink" title="(@)computed"></a><b id="ref2" style="color: green">(@)computed</b></h2><ul>
+<li>定义：使用<code>@computed</code>装饰器或<code>(extend)Observable时调用的getter/setter</code>函数来<code>定义</code>数据发生变化时<code>自动更新的值</code></li>
+</ul>
+<h3 id="computed-与-autorun-的区别"><a href="#computed-与-autorun-的区别" class="headerlink" title="@computed 与 autorun 的区别"></a>@computed 与 autorun 的区别</h3><ul>
+<li>@computed：响应式调用的表达式，响应式的产生一个可以被其它observer使用的值</li>
+<li>autorun：响应式调用的表达式，与@computed区别，不产生新值，只想要效果</li>
+</ul>
+<h3 id="getter-与-setter"><a href="#getter-与-setter" class="headerlink" title="getter 与 setter"></a>getter 与 setter</h3><ul>
+<li>正常情况下的示例：@computed get total(){ retuan this.price * this.amount}</li>
+<li>正常情况下setter也不需要注解，因为是一个自动的动作</li>
+<li>setter不能用来直接改变计算属性的值，但是可以用来逆向衍生</li>
+<li><code>永远在getter之后定义setter</code></li>
+<li>observable.object 和 extendObservable 都会自动将 getter 属性推导成计算属性,所以这两种情况不用添加装饰器<ul>
+<li>示例<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> orderLine = observable.<span class="title function_">object</span>(&#123;</span><br><span class="line">	<span class="attr">price</span>:<span class="number">0</span>，</span><br><span class="line">	<span class="attr">amount</span>:<span class="number">1</span>,</span><br><span class="line">	<span class="keyword">get</span> <span class="title function_">total</span>() &#123;</span><br><span class="line">		retuan <span class="variable language_">this</span>.<span class="property">price</span> * <span class="variable language_">this</span>.<span class="property">amount</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">set</span> <span class="title function_">total</span>(<span class="params">total</span>) &#123; </span><br><span class="line">		<span class="comment">// 从total中推导出price</span></span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">price</span> = total / <span class="variable language_">this</span>.<span class="property">amount</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="computed-expression-函数-不常用"><a href="#computed-expression-函数-不常用" class="headerlink" title="computed(expression) 函数(不常用)"></a>computed(expression) 函数(不常用)</h3><ul>
+<li>使用场合：传递一个“在<code>observable.box</code>中”的计算值</li>
+<li>示例<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;observable, computed&#125; <span class="keyword">from</span> <span class="string">&quot;mobx&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> name = observable.<span class="title function_">box</span>(<span class="string">&quot;John&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> upperCaseName = <span class="title function_">computed</span>(<span class="function">() =&gt;</span></span><br><span class="line">    name.<span class="title function_">get</span>().<span class="title function_">toUpperCase</span>()</span><br><span class="line">);</span><br><span class="line"><span class="keyword">var</span> disposer = upperCaseName.<span class="title function_">observe</span>(<span class="function"><span class="params">change</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(change.<span class="property">newValue</span>));</span><br><span class="line">name.<span class="title function_">set</span>(<span class="string">&quot;Dave&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="第二参数对象的可选参"><a href="#第二参数对象的可选参" class="headerlink" title="第二参数对象的可选参"></a>第二参数对象的可选参</h3><ul>
+<li>name：字符串, 在 spy 和 MobX 开发者工具中使用的调试名称</li>
+<li>context：在提供的表达式中使用的 this</li>
+<li>set：要使用的setter函数。</li>
+<li>equals：比较前一个值和后一个值的函数，相等不评估</li>
+<li>requiresReaction：推荐为true</li>
+<li>keepAlive：慎用，会造成内存泄露</li>
+<li></li>
+</ul>
+<h3 id="内置比较器"><a href="#内置比较器" class="headerlink" title="内置比较器"></a>内置比较器</h3><ul>
+<li>comparer.identity: 使用恒等 (&#x3D;&#x3D;&#x3D;) 运算符来判定两个值是否相同。</li>
+<li>comparer.default: 等同于 comparer.identity，但还认为 NaN 等于 NaN 。</li>
+<li>comparer.structural: 执行深层结构比较以确定两个值是否相同。</li>
+</ul>
+<h2 id="Autorun-自定义reactions"><a href="#Autorun-自定义reactions" class="headerlink" title="Autorun(自定义reactions)"></a><b id="ref6" style="color:green">Autorun(自定义reactions)</b></h2><h3 id="第二参数对象的可选参-1"><a href="#第二参数对象的可选参-1" class="headerlink" title="第二参数对象的可选参"></a>第二参数对象的可选参</h3><ul>
+<li>delay：对reaction函数去抖动的数字，默认为0不抖动，以毫秒为单位</li>
+<li>name：字符串，用于在例如spy事件中用作reaction的名称</li>
+<li>onError： 处理reaction的错误</li>
+<li>scheduler：设置自定义调度器已决定如何调度autorun函数的重新运行</li>
+</ul>
+<h2 id="When-自定义reactions"><a href="#When-自定义reactions" class="headerlink" title="When(自定义reactions)"></a><b id="ref8" style="color:green">When(自定义reactions)</b></h2><ul>
+<li>语法：when(predicate: () &#x3D;&gt; boolean, effect?: () &#x3D;&gt; void, options?)</li>
+<li>when 观察并运行给定的 predicate，直到返回true。 一旦返回 true，给定的 effect 就会被执行，然后 autorunner(自动运行程序) 会被清理。 该函数返回一个清理器以提前取消自动运行程序。</li>
+</ul>
+<h3 id="when-promise"><a href="#when-promise" class="headerlink" title="when-promise"></a>when-promise</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不提供effect返回一个promise</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">await</span> <span class="title function_">when</span>(<span class="function">() =&gt;</span> that.<span class="property">isVisible</span>)</span><br><span class="line">    <span class="comment">// 等等..</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Reaction-自定义reactions"><a href="#Reaction-自定义reactions" class="headerlink" title="Reaction(自定义reactions)"></a><b id="ref7" style="color:green">Reaction(自定义reactions)</b></h2><ul>
+<li>antorun的变种，与anturun的区别，<code>创建时</code>reaction函数<code>不会直接运行</code>，只有在数据表达式<code>首次返回一个新值</code>后才会<code>运行</code>。在执行时访问任何observable都不会被追踪。</li>
+<li>用法：reaction(() &#x3D;&gt; data, (data, reaction) &#x3D;&gt; { sideEffect }, options?)</li>
+<li>简单理解：<code>reaction是computed(expression).observe(action(sideEffect)) 或 autorun(() =&gt; action(sideEffect)(expression)) 的语法糖。</code></li>
+</ul>
+<h3 id="用法解析"><a href="#用法解析" class="headerlink" title="用法解析"></a>用法解析</h3><ul>
+<li>参数1为data函数，用来追踪并返回数据作为第二个函数的输入。</li>
+<li>参数2为effect函数，接收的两个参数分别为<code>data函数返回的值</code>和<code>当前的reaction</code>,当前的reaction用来在执行期间清理reaction。<code>effect函数仅对data函数中访问的数据作出反应</code></li>
+<li>返回一个清理函数</li>
+</ul>
+<h3 id="options可选参"><a href="#options可选参" class="headerlink" title="options可选参"></a>options可选参</h3><ul>
+<li>fireImmediately: 布尔值，用来标识效果函数是否在数据函数第一次运行后立即触发。默认值是 false</li>
+<li>其他的同autorun一样</li>
+</ul>
+<h2 id="observer"><a href="#observer" class="headerlink" title="@observer"></a><b id="ref3" style="color: green">@observer</b></h2><ul>
+<li>用来将 React 组件转变成响应式组件，observer由mobx-react包提供</li>
+<li>示例：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@observer <span class="keyword">class</span> <span class="title class_">Timer</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.component</span> &#123;</span><br><span class="line">	<span class="title function_">render</span> (</span><br><span class="line">		<span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>seconds:&#123;this.props.timerData.second&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line">	)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>当observer需要组合其它装饰器或高阶组件时，请确保<code>observer是最深处(第一个应用)的装饰器</code>，否则不起效</li>
+<li>使用<code>@observer装饰器</code> 与 <code>observer(class Timer ... &#123;&#125;)</code> 效果一样</li>
+<li><code>陷阱</code>：使用以下方式初始化，组件不会有反应。<code>值需要通过引用来传递而不是通过字面量值来传递</code><ul>
+<li>React.render(<Timer timerData={timerData.secondsPassed} />, document.body)</li>
+</ul>
+</li>
+<li><code>无状态函数组件</code>：const Timer &#x3D; observer(({timerData}) &#x3D;&gt; <span>seconds:{timerData.second}</span>)</li>
+<li><code>可观察的局部组件状态</code>：在使用@observer的类中使用@observable来观察属性。响应式状态会被render调用，也会调用componentWillUpdate 和 componentDidUpdate</li>
+</ul>
+<h3 id="使用-inject-将组件连接到提供的-stores"><a href="#使用-inject-将组件连接到提供的-stores" class="headerlink" title="使用 inject 将组件连接到提供的 stores"></a>使用 inject 将组件连接到提供的 stores</h3><ul>
+<li>用法：inject(stores)(component) 或 @inject(stores) class Component…</li>
+<li>示例<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> colors = <span class="title function_">observable</span>(&#123;</span><br><span class="line">   <span class="attr">foreground</span>: <span class="string">&#x27;#000&#x27;</span>,</span><br><span class="line">   <span class="attr">background</span>: <span class="string">&#x27;#fff&#x27;</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">App</span> = (<span class="params"></span>) =&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">Provider</span> <span class="attr">colors</span>=<span class="string">&#123;colors&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">     <span class="tag">&lt;<span class="name">app</span> <span class="attr">stuff...</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">Provider</span>&gt;</span></span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Button</span> = <span class="title function_">inject</span>(<span class="string">&quot;colors&quot;</span>)(<span class="title function_">observer</span>(<span class="function">(<span class="params">&#123; colors, label, onClick &#125;</span>) =&gt;</span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">style</span>=<span class="string">&#123;&#123;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      <span class="attr">color:</span> <span class="attr">colors.foreground</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      <span class="attr">backgroundColor:</span> <span class="attr">colors.background</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    &#125;&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">onClick</span>=<span class="string">&#123;onClick&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">  &gt;</span>&#123;label&#125;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">));</span><br><span class="line"><span class="comment">// 稍后..</span></span><br><span class="line">colors.<span class="property">foreground</span> = <span class="string">&#x27;blue&#x27;</span>;</span><br><span class="line"><span class="comment">// 所有button都会更新</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="componentWillReact-生命周期钩子"><a href="#componentWillReact-生命周期钩子" class="headerlink" title="componentWillReact(生命周期钩子)"></a>componentWillReact(生命周期钩子)</h3><ul>
+<li>当组件因为它观察的数据发生了改变，它会重新渲染，这时componentWillReact会被触发，方便组件追溯并找到导致渲染的操作</li>
+</ul>
+<h2 id="MobX-会对什么作出反应？"><a href="#MobX-会对什么作出反应？" class="headerlink" title="MobX 会对什么作出反应？"></a><b id="ref4" style="color: green">MobX 会对什么作出反应？</b></h2><ul>
+<li>MobX 会对在<code>执行跟踪函数期间读取的任何现有的可观察属性做出反应。</code><ul>
+<li>追踪函数：是computed表达式、observer组件的render()和when、reaction 和anturun的第一个入参函数</li>
+<li>过程：只追踪哪些在函数执行时被读取的observable</li>
+<li>读取：对象属性的间接引用，可用. 或 [] 形式完成</li>
+</ul>
+</li>
+<li><code>只追踪同步</code>地访问数据</li>
+<li>MobX 只会为数据是<code>直接通过 render 存取的 observer 组件</code>进行数据<code>追踪</code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不接受参数，避免创建额外组件</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">MyComponent</span> = (<span class="params">&#123; message &#125;</span>) =&gt;</span><br><span class="line">	<span class="language-xml"><span class="tag">&lt;<span class="name">SomeContainer</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">		<span class="attr">title</span> = <span class="string">&#123;()</span> =&gt;</span></span></span><br><span class="line"><span class="language-xml">			<span class="tag">&lt;<span class="name">Observer</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">					&#123;() =&gt; <span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;message.title&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span>&#125;</span></span><br><span class="line"><span class="language-xml">			<span class="tag">&lt;/<span class="name">Observer</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">		&#125;</span></span><br><span class="line"><span class="language-xml">	/&gt;</span></span><br><span class="line">message.<span class="property">title</span> = <span class="string">&quot;Bar&quot;</span></span><br></pre></td></tr></table></figure>
+-<code> 避免在本地字段中缓存 observable</code></li>
+<li>不会有反应的<ul>
+<li>从observable获取的值，但是在追踪函数之外</li>
+<li>在异步调用的代码块中读取的observable</li>
+</ul>
+</li>
+</ul>
+<h2 id="Action"><a href="#Action" class="headerlink" title="Action"></a><b id="ref5" style="color: green">Action</b></h2><ul>
+<li>用法<ul>
+<li>action(fn)</li>
+<li>action(name, fn)</li>
+<li>@action classMethod() {}</li>
+<li>@action(name) classMethod () {}</li>
+<li>@action boundClassMethod &#x3D; (args) &#x3D;&gt; { body }</li>
+<li>@action(name) boundClassMethod &#x3D; (args) &#x3D;&gt; { body }</li>
+<li>@action.bound classMethod() {}<ul>
+<li>action.bound 不要和箭头函数一起使用；箭头函数已经是绑定过的并且不能重新绑定。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>使用<ul>
+<li>应该永远只对<code>修改</code>状态的函数使用动作。 只执行查找，过滤器等函数<code>不</code>应该被标记为动作</li>
+</ul>
+</li>
+</ul>
+<h3 id="编写异步-Actions"><a href="#编写异步-Actions" class="headerlink" title="编写异步 Actions"></a>编写异步 Actions</h3><ul>
+<li><p>@action <code>只对当前运行的函数作出反应</code>，而不会对当前运行函数所调用的<code>函数(不包含在当前函数之内)</code>作出反应</p>
+</li>
+<li><p>runInAction(name?, thunk)</p>
+<ul>
+<li>接收代码块并在异步动作中执行。对于即时创建和执行动作非常有用</li>
+</ul>
+</li>
+<li><p>promise 示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">mobx.<span class="title function_">configure</span>(&#123; <span class="attr">enforceActions</span>: <span class="literal">true</span> &#125;) <span class="comment">// 不允许在动作之外进行状态修改</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Store</span> &#123;</span><br><span class="line">	@observable githubProjects = []</span><br><span class="line">	@observable state = <span class="string">&quot;pending&quot;</span></span><br><span class="line">	@action</span><br><span class="line">	<span class="title function_">fetchProjects</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">githubProjects</span> = []</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">state</span> = <span class="string">&quot;pending&quot;</span></span><br><span class="line">		<span class="title function_">fetchGithubProjectsSomehow</span>().<span class="title function_">then</span>(<span class="variable language_">this</span>.<span class="property">fetchSuccess</span>, <span class="variable language_">this</span>.<span class="property">fetchError</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 内联方法，缺点不能进行类型推导</span></span><br><span class="line">	<span class="title function_">action</span>(<span class="string">&quot;fetchSuccess&quot;</span>, <span class="function"><span class="params">projects</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">const</span> filteredProjects = <span class="title function_">somePreprocessing</span>(projects)</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">githubProjects</span> = filteredProjects</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">state</span> = <span class="string">&quot;done&quot;</span></span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="title function_">action</span>(<span class="string">&quot;fetchError&quot;</span>,<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">state</span> = <span class="string">&quot;error&quot;</span></span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>async&#x2F;await</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">mobx.<span class="title function_">configure</span>(&#123; <span class="attr">enforceActions</span>: <span class="literal">true</span> &#125;) <span class="comment">// 不允许在动作之外进行状态修改</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Store</span> &#123;</span><br><span class="line">	@observable githubProjects = []</span><br><span class="line">	@observable state = <span class="string">&quot;pending&quot;</span></span><br><span class="line">	@action</span><br><span class="line">	<span class="keyword">async</span> <span class="title function_">fetchProjects</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">githubProjects</span> = []</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">state</span> = <span class="string">&quot;pending&quot;</span></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">const</span> projects = <span class="keyword">await</span> <span class="title function_">fetchGithubProjectsSomehow</span>()</span><br><span class="line">			<span class="keyword">const</span> filteredProjects = <span class="title function_">somePreprocessing</span>(projects)</span><br><span class="line">			<span class="comment">// await 之后，再次修改状态需要动作:</span></span><br><span class="line">			<span class="title function_">runInAction</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">					<span class="variable language_">this</span>.<span class="property">state</span> = <span class="string">&quot;done&quot;</span></span><br><span class="line">					<span class="variable language_">this</span>.<span class="property">githubProjects</span> = filteredProjects</span><br><span class="line">			&#125;)</span><br><span class="line">		&#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">			<span class="title function_">runInAction</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">					<span class="variable language_">this</span>.<span class="property">state</span> = <span class="string">&quot;error&quot;</span></span><br><span class="line">			&#125;)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>flows</p>
+</li>
+<li><p>使用 function * 来代替 async，使用 yield 代替 await</p>
+</li>
+<li><p>其它与async&#x2F;await差不多，只能作为函数使用，不能作为装饰器</p>
+</li>
+</ul>
+<h2 id="工具函数"><a href="#工具函数" class="headerlink" title="工具函数"></a>工具函数</h2><h3 id="toJS-value-options"><a href="#toJS-value-options" class="headerlink" title="toJS(value, options?)"></a>toJS(value, options?)</h3><ul>
+<li>作用：递归地将一个observable对象转换成javascript解构。支持observable数组、对象、映射和原始类型</li>
+<li>options：<ul>
+<li>exportMapsAsObjects 是否将observable映射序列化为对象(true) 或JavaScript Map对象(false).默认true</li>
+<li>detectCycles 如果监测到循环，则重现使用已经序列化的对象。可以防止无限递归。默认true</li>
+</ul>
+</li>
+</ul>
+<h3 id="extendObservable-target-properties-decorators-options"><a href="#extendObservable-target-properties-decorators-options" class="headerlink" title="extendObservable(target, properties, decorators?, options?)"></a>extendObservable(target, properties, decorators?, options?)</h3><ul>
+<li>作用：用来向已存在的目标对象添加observable属性。属性映射中的所有键对都会导致目标上的新的observable属性被初始化为给定值。属性映射中的任意getters都会转化成计算属性。</li>
+<li>使用deep:false使得新的属性变成浅的。即阻止它们的值自动转换成observables。</li>
+<li>observable.object(object) 实际上是 extendObservable({}, object) 的别名</li>
+</ul>
+<h3 id="创建observable数据结构和reactions"><a href="#创建observable数据结构和reactions" class="headerlink" title="创建observable数据结构和reactions"></a>创建observable数据结构和reactions</h3><ul>
+<li>Atoms可以用来通知MobX某些observable数据源被观察或发生了改变。当数据源被使用或不再使用时，MobX会通知atom</li>
+<li>多数场景下，可以通过创建普通的observable并使用工具onBecomeObserved 或 onBecomeUnobserved在Mobx开始追踪observable时接收通知来避免创建atom</li>
+</ul>
+<h3 id="Intercept-Observe"><a href="#Intercept-Observe" class="headerlink" title="Intercept &amp; Observe"></a>Intercept &amp; Observe</h3><ul>
+<li>作用：用来监测单个observable的变化。 intercept可以在变化作用域observable之前监测和修改变化。observe允许在observable变化之后拦截改变。</li>
+</ul>
+<h3 id="intercept-target-propertyName-interceptor"><a href="#intercept-target-propertyName-interceptor" class="headerlink" title="intercept(target,propertyName?, interceptor)"></a>intercept(target,propertyName?, interceptor)</h3><ul>
+<li>target: 监测的observable </li>
+<li>propertyName: 可选参数，用来指定某个属性进来拦截。注意，intercept(user.name, interceptor) 和 intercept(user, “name”, interceptor) 根本是完全不同的。前者尝试给 user.name(或许根本不是一个 observable) 里面的当前值添加一个拦截器，而后者拦截 user 的 name 属性的变化。</li>
+<li>interceptor: 在每次变化作用于 observable 后调用的回调函数。接收一个用来描述变化的对象。</li>
+</ul>
+<h3 id="Observe-target-propertyName-listener-invokeImmediately"><a href="#Observe-target-propertyName-listener-invokeImmediately" class="headerlink" title="Observe(target, propertyName?, listener, invokeImmediately?)"></a>Observe(target, propertyName?, listener, invokeImmediately?)</h3><ul>
+<li>target: 观察的 observable</li>
+<li>propertyName: 可选参数，用来指定某个属性进行观察。注意，observe(user.name, listener) 和 observe(user, “name”, listener) 根本是完全不同的。前者观察 user.name(或许根本不是一个 observable) 里面的当前值，而后者观察 user 的 name 属性。</li>
+<li>listener: 在<code>每次</code>变化作用于 observable 后调用的回调函数。接收一个用来描述变化的对象，除了装箱的 observable，它 <code>调用listener 的两个参数: newValue、oldValue</code>。</li>
+<li>invokeImmediately: 默认是 false。如果想直接使用 observable 的状态(而不是等待第一次变化)调用 listener 的话，把它设置为 true。不是所有类型的 observable 都支持。</li>
+<li>该函数返回一个disposer函数，当调用时取消观察者。</li>
+<li>observe 会响应对应的变动，而像是 autorun 或 reaction 则会对新值做出响应</li>
+</ul>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/Engineering/Next/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%B7%A5%E5%85%B7/">
+                    前端工程化工具
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/Engineering/Next/" class="trm-anima-link">
+                    Next --- React 开发框架
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>16:52</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/Engineering/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%B7%A5%E5%85%B7/">
+                    前端工程化工具
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/Engineering/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="trm-anima-link">
+                    设计模式
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>16:52</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            基于大数据，学习参考、练习，网站正在逐步完善中...
+        </div>
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

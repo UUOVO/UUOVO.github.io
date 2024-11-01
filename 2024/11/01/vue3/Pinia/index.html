@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="优势 dev-tools 支持 跟踪动作、突变的时间线 Store 出现在使用它们的组件中 time travel 和 更容易的调试   热模块更换 在不重新加载页面的情况下修改您的 Store 在开发时保持任何现有状态   插件：使用插件扩展 Pinia 功能 为 JS 用户提供适当的 TypeScript 支持或 autocompletion 服务器端渲染支持  与 vuex 3.x&amp;#x2F">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VUE3-Pinia">
+<meta property="og:url" content="http://example.com/2024/11/01/vue3/Pinia/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="优势 dev-tools 支持 跟踪动作、突变的时间线 Store 出现在使用它们的组件中 time travel 和 更容易的调试   热模块更换 在不重新加载页面的情况下修改您的 Store 在开发时保持任何现有状态   插件：使用插件扩展 Pinia 功能 为 JS 用户提供适当的 TypeScript 支持或 autocompletion 服务器端渲染支持  与 vuex 3.x&amp;#x2F">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-11-01T06:39:25.096Z">
+<meta property="article:modified_time" content="2024-11-01T08:44:40.700Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="vue3">
+
+
+<title >VUE3-Pinia</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-01 16:44:40"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            UUOVO<span>个人站点</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/test1/" target="">
+                            test1
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            VUE3-Pinia
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+        <a href="https://zh-hans.react.dev/" title="React" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-react"></i>
+        </a>
+    
+        <a href="https://zh.javascript.info/" title="Javascript" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node-js"></i>
+        </a>
+    
+        <a href="https://nodejs.cn/" title="Node" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            11/01
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            14:39
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h2><ul>
+<li><h3 id="dev-tools-支持"><a href="#dev-tools-支持" class="headerlink" title="dev-tools 支持"></a>dev-tools 支持</h3><ul>
+<li>跟踪动作、突变的时间线</li>
+<li>Store 出现在使用它们的组件中</li>
+<li>time travel 和 更容易的调试</li>
+</ul>
+</li>
+<li><h3 id="热模块更换"><a href="#热模块更换" class="headerlink" title="热模块更换"></a>热模块更换</h3><ul>
+<li>在不重新加载页面的情况下修改您的 Store</li>
+<li>在开发时保持任何现有状态</li>
+</ul>
+</li>
+<li><h3 id="插件：使用插件扩展-Pinia-功能"><a href="#插件：使用插件扩展-Pinia-功能" class="headerlink" title="插件：使用插件扩展 Pinia 功能"></a>插件：使用插件扩展 Pinia 功能</h3></li>
+<li><h3 id="为-JS-用户提供适当的-TypeScript-支持或-autocompletion"><a href="#为-JS-用户提供适当的-TypeScript-支持或-autocompletion" class="headerlink" title="为 JS 用户提供适当的 TypeScript 支持或 autocompletion"></a>为 JS 用户提供适当的 TypeScript 支持或 autocompletion</h3></li>
+<li><h3 id="服务器端渲染支持"><a href="#服务器端渲染支持" class="headerlink" title="服务器端渲染支持"></a>服务器端渲染支持</h3></li>
+</ul>
+<h2 id="与-vuex-3-x-4-x-对比"><a href="#与-vuex-3-x-4-x-对比" class="headerlink" title="与 vuex 3.x&#x2F;4.x 对比"></a>与 vuex 3.x&#x2F;4.x 对比</h2><ul>
+<li>mutations 不再存在</li>
+<li>自动注入、导入函数、调用函数</li>
+<li>支持ts，且内容都是类型化</li>
+<li>无需动态添加 Store，默认情况下它们都是动态的</li>
+<li>没有命名空间模块。</li>
+<li>没有module的嵌套结构</li>
+</ul>
+<h2 id="Store-是使用-defineStore-定义的，并且它需要一个唯一名称，作为第一个参数传递"><a href="#Store-是使用-defineStore-定义的，并且它需要一个唯一名称，作为第一个参数传递" class="headerlink" title="Store 是使用 defineStore() 定义的，并且它需要一个唯一名称，作为第一个参数传递"></a>Store 是使用 defineStore() 定义的，并且它需要一个唯一名称，作为第一个参数传递</h2><h3 id="定义一个Store"><a href="#定义一个Store" class="headerlink" title="定义一个Store"></a>定义一个Store</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineStore &#125; <span class="keyword">from</span> <span class="string">&#x27;pinia&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> useStore = <span class="title function_">defineStore</span>(<span class="string">&#x27;main&#x27;</span>,&#123;</span><br><span class="line">  <span class="attr">state</span>: <span class="function">() =&gt;</span> &#123; <span class="comment">//使用完整类型推断的箭头函数</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="comment">// 定义的属性会自动推断类型</span></span><br><span class="line">      <span class="attr">count</span>: <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">getters</span>: &#123;</span><br><span class="line">    <span class="attr">increment</span>: <span class="function">() =&gt;</span> &#123;&#125;,</span><br><span class="line">    <span class="title function_">doublePlusOne</span>(): <span class="built_in">number</span> &#123; <span class="comment">// 通过 this 访问,返回类型必须明确设置</span></span><br><span class="line">      <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">counter</span> * <span class="number">2</span> + <span class="number">1</span></span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">actions</span>: &#123;</span><br><span class="line">    <span class="attr">increment</span>: <span class="function">() =&gt;</span> &#123;&#125;,</span><br><span class="line">    <span class="keyword">async</span> <span class="title function_">registerUser</span>(<span class="params">login, password</span>) &#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">userData</span> = <span class="keyword">await</span> api.<span class="title function_">post</span>(&#123; login, password &#125;)</span><br><span class="line">        <span class="title function_">showTooltip</span>(<span class="string">`Welcome back <span class="subst">$&#123;<span class="variable language_">this</span>.userData.name&#125;</span>!`</span>)</span><br><span class="line">      &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        <span class="title function_">showTooltip</span>(error)</span><br><span class="line">        <span class="comment">// 让表单组件显示错误</span></span><br><span class="line">        <span class="keyword">return</span> error</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//页面</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineComponent</span>(&#123;</span><br><span class="line">  <span class="title function_">setup</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> store = <span class="title function_">useStore</span>()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">const</span> &#123; name, doubleCount &#125; = store   <span class="comment">// ❌ 不能解构，会破坏响应式</span></span><br><span class="line">    <span class="keyword">const</span> &#123; name, doubleCount &#125; = <span class="title function_">storeToRefs</span>(store) <span class="comment">// 可以解构，但跳过任何 action 或 非响应式（不是 ref/reactive）的属性</span></span><br><span class="line">    store.<span class="property">count</span>++ <span class="comment">// 直接读取和写入 state</span></span><br><span class="line">    store.$reset() <span class="comment">// 重置state到初始值</span></span><br><span class="line">    store.<span class="title function_">increment</span>()</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="comment">// 这将是响应式的</span></span><br><span class="line">      <span class="attr">doubleValue</span>: <span class="title function_">computed</span>(<span class="function">() =&gt;</span> store.<span class="property">doubleCount</span>),</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="在-Options-API-中使用-setup"><a href="#在-Options-API-中使用-setup" class="headerlink" title="在 Options API 中使用 setup()"></a>在 Options API 中使用 setup()</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineStore &#125; <span class="keyword">from</span> <span class="string">&#x27;pinia&#x27;</span>,</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> useCounterStore = <span class="title function_">defineStore</span>(<span class="string">&#x27;counterStore&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">state</span>: <span class="function">() =&gt;</span> (&#123;</span><br><span class="line">    <span class="attr">counter</span>: <span class="number">0</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 页面</span></span><br><span class="line"><span class="keyword">import</span> &#123; useCounterStore &#125; <span class="keyword">from</span> <span class="string">&#x27;../stores/counterStore&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="title function_">setup</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> counterStore = <span class="title function_">useCounterStore</span>()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123; counterStore &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">computed</span>: &#123;   <span class="comment">// getter</span></span><br><span class="line">    <span class="title function_">tripleCounter</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> counterStore.<span class="property">counter</span> * <span class="number">3</span></span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">methods</span>: &#123;  <span class="comment">// action</span></span><br><span class="line">    <span class="title function_">incrementAndPrint</span>(<span class="params"></span>) &#123;</span><br><span class="line">      counterStore.<span class="title function_">increment</span>()</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;New Count:&#x27;</span>, counterStore.<span class="property">count</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="在-Options-API-中不使用-setup"><a href="#在-Options-API-中不使用-setup" class="headerlink" title="在 Options API 中不使用 setup()"></a>在 Options API 中不使用 setup()</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; mapState &#125; <span class="keyword">from</span> <span class="string">&#x27;pinia&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; useCounterStore &#125; <span class="keyword">from</span> <span class="string">&#x27;../stores/counterStore&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">computed</span>: &#123;</span><br><span class="line">  💠 使用 <span class="title function_">mapState</span>() 映射为只读计算属性</span><br><span class="line">    <span class="comment">// 允许访问组件内部的 this.counter</span></span><br><span class="line">    <span class="comment">// 与从 store.counter 读取相同</span></span><br><span class="line">    ...<span class="title function_">mapState</span>(useCounterStore, &#123;</span><br><span class="line">      <span class="attr">myOwnName</span>: <span class="string">&#x27;counter&#x27;</span>,</span><br><span class="line">      <span class="comment">// 您还可以编写一个访问 store 的函数</span></span><br><span class="line">      <span class="attr">double</span>: <span class="function"><span class="params">store</span> =&gt;</span> store.<span class="property">counter</span> * <span class="number">2</span>,</span><br><span class="line">      <span class="comment">// 它可以正常读取“this”，但无法正常写入...</span></span><br><span class="line">      <span class="title function_">magicValue</span>(<span class="params">store</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> store.<span class="property">someGetter</span> + <span class="variable language_">this</span>.<span class="property">counter</span> + <span class="variable language_">this</span>.<span class="property">double</span></span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;),</span><br><span class="line">  💠 使用 <span class="title function_">mapWritableState</span>() 可以写入</span><br><span class="line">    <span class="comment">// 与从 store.counter 读取相同</span></span><br><span class="line">    ...<span class="title function_">mapWritableState</span>(useCounterStore, [<span class="string">&#x27;counter&#x27;</span>]) ,</span><br><span class="line">    <span class="comment">// 与上面相同，但将其注册为 this.myOwnName</span></span><br><span class="line">    ...<span class="title function_">mapWritableState</span>(useCounterStore, &#123;</span><br><span class="line">      <span class="attr">myOwnName</span>: <span class="string">&#x27;counter&#x27;</span>,</span><br><span class="line">    &#125;),</span><br><span class="line"></span><br><span class="line">    <span class="comment">//对于像数组这样的集合，不需要 mapWritableState()，除非用 cartItems = [] 替换整个数组</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">methods</span>:&#123;</span><br><span class="line">    ...<span class="title function_">mapActions</span>(useCounterStore, &#123; <span class="attr">myOwnName</span>: <span class="string">&#x27;doubleCounter&#x27;</span> &#125;),</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改-store-–更改都出现在-devtool"><a href="#修改-store-–更改都出现在-devtool" class="headerlink" title="修改 store –更改都出现在 devtool"></a>修改 store –更改都出现在 devtool</h2><pre><code>1、直接用 store.counter++
+2、调用 $patch 使用部分“state”对象同时应用多个更改
+</code></pre>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cartStore.$patch(<span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">  state.<span class="property">items</span>.<span class="title function_">push</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;shoes&#x27;</span>, <span class="attr">quantity</span>: <span class="number">1</span> &#125;)</span><br><span class="line">  state.<span class="property">hasChanged</span> = <span class="literal">true</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="替换state-—-state-替换整个state"><a href="#替换state-—-state-替换整个state" class="headerlink" title="替换state — $state 替换整个state"></a>替换state — $state 替换整个state</h2><pre><code>store.$state = &#123; counter: 666, name: &#39;Paimon&#39; &#125;
+</code></pre>
+<h2 id="订阅状态-—-subscribe-只会在-patches-之后触发一次"><a href="#订阅状态-—-subscribe-只会在-patches-之后触发一次" class="headerlink" title="订阅状态 — $subscribe(): 只会在 patches 之后触发一次"></a>订阅状态 — $subscribe(): 只会在 patches 之后触发一次</h2><h2 id="将参数传递给getter-—-此操作-getter-不再缓存"><a href="#将参数传递给getter-—-此操作-getter-不再缓存" class="headerlink" title="将参数传递给getter   — 此操作 getter 不再缓存"></a>将参数传递给getter   — 此操作 getter 不再缓存</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//store</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> useState = <span class="title function_">defineStore</span>(<span class="string">&#x27;main&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">getters</span>: &#123;</span><br><span class="line">    <span class="attr">getUserById</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="function">(<span class="params">userId</span>) =&gt;</span> state.<span class="property">users</span>.<span class="title function_">find</span>(<span class="function">(<span class="params">user</span>) =&gt;</span> user.<span class="property">id</span> === userId)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//页面</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="title function_">setup</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> store = <span class="title function_">useStore</span>()</span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="attr">getUserById</span>: store.<span class="property">getUserById</span> &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>user 2 : &#123;&#123;getUserById(2)&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="访问其他store的getter-action"><a href="#访问其他store的getter-action" class="headerlink" title="访问其他store的getter&#x2F;action"></a>访问其他store的getter&#x2F;action</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; useOtherStore &#125; <span class="keyword">from</span> <span class="string">&#x27;./other-store&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> useStore = <span class="title function_">defineStore</span>(<span class="string">&#x27;main&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">state</span>: <span class="function">() =&gt;</span> (&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;),</span><br><span class="line">  <span class="attr">getters</span>: &#123;</span><br><span class="line">    <span class="title function_">otherGetter</span>(<span class="params">state</span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> otherStore = <span class="title function_">useOtherStore</span>()</span><br><span class="line">      <span class="keyword">return</span> state.<span class="property">localData</span> + otherStore.<span class="property">data</span></span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">actions</span>: &#123;</span><br><span class="line">    <span class="keyword">async</span> <span class="title function_">fetchUserPreferences</span>(<span class="params">preferences</span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> auth = <span class="title function_">useAuthStore</span>()</span><br><span class="line">      <span class="keyword">if</span> (auth.<span class="property">isAuthenticated</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">preferences</span> = <span class="keyword">await</span> <span class="title function_">fetchPreferences</span>()</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;User must be authenticated&#x27;</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="订阅Actions-—-store-onAction"><a href="#订阅Actions-—-store-onAction" class="headerlink" title="订阅Actions — store.$onAction()"></a>订阅Actions — store.$onAction()</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> unsubscribe = someStore.$onAction(</span><br><span class="line">  <span class="function">(<span class="params">&#123;</span></span></span><br><span class="line"><span class="params"><span class="function">    name, // action 的名字</span></span></span><br><span class="line"><span class="params"><span class="function">    store, // store 实例</span></span></span><br><span class="line"><span class="params"><span class="function">    args, // 调用这个 action 的参数</span></span></span><br><span class="line"><span class="params"><span class="function">    after, // 在这个 action 执行完毕之后，执行这个函数</span></span></span><br><span class="line"><span class="params"><span class="function">    onError, // 在这个 action 抛出异常的时候，执行这个函数</span></span></span><br><span class="line"><span class="params"><span class="function">  &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 记录开始的时间变量</span></span><br><span class="line">    <span class="keyword">const</span> startTime = <span class="title class_">Date</span>.<span class="title function_">now</span>()</span><br><span class="line">    <span class="comment">// 如果 action 成功并且完全运行后，after 将触发。</span></span><br><span class="line">    <span class="comment">// 它将等待任何返回的 promise</span></span><br><span class="line">    <span class="title function_">after</span>(<span class="function">(<span class="params">result</span>) =&gt;</span> &#123;&#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果 action 抛出或返回 Promise.reject ，onError 将触发</span></span><br><span class="line">    <span class="title function_">onError</span>(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;&#125;)</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 手动移除订阅</span></span><br><span class="line"><span class="title function_">unsubscribe</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 页面</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="title function_">setup</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> someStore = <span class="title function_">useSomeStore</span>()</span><br><span class="line">    <span class="comment">//第二个参数true ，此订阅将在组件卸载后保留</span></span><br><span class="line">    someStore.$onAction(callback,<span class="literal">true</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createPinia &#125; <span class="keyword">from</span> <span class="string">&#x27;pinia&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">SecretPiniaPlugin</span>(<span class="params"></span>) &#123;    <span class="comment">// 插件</span></span><br><span class="line">  <span class="keyword">return</span> &#123; <span class="attr">secret</span>: <span class="string">&#x27;the cake is a lie&#x27;</span> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> pinia = <span class="title function_">createPinia</span>()</span><br><span class="line">pinia.<span class="title function_">use</span>(<span class="title class_">SecretPiniaPlugin</span>)  <span class="comment">//将插件添加到pinia实例</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 页面</span></span><br><span class="line"><span class="keyword">const</span> store = <span class="title function_">useStore</span>()</span><br><span class="line">store.<span class="property">secret</span></span><br></pre></td></tr></table></figure>
+<h3 id="介绍：-Pinia-插件是一个函数，可以选择返回要添加到-store-的属性。"><a href="#介绍：-Pinia-插件是一个函数，可以选择返回要添加到-store-的属性。" class="headerlink" title="介绍： Pinia 插件是一个函数，可以选择返回要添加到 store 的属性。"></a>介绍： Pinia 插件是一个<code>函数</code>，可以选择<code>返回</code>要<code>添加</code>到 <code>store</code> 的属性。</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">myPiniaPlugin</span>(<span class="params">context</span>) &#123;</span><br><span class="line">  context.<span class="property">pinia</span> <span class="comment">// 使用 `createPinia()` 创建的 pinia</span></span><br><span class="line">  context.<span class="property">app</span> <span class="comment">// 使用 `createApp()` 创建的当前应用程序（仅限 Vue 3）</span></span><br><span class="line">  context.<span class="property">store</span> <span class="comment">// 插件正在扩充的 store</span></span><br><span class="line">  context.<span class="property">options</span> <span class="comment">// 定义存储的选项对象传递给`defineStore()`</span></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="扩充store"><a href="#扩充store" class="headerlink" title="扩充store"></a>扩充store</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、简单的在插件中返回它们的对象来为每个store添加属性</span><br><span class="line"> pinia.<span class="title function_">use</span>(<span class="function">() =&gt;</span> (&#123;<span class="attr">hello</span>:<span class="string">&#x27;world&#x27;</span>&#125;))</span><br><span class="line"><span class="number">2</span>、直接在store上设置属性</span><br><span class="line">  pinia.<span class="title function_">use</span>(<span class="function">(<span class="params">&#123; store &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">    store.<span class="property">hello</span> = <span class="string">&#x27;world&#x27;</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">每个store都是用reactive包装，自动展开任何<span class="title class_">Ref</span>(<span class="title function_">ref</span>(),<span class="title function_">computed</span>(,...))</span><br><span class="line"><span class="keyword">const</span> shareRef = <span class="title function_">ref</span>(<span class="string">&#x27;shared&#x27;</span>)</span><br><span class="line">pinia.<span class="title function_">use</span>(<span class="function">(<span class="params">&#123;store&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  store.<span class="property">hello</span> = <span class="title function_">ref</span>(<span class="string">&#x27;secret&#x27;</span>)</span><br><span class="line">  store.<span class="property">hello</span> <span class="comment">// secret</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 所有store都共享 shared属性</span></span><br><span class="line">  store.<span class="property">shared</span> = sharedRef</span><br><span class="line">  store.<span class="property">shared</span> <span class="comment">// shared</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="添加新状态"><a href="#添加新状态" class="headerlink" title="添加新状态"></a>添加新状态</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">添加位置：</span><br><span class="line">  在store上，可以使用store.<span class="property">myState</span>访问</span><br><span class="line">  在store.<span class="property">$state</span>上，在<span class="variable constant_">SSR</span>期间被序列化</span><br><span class="line">共享ref或computed属性：</span><br><span class="line"><span class="keyword">const</span> globalSecret = <span class="title function_">ref</span>(<span class="string">&#x27;secret&#x27;</span>)</span><br><span class="line">pinia.<span class="title function_">use</span>(<span class="function">(<span class="params">&#123;store&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// secret在所有state之间共享</span></span><br><span class="line">  store.<span class="property">$state</span>.<span class="property">secret</span> = globalSecret</span><br><span class="line">  store.<span class="property">secret</span> = globalSecret</span><br><span class="line">  store.<span class="property">router</span> = <span class="title function_">markRaw</span>(router) <span class="comment">// 添加外部插件</span></span><br><span class="line">  store.$subscribe(<span class="function">()=&gt;</span>&#123;&#125;)  <span class="comment">// 在存储变化的时候执行</span></span><br><span class="line">  store.$onAction(<span class="function">()=&gt;</span>&#123;&#125;) <span class="comment">// 在 action 的时候执行</span></span><br><span class="line"></span><br><span class="line">  store.<span class="property">secret</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">注意：插件中发生的状态更改或添加（包括调用store.$patch()）发生在存储处于活动状态之前，因此不会触发任何订阅。</span><br></pre></td></tr></table></figure>
+<h2 id="在组件外使用存储"><a href="#在组件外使用存储" class="headerlink" title="在组件外使用存储"></a>在组件外使用存储</h2><ul>
+<li><h3 id="单页应用程序"><a href="#单页应用程序" class="headerlink" title="单页应用程序"></a>单页应用程序</h3><ul>
+<li>没有进行任何 SSR（服务器端渲染），则在使用 app.use(pinia) 安装 pinia 插件后，任何useStore() 调用都将起作用：</li>
+</ul>
+</li>
+<li><h3 id="服务端渲染应用"><a href="#服务端渲染应用" class="headerlink" title="服务端渲染应用"></a>服务端渲染应用</h3><ul>
+<li>必须将 pinia 实例传递给 useStore()</li>
+</ul>
+</li>
+</ul>
+<h2 id="服务端渲染"><a href="#服务端渲染" class="headerlink" title="服务端渲染"></a>服务端渲染</h2><h3 id="vue-and-vite"><a href="#vue-and-vite" class="headerlink" title="vue and vite"></a>vue and vite</h3><ol>
+<li>只要在 setup 函数、getters 和 actions 的顶部调用 useStore() 函数，使用 Pinia 创建store应该可以立即用于 SSR<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineComponent</span>(&#123;</span><br><span class="line">  <span class="title function_">setup</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> main = <span class="title function_">useMainStore</span>()</span><br><span class="line">    <span class="keyword">return</span> &#123; main &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>在 setup() 之外使用存储：则需要将 pinia 实例 已传递给应用程序 传递给 useStore() 函数调用<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> pinia = <span class="title function_">createPinia</span>()</span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">createApp</span>(<span class="title class_">App</span>)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(router)</span><br><span class="line">app.<span class="title function_">use</span>(pinia)</span><br><span class="line"></span><br><span class="line">router.<span class="title function_">beforeEach</span>(<span class="function">(<span class="params">to</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> main = <span class="title function_">useMainStore</span>(pinia)</span><br><span class="line">  <span class="keyword">if</span> (to.<span class="property">meta</span>.<span class="property">requiresAuth</span> &amp;&amp; !main.<span class="property">isLoggedIn</span>) <span class="keyword">return</span> <span class="string">&#x27;/login&#x27;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>Pinia 可以方便地将自身作为 $pinia 添加到您的应用程序中，以便您可以在诸如 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">serverPrefetch</span>() 之类的函数中使用它：</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="title function_">serverPrefetch</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> store = <span class="title function_">useStore</span>(<span class="variable language_">this</span>.<span class="property">$pinia</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>State hydration<ul>
+<li>为了 hydration 初始状态，需要确保 rootState 包含在 HTML 中的某个位置，以便 Pinia 稍后获取它。出于安全原因，应该转义状态。可以使用 JSON.stringify()&#x2F;JSON.parse() 序列化和解析你的状态</li>
+</ul>
+</li>
+</ol>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/vue3/vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/vue/">
+                    vue
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/vue3/vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/" class="trm-anima-link">
+                    VUE3-快速上手
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>14:39</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/vue2/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E7%9A%84%E6%80%BB%E7%BB%93/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/vue/">
+                    vue
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/vue2/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E7%9A%84%E6%80%BB%E7%BB%93/" class="trm-anima-link">
+                    VUE2-组件通信的总结
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>13:58</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            基于大数据，学习参考、练习，网站正在逐步完善中...
+        </div>
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

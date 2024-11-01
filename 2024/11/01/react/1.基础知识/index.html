@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="组件间通信 — 父传子(通过props传递) 不使用hook 父组件通过子组件标签定义的属性，向子组件传递数据，子组件通过{this.props.属性}来获取，事件写法差不多 示例：1234567891011&#x2F;&#x2F; 在父组件中调用子组件&lt;Children name&#x3D;&quot;父传子&quot; &#x2F;&gt;&#x2F;&#x2F;子组件export const Children extends Component">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React-基础知识">
+<meta property="og:url" content="http://example.com/2024/11/01/react/1.%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="组件间通信 — 父传子(通过props传递) 不使用hook 父组件通过子组件标签定义的属性，向子组件传递数据，子组件通过{this.props.属性}来获取，事件写法差不多 示例：1234567891011&#x2F;&#x2F; 在父组件中调用子组件&lt;Children name&#x3D;&quot;父传子&quot; &#x2F;&gt;&#x2F;&#x2F;子组件export const Children extends Component">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/404.jpg">
+<meta property="article:published_time" content="2024-11-01T01:41:47.781Z">
+<meta property="article:modified_time" content="2024-11-01T02:11:05.992Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/404.jpg">
+
+    <meta name="keywords" content="react">
+
+
+<title >React-基础知识</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-01 10:11:05"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            UUOVO<span>个人站点</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/test1/" target="">
+                            test1
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            React-基础知识
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+        <a href="https://zh-hans.react.dev/" title="React" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-react"></i>
+        </a>
+    
+        <a href="https://zh.javascript.info/" title="Javascript" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node-js"></i>
+        </a>
+    
+        <a href="https://nodejs.cn/" title="Node" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            11/01
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            09:41
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h3 id="组件间通信-—-父传子-通过props传递"><a href="#组件间通信-—-父传子-通过props传递" class="headerlink" title="组件间通信 — 父传子(通过props传递)"></a>组件间通信 — 父传子(通过props传递)</h3><ul>
+<li><h3 id="不使用hook"><a href="#不使用hook" class="headerlink" title="不使用hook"></a>不使用hook</h3><ul>
+<li>父组件通过子组件标签定义的属性，向子组件传递数据，子组件通过{this.props.属性}来获取，事件写法差不多</li>
+<li>示例：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在父组件中调用子组件</span></span><br><span class="line">&lt;<span class="title class_">Children</span> name=<span class="string">&quot;父传子&quot;</span> /&gt;</span><br><span class="line"><span class="comment">//子组件</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">Children</span> <span class="keyword">extends</span> <span class="title class_">Component</span> &#123;</span><br><span class="line">	<span class="title function_">contructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">		<span class="variable language_">super</span>(props)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="title function_">render</span>(</span><br><span class="line">		<span class="keyword">return</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;this.props.name&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>)</span><br><span class="line">	)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><h3 id="💚使用hook"><a href="#💚使用hook" class="headerlink" title="💚使用hook"></a>💚使用hook</h3><ul>
+<li>父组件在子组件标签上通过子组件定义的事件或属性上传递，子组件使用解构从props对象中拿到对应变量</li>
+<li>示例：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 父组件</span></span><br><span class="line"><span class="keyword">const</span> parent = <span class="title function_">memo</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> (</span><br><span class="line">	<span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">		<span class="tag">&lt;<span class="name">Child</span> <span class="attr">title</span>=<span class="string">&quot;我是父组件传递给子组件的变量&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">	)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 子组件</span></span><br><span class="line">interface <span class="title class_">IChildProps</span> &#123;</span><br><span class="line">	<span class="attr">title</span>: string</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Child</span> = memo&lt;<span class="title class_">IChildProps</span>&gt;(<span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">const</span> &#123; title &#125; = props</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">Child</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="组件间通信-—-子传父"><a href="#组件间通信-—-子传父" class="headerlink" title="组件间通信 — 子传父"></a>组件间通信 — 子传父</h3><ul>
+<li>子组件定义事件，通过参数传递，父组件在子组件标签中通过箭头函数拿到参数，完成传递</li>
+<li><h3 id="不使用hook-1"><a href="#不使用hook-1" class="headerlink" title="不使用hook"></a>不使用hook</h3></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 父组件</span></span><br><span class="line"><span class="attr">handleEmail</span>: <span class="keyword">function</span>(<span class="params">val</span>)&#123;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;<span class="attr">email</span>: val&#125;);</span><br><span class="line">&#125;,</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">Child</span> <span class="attr">name</span>=<span class="string">&quot;email&quot;</span> <span class="attr">handleEmail</span>=<span class="string">&#123;this.handleEmail.bind(this)&#125;/</span>&gt;</span></span></span><br><span class="line"><span class="comment">// 子组件</span></span><br><span class="line"><span class="keyword">var</span> <span class="title class_">Child</span> = <span class="title class_">React</span>.<span class="title function_">createClass</span>(&#123;</span><br><span class="line">	<span class="attr">handleVal</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="keyword">var</span> val = <span class="variable language_">this</span>.<span class="property">refs</span>.<span class="property">emailDom</span>.<span class="property">value</span>;</span><br><span class="line">		val = val.<span class="title function_">replace</span>(<span class="regexp">/[^0-9|a-z|\@|\.]/ig</span>,<span class="string">&quot;&quot;</span>);</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">props</span>.<span class="title function_">handleEmail</span>(val);</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">render</span>: <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="keyword">return</span> (</span><br><span class="line">		<span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">			请输入邮箱：<span class="tag">&lt;<span class="name">input</span> <span class="attr">ref</span>=<span class="string">&quot;emailDom&quot;</span> <span class="attr">onChange</span>=<span class="string">&#123;this.handleVal&#125;/</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">	)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="💚使用hook-1"><a href="#💚使用hook-1" class="headerlink" title="💚使用hook"></a>💚使用hook</h3></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 父组件</span></span><br><span class="line"><span class="keyword">const</span> parent = <span class="title function_">memo</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">const</span> <span class="title function_">receiveMessage</span> = (<span class="params">value: string</span>) =&gt; &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(value)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">Child</span> <span class="attr">sendMessage</span>=<span class="string">&#123;(value:string)</span> =&gt;</span> receiveMessage(value)&#125; /&gt;</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 子组件</span></span><br><span class="line">interface <span class="title class_">IChildProps</span> &#123;</span><br><span class="line">	<span class="attr">sendMessage</span>: <span class="function">(<span class="params">value: string</span>) =&gt;</span> <span class="keyword">void</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Child</span> = memo&lt;<span class="title class_">IChildProps</span>&gt;(<span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">const</span> &#123; sendMessage &#125; = props</span><br><span class="line">	<span class="keyword">const</span> [title, setTitle] = <span class="title function_">useState</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">	<span class="keyword">const</span> <span class="title function_">handleClick</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">		<span class="title function_">sendMessage</span>(title)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> (<span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> handleClick()&#125;&gt;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">Child</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="给组件添加交互功能-箭头函数"><a href="#给组件添加交互功能-箭头函数" class="headerlink" title="给组件添加交互功能(箭头函数)"></a>给组件添加交互功能(箭头函数)</h3><ul>
+<li>在组件的标签中定义一个事件 onclick&#x3D; {() &#x3D;&gt; {}} 的prop</li>
+</ul>
+<h3 id="组件记住被交互过-state"><a href="#组件记住被交互过-state" class="headerlink" title="组件记住被交互过(state)"></a>组件<code>记住</code>被交互过(state)</h3><ul>
+<li><h3 id="不使用hook-2"><a href="#不使用hook-2" class="headerlink" title="不使用hook"></a>不使用hook</h3><ul>
+<li>在组件的构造函数上设置this.state来初始化state(构造函数必搭配super(props))  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">	<span class="variable language_">super</span>(props);</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">		<span class="attr">value</span>: <span class="literal">null</span>,</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>将组件中要记住的值用this.props.xxx替换为this.state.xxx</li>
+<li>将对应的监听事件改为 onClick&#x3D;{() &#x3D;&gt; this.setState({value: ‘X’})}</li>
+</ul>
+</li>
+<li><h3 id="💚使用hook-2"><a href="#💚使用hook-2" class="headerlink" title="💚使用hook"></a>💚使用hook</h3><ul>
+<li>示例：const [state, setState] &#x3D; useState(null)</li>
+</ul>
+</li>
+</ul>
+<h3 id="不可变性"><a href="#不可变性" class="headerlink" title="不可变性!!!"></a>不可变性!!!</h3><ul>
+<li>用新数据替换旧数据(仍保留原数据)</li>
+<li>时间旅行(撤销和恢复)</li>
+<li>跟踪数据的改变</li>
+<li>创建pure components,可确定不可变数据是否改变,从而确定何时重新渲染</li>
+</ul>
+<h3 id="时间旅行"><a href="#时间旅行" class="headerlink" title="时间旅行"></a>时间旅行</h3><ul>
+<li>保存历史记录 — slice()保存副本到history</li>
+<li>将state提升到顶层,把原本的state改为props</li>
+<li>(已经记录完)展示历史步骤记录 — map()</li>
+</ul>
+<h3 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h3><ul>
+<li>语法: &lt;标签&gt;文本,{变量&#x2F;函数}&lt;&#x2F;标签&gt;,与js混合用</li>
+<li>字符串字面量用””,表达式{}</li>
+<li>示例：<div>示例,{title},{fn()}</div></li>
+<li>JSX防止注入攻击</li>
+<li>JSX转译为React.createElement()函数调用</li>
+</ul>
+<h3 id="元素渲染"><a href="#元素渲染" class="headerlink" title="元素渲染"></a>元素渲染</h3><ul>
+<li>元素是构成 React 应用的最小砖块</li>
+<li>React元素是不可变元素</li>
+</ul>
+<h3 id="组件-props"><a href="#组件-props" class="headerlink" title="组件 &amp; props"></a>组件 &amp; props</h3><ul>
+<li><h3 id="函数组件"><a href="#函数组件" class="headerlink" title="函数组件"></a>函数组件</h3></li>
+<li>只包含一个render方法并且不包含state时使用<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Welcome</span>(<span class="params">props</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, &#123;props.name&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><h3 id="class组件"><a href="#class组件" class="headerlink" title="class组件"></a>class组件</h3></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Welcome</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">	<span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, &#123;this.props.name&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>函数组件与class组件在React中是等效</li>
+<li>渲染组件(用户自定义组件)–<code>组件名称必须大写</code></li>
+<li>组合组件: 在一个组件中使用组件</li>
+<li>提取组件: 拆分代码,形成组合组件套娃模式</li>
+</ul>
+<h3 id="State"><a href="#State" class="headerlink" title="State"></a>State</h3><ul>
+<li>state被称为局部或封装的原因:<ul>
+<li>除了拥有并设置了它的组件，其他组件都无法访问和知道某个组件是什么状态</li>
+</ul>
+</li>
+<li>❌不能直接修改state<ul>
+<li>⭕使用this.setState({}),构造函数是唯一可以给state赋值的</li>
+</ul>
+</li>
+<li>❌this.props 和 this.state 可能会异步更新<ul>
+<li>⭕让setState()接收一个函数而不是一个对象</li>
+<li>this.setState((state, props) &#x3D;&gt; {counter: state.counter + props.increment});</li>
+</ul>
+</li>
+<li>state的更新会被合并:使用setState会浅合并</li>
+<li>数据是向下流动的: <ul>
+<li>组件可以选择把state作为props向下传递给它的子组件,但子组件不知道它来自的是父组件的state还是props,还是手动输入,这通常被叫做”自上而下”或是”单向”的数据流.</li>
+</ul>
+</li>
+</ul>
+<h3 id="浅合并-深合并"><a href="#浅合并-深合并" class="headerlink" title="浅合并 &amp; 深合并"></a>浅合并 &amp; 深合并</h3><ul>
+<li><code>浅合并</code>:有多层嵌套的情况下,第一层合并且替换,第二层及以下直接替换不合并</li>
+<li><code>深合并</code>:有多层嵌套的情况下,每一层合并且替换</li>
+</ul>
+<h3 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h3><ul>
+<li><h3 id="与DOM-元素事件处理不同处"><a href="#与DOM-元素事件处理不同处" class="headerlink" title="与DOM 元素事件处理不同处"></a>与DOM 元素事件处理不同处</h3><ul>
+<li>命名采用小驼峰式(aaaBaa)</li>
+<li>传入一个函数作为事件处理函数 onClick&#x3D;{ 函数名 }</li>
+<li>不能通过返回false的方式阻止默认行为必须显式使用preventDefault<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">ActionLink</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">handleClick</span>(<span class="params">e</span>) &#123;</span><br><span class="line">		e.<span class="title function_">preventDefault</span>(); <span class="comment">// 阻止默认事件</span></span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;The link was clicked.&#x27;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> (</span><br><span class="line">		<span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span> <span class="attr">onClick</span>=<span class="string">&#123;handleClick&#125;</span>&gt;</span> Click me <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line">	);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>像onClick&#x3D;{this.handleClick}这种形式,需要绑定this,否则this为undefined<ul>
+<li>解决方案:<ul>
+<li>💚使用箭头函数 onClick&#x3D;{() &#x3D;&gt; this.handleClick()}</li>
+<li>在constructor中添加 this.handleClick &#x3D; this.handleClick.bind(this);</li>
+<li>使用实验性的class fields语法handleClick &#x3D; () &#x3D;&gt; {console.log(‘this is:’, this);}</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>监听器:初始渲染时添加</li>
+<li><h3 id="向事件处理程序传递参数"><a href="#向事件处理程序传递参数" class="headerlink" title="向事件处理程序传递参数"></a>向事件处理程序传递参数</h3><ul>
+<li>显式：&lt;button onClick&#x3D;{(e) &#x3D;&gt; this.deleteRow(id, e)}&gt;Delete Row</button> </li>
+<li>隐式：&lt;button onClick&#x3D;{this.deleteRow.bind(this, id)}&gt;Delete Row</button></li>
+</ul>
+</li>
+<li><h3 id="条件渲染-if-元素变量-三目运算符"><a href="#条件渲染-if-元素变量-三目运算符" class="headerlink" title="条件渲染 ( if 元素变量 || &amp;&amp; || 三目运算符 )"></a>条件渲染 ( if 元素变量 || &amp;&amp; || 三目运算符 )</h3></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">	&#123;list.<span class="property">length</span> &amp;&amp; (<span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>条件成立渲染，不成立跳过<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>) &#125;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="阻止组件的渲染-隐藏组件-—-在想要隐藏的组件中判断-直接-return-null"><a href="#阻止组件的渲染-隐藏组件-—-在想要隐藏的组件中判断-直接-return-null" class="headerlink" title="阻止组件的渲染(隐藏组件) —-在想要隐藏的组件中判断,直接 return null;"></a>阻止组件的渲染(隐藏组件) —-在想要隐藏的组件中判断,直接 return null;</h3></li>
+</ul>
+<h3 id="列表-Key"><a href="#列表-Key" class="headerlink" title="列表 &amp; Key"></a>列表 &amp; Key</h3><ul>
+<li><h3 id="渲染多个组件"><a href="#渲染多个组件" class="headerlink" title="渲染多个组件"></a>渲染多个组件</h3></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> listItems = numbers.<span class="title function_">map</span>(<span class="function">(<span class="params">number</span>) =&gt;</span></span><br><span class="line">	<span class="language-xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&#123;number.toString&#125;</span>&gt;</span>&#123;number&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">);</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span>&#123;listItems&#125;<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="基础列表组件"><a href="#基础列表组件" class="headerlink" title="基础列表组件"></a>基础列表组件</h3><ul>
+<li>将上面的方法改成一个组件,直接调用该组件</li>
+</ul>
+</li>
+<li>key – 唯一标识</li>
+<li>key在数组的上下文中被指定,只是兄弟节点之间必须唯一(两个不同数组可以使用相同key)</li>
+<li>key会传递给React,不会传递给组件.需要key属性的值,要用其它属性名显式传递</li>
+<li>JSX允许大括号中前任任何表达式,可以内联map()返回的结果</li>
+</ul>
+<h3 id="受控组件-非受控组件"><a href="#受控组件-非受控组件" class="headerlink" title="受控组件 | 非受控组件"></a>受控组件 | 非受控组件</h3><ul>
+<li>受控组件：将状态变化交由React处理的组件，通过props获取其当前值，并通过回调函数通知变化</li>
+<li>非受控组件：通过ref引用获取的组件，使用DOM节点处理(ref)</li>
+</ul>
+<h3 id="表单-受控组件"><a href="#表单-受控组件" class="headerlink" title="表单(受控组件)"></a>表单(受控组件)</h3><ul>
+<li>表单状态发生变化时，都会通知React，通过使用 setState()来更新</li>
+<li>textarea 标签(多行文本控件) — input用法相同</li>
+<li>select标签(下拉列表标签) <ul>
+<li>单选：<code>&lt;select value=&#123;this.state.value&#125;&gt;</code>通过value来设置默认选中</li>
+<li>多选：<code>&lt;select multiple=&#123;true&#125; value=&#123;[&#39;B&#39;, &#39;C&#39;]&#125;&gt;</code></li>
+</ul>
+</li>
+<li>input标签<ul>
+<li>input的变化没有更新节点setState,而它的变化是本身具有的功能，所以为<code>非受控组件</code></li>
+<li>处理多个input 添加name属性 根据event.target.name 的值选择要执行的操作</li>
+</ul>
+</li>
+<li>计算属性名称更新给定输入名称对应的state<ul>
+<li>this.setState({ [name]: value });</li>
+</ul>
+</li>
+<li>受控输入空值,可能将value指定为undefined或null</li>
+</ul>
+<h3 id="状态提升"><a href="#状态提升" class="headerlink" title="状态提升"></a>状态提升</h3><ul>
+<li>将组件的共享状态提升到最近的共同父组件</li>
+<li>把子组件的state数据放在它们共同的父组件中保存,然后父组件可以通过props将状态数据传给子组件中</li>
+<li>组件通过this.props.xxx来接收</li>
+</ul>
+<h3 id="组合-vs-继承"><a href="#组合-vs-继承" class="headerlink" title="组合 vs 继承"></a>组合 vs 继承</h3><ul>
+<li>包含关系 — 一个组件包含在另一个组件中</li>
+<li>特例关系 — 组合组件,定制渲染</li>
+<li>现在有一个组件,这个组件又包含在另一个组件,并且值都时确定好的不更改的</li>
+<li>组件可以直接引入(import)而无需通过(extend)继承它们</li>
+</ul>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><ul>
+<li><h3 id="挂载：当组件实例被创建并插入-DOM-中时，其生命周期调用顺序如下："><a href="#挂载：当组件实例被创建并插入-DOM-中时，其生命周期调用顺序如下：" class="headerlink" title="挂载：当组件实例被创建并插入 DOM 中时，其生命周期调用顺序如下："></a>挂载：当组件实例被创建并插入 DOM 中时，其生命周期调用顺序如下：</h3><ul>
+<li>constructor()</li>
+<li>static getDerivedStateFromProps()</li>
+<li>render()</li>
+<li>componentDidMount()</li>
+</ul>
+</li>
+<li><h3 id="更新：当组件的props或state发生变化时会触发更新。其生命周期调用顺序如下："><a href="#更新：当组件的props或state发生变化时会触发更新。其生命周期调用顺序如下：" class="headerlink" title="更新：当组件的props或state发生变化时会触发更新。其生命周期调用顺序如下："></a>更新：当组件的props或state发生变化时会触发更新。其生命周期调用顺序如下：</h3><ul>
+<li>static getDerivedStateFromProps()</li>
+<li>shouldComponentUpdate()</li>
+<li>render()</li>
+<li>getSnapshotBeforeUpdate()</li>
+<li>componentDidUpdate()</li>
+</ul>
+</li>
+<li><h3 id="卸载：当组件从-DOM-中移除时会调用如下方法："><a href="#卸载：当组件从-DOM-中移除时会调用如下方法：" class="headerlink" title="卸载：当组件从 DOM 中移除时会调用如下方法："></a>卸载：当组件从 DOM 中移除时会调用如下方法：</h3><ul>
+<li>componentWillUnmount()<br><img src="/../../img/react/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt="React生命周期"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+</ul>
+</li>
+</ul>
+<h3 id="Hook"><a href="#Hook" class="headerlink" title="Hook"></a>Hook</h3><ul>
+<li><h3 id=""><a href="#" class="headerlink" title=""></a><a href="/2024/11/01/react/2.%E9%AB%98%E9%98%B6-Hook/" title="React-高阶HOOK">React-高阶HOOK</a></h3></li>
+<li><h3 id="-1"><a href="#-1" class="headerlink" title=""></a><a href="/2024/11/01/react/3.%E5%B8%B8%E7%94%A8%E7%9A%84hook/" title="React-常用的HOOK">React-常用的HOOK</a></h3></li>
+<li><h3 id="-2"><a href="#-2" class="headerlink" title=""></a><a href="/2024/11/01/react/4.%E8%87%AA%E5%B7%B1%E5%B0%81%E8%A3%85hook/" title="React-如何封装HOOK">React-如何封装HOOK</a></h3></li>
+</ul>
+<h3 id="代码分割"><a href="#代码分割" class="headerlink" title="代码分割"></a>代码分割</h3><ul>
+<li>引入用import()<ul>
+<li>import(“路径”).then(math &#x3D;&gt; { console.log(math.add(10,9));})</li>
+</ul>
+</li>
+</ul>
+<h3 id="Refs-转发-ref-DOM内部"><a href="#Refs-转发-ref-DOM内部" class="headerlink" title="Refs 转发(ref:DOM内部)"></a>Refs 转发(ref:DOM内部)</h3><ul>
+<li><h3 id="转发-refs-到-DOM-组件-允许某些组件接收ref-并将其传递给子组件"><a href="#转发-refs-到-DOM-组件-允许某些组件接收ref-并将其传递给子组件" class="headerlink" title="转发 refs 到 DOM 组件: 允许某些组件接收ref,并将其传递给子组件"></a>转发 refs 到 DOM 组件: 允许某些组件接收ref,并将其传递给子组件</h3></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">FancyButton</span> = <span class="title class_">React</span>.<span class="title function_">forwardRef</span>(<span class="function">(<span class="params">props, ref</span>) =&gt;</span> (  Ⅲ</span><br><span class="line">	&lt;button ref=&#123;ref&#125; className=<span class="string">&quot;FancyButton&quot;</span>&gt;   Ⅳ</span><br><span class="line">	&#123;props.<span class="property">children</span>&#125;</span><br><span class="line">	&lt;/button&gt;</span><br><span class="line">))</span><br><span class="line"><span class="comment">// forwardRef 获取ref; createRef 创建一个React ref 并将其赋值给ref变量</span></span><br><span class="line"><span class="keyword">const</span> ref = <span class="title class_">React</span>.<span class="title function_">createRef</span>();   Ⅰ</span><br><span class="line">&lt;<span class="title class_">FancyButton</span> ref=&#123;ref&#125;&gt;<span class="title class_">Click</span> me!&lt;/<span class="title class_">FancyButton</span>&gt; Ⅱ</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="在高阶组件中转发-refs"><a href="#在高阶组件中转发-refs" class="headerlink" title="在高阶组件中转发 refs"></a>在高阶组件中转发 refs</h3><ul>
+<li>高阶组件ref只能传给外部的组件,内部组件可以通过从props获取forwardRef,在将它传给ref,在返回时就可以挂载到被包裹的子组件上<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123;forwardedRef&#125; = <span class="variable language_">this</span>.<span class="property">props</span></span><br><span class="line"><span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">Component</span> <span class="attr">ref</span>= <span class="string">&#123;forwardRef&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="keyword">return</span> <span class="title class_">React</span>.<span class="title function_">forwardRef</span>(<span class="function">(<span class="params">props,ref</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> &lt;外部组件 &#123;...props&#125; forwardedRef=&#123;ref&#125; /&gt;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="高阶组件-HOC高阶组件是参数为组件，返回值为新组件的函数"><a href="#高阶组件-HOC高阶组件是参数为组件，返回值为新组件的函数" class="headerlink" title="高阶组件(HOC高阶组件是参数为组件，返回值为新组件的函数)"></a>高阶组件(HOC高阶组件是参数为组件，返回值为新组件的函数)</h3><ul>
+<li>场景: 多个组件对同一个订阅和取消订阅的频繁调用</li>
+<li>使用withSubscription(被包装组件,(订阅的组件,props)&#x3D;&gt;啊返回需要的数据)</li>
+<li>将不相关的props传递给被包裹的组件</li>
+<li>refs不会被传递,render中不要使用HOC,静态方法也要复制(使用 hoist-non-react-statics 自动拷贝所有非 React 静态方法)</li>
+</ul>
+<h3 id="装饰器decorator"><a href="#装饰器decorator" class="headerlink" title="装饰器decorator"></a>装饰器decorator</h3><ul>
+<li>写完一个函数来封装一个类或其它,然后通过在这个类的上一行用@函数名来使用,这个函数可以通过参数来向这个类的原型上的构造函数添加新的属性<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">testDecorator</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function">(<span class="params">target: any</span>) =&gt;</span> &#123;</span><br><span class="line">		target.<span class="property">isTeatable</span> =<span class="literal">true</span>; <span class="comment">//往DecoratorTest原型上的constructor添加了isTeatable =true</span></span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(target);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="render-props"><a href="#render-props" class="headerlink" title="render props"></a>render props</h3><ul>
+<li>不把一个组件强加在另一个组件内,而是在另一个组件被使用的标签上使用render props </li>
+<li>模式 :render或其它名字&#x3D;{变量 &#x3D;&gt; (&lt;组件名 变量名&#x3D;{变量} &#x2F;&gt;)}</li>
+<li>作用：告知组件需要渲染什么内容的函数 prop(大多为高阶组件)</li>
+</ul>
+<h3 id="Fragments"><a href="#Fragments" class="headerlink" title="Fragments"></a>Fragments</h3><ul>
+<li>将子列表分组,可返回多个元素</li>
+<li>形式 :&lt;React.Fragment &#x2F;&gt;  或 &lt; &#x2F;&gt;</li>
+<li>作用:像vue中的template一样,在html中不影响布局</li>
+</ul>
+<h3 id="PropTypes-进行类型检查"><a href="#PropTypes-进行类型检查" class="headerlink" title="PropTypes 进行类型检查"></a>PropTypes 进行类型检查</h3><ul>
+<li>限制单个元素 PropTypes.element</li>
+<li>默认值 defaultProps </li>
+<li>任意类型数据 requiredAny: PropTypes.any.isRequired,</li>
+<li>枚举类型 optionalEnum: PropTypes.oneOf([‘News’, ‘Photos’]),</li>
+</ul>
+<h3 id="Web-Components-第三方UI组件"><a href="#Web-Components-第三方UI组件" class="headerlink" title="Web Components (第三方UI组件)"></a>Web Components (第三方UI组件)</h3><ul>
+<li>使用的是class</li>
+</ul>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/react/2.%E9%AB%98%E9%98%B6-Hook/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/react/">
+                    react
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/react/2.%E9%AB%98%E9%98%B6-Hook/" class="trm-anima-link">
+                    React-高阶HOOK
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>09:41</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/31/node/promise%E5%92%8Casync%E7%9A%84%E6%80%BB%E7%BB%93/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/promise/">
+                    promise
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/31/node/promise%E5%92%8Casync%E7%9A%84%E6%80%BB%E7%BB%93/" class="trm-anima-link">
+                    Promise/async 与es5总结
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/31</li>
+                <li>17:15</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            基于大数据，学习参考、练习，网站正在逐步完善中...
+        </div>
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

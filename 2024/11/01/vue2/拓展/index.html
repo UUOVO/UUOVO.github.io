@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="经典面试题 — 路由篇 编程式导航push与replace区别?  能记录历史记录：push 不能记住历史记录：replace   路由组件与非路由组件的区别  文件放置位置不同 路由组件一般需要在router文件夹中进行注册，非路由组件在使用的时候，一般但是以标签的形式使用 注册完路由，不管是路由组件还是非路由组件身上都有$route、$router属性 $route:一般获取路由信息【路径、q">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VUE2-拓展（主了解）">
+<meta property="og:url" content="http://example.com/2024/11/01/vue2/%E6%8B%93%E5%B1%95/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="经典面试题 — 路由篇 编程式导航push与replace区别?  能记录历史记录：push 不能记住历史记录：replace   路由组件与非路由组件的区别  文件放置位置不同 路由组件一般需要在router文件夹中进行注册，非路由组件在使用的时候，一般但是以标签的形式使用 注册完路由，不管是路由组件还是非路由组件身上都有$route、$router属性 $route:一般获取路由信息【路径、q">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-11-01T05:58:26.586Z">
+<meta property="article:modified_time" content="2024-11-01T06:38:33.767Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="vue2">
+
+
+<title >VUE2-拓展（主了解）</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-01 14:38:33"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            UUOVO<span>个人站点</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/test1/" target="">
+                            test1
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            VUE2-拓展（主了解）
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+        <a href="https://zh-hans.react.dev/" title="React" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-react"></i>
+        </a>
+    
+        <a href="https://zh.javascript.info/" title="Javascript" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node-js"></i>
+        </a>
+    
+        <a href="https://nodejs.cn/" title="Node" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            11/01
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            13:58
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h3 id="经典面试题-—-路由篇"><a href="#经典面试题-—-路由篇" class="headerlink" title="经典面试题 — 路由篇"></a>经典面试题 — 路由篇</h3><ol>
+<li><p>编程式导航push与replace区别?</p>
+<ul>
+<li>能记录历史记录：push</li>
+<li>不能记住历史记录：replace</li>
+</ul>
+</li>
+<li><p>路由组件与非路由组件的区别</p>
+<ul>
+<li>文件放置位置不同</li>
+<li>路由组件一般需要在router文件夹中进行注册，非路由组件在使用的时候，一般但是以标签的形式使用</li>
+<li>注册完路由，不管是路由组件还是非路由组件身上都有$route、$router属性<ul>
+<li>$route:一般获取路由信息【路径、query、params。。。】</li>
+<li>$router:一般进行编程式导航进行路由跳转【push|replace】</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>路由传递参数（对象写法）path是否可以结合params参数一起使用？</p>
+<ul>
+<li>不可以,路由传参的时候，对象的写法可以是name、path形式，但是path这中写法不能与params参数一起使用</li>
+</ul>
+</li>
+<li><p>如何指定params参数可传可不传？</p>
+<ul>
+<li>在配置路由的文件下，给对应路由传参占位的地方后面加一个<code>?</code></li>
+</ul>
+</li>
+<li><p>params参数可以传递也可以不传递，但是如果传递的是空串，如何解决？</p>
+<ul>
+<li>使用undefined解决：params参数: ‘’ || undefined 即可</li>
+</ul>
+</li>
+<li><p>路由组件能不能传递props数据</p>
+<ul>
+<li>可以，有三种写法：(路由组件只能传递props属性，并且是params参数)<ul>
+<li>布尔值写法</li>
+<li>对象写法:额外的给路由组件传递一些props</li>
+<li>函数写法（常见）：可以params参数、query参数，通过props传递给路由组件</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="经典面试题-—-其它"><a href="#经典面试题-—-其它" class="headerlink" title="经典面试题 — 其它"></a>经典面试题 — 其它</h3><ol>
+<li><p>函数防抖与节流</p>
+<ul>
+<li>正常：事件触发非常频繁，而且每一次的触发，回调函数都要去执行（如果时间很短，而回调函数内部有计算，那么很可能出现浏览器卡顿）</li>
+<li>防抖：前面的所有的触发都被取消，最后一次执行在规定的时间之后才会触发，也就是说如果连续快速的触发,只会执行最后一次</li>
+<li>节流：在规定的间隔时间范围内不会重复触发回调，只有大于这个时间间隔才会触发回调，把频繁触发变为少量触发</li>
+<li>需要把防抖与节流的原理，通过JS实现【闭包 + 延迟器】</li>
+<li>按需加载引用loadsh插件</li>
+</ul>
+</li>
+<li><p>GET与POST</p>
+<ul>
+<li>相同点：都是HTTP协议。</li>
+<li>不同点:<ul>
+<li>GET请求携带参数是有上限的且相对而言不安全，post请求携带的参数是没有’上限的’但安全</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>token面试题:项目当中token过期、失效如何处理？</p>
+<ul>
+<li>清除本地token（本地存储），让用户回到登录页，获取最新的token</li>
+</ul>
+</li>
+<li><p>经典面试题：v-for与v-if优先级？ v-for优先级更高</p>
+</li>
+<li><p>本地存储与会话存储区别？</p>
+<ul>
+<li>本地存储：持久化的5m；</li>
+<li>会话存储：并非持久–会话结束就消失</li>
+</ul>
+<p>	</p>
+</li>
+<li><p>项目的性能优化手段</p>
+<ul>
+<li>v-if|v-show：尽可能采用v-show</li>
+<li>按需引入：如lodash、elementUI</li>
+<li>防抖与节流</li>
+<li>路由懒加载</li>
+</ul>
+</li>
+</ol>
+<h3 id="其它知识"><a href="#其它知识" class="headerlink" title="其它知识"></a>其它知识</h3><ol>
+<li><p>mock</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://mockjs.com/">mock官方地址</a></li>
+<li>模拟的数据一般：对象、数组</li>
+<li>安装：npm install mockjs</li>
+<li>在src文件夹下创建mock文件夹</li>
+<li>准备模拟的数据</li>
+<li>注：mock数据需要的图片要放置于public文件夹中！</li>
+<li>在mock文件夹中创建一个server.js文件<ul>
+<li>引入： const Mock &#x3D; require(‘mockjs’)</li>
+<li>使用：const data &#x3D; Mock.mock({‘list’:[{}]})</li>
+</ul>
+</li>
+<li>回到入口文件，引入serve.js</li>
+<li>之后写一个请求用来模拟API</li>
+</ul>
+</li>
+<li><p>分页器业务</p>
+<ul>
+<li>前端三大件:轮播图、分页、日历。这属于前端开发常见三种业务</li>
+<li>分页器封装业务分析:<ul>
+<li>需知：总数据条数，一页最多展示多少条数据，当前页数，连续页码数(一般5、7、9,案例用5)</li>
+<li>当前页数为1， 则展示连续页码数1，2，3，4，5</li>
+<li>当前页数为2， 则展示连续页码数1，2，3，4，5</li>
+<li>当前页数为最后一页n，则展示n-4，n-3，n-2，n-1，n</li>
+<li>当前页数为最后一页n-1，则展示n-4，n-3，n-2，n-1，n</li>
+<li>当前页数为除以上数字m，则展示m-2，m-1，m，m+1,m+2</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>身份凭证</p>
+<ul>
+<li>UUID生成的临时身份</li>
+<li>用户（注册与登录）token【正式身份】</li>
+</ul>
+</li>
+<li><p>懒加载</p>
+<ul>
+<li><h3 id="路由懒加载"><a href="#路由懒加载" class="headerlink" title="路由懒加载"></a>路由懒加载</h3><ul>
+<li>当用户访问的时候，加载对应组件进行展示</li>
+</ul>
+</li>
+<li><h3 id="图片懒加载"><a href="#图片懒加载" class="headerlink" title="图片懒加载"></a>图片懒加载</h3><ul>
+<li>vue-lazyload</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>框架 + 组件库的选择</p>
+<ul>
+<li><h3 id="react框架"><a href="#react框架" class="headerlink" title="react框架:"></a>react框架:</h3><ul>
+<li>UI组件库antd【蚂蚁金服旗下PC端UI组件库】</li>
+<li>antd-mobile【蚂蚁金服旗下的移动端UI组件库】</li>
+</ul>
+</li>
+<li><h3 id="Vue框架"><a href="#Vue框架" class="headerlink" title="Vue框架:"></a>Vue框架:</h3><ul>
+<li>element-UI【饿了么旗下的UI组件库，官方承认的PC组件库插件】</li>
+<li>vant【Vue官方提供移动端UI组件库】</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>插件</p>
+<ul>
+<li><h3 id="qrcode插件：展示二维码"><a href="#qrcode插件：展示二维码" class="headerlink" title="qrcode插件：展示二维码"></a>qrcode插件：展示二维码</h3><ul>
+<li>通过qrCode.toDataUrl方法，将字符串转换为加密的在线二维码链接，通过图片进行展示。</li>
+</ul>
+</li>
+<li><h3 id="swiper-js：处理滚动屏"><a href="#swiper-js：处理滚动屏" class="headerlink" title="swiper.js：处理滚动屏"></a>swiper.js：处理滚动屏</h3><ul>
+<li>安装：swiper：cnpm install –save swiper@5</li>
+<li>引入：import Swiper from ‘swiper’</li>
+<li>使用：v-for&#x3D;”(carousel,index) in 轮播图请求返回的数据” :key&#x3D;”carousel.id”</li>
+<li>注：引入swiper的实例，！！！在引入前，页面中的结构必须要有不然看不见</li>
+<li>解决方案：watch(数据监听)–&gt;监听已有数据的变化 + nextTick(在图片列表从初始值变为接收的数据时，循环结束之后，执行延迟回调)</li>
+<li>分析：<ul>
+<li>mounted：代表组件挂载完毕，正常说组件结构DOM已经全有了。但是不包括AJAX，获取动态数据</li>
+<li>v-for,在遍历来自于Vuex（数据:通过ajax向服务器发请求，存在异步）</li>
+<li>mounted挂载后–&gt;store.dispatch派发axios，通知vuex发送数据–&gt;发送请求提交mutations修改state–&gt;state有了数据组件才能获得相应的数据(要延时，所以不能直接写swiper的实例)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><h3 id="moment-js：处理时间"><a href="#moment-js：处理时间" class="headerlink" title="moment.js：处理时间"></a>moment.js：处理时间</h3></li>
+<li><h3 id="nprogress-js：-处理进度条"><a href="#nprogress-js：-处理进度条" class="headerlink" title="nprogress.js： 处理进度条"></a>nprogress.js： 处理进度条</h3></li>
+<li><h3 id="vee-validate插件：Vue官方提供的一个表单验证的插件"><a href="#vee-validate插件：Vue官方提供的一个表单验证的插件" class="headerlink" title="vee-validate插件：Vue官方提供的一个表单验证的插件"></a>vee-validate插件：Vue官方提供的一个表单验证的插件</h3><ul>
+<li>安装：cnpm i vee-validate@2 –save</li>
+<li>引入：在main.js文件<ul>
+<li>import VeeValidate from ‘vee-validate’</li>
+<li>import zh_CN from ‘vee-validate&#x2F;dist&#x2F;locale&#x2F;zh_CN’</li>
+<li>Vue.use(VeeValidate)</li>
+</ul>
+</li>
+<li>提示信息<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">VeeValidate</span>.<span class="property">Validator</span>.<span class="title function_">localize</span>(<span class="string">&#x27;zh_CN&#x27;</span>, &#123;</span><br><span class="line">	<span class="attr">messages</span>: &#123;</span><br><span class="line">		...zh_CN.<span class="property">messages</span>,</span><br><span class="line">		<span class="attr">is</span>: <span class="function">(<span class="params">field</span>) =&gt;</span> <span class="string">`<span class="subst">$&#123;field&#125;</span>必须与密码相同`</span> <span class="comment">// 修改内置规则的 message，让确认密码和密码相同</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">attributes</span>: &#123; <span class="comment">// 给校验的 field 属性名映射中文名称</span></span><br><span class="line">		<span class="attr">phone</span>: <span class="string">&#x27;手机号&#x27;</span>,</span><br><span class="line">		<span class="attr">code</span>: <span class="string">&#x27;验证码&#x27;</span>,</span><br><span class="line">		<span class="attr">password</span>:<span class="string">&#x27;密码&#x27;</span>,</span><br><span class="line">		<span class="attr">password1</span>:<span class="string">&#x27;确认密码&#x27;</span>,</span><br><span class="line">		<span class="attr">isCheck</span>:<span class="string">&#x27;协议&#x27;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>使用：在表单标签上添加<ul>
+<li>绑定v-model&#x3D;”attributes的字段”</li>
+<li>v-validate&#x3D;”{ required: true, regex: 验证规则 }”</li>
+<li>页面使用：errors.has(“字段”)来使用…</li>
+<li>代码等待全部验证：const success &#x3D; await this.$validator.validateAll()</li>
+<li>自定义校验规则：定义协议必须打勾同意</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">VeeValidate</span>.<span class="property">Validator</span>.<span class="title function_">extend</span>(<span class="string">&#x27;agree&#x27;</span>, &#123;</span><br><span class="line">	<span class="attr">validate</span>: <span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> value</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">getMessage</span>: <span class="function"><span class="params">field</span> =&gt;</span> field + <span class="string">&#x27;必须同意&#x27;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/vue2/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E7%9A%84%E6%80%BB%E7%BB%93/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/vue/">
+                    vue
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/vue2/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E7%9A%84%E6%80%BB%E7%BB%93/" class="trm-anima-link">
+                    VUE2-组件通信的总结
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>13:58</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/vue2/%E8%B7%AF%E7%94%B1/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/vue/">
+                    vue
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/vue2/%E8%B7%AF%E7%94%B1/" class="trm-anima-link">
+                    VUE2-路由（主了解）
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>13:58</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            基于大数据，学习参考、练习，网站正在逐步完善中...
+        </div>
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

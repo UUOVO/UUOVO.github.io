@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="vue 最大的特点就是数据驱动视图 公式：UI &#x3D; render(state)      解析：输入状态一旦改变，页面输出也随着改变，vue扮演render()   变化侦测 — 使用属性拦截的方式实现的 释义：追踪状态，即数据一旦发生变化，就要去更新视图 vue：通过对比虚拟DOM–VNode类来实现侦测 react：通过对比虚拟DOM来实现侦测     数据变的“可观测” 释义：知">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VUE3-源码系列">
+<meta property="og:url" content="http://example.com/2024/11/01/vue3/vue%E6%BA%90%E7%A0%81%E7%B3%BB%E5%88%97/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="vue 最大的特点就是数据驱动视图 公式：UI &#x3D; render(state)      解析：输入状态一旦改变，页面输出也随着改变，vue扮演render()   变化侦测 — 使用属性拦截的方式实现的 释义：追踪状态，即数据一旦发生变化，就要去更新视图 vue：通过对比虚拟DOM–VNode类来实现侦测 react：通过对比虚拟DOM来实现侦测     数据变的“可观测” 释义：知">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/404.jpg">
+<meta property="article:published_time" content="2024-11-01T06:39:25.154Z">
+<meta property="article:modified_time" content="2024-11-01T07:51:35.366Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/404.jpg">
+
+    <meta name="keywords" content="vue3">
+
+
+<title >VUE3-源码系列</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-01 15:51:35"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            UUOVO<span>个人站点</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/test1/" target="">
+                            test1
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            VUE3-源码系列
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+        <a href="https://zh-hans.react.dev/" title="React" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-react"></i>
+        </a>
+    
+        <a href="https://zh.javascript.info/" title="Javascript" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node-js"></i>
+        </a>
+    
+        <a href="https://nodejs.cn/" title="Node" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            11/01
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            14:39
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <ul>
+<li><h3 id="vue"><a href="#vue" class="headerlink" title="vue"></a>vue</h3><ul>
+<li>最大的特点就是<code>数据驱动视图</code></li>
+<li>公式：UI &#x3D; render(state)     </li>
+<li>解析：输入状态一旦改变，页面输出也随着改变，vue扮演render()</li>
+</ul>
+</li>
+<li><h3 id="变化侦测-—-使用属性拦截的方式实现的"><a href="#变化侦测-—-使用属性拦截的方式实现的" class="headerlink" title="变化侦测 — 使用属性拦截的方式实现的"></a>变化侦测 — 使用属性拦截的方式实现的</h3><ul>
+<li>释义：追踪状态，即数据一旦发生变化，就要去更新视图<ul>
+<li>vue：通过对比虚拟DOM–VNode类来实现侦测</li>
+<li>react：通过对比虚拟DOM来实现侦测</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="数据变的“可观测”"><a href="#数据变的“可观测”" class="headerlink" title="数据变的“可观测”"></a>数据变的“可观测”</h3><ul>
+<li>释义：知道数据什么时候被读取或改写</li>
+<li>方法：通过<code>Object.defineProperty</code>方法，<code>只能观测</code>Object的<code>取值或写入</code>，<code>观测不到</code>向object数据里<code>添加或删除</code>key&#x2F;value，但是可以用两个全局API：Vue.set和 Vue.delete解决</li>
+<li>示例：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> car = &#123;</span><br><span class="line">	<span class="string">&#x27;brand&#x27;</span>: <span class="string">&#x27;BMW&#x27;</span>,</span><br><span class="line">	<span class="string">&#x27;price&#x27;</span>: <span class="number">3000</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> car= &#123;&#125;</span><br><span class="line"><span class="keyword">let</span> val=<span class="number">3000</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(car,<span class="string">&#x27;price&#x27;</span>,&#123;</span><br><span class="line">	<span class="attr">enumerable</span>: <span class="literal">true</span>,</span><br><span class="line">	<span class="attr">configurable</span>: <span class="literal">true</span>,</span><br><span class="line">	<span class="title function_">get</span>(<span class="params"></span>)&#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;price属性被读取&#x27;</span>)</span><br><span class="line">		<span class="keyword">return</span> val</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="title function_">set</span>(<span class="params">newVal</span>)&#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;price属性被修改了&#x27;</span>)</span><br><span class="line">		val = newVal</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><h3 id="依赖收集"><a href="#依赖收集" class="headerlink" title="依赖收集"></a>依赖收集</h3><ul>
+<li>释义：把“谁用到了这个数据”称为“谁依赖了这个数据”</li>
+<li>用法：在<code>getter</code>中收集依赖，在<code>setter</code>中通知依赖更新</li>
+</ul>
+</li>
+<li><h3 id="虚拟DOM"><a href="#虚拟DOM" class="headerlink" title="虚拟DOM"></a>虚拟DOM</h3><ul>
+<li>释义：用一个JS对象来描述一个DOM节点</li>
+<li>存在的原因：数据驱动视图会操作DOM，但操作真实DOM耗性能。</li>
+<li>方法：对比变化前后的虚拟DOM节点，通过DOM-Diff算法计算出需要更新的地方，然后去更新需要更新的视图。</li>
+</ul>
+</li>
+<li><h3 id="Vue中的虚拟DOM-—-VNode类"><a href="#Vue中的虚拟DOM-—-VNode类" class="headerlink" title="Vue中的虚拟DOM — VNode类"></a>Vue中的虚拟DOM — <code>VNode</code>类</h3><ul>
+<li>释义：包含了描述一个真实DOM节点所需要的一系列属性</li>
+<li>作用：在视图渲染之前，把写好的template模板先编译成VNode并缓存下来，等到数据发生变化页面需要重新渲染的时候，把变化后生成的VNode与前一次缓存下来的VNode进行对比，找出差异，然后有差异的VNode对应的真实DOM节点就是需要重新渲染的节点，最后根据有差异的VNode创建出真实的DOM节点再插入到视图中，最终完成一次视图更新。</li>
+<li>注释节点(源码)<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createEmptyVNode = (<span class="attr">text</span>: string = <span class="string">&#x27;&#x27;</span> =&gt; &#123;</span><br><span class="line">	<span class="keyword">const</span> node = <span class="keyword">new</span> <span class="title class_">VNode</span>()</span><br><span class="line">	node.<span class="property">text</span> = text <span class="comment">// 表示具体的注释信息</span></span><br><span class="line">	node.<span class="property">isComment</span> = <span class="literal">true</span> <span class="comment">// 标识一个节点是否是注释节点</span></span><br><span class="line">	<span class="keyword">return</span> node</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>文本节点(源码)<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">createTextVNode</span> (<span class="params">val: string | number</span>)&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">VNode</span>(<span class="literal">undefined</span>, <span class="literal">undefined</span>,unfined,<span class="title class_">String</span>(val))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>元素节点<ul>
+<li>接近真实的DOM节点，反应到VNode节点上:tag表示标签名，data表示标签的属性id等，children表示子节点数组</li>
+</ul>
+</li>
+<li>组件节点<ul>
+<li>除了有元素节点具有的属性之外，它还有两个特有的属性：componentOptions、componentInstance</li>
+</ul>
+</li>
+<li>函数式组件节点<ul>
+<li>相较于组件节点，它又有两个特有的属性：fnContext、fnOptions</li>
+</ul>
+</li>
+<li>克隆节点<ul>
+<li>把现有节点的属性全部复制到新节点中，而现有节点和新克隆得到的节点之间唯一的不同就是克隆得到的节点isCloned为true</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="DOM-Diff-算法"><a href="#DOM-Diff-算法" class="headerlink" title="DOM-Diff 算法"></a>DOM-Diff 算法</h3><ul>
+<li>释义：在vue中，把<code>DOM-Diff过程</code>叫做patch过程，意为”补丁”，<code>本质就是对比新旧两份VNode的过程</code>,以新的VNode为基准，改造旧的oldNVNode使之成为跟新的VNode一样，这就是patch过程要干的事</li>
+<li>创建节点(源码)<ul>
+<li>前提：<code>新的VNode中有</code>而旧的<code>oldVNode中没有</code>，就在旧的<code>oldVNode中创建</code></li>
+<li>方法：判断新的VNode中有而旧的VNode中没有的这个节点是属于元素节点、文本节点、注释节点中的哪一种，从而调用不同的方法创建并插入到DOM中</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>  <span class="title function_">createElm</span> (<span class="params">vnode, parentElm, refElm</span>) &#123;</span><br><span class="line">	<span class="keyword">const</span> tag = vode.<span class="property">tag</span></span><br><span class="line">	<span class="keyword">if</span>(<span class="title function_">isDef</span>(tag))&#123;</span><br><span class="line">		vnode.<span class="property">elm</span> = nodeOps.<span class="title function_">createElement</span>(tag, vnode) <span class="comment">// 创建元素节点</span></span><br><span class="line">		<span class="title function_">createChildren</span>(vnode, vnode.<span class="property">children</span>, insertedVnodeQueue)	<span class="comment">// 创建元素节点的子节点</span></span><br><span class="line">		<span class="title function_">insert</span>(parentElm, vonode.<span class="property">elm</span>, refElm)	<span class="comment">// 插入到DOM中</span></span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="title function_">isTrue</span>(vnode,isComment)) &#123;</span><br><span class="line">		vnode.<span class="property">elm</span> = nodeDps.<span class="title function_">createComment</span>(vnode.<span class="property">text</span>) <span class="comment">// 创建注释节点</span></span><br><span class="line">		<span class="title function_">insert</span>(parentElm, vnode.<span class="property">elm</span>,refElm)	<span class="comment">// 插入到DOM中</span></span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		vnode.<span class="property">elm</span> = nodeOps.<span class="title function_">createTextNode</span>(vnode.<span class="property">text</span>)	<span class="comment">// 创建文本节点</span></span><br><span class="line">		<span class="title function_">insert</span>(parentElm, vnode.<span class="property">elm</span>, refElm)	<span class="comment">// 插入到DOM中</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>删除节点(源码)<br>- 前提：<code>新的VNode中没有</code>而旧的<code>oldVNode中有</code>，就从旧的<code>oldVNode中删除</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">removeNode</span> (<span class="params">el</span>) &#123;</span><br><span class="line">	<span class="keyword">const</span> parent = nodeOps.<span class="title function_">parentNode</span>(el)  <span class="comment">// 获取父节点</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="title function_">isDef</span>(parent)) &#123;</span><br><span class="line">		nodeOps.<span class="title function_">removeChild</span>(parent, el)  <span class="comment">// 调用父节点的removeChild方法</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>更新节点<ul>
+<li>前提：新的VNode和旧的oldVNode中<code>都有</code>，就<code>以新</code>的VNode<code>为准</code>，<code>更新旧</code>的oldVNode<ul>
+<li>如果VNode和oldVNode<code>均为静态节点</code>,<code>不处理</code>，跳过</li>
+<li>如果<code>VNode是文本节点</code>,看oldVNode是否也是文本节点，<ul>
+<li>是，就<code>更新</code>oldVNode节点，</li>
+<li>不是，直接调用<code>setTextNode</code>方法改成文本节点，并且内容与VNode相同</li>
+</ul>
+</li>
+<li>如果<code>VNode是元素节点</code><ul>
+<li>该节点<code>包含子节点</code>,看<code>oldVNode``是否包含子节点</code>，<ul>
+<li><code>是</code>，就需要<code>递归对比更新</code>字节点。</li>
+<li><code>不是</code>，则oldVNode可能是空节点或者是文本节点。</li>
+<li><code>空节点</code>就把VNode的子节点<code>创建</code>一份然后<code>插入</code>到<code>oldVNode</code>节点里面。</li>
+<li><code>文本节点</code>则把<code>文本清空</code>，然后把VNode的子节点<code>创建</code>一份然后<code>插入</code>到<code>oldVNode</code>节点里面。</li>
+</ul>
+</li>
+<li><code>不包含子节点</code>,直接<code>清空oldVNode</code>里面的<code>内容</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="更新子节点"><a href="#更新子节点" class="headerlink" title="更新子节点"></a>更新子节点</h3><ul>
+<li>当新旧节点<code>都是元素节点</code>但并且<code>都包含子节点</code>时，这两个节点的VNode实例上的<code>children</code>属性就是所包含的<code>子节点数组</code>。</li>
+<li>把newChildren里面的元素与oldChildren里的元素<code>一一进行对比</code>，<code>外层循环newChildren</code>数组，<code>内层循环oldChildren</code>数组，每循环外层newChildren数组里的一个子节点，就去内层oldChildren数组里去找看有没有与之相同的子节点。</li>
+<li>创建子节点<ul>
+<li>newChildren的某个节点在oldChildren中找不到相同的子节点，就<code>创建节点，并插入到所有未处理节点之前</code></li>
+</ul>
+</li>
+<li>删除子节点<ul>
+<li>newChildren里面的每一个子节点都<code>循环完毕</code>，发现<code>oldChildren</code>还有<code>未处理子节点</code>，则<code>删除</code>未处理子节点</li>
+</ul>
+</li>
+<li>移动子节点<ul>
+<li>newChildren的某个节点在oldChildren中找到相同的子节点，但位置不同，就以newChildren为基准，调整oldChildren里节点的位置.<code>所有未处理节点之前就是我们要移动的目的位置</code></li>
+</ul>
+</li>
+<li>更新节点<ul>
+<li>newChildren的某个节点在oldChildren中找到<code>相同的子节点</code>，<code>位置相同</code>，就更新oldChildren节点</li>
+</ul>
+</li>
+<li>优化策略<ul>
+<li>新前与旧前 </li>
+<li>把newChildren数组里的所有<code>未处理子节点的第一个子节点</code>和oldChildren数组里<code>所有未处理子节点的第一个子节点</code>比对<ul>
+<li><code>相同</code>,更新节点,并且不需要移动节点</li>
+<li><code>不同</code>, 往下</li>
+</ul>
+</li>
+<li>新后与旧后 </li>
+<li>把newChildren数组里的所有<code>未处理子节点的最后一个子节点</code>和oldChildren数组里<code>所有未处理子节点的最后一个子节点</code>比对<br>- <code>相同</code>,更新节点,并且不需要移动节点<ul>
+<li><code>不同</code>, 往下</li>
+</ul>
+</li>
+<li>新后与旧前</li>
+<li>把newChildren数组里的所有<code>未处理子节点的最后一个子节点</code>和oldChildren数组里<code>所有未处理子节点的第一个子节点</code>比对<br>- <code>相同</code>,更新节点,再将oldChildren数组里的该节点移动到与newChildren数组里节点相同的位置<ul>
+<li><code>不同</code>, 往下</li>
+</ul>
+</li>
+<li>新前与旧后</li>
+<li>把newChildren数组里的所有<code>未处理子节点的第一个子节点</code>和oldChildren数组里<code>所有未处理子节点的最后一个子节点</code>比对<br>- <code>相同</code>,更新节点,再将oldChildren数组里的该节点移动到与newChildren数组里节点相同的位置<ul>
+<li><code>不同</code>, 使用之前的循环方式查找</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="模板编译（用户写的模板进行编译，就会产生VNode）"><a href="#模板编译（用户写的模板进行编译，就会产生VNode）" class="headerlink" title="模板编译（用户写的模板进行编译，就会产生VNode）"></a>模板编译（用户写的模板进行编译，就会产生VNode）</h3><ul>
+<li>释义：把用户在<template></template>标签中写的类似于原生HTML的内容进行编译，把原生HTML的内容找出来，再把非原生HTML找出来，经过一系列的逻辑处理生成渲染函数 — 即render函数的过程</li>
+<li>抽象语法树AST<ul>
+<li>释义：以<code>树状</code>的形式表现编程语言的语法结构，树上的每个节点都表示源代码中的一种结构。之所以说语法是“<code>抽象</code>”的，是因为这里的语法并不会表示出<code>真实</code>语法中出现的<code>每个细节</code>。</li>
+<li>作用：将用户在<template></template>标签中写的模板解析并提取除元素、属性、变量插值</li>
+</ul>
+</li>
+<li>流程：<ul>
+<li>模板解析阶段<ul>
+<li>将一堆模板字符串用正则等方式解析成AST</li>
+<li>模板解析阶段——解析器——源码路径：src&#x2F;compiler&#x2F;parser&#x2F;index.js</li>
+</ul>
+</li>
+<li>优化阶段<ul>
+<li>遍历AST，找出其中的静态节点，并打上标记</li>
+<li>优化阶段——优化器——源码路径：src&#x2F;compiler&#x2F;optimizer.js</li>
+<li>静态节点 — 全是文本没有动态的变量</li>
+<li>静态根节点 — 包含静态节点的容器</li>
+</ul>
+</li>
+<li>代码生成阶段<ul>
+<li>将AST转换成渲染函数</li>
+<li>代码生成阶段——代码生成器——源码路径：src&#x2F;compiler&#x2F;codegen&#x2F;index.js</li>
+<li>方法：根据已有的AST生成对应的render函数供组件挂载时调用，组件只要调用的这个render函数就可以得到AST对应的虚拟DOM的VNode</li>
+<li>元素节点<ul>
+<li>_c(tagName,data,children)</li>
+<li>tagName:节点标签名；</li>
+<li>data：节点属性；判断plain属性是否为true，true则表示节点没有属性，将data赋值为undefined；不为true则调用genData函数获取节点属性data数据</li>
+<li>chiledren：节点的子节点列表；遍历AST的children属性中的元素，然后根据元素属性的不同生成不同的VNode创建函数调用字符串</li>
+</ul>
+</li>
+<li>文本节点<ul>
+<li>_v(text)</li>
+<li>如果文本是动态文本，则使用动态文本AST节点的expression属性，如果是纯静态文本，则使用text属性</li>
+</ul>
+</li>
+<li>注释节点<ul>
+<li>_e(text)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="解析器"><a href="#解析器" class="headerlink" title="解析器"></a>解析器</h3><ul>
+<li>释义：就是把用户所写的模板根据一定的解析规则解析出有效的信息，最后用这些信息形成AST</li>
+<li>HTML解析器是主线，先用HTML解析器进行解析整个模板，在解析过程中如果碰到文本内容，那就调用文本解析器来解析文本，如果碰到文本中包含过滤器那就调用过滤器解析器来解析。</li>
+<li>HTML解析器<ul>
+<li>源码中，HTML解析器就是parseHTML函数</li>
+<li>内部运行流程<ul>
+<li>当解析开始，调用start (tag, attrs, unary) {}</li>
+<li>当解析结束，调用end () {}</li>
+<li>当解析到文本时，调用chars (text) {}</li>
+<li>当解析到注释时，调用comment (text) {}</li>
+</ul>
+</li>
+<li>html解析器内容解析<ul>
+<li>解析HTML注释：找以<code>&lt;!--</code>开头，并且后面有<code>--&gt;</code>结尾</li>
+<li>解析条件注释：找以<code>&lt;![</code>开头，并且后面存在<code>]&gt;</code>结尾</li>
+<li>解析DOCTYPE：匹配是否存在&#x2F;^<!DOCTYPE [^>]+&gt;&#x2F;i</li>
+<li>解析开始标签：html.match(new RegExp(<code>^&lt;((?:([a-zA-Z_][\\w\\-\\.]*)\\:)?([a-zA-Z_][\\w\\-\\.]*))</code>))</li>
+<li>解析结束标签：html.match(new RegExp(<code>^&lt;\\/((?:([a-zA-Z_][\\w\\-\\.]*)\\:)?([a-zA-Z_][\\w\\-\\.]*))[^&gt;]*&gt;</code>))</li>
+<li>解析文本：判断字符串是不是以’&lt;’开头，不是就是文本</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/../../img/vue3/vue-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%B5%81%E7%A8%8B%E5%9B%BE.jpg" alt="生命周期流程图"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'> </p>
+<ul>
+<li><h3 id="生命周期-—-vue实例的生命周期大致分为4个阶段"><a href="#生命周期-—-vue实例的生命周期大致分为4个阶段" class="headerlink" title="生命周期 — vue实例的生命周期大致分为4个阶段"></a>生命周期 — vue实例的生命周期大致分为4个阶段</h3><ul>
+<li>初始化阶段：为Vue实例上初始化一些属性，事件以及响应式数据；<ul>
+<li>new Vue() — 创建一个vue实例<ul>
+<li>作用：<code>执行了vue类的构造函数，构造函数会执行_init方法</code>。_init方法把Vue实例赋值给变量vm，并且把用户传递的<code>options</code>选项与当前构造函数的options属性及其父级构造函数的options<code>属性合并</code>，得到新的options选项<code>赋值给$options</code>属性，<code>并</code>将$options属性<code>挂载到vue</code>实例。接着，调用一些<code>初始化函数</code>来为Vue实例<code>初始化</code>一些属性，事件，响应式数据。在所有的初<code>始化工作都完成</code>以后，会判断<code>用户是否传入了el</code>选项，<code>传入了</code>则<code>调用$mount</code>函数进入模板编译与挂载阶段，<code>没有传入</code>el选项，需要用户<code>手动执行vm.$mount</code>方法才进入下一个生命周期阶段。</li>
+</ul>
+</li>
+<li>initLifecycle函数 — 初始化了一些属性，包括以$开头的供用户使用的外部属性，也包括以_开头的供内部使用的内部属性。<ul>
+<li>作用：给Vue实例上挂载了一些属性并设置了默认值，值得一提的是挂载$parent属性和$root属性。</li>
+</ul>
+</li>
+<li>initEvents函数 — 初始化实例的事件系统<ul>
+<li>作用：初始化的是父组件在模板中使用v-on或@注册的监听子组件内触发的事件</li>
+</ul>
+</li>
+<li>initInjections函数 — 初始化实例中的inject选项的</li>
+<li>initState函数 — 初始化实例的状态选项(props、data、methods、computed、watch)</li>
+</ul>
+</li>
+<li>模板编译阶段：将模板编译成渲染函数；只存在与完整版(有编译器)<ul>
+<li>调用vm.$mount标志着初始化阶段的结束和进入模板编译阶段。</li>
+<li>完整版的$mount会先将$mount方法缓存起来，记作mount。然后等模板编译完成，再执行mount方法</li>
+<li>作用：从用户传入的el选项和template选项中获取到用户传入的内部或外部模板，然后将获取到的模板编译成渲染函数</li>
+</ul>
+</li>
+<li>挂载阶段：将实例挂载到指定的DOM上，即将模板渲染到真实DOM中；<ul>
+<li>作用：创建Vue实例并用其替换el选项对应的DOM元素，同时还要开启对模板中数据（状态）的监控，当数据（状态）发生变化时通知其依赖进行视图更新。</li>
+<li>将模板渲染到视图上，第二部分是开启对模板中数据的监控，直到实例被销毁，挂在阶段完成，调用mounted</li>
+</ul>
+</li>
+<li>销毁阶段：将实例自身从父组件中删除，并取消依赖追踪及事件监听器；<ul>
+<li>作用：当调用了vm.$destroy方法，Vue实例就进入了销毁阶段，该阶段所做的主要工作是将当前的Vue实例从其父级实例中删除，取消当前实例上的所有依赖追踪并且移除实例上的所有事件监听器。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h3><ul>
+<li>与数据相关：vm.$set、vm.$delete和vm.$watch<ul>
+<li>vm.$watch(expOrFn:string | Function,callback: Function | Object,[options:Object])<ul>
+<li>options<ul>
+<li>deep: boolean 	&#x2F;&#x2F; 深度监听</li>
+<li>immediate: boolean  &#x2F;&#x2F; 是否立即触发回调，如果存在immediate，第一次回调不能取消侦听给定的property</li>
+</ul>
+</li>
+<li>返回值： unwatch: Function  &#x2F;&#x2F; 返回一个取消观察函数，用来停止回调 var unwatch &#x3D; vm.$watch(expOrFn,callback,[options])  unwatch()</li>
+<li>用法：观察 Vue 实例变化的一个<code>表达式</code>或<code>计算属性函数</code>。回调函数得到的参数为新值和旧值。表达式只接受监督的键路径。对于更复杂的表达式，用一个函数取代。</li>
+</ul>
+</li>
+<li>vm.$set( target: Object | Array, propertyName&#x2F;index: string | number, value: any )<ul>
+<li>返回值：设置的值。</li>
+<li>用法：向响应式对象中添加一个属性，并确保这个新属性同样是响应式的，且触发视图更新。必须用于向响应式对象上添加新属性.<code>对象不能是 Vue 实例，或者 Vue 实例的根数据对象。</code></li>
+</ul>
+</li>
+<li>vm.$delete( target: Object | Array, propertyName&#x2F;index: string | number )<ul>
+<li>用法：删除对象的属性。如果对象是响应式的，确保删除能触发更新视图。<code>目标对象不能是一个 Vue 实例或 Vue 实例的根数据对象。</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>与事件相关：vm.$on、vm.$emit、vm.$off和vm.$once</li>
+<li><code>$on和$emit</code>这两个方法的<code>内部原理</code>是设计模式中<code>最典型的发布订阅模式</code>，首先定义一个事件中心，通过<code>$on订阅事件</code>，将事件存储在事件中心里面，然后通过<code>$emit触发</code>事件中心里面存储的订阅事件。<ul>
+<li>vm.$on( event: string | Array<string> , callback: Function )<ul>
+<li>作用：监听当前实例上的自定义事件。事件可以由vm.$emit触发。回调函数会接收所有传入事件触发函数的额外参数。	</li>
+<li>vm.$on(‘test’,function(msg){console.log(msg)})</li>
+</ul>
+</li>
+<li>vm.$emit(‘test’,’hi’)<ul>
+<li>vm.$emit( eventName: string, […args] )<ul>
+<li>作用：触发当前实例上的事件。附加参数都会传给监听器回调</li>
+</ul>
+</li>
+<li>vm.$off( [event: string | Array<string>, callback: Function] )<ul>
+<li>作用：移除自定义事件监听器。<ul>
+<li>如果没有提供参数，则移除所有事件的监听器</li>
+<li>如果只提供了事件，则移除该事件所有的监听器</li>
+<li>如果同时提供了事件与回调，则移除这个回调的监听器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>vm.$once( event: string, callback: Function )<ul>
+<li>作用：监听一个自定义事件，但是只触发一次。一旦触发，监听器就会被移除。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>与生命周期相关：vm.$mount、vm.$forceUpdate、vm.$nextTick和vm.$destory<ul>
+<li>vm.$mount( [elementOrSelector: Element | string],[hydrating: boolean] )<ul>
+<li>返回值：vm</li>
+<li>作用：实例化时没有收到el选项，处于未挂载状态。使用vm.$mount手动挂载</li>
+</ul>
+</li>
+<li>vm.$forceUpdate()<ul>
+<li>作用: 迫使 Vue 实例重新渲染.仅仅影响实例本身和插入插槽内容的子组件</li>
+</ul>
+</li>
+<li>vm.$nextTick( [callback: Function] )<ul>
+<li>用法：将回调延迟到下次 DOM 更新循环之后执行。在修改数据之后立即使用它，然后等待 DOM 更新。回调的 this 自动绑定到调用它的实例上。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	<span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;example&quot;</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">var</span> vm = <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">el</span>: <span class="string">&#x27;##example&#x27;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">data</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="attr">message</span>: <span class="string">&#x27;123&#x27;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    vm.<span class="property">message</span> = <span class="string">&#x27;new message&#x27;</span> <span class="comment">// 更改数据</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="variable language_">console</span>.<span class="title function_">log</span>(vm.<span class="property">$el</span>.<span class="property">innerHTML</span>) <span class="comment">// &#x27;123&#x27;，这里调用时拿到的数据还是之前的</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="title class_">Vue</span>.<span class="title function_">nextTick</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="variable language_">console</span>.<span class="title function_">log</span>(vm.<span class="property">$el</span>.<span class="property">innerHTML</span>) <span class="comment">// &#x27;new message&#x27;，使用nextTick后可以获取到更新后的数据，异步执行</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>JS的运行机制<ul>
+<li>JS执行的时单线程的，基于事件循环</li>
+<li>事件循环<ul>
+<li>所有同步任务都在主线程上执行，形成一个执行栈</li>
+<li>主线程之外，还存在一个任务队列。只要异步任务有了运行结果，就在任务队列之中放置一个事件。</li>
+<li>一旦”执行栈”中所有同步任务执行完毕，系统就会读取任务列表，将任务列表中的异步任务放进执行栈中执行，主线程不断重复该步骤<br>主线程的执行过程就是一个tick，而所有的异步结果都是通过 “任务队列” 来调度。任务队列中存放宏任务和微任务，并且每执行完一个宏任务，都要去清空对应的微任务</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>vm.$destroy()<ul>
+<li>用法：完全销毁一个实例。清理它与其他实例的连接，解绑它的全部指令即事件监听器。触发 beforeDestroy 和 destroyed 的钩子。</li>
+</ul>
+</li>
+<li><h3 id="全局API"><a href="#全局API" class="headerlink" title="全局API"></a>全局API</h3><ul>
+<li>Vue.extend( options: Object )<ul>
+<li>作用：用基础 Vue 构造器，创建一个“子类”。参数是一个包含组件选项的对象。</li>
+</ul>
+</li>
+<li>Vue.nextTick( [callback:Function, context: Object] )<ul>
+<li>参照$nextTick</li>
+</ul>
+</li>
+<li>Vue.set( target: Object | Array, propertyName&#x2F;index: string | number, value: any )<ul>
+<li>参照$set</li>
+</ul>
+</li>
+<li>Vue.delete( target: Object | Array, propertyName&#x2F;index: string | number )<ul>
+<li>参照$delete</li>
+</ul>
+</li>
+<li>Vue.directive( id: string, [definition: Function | Object] )<ul>
+<li>作用：注册或获取全局指令。</li>
+</ul>
+</li>
+<li>Vue.filter( id: string, [definition: Function] )<ul>
+<li>作用：注册或获取全局过滤器。</li>
+</ul>
+</li>
+<li>Vue.component( id: string, [definition: Function | Object] )<ul>
+<li>作用：注册或获取全局组件。注册还会自动使用给定的id设置组件的名称</li>
+</ul>
+</li>
+<li>Vue.use( plugin: Object | Function ) <ul>
+<li>作用：安装 Vue.js 插件。如果插件是一个对象，必须提供 install 方法。如果插件是一个函数，它会被作为 install 方法。需要在调用 new Vue() 之前被调用。当 install 方法被同一个插件多次调用，插件只会安装一次。</li>
+</ul>
+</li>
+<li>Vue.mixin( mixin: Object)<ul>
+<li>作用：全局注册一个混入，影响注册之后所有创建的每个 Vue 实例。插件作者可以使用混入，向组件注入自定义的行为。不推荐在应用代码中使用。</li>
+</ul>
+</li>
+<li>Vue.compile( template: string )<ul>
+<li>作用：在 render 函数中编译模板字符串。只在独立构建时有效</li>
+</ul>
+</li>
+<li>Vue.observable( object：Object )<ul>
+<li>作用：让一个对象可响应。Vue 内部会用它来处理 data 函数返回的对象。返回的对象可以直接用于渲染函数和计算属性内，并且会在发生改变时触发相应的更新。也可以作为最小化的跨组件状态存储器</li>
+</ul>
+</li>
+<li>Vue.version<ul>
+<li>作用：提供字符串形式的 Vue 安装版本号</li>
+<li>用法：<code>if (version === 2) &#123;&#125; else if (version === 1) &#123;&#125; else &#123;&#125;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><ul>
+<li>使用方式<ul>
+<li>双大括号插值中被添加在js表达式尾部，由‘|’指示：<code>&#123;&#123;message | capitablize&#125;&#125;</code>，存在标签文本中</li>
+<li>和v-bind表达式中被添加在js表达式尾部，由‘|’指示: <code>&#123;&#123;<div v-bind:id="rawId | formatId"></div>&#125;&#125;</code>，存在标签属性中</li>
+</ul>
+</li>
+<li>定义<ul>
+<li>在组件中使用filters选项来定义本地过滤器，也可以使用Vue.filter来定义全局过滤器</li>
+</ul>
+</li>
+<li>串联过滤器 <ul>
+<li><code>&#123;&#123; message | filterA('arg1', arg2) &#125;&#125;</code>，还可以传参</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h3></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>钩子函数名称</th>
+<th>触发时机</th>
+<th>回调参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>init</td>
+<td>已创建VNode，在patch期间发现新的虚拟节点时被触发</td>
+<td>VNode</td>
+</tr>
+<tr>
+<td>create</td>
+<td>已基于VNode创建了DOM元素</td>
+<td>emptyNode和VNode</td>
+</tr>
+<tr>
+<td>activate</td>
+<td>keep-alive组件被创建</td>
+<td>emptyNode和VNode</td>
+</tr>
+<tr>
+<td>insert</td>
+<td>VNode对应的DOM元素被插入到父节点中时被触发</td>
+<td>VNode</td>
+</tr>
+<tr>
+<td>prepatch</td>
+<td>一个VNode即将被patch之前触发</td>
+<td>oldVNode和VNode</td>
+</tr>
+<tr>
+<td>update</td>
+<td>一个VNode更新时触发</td>
+<td>oldVNode和VNode</td>
+</tr>
+<tr>
+<td>postpatch</td>
+<td>一个VNode被patch完毕时触发</td>
+<td>oldVNode和VNode</td>
+</tr>
+<tr>
+<td>destory</td>
+<td>一个VNode对应的DOM元素从DOM中移除时或者它的父元素从DOM中移除时触发</td>
+<td>VNode</td>
+</tr>
+<tr>
+<td>remove</td>
+<td>一个VNode对应的DOM元素从DOM中移除时触发。与destory不同的是，如果是直接将该VNode的父元素从DOM中移除导致该元素被移除不会触发</td>
+<td>VNode和removeCallback</td>
+</tr>
+</tbody></table>
+<ul>
+<li>指令钩子函数 — 对应指令的状态</li>
+<li>bind：只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置</li>
+<li>inserted：被绑定元素插入父节点时调用(仅保证父节点存在，但不一定已被插入文档中)</li>
+<li>update：所在组件的 VNode 更新时调用，但是可能发生在其子 VNode 更新之前</li>
+<li>componentUpdated：指令所在组件的 VNode 及其子 VNode 全部更新后调用</li>
+<li>unbind：只调用一次，指令与元素解绑时调用</li>
+<li><h3 id="keep-alive"><a href="#keep-alive" class="headerlink" title="keep-alive"></a>keep-alive</h3><ul>
+<li><code>&lt;keep-alive include=&quot;字符串|正则表达式&quot; exclude=&quot;字符串|正则表达式&quot; max=&quot;Number&quot; &gt;</code><ul>
+<li>include：只有名称匹配的组件会被缓存</li>
+<li>exclude：任何名称匹配的组件都不会被缓存</li>
+<li>max：最多可以缓存多少组件实例.一旦这个数字达到了，在新实例被创建之前，<code>已缓存组件中最久没有被访问的实例会被销毁掉</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 逗号分隔字符串 </span></span><br><span class="line">&lt;keep-alive include=<span class="string">&quot;a,b&quot;</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">component</span> <span class="attr">:is</span>=<span class="string">&quot;view&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></span></span><br><span class="line">&lt;/keep-alive&gt;</span><br><span class="line"><span class="comment">// 正则表达式 (使用 `v-bind`)</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">keep-alive</span> <span class="attr">:include</span>=<span class="string">&quot;/a|b/&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">component</span> <span class="attr">:is</span>=<span class="string">&quot;view&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">keep-alive</span>&gt;</span></span></span><br><span class="line"><span class="comment">// 数组 (使用 `v-bind`) </span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">keep-alive</span> <span class="attr">:include</span>=<span class="string">&quot;[&#x27;a&#x27;, &#x27;b&#x27;]&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">component</span> <span class="attr">:is</span>=<span class="string">&quot;view&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">keep-alive</span>&gt;</span></span></span><br><span class="line"><span class="comment">// 匹配时首先检查组件自身的name选项，如果name不可用，则匹配它的局部注册名称(父组件components选项的键值)。匿名组件不能被匹配</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>组件一旦被<code>&lt;keep-alive&gt;</code>缓存，那么再次渲染的时候就不会执行created、mounted等钩子</li>
+<li>如果希望能再次渲染时使用<code>activated</code>和<code>deactivated</code>两个钩子，它的执行时机是 <code>&lt;keep-alive&gt;</code> 包裹的组件激活时调用和停用时调用</li>
+</ul>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/vue3/%E6%8F%92%E4%BB%B6/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/vue/">
+                    vue
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/vue3/%E6%8F%92%E4%BB%B6/" class="trm-anima-link">
+                    VUE3-插件
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>14:39</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/vue3/vue%E5%B8%B8%E7%94%A8%E7%9A%84%E4%BF%AE%E9%A5%B0%E7%AC%A6/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/vue/">
+                    vue
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/vue3/vue%E5%B8%B8%E7%94%A8%E7%9A%84%E4%BF%AE%E9%A5%B0%E7%AC%A6/" class="trm-anima-link">
+                    VUE3-常用的修饰符
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>14:39</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            基于大数据，学习参考、练习，网站正在逐步完善中...
+        </div>
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

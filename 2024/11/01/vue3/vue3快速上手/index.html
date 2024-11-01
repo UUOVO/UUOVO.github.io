@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="vue概念 用于构建用户界面的 JavaScript 框架–渐进式框架。 基于标准 HTML、CSS 和 JavaScript 构建，并提供了一套声明式的、组件化的编程模型。  ⭐ vue核心功能 声明式渲染：拓展了模板语法，描述HTML跟js状态间的关系 响应性：自动跟踪js状态并在发生变化时响应式的更新DOM  ⭐ 渐进式框架 无需构建步骤，渐进式增强静态的 HTML 在任何页面中作为 Web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VUE3-快速上手">
+<meta property="og:url" content="http://example.com/2024/11/01/vue3/vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="vue概念 用于构建用户界面的 JavaScript 框架–渐进式框架。 基于标准 HTML、CSS 和 JavaScript 构建，并提供了一套声明式的、组件化的编程模型。  ⭐ vue核心功能 声明式渲染：拓展了模板语法，描述HTML跟js状态间的关系 响应性：自动跟踪js状态并在发生变化时响应式的更新DOM  ⭐ 渐进式框架 无需构建步骤，渐进式增强静态的 HTML 在任何页面中作为 Web">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/404.jpg">
+<meta property="article:published_time" content="2024-11-01T06:39:25.116Z">
+<meta property="article:modified_time" content="2024-11-01T08:40:50.990Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/404.jpg">
+
+    <meta name="keywords" content="vue3">
+
+
+<title >VUE3-快速上手</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-01 16:40:50"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            UUOVO<span>个人站点</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/test1/" target="">
+                            test1
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            VUE3-快速上手
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+        <a href="https://zh-hans.react.dev/" title="React" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-react"></i>
+        </a>
+    
+        <a href="https://zh.javascript.info/" title="Javascript" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node-js"></i>
+        </a>
+    
+        <a href="https://nodejs.cn/" title="Node" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            11/01
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            14:39
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h3 id="vue概念"><a href="#vue概念" class="headerlink" title="vue概念"></a>vue概念</h3><ul>
+<li>用于构建用户界面的 JavaScript 框架–渐进式框架。</li>
+<li>基于标准 HTML、CSS 和 JavaScript 构建，并提供了一套声明式的、组件化的编程模型。</li>
+</ul>
+<h3 id="⭐-vue核心功能"><a href="#⭐-vue核心功能" class="headerlink" title="⭐ vue核心功能"></a>⭐ vue核心功能</h3><ul>
+<li>声明式渲染：拓展了模板语法，描述HTML跟js状态间的关系</li>
+<li>响应性：自动跟踪js状态并在发生变化时响应式的更新DOM</li>
+</ul>
+<h3 id="⭐-渐进式框架"><a href="#⭐-渐进式框架" class="headerlink" title="⭐ 渐进式框架"></a>⭐ 渐进式框架</h3><ul>
+<li>无需构建步骤，渐进式增强静态的 HTML</li>
+<li>在任何页面中作为 Web Components 嵌入</li>
+<li>单页应用 (SPA)</li>
+<li>全栈 &#x2F; 服务端渲染 (SSR)</li>
+<li>Jamstack &#x2F; 静态站点生成 (SSG)</li>
+<li>开发桌面端、移动端、WebGL，甚至是命令行终端中的界面</li>
+</ul>
+<h3 id="API风格"><a href="#API风格" class="headerlink" title="API风格"></a>API风格</h3><ul>
+<li><h3 id="选项式-—-不适用构建工具-低复杂度"><a href="#选项式-—-不适用构建工具-低复杂度" class="headerlink" title="选项式 — 不适用构建工具&#x2F;低复杂度"></a>选项式 — 不适用构建工具&#x2F;低复杂度</h3><ul>
+<li>包含多个选项的对象来描述组件的逻辑如，data、methods、mounted，选项中定义的属性都会暴露在函数内部的this，this指向当前组件实例</li>
+</ul>
+</li>
+<li><h3 id="组合式API-—-完整单页面应用"><a href="#组合式API-—-完整单页面应用" class="headerlink" title="组合式API — 完整单页面应用"></a>组合式API — 完整单页面应用</h3><ul>
+<li>使用导入的API函数来描述组件逻辑。通常搭配<code>&lt;script setup&gt;</code>使用</li>
+</ul>
+</li>
+</ul>
+<h2 id="vue3优点"><a href="#vue3优点" class="headerlink" title="vue3优点"></a>vue3优点</h2><ul>
+<li>性能的提升<ul>
+<li>打包大小减少41%</li>
+<li>初次渲染快55%, 更新渲染快133%</li>
+<li>内存减少54%</li>
+</ul>
+</li>
+<li>源码的升级<ul>
+<li>使用Proxy代替defineProperty实现响应式</li>
+<li>重写虚拟DOM的实现和Tree-Shaking</li>
+</ul>
+</li>
+<li>拥抱TypeScript</li>
+<li>新的特性<ol>
+<li>Composition API（组合API）<ul>
+<li>setup配置</li>
+<li>ref与reactive</li>
+<li>watch与watchEffect</li>
+<li>provide与inject</li>
+</ul>
+</li>
+<li>新的内置组件<ul>
+<li>Fragment </li>
+<li>Teleport</li>
+<li>Suspense</li>
+</ul>
+</li>
+<li>其他改变<ul>
+<li>新的生命周期钩子</li>
+<li>data 选项应始终被声明为一个函数</li>
+<li>移除keyCode支持作为 v-on 的修饰符</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="创建项目-vite"><a href="#创建项目-vite" class="headerlink" title="创建项目 + vite"></a>创建项目 + <a href="E:/practice/study-notes/前端工程化笔记/vite.md">vite</a></h2><ul>
+<li>node版本要16以上</li>
+<li>使用<a target="_blank" rel="noopener" href="https://github.com/vuejs/create-vue">create-vue</a></li>
+<li>安装 npm create vue@latest</li>
+</ul>
+<h2 id="模板语法"><a href="#模板语法" class="headerlink" title="模板语法"></a>模板语法</h2><ul>
+<li>文本插值：<code>&#123;&#123;&#125;&#125;</code></li>
+<li>原始html：<code>v-html=&quot;&quot;</code></li>
+<li>Attribute绑定：<code>(v-bind:xxx=&quot;&quot; 简写 :xxx=&quot;&quot;)</code><ul>
+<li>正常情况：值为null或undefined，attribute将会从渲染的元素上移除 </li>
+<li>布尔型：值为真值或一个空字符串，元素会包含这个attribute；为其他假值时忽略</li>
+<li>动态绑定多个值：对象包含多个属性。使用不带参的v-bind，绑定到单个元素上。<ul>
+<li>v-bind&#x3D;”obj”</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>支持javascript表达式或者调用函数</li>
+</ul>
+<h2 id="指令-Directives"><a href="#指令-Directives" class="headerlink" title="指令(Directives)"></a>指令(Directives)</h2><ul>
+<li>期望值为一个javascript表达式，表达式的值变化时响应式更新DOM</li>
+<li>javascript表达式使用v-bind(:)，函数使用v-on(@)</li>
+<li>参数：<code>:xxx=&quot;&quot;</code></li>
+<li>动态参数：<code>:[字符串或null]=&quot;&quot;</code><ul>
+<li>三限制：禁空格、禁引号、禁大写</li>
+</ul>
+</li>
+<li>修饰符.： 触发事件</li>
+</ul>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a href="/2024/11/01/vue3/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/" title="VUE3-响应式原理">VUE3-响应式原理</a></h2><h2 id="常用-Composition-API"><a href="#常用-Composition-API" class="headerlink" title="常用 Composition API"></a>常用 Composition API</h2><h3 id="setup"><a href="#setup" class="headerlink" title="setup"></a>setup</h3><ul>
+<li><p>代表使用组合式API，<code>&lt;script setup&gt;</code>是setup函数的语法糖</p>
+</li>
+<li><p><code>&lt;script setup&gt;</code>获取props，emit，context</p>
+<ul>
+<li>子组件引入：import { useContext, defineProps, defineEmit } from ‘vue’</li>
+<li>emit：<ul>
+<li>定义：<code>const emit = defineEmit([&#39;父组件在子组件标签上传的事件名&#39;])</code></li>
+<li>在子组件的某个事件触发：emit(‘事件名’, 子组件传递的数据)，父组件通过事件参数拿到</li>
+</ul>
+</li>
+<li>ctx：<code>const ctx = useContext()</code></li>
+<li>props：<code>const props = defineProps(&#123; 父组件在子组件标签上传的属性名: 该属性的类型 &#125;)</code></li>
+</ul>
+</li>
+<li><p>注意点：</p>
+</li>
+<li><p>setup执行的时机</p>
+<ul>
+<li>在beforeCreate之前执行一次，this是undefined。</li>
+</ul>
+</li>
+<li><p>setup的参数</p>
+<ul>
+<li>props：值为对象，包含：组件外部传递过来，且组件内部声明接收了的属性</li>
+<li>context：上下文对象<ul>
+<li>attrs：值为对象，包含：组件外部传递过来，但没有在props配置中声明的属性, 相当于<code>this.$attrs</code></li>
+<li>slots：收到的插槽内容, 相当于 <code>this.$slots</code></li>
+<li>emit：分发自定义事件的函数, 相当于 <code>this.$emit</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="ref函数"><a href="#ref函数" class="headerlink" title="ref函数"></a>ref函数</h3><ul>
+<li>作用: 声明一个响应式的状态</li>
+<li>使用：引入import { ref } from ‘vue’</li>
+<li>语法: <code>const xxx = ref(initValue)</code><ul>
+<li>JS中操作数据： <code>xxx.value</code></li>
+<li>模板中读取数据: 不需要.value，直接：<code>&lt;div&gt;&#123;&#123;xxx&#125;&#125;&lt;/div&gt;</code></li>
+</ul>
+</li>
+<li>优点：<ul>
+<li><h3 id="深层响应性"><a href="#深层响应性" class="headerlink" title="深层响应性"></a>深层响应性</h3><ul>
+<li>应用于任意值，即改变就会检测</li>
+<li>shallow ref 可放弃深层响应性</li>
+<li>非原始值将通过 reactive() 转换为响应式代理</li>
+</ul>
+</li>
+<li><h3 id="DOM更新时机"><a href="#DOM更新时机" class="headerlink" title="DOM更新时机"></a>DOM更新时机</h3><ul>
+<li>更改响应式状态后，DOM会自动更新，但并不是同步</li>
+<li>等待一个状态改变后的DOM更新完成，使用nextTick()</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>备注：<ul>
+<li>接收的数据可以是：基本类型、也可以是对象类型。</li>
+<li>基本类型的数据：响应式依然是靠<code>Object.defineProperty()</code>的<code>get</code>与<code>set</code>完成的。</li>
+<li>对象类型的数据：使用<code>reactive</code>处理</li>
+</ul>
+</li>
+</ul>
+<h3 id="reactive函数"><a href="#reactive函数" class="headerlink" title="reactive函数"></a>reactive函数</h3><ul>
+<li>作用: 定义一个<code>对象类型</code>的响应式数据，返回一个<code>代理对象（Proxy的实例对象，简称proxy对象）</code></li>
+<li>语法：<code>const 代理对象= reactive(源对象)</code>接收一个对象（或数组）</li>
+<li>使用：<code>代理对象</code></li>
+<li>局限性：只能用于对象类型(对象、数组和Map、Set这样的集合类型)，并且不能替换整个对象，解构不友好</li>
+<li>内部基于 ES6 的 Proxy 实现，通过代理对象操作源对象内部数据进行操作。</li>
+</ul>
+<h3 id="reactive-和-ref-区别"><a href="#reactive-和-ref-区别" class="headerlink" title="reactive 和 ref 区别"></a>reactive 和 ref 区别</h3><ul>
+<li>从定义数据角度对比：<ul>
+<li>ref用来定义：<code>基本类型数据</code></li>
+<li>reactive用来定义：<code>对象(或数组)类型数据</code></li>
+<li>注：ref也可以定义<code>对象(或数组)类型</code>数据, 它内部会自动通过<code>reactive</code>转为代理对象</li>
+</ul>
+</li>
+<li>从原理角度对比：<ul>
+<li>ref通过<code>Object.defineProperty()</code>的<code>get</code>与<code>set</code>来实现响应式(数据劫持)</li>
+<li>reactive通过使用<code>Proxy</code>来实现响应式(数据劫持), 并通过<code>Reflect</code>操作<code>源对象</code>内部的数据</li>
+</ul>
+</li>
+<li>从使用角度对比：<ul>
+<li>ref定义的数据：操作数据<code>需要.value</code>，读取数据时模板中直接读取<code>不需要.value</code></li>
+<li>reactive定义的数据：操作数据与读取数据：<code>均不需要.value</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="⭐-计算属性computed-—-依赖响应式状态的复杂逻辑"><a href="#⭐-计算属性computed-—-依赖响应式状态的复杂逻辑" class="headerlink" title="⭐ 计算属性computed — 依赖响应式状态的复杂逻辑"></a>⭐ <code>计算属性</code>computed — <code>依赖响应式状态的复杂逻辑</code></h3><ul>
+<li>与Vue2中computed配置功能一致☞<a href="/2024/11/01/vue2/%E5%9F%BA%E7%A1%80/" title="VUE2-基础（主了解）">VUE2-基础（主了解）</a></li>
+<li>计算属性值会基于其响应式依赖被缓存，只有依赖改变才会去重新计算</li>
+<li>写法：<ul>
+<li>引入钩子：import { computed } from ‘vue’</li>
+<li>使用：computed(()&#x3D;&gt; {})</li>
+</ul>
+</li>
+</ul>
+<h3 id="侦听器-watch-—-在状态变化时执行一些“副作用”"><a href="#侦听器-watch-—-在状态变化时执行一些“副作用”" class="headerlink" title="侦听器 watch — 在状态变化时执行一些“副作用”"></a><code>侦听器</code> watch — <code>在状态变化时执行一些“副作用”</code></h3><ul>
+<li><p>与Vue2中watch配置功能一致☞<a href="/2024/11/01/vue2/%E5%9F%BA%E7%A1%80/" title="VUE2-基础（主了解）">VUE2-基础（主了解）</a></p>
+</li>
+<li><p>两个小“坑”：</p>
+<ul>
+<li>监视reactive定义的响应式数据时：oldValue无法正确获取、强制开启了深度监视(deep配置失效)</li>
+<li>监视reactive定义的响应式数据中某个属性时：deep配置有效</li>
+</ul>
+</li>
+<li><p>写法：</p>
+<ul>
+<li>引入钩子：import { watch } from ‘vue’ </li>
+<li>基本使用：watch(变量,(newValue,oldValue)&#x3D;&gt;{},{immediate:true})</li>
+<li>监视多个ref定义的响应式数据：<ul>
+<li>watch([变量1,变量2],(newValue,oldValue)&#x3D;&gt;{})</li>
+</ul>
+</li>
+<li>监视reactive定义的响应式数据中的某个属性(监视的是对象中的某个属性，所以deep配置有效)<ul>
+<li>watch(()&#x3D;&gt;对象.属性,(newValue,oldValue)&#x3D;&gt;{},{immediate:true,deep:true})</li>
+</ul>
+</li>
+<li>监视reactive定义的响应式数据中的多个属性<ul>
+<li>watch([()&#x3D;&gt;对象.属性,()&#x3D;&gt;对象.属性2],(newValue,oldValue)&#x3D;&gt;{},{immediate:true,deep:true})</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="深层侦听器"><a href="#深层侦听器" class="headerlink" title="深层侦听器"></a>深层侦听器</h3><ul>
+<li>使用 <code>deep: true</code> 开启，开销很大，无必要不使用</li>
+</ul>
+</li>
+<li><h3 id="即时回调的侦听器"><a href="#即时回调的侦听器" class="headerlink" title="即时回调的侦听器"></a>即时回调的侦听器</h3><ul>
+<li>使用 <code>immediate: true</code> 开启</li>
+</ul>
+</li>
+<li><h3 id="watchEffect函数"><a href="#watchEffect函数" class="headerlink" title="watchEffect函数"></a>watchEffect函数</h3><ul>
+<li>watch的套路是：既要指明监视的属性，也要指明监视的回调。</li>
+<li>watchEffect的套路是：<code>不用指明监视哪个属性，监视的回调中用到哪个属性，那就监视哪个属性</code></li>
+<li>使用：watchEffect(()&#x3D;&gt;{})</li>
+<li>注：<code>仅会在其同步执行期间，才追踪依赖</code>。<code>在使用异步回调时，只有在第一个 await 正常工作前访问到的属性才会被追踪</code>。</li>
+</ul>
+</li>
+<li><h3 id="回调的触发时机"><a href="#回调的触发时机" class="headerlink" title="回调的触发时机"></a>回调的触发时机</h3><ul>
+<li>默认，用户创建的侦听器回调，都会在<code>Vue 组件更新前被调用</code></li>
+<li>在侦听器回调中能访问被 <code>Vue 更新之后的 DOM</code>，<code>指明 flush: &#39;post&#39; 选项</code></li>
+</ul>
+</li>
+<li><h3 id="停止侦听器"><a href="#停止侦听器" class="headerlink" title="停止侦听器"></a>停止侦听器</h3><ul>
+<li>场景：用异步回调创建一个侦听器，它不会绑定到当前组件上，必须手动停止它，以防内存泄漏</li>
+<li>停止一个侦听器：调用 watch 或 watchEffect 返回的函数<ul>
+<li>const unwatch &#x3D; watchEffect(() &#x3D;&gt; {})</li>
+<li>unwatch()</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="⭐-生命周期钩子"><a href="#⭐-生命周期钩子" class="headerlink" title="⭐ 生命周期钩子"></a>⭐ 生命周期钩子</h2><p><img src="/../../img/vue3/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90.png" alt="vue生命周期钩子"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<ul>
+<li>Vue3可继续使用Vue2的生命周期钩子，但有两个更名：<ul>
+<li><code>beforeDestroy</code>改名为 <code>beforeUnmount</code></li>
+<li><code>destroyed</code>改名为 <code>unmounted</code></li>
+</ul>
+</li>
+<li><h3 id="Vue3的Composition-API-形式的生命周期钩子，与Vue2中钩子对应关系如下：-vue3-vue2"><a href="#Vue3的Composition-API-形式的生命周期钩子，与Vue2中钩子对应关系如下：-vue3-vue2" class="headerlink" title="Vue3的Composition API 形式的生命周期钩子，与Vue2中钩子对应关系如下：(vue3:vue2)"></a>Vue3的Composition API 形式的生命周期钩子，与Vue2中钩子对应关系如下：(vue3:vue2)</h3><ul>
+<li><code>beforeCreate</code>&#x3D;&#x3D;&#x3D;&gt;<code>setup()</code></li>
+<li><code>created</code>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&gt;<code>setup()</code></li>
+<li><code>beforeMount</code> &#x3D;&#x3D;&#x3D;&gt;<code>onBeforeMount</code></li>
+<li><code>mounted</code>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&gt;<code>onMounted</code></li>
+<li><code>beforeUpdate</code>&#x3D;&#x3D;&#x3D;&gt;<code>onBeforeUpdate</code></li>
+<li><code>updated</code> &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&gt;<code>onUpdated</code></li>
+<li><code>beforeUnmount</code> &#x3D;&#x3D;&gt;<code>onBeforeUnmount</code></li>
+<li><code>unmounted</code> &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&gt;<code>onUnmounted</code></li>
+</ul>
+</li>
+<li><h3 id="vue3生命周期钩子的作用"><a href="#vue3生命周期钩子的作用" class="headerlink" title="vue3生命周期钩子的作用"></a>vue3生命周期钩子的作用</h3><ul>
+<li><h3 id="beforeCreate"><a href="#beforeCreate" class="headerlink" title="beforeCreate"></a>beforeCreate</h3><ul>
+<li>在组件实例初始化完成后立即调用，data() 和 computed 等选项处理之前立即调用</li>
+</ul>
+</li>
+<li><h3 id="created"><a href="#created" class="headerlink" title="created"></a>created</h3><ul>
+<li>已完成响应式数据、计算属性、方法和侦听器。</li>
+<li>然而，此时挂载阶段还未开始，因此 $el 属性仍不可用</li>
+</ul>
+</li>
+<li><h3 id="beforeMount"><a href="#beforeMount" class="headerlink" title="beforeMount"></a>beforeMount</h3><ul>
+<li>在组件被挂载之前调用，还没创建DOM节点</li>
+</ul>
+</li>
+<li><h3 id="⭐-mounted"><a href="#⭐-mounted" class="headerlink" title="⭐ mounted"></a>⭐ mounted</h3><ul>
+<li>在组件挂载之后调用，所有同步子组件都已经被挂载。</li>
+<li>其自身的 DOM 树已经创建完成并插入了父容器中。</li>
+<li>处理副作用</li>
+</ul>
+</li>
+<li><h3 id="beforeUpdate"><a href="#beforeUpdate" class="headerlink" title="beforeUpdate"></a>beforeUpdate</h3><ul>
+<li>在组件即将因为一个响应式状态变更而更新其DOM树之前调用。</li>
+<li>在 Vue 更新 DOM 之前访问 DOM 状态</li>
+</ul>
+</li>
+<li><h3 id="⭐-update"><a href="#⭐-update" class="headerlink" title="⭐ update"></a>⭐ update</h3><ul>
+<li>在组件因为一个响应式状态变更而更新其 DOM 树之后调用。</li>
+<li>父组件的更新钩子将在其子组件的更新钩子之后调用。</li>
+<li>在组件的任意 DOM 更新后被调用</li>
+</ul>
+</li>
+<li><h3 id="beforeUnmount"><a href="#beforeUnmount" class="headerlink" title="beforeUnmount"></a>beforeUnmount</h3><ul>
+<li>在一个组件实例被卸载之前调用</li>
+<li>当这个钩子被调用时，组件实例依然还保有全部的功能</li>
+</ul>
+</li>
+<li><h3 id="⭐-unmounted"><a href="#⭐-unmounted" class="headerlink" title="⭐ unmounted"></a>⭐ unmounted</h3><ul>
+<li>在一个组件实例被卸载之后调用，</li>
+<li>可以在这个钩子中手动清理一些副作用，例如计时器、DOM 事件监听器或者与服务器的连接。</li>
+</ul>
+</li>
+<li><h3 id="activated"><a href="#activated" class="headerlink" title="activated"></a>activated</h3><ul>
+<li>组件实例是 <code>&lt;KeepAlive&gt;</code> 缓存树的一部分，当组件被插入到 DOM 中时调用</li>
+</ul>
+</li>
+<li><h3 id="deactivated"><a href="#deactivated" class="headerlink" title="deactivated"></a>deactivated</h3><ul>
+<li>组件实例是 <code>&lt;KeepAlive&gt;</code> 缓存树的一部分，当组件从 DOM 中被移除时调用</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="模板引用"><a href="#模板引用" class="headerlink" title="模板引用"></a>模板引用</h2><ul>
+<li>ref：直接访问底层DOM元素，DOM 元素或子组件实例被挂载后，可以直接引用</li>
+<li>使用：<ul>
+<li>引入：import { ref, onMounted } from ‘vue’</li>
+<li>使用：<code>&lt;view ref=&quot;&quot; /&gt;</code></li>
+</ul>
+</li>
+<li><h3 id="v-for中的模板引用："><a href="#v-for中的模板引用：" class="headerlink" title="v-for中的模板引用："></a>v-for中的模板引用：</h3><ul>
+<li>ref的值是数组 </li>
+<li><code>ref 数组</code>并<code>不</code>保证与<code>源数组相同的顺序</code></li>
+</ul>
+</li>
+<li><h3 id="函数模板引用："><a href="#函数模板引用：" class="headerlink" title="函数模板引用："></a>函数模板引用：</h3><ul>
+<li><code>:ref绑定为一个函数</code>，函数会收到元素引用作为其第一个参数<ul>
+<li><code>&lt;input :ref=&quot;(el) =&gt; &#123;&#125;&quot;/&gt;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="组件上的ref："><a href="#组件上的ref：" class="headerlink" title="组件上的ref："></a>组件上的ref：</h3><ul>
+<li>用在组件上获取的是组件实例</li>
+</ul>
+</li>
+</ul>
+<h2 id="其它-Composition-API"><a href="#其它-Composition-API" class="headerlink" title="其它 Composition API"></a>其它 Composition API</h2><h3 id="shallowReactive-与-shallowRef"><a href="#shallowReactive-与-shallowRef" class="headerlink" title="shallowReactive 与 shallowRef"></a>shallowReactive 与 shallowRef</h3><ul>
+<li>shallowReactive：只处理对象最外层属性的响应式（浅响应式）。</li>
+<li>shallowRef：只处理基本数据类型的响应式, 不进行对象的响应式处理。</li>
+<li>使用场景：<ul>
+<li>如果有一个对象数据，结构比较深, 但变化时只是外层属性变化 &#x3D;&#x3D;&#x3D;&gt; shallowReactive</li>
+<li>如果有一个对象数据，后续功能不会修改该对象中的属性，而是生新的对象来替换 &#x3D;&#x3D;&#x3D;&gt; shallowRef</li>
+</ul>
+</li>
+</ul>
+<h3 id="readonly-与-shallowReadonly"><a href="#readonly-与-shallowReadonly" class="headerlink" title="readonly 与 shallowReadonly"></a>readonly 与 shallowReadonly</h3><ul>
+<li>readonly: 让一个响应式数据变为只读的（深只读）</li>
+<li>shallowReadonly：让一个响应式数据变为只读的（浅只读）</li>
+<li>应用场景: 不希望数据被修改时。</li>
+</ul>
+<h3 id="toRaw-与-markRaw"><a href="#toRaw-与-markRaw" class="headerlink" title="toRaw 与 markRaw"></a>toRaw 与 markRaw</h3><ul>
+<li>toRaw：<ul>
+<li>作用：将一个由<code>reactive</code>生成的<code>响应式对象转为普通对象</code></li>
+<li>使用场景：用于读取响应式对象对应的普通对象，对这个普通对象的所有操作，不会引起页面更新</li>
+</ul>
+</li>
+<li>markRaw：<ul>
+<li>作用：标记一个对象，使其永远不会再成为响应式对象</li>
+<li>应用场景:<ol>
+<li>有些值不应被设置为响应式的，例如复杂的第三方类库等</li>
+<li>当渲染具有不可变数据源的大列表时，跳过响应式转换可以提高性能</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="customRef"><a href="#customRef" class="headerlink" title="customRef"></a>customRef</h3><ul>
+<li>作用：创建一个自定义的 ref，并对其依赖项跟踪和更新触发进行显式控制</li>
+<li>实现防抖效果：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	<span class="language-xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;keyword&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">	<span class="tag">&lt;<span class="name">h3</span>&gt;</span>&#123;&#123;keyword&#125;&#125;<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	<span class="keyword">import</span> &#123;ref,customRef&#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	<span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">		<span class="attr">name</span>:<span class="string">&#x27;Demo&#x27;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">		<span class="title function_">setup</span>(<span class="params"></span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">			<span class="comment">//自定义一个myRef</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">			<span class="keyword">function</span> <span class="title function_">myRef</span>(<span class="params">value,delay</span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">				<span class="keyword">let</span> timer</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">				<span class="comment">//通过customRef去实现自定义</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">				<span class="keyword">return</span> <span class="title function_">customRef</span>(<span class="function">(<span class="params">track,trigger</span>)=&gt;</span>&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">					<span class="keyword">return</span>&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">						<span class="title function_">get</span>(<span class="params"></span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">							<span class="title function_">track</span>() <span class="comment">//告诉Vue这个value值是需要被“追踪”的</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">							<span class="keyword">return</span> value</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">						&#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">						<span class="title function_">set</span>(<span class="params">newValue</span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">							<span class="built_in">clearTimeout</span>(timer)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">							timer = <span class="built_in">setTimeout</span>(<span class="function">()=&gt;</span>&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">								value = newValue</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">								<span class="title function_">trigger</span>() <span class="comment">//告诉Vue去更新界面</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">							&#125;,delay)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">						&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">					&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">				&#125;)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">			&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">			<span class="keyword">let</span> keyword = <span class="title function_">myRef</span>(<span class="string">&#x27;hello&#x27;</span>,<span class="number">500</span>) <span class="comment">//使用程序员自定义的ref</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">			<span class="keyword">return</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">				keyword</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">			&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">		&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="provide-与-inject"><a href="#provide-与-inject" class="headerlink" title="provide 与 inject"></a>provide 与 inject</h3><ul>
+<li>作用：<code>实现祖先与后代组件间通信</code></li>
+<li>套路：父组件有一个 <code>provide</code> 选项来提供数据，后代组件有一个 <code>inject</code> 选项来开始使用这些数据</li>
+<li>具体写法：<ol>
+<li>祖组件中：使用provide(‘通信的别名’,要传递的变量)</li>
+<li>后代组件中：const 得到的变量 &#x3D; inject(‘通信的别名’)</li>
+</ol>
+</li>
+</ul>
+<h3 id="响应式API：工具函数"><a href="#响应式API：工具函数" class="headerlink" title="响应式API：工具函数"></a>响应式API：工具函数</h3><ul>
+<li>isRef(): 检查一个值是否为一个 ref 对象</li>
+<li>unref(): 如果参数是 ref，则返回内部值，否则返回参数本身</li>
+<li>isReactive(): 检查一个对象是否是由 <code>reactive</code> 创建的响应式代理</li>
+<li>isReadonly(): 检查一个对象是否是由 <code>readonly</code> 创建的只读代理</li>
+<li>isProxy(): 检查一个对象是否是由 <code>reactive</code> 或者 <code>readonly</code> 方法创建的代理</li>
+<li>toRef()：创建一个 ref 对象，其value值指向另一个对象中的某个属性。<ul>
+<li>语法：<code>const name = toRef(person,&#39;name&#39;)</code></li>
+</ul>
+</li>
+<li>toRefs(): 与<code>toRef</code>功能一致，值指向一个对象<ul>
+<li>语法：<code>toRefs(person)</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="新的组件"><a href="#新的组件" class="headerlink" title="新的组件"></a>新的组件</h2><h3 id="1-Fragment"><a href="#1-Fragment" class="headerlink" title="1.Fragment"></a>1.Fragment</h3><ul>
+<li>在Vue2中: 组件必须有一个根标签</li>
+<li>在Vue3中: 组件可以没有根标签, 内部会将多个标签包含在一个Fragment虚拟元素中</li>
+<li>好处: 减少标签层级, 减小内存占用</li>
+</ul>
+<h3 id="2-Teleport"><a href="#2-Teleport" class="headerlink" title="2.Teleport"></a>2.Teleport</h3><ul>
+<li>定义: 将<code>组件html结构</code>移动到指定位置的技术</li>
+<li>使用：teleport标签包裹的内容是移动的内容，标签上指定to&#x3D;”移动位置”</li>
+</ul>
+<h3 id="3-Suspense"><a href="#3-Suspense" class="headerlink" title="3.Suspense"></a>3.Suspense</h3><ul>
+<li>等待异步组件时渲染一些额外内容</li>
+<li>使用步骤：<ul>
+<li>引入钩子：import {defineAsyncComponent} from ‘vue’</li>
+<li>异步引入组件：const 组件名 &#x3D; defineAsyncComponent(()&#x3D;&gt;import(‘组件路径’))<ul>
+<li>使用<code>Suspense</code>包裹组件，并配置好对应插槽的内容</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
+<li>全局API的转移</li>
+</ol>
+<ul>
+<li>Vue 2 有许多全局 API 和配置在vue3中调整。<ul>
+<li>将全局的API，即：<code>Vue.xxx</code>调整到应用实例（<code>app</code>）上<table>
+<thead>
+<tr>
+<th>全局 API</th>
+<th>实例 API (<code>app</code>)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Vue.config.xxxx</td>
+<td>app.config.xxxx</td>
+</tr>
+<tr>
+<td>Vue.config.productionTip</td>
+<td>移除</td>
+</tr>
+<tr>
+<td>Vue.component</td>
+<td>app.component</td>
+</tr>
+<tr>
+<td>Vue.directive</td>
+<td>app.directive</td>
+</tr>
+<tr>
+<td>Vue.mixin</td>
+<td>app.mixin</td>
+</tr>
+<tr>
+<td>Vue.use</td>
+<td>app.use</td>
+</tr>
+<tr>
+<td>Vue.prototype</td>
+<td>app.config.globalProperties</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>其他改变</li>
+</ol>
+<ul>
+<li>data选项应始终被声明为一个函数。</li>
+<li>过度类名的更改：.v-enter-from,.v-leave-to(vue3写法)</li>
+<li>移除keyCode作为 v-on 的修饰符，同时也不再支持<code>config.keyCodes</code></li>
+<li>移除<code>v-on.native</code>修饰符</li>
+<li>移除过滤器（filter）</li>
+</ul>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/vue3/vue-router/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/vue/">
+                    vue
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/vue3/vue-router/" class="trm-anima-link">
+                    VUE3-路由
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>14:39</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/vue3/Pinia/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/vue/">
+                    vue
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/vue3/Pinia/" class="trm-anima-link">
+                    VUE3-Pinia
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>14:39</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            基于大数据，学习参考、练习，网站正在逐步完善中...
+        </div>
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="大纲 基础类型  布尔值 数字 字符串 数组 元组 枚举 any 空值 void null 和 undefined Nerver Object is 关键字   类型断言 尖括号语法 as语法   类型推论 最佳通用类型 上下文类型    基础类型 布尔值 let isBoolean: boolean &#x3D; true or false   数字 let isNumber: number &#x3D; 6 &#x2F;&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TS-基础类型和类型推论">
+<meta property="og:url" content="http://example.com/2024/11/01/TS/%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B%E5%92%8C%E7%B1%BB%E5%9E%8B%E6%8E%A8%E8%AE%BA/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="大纲 基础类型  布尔值 数字 字符串 数组 元组 枚举 any 空值 void null 和 undefined Nerver Object is 关键字   类型断言 尖括号语法 as语法   类型推论 最佳通用类型 上下文类型    基础类型 布尔值 let isBoolean: boolean &#x3D; true or false   数字 let isNumber: number &#x3D; 6 &#x2F;&#x2F;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-11-01T03:40:57.374Z">
+<meta property="article:modified_time" content="2024-11-01T03:50:22.677Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="ts">
+
+
+<title >TS-基础类型和类型推论</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-01 11:50:22"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            UUOVO<span>个人站点</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/test1/" target="">
+                            test1
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            TS-基础类型和类型推论
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+        <a href="https://zh-hans.react.dev/" title="React" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-react"></i>
+        </a>
+    
+        <a href="https://zh.javascript.info/" title="Javascript" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node-js"></i>
+        </a>
+    
+        <a href="https://nodejs.cn/" title="Node" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            11/01
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            11:40
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h2><ul>
+<li>基础类型 <ul>
+<li><a href="#ref1">布尔值</a></li>
+<li><a href="#ref2">数字</a></li>
+<li><a href="#ref3">字符串</a></li>
+<li><a href="#ref4">数组</a></li>
+<li><a href="#ref5">元组</a></li>
+<li><a href="#ref6">枚举</a></li>
+<li><a href="#ref7">any</a></li>
+<li><a href="#ref8">空值 void</a></li>
+<li><a href="#ref9">null 和 undefined</a></li>
+<li><a href="#ref10">Nerver</a></li>
+<li><a href="#ref11">Object</a></li>
+<li><a href="#ref12">is 关键字</a></li>
+</ul>
+</li>
+<li>类型断言<ul>
+<li><a href="#ref13">尖括号语法</a></li>
+<li><a href="#ref14">as语法</a></li>
+</ul>
+</li>
+<li>类型推论<ul>
+<li><a href="#ref15">最佳通用类型</a></li>
+<li><a href="#ref16">上下文类型</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="基础类型"><a href="#基础类型" class="headerlink" title="基础类型"></a>基础类型</h2><ul>
+<li><h3 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a><p id="ref1">布尔值</p></h3><ul>
+<li><code>let isBoolean: boolean = true or false</code></li>
+</ul>
+</li>
+<li><h3 id="数字"><a href="#数字" class="headerlink" title="数字"></a><p id="ref2">数字</p></h3><ul>
+<li><code>let isNumber: number = 6 // 可赋值null和undefined</code></li>
+</ul>
+</li>
+<li><h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a><p id="ref3">字符串</p></h3><ul>
+<li><code>let age: String = `this $&#123;变量&#125;` </code></li>
+</ul>
+</li>
+<li><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a><p id="ref4">数组</p></h3><ul>
+<li><code>let list: number[] or Array&lt;number&gt;= [1, 2, 3] // 数值类型的数组</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="元组（Tuple）：已知元素数量和类型的数组，各元素的类型不必相同"><a href="#元组（Tuple）：已知元素数量和类型的数组，各元素的类型不必相同" class="headerlink" title="元组（Tuple）：已知元素数量和类型的数组，各元素的类型不必相同"></a><p id="ref5">元组（Tuple）：已知元素数量和类型的数组，各元素的类型不必相同</p></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">x</span>: [string, number]</span><br><span class="line">x = [<span class="string">&#x27;hello&#x27;</span>,<span class="number">10</span>] <span class="comment">// 顺序不能写错，可添加多个</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a><p id="ref6">枚举</p></h3><ul>
+<li><a href="/2024/11/01/TS/%E5%85%AD%E3%80%81%E6%9E%9A%E4%B8%BE/" title="TS-枚举">TS-枚举</a></li>
+</ul>
+<h3 id="any：允许赋任意值，且可以调用在这个变量上的任意方法，而Object不能调用这些方法"><a href="#any：允许赋任意值，且可以调用在这个变量上的任意方法，而Object不能调用这些方法" class="headerlink" title="any：允许赋任意值，且可以调用在这个变量上的任意方法，而Object不能调用这些方法"></a><p id="ref7">any：允许赋任意值，且可以调用在这个变量上的任意方法，而Object不能调用这些方法</p></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">list</span>: any[] = [<span class="number">1</span>, <span class="literal">true</span>, <span class="string">&quot;free&quot;</span>];</span><br><span class="line">list[<span class="number">1</span>] = <span class="number">100</span>; <span class="comment">// 给list[1]赋值,覆盖原数组</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="空值-void-没有返回值的返回类型"><a href="#空值-void-没有返回值的返回类型" class="headerlink" title="空值(void): 没有返回值的返回类型"></a><p id="ref8">空值(void): 没有返回值的返回类型</p></h3><h3 id="null和undefined-返回各自类型"><a href="#null和undefined-返回各自类型" class="headerlink" title="null和undefined: 返回各自类型"></a><p id="ref9">null和undefined: 返回各自类型</p></h3><ul>
+<li>默认情况下，可以赋值给number</li>
+<li>指定–strictNullChecks标记，null和undefined只能赋值给void和自己</li>
+</ul>
+<h3 id="Never"><a href="#Never" class="headerlink" title="Never"></a><p id="ref10">Never</p></h3><blockquote>
+<p>永不存在的值的类型（异常，箭头函数返回值，无返回值的函数表达式，永不为真的变量）</p>
+</blockquote>
+<ul>
+<li>never可以赋值给其它类型，但除never本身，任意类型都不可以赋值给never</li>
+</ul>
+<h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a><p id="ref11">Object</p></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">declare <span class="keyword">function</span> <span class="title function_">create</span>(<span class="params">o: object | <span class="literal">null</span></span>): <span class="keyword">void</span></span><br><span class="line"><span class="title function_">create</span>(&#123; <span class="attr">prop</span>: <span class="number">0</span> &#125;) <span class="comment">// 这里规定只可以出现对象或null，其它为error</span></span><br><span class="line">obj[key] <span class="comment">// obj[]是对象的一种写法,将key作为obj里面的一个key,返回value</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="is关键字"><a href="#is关键字" class="headerlink" title="is关键字"></a><p id="ref12">is关键字</p></h3><blockquote>
+<p>当一个变量存在多个类型时，编译器识别不出来使用</p>
+</blockquote>
+<ul>
+<li>eg: 假值判断<ul>
+<li>export type Falsy &#x3D; false | ‘’ | 0 | null | undefined;</li>
+<li>export const isFalsy &#x3D; (val: unknown): val is Falsy &#x3D;&gt; !val;</li>
+</ul>
+</li>
+</ul>
+<h2 id="类型断言-类型转换"><a href="#类型断言-类型转换" class="headerlink" title="类型断言:类型转换"></a>类型断言:类型转换</h2><h3 id="“尖括号”语法-使用指定someValue的类型为string"><a href="#“尖括号”语法-使用指定someValue的类型为string" class="headerlink" title="“尖括号”语法: 使用&lt;&gt;指定someValue的类型为string"></a><p id="ref13">“尖括号”语法: 使用&lt;&gt;指定someValue的类型为string</p></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">someValue</span>: any = <span class="string">&quot;this is a string&quot;</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">strLength</span>: number = (&lt;string&gt;someValue).<span class="property">length</span> </span><br></pre></td></tr></table></figure>
+
+<h3 id="as语法：使用as指定类型"><a href="#as语法：使用as指定类型" class="headerlink" title="as语法：使用as指定类型"></a><p id="ref14">as语法：使用as指定类型</p></h3><blockquote>
+<p>在TS里使用JSX时，只有as语法断言是被允许的</p>
+</blockquote>
+<ul>
+<li><code>let strLength: number = (someValue as string).length</code></li>
+</ul>
+<h2 id="类型推论"><a href="#类型推论" class="headerlink" title="类型推论"></a>类型推论</h2><blockquote>
+<p>基础类型,通过值来推出类型: 发生在初始化变量和成员，设置默认参数值和决定函数返回值时</p>
+</blockquote>
+<h3 id="最佳通用类型"><a href="#最佳通用类型" class="headerlink" title="最佳通用类型"></a><p id="ref15">最佳通用类型</p></h3><ul>
+<li>有多个表达式时,会通过表达式中的各种类型来推出最合适的通用类型</li>
+<li>有时共享相同的类型,但这个类型不在选项中,就需要明确指出类型(比如类,继承关系)</li>
+<li>let zoo: Animal[] &#x3D; [new Rhino(), new Elephant(), new Snake()];</li>
+<li>如未找到最佳通用类型，类型推断的结果为<code>联合数组类型</code>，(Rhino | Elephant | Snake)[]</li>
+</ul>
+<h3 id="上下文类型"><a href="#上下文类型" class="headerlink" title="上下文类型"></a><p id="ref16">上下文类型</p></h3><blockquote>
+<p>通过 &#x3D; 或 : 的左边来推出右边的类型(明确给出类型则忽略推断结果)</p>
+</blockquote>
+<ul>
+<li>使用场景: 函数的参数，赋值表达式的右边，类型断言，对象成员和数组字面量和返回值语句。</li>
+</ul>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/vue2/%E5%9F%BA%E7%A1%80/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/vue/">
+                    vue
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/vue2/%E5%9F%BA%E7%A1%80/" class="trm-anima-link">
+                    VUE2-基础（主了解）
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>13:58</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/TS/%E5%9B%9B%E3%80%81%E5%87%BD%E6%95%B0%E5%92%8Cthis/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/ts/">
+                    ts
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/TS/%E5%9B%9B%E3%80%81%E5%87%BD%E6%95%B0%E5%92%8Cthis/" class="trm-anima-link">
+                    TS-函数和this
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>11:40</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            基于大数据，学习参考、练习，网站正在逐步完善中...
+        </div>
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="前端监控 发现问题和解决问题 做产品的决策依据 提高技术的深度与广度  监控目标 稳定性 js错误：js执行错误或promise异常 资源异常：script、link等资源加载异常 接口错误：ajax或fetch请求接口异常 白屏：页面空白   用户体验 加载时间：各个阶段的加载时间 TTFB首字节时间：浏览器发起第一个请求到数据返回第一个字节所消耗的时间，这个是时间包含了网络请求、后端处理时间">
+<meta property="og:type" content="article">
+<meta property="og:title" content="埋点">
+<meta property="og:url" content="http://example.com/2024/11/01/Engineering/%E5%9F%8B%E7%82%B9/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前端监控 发现问题和解决问题 做产品的决策依据 提高技术的深度与广度  监控目标 稳定性 js错误：js执行错误或promise异常 资源异常：script、link等资源加载异常 接口错误：ajax或fetch请求接口异常 白屏：页面空白   用户体验 加载时间：各个阶段的加载时间 TTFB首字节时间：浏览器发起第一个请求到数据返回第一个字节所消耗的时间，这个是时间包含了网络请求、后端处理时间">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-11-01T08:52:16.760Z">
+<meta property="article:modified_time" content="2024-11-01T09:43:08.284Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="埋点">
+
+
+<title >埋点</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-01 17:43:08"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            UUOVO<span>个人站点</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/test1/" target="">
+                            test1
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            埋点
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+        <a href="https://zh-hans.react.dev/" title="React" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-react"></i>
+        </a>
+    
+        <a href="https://zh.javascript.info/" title="Javascript" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node-js"></i>
+        </a>
+    
+        <a href="https://nodejs.cn/" title="Node" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            11/01
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            16:52
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h3 id="前端监控"><a href="#前端监控" class="headerlink" title="前端监控"></a>前端监控</h3><ul>
+<li>发现问题和解决问题</li>
+<li>做产品的决策依据</li>
+<li>提高技术的深度与广度</li>
+</ul>
+<h2 id="监控目标"><a href="#监控目标" class="headerlink" title="监控目标"></a>监控目标</h2><ul>
+<li><h3 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h3><ul>
+<li>js错误：js执行错误或promise异常</li>
+<li>资源异常：script、link等资源加载异常</li>
+<li>接口错误：ajax或fetch请求接口异常</li>
+<li>白屏：页面空白</li>
+</ul>
+</li>
+<li><h3 id="用户体验"><a href="#用户体验" class="headerlink" title="用户体验"></a>用户体验</h3><ul>
+<li>加载时间：各个阶段的加载时间</li>
+<li>TTFB首字节时间：浏览器发起第一个请求到数据返回第一个字节所消耗的时间，这个是时间包含了网络请求、后端处理时间</li>
+<li>FP首次绘制：包括了任何用户自定义的背景绘制，它是将第一个像素点绘制到屏幕的时间</li>
+<li>FCP首次内容绘制：浏览器将第一个DOM渲染到屏幕的时间，可以是任何文本、图像、SVG等的时间</li>
+<li>FMP首次有意义的绘制：页面可用性的标准</li>
+<li>FID首次输入延迟：用户首次和页面交互到页面响应交互的时间</li>
+<li>卡顿：超过50ms的长任务</li>
+</ul>
+</li>
+<li><h3 id="业务"><a href="#业务" class="headerlink" title="业务"></a>业务</h3><ul>
+<li>PV：page view 即页面浏览器会点击量</li>
+<li>UV：指访问某个站点的不同IP地址的人数</li>
+<li>页面的停留时间： 用户在每一个页面的停留时间</li>
+</ul>
+</li>
+</ul>
+<h2 id="流程："><a href="#流程：" class="headerlink" title="流程："></a>流程：</h2><ul>
+<li>埋点 –&gt; 数据采集(前端做到这就行，后面交给阿里云) –&gt;  (阿里云日志服务)数据建模存储 –&gt; 数据传输(实时&#x2F;批量) –&gt; 数据统计(分析&#x2F;挖掘) –&gt;  支线一数据可视化(反馈) –&gt;  支线二报告与报警</li>
+</ul>
+<h3 id="直接接入现成的："><a href="#直接接入现成的：" class="headerlink" title="直接接入现成的："></a>直接接入现成的：</h3><ul>
+<li>sentry <a target="_blank" rel="noopener" href="https://docs.sentry.io/">https://docs.sentry.io/</a></li>
+<li>fundebug <a target="_blank" rel="noopener" href="https://www.fundebug.com/">https://www.fundebug.com/</a></li>
+</ul>
+<h2 id="常见的埋点方案"><a href="#常见的埋点方案" class="headerlink" title="常见的埋点方案"></a>常见的埋点方案</h2><ul>
+<li><h3 id="代码埋点"><a href="#代码埋点" class="headerlink" title="代码埋点"></a>代码埋点</h3><ul>
+<li>以嵌入代码的形式进行埋点，比如需要监控用户的点击事件，会选择在用户点击时，插入一段代码，保存这个监听行为或者直接监听行为以某一种数据格式直接传递给服务器端</li>
+<li>优点： 在任意时刻，精确的发送或保存所需要的数据信息</li>
+<li>缺点：工作量较大</li>
+</ul>
+</li>
+<li><h3 id="可视化埋点"><a href="#可视化埋点" class="headerlink" title="可视化埋点"></a>可视化埋点</h3><ul>
+<li>将业务代码和埋点代码分离，提供一个可视化交互的页面，输入为业务代码，通过这个可视化系统，可以在业务代码中自定义的增加埋点事件等，最后输出的代码耦合了业务代码和埋点代码</li>
+<li>本质：用系统代替手工插入埋点代码</li>
+</ul>
+</li>
+<li><h3 id="无痕埋点"><a href="#无痕埋点" class="headerlink" title="无痕埋点"></a>无痕埋点</h3><ul>
+<li>前端的任意一个事件都被绑定一个标识，所有的事件都别记录下来<ul>
+<li>通过定期上传记录文件，配合文件解析，解析出来外面响应的数据，并生成可视化报告供专业人员分析</li>
+<li>优点：采集全量数据，不会出现漏埋和误埋现象</li>
+<li>缺点： 给数据传输和服务器增加压力，也无法灵活定制数据结构<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/7094899430356156446">埋点部署</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="sdk需要监控什么？"><a href="#sdk需要监控什么？" class="headerlink" title="sdk需要监控什么？"></a>sdk需要监控什么？</h3><ul>
+<li>错误统计</li>
+<li>行为日志埋点</li>
+<li>PV&#x2F;UV统计</li>
+</ul>
+<h3 id="sdk功能拆分"><a href="#sdk功能拆分" class="headerlink" title="sdk功能拆分"></a>sdk功能拆分</h3><ol>
+<li>参数注入</li>
+<li>sdk初始化</li>
+<li>pv统计、uv统计、用户埋点统计、错误监控、全局配置</li>
+</ol>
+<h3 id="同步错误：可以被try-catch捕获"><a href="#同步错误：可以被try-catch捕获" class="headerlink" title="同步错误：可以被try&#x2F;catch捕获"></a>同步错误：可以被try&#x2F;catch捕获</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;button </span><br><span class="line">	onClick = &#123;<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">const</span> name = <span class="string">&#x27;tongbucuowu&#x27;</span></span><br><span class="line">			<span class="variable language_">console</span>.<span class="title function_">log</span>(nam)</span><br><span class="line">		&#125;<span class="keyword">catch</span>(error) &#123;</span><br><span class="line">			<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;----同步错误----&#x27;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;&#125;</span><br><span class="line">&gt;同步错误&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="异步错误：无法被try-catch捕获，可以使用window-onerror处理"><a href="#异步错误：无法被try-catch捕获，可以使用window-onerror处理" class="headerlink" title="异步错误：无法被try&#x2F;catch捕获，可以使用window.onerror处理"></a>异步错误：无法被try&#x2F;catch捕获，可以使用window.onerror处理</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;button </span><br><span class="line">	onClick = &#123;<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">const</span> name = <span class="string">&#x27;yibucuowu&#x27;</span></span><br><span class="line">			name.<span class="title function_">map</span>()</span><br><span class="line">		&#125;<span class="keyword">catch</span>(error) &#123;</span><br><span class="line">			<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;----异步错误----&#x27;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;&#125;</span><br><span class="line">&gt;异步错误&lt;/button&gt;</span><br><span class="line"><span class="variable language_">window</span>.<span class="property">onerror</span> = <span class="keyword">function</span>(<span class="params">mas,url,roe, col, error</span>) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="promise-错误："><a href="#promise-错误：" class="headerlink" title="promise 错误："></a>promise 错误：</h3><ul>
+<li>window.onerror处理不了，可以使用catch捕获或者监听unhandledrejection事件<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;unhandledrejection&#x27;</span>, <span class="keyword">function</span>(<span class="params">error</span>)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;异常&#x27;</span>,error)</span><br><span class="line">&#125;,<span class="literal">true</span>)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="资源加载错误"><a href="#资源加载错误" class="headerlink" title="资源加载错误"></a>资源加载错误</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;error&#x27;</span>, <span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;异常&#x27;</span>，error)</span><br><span class="line">&#125;,<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="error与onerror的区别"><a href="#error与onerror的区别" class="headerlink" title="error与onerror的区别"></a>error与onerror的区别</h3><ul>
+<li>error: 可以写多个</li>
+<li>onerror：只能写一个，后者会覆盖前者</li>
+</ul>
+<h3 id="手动捕获"><a href="#手动捕获" class="headerlink" title="手动捕获"></a>手动捕获</h3><ul>
+<li>手动埋点：在回调函数中手动调用tracker函数</li>
+<li>属性埋点：没有回调函数，直接在属性上传值，可获取到，改属性是定义函数时指定的</li>
+<li>自动埋点（无痕埋点）：没有回调也没有属性设置值，就会获取元素的dom，不直观，交互存储压力大</li>
+</ul>
+<h3 id="pv统计："><a href="#pv统计：" class="headerlink" title="pv统计："></a>pv统计：</h3><ul>
+<li>SPA应用之前只需要监听onload事件</li>
+<li>SPA应用中分为hash路由和history路由</li>
+</ul>
+<h3 id="history路由："><a href="#history路由：" class="headerlink" title="history路由："></a>history路由：</h3><ul>
+<li>主要依赖pushState和replaceState来实现，但这两种方法被popstate监听到，所以要重写</li>
+<li>history.pushState(): 添加新的历史记录</li>
+<li>history.replaceState(): 修改当前的记录项</li>
+<li>history.back():返回上一页，回退</li>
+<li>history.forward():前进一页，前进</li>
+<li>history.go():调账到历史记录中的某一页</li>
+<li>监听这一页的停留时间：监听到下一页进入的时间 - 进入这一页的时间</li>
+<li>监听那一夜的停留时间，记录上一页的路径</li>
+</ul>
+<h3 id="hash路由：监听hashchange和重写replaceState"><a href="#hash路由：监听hashchange和重写replaceState" class="headerlink" title="hash路由：监听hashchange和重写replaceState"></a>hash路由：监听hashchange和重写replaceState</h3><h3 id="uv统计用户数量-统计uid，在初始化时只进行上报，其余有服务端处理"><a href="#uv统计用户数量-统计uid，在初始化时只进行上报，其余有服务端处理" class="headerlink" title="uv统计用户数量 统计uid，在初始化时只进行上报，其余有服务端处理"></a>uv统计用户数量 统计uid，在初始化时只进行上报，其余有服务端处理</h3><ul>
+<li>fetch上报会有数据丢失，sendBeacon无数据丢失</li>
+</ul>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/Engineering/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/webpack/">
+                    webpack
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/Engineering/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" class="trm-anima-link">
+                    配置文件
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>16:52</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/Engineering/webpack%E8%BF%81%E7%A7%BB/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/webpack/">
+                    webpack
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/Engineering/webpack%E8%BF%81%E7%A7%BB/" class="trm-anima-link">
+                    webpack迁移
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>16:52</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            基于大数据，学习参考、练习，网站正在逐步完善中...
+        </div>
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

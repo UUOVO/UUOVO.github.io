@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="基础知识 Blender：制作3D文字 科大讯飞星火：生成故事单元剧情 Blockade Labs: 根据故事情节生成全景图片(要使用英文单词) TTS-Vue:生成语音作旁白 将文本，图片，音频，按钮(按钮文本，跳转场景的索引值)，场景旋转的起始和结束，持续时间存放到对象数组中。按照步骤，载入图片，页面搭建，监听跳转函数等完成交互式2D故事游戏 leiapix：将静态图片生成3D图片 three">
+<meta property="og:type" content="article">
+<meta property="og:title" content="threeJS-基础知识">
+<meta property="og:url" content="http://example.com/2024/11/01/threeJS/%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="基础知识 Blender：制作3D文字 科大讯飞星火：生成故事单元剧情 Blockade Labs: 根据故事情节生成全景图片(要使用英文单词) TTS-Vue:生成语音作旁白 将文本，图片，音频，按钮(按钮文本，跳转场景的索引值)，场景旋转的起始和结束，持续时间存放到对象数组中。按照步骤，载入图片，页面搭建，监听跳转函数等完成交互式2D故事游戏 leiapix：将静态图片生成3D图片 three">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-11-01T03:01:03.605Z">
+<meta property="article:modified_time" content="2024-11-01T03:33:35.108Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="threeJS">
+
+
+<title >threeJS-基础知识</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-01 11:33:35"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            UUOVO<span>个人站点</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/test1/" target="">
+                            test1
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            threeJS-基础知识
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+        <a href="https://zh-hans.react.dev/" title="React" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-react"></i>
+        </a>
+    
+        <a href="https://zh.javascript.info/" title="Javascript" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node-js"></i>
+        </a>
+    
+        <a href="https://nodejs.cn/" title="Node" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            11/01
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            11:01
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://www.blender.org/">Blender</a>：制作3D文字</li>
+<li><a target="_blank" rel="noopener" href="https://xinghuo.xfyun.cn/sparkapi">科大讯飞星火</a>：生成故事单元剧情</li>
+<li><a target="_blank" rel="noopener" href="https://www.blockadelabs.com/#skybox">Blockade Labs</a>: 根据故事情节生成全景图片(要使用英文单词)</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/LokerL/tts-vue/releases/tag/1.9.15">TTS-Vue</a>:生成语音作旁白</li>
+<li>将文本，图片，音频，按钮(按钮文本，跳转场景的索引值)，场景旋转的起始和结束，持续时间存放到对象数组中。按照步骤，载入图片，页面搭建，监听跳转函数等完成交互式2D故事游戏</li>
+<li><a target="_blank" rel="noopener" href="https://convert.leiapix.com/">leiapix</a>：将静态图片生成3D图片</li>
+<li><a target="_blank" rel="noopener" href="https://threejs.org/">three.js官网</a>: 官网</li>
+<li>导入three.js的文件后</li>
+</ul>
+<h2 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h2><ul>
+<li>创建场景、相机和渲染器<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入three.js</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> <span class="variable constant_">THREE</span> <span class="keyword">from</span> <span class="string">&#x27;three&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建场景</span></span><br><span class="line"><span class="keyword">const</span> scene = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">Scene</span>(); </span><br><span class="line"></span><br><span class="line"><span class="comment">//创建相机 --- 遵循近大远小原则</span></span><br><span class="line"><span class="keyword">const</span> camera = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">PerspectiveCamera</span>(</span><br><span class="line"> <span class="number">75</span>, <span class="comment">// 视角 --- 在同距离情况下，视角越大（宽），看到的东西越多</span></span><br><span class="line"> <span class="variable language_">window</span>.<span class="property">innerWidth</span> / <span class="variable language_">window</span>.<span class="property">innerHeight</span>, <span class="comment">// 相机的宽高比</span></span><br><span class="line"> <span class="number">0.1</span>,  <span class="comment">// 近平面 --- 相机最近能看到的</span></span><br><span class="line"> <span class="number">1000</span>  <span class="comment">// 远平面 --- 相机最远能看到的</span></span><br><span class="line">); </span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建渲染器</span></span><br><span class="line"><span class="keyword">const</span> renderer = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">WebGLRenderer</span>(); </span><br><span class="line">renderer.<span class="title function_">setSize</span>( <span class="variable language_">window</span>.<span class="property">innerWidth</span>, <span class="variable language_">window</span>.<span class="property">innerHeight</span> ); </span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>( renderer.<span class="property">domElement</span> );</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h2><ul>
+<li>创建几何体、材质、网格 并添加到场景中<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建几何体 --- 决定形状</span></span><br><span class="line"><span class="keyword">const</span> geometry = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">BoxGeometry</span>(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建材质 --- 决定外观</span></span><br><span class="line"><span class="keyword">const</span> material = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">MeshBasicMaterial</span>(&#123; <span class="attr">color</span>: <span class="number">0x00ff00</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建网格</span></span><br><span class="line"><span class="keyword">const</span> cube = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">Mesh</span>(geometry,material)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将网格添加到3场景中</span></span><br><span class="line">scene.<span class="title function_">add</span>(cube)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h2><ul>
+<li>使用世界坐标辅助器和轨道控制器<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置相机的位置 --- 调整视角方便看到坐标轴</span></span><br><span class="line">camera.<span class="property">position</span>.<span class="property">z</span> = <span class="number">5</span></span><br><span class="line">camera.<span class="property">position</span>.<span class="property">y</span> = <span class="number">2</span></span><br><span class="line">camera.<span class="property">position</span>.<span class="property">x</span> = <span class="number">2</span></span><br><span class="line">camera.<span class="title function_">lookAt</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>); </span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加世界坐标辅助器 --- 绿y，红x，蓝z</span></span><br><span class="line"><span class="keyword">const</span> axesHelper = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">AxesHelper</span>( <span class="number">5</span> );</span><br><span class="line">scene.<span class="title function_">add</span>(axesHelper)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加轨道控制器,选择要监听的dom元素</span></span><br><span class="line"><span class="keyword">const</span> controls = <span class="keyword">new</span> <span class="title class_">OrbitControls</span>( camera, renderer.<span class="property">domElement</span> );</span><br><span class="line"><span class="comment">// 设置带阻尼的惯性</span></span><br><span class="line">controls.<span class="property">enableDamping</span> = <span class="literal">true</span></span><br><span class="line"><span class="comment">// 设置阻尼系数</span></span><br><span class="line">controls.<span class="property">dampingFactor</span> = <span class="number">0.05</span></span><br><span class="line"><span class="comment">// 设置旋转速度 --- 自动</span></span><br><span class="line">controls.<span class="property">autoRotate</span> = <span class="literal">true</span></span><br><span class="line"><span class="comment">// 设置旋转速度 --- 手动旋转的速度</span></span><br><span class="line"><span class="comment">// controls.rotateSpeed = 0.05</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="倒数第二步"><a href="#倒数第二步" class="headerlink" title="倒数第二步"></a>倒数第二步</h2><ul>
+<li>渲染函数<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 渲染函数</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">animate</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">	<span class="comment">// 更新轨道控制器</span></span><br><span class="line">  controls.<span class="title function_">update</span>()</span><br><span class="line">	<span class="comment">// 请求动画帧，每次调用渲染函数都会调用animate，即循环渲染</span></span><br><span class="line">  <span class="title function_">requestAnimationFrame</span>(animate) </span><br><span class="line">  <span class="comment">// 旋转</span></span><br><span class="line">  <span class="comment">// cube.rotation.x += 0.01</span></span><br><span class="line">  <span class="comment">// cube.rotation.y += 0.01</span></span><br><span class="line">  <span class="comment">// 渲染</span></span><br><span class="line">  renderer.<span class="title function_">render</span>(scene, camera)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">animate</span>()</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="最后一步"><a href="#最后一步" class="headerlink" title="最后一步"></a>最后一步</h2><ul>
+<li>监听窗口的变化，仪表窗口缩小，物体没有跟着自适应回到视图的中心<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 监听窗口变化</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;resize&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 重置渲染器宽高比</span></span><br><span class="line">  renderer.<span class="title function_">setSize</span>(<span class="variable language_">window</span>.<span class="property">innerWidth</span>, <span class="variable language_">window</span>.<span class="property">innerHeight</span>)</span><br><span class="line">  <span class="comment">// 重置相机宽高比</span></span><br><span class="line">  camera.<span class="property">aspect</span> = <span class="variable language_">window</span>.<span class="property">innerWidth</span> / <span class="variable language_">window</span>.<span class="property">innerHeight</span></span><br><span class="line">  <span class="comment">// 更新相机投影矩阵</span></span><br><span class="line">  camera.<span class="title function_">updateProjectionMatrix</span>()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="认识向量-Vector3-、父元素和子元素的position的关系、缩放、旋转"><a href="#认识向量-Vector3-、父元素和子元素的position的关系、缩放、旋转" class="headerlink" title="认识向量(Vector3)、父元素和子元素的position的关系、缩放、旋转"></a>认识向量(Vector3)、父元素和子元素的position的关系、缩放、旋转</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过案例来分析，首先先创建一个父元素的网格和子元素的网格</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建几何体</span></span><br><span class="line"><span class="keyword">const</span> geometry = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">BoxGeometry</span>(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建材质</span></span><br><span class="line"><span class="keyword">const</span> material = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">MeshBasicMaterial</span>(&#123; <span class="attr">color</span>: <span class="number">0x00ff00</span> &#125;)</span><br><span class="line"><span class="keyword">const</span> parentMaterial = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">MeshBasicMaterial</span>(&#123; <span class="attr">color</span>: <span class="number">0xff0000</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建父元素的线框模式</span></span><br><span class="line">parentMaterial.<span class="property">wireframe</span> = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建cube的父元素</span></span><br><span class="line"><span class="keyword">let</span> parentCube = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">Mesh</span>(geometry,parentMaterial)</span><br><span class="line"><span class="comment">// 创建子元素的网格</span></span><br><span class="line"><span class="keyword">const</span> cube = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">Mesh</span>(geometry,material)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在父元素中添加子元素</span></span><br><span class="line">parentCube.<span class="title function_">add</span>(cube)</span><br><span class="line"><span class="comment">// 设置父元素的坐标轴</span></span><br><span class="line">parentCube.<span class="property">position</span>.<span class="title function_">set</span>(-<span class="number">3</span>,<span class="number">0</span>,<span class="number">0</span>)</span><br><span class="line"><span class="comment">// 设置父元素的放大</span></span><br><span class="line">parentCube.<span class="property">scale</span>.<span class="title function_">set</span>(<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line"><span class="comment">// 设置父元素绕着x轴旋转45du</span></span><br><span class="line">parentCube.<span class="property">rotation</span>.<span class="property">x</span> = <span class="title class_">Math</span>.<span class="property">PI</span> / <span class="number">4</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置子元素在x轴的位移 ---- position可是一个三维向量</span></span><br><span class="line">cube.<span class="property">position</span>.<span class="title function_">set</span>(<span class="number">3</span>,<span class="number">0</span>,<span class="number">0</span>)</span><br><span class="line"><span class="comment">// 设置子元素的放大</span></span><br><span class="line">cube.<span class="property">scale</span>.<span class="title function_">set</span>(<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line"><span class="comment">// 设置cube绕着x轴旋转</span></span><br><span class="line">cube.<span class="property">rotation</span>.<span class="property">x</span> = <span class="title class_">Math</span>.<span class="property">PI</span> / <span class="number">4</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 将网格的父元素添加到场景中</span></span><br><span class="line">scene.<span class="title function_">add</span>(parentCube)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="position"><a href="#position" class="headerlink" title="position"></a>position</h3><ul>
+<li>子元素的坐标轴相对于父元素</li>
+<li>父元素的position设置的是它的局部坐标，没有父元素，元素设置的position就是世界坐标</li>
+</ul>
+</li>
+<li><h3 id="scale"><a href="#scale" class="headerlink" title="scale"></a>scale</h3><ul>
+<li>对于缩放，不管cube原本的大小是什么，只要父元素缩放，子元素也会跟着缩放，</li>
+<li>公式：父元素(x,y,z),子元素的缩放为(x1,y1,z1),最终子元素的缩放(x<em>x1,y</em>y1,z*z1)</li>
+<li>所以，如果遇到与缩放有关的，只需要缩放父元素</li>
+</ul>
+</li>
+<li><h3 id="rotation"><a href="#rotation" class="headerlink" title="rotation"></a>rotation</h3><ul>
+<li>rotation: 欧拉角(x,y,z,xyz)，旋转的顺序不同，效果不一样，默认的旋转顺序为xyz</li>
+<li>同样都是相对于父元素</li>
+</ul>
+</li>
+<li><h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><ul>
+<li>此时父元素的坐标为(-3,0,0),二子元素相对于父元素的坐标为(0,0,0)位于原点</li>
+<li>此时父元素的大小放大2倍，子元素的大小在父元素的放大后的大小再放大2倍</li>
+<li>此时父元素绕着x轴旋转45°，子元素在相对于父元素旋转45°后，变为90°</li>
+</ul>
+</li>
+</ul>
+<h2 id="学习监听事件"><a href="#学习监听事件" class="headerlink" title="学习监听事件"></a>学习监听事件</h2><ul>
+<li>在渲染器后区监听<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 监听按钮，点击触发全屏</span></span><br><span class="line"><span class="keyword">const</span> btn = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;button&quot;</span>)</span><br><span class="line">btn.<span class="property">innerHTML</span> = <span class="string">&quot;点击全屏&quot;</span></span><br><span class="line">btn.<span class="property">style</span>.<span class="property">position</span> =<span class="string">&quot;absolute&quot;</span></span><br><span class="line">btn.<span class="property">style</span>.<span class="property">top</span> =<span class="string">&quot;10px&quot;</span></span><br><span class="line">btn.<span class="property">style</span>.<span class="property">left</span>=<span class="string">&quot;10px&quot;</span></span><br><span class="line">btn.<span class="property">style</span>.<span class="property">zIndex</span>=<span class="string">&quot;999&quot;</span></span><br><span class="line">btn.<span class="property">onclick</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 画布全屏 -- 看不到按钮</span></span><br><span class="line">  <span class="comment">// renderer.domElement.requestFullscreen()</span></span><br><span class="line">  <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">requestFullscreen</span>()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 将按钮添加到body上</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(btn)</span><br><span class="line"><span class="comment">// 经停按钮点击退出全屏</span></span><br><span class="line"><span class="keyword">const</span> escbtn = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;button&quot;</span>)</span><br><span class="line">escbtn.<span class="property">innerHTML</span> = <span class="string">&quot;退出全屏&quot;</span></span><br><span class="line">escbtn.<span class="property">style</span>.<span class="property">position</span> =<span class="string">&quot;absolute&quot;</span></span><br><span class="line">escbtn.<span class="property">style</span>.<span class="property">top</span> =<span class="string">&quot;10px&quot;</span></span><br><span class="line">escbtn.<span class="property">style</span>.<span class="property">left</span>=<span class="string">&quot;100px&quot;</span></span><br><span class="line">escbtn.<span class="property">style</span>.<span class="property">zIndex</span>=<span class="string">&quot;999&quot;</span></span><br><span class="line">escbtn.<span class="property">onclick</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 退出全屏</span></span><br><span class="line">  <span class="variable language_">document</span>.<span class="title function_">exitFullscreen</span>()</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(escbtn)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="属性参数的管理工具"><a href="#属性参数的管理工具" class="headerlink" title="属性参数的管理工具"></a>属性参数的管理工具</h2><ul>
+<li>方便快速开发</li>
+<li>lil.gui</li>
+<li>能自动识别属性值是什么类型，并展示对应的样式<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建GUI</span></span><br><span class="line"><span class="keyword">const</span> gui = <span class="keyword">new</span> <span class="title function_">GUI</span>()</span><br><span class="line">/ 控制事件</span><br><span class="line"><span class="comment">//添加按钮 </span></span><br><span class="line"><span class="comment">// add(事件对象，函数名)</span></span><br><span class="line"><span class="comment">// name(别名)</span></span><br><span class="line">gui.<span class="title function_">add</span>(eventObj, <span class="string">&quot;Fullscreen&quot;</span>).<span class="title function_">name</span>(<span class="string">&quot;全屏&quot;</span>)</span><br><span class="line">gui.<span class="title function_">add</span>(eventObj, <span class="string">&quot;ExitFullscreen&quot;</span>)</span><br><span class="line"><span class="comment">// 控制立方体的位置</span></span><br><span class="line"><span class="comment">// gui.add(cube.position, &quot;x&quot;, -5 ,5).name(&quot;立方体x轴位置&quot;)</span></span><br><span class="line">/ 控制一组属性，展示拖到条</span><br><span class="line"><span class="comment">// 存放在组中</span></span><br><span class="line"><span class="keyword">let</span> folder = gui.<span class="title function_">addFolder</span>(<span class="string">&quot;立方体位置&quot;</span>)</span><br><span class="line"><span class="comment">// add(元素，元素的属性)</span></span><br><span class="line"><span class="comment">// min/max()设置最小值/最大值</span></span><br><span class="line"><span class="comment">// onChange: 只要改变就会触发</span></span><br><span class="line"><span class="comment">// onFinishChange: 当拖拽结束后再触发</span></span><br><span class="line">folder.<span class="title function_">add</span>(cube.<span class="property">position</span>, <span class="string">&quot;x&quot;</span>).<span class="title function_">min</span>(-<span class="number">10</span>).<span class="title function_">max</span>(<span class="number">10</span>).<span class="title function_">step</span>(<span class="number">1</span>).<span class="title function_">name</span>(<span class="string">&quot;立方体x轴位置&quot;</span>).<span class="title function_">onChange</span>(<span class="function">(<span class="params">val</span>) =&gt;</span> &#123;<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;立方体x轴位置&quot;</span>,val)&#125;)</span><br><span class="line">folder.<span class="title function_">add</span>(cube.<span class="property">position</span>, <span class="string">&quot;y&quot;</span>).<span class="title function_">min</span>(-<span class="number">10</span>).<span class="title function_">max</span>(<span class="number">10</span>).<span class="title function_">step</span>(<span class="number">1</span>).<span class="title function_">name</span>(<span class="string">&quot;立方体y轴位置&quot;</span>).<span class="title function_">onFinishChange</span>(<span class="function">(<span class="params">val</span>) =&gt;</span> &#123;<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;立方体y轴的位置&quot;</span>,val)&#125;)</span><br><span class="line">folder.<span class="title function_">add</span>(cube.<span class="property">position</span>, <span class="string">&quot;z&quot;</span>).<span class="title function_">min</span>(-<span class="number">10</span>).<span class="title function_">max</span>(<span class="number">10</span>).<span class="title function_">step</span>(<span class="number">1</span>).<span class="title function_">name</span>(<span class="string">&quot;立方体z轴位置&quot;</span>)</span><br><span class="line">/ 控制单个属性，展示勾选框</span><br><span class="line">gui.<span class="title function_">add</span>(parentMaterial, <span class="string">&quot;wireframe&quot;</span>).<span class="title function_">name</span>(<span class="string">&quot;父元素线框模式&quot;</span>)</span><br><span class="line">/ 控制单个元素选择颜色，展示颜色选择器</span><br><span class="line"><span class="comment">// colorParams中的cubeColor相当于该元素的默认颜色，所以，如元素已经有颜色，则cubeColor最好与之相等</span></span><br><span class="line"><span class="keyword">let</span> colorParams = &#123; <span class="attr">cubeColor</span>: <span class="string">&quot;#00ff00&quot;</span>&#125;</span><br><span class="line">gui.<span class="title function_">addColor</span>(colorParams, <span class="string">&quot;cubeColor&quot;</span>).<span class="title function_">name</span>(<span class="string">&quot;立方体颜色&quot;</span>).<span class="title function_">onChange</span>(<span class="function">(<span class="params">val</span>) =&gt;</span> &#123;</span><br><span class="line">  cube.<span class="property">material</span>.<span class="property">color</span>.<span class="title function_">set</span>(val)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="几何体怎么来的"><a href="#几何体怎么来的" class="headerlink" title="几何体怎么来的"></a>几何体怎么来的</h2><blockquote>
+<p>在js中所有的图形都是由三角形组成的</p>
+</blockquote>
+<ul>
+<li>两种方式创建</li>
+</ul>
+<h3 id="第一种：-顶点需要一个一个列出来，不可共用，冗余"><a href="#第一种：-顶点需要一个一个列出来，不可共用，冗余" class="headerlink" title="第一种： 顶点需要一个一个列出来，不可共用，冗余"></a>第一种： 顶点需要一个一个列出来，不可共用，冗余</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建几何体</span></span><br><span class="line"><span class="keyword">const</span> geometry = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">BufferGeometry</span>()</span><br><span class="line"><span class="comment">// 创建顶点数据,顶点是有顺序的，每三个为一个顶点，逆时针为正面，</span></span><br><span class="line"><span class="keyword">const</span> vertices = <span class="keyword">new</span> <span class="title class_">Float32Array</span>([</span><br><span class="line">  -<span class="number">1.0</span>,-<span class="number">1.0</span>,<span class="number">0.0</span>, <span class="comment">// 按x,y,z顺序</span></span><br><span class="line">  <span class="number">1.0</span>, -<span class="number">1.0</span>,<span class="number">0.0</span>,</span><br><span class="line">  <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>,</span><br><span class="line">  <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>,</span><br><span class="line">  -<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>,</span><br><span class="line">  -<span class="number">1.0</span>, -<span class="number">1.0</span>, <span class="number">0.0</span></span><br><span class="line">])</span><br><span class="line"><span class="comment">// 创建顶点属性</span></span><br><span class="line">geometry.<span class="title function_">setAttribute</span>(<span class="string">&quot;position&quot;</span>, <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">BufferAttribute</span>(vertices, <span class="number">3</span>))</span><br><span class="line"><span class="comment">// 创建材质</span></span><br><span class="line"><span class="keyword">const</span> material = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">MeshBasicMaterial</span>(&#123;</span><br><span class="line">  <span class="attr">color</span>: <span class="number">0x00ff00</span>, <span class="comment">// 设置材质的颜色</span></span><br><span class="line">  <span class="attr">side</span>: <span class="variable constant_">THREE</span>.<span class="property">doubleSize</span>, <span class="comment">// 正面/反面都能看到</span></span><br><span class="line">  <span class="attr">wireframe</span>: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">const</span> plane = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">Mesh</span>(geometry, material)</span><br><span class="line">scene.<span class="title function_">add</span>(plane)</span><br></pre></td></tr></table></figure>
+<h3 id="第二种：顶点可以共用"><a href="#第二种：顶点可以共用" class="headerlink" title="第二种：顶点可以共用"></a>第二种：顶点可以共用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建几何体</span></span><br><span class="line"><span class="keyword">const</span> geometry = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">BufferGeometry</span>()</span><br><span class="line"><span class="comment">// 这里的索引值number代表vertices中的一组数据，由x，y，z组成的数据，即0代表 -1.0,-1.0,0.0这一组数据</span></span><br><span class="line"><span class="comment">// 创建顶点数据</span></span><br><span class="line"><span class="keyword">const</span> vertices = <span class="keyword">new</span> <span class="title class_">Float32Array</span>([</span><br><span class="line">  -<span class="number">1.0</span>,-<span class="number">1.0</span>,<span class="number">0.0</span>, <span class="comment">// 按x,y,z顺序</span></span><br><span class="line">  <span class="number">1.0</span>, -<span class="number">1.0</span>,<span class="number">0.0</span>,</span><br><span class="line">  <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>,</span><br><span class="line">  -<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span></span><br><span class="line">])</span><br><span class="line"><span class="comment">// 创建顶点属性</span></span><br><span class="line">geometry.<span class="title function_">setAttribute</span>(<span class="string">&quot;position&quot;</span>, <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">BufferAttribute</span>(vertices, <span class="number">3</span>))</span><br><span class="line"><span class="comment">// 创建索引</span></span><br><span class="line"><span class="keyword">const</span> indices = <span class="keyword">new</span> <span class="title class_">Uint16Array</span>([<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">0</span>])</span><br><span class="line"><span class="comment">// 创建索引属性</span></span><br><span class="line">geometry.<span class="title function_">setIndex</span>(<span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">BufferAttribute</span>(indices,<span class="number">1</span>))</span><br><span class="line"><span class="comment">// 创建材质</span></span><br><span class="line"><span class="keyword">const</span> material = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">MeshBasicMaterial</span>(&#123;</span><br><span class="line">  <span class="attr">color</span>: <span class="number">0x00ff00</span>, <span class="comment">// 设置材质的颜色</span></span><br><span class="line">  <span class="attr">side</span>: <span class="variable constant_">THREE</span>.<span class="property">doubleSize</span>, <span class="comment">// 正面/反面都能看到</span></span><br><span class="line">  <span class="attr">wireframe</span>: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">const</span> plane = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">Mesh</span>(geometry, material)</span><br><span class="line">scene.<span class="title function_">add</span>(plane)</span><br></pre></td></tr></table></figure>
+
+<h2 id="材质创建的两种方式"><a href="#材质创建的两种方式" class="headerlink" title="材质创建的两种方式"></a>材质创建的两种方式</h2><h3 id="第一种-创建之后单独的设置"><a href="#第一种-创建之后单独的设置" class="headerlink" title="第一种: 创建之后单独的设置"></a>第一种: 创建之后单独的设置</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> material = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">MeshBasicMaterial</span>(&#123; <span class="attr">color</span>: <span class="number">0x00ff00</span> &#125;)</span><br><span class="line">material.<span class="property">wireframe</span> = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="第二种-在构造函数中定义"><a href="#第二种-在构造函数中定义" class="headerlink" title="第二种: 在构造函数中定义"></a>第二种: 在构造函数中定义</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> material = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">MeshBasicMaterial</span>(&#123;</span><br><span class="line">  <span class="attr">color</span>: <span class="number">0x00ff00</span>, <span class="comment">// 设置材质的颜色</span></span><br><span class="line">  <span class="attr">side</span>: <span class="variable constant_">THREE</span>.<span class="property">doubleSize</span>, <span class="comment">// 正面/反面都能看到</span></span><br><span class="line">  <span class="attr">wireframe</span>: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="组的概念和创建一个立方体"><a href="#组的概念和创建一个立方体" class="headerlink" title="组的概念和创建一个立方体"></a>组的概念和创建一个立方体</h2><h3 id="组的概念-划分组"><a href="#组的概念-划分组" class="headerlink" title="组的概念(划分组)"></a>组的概念(划分组)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// BufferGeometry()：用来创建由顶点组成的图形</span></span><br><span class="line"><span class="keyword">const</span> cubegeometry = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">BufferGeometry</span>()</span><br><span class="line"><span class="comment">// 使用索引绘制,这里的索引number代表vertices中的一组数据，由x，y，z组成的数据</span></span><br><span class="line"><span class="keyword">const</span> vertices = <span class="keyword">new</span> <span class="title class_">Float32Array</span>([</span><br><span class="line">  -<span class="number">1.0</span>, -<span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>, -<span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>, -<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span></span><br><span class="line">])</span><br><span class="line"><span class="comment">// 创建顶点属性</span></span><br><span class="line">cubegeometry.<span class="title function_">setAttribute</span>(<span class="string">&quot;position&quot;</span>, <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">BufferAttribute</span>(vertices, <span class="number">3</span>))</span><br><span class="line"><span class="comment">// 创建索引</span></span><br><span class="line"><span class="keyword">const</span> indices = <span class="keyword">new</span> <span class="title class_">Uint16Array</span>([<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">0</span>])</span><br><span class="line"><span class="comment">// 创建索引属性</span></span><br><span class="line">cubegeometry.<span class="title function_">setIndex</span>(<span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">BufferAttribute</span>(indices,<span class="number">1</span>))</span><br><span class="line"><span class="comment">// 设置2个顶点组，形成2个材质</span></span><br><span class="line"><span class="comment">// addGroup(从哪个顶点开始，添加几个顶点，用那个材质)</span></span><br><span class="line">cubegeometry.<span class="title function_">addGroup</span>(<span class="number">0</span>,<span class="number">3</span>,<span class="number">0</span>) </span><br><span class="line">cubegeometry.<span class="title function_">addGroup</span>(<span class="number">3</span>,<span class="number">3</span>,<span class="number">1</span>) </span><br><span class="line"><span class="comment">// 创建材质</span></span><br><span class="line"><span class="keyword">const</span> cubematerial = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">MeshBasicMaterial</span>(&#123;<span class="attr">color</span>: <span class="number">0x00ff00</span>&#125;)</span><br><span class="line"><span class="keyword">const</span> cubematerial1 = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">MeshBasicMaterial</span>(&#123;<span class="attr">color</span>: <span class="number">0x0000ff</span>&#125;)</span><br><span class="line"><span class="comment">// 设置了组，并将材质以数组的方式传递则，以对应组的材质展示；</span></span><br><span class="line"><span class="comment">// 设置了组，只传递一个材质，则全部组都使用这个材质</span></span><br><span class="line"><span class="keyword">const</span> plane = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">Mesh</span>(cubegeometry, [cubematerial, cubematerial1])</span><br><span class="line">scene.<span class="title function_">add</span>(plane)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="给几何体的每一个面添加不同的材质"><a href="#给几何体的每一个面添加不同的材质" class="headerlink" title="给几何体的每一个面添加不同的材质"></a>给几何体的每一个面添加不同的材质</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">BoxGeometry</span>(x,y,z) :可以创建几何体</span><br><span class="line"><span class="keyword">const</span> cubegeometry = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">BoxGeometry</span>(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>)  <span class="comment">// 立方体</span></span><br><span class="line"><span class="comment">// 创建六个材质然后以数组的方式添加即可</span></span><br><span class="line"><span class="keyword">const</span> cube = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">Mesh</span>(cubegeometry, [cubematerial, cubematerial1,cubematerial2,cubematerial3,cubematerial4,cubematerial5])</span><br><span class="line">scene.<span class="title function_">add</span>(cube)</span><br></pre></td></tr></table></figure>
+
+<h2 id="官方提供的几何体-–-文档搜geometry"><a href="#官方提供的几何体-–-文档搜geometry" class="headerlink" title="官方提供的几何体 – 文档搜geometry"></a>官方提供的几何体 – 文档搜geometry</h2><h2 id="网格基础材料-—-上编辑器上看"><a href="#网格基础材料-—-上编辑器上看" class="headerlink" title="网格基础材料 — 上编辑器上看"></a>网格基础材料 — 上编辑器上看</h2><ul>
+<li>贴图&#x2F;Map：如果使用一张带纹理的png图片，边缘透明，贴在一个正&#x2F;长方形上，边缘也会自动生成纹理(勾选上透明性即消失)</li>
+<li>透明贴图&#x2F;alpha Map： 使用一张由黑色，白色和0.5白色的图片贴图，则黑色为完全透明，白色完全不透明，0.5白色为半透明。即使用贴图后在使用透明贴图，则只看得见白色区域的图和0.5白色区域的半透明图和后面的物体</li>
+<li>环境贴图&#x2F;env Map：先在上面的背景放上一张全景图&#x2F;环境的图，环境和环境贴图页放上相同的全景图，可以调节反射率</li>
+<li>高光贴图：在环境中，金属的反射亮度，找一张亮一点的图</li>
+<li>光照贴图： 贴的图，代表光照射进来的颜色，比如，光通过玻璃照进来，而玻璃贴了窗纸，窗纸就是这个图，最后呈现的光展示在物体上也要跟环境贴图搭上</li>
+<li>环境光遮蔽贴图：就是给边缘缝隙添加阴影的</li>
+</ul>
+<h3 id="代码实现各种贴图"><a href="#代码实现各种贴图" class="headerlink" title="代码实现各种贴图"></a>代码实现各种贴图</h3><ul>
+<li><a href="/2024/11/01/threeJS/%E7%BD%91%E6%A0%BC%E7%9A%84%E5%9F%BA%E7%A1%80%E6%9D%90%E6%96%99/" title="threeJS-网格的基础材料">实现的步骤和说明</a></li>
+</ul>
+<h2 id="雾"><a href="#雾" class="headerlink" title="雾"></a>雾</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建场景fog（线性雾）</span></span><br><span class="line"><span class="comment">// scene.fog = new THREE.Fog(0x999999, 0.1, 50)</span></span><br><span class="line"><span class="comment">// 创建场景指数fog</span></span><br><span class="line">scene.<span class="property">fog</span> = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">FogExp2</span>(<span class="number">0x999999</span>, <span class="number">0.1</span>)</span><br><span class="line"><span class="comment">// 创建场景的背景（背景最好与雾的颜色相接近）</span></span><br><span class="line">scene.<span class="property">background</span> = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">Color</span>(<span class="number">0x999999</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="载入模型"><a href="#载入模型" class="headerlink" title="载入模型"></a>载入模型</h2><h3 id="第一步-引入相关资源"><a href="#第一步-引入相关资源" class="headerlink" title="第一步 引入相关资源"></a>第一步 引入相关资源</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导入hdr加载器</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">RGBELoader</span> &#125; <span class="keyword">from</span> <span class="string">&quot;three/examples/jsm/loaders/RGBELoader.js&quot;</span></span><br><span class="line"><span class="comment">// 带入gltf加载器</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">GLTFLoader</span> &#125; <span class="keyword">from</span> <span class="string">&quot;three/examples/jsm/loaders/GLTFLoader.js&quot;</span></span><br><span class="line"><span class="comment">// 载入draco解压器</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">DRACOLoader</span> &#125; <span class="keyword">from</span> <span class="string">&quot;three/examples/jsm/loaders/DRACOLoader.js&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="创建实例化"><a href="#创建实例化" class="headerlink" title="创建实例化"></a>创建实例化</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 实例化加载器gltf</span></span><br><span class="line"><span class="keyword">const</span> gltfLoader = <span class="keyword">new</span> <span class="title class_">GLTFLoader</span>()</span><br><span class="line"><span class="comment">// 创建实例化加载器draco</span></span><br><span class="line"><span class="keyword">const</span> dracoLoader = <span class="keyword">new</span> <span class="title class_">DRACOLoader</span>()</span><br><span class="line"><span class="comment">// 加载环境贴图</span></span><br><span class="line"><span class="keyword">let</span> rgbLoader = <span class="keyword">new</span> <span class="title class_">RGBELoader</span>()</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置模型路径和环境贴图"><a href="#设置模型路径和环境贴图" class="headerlink" title="设置模型路径和环境贴图"></a>设置模型路径和环境贴图</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置Draco路径</span></span><br><span class="line">dracoLoader.<span class="title function_">setDecoderPath</span>(<span class="string">&quot;../../public/draco/&quot;</span>)</span><br><span class="line"><span class="comment">// 设置gltf加载器Draco解码器</span></span><br><span class="line">gltfLoader.<span class="title function_">setDRACOLoader</span>(dracoLoader)</span><br><span class="line"></span><br><span class="line">gltfLoader.<span class="title function_">load</span>(</span><br><span class="line">  <span class="comment">// 模型路径</span></span><br><span class="line">  <span class="string">&quot;../../public/texture/module/table_chair.glb&quot;</span>,</span><br><span class="line">  <span class="comment">// 加载完成的回调</span></span><br><span class="line">  <span class="function">(<span class="params">gltf</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 添加模型到场景</span></span><br><span class="line">    scene.<span class="title function_">add</span>(gltf.<span class="property">scene</span>)</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加载环境贴图</span></span><br><span class="line">rgbLoader.<span class="title function_">load</span>(<span class="string">&quot;../../public/texture/brown_photostudio_02_1k.hdr&quot;</span>, <span class="function">(<span class="params">envMap</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 设置球型的映射</span></span><br><span class="line">  envMap.<span class="property">mapping</span> = <span class="variable constant_">THREE</span>.<span class="property">EquirectangularReflectionMapping</span>;</span><br><span class="line">  <span class="comment">// 设置环境贴图</span></span><br><span class="line">  scene.<span class="property">environment</span> = envMap</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="光线投射"><a href="#光线投射" class="headerlink" title="光线投射"></a>光线投射</h2><a href="/2024/11/01/threeJS/%E5%85%89%E7%BA%BF%E6%8A%95%E5%B0%84/" title="threeJS-光线投射">threeJS-光线投射</a>
+<h2 id="补间动画"><a href="#补间动画" class="headerlink" title="补间动画"></a>补间动画</h2><a href="/2024/11/01/threeJS/%E8%A1%A5%E9%97%B4%E5%8A%A8%E7%94%BB/" title="threeJS-补间动画TWEEN">threeJS-补间动画TWEEN</a>
+
+<h2 id="物理网格材质"><a href="#物理网格材质" class="headerlink" title="物理网格材质"></a>物理网格材质</h2><p>首先需要安装npm i gsap 动画库<br>看车模型案例</p>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/threeJS/%E7%BB%93%E5%90%88AI%E5%B0%86%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%903d%E5%9C%BA%E6%99%AF/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/threeJS/">
+                    threeJS
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/threeJS/%E7%BB%93%E5%90%88AI%E5%B0%86%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%903d%E5%9C%BA%E6%99%AF/" class="trm-anima-link">
+                    threeJS-结合AI将图片生成3D场景
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>11:01</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/threeJS/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B1%95%E7%A4%BA%E6%A1%88%E4%BE%8B(%E8%A7%86%E9%A2%91%E7%BA%B9%E7%90%86%EF%BC%8C%E9%95%9C%E9%9D%A2%E5%8F%8D%E5%B0%84)/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/threeJS/">
+                    threeJS
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/threeJS/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B1%95%E7%A4%BA%E6%A1%88%E4%BE%8B(%E8%A7%86%E9%A2%91%E7%BA%B9%E7%90%86%EF%BC%8C%E9%95%9C%E9%9D%A2%E5%8F%8D%E5%B0%84)/" class="trm-anima-link">
+                    threeJS-机器人展示案例
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>11:01</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            基于大数据，学习参考、练习，网站正在逐步完善中...
+        </div>
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

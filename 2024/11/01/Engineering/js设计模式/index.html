@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="高内聚，低耦合（五大基本原则SOLID简写） 高层模块不依赖底层模块，即为依赖反转原则。 内部修改关闭，外部扩展开放，即为开放封闭原则。 聚合单一功能，即为单一功能原则。 低知识要求，对外接口简单，即为迪米特法则。 耦合多个接口，不如独立拆分，即为接口隔离原则。 合成复用，子类继承可替换父类，即为里式替换原则  为什么封装代码？ 不会让内部变量污染外部 封装好的代码可以作为一个模块给外部调用 对">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式">
+<meta property="og:url" content="http://example.com/2024/11/01/Engineering/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="高内聚，低耦合（五大基本原则SOLID简写） 高层模块不依赖底层模块，即为依赖反转原则。 内部修改关闭，外部扩展开放，即为开放封闭原则。 聚合单一功能，即为单一功能原则。 低知识要求，对外接口简单，即为迪米特法则。 耦合多个接口，不如独立拆分，即为接口隔离原则。 合成复用，子类继承可替换父类，即为里式替换原则  为什么封装代码？ 不会让内部变量污染外部 封装好的代码可以作为一个模块给外部调用 对">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/404.jpg">
+<meta property="og:image" content="http://example.com/img/404.jpg">
+<meta property="og:image" content="http://example.com/img/404.jpg">
+<meta property="article:published_time" content="2024-11-01T08:52:16.666Z">
+<meta property="article:modified_time" content="2024-11-01T09:01:33.793Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/404.jpg">
+
+    <meta name="keywords" content="设计模式">
+
+
+<title >设计模式</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-01 17:01:33"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            UUOVO<span>个人站点</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/test1/" target="">
+                            test1
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            设计模式
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+        <a href="https://zh-hans.react.dev/" title="React" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-react"></i>
+        </a>
+    
+        <a href="https://zh.javascript.info/" title="Javascript" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node-js"></i>
+        </a>
+    
+        <a href="https://nodejs.cn/" title="Node" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            11/01
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            16:52
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <p><img src="/../../img/Engineering/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.png" alt="设计模式"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<h2 id="高内聚，低耦合（五大基本原则SOLID简写）"><a href="#高内聚，低耦合（五大基本原则SOLID简写）" class="headerlink" title="高内聚，低耦合（五大基本原则SOLID简写）"></a>高内聚，低耦合（五大基本原则SOLID简写）</h2><ul>
+<li>高层模块不依赖底层模块，即为依赖反转原则。</li>
+<li>内部修改关闭，外部扩展开放，即为开放封闭原则。</li>
+<li>聚合单一功能，即为单一功能原则。</li>
+<li>低知识要求，对外接口简单，即为迪米特法则。</li>
+<li>耦合多个接口，不如独立拆分，即为接口隔离原则。</li>
+<li>合成复用，子类继承可替换父类，即为里式替换原则</li>
+</ul>
+<h2 id="为什么封装代码？"><a href="#为什么封装代码？" class="headerlink" title="为什么封装代码？"></a>为什么封装代码？</h2><ol>
+<li>不会让内部变量污染外部</li>
+<li>封装好的代码可以作为一个模块给外部调用</li>
+<li>对扩展开放，对修改关闭，即开放关闭原则。外部不能修改内部源码，保证了内部的正确性；又留出扩展接口，提高灵活性。</li>
+</ol>
+<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><ul>
+<li>在软件设计、开发过程中，针对特定场景、特定问题的较优解决方案。</li>
+<li>一共分为3大类23种，下面为常用的几种：<ul>
+<li>创建型模式：单例模式、工厂模式</li>
+<li>结构型模式：适配器模式、装饰器模式</li>
+<li>行为型模式：策略模式、观察者模式、发布订阅模式、访问者模式</li>
+</ul>
+</li>
+</ul>
+<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><blockquote>
+<p>一个类只有一个实例，并提供一个访问它的全局访问点。</p>
+</blockquote>
+<ul>
+<li>实现方法：<ul>
+<li>Singleton: 特定类，需要访问的类</li>
+<li>instance：单例，特定类的实例</li>
+<li>getInstance: 获取单例的方法<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SingLeton</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> _instance = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="title function_">getInstance</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!<span class="title class_">Singleton</span>.<span class="property">_instance</span>)&#123;</span><br><span class="line">            <span class="title class_">Singleton</span>.<span class="property">instance</span> = <span class="keyword">new</span> <span class="title class_">Singleton</span>()</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="title class_">Singleton</span>.<span class="property">_instance</span> <span class="comment">//存在实例就返回</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> s1 = <span class="title class_">Singleton</span>.<span class="title function_">getInstance</span>()</span><br><span class="line"><span class="keyword">const</span> s2 = <span class="title class_">Singleton</span>.<span class="title function_">getInstance</span>()</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(s1===s2) <span class="comment">//true</span></span><br><span class="line"><span class="string">``</span><span class="string">`				</span></span><br><span class="line"><span class="string">- 举例：vuex的store</span></span><br><span class="line"><span class="string">- 优点：节约资源，保证访问的一致性。</span></span><br><span class="line"><span class="string">- 缺点：扩展性不友好，因为单例模式没有接口</span></span><br><span class="line"><span class="string">- 场景：</span></span><br><span class="line"><span class="string">  - 如果一个类实例化过程消耗资源比较多，可以使用单例避免性能浪费</span></span><br><span class="line"><span class="string">  - 需要公共状态，可以使用单例保证访问一致性。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## 工厂模式</span></span><br><span class="line"><span class="string">&gt; 根据不同的，返回不同类的实例</span></span><br><span class="line"><span class="string">&gt; 核心思想：将对象的创建与对象的实现分离</span></span><br><span class="line"><span class="string">- 实现方法：</span></span><br><span class="line"><span class="string">  - Visitor：访问者，访问共仓的方法</span></span><br><span class="line"><span class="string">  - Factory；工厂，负责返回产品实例</span></span><br><span class="line"><span class="string">  - Product：产品，访问者从工厂拿到的产品实例</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>javascript</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">createElement</span>(<span class="params">tag, data,children</span>)&#123;</span><br><span class="line">  <span class="comment">//各种判断 判断生成什么样的Vnode</span></span><br><span class="line">  <span class="keyword">if</span>(!tag)&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="title function_">craeteEmptyVNode</span>()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">VNode</span>(tag,data,children)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>举例：document.createElement创建DOM元素,createElement(‘标签名’)</li>
+<li>优点：良好的封装，扩展性良好，解耦了高层逻辑和底层产品类</li>
+<li>缺点：给系统增加了抽象性，带来了额外的系统复杂度，不能滥用</li>
+<li>场景：对象创建复杂，访问者无需了解创建过程。需要处理大量又相同、相似属性的小对象</li>
+</ul>
+<h2 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h2><blockquote>
+<p>用于解决兼容问题，接口&#x2F;方法&#x2F;数据不兼容，将其转换成访问者期望的格式进行使用。</p>
+</blockquote>
+<ul>
+<li>必须包含目标（Target）、源（Adaptee）和适配器（Adapter）三个角色。</li>
+<li>优点：可以使原有逻辑得到更好的复用，有助于避免大规模改写现有代码</li>
+<li>缺点：会让系统变得零乱，明明调用 A，却被适配到了 B，不能滥用。</li>
+<li>场景：<ul>
+<li>想要使用一个已经存在的对象，但是接口不满足需求</li>
+<li>想要创建一个可以复用的对象，而且确定需要和一些不兼容的对象一起工作</li>
+</ul>
+</li>
+<li>使用：前提有多个不同接口的数据<ul>
+<li>定义一个同意的数据结构</li>
+<li>通过适配器模块，适配成访问者索要访问的数据格式</li>
+<li>将多个不同接口的数据在这里定义号类型，然后其中的相似数据通过调用一个函数转换成一致的类型，然后适配器哪里每一个接口都遍历数据单独返回给对应接口，最终返回适配器列表。通过打.对应的列表。</li>
+</ul>
+</li>
+</ul>
+<h2 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h2><blockquote>
+<p>在不改变原对象的基础上，增加新属性、方法、功能（一个对象被另一个对象包装，在原对象上增加功能）</p>
+</blockquote>
+<ul>
+<li>优点：对象的核心职责和装饰器功能去分开，可以通过动态增删装饰目标对象中的装饰逻辑</li>
+</ul>
+<h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><blockquote>
+<p>定义一系列算法，根据输入的参数决定使用哪个算法</p>
+</blockquote>
+<ul>
+<li>举例： 双十一满减的活动，表单验证</li>
+<li>优点：<ol>
+<li>策略相互独立，可以互相切换。</li>
+<li>提高了灵活性以及复用性，维护性。</li>
+<li>可扩展性好，满足开闭原则。</li>
+</ol>
+</li>
+<li>缺点：<ol>
+<li>策略相互独立，一些复杂的算法逻辑无法共享，造成资源浪费。</li>
+<li>用户在使用策略时，需要了解具体的策略实现。</li>
+<li>不满足最少知识原则，增加了使用成本。</li>
+</ol>
+</li>
+<li>场景：<ul>
+<li>算法需要自由切换的场景。</li>
+<li>多个算法只有行为上有些不同，可以考虑策略模式动态选择算法。</li>
+<li>需要多重判断，可以考虑策略模式规避多重条件判断。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> priceCalculate = (<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">const</span> discountMap = &#123;</span><br><span class="line">    <span class="string">&#x27;discount200-20&#x27;</span>: <span class="keyword">function</span>(<span class="params">price</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> price - <span class="title class_">Math</span>.<span class="title function_">floor</span>(price / <span class="number">200</span>) * <span class="number">20</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&#x27;discount300-50&#x27;</span>: <span class="keyword">function</span>(<span class="params">price</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> price - <span class="title class_">Math</span>.<span class="title function_">floor</span>(price/<span class="number">300</span>) * <span class="number">50</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&#x27;discount500-100&#x27;</span>: <span class="keyword">function</span>(<span class="params">price</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> price - <span class="title class_">Math</span>.<span class="title function_">floor</span>(price/<span class="number">500</span>) * <span class="number">100</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="title function_">addStategy</span>(<span class="params">stategyName,fn</span>)&#123;</span><br><span class="line">      <span class="keyword">if</span>(discountMap[stategyName]) <span class="keyword">return</span>;</span><br><span class="line">        discountMap[stategyName] = fn;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title function_">priceCal</span>(<span class="params">discountType,price</span>)&#123;</span><br><span class="line">      <span class="keyword">return</span> discountMap[discountType] &amp;&amp; discountMap[discountType](price);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)()</span><br><span class="line">  <span class="comment">// 使用</span></span><br><span class="line">  priceCalculate.<span class="title function_">priceCal</span>(<span class="string">&#x27;discount200-20&#x27;</span>,<span class="number">250</span>); <span class="comment">// 230</span></span><br><span class="line">  priceCalculate.<span class="title function_">addStategy</span>(<span class="string">&#x27;discount800-200&#x27;</span>,<span class="keyword">function</span>(<span class="params">price</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> price - <span class="title class_">Math</span>.<span class="title function_">floor</span>(price/<span class="number">800</span>) * <span class="number">200</span>;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h2><blockquote>
+<p>一个对象（称为subject）维持一系列依赖于它的对象（称为observer），将有关状态的任何变更自动通知给它们（观察者）。</p>
+</blockquote>
+<ul>
+<li>观察者模式中的角色有两类：观察者和被观察者。</li>
+<li>优点：目标变化就会通知观察者，这是观察者模式最大的优点。</li>
+<li>缺点：不灵活。目标和观察者是耦合在一起的，要实现观察者模式，必须同时引入被观察者和观察者才能达到响应式的效果。</li>
+<li>实现：被观察者的类要添加&#x2F;移除&#x2F;通知观察者；观察者的类中要根据被观察者更新</li>
+</ul>
+<h2 id="发布-订阅模式"><a href="#发布-订阅模式" class="headerlink" title="发布-订阅模式"></a>发布-订阅模式</h2><blockquote>
+<p>基于一个主题&#x2F;事件通道，希望接收通知的对象（称为subscriber）通过自定义事件订阅主题，被激活事件的对象（称为publisher）通过发布主题事件的方式被通知。</p>
+</blockquote>
+<ul>
+<li>发布-订阅模式的角色有两类：发布者和订阅者</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Event</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">eventEmitter</span> = &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 订阅</span></span><br><span class="line">  <span class="title function_">on</span>(<span class="params">type, fn</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable language_">this</span>.<span class="property">eventEmitter</span>[type]) &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">eventEmitter</span>[type] = [];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">eventEmitter</span>[type].<span class="title function_">push</span>(fn);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 取消订阅</span></span><br><span class="line">  <span class="title function_">off</span>(<span class="params">type, fn</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable language_">this</span>.<span class="property">eventEmitter</span>[type]) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">eventEmitter</span>[type] = <span class="variable language_">this</span>.<span class="property">eventEmitter</span>[type].<span class="title function_">filter</span>(<span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> event !== fn;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 发布</span></span><br><span class="line">  <span class="title function_">emit</span>(<span class="params">type</span>) &#123;</span><br><span class="line">     <span class="keyword">if</span> (!<span class="variable language_">this</span>.<span class="property">eventEmitter</span>[type]) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">eventEmitter</span>[type].<span class="title function_">forEach</span>(<span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">event</span>();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Vue 双向绑定通过数据劫持和发布-订阅模式实现。<ol>
+<li>通过DefineProperty劫持各个数据的setter和getter，并为每个数据添加一个订阅者列表，这个列表将会记录所有依赖这个数据的组件。响应式后的数据相当于消息的发布者。</li>
+<li>每个组件都对应一个Watcher订阅者，当组件渲染函数执行时，会将本组件的Watcher加入到所依赖的响应式数据的订阅者列表中。相当于完成了一次订阅，这个过程叫做“依赖收集”。</li>
+<li>当响应式数据发生变化时，会出setter，setter负责通知数据的订阅者列表中的Watcher，Watcher触发组件重新渲染来更新视图。视图层相当于消息的订阅者。</li>
+</ol>
+</li>
+</ul>
+<p><img src="/../../img/Engineering/%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E8%80%85%E4%B8%8E%E8%A7%82%E5%AF%9F%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB.webp" alt="发布订阅者与观察者的区别"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<h2 id="观察者模式与发布订阅者模式的区别"><a href="#观察者模式与发布订阅者模式的区别" class="headerlink" title="观察者模式与发布订阅者模式的区别"></a>观察者模式与发布订阅者模式的区别</h2><ul>
+<li>观察者模式：<ul>
+<li>媒介： 观察者 –&gt; 被观察者(一有变化就通知被观察者)</li>
+<li>方式： 同步，即当发生某些事件时，主题调用其所有观察者的适当方法3</li>
+<li>松耦合： 观察者和被观察者松散耦合</li>
+</ul>
+</li>
+<li>发布订阅者模式：<ul>
+<li>媒介： 发布者 –&gt; 中间代理 –&gt; 订阅者 （通过中间代理通信）</li>
+<li>方式： 异步（使用消息队列）</li>
+<li>松耦合： 组件与观察者模式完全分离</li>
+<li>模式： 更像是一种跨应用程序模式，可以驻留在两个不同的应用程序中。每一个都通过消息代理或消息队列进行通信。</li>
+</ul>
+</li>
+</ul>
+<h2 id="EventEmitter"><a href="#EventEmitter" class="headerlink" title="EventEmitter"></a>EventEmitter</h2><ul>
+<li>优点：</li>
+</ul>
+<ol>
+<li>时间解耦：注册的订阅行为由发布者决定何时调用，订阅者无需持续关注，由发布者负责通知。</li>
+<li>对象解耦：发布者无需知道消息的接受者，只需遍历订阅该消息类型的订阅者发送消息，解耦了发布者和订阅者之间的联系，互不持有，都依赖于抽象。</li>
+</ol>
+<ul>
+<li>缺点：</li>
+</ul>
+<ol>
+<li>资源消耗：创建订阅者需要一定的时间和内存。</li>
+<li>增加复杂度：弱化了联系，难以维护调用关系，增加了理解成本。</li>
+</ol>
+<ul>
+<li>场景：各模块相互独立，存在一对多的依赖关系，依赖模块不稳定、依赖关系不稳定，各模块由不同的人员开发</li>
+</ul>
+<h2 id="访问者模式"><a href="#访问者模式" class="headerlink" title="访问者模式"></a>访问者模式</h2><blockquote>
+<p>封装一些作用于某种数据结构中的各元素的操作，它可以在不改变这个数据结构的前提下定义作用于其内部各个元素的新操作。访问者模式是一种将数据操作和数据结构分离的设计模式</p>
+</blockquote>
+<ul>
+<li>场景：</li>
+</ul>
+<ol>
+<li>对象结构比较稳定，但经常需要在此对象结构上定义新的操作。</li>
+<li>需要对一个对象结构中的对象进行很多不同的并且不相关的操作，而需要避免这些操作“污染”这些对象的类，也不希望在增加新操作时修改这些类。</li>
+</ol>
+<ul>
+<li>实现：在每个员工的类中添加一个public void accept(Visitor visitor){visitor.visit(this)}和各自对应的方法,在员工的基类中定义好共同的方法和核心方法public abstract void accept(Visitor visitor)，然后汇集到员工业务报表，并为访问者提供接口。定义Visitor的方法，访问员工，然后领导可以根据自己要访问的要求找到对应的数据。<ul>
+<li>Visitor：接口或者抽象类，定义了对每个 Element 访问的行为，它的参数就是被访问的元素，它的方法个数理论上与元素的个数是一样的，因此，访问者模式要求元素的类型要稳定，如果经常添加、移除元素类，必然会导致频繁地修改 Visitor 接口，如果出现这种情况，则说明不适合使用访问者模式。</li>
+<li>ConcreteVisitor：具体的访问者，它需要给出对每一个元素类访问时所产生的具体行为。</li>
+<li>Element：元素接口或者抽象类，它定义了一个接受访问者（accept）的方法，其意义是指每一个元素都要可以被访问者访问。</li>
+<li>ElementA、ElementB：具体的元素类，它提供接受访问的具体实现，而这个具体的实现，通常情况下是使用访问者提供的访问该元素类的方法。</li>
+<li>ObjectStructure：定义当中所提到的对象结构，对象结构是一个抽象表述，它内部管理了元素集合，并且可以迭代这些元素提供访问者访问。</li>
+</ul>
+</li>
+<li>优点：</li>
+</ul>
+<ol>
+<li>各角色责职分离，符合单一职责原则</li>
+<li>具有优秀的扩展性</li>
+<li>灵活性</li>
+<li>使得数据结构和作用于结构上的操作解耦，使得操作集合可以独立变化</li>
+</ol>
+<ul>
+<li>缺点：</li>
+</ul>
+<ol>
+<li>具体元素对访问者公布细节，违反了迪米特原则</li>
+<li>具体元素变更时导致修改成本大</li>
+<li>违反了依赖倒置原则，位类达到“区别对待”而依赖了具体类，没有依赖抽象<br><img src="/../../img/Engineering/UML%E8%AE%BE%E8%AE%A1%E5%9B%BE.webp" alt="UML设计图"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+</ol>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/Engineering/mobx%E5%BA%93/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%B7%A5%E5%85%B7/">
+                    前端工程化工具
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/Engineering/mobx%E5%BA%93/" class="trm-anima-link">
+                    Mobx库
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>16:52</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/%E6%8A%A5%E9%94%99%E6%8C%87%E5%8D%97/vscode%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/%E9%97%AE%E9%A2%98%E4%B8%8E%E6%96%B9%E6%A1%88/">
+                    问题与方案
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/%E6%8A%A5%E9%94%99%E6%8C%87%E5%8D%97/vscode%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98/" class="trm-anima-link">
+                    关于VScode设置中已配置好prettier但项目中不生效一直飘红线eslint提醒
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>16:50</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            基于大数据，学习参考、练习，网站正在逐步完善中...
+        </div>
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>
