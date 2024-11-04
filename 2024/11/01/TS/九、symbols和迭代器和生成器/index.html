@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="大纲 symbols 基础 众所周知的Symbols   迭代器和生成器 for…of for…in   mixins 三斜线指令 &#x2F;&#x2F;&#x2F;  symbols基础 创建symbol类型 let sym1 &#x3D; Symbol() &#x2F;&#x2F; 只能通过Symbol构造函数创建的   Symbols是不可改变且唯一的 let sym2 &#x3D; Sy">
+<meta name="description" content="symbols基础 创建symbol类型 let sym1 &#x3D; Symbol() &#x2F;&#x2F; 只能通过Symbol构造函数创建的   Symbols是不可改变且唯一的 let sym2 &#x3D; Symbol(“key”) let sym3 &#x3D; Symbol(“key”) sym2 &#x3D;&#x3D;&#x3D; sym3 &#x2F;&#x2F; fa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TS-symbols和迭代器和生成器">
 <meta property="og:url" content="http://example.com/2024/11/01/TS/%E4%B9%9D%E3%80%81symbols%E5%92%8C%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="大纲 symbols 基础 众所周知的Symbols   迭代器和生成器 for…of for…in   mixins 三斜线指令 &#x2F;&#x2F;&#x2F;  symbols基础 创建symbol类型 let sym1 &#x3D; Symbol() &#x2F;&#x2F; 只能通过Symbol构造函数创建的   Symbols是不可改变且唯一的 let sym2 &#x3D; Sy">
+<meta property="og:description" content="symbols基础 创建symbol类型 let sym1 &#x3D; Symbol() &#x2F;&#x2F; 只能通过Symbol构造函数创建的   Symbols是不可改变且唯一的 let sym2 &#x3D; Symbol(“key”) let sym3 &#x3D; Symbol(“key”) sym2 &#x3D;&#x3D;&#x3D; sym3 &#x2F;&#x2F; fa">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-11-01T03:40:57.274Z">
-<meta property="article:modified_time" content="2024-11-01T04:04:36.695Z">
+<meta property="article:modified_time" content="2024-11-04T07:25:26.292Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -63,7 +63,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-01 12:04:36"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-04 15:25:26"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -377,21 +377,7 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <h2 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h2><ul>
-<li>symbols<ul>
-<li><a href="#ref1">基础</a></li>
-<li><a href="#ref2">众所周知的Symbols</a></li>
-</ul>
-</li>
-<li>迭代器和生成器<ul>
-<li><a href="#ref3">for…of</a></li>
-<li><a href="#ref4">for…in</a></li>
-</ul>
-</li>
-<li><a href="#ref5">mixins</a></li>
-<li><a href="#ref6">三斜线指令 &#x2F;&#x2F;&#x2F;</a></li>
-</ul>
-<h2 id="symbols"><a href="#symbols" class="headerlink" title="symbols"></a>symbols</h2><h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a><p id="ref1">基础</p></h3><ul>
+    <h2 id="symbols"><a href="#symbols" class="headerlink" title="symbols"></a>symbols</h2><h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><ul>
 <li><h3 id="创建symbol类型"><a href="#创建symbol类型" class="headerlink" title="创建symbol类型"></a>创建symbol类型</h3><ul>
 <li>let sym1 &#x3D; Symbol() &#x2F;&#x2F; 只能通过Symbol构造函数创建的</li>
 </ul>
@@ -410,7 +396,7 @@
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getClassNameSymbol = <span class="title class_">Symbol</span>();</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">C</span> &#123;</span><br><span class="line">	[getClassNameSymbol]()&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;C&quot;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = <span class="keyword">new</span> <span class="title function_">C</span>()</span><br><span class="line"><span class="keyword">let</span> className = c[getClassNameSymbol]() <span class="comment">// &quot;C&quot;</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="众所周知的Symbols"><a href="#众所周知的Symbols" class="headerlink" title="众所周知的Symbols"></a><p id="ref2">众所周知的Symbols</p></h3><ul>
+<h3 id="众所周知的Symbols"><a href="#众所周知的Symbols" class="headerlink" title="众所周知的Symbols"></a>众所周知的Symbols</h3><ul>
 <li><code>Symbol.hasInstance</code>: 识别一个对象是否是其实例</li>
 <li><code>Symbol.isConcatSpreadable</code>: 布尔值，表示当在一个对象上调用Array.prototype.concat时，这个对象的数组元素是否可展开</li>
 <li><code>Symbol.iterator</code>: for-of语句,返回默认迭代器</li>
@@ -423,19 +409,19 @@
 <li><code>Symbol.toStringTag</code>: 返回创建对象时默认的字符串描述。</li>
 <li><code>Symbol.unscopables</code>: 对象，它自己拥有的属性会被with作用域排除在外。</li>
 </ul>
-<h2 id="迭代器和生成器"><a href="#迭代器和生成器" class="headerlink" title="迭代器和生成器"></a>迭代器和生成器</h2><h3 id="for…of-迭代对象的键对应的值"><a href="#for…of-迭代对象的键对应的值" class="headerlink" title="for…of: 迭代对象的键对应的值"></a><p id="ref3">for…of: 迭代对象的键对应的值</p></h3><ul>
+<h2 id="迭代器和生成器"><a href="#迭代器和生成器" class="headerlink" title="迭代器和生成器"></a>迭代器和生成器</h2><h3 id="for…of-迭代对象的键对应的值"><a href="#for…of-迭代对象的键对应的值" class="headerlink" title="for…of: 迭代对象的键对应的值"></a>for…of: 迭代对象的键对应的值</h3><ul>
 <li>let x&#x3D;[‘a’,’d’]</li>
 <li>for(let i of x){} &#x2F;&#x2F; 遍历的结果是a,d</li>
 </ul>
-<h3 id="for…in-迭代对象的键的列表"><a href="#for…in-迭代对象的键的列表" class="headerlink" title="for…in: 迭代对象的键的列表"></a><p id="ref4">for…in: 迭代对象的键的列表</p></h3><ul>
+<h3 id="for…in-迭代对象的键的列表"><a href="#for…in-迭代对象的键的列表" class="headerlink" title="for…in: 迭代对象的键的列表"></a>for…in: 迭代对象的键的列表</h3><ul>
 <li>for(let i in x){} &#x2F;&#x2F;遍历的结果是值的下标0,1</li>
 </ul>
-<h2 id="mixins-结合-可提前给混合进来的属性方法占位"><a href="#mixins-结合-可提前给混合进来的属性方法占位" class="headerlink" title="mixins: 结合,可提前给混合进来的属性方法占位"></a><p id="ref5">mixins: 结合,可提前给混合进来的属性方法占位</p></h2><ul>
+<h2 id="mixins-结合-可提前给混合进来的属性方法占位"><a href="#mixins-结合-可提前给混合进来的属性方法占位" class="headerlink" title="mixins: 结合,可提前给混合进来的属性方法占位"></a>mixins: 结合,可提前给混合进来的属性方法占位</h2><ul>
 <li>class a{}</li>
 <li>class b{}</li>
 <li>class ad implements a,b{}</li>
 </ul>
-<h2 id="三斜线指令-单行注释-注释内容会作为编译器指令使用"><a href="#三斜线指令-单行注释-注释内容会作为编译器指令使用" class="headerlink" title="三斜线指令: &#x2F;&#x2F;&#x2F; 单行注释,注释内容会作为编译器指令使用"></a><p id="ref6">三斜线指令: &#x2F;&#x2F;&#x2F; 单行注释,注释内容会作为编译器指令使用</p></h2><ol>
+<h2 id="三斜线指令-单行注释-注释内容会作为编译器指令使用"><a href="#三斜线指令-单行注释-注释内容会作为编译器指令使用" class="headerlink" title="三斜线指令: &#x2F;&#x2F;&#x2F; 单行注释,注释内容会作为编译器指令使用"></a>三斜线指令: &#x2F;&#x2F;&#x2F; 单行注释,注释内容会作为编译器指令使用</h2><ol>
 <li><code>/// &lt;reference path=&quot;...&quot; /&gt;</code>指令 : 用于声明文件间的依赖。<ul>
 <li>当使用–out或–outFile时，可调整输出内容的顺序。文件在输出文件内容中的位置与经过预处理后的输入顺序一致。</li>
 </ul>
@@ -465,7 +451,7 @@
         <a href="/2024/11/01/TS/%E4%BA%8C%E3%80%81%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E/" class="trm-cover-frame trm-anima-link">
             
             
-                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+                <img alt="cover" class="no-fancybox" src="https://img.tukuppt.com/photo-big/00/00/74/6152d9dc09d26908.jpg">
             
         </a>
         
@@ -497,7 +483,7 @@
         <a href="/2024/11/01/TS/%E5%85%AB%E3%80%81%E9%AB%98%E7%BA%A7%E7%B1%BB%E5%9E%8B/" class="trm-cover-frame trm-anima-link">
             
             
-                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+                <img alt="cover" class="no-fancybox" src="https://img.tukuppt.com/photo-big/00/00/74/6152d9dc09d26908.jpg">
             
         </a>
         
@@ -562,7 +548,7 @@
 
     
         <div class="trm-footer-item">
-            基于大数据，学习参考、练习，网站正在逐步完善中...
+            网站正在逐步完善中...
         </div>
      
 </footer>
@@ -577,8 +563,24 @@
 
             
 
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="symbols"><a rel="nofollow" class="trm-toc-link" href="#symbols"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">symbols</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="基础"><a rel="nofollow" class="trm-toc-link" href="#基础"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">基础</span></a></li><li class="trm-toc-item trm-toc-level-3" title="创建symbol类型"><a rel="nofollow" class="trm-toc-link" href="#创建symbol类型"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">创建symbol类型</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Symbols是不可改变且唯一的"><a rel="nofollow" class="trm-toc-link" href="#Symbols是不可改变且唯一的"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">Symbols是不可改变且唯一的</span></a></li><li class="trm-toc-item trm-toc-level-3" title="symbols也可以被用做对象属性的键"><a rel="nofollow" class="trm-toc-link" href="#symbols也可以被用做对象属性的键"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">symbols也可以被用做对象属性的键</span></a></li><li class="trm-toc-item trm-toc-level-3" title="可以与计算出的属性名声明相结合来声明对象的属性和类成员"><a rel="nofollow" class="trm-toc-link" href="#可以与计算出的属性名声明相结合来声明对象的属性和类成员"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">可以与计算出的属性名声明相结合来声明对象的属性和类成员</span></a></li><li class="trm-toc-item trm-toc-level-3" title="众所周知的Symbols"><a rel="nofollow" class="trm-toc-link" href="#众所周知的Symbols"><span class="trm-toc-number">1.6.</span> <span class="trm-toc-text">众所周知的Symbols</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="迭代器和生成器"><a rel="nofollow" class="trm-toc-link" href="#迭代器和生成器"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">迭代器和生成器</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="for…of: 迭代对象的键对应的值"><a rel="nofollow" class="trm-toc-link" href="#for…of-迭代对象的键对应的值"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">for…of: 迭代对象的键对应的值</span></a></li><li class="trm-toc-item trm-toc-level-3" title="for…in: 迭代对象的键的列表"><a rel="nofollow" class="trm-toc-link" href="#for…in-迭代对象的键的列表"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">for…in: 迭代对象的键的列表</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="mixins: 结合,可提前给混合进来的属性方法占位"><a rel="nofollow" class="trm-toc-link" href="#mixins-结合-可提前给混合进来的属性方法占位"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">mixins: 结合,可提前给混合进来的属性方法占位</span></a></li><li class="trm-toc-item trm-toc-level-2" title="三斜线指令: &#x2F;&#x2F;&#x2F; 单行注释,注释内容会作为编译器指令使用"><a rel="nofollow" class="trm-toc-link" href="#三斜线指令-单行注释-注释内容会作为编译器指令使用"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">三斜线指令: &#x2F;&#x2F;&#x2F; 单行注释,注释内容会作为编译器指令使用</span></a></li></ol>
+      </div>
+    </div>
+
             
 <div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
     
     
         <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">

@@ -3441,6 +3441,18 @@ figure.highlight:hover .code-tools.mac-style .code-lang {
 figure.highlight:hover .code-tools.mac-style .copy-button {
   display: inherit;
 }
+figure.highlight::after {
+  content: " ";
+  position: absolute;
+  border-radius: 50%;
+  background: #ff5f56;
+  width: 12px;
+  height: 12px;
+  top: 9px;
+  left: 12px;
+  -webkit-box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
+  box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
+}
 figure.highlight .code-expand-btn {
   position: absolute;
   z-index: 10;
@@ -3724,4 +3736,20 @@ pre .coffeescript .title {
 .trm-fixed-container.offset #trm-back-top {
   opacity: 1;
   transform: translateY(0) scale(1);
+}
+:root {
+  --primary: #03b839;
+  --primary-70: rgba(3, 184, 57, 0.7);
+  --primary-50: rgba(3, 184, 57, 0.5);
+  --primary-30: rgba(3, 184, 57, 0.3);
+  --primary-weak: #65ca8c;
+  --primary-weak-50: rgba(101, 202, 140, 0.5);
+}
+:root.dark {
+  --primary: #1377a5;
+  --primary-70: rgba(19, 119, 165, 0.7);
+  --primary-50: rgba(19, 119, 165, 0.5);
+  --primary-30: rgba(19, 119, 165, 0.3);
+  --primary-weak: #7ac8df;
+  --primary-weak-50: rgba(122, 200, 223, 0.5);
 }

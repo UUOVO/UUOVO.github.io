@@ -15,7 +15,7 @@
 <meta property="og:description" content="虚拟DOM 将目标所需的UI通过数据结构“虚拟”地表示出来，保存在内存中，然后将真实的DOM与之保持同步  123456789const vnode &#x3D;&#123;  type: &#x27;div&#x27;,  &#x2F;&#x2F; 创建一个&lt;div&gt;元素，并且是虚拟DOM树的根节点  props: &#123;    id: &#x27;rootdiv&#x27;    &#x2F;&#x2F; div的 id 为">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-11-01T06:39:25.184Z">
-<meta property="article:modified_time" content="2024-11-01T07:31:55.760Z">
+<meta property="article:modified_time" content="2024-11-04T07:01:16.654Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -63,7 +63,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-01 15:31:55"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-04 15:01:16"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -386,15 +386,15 @@
 <li><h3 id="更新：存在两份及以上的虚拟树，渲染器会有比较地遍历它们，找区别并应用到真实DOM-上"><a href="#更新：存在两份及以上的虚拟树，渲染器会有比较地遍历它们，找区别并应用到真实DOM-上" class="headerlink" title="更新：存在两份及以上的虚拟树，渲染器会有比较地遍历它们，找区别并应用到真实DOM&#96;上"></a>更新：存在两份及以上的虚拟树，渲染器会有比较地遍历它们，找区别并应用到真实DOM&#96;上</h3></li>
 </ul>
 <h2 id="渲染管线"><a href="#渲染管线" class="headerlink" title="渲染管线"></a>渲染管线</h2><ul>
-<li><h3 id="1、编译："><a href="#1、编译：" class="headerlink" title="1、编译："></a>1、编译：</h3><ul>
+<li><h3 id="编译："><a href="#编译：" class="headerlink" title="编译："></a>编译：</h3><ul>
 <li>Vue模板被编译成<code>渲染函数</code>，即用来返回虚拟DOM树的函数</li>
 </ul>
 </li>
-<li><h3 id="2、挂载："><a href="#2、挂载：" class="headerlink" title="2、挂载："></a>2、挂载：</h3><ul>
+<li><h3 id="挂载："><a href="#挂载：" class="headerlink" title="挂载："></a>挂载：</h3><ul>
 <li>运行时渲染器<code>调用</code>渲染函数，<code>遍历</code>返回的虚拟DOM树，并基于它<code>创建``实际的DOM节点</code>。会作为<code>响应式副作用执行</code>，会追踪所用到的所有响应式依赖</li>
 </ul>
 </li>
-<li><h3 id="3、更新："><a href="#3、更新：" class="headerlink" title="3、更新："></a>3、更新：</h3><ul>
+<li><h3 id="更新："><a href="#更新：" class="headerlink" title="更新："></a>更新：</h3><ul>
 <li><code>依赖变化</code>，<code>副作用重新运行</code>，创建一个<code>更新后的虚拟DOM树</code>。运行时渲染器<code>遍历新树</code>，与旧树<code>对比</code>，<code>更新到真实DOM</code>上</li>
 </ul>
 </li>
@@ -520,7 +520,7 @@
         <a href="/2024/11/01/vue3/%E5%BA%94%E7%94%A8%E8%A7%84%E6%A8%A1%E5%8C%96/" class="trm-cover-frame trm-anima-link">
             
             
-                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+                <img alt="cover" class="no-fancybox" src="https://img.tukuppt.com/photo-big/00/00/74/6152d9dc09d26908.jpg">
             
         </a>
         
@@ -552,7 +552,7 @@
         <a href="/2024/11/01/vue3/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/" class="trm-cover-frame trm-anima-link">
             
             
-                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+                <img alt="cover" class="no-fancybox" src="https://img.tukuppt.com/photo-big/00/00/74/6152d9dc09d26908.jpg">
             
         </a>
         
@@ -617,7 +617,7 @@
 
     
         <div class="trm-footer-item">
-            基于大数据，学习参考、练习，网站正在逐步完善中...
+            网站正在逐步完善中...
         </div>
      
 </footer>
@@ -632,8 +632,24 @@
 
             
 
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="虚拟DOM"><a rel="nofollow" class="trm-toc-link" href="#虚拟DOM"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">虚拟DOM</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="将目标所需的UI通过数据结构“虚拟”地表示出来，保存在内存中，然后将真实的DOM与之保持同步"><a rel="nofollow" class="trm-toc-link" href="#将目标所需的UI通过数据结构“虚拟”地表示出来，保存在内存中，然后将真实的DOM与之保持同步"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">将目标所需的UI通过数据结构“虚拟”地表示出来，保存在内存中，然后将真实的DOM与之保持同步</span></a></li><li class="trm-toc-item trm-toc-level-3" title="挂载： 一个运行时渲染器将会遍历整个虚拟DOM树，并据此构建真实的DOM树"><a rel="nofollow" class="trm-toc-link" href="#挂载：-一个运行时渲染器将会遍历整个虚拟DOM树，并据此构建真实的DOM树"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">挂载： 一个运行时渲染器将会遍历整个虚拟DOM树，并据此构建真实的DOM树</span></a></li><li class="trm-toc-item trm-toc-level-3" title="更新：存在两份及以上的虚拟树，渲染器会有比较地遍历它们，找区别并应用到真实DOM&#96;上"><a rel="nofollow" class="trm-toc-link" href="#更新：存在两份及以上的虚拟树，渲染器会有比较地遍历它们，找区别并应用到真实DOM-上"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">更新：存在两份及以上的虚拟树，渲染器会有比较地遍历它们，找区别并应用到真实DOM&#96;上</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="渲染管线"><a rel="nofollow" class="trm-toc-link" href="#渲染管线"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">渲染管线</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="编译："><a rel="nofollow" class="trm-toc-link" href="#编译："><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">编译：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="挂载："><a rel="nofollow" class="trm-toc-link" href="#挂载："><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">挂载：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="更新："><a rel="nofollow" class="trm-toc-link" href="#更新："><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">更新：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="模板 vs 渲染函数"><a rel="nofollow" class="trm-toc-link" href="#模板-vs-渲染函数"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">模板 vs 渲染函数</span></a></li><li class="trm-toc-item trm-toc-level-2" title="带编译时信息的虚拟 DOM"><a rel="nofollow" class="trm-toc-link" href="#带编译时信息的虚拟-DOM"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">带编译时信息的虚拟 DOM</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="静态提升"><a rel="nofollow" class="trm-toc-link" href="#静态提升"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">静态提升</span></a></li><li class="trm-toc-item trm-toc-level-3" title="更新类型标记"><a rel="nofollow" class="trm-toc-link" href="#更新类型标记"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">更新类型标记</span></a></li><li class="trm-toc-item trm-toc-level-3" title="树结构打平"><a rel="nofollow" class="trm-toc-link" href="#树结构打平"><span class="trm-toc-number">4.3.</span> <span class="trm-toc-text">树结构打平</span></a></li><li class="trm-toc-item trm-toc-level-3" title="对SSR激活的影响 – 提升"><a rel="nofollow" class="trm-toc-link" href="#对SSR激活的影响-–-提升"><span class="trm-toc-number">4.4.</span> <span class="trm-toc-text">对SSR激活的影响 – 提升</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="渲染函数"><a rel="nofollow" class="trm-toc-link" href="#渲染函数"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">渲染函数</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="基本用法"><a rel="nofollow" class="trm-toc-link" href="#基本用法"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">基本用法</span></a></li><li class="trm-toc-item trm-toc-level-3" title="声明渲染函数 — 使用render"><a rel="nofollow" class="trm-toc-link" href="#声明渲染函数-—-使用render"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">声明渲染函数 — 使用render</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Vnodes 必须唯一"><a rel="nofollow" class="trm-toc-link" href="#Vnodes-必须唯一"><span class="trm-toc-number">5.3.</span> <span class="trm-toc-text">Vnodes 必须唯一</span></a></li><li class="trm-toc-item trm-toc-level-3" title="渲染多个重复的元素或者组件 — 工厂函数"><a rel="nofollow" class="trm-toc-link" href="#渲染多个重复的元素或者组件-—-工厂函数"><span class="trm-toc-number">5.4.</span> <span class="trm-toc-text">渲染多个重复的元素或者组件 — 工厂函数</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="JSX &#x2F; TSX — 是 JavaScript 的一个类似 XML 的扩展"><a rel="nofollow" class="trm-toc-link" href="#JSX-TSX-—-是-JavaScript-的一个类似-XML-的扩展"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">JSX &#x2F; TSX — 是 JavaScript 的一个类似 XML 的扩展</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="Vue 的 JSX 编译方式与 React 中 JSX 的编译方式区别"><a rel="nofollow" class="trm-toc-link" href="#Vue-的-JSX-编译方式与-React-中-JSX-的编译方式区别"><span class="trm-toc-number">6.1.</span> <span class="trm-toc-text">Vue 的 JSX 编译方式与 React 中 JSX 的编译方式区别</span></a></li><li class="trm-toc-item trm-toc-level-3" title="当使用 TSX 语法时，确保在 tsconfig.json 中配置了 “jsx”: “preserve”"><a rel="nofollow" class="trm-toc-link" href="#当使用-TSX-语法时，确保在-tsconfig-json-中配置了-“jsx”-“preserve”"><span class="trm-toc-number">6.2.</span> <span class="trm-toc-text">当使用 TSX 语法时，确保在 tsconfig.json 中配置了 “jsx”: “preserve”</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="渲染案例"><a rel="nofollow" class="trm-toc-link" href="#渲染案例"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">渲染案例</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="v-if"><a rel="nofollow" class="trm-toc-link" href="#v-if"><span class="trm-toc-number">7.1.</span> <span class="trm-toc-text">v-if</span></a></li><li class="trm-toc-item trm-toc-level-3" title="v-for"><a rel="nofollow" class="trm-toc-link" href="#v-for"><span class="trm-toc-number">7.2.</span> <span class="trm-toc-text">v-for</span></a></li><li class="trm-toc-item trm-toc-level-3" title="v-on"><a rel="nofollow" class="trm-toc-link" href="#v-on"><span class="trm-toc-number">7.3.</span> <span class="trm-toc-text">v-on</span></a></li><li class="trm-toc-item trm-toc-level-3" title="事件修饰符 – 使用驼峰写法将他们拼接在事件名后面"><a rel="nofollow" class="trm-toc-link" href="#事件修饰符-–-使用驼峰写法将他们拼接在事件名后面"><span class="trm-toc-number">7.4.</span> <span class="trm-toc-text">事件修饰符 – 使用驼峰写法将他们拼接在事件名后面</span></a></li><li class="trm-toc-item trm-toc-level-3" title="组件 – 不再需要注册组件,直接导入"><a rel="nofollow" class="trm-toc-link" href="#组件-–-不再需要注册组件-直接导入"><span class="trm-toc-number">7.5.</span> <span class="trm-toc-text">组件 – 不再需要注册组件,直接导入</span></a></li><li class="trm-toc-item trm-toc-level-3" title="渲染插槽 – 通过 this.$slots 来访问插槽"><a rel="nofollow" class="trm-toc-link" href="#渲染插槽-–-通过-this-slots-来访问插槽"><span class="trm-toc-number">7.6.</span> <span class="trm-toc-text">渲染插槽 – 通过 this.$slots 来访问插槽</span></a></li><li class="trm-toc-item trm-toc-level-3" title="传递插槽"><a rel="nofollow" class="trm-toc-link" href="#传递插槽"><span class="trm-toc-number">7.7.</span> <span class="trm-toc-text">传递插槽</span></a></li><li class="trm-toc-item trm-toc-level-3" title="内置组件"><a rel="nofollow" class="trm-toc-link" href="#内置组件"><span class="trm-toc-number">7.8.</span> <span class="trm-toc-text">内置组件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="v-model"><a rel="nofollow" class="trm-toc-link" href="#v-model"><span class="trm-toc-number">7.9.</span> <span class="trm-toc-text">v-model</span></a></li><li class="trm-toc-item trm-toc-level-3" title="自定义指令"><a rel="nofollow" class="trm-toc-link" href="#自定义指令"><span class="trm-toc-number">7.10.</span> <span class="trm-toc-text">自定义指令</span></a></li><li class="trm-toc-item trm-toc-level-3" title="函数式组件：使用 withDirectives 将自定义指令应用于 vnode"><a rel="nofollow" class="trm-toc-link" href="#函数式组件：使用-withDirectives-将自定义指令应用于-vnode"><span class="trm-toc-number">7.11.</span> <span class="trm-toc-text">函数式组件：使用 withDirectives 将自定义指令应用于 vnode</span></a></li></ol></li></ol>
+      </div>
+    </div>
+
             
 <div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
     
     
         <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">

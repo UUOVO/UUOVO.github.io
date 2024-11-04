@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="当前页面对某个选项进行切换，同步更新全局更新 该问题使用的技术栈是 React + Taro搭建的微信小程序   分析： 既然是全局更新就要在全局store中设置好存储的变量，方便统一管理 在首页将页面要获取的共同内容存到对应变量中 在对应的页面拿取这个变量的内容 然后就处理事件即可   遇到的问题： 写完代码后，查看页面没有变化，通过打印发现变量有更新，但是没有重新调用请求 解决方案 如果存在分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序-归纳总结">
+<meta property="og:url" content="http://example.com/2024/11/04/WeChatMini/%E5%BD%92%E7%BA%B3%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="当前页面对某个选项进行切换，同步更新全局更新 该问题使用的技术栈是 React + Taro搭建的微信小程序   分析： 既然是全局更新就要在全局store中设置好存储的变量，方便统一管理 在首页将页面要获取的共同内容存到对应变量中 在对应的页面拿取这个变量的内容 然后就处理事件即可   遇到的问题： 写完代码后，查看页面没有变化，通过打印发现变量有更新，但是没有重新调用请求 解决方案 如果存在分">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/404.jpg">
+<meta property="article:published_time" content="2024-11-04T01:57:32.066Z">
+<meta property="article:modified_time" content="2024-11-04T06:48:49.119Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/404.jpg">
+
+    <meta name="keywords" content="微信小程序">
+
+
+<title >微信小程序-归纳总结</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-04 14:48:49"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            UUOVO<span>个人站点</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/test1/" target="">
+                            test1
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            微信小程序-归纳总结
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+        <a href="https://zh-hans.react.dev/" title="React" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-react"></i>
+        </a>
+    
+        <a href="https://zh.javascript.info/" title="Javascript" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node-js"></i>
+        </a>
+    
+        <a href="https://nodejs.cn/" title="Node" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            11/04
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            09:57
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="当前页面对某个选项进行切换，同步更新全局更新"><a href="#当前页面对某个选项进行切换，同步更新全局更新" class="headerlink" title="当前页面对某个选项进行切换，同步更新全局更新"></a>当前页面对某个选项进行切换，同步更新全局更新</h2><blockquote>
+<p>该问题使用的技术栈是 React + Taro搭建的微信小程序</p>
+</blockquote>
+<ul>
+<li>分析：<ol>
+<li>既然是全局更新就要在全局store中设置好存储的变量，方便统一管理</li>
+<li>在首页将页面要获取的共同内容存到对应变量中</li>
+<li>在对应的页面拿取这个变量的内容</li>
+<li>然后就处理事件即可</li>
+</ol>
+</li>
+<li>遇到的问题：<ul>
+<li>写完代码后，查看页面没有变化，通过打印发现变量有更新，但是没有重新调用请求</li>
+<li>解决方案<ol>
+<li>如果存在分页，检查数据<code>顺序</code>是否有问题</li>
+<li>查看要调用的<code>请求依赖哪些变量对象</code>，查看这个对象中的变量或变量<code>是否更新</code>，是否每次更新时都更新该对象，如果没有，就要想办法赋值使该对象更新</li>
+<li>如果是查看或者创建数据的时候用到<code>useQuery</code>来获取接口数据的话，且通过切换选项看到其他接口可以随着切换重新请求数据，而其中一个不行，问题极有可能是这个接口的<code>useQuery</code>的使用了<code>enabled:false</code>,**<code>导致数据不会重新切换</code>，所以此时设置<code>enabled:true</code>，或者直接<code>去掉enabled</code>都可解决</li>
+<li>承接方法3，如果是创建和编辑在同一个页面在一起的话，初始数据和处理方式是有些不同的，这个时候，编辑页面需要**<code>传参</code>**表明它是编辑页面，编辑页面不需要切换，且要带着已经编辑过的数据，即使<code>useQuery</code>中的<code>enabled:false</code>，记录数据，不轻易更新，所以可以这样做<code>enabled: type !== &#39;edit&#39;</code></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="缓存问题"><a href="#缓存问题" class="headerlink" title="缓存问题"></a>缓存问题</h2><blockquote>
+<p>该问题使用的技术栈是 React + Taro搭建的微信小程序</p>
+</blockquote>
+<ul>
+<li>业务需求<ul>
+<li>判断用户是否第一次进入小程序，如果是第一次进入小程序，或者卸载了小程序后再次进入小程序，需要弹起一个窗来让用户选择和填写昵称和头像，而这时候已静默登录了</li>
+</ul>
+</li>
+<li>分析<ol>
+<li>翻阅小程序文档可了解到<code>setStorageSync</code>，<code>getStorageSync</code>这个操作</li>
+<li>理清好业务逻辑</li>
+<li>首先第一次进入时虽然静默登录了，但是<code>storage</code>并没有存储，所以可以在<code>useEffect</code>中先调用<code>wx.getStorageSync()</code>来获取我们要存储的<code>key</code>，由于只需要获取第一次的情况，所以<code>useEffect(()=&gt; &#123;&#125;, [])</code>，这时候<code>useEffect</code>不需要依赖,只调用一次就清除副作用</li>
+<li>判断如果没有获取到对应的<code>key</code>就弹窗，有就不弹窗</li>
+<li>在弹窗的取消、确认按钮和直接关闭弹窗的逻辑中调用<code>wx.setStorageSync(&#39;key&#39;, value)</code>这个方法存储，即可</li>
+</ol>
+</li>
+<li>注意事项<ol>
+<li>**<code>缓存只能存储字符串</code>**，所以如果要存储的值不是字符串类型的话，请用<code>JSON.stringify</code>将值序列化一下<ul>
+<li>示例：<code>wx.setStorageSync(&#39;userInfo&#39;, JSON.stringify(e.detail.userInfo))</code></li>
+</ul>
+</li>
+<li>最好设置<code>storage</code>时放在<code>try&#123;&#125;catch(e)&#123;&#125;</code>中方便捕获错误</li>
+<li>按项目要求，点跳过拿的数据最好是直接拿到静默登录时服务器给的数据的信息，点确认则是要判断是否两个都有获取新数据，没有就禁用，有就存储。</li>
+<li>不管拿到的数据是什么都要注意是否要更新该项目中的用户信息接口和store<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">wx.<span class="title function_">setStorageSync</span>(<span class="string">&#x27;userInfo&#x27;</span>, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(e.<span class="property">detail</span>.<span class="property">userInfo</span>))</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  wx.<span class="title function_">setStorageSync</span>(<span class="string">&#x27;headImg&#x27;</span>,value)</span><br><span class="line">  wx.<span class="title function_">setStorageSync</span>(<span class="string">&#x27;nickname&#x27;</span>,value)</span><br><span class="line">&#125; <span class="keyword">catch</span>(e) &#123;&#125;</span><br><span class="line"><span class="keyword">const</span> headImgValue = wx.<span class="title function_">getStorageSync</span>(<span class="string">&#x27;headImg&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> nicknameValue = wx.<span class="title function_">getStorageSync</span>(<span class="string">&#x27;nickname&#x27;</span>)</span><br><span class="line"><span class="keyword">if</span> (headImagValue &amp;&amp; nicknameValue) &#123;</span><br><span class="line">  <span class="comment">// 不弹窗</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// 弹窗</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+<h2 id="Taro-的消息机制-–-全局消息中心-evenCenter"><a href="#Taro-的消息机制-–-全局消息中心-evenCenter" class="headerlink" title="Taro 的消息机制 – 全局消息中心 evenCenter"></a>Taro 的消息机制 – 全局消息中心 evenCenter</h2><blockquote>
+<p>eventCenter的使用场景一般用作于事件的传递，例如跨页面、跨组件做一些操作。</p>
+</blockquote>
+<ul>
+<li>💠 普通使用<ol>
+<li>使用<code>evenCenter.trigger(key)</code>来触发事件</li>
+<li>使用<code>evenCenter.on(key,() =&gt; &#123;&#125;)</code>来监听事件</li>
+<li>在<code>useUnLoad</code>中要<code>evenCenter.off(key)</code>卸载事件</li>
+</ol>
+</li>
+<li>💠 需要<code>获取触发事件页面的数据</code>给监听事件这边<ol>
+<li>使用<code>evenCenter.trigger(key, arg)</code>来触发事件</li>
+<li>使用<code>evenCenter.on(key,() =&gt; &#123;setArg(arg)&#125;)</code>来监听事件和触发当页的实时刷新</li>
+<li>在<code>useUnLoad</code>中要<code>evenCenter.off(key)</code>卸载事件</li>
+</ol>
+</li>
+<li>💠 发送数据给页面<ol>
+<li>使用<code>evenCenter.on(key,() =&gt; &#123;fn(arg)&#125;)</code>来发送数据</li>
+<li>使用<code>evenCenter.trigger(key, fn(arg))</code>来接收数据</li>
+</ol>
+</li>
+<li>💠 切换参数，然后返回<ul>
+<li>在<code>useUnload</code>中<code>卸载的时候触发事件和传参</code><ul>
+<li>或 <code>在受影响的页面中</code>从store中<code>拿到全局变量</code>tableId并且<code>实时监听</code>tableId的改变</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Taro-页面跳转的消息机制-–-eventChannel"><a href="#Taro-页面跳转的消息机制-–-eventChannel" class="headerlink" title="Taro 页面跳转的消息机制 – eventChannel"></a>Taro 页面跳转的消息机制 – eventChannel</h2><ul>
+<li>A页面<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Taro</span>.<span class="title function_">navigateTo</span>(&#123;</span><br><span class="line">	<span class="attr">url</span>: <span class="string">&quot;/pages/test/index&quot;</span>, <span class="comment">// 跳到页面B</span></span><br><span class="line">	events： &#123;</span><br><span class="line">		<span class="attr">acceptB</span>: (data) &#123;&#125; <span class="comment">// 获取B页面传送到当前页面的数据</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">success</span>: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">// 向sendB发送数据</span></span><br><span class="line">		res.<span class="property">eventChannel</span>.<span class="title function_">emit</span>(<span class="string">&quot;sendB&quot;</span>, &#123;<span class="attr">data</span>: 要传递的数据&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>B页面<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> pages = <span class="title class_">Taro</span>.<span class="title function_">getCurrentPages</span>()</span><br><span class="line"><span class="keyword">const</span> current = pages[pages.<span class="property">length</span> - <span class="number">1</span>]</span><br><span class="line"><span class="keyword">const</span> eventChannel = current.<span class="title function_">getOpenerEventChannel</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 触发A页面events的事件</span></span><br><span class="line">eventChannel.<span class="title function_">emit</span>(<span class="string">&#x27;acceptB&#x27;</span>, &#123;要传给A的数据&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 接受A页面对应事件传递的数据</span></span><br><span class="line">eventChannel.<span class="title function_">on</span>(<span class="string">&quot;sendB&quot;</span>, <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;<span class="variable language_">console</span>.<span class="title function_">log</span>(res)&#125;)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="在-input-标签中使用-useState-和-useRef-的影响"><a href="#在-input-标签中使用-useState-和-useRef-的影响" class="headerlink" title="在 input 标签中使用 useState 和 useRef 的影响"></a>在 input 标签中使用 useState 和 useRef 的影响</h2><blockquote>
+<p>该问题使用的技术栈是 React + Taro搭建的微信小程序</p>
+</blockquote>
+<ol>
+<li>微信小程序使用<code>&lt;Input value=&quot;&quot;/&gt;</code> 标签，需要动态获取输入框中输入的<code>value</code>的值来更新数据时，存在使用<code>useState</code>来获取<code>value</code>时，当value<code>已有值</code>，要<code>完全删除</code>旧值，输入新值时，<code>删到旧值的最后一个字符</code>时输入框会一直<code>循环重复</code>旧值，删不掉</li>
+</ol>
+<ul>
+<li>解决方法：将变量的存储和获取方式从<code>useState</code>换成<code>useRef</code></li>
+</ul>
+<ol start="2">
+<li>当使用<code>useRef</code>获取的数据作为其他数据的<code>依赖</code>时，对应的数据不会随着<code>useRef</code>获取新数据的更新而更新<ul>
+<li>存在的原因<ul>
+<li><code>useRef</code>直接操作<code>dom</code>，**<code>返回的ref对象在组件的整个生命周期内保持不变</code>**，当<code>更新时不会触发组件的重新渲染</code>，而<code>useState</code>会存放组件中包含的各种数据(状态)，并且<code>当组件更新state</code>时，<code>会触发组件的重新渲染</code></li>
+</ul>
+</li>
+<li>解决方法<ul>
+<li>通过设置一个用<code>useState</code>存储的常量，当<code>useRef</code>更新时，让常量更新，常量存储更新后的<code>useRef</code>的数据，并作为其他数据的依赖，保证了<code>useRef</code>的数据更新时其他数据也能随着更新。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="scroll-view-隐藏滚动条问题"><a href="#scroll-view-隐藏滚动条问题" class="headerlink" title="scroll-view 隐藏滚动条问题"></a>scroll-view 隐藏滚动条问题</h2><blockquote>
+<p>该问题适用于任何使用小程序 scroll-view 组件或直接使用或二次封装等</p>
+</blockquote>
+<ul>
+<li>根据小程序官方文档，<code>show-scrollbar</code>默认为<code>true</code>即显示滚动条。<ul>
+<li>问题<ul>
+<li>当想要<strong>隐藏滚动条</strong>时，需要enhanced&#x3D;”true”和show-scrollbar&#x3D;”false”,但是实践会发现滚动条依然存在</li>
+</ul>
+</li>
+<li>存在的原因<ul>
+<li>show-scrollbar&#x3D;””,直接赋值时，因为字符串里面有值就是true</li>
+</ul>
+</li>
+<li>解决方法<ul>
+<li>根据不同框架，给<code>show-scrollbar</code>赋值为<code>false</code>时，添加<code>&#123;&#125;</code>，和<code>enhanced</code><ul>
+<li><code>react</code> 使用 <code>&#123;false&#125;</code></li>
+<li>原生微信小程序 使用 <code>&quot;&#123;&#123;false&#125;&#125;&quot;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="解决滚动禁止穿透页面"><a href="#解决滚动禁止穿透页面" class="headerlink" title="解决滚动禁止穿透页面"></a>解决滚动禁止穿透页面</h2><blockquote>
+<p>该问题适用于微信小程序</p>
+</blockquote>
+<ul>
+<li>问题描述：弹窗界面滚动(存不存在scroll-view无所谓，只要能滚动)带动下层的页面跟着滚动</li>
+<li>解决方法： <ul>
+<li>1.在弹窗组件的插槽中用一个view包裹住该弹窗要展示的内容，然后给这个view添加catch:touchmove&#x3D;”noop”</li>
+<li>2.然后在ts&#x2F;js文件中直接添加noop(){return}即可</li>
+</ul>
+</li>
+</ul>
+<h2 id="复制大段文本，文本丢失问题"><a href="#复制大段文本，文本丢失问题" class="headerlink" title="复制大段文本，文本丢失问题"></a>复制大段文本，文本丢失问题</h2><blockquote>
+<p>微信小程序的原生组件 textarea</p>
+</blockquote>
+<ul>
+<li>原因</li>
+<li>小程序的textare组件默认了maxlength &#x3D; 140</li>
+<li>解决方案<ul>
+<li>设置maxlength &#x3D; -1</li>
+</ul>
+</li>
+</ul>
+<h2 id="单选框radio除了可以传value可以传其他的值"><a href="#单选框radio除了可以传value可以传其他的值" class="headerlink" title="单选框radio除了可以传value可以传其他的值"></a>单选框radio除了可以传value可以传其他的值</h2><blockquote>
+<p>微信小程序的 radio-group 组件和 radio 组件，该问题源于微信开放社区</p>
+</blockquote>
+<p><img src="/../../img/WeChatMini/question-radio.png" alt="单选框radio除了可以传value可以传其他的值"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<ul>
+<li>问题<ul>
+<li>data-传值在bindChange事件里接收不到，只能获取到value的值 &#x3D;&#x3D;&#x3D; 向value传其他的值</li>
+</ul>
+</li>
+<li>解决方法<ul>
+<li>使用wxs处理<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*wxml*/</span></span><br><span class="line">&lt;wxs <span class="variable language_">module</span>=<span class="string">&quot;JSON&quot;</span>&gt;</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  stringify : <span class="keyword">function</span>(<span class="params">item</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(item)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/wxs&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">radio-group</span> <span class="attr">...</span> &gt;</span></span></span><br><span class="line"><span class="language-xml">....</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">radio</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123;JSON.stringify(item)&#125;&#125;&quot;</span> <span class="attr">checked</span>=<span class="string">&quot;&#123;&#123;item.checked&#125;&#125;&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">radio-group</span>&gt;</span></span></span><br><span class="line"><span class="comment">/*ts*/</span></span><br><span class="line"><span class="attr">radioChange</span>: <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> d = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(e.<span class="property">detail</span>.<span class="property">value</span>)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;radio发生change事件，携带value值为：&#x27;</span>, d)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="关于微信昵称中Emoji表情乱码问题"><a href="#关于微信昵称中Emoji表情乱码问题" class="headerlink" title="关于微信昵称中Emoji表情乱码问题"></a>关于微信昵称中Emoji表情乱码问题</h2><ul>
+<li>问题<ul>
+<li>昵称带Emoji表情，保存到数据库里，页面显示就乱码</li>
+</ul>
+</li>
+<li>解决方法<ol>
+<li>将包含该Emoji表情的信息encodeURIComponent编码，在使用的地方，在decodeURIComponent解码</li>
+<li>在数据库连接的时候采用utf8mb4，数据库编码和表格编码以及对应的存储字段都采用utf8mb4编码</li>
+</ol>
+</li>
+</ul>
+<h2 id="小程序分享"><a href="#小程序分享" class="headerlink" title="小程序分享"></a>小程序分享</h2><blockquote>
+<p>该方法使用的时vue3 + taro</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">  <span class="keyword">import</span> &#123; useShareAppMessage &#125; <span class="keyword">from</span> <span class="string">&#x27;@tarojs/taro&#x27;</span></span><br><span class="line"></span><br><span class="line">  <span class="title function_">useShareAppMessage</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (res.<span class="property">from</span> === <span class="string">&#x27;button&#x27;</span>) &#123;</span><br><span class="line">      <span class="comment">// 来自页面内转发按钮</span></span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(res.<span class="property">target</span>)</span><br><span class="line">			<span class="comment">// 弹出分享图片的菜单，包括图片和发送等</span></span><br><span class="line">			wx.<span class="title function_">showShareImageMenu</span>(&#123;</span><br><span class="line">				<span class="attr">path</span>: res.<span class="property">tempFilePath</span></span><br><span class="line">			&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">		<span class="comment">// 小程序菜单分享</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&#x27;自定义转发标题&#x27;</span>,</span><br><span class="line">      <span class="attr">path</span>: <span class="string">&#x27;/page/user?id=123&#x27;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="点击查看更多，展示更多数据"><a href="#点击查看更多，展示更多数据" class="headerlink" title="点击查看更多，展示更多数据"></a>点击查看更多，展示更多数据</h2><blockquote>
+<p>该方法使用微信小程序</p>
+</blockquote>
+<ul>
+<li>先把框架写好</li>
+<li>然后通过数据判断，是否超过一定数量total，和是否点击checked来判断展示更所数据的展示</li>
+<li>然后通过服务端给的数据来展示</li>
+<li>方案一：通过对应API的参数来控制点击前和点击后的数据，如点击前给两条，点击后给全部，这个要记得初始化checked，list和api对应参数</li>
+<li>方案二：每次点击更多就加载2条数据甚至更多，checked要等到所有数据都加载完才为false，一般这样服务端给的数据应该是点击以下增加一页，给两条数据</li>
+</ul>
+<h2 id="服务端给的文本有回车换行"><a href="#服务端给的文本有回车换行" class="headerlink" title="服务端给的文本有回车换行"></a>服务端给的文本有回车换行</h2><blockquote>
+<p>直接用text标签</p>
+</blockquote>
+<ul>
+<li>用view标签识别不了文本的回车的标签</li>
+</ul>
+<h2 id="vant-checkbox-group-注意点"><a href="#vant-checkbox-group-注意点" class="headerlink" title="vant-checkbox-group 注意点"></a>vant-checkbox-group 注意点</h2><ul>
+<li>问题： 为什么点击没有勾选</li>
+<li>解决方案： </li>
+<li>checkbox组下面的checkbox都要有name属性</li>
+<li>使用checkbox组的方法，onChange，直接给checkbox组的value属性赋值，类型为字符串数组，值为：event.detail</li>
+</ul>
+<h2 id="switch用法"><a href="#switch用法" class="headerlink" title="switch用法"></a>switch用法</h2><blockquote>
+<p>当有多个键指向的内容一致时</p>
+</blockquote>
+<ul>
+<li>示例：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(key)&#123;</span><br><span class="line">	<span class="keyword">case</span> key === <span class="number">1</span>:</span><br><span class="line">	<span class="keyword">case</span> key === <span class="number">2</span>:</span><br><span class="line">	<span class="keyword">case</span> key === <span class="number">3</span>:</span><br><span class="line">	  <span class="variable language_">console</span>.<span class="title function_">log</span>(key === <span class="number">1</span> | <span class="number">2</span> | <span class="number">3</span>, content is same)</span><br><span class="line">    <span class="keyword">break</span></span><br><span class="line"> <span class="keyword">default</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Array-filter-Boolean"><a href="#Array-filter-Boolean" class="headerlink" title="Array.filter(Boolean)"></a>Array.filter(Boolean)</h2><blockquote>
+<p>本质上是将元素强制转换为布尔型并判断是否为false，以此来进行校验，适用于需要检验多个表单信息</p>
+</blockquote>
+<h3 id="移除数组中所有的”false”类型元素-false-null-undefined-0-NaN-空字符串"><a href="#移除数组中所有的”false”类型元素-false-null-undefined-0-NaN-空字符串" class="headerlink" title="移除数组中所有的”false”类型元素(false,null,undefined,0,NaN,空字符串)"></a>移除数组中所有的”false”类型元素(false,null,undefined,0,NaN,空字符串)</h3><ul>
+<li>得到的是过滤后的值数组</li>
+<li>注意：不检验对象<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eg</span>:a simple explame</span><br><span class="line"><span class="keyword">const</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;&quot;</span>,<span class="title class_">NaN</span>,&#123;&#125;,<span class="literal">false</span>, <span class="literal">true</span>,<span class="literal">null</span>,<span class="literal">undefined</span>,<span class="number">0</span>]</span><br><span class="line"><span class="keyword">const</span> b = a.<span class="title function_">filter</span>(<span class="title class_">Boolean</span>)</span><br><span class="line"><span class="attr">eg</span>: a advanced explame</span><br><span class="line"><span class="comment">// 定义要查找的关键字类型</span></span><br><span class="line">type keyType = <span class="string">&#x27;name&#x27;</span> | <span class="string">&#x27;age&#x27;</span> | <span class="string">&#x27;hobit&#x27;</span> | <span class="string">&#x27;remark&#x27;</span> | <span class="string">&#x27;position&#x27;</span> | <span class="string">&#x27;show&#x27;</span></span><br><span class="line"><span class="comment">// 定义当key为false类型时，提示的文本</span></span><br><span class="line"><span class="keyword">const</span> <span class="attr">validateText</span>: <span class="title class_">Record</span>&lt;keyType, string&gt; = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;name is not empty!&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="string">&#x27;age is not zero!&#x27;</span>,</span><br><span class="line">    <span class="attr">hobit</span>: <span class="string">&#x27;hobit is not empty!&#x27;</span>,</span><br><span class="line">    <span class="attr">remark</span>: <span class="string">&#x27;remark is not empty!&#x27;</span>,</span><br><span class="line">    <span class="attr">position</span>: <span class="string">&#x27;position is not empty!&#x27;</span>,</span><br><span class="line">    <span class="attr">show</span>: <span class="string">&#x27;show is not false!&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 定义一个对象</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">InfoData</span>: <span class="title class_">Record</span>&lt;keyType, string | number | boolean&gt; = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;abc&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">12</span>,</span><br><span class="line">    <span class="attr">hobit</span>: <span class="string">&#x27;打球&#x27;</span>,</span><br><span class="line">    <span class="attr">remark</span>: <span class="string">&#x27;备注&#x27;</span>,</span><br><span class="line">    <span class="attr">position</span>: <span class="string">&#x27;学生&#x27;</span>,</span><br><span class="line">    <span class="attr">show</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 顶一个数组，用来存放要校验的key，按顺序校验</span></span><br><span class="line"><span class="keyword">const</span> <span class="attr">keyInfo</span>: keyType[] = [</span><br><span class="line">  <span class="string">&#x27;name&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;age&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;hobit&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;remark&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;position&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;show&#x27;</span>,</span><br><span class="line">]</span><br><span class="line"><span class="comment">// 校验是否存在false类型，返回检验没有false类型的字段，并且返回不存在数组的第一个字段</span></span><br><span class="line"><span class="keyword">const</span> validate = keyInfo</span><br><span class="line">    .<span class="title function_">filter</span>(<span class="title class_">Boolean</span>)</span><br><span class="line">    .<span class="title function_">find</span>(<span class="function">(<span class="params">key: keyType</span>) =&gt;</span> !<span class="title class_">InfoData</span>[key])</span><br><span class="line"><span class="comment">// 判断当返回的值不为undefined时，则提示对应的文本</span></span><br><span class="line"><span class="keyword">if</span> (validate) &#123;</span><br><span class="line">	wx.<span class="title function_">showModal</span>(&#123;</span><br><span class="line">	  <span class="attr">title</span>: <span class="string">&#x27;提示&#x27;</span>,</span><br><span class="line">	  <span class="attr">content</span>: validateText[validate],</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="编辑与查看为同一页时，处理方式（无缓存）"><a href="#编辑与查看为同一页时，处理方式（无缓存）" class="headerlink" title="编辑与查看为同一页时，处理方式（无缓存）"></a>编辑与查看为同一页时，处理方式（无缓存）</h2><blockquote>
+<p>本次项目实战使用微信小程序 + ts</p>
+</blockquote>
+<h3 id="问题的描述："><a href="#问题的描述：" class="headerlink" title="问题的描述："></a>问题的描述：</h3><ul>
+<li>第一次进入页面是编辑状态，保存了数据后，不管是否清除缓存，都展示最新的数据（只读）</li>
+<li>只有在只读页面中点击对应的按钮，才能进入编辑状态页，并且编辑页只要没有按下保存按钮，则刷新后仍然回到点击前的只读页面，即接口返回的最新数据</li>
+<li>只有当保存后，才会重新进入新的只读页</li>
+</ul>
+<h3 id="问题的解决："><a href="#问题的解决：" class="headerlink" title="问题的解决："></a>问题的解决：</h3><ul>
+<li>首先需要将要编辑的数据及相关变量保存在同一个初始化函数中</li>
+<li>之后通过接口返回的数据，如果失败，则为第一次进入预约页面的状态，标识编辑，然后初始化函数并且，设置变量来标识为编辑页</li>
+<li>当内容编辑完成后，点击保存，进行校验，保存成功后，将变量标识为只读状态，并且调用接口获取最新的数据和状态，并存到初始化函数中的变量中，保持数据的统一性</li>
+<li>当点击页面的按钮，调用初始化函数，并将变量设置为编辑状态，即可回到编辑页，</li>
+<li>此时只有当在这个页面保存数据，才会产生新的页面，不然不管清缓存还是重新进入该页面，都应回到点击前的只读页面。</li>
+</ul>
+<h3 id="问题的总结："><a href="#问题的总结：" class="headerlink" title="问题的总结："></a>问题的总结：</h3><ul>
+<li>此次遇到编辑和查看页面为同一页面时，要通过接口的数据返回，来判断并设置对应的标识以区分当前页是编辑还是查看状态</li>
+</ul>
+<h2 id="单个表单数据要存入一个对象"><a href="#单个表单数据要存入一个对象" class="headerlink" title="单个表单数据要存入一个对象"></a>单个表单数据要存入一个对象</h2><blockquote>
+<p>该问题使用微信小程序 + ts</p>
+</blockquote>
+<h3 id="问题的描述"><a href="#问题的描述" class="headerlink" title="问题的描述"></a>问题的描述</h3><ul>
+<li>当页面存在多个input标签，并需要保存提交</li>
+<li>一般都会存储在同一个对象中，方便校验</li>
+<li>校验使用上面的Array.filter(Boolean)里面有示例</li>
+</ul>
+<h3 id="问题的解决"><a href="#问题的解决" class="headerlink" title="问题的解决"></a>问题的解决</h3><ul>
+<li>多个input标签功能一致，则可以使用同一个函数来操作</li>
+<li>至于具体存进那个key，则可以通过在wxml页面给每一个input添加mark:key&#x3D;”定义的键”</li>
+<li>然后每次调用函数时，可以获取key并存进对应的key中，或清除</li>
+</ul>
+<h3 id="问题的总结"><a href="#问题的总结" class="headerlink" title="问题的总结"></a>问题的总结</h3><ul>
+<li>当存在多个标签一致时，观察功能&#x2F;样式是否相同，然后通过给一个区分的标签来实现调用同一个函数实现不同的功能，以减少代码量</li>
+</ul>
+<h2 id="setData第二参数"><a href="#setData第二参数" class="headerlink" title="setData第二参数"></a>setData第二参数</h2><blockquote>
+<p>微信小程序中setData方法用于设置数据，更改数据</p>
+</blockquote>
+<ul>
+<li>第一个参数：Object data， 必传， 代表这次要改变的数据</li>
+<li>第二个参数：Function callback， 选填， 代表setData引起的界面更新渲染完毕后的回调函数</li>
+<li>浅薄理解：参数一就是主要用来更新数据，设置数据，参数二则是延时器的作用，渲染完在调用回调函数</li>
+<li>示例：</li>
+<li>第一个参数：this.setData({val,b:a})</li>
+<li>第二个参数：this.setData({val}, () &#x3D;&gt; { this.setData(value)})</li>
+</ul>
+<h2 id="picker-view的value赋值问题"><a href="#picker-view的value赋值问题" class="headerlink" title="picker-view的value赋值问题"></a>picker-view的value赋值问题</h2><blockquote>
+<p>picker-view时微信小程序的原生组件，用于自定义picker</p>
+</blockquote>
+<ul>
+<li>已知picker-view的value属性值为每一个picker-view-column默认选中的索引数组，存在有多少个picker-view-column，数组长度就为多少</li>
+<li>问题：给value赋值时，不管是不是第一项没成功赋值，定位到对应的索引，还是其他项，都显示为在索引0的位置和索引0的值，与所求相异</li>
+<li>原因：初始化函数时没有成功赋值进去，存在延时</li>
+<li>解决：建议用setData的第二参数赋值，this.setData({val}, () &#x3D;&gt; { this.setData(value)})</li>
+</ul>
+<h2 id="多行文本溢出省略号"><a href="#多行文本溢出省略号" class="headerlink" title="多行文本溢出省略号"></a>多行文本溢出省略号</h2><ul>
+<li>核心代码<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">overflow</span>: hidden;</span><br><span class="line">text-<span class="attr">overflow</span>: ellipsis;</span><br><span class="line">-webkit-line-<span class="attr">clamp</span>: <span class="number">6</span>;</span><br><span class="line">word-<span class="attr">break</span>: <span class="keyword">break</span>-all;</span><br><span class="line"><span class="attr">display</span>: -webkit-box;</span><br><span class="line">-webkit-box-<span class="attr">orient</span>: vertical;</span><br></pre></td></tr></table></figure></li>
+<li>注意：如果无效可以限制宽高</li>
+<li>单行文本溢出省略：只要前两行</li>
+</ul>
+<h2 id="跳转返回上一页面并传递参数"><a href="#跳转返回上一页面并传递参数" class="headerlink" title="跳转返回上一页面并传递参数"></a>跳转返回上一页面并传递参数</h2><blockquote>
+<p>微信小程序</p>
+</blockquote>
+<ul>
+<li>方法一： 使用<code>wx.navigateBack</code><ol>
+<li>在子页面中首先获取上一页面<ul>
+<li>const pages &#x3D; getCurrentPages()</li>
+<li>const prePages &#x3D; pages[pages.length -2] &#x2F;&#x2F;上一级页面</li>
+</ul>
+</li>
+<li>调用上一页面的setData方法，将数据存到上一页面，存储的变量要现在上一页面的data中声明<br>- prePages.setData({存储的变量：这个页面要存储的值})</li>
+<li>返回上一页面<ul>
+<li>wx.navigateBack({ delta: 1 })</li>
+</ul>
+</li>
+<li>上一页面接收子页面的参数可在onLoad或onShow中执行，onShow每次页面加载都会执行，并保存<ul>
+<li>const pages &#x3D; getCurrentPages()</li>
+<li>const currentPages &#x3D; pages[pages.length-1]</li>
+<li>this.setData({存储的变量：这个页面要存储的值})</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>方法二：使用<code>wx.navigateTo</code><ol>
+<li>子页面通过路径传递参数<ul>
+<li>wx.navigateTo({ url: <code>/xxx/xxx/xxx?params=$&#123;params&#125;&amp;params1=$&#123;params&#125;</code>})</li>
+</ul>
+</li>
+<li>父页面通过onLoad(options)方法获取参数<ul>
+<li>onLoad(options){ const params &#x3D; options.params }</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="如何避免输入中文拼音时触发input事件"><a href="#如何避免输入中文拼音时触发input事件" class="headerlink" title="如何避免输入中文拼音时触发input事件"></a>如何避免输入中文拼音时触发input事件</h2><blockquote>
+<p>原生html+js</p>
+</blockquote>
+<ul>
+<li>监听compositionstart 、 compositionend</li>
+<li>定义isComposite 为false，在start中设置为true，在end中设置为false</li>
+<li>然后在input事件中判断，当isComposite为false时就进行输入搜索事件</li>
+<li>之后在end事件中在调用输入搜索事件</li>
+</ul>
+<h2 id="实现防纂改的水印"><a href="#实现防纂改的水印" class="headerlink" title="实现防纂改的水印"></a>实现防纂改的水印</h2><ul>
+<li>react框架使用ant design，有一个watermark组件</li>
+</ul>
+<h2 id="一个布局存在多个点击事件，先后触发问题"><a href="#一个布局存在多个点击事件，先后触发问题" class="headerlink" title="一个布局存在多个点击事件，先后触发问题"></a>一个布局存在多个点击事件，先后触发问题</h2><blockquote>
+<p>本质：微信小程序 bindtap 和 catchtap 的区别</p>
+</blockquote>
+<ol>
+<li>事件冒泡:<ul>
+<li>bindtap会将事件传递给父节点进行处理，而catchtap会阻止事件继续冒泡到父节点。</li>
+<li>即<code>当一个元素上的bindtap事件被触发，如果该元素的父节点又有bindtap事件，则父节点的事件也会执行；而catchtap则只会触发当前元素的事件处理函数</code></li>
+</ul>
+</li>
+<li>绑定顺序:<ul>
+<li>bindtap的触发顺序是由子元素向父元素冒泡的顺序(由内向外)</li>
+<li>catchtap的触发顺序是由父元素向子元素铺捕获的顺序(由外到内)</li>
+</ul>
+</li>
+<li>阻止默认:<ul>
+<li>bindtap可以通过返回false来阻止默认行为的触发，而catchtap无法阻止</li>
+</ul>
+</li>
+<li>通常情况下使用bindtap，不想触发父元素使用catchtap</li>
+</ol>
+<h2 id="小红点单数圆形，双数圆矩形"><a href="#小红点单数圆形，双数圆矩形" class="headerlink" title="小红点单数圆形，双数圆矩形"></a>小红点单数圆形，双数圆矩形</h2><blockquote>
+<p>参考vant-icon</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">dot</span> &#123;</span><br><span class="line">	font-<span class="attr">size</span>: 20rpx</span><br><span class="line">  <span class="attr">background</span>: red;</span><br><span class="line">  border-<span class="attr">radius</span>: 16rpx;</span><br><span class="line">  <span class="attr">padding</span>:4rpx 8rpx;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<!-- # 视频：流量限制 -->
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/04/WeChatMini/%E6%B5%B7%E6%8A%A5%E7%94%9F%E6%88%90/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="https://img.tukuppt.com/photo-big/00/00/74/6152d9dc09d26908.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                    微信小程序
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/04/WeChatMini/%E6%B5%B7%E6%8A%A5%E7%94%9F%E6%88%90/" class="trm-anima-link">
+                    微信小程序-海报生成
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/04</li>
+                <li>09:57</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/04/WeChatMini/%E5%AF%8C%E6%96%87%E6%9C%AC/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="https://img.tukuppt.com/photo-big/00/00/74/6152d9dc09d26908.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                    微信小程序
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/04/WeChatMini/%E5%AF%8C%E6%96%87%E6%9C%AC/" class="trm-anima-link">
+                    微信小程序-富文本
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/04</li>
+                <li>09:57</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            网站正在逐步完善中...
+        </div>
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="当前页面对某个选项进行切换，同步更新全局更新"><a rel="nofollow" class="trm-toc-link" href="#当前页面对某个选项进行切换，同步更新全局更新"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">当前页面对某个选项进行切换，同步更新全局更新</span></a></li><li class="trm-toc-item trm-toc-level-2" title="缓存问题"><a rel="nofollow" class="trm-toc-link" href="#缓存问题"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">缓存问题</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Taro 的消息机制 – 全局消息中心 evenCenter"><a rel="nofollow" class="trm-toc-link" href="#Taro-的消息机制-–-全局消息中心-evenCenter"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">Taro 的消息机制 – 全局消息中心 evenCenter</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Taro 页面跳转的消息机制 – eventChannel"><a rel="nofollow" class="trm-toc-link" href="#Taro-页面跳转的消息机制-–-eventChannel"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">Taro 页面跳转的消息机制 – eventChannel</span></a></li><li class="trm-toc-item trm-toc-level-2" title="在 input 标签中使用 useState 和 useRef 的影响"><a rel="nofollow" class="trm-toc-link" href="#在-input-标签中使用-useState-和-useRef-的影响"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">在 input 标签中使用 useState 和 useRef 的影响</span></a></li><li class="trm-toc-item trm-toc-level-2" title="scroll-view 隐藏滚动条问题"><a rel="nofollow" class="trm-toc-link" href="#scroll-view-隐藏滚动条问题"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">scroll-view 隐藏滚动条问题</span></a></li><li class="trm-toc-item trm-toc-level-2" title="解决滚动禁止穿透页面"><a rel="nofollow" class="trm-toc-link" href="#解决滚动禁止穿透页面"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">解决滚动禁止穿透页面</span></a></li><li class="trm-toc-item trm-toc-level-2" title="复制大段文本，文本丢失问题"><a rel="nofollow" class="trm-toc-link" href="#复制大段文本，文本丢失问题"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">复制大段文本，文本丢失问题</span></a></li><li class="trm-toc-item trm-toc-level-2" title="单选框radio除了可以传value可以传其他的值"><a rel="nofollow" class="trm-toc-link" href="#单选框radio除了可以传value可以传其他的值"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">单选框radio除了可以传value可以传其他的值</span></a></li><li class="trm-toc-item trm-toc-level-2" title="关于微信昵称中Emoji表情乱码问题"><a rel="nofollow" class="trm-toc-link" href="#关于微信昵称中Emoji表情乱码问题"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">关于微信昵称中Emoji表情乱码问题</span></a></li><li class="trm-toc-item trm-toc-level-2" title="小程序分享"><a rel="nofollow" class="trm-toc-link" href="#小程序分享"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">小程序分享</span></a></li><li class="trm-toc-item trm-toc-level-2" title="点击查看更多，展示更多数据"><a rel="nofollow" class="trm-toc-link" href="#点击查看更多，展示更多数据"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">点击查看更多，展示更多数据</span></a></li><li class="trm-toc-item trm-toc-level-2" title="服务端给的文本有回车换行"><a rel="nofollow" class="trm-toc-link" href="#服务端给的文本有回车换行"><span class="trm-toc-number">13.</span> <span class="trm-toc-text">服务端给的文本有回车换行</span></a></li><li class="trm-toc-item trm-toc-level-2" title="vant-checkbox-group 注意点"><a rel="nofollow" class="trm-toc-link" href="#vant-checkbox-group-注意点"><span class="trm-toc-number">14.</span> <span class="trm-toc-text">vant-checkbox-group 注意点</span></a></li><li class="trm-toc-item trm-toc-level-2" title="switch用法"><a rel="nofollow" class="trm-toc-link" href="#switch用法"><span class="trm-toc-number">15.</span> <span class="trm-toc-text">switch用法</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Array.filter(Boolean)"><a rel="nofollow" class="trm-toc-link" href="#Array-filter-Boolean"><span class="trm-toc-number">16.</span> <span class="trm-toc-text">Array.filter(Boolean)</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="移除数组中所有的”false”类型元素(false,null,undefined,0,NaN,空字符串)"><a rel="nofollow" class="trm-toc-link" href="#移除数组中所有的”false”类型元素-false-null-undefined-0-NaN-空字符串"><span class="trm-toc-number">16.1.</span> <span class="trm-toc-text">移除数组中所有的”false”类型元素(false,null,undefined,0,NaN,空字符串)</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="编辑与查看为同一页时，处理方式（无缓存）"><a rel="nofollow" class="trm-toc-link" href="#编辑与查看为同一页时，处理方式（无缓存）"><span class="trm-toc-number">17.</span> <span class="trm-toc-text">编辑与查看为同一页时，处理方式（无缓存）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="问题的描述："><a rel="nofollow" class="trm-toc-link" href="#问题的描述："><span class="trm-toc-number">17.1.</span> <span class="trm-toc-text">问题的描述：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="问题的解决："><a rel="nofollow" class="trm-toc-link" href="#问题的解决："><span class="trm-toc-number">17.2.</span> <span class="trm-toc-text">问题的解决：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="问题的总结："><a rel="nofollow" class="trm-toc-link" href="#问题的总结："><span class="trm-toc-number">17.3.</span> <span class="trm-toc-text">问题的总结：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="单个表单数据要存入一个对象"><a rel="nofollow" class="trm-toc-link" href="#单个表单数据要存入一个对象"><span class="trm-toc-number">18.</span> <span class="trm-toc-text">单个表单数据要存入一个对象</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="问题的描述"><a rel="nofollow" class="trm-toc-link" href="#问题的描述"><span class="trm-toc-number">18.1.</span> <span class="trm-toc-text">问题的描述</span></a></li><li class="trm-toc-item trm-toc-level-3" title="问题的解决"><a rel="nofollow" class="trm-toc-link" href="#问题的解决"><span class="trm-toc-number">18.2.</span> <span class="trm-toc-text">问题的解决</span></a></li><li class="trm-toc-item trm-toc-level-3" title="问题的总结"><a rel="nofollow" class="trm-toc-link" href="#问题的总结"><span class="trm-toc-number">18.3.</span> <span class="trm-toc-text">问题的总结</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="setData第二参数"><a rel="nofollow" class="trm-toc-link" href="#setData第二参数"><span class="trm-toc-number">19.</span> <span class="trm-toc-text">setData第二参数</span></a></li><li class="trm-toc-item trm-toc-level-2" title="picker-view的value赋值问题"><a rel="nofollow" class="trm-toc-link" href="#picker-view的value赋值问题"><span class="trm-toc-number">20.</span> <span class="trm-toc-text">picker-view的value赋值问题</span></a></li><li class="trm-toc-item trm-toc-level-2" title="多行文本溢出省略号"><a rel="nofollow" class="trm-toc-link" href="#多行文本溢出省略号"><span class="trm-toc-number">21.</span> <span class="trm-toc-text">多行文本溢出省略号</span></a></li><li class="trm-toc-item trm-toc-level-2" title="跳转返回上一页面并传递参数"><a rel="nofollow" class="trm-toc-link" href="#跳转返回上一页面并传递参数"><span class="trm-toc-number">22.</span> <span class="trm-toc-text">跳转返回上一页面并传递参数</span></a></li><li class="trm-toc-item trm-toc-level-2" title="如何避免输入中文拼音时触发input事件"><a rel="nofollow" class="trm-toc-link" href="#如何避免输入中文拼音时触发input事件"><span class="trm-toc-number">23.</span> <span class="trm-toc-text">如何避免输入中文拼音时触发input事件</span></a></li><li class="trm-toc-item trm-toc-level-2" title="实现防纂改的水印"><a rel="nofollow" class="trm-toc-link" href="#实现防纂改的水印"><span class="trm-toc-number">24.</span> <span class="trm-toc-text">实现防纂改的水印</span></a></li><li class="trm-toc-item trm-toc-level-2" title="一个布局存在多个点击事件，先后触发问题"><a rel="nofollow" class="trm-toc-link" href="#一个布局存在多个点击事件，先后触发问题"><span class="trm-toc-number">25.</span> <span class="trm-toc-text">一个布局存在多个点击事件，先后触发问题</span></a></li><li class="trm-toc-item trm-toc-level-2" title="小红点单数圆形，双数圆矩形"><a rel="nofollow" class="trm-toc-link" href="#小红点单数圆形，双数圆矩形"><span class="trm-toc-number">26.</span> <span class="trm-toc-text">小红点单数圆形，双数圆矩形</span></a></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

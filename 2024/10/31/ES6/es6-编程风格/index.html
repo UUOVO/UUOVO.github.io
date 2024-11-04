@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="1、块级作用域和上下文会改变用let 2、全局用常量const，表示不应该改变 3、静态字符串一律使用单引号或反引号。动态字符串使用反引号。 4、使用数组&#x2F;对象成员对变量赋值时和返回多个值时，优先使用解构赋值。  123const arr &#x3D; [1, 2, 3, 4];&#x2F;&#x2F; goodconst [first, second] &#x3D; arr;  5、单行定义的对象，最后不以逗号结尾。多行，">
+<meta name="description" content="块级作用域和上下文会改变用let 全局用常量const，表示不应该改变 静态字符串一律使用单引号或反引号。动态字符串使用反引号。 使用数组&#x2F;对象成员对变量赋值时和返回多个值时，优先使用解构赋值。  123const arr &#x3D; [1, 2, 3, 4];&#x2F;&#x2F; goodconst [first, second] &#x3D; arr;  单行定义的对象，最后不以逗号结尾。多行，最后以逗号结尾 使用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6-编程风格">
 <meta property="og:url" content="http://example.com/2024/10/31/ES6/es6-%E7%BC%96%E7%A8%8B%E9%A3%8E%E6%A0%BC/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1、块级作用域和上下文会改变用let 2、全局用常量const，表示不应该改变 3、静态字符串一律使用单引号或反引号。动态字符串使用反引号。 4、使用数组&#x2F;对象成员对变量赋值时和返回多个值时，优先使用解构赋值。  123const arr &#x3D; [1, 2, 3, 4];&#x2F;&#x2F; goodconst [first, second] &#x3D; arr;  5、单行定义的对象，最后不以逗号结尾。多行，">
+<meta property="og:description" content="块级作用域和上下文会改变用let 全局用常量const，表示不应该改变 静态字符串一律使用单引号或反引号。动态字符串使用反引号。 使用数组&#x2F;对象成员对变量赋值时和返回多个值时，优先使用解构赋值。  123const arr &#x3D; [1, 2, 3, 4];&#x2F;&#x2F; goodconst [first, second] &#x3D; arr;  单行定义的对象，最后不以逗号结尾。多行，最后以逗号结尾 使用">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-31T07:54:04.619Z">
-<meta property="article:modified_time" content="2024-10-31T08:24:36.148Z">
+<meta property="article:modified_time" content="2024-11-04T07:37:42.679Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -63,7 +63,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-10-31 16:24:36"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-04 15:37:42"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -378,41 +378,41 @@
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
     <ul>
-<li><h3 id="1、块级作用域和上下文会改变用let"><a href="#1、块级作用域和上下文会改变用let" class="headerlink" title="1、块级作用域和上下文会改变用let"></a>1、块级作用域和上下文会改变用let</h3></li>
-<li><h3 id="2、全局用常量const，表示不应该改变"><a href="#2、全局用常量const，表示不应该改变" class="headerlink" title="2、全局用常量const，表示不应该改变"></a>2、全局用常量const，表示不应该改变</h3></li>
-<li><h3 id="3、静态字符串一律使用单引号或反引号。动态字符串使用反引号。"><a href="#3、静态字符串一律使用单引号或反引号。动态字符串使用反引号。" class="headerlink" title="3、静态字符串一律使用单引号或反引号。动态字符串使用反引号。"></a>3、静态字符串一律使用单引号或反引号。动态字符串使用反引号。</h3></li>
-<li><h3 id="4、使用数组-对象成员对变量赋值时和返回多个值时，优先使用解构赋值。"><a href="#4、使用数组-对象成员对变量赋值时和返回多个值时，优先使用解构赋值。" class="headerlink" title="4、使用数组&#x2F;对象成员对变量赋值时和返回多个值时，优先使用解构赋值。"></a>4、使用数组&#x2F;对象成员对变量赋值时和返回多个值时，优先使用解构赋值。</h3></li>
+<li><h3 id="块级作用域和上下文会改变用let"><a href="#块级作用域和上下文会改变用let" class="headerlink" title="块级作用域和上下文会改变用let"></a>块级作用域和上下文会改变用let</h3></li>
+<li><h3 id="全局用常量const，表示不应该改变"><a href="#全局用常量const，表示不应该改变" class="headerlink" title="全局用常量const，表示不应该改变"></a>全局用常量const，表示不应该改变</h3></li>
+<li><h3 id="静态字符串一律使用单引号或反引号。动态字符串使用反引号。"><a href="#静态字符串一律使用单引号或反引号。动态字符串使用反引号。" class="headerlink" title="静态字符串一律使用单引号或反引号。动态字符串使用反引号。"></a>静态字符串一律使用单引号或反引号。动态字符串使用反引号。</h3></li>
+<li><h3 id="使用数组-对象成员对变量赋值时和返回多个值时，优先使用解构赋值。"><a href="#使用数组-对象成员对变量赋值时和返回多个值时，优先使用解构赋值。" class="headerlink" title="使用数组&#x2F;对象成员对变量赋值时和返回多个值时，优先使用解构赋值。"></a>使用数组&#x2F;对象成员对变量赋值时和返回多个值时，优先使用解构赋值。</h3></li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">const</span> [first, second] = arr;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><h3 id="5、单行定义的对象，最后不以逗号结尾。多行，最后以逗号结尾"><a href="#5、单行定义的对象，最后不以逗号结尾。多行，最后以逗号结尾" class="headerlink" title="5、单行定义的对象，最后不以逗号结尾。多行，最后以逗号结尾"></a>5、单行定义的对象，最后不以逗号结尾。多行，最后以逗号结尾</h3></li>
-<li><h3 id="6、使用扩展运算符（…）拷贝数组，使用Array-from-方法，将类数组的对象转为数组"><a href="#6、使用扩展运算符（…）拷贝数组，使用Array-from-方法，将类数组的对象转为数组" class="headerlink" title="6、使用扩展运算符（…）拷贝数组，使用Array.from 方法，将类数组的对象转为数组"></a>6、使用扩展运算符（…）拷贝数组，使用Array.from 方法，将类数组的对象转为数组</h3></li>
-<li><h3 id="7、立即执行函数可以写成箭头函数的形式。"><a href="#7、立即执行函数可以写成箭头函数的形式。" class="headerlink" title="7、立即执行函数可以写成箭头函数的形式。"></a>7、立即执行函数可以写成箭头函数的形式。</h3></li>
+<li><h3 id="单行定义的对象，最后不以逗号结尾。多行，最后以逗号结尾"><a href="#单行定义的对象，最后不以逗号结尾。多行，最后以逗号结尾" class="headerlink" title="单行定义的对象，最后不以逗号结尾。多行，最后以逗号结尾"></a>单行定义的对象，最后不以逗号结尾。多行，最后以逗号结尾</h3></li>
+<li><h3 id="使用扩展运算符（…）拷贝数组，使用Array-from-方法，将类数组的对象转为数组"><a href="#使用扩展运算符（…）拷贝数组，使用Array-from-方法，将类数组的对象转为数组" class="headerlink" title="使用扩展运算符（…）拷贝数组，使用Array.from 方法，将类数组的对象转为数组"></a>使用扩展运算符（…）拷贝数组，使用Array.from 方法，将类数组的对象转为数组</h3></li>
+<li><h3 id="立即执行函数可以写成箭头函数的形式。"><a href="#立即执行函数可以写成箭头函数的形式。" class="headerlink" title="立即执行函数可以写成箭头函数的形式。"></a>立即执行函数可以写成箭头函数的形式。</h3></li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 匿名函数</span></span><br><span class="line">(<span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Welcome to the Internet.&#x27;</span>))();</span><br><span class="line"></span><br><span class="line"><span class="comment">// best</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].<span class="title function_">map</span>(<span class="function"><span class="params">x</span> =&gt;</span> x * x);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 箭头函数(取代Function.prototype.bind，不应再用 self/_this/that 绑定 this)</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">args</span> = (<span class="params"></span>) =&gt; &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// best</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">boundMethod</span> = (<span class="params">...params</span>) =&gt; method.<span class="title function_">apply</span>(<span class="variable language_">this</span>, params);</span><br></pre></td></tr></table></figure>
 <ul>
-<li><h3 id="9、所有配置项都应该集中在一个对象，放在最后一个参数，布尔值不可以直接作为参数。"><a href="#9、所有配置项都应该集中在一个对象，放在最后一个参数，布尔值不可以直接作为参数。" class="headerlink" title="9、所有配置项都应该集中在一个对象，放在最后一个参数，布尔值不可以直接作为参数。"></a>9、所有配置项都应该集中在一个对象，放在最后一个参数，布尔值不可以直接作为参数。</h3></li>
+<li><h3 id="所有配置项都应该集中在一个对象，放在最后一个参数，布尔值不可以直接作为参数。"><a href="#所有配置项都应该集中在一个对象，放在最后一个参数，布尔值不可以直接作为参数。" class="headerlink" title="所有配置项都应该集中在一个对象，放在最后一个参数，布尔值不可以直接作为参数。"></a>所有配置项都应该集中在一个对象，放在最后一个参数，布尔值不可以直接作为参数。</h3></li>
 </ul>
 <p><code>function divide(a, b, &#123; option = false &#125; = &#123;&#125;) &#123;&#125;</code></p>
 <ul>
-<li><h3 id="10、不要在函数体内使用-arguments-变量，使用-rest-运算符（…）代替"><a href="#10、不要在函数体内使用-arguments-变量，使用-rest-运算符（…）代替" class="headerlink" title="10、不要在函数体内使用 arguments 变量，使用 rest 运算符（…）代替"></a>10、不要在函数体内使用 arguments 变量，使用 rest 运算符（…）代替</h3></li>
+<li><h3 id="不要在函数体内使用-arguments-变量，使用-rest-运算符（…）代替"><a href="#不要在函数体内使用-arguments-变量，使用-rest-运算符（…）代替" class="headerlink" title="不要在函数体内使用 arguments 变量，使用 rest 运算符（…）代替"></a>不要在函数体内使用 arguments 变量，使用 rest 运算符（…）代替</h3></li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">concatenateAll</span>(<span class="params">...args</span>) &#123;</span><br><span class="line"><span class="keyword">return</span> args.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><h3 id="11、使用默认值语法设置函数参数的默认值。"><a href="#11、使用默认值语法设置函数参数的默认值。" class="headerlink" title="11、使用默认值语法设置函数参数的默认值。"></a>11、使用默认值语法设置函数参数的默认值。</h3></li>
+<li><h3 id="使用默认值语法设置函数参数的默认值。"><a href="#使用默认值语法设置函数参数的默认值。" class="headerlink" title="使用默认值语法设置函数参数的默认值。"></a>使用默认值语法设置函数参数的默认值。</h3></li>
 </ul>
 <p><code>function handleThings(opts = &#123;&#125;) &#123;&#125;</code></p>
 <ul>
-<li><h3 id="12、key-value的数据结构，使用-Map-结构，模拟现实世界的实体对象时，使用-Object"><a href="#12、key-value的数据结构，使用-Map-结构，模拟现实世界的实体对象时，使用-Object" class="headerlink" title="12、key: value的数据结构，使用 Map 结构，模拟现实世界的实体对象时，使用 Object"></a>12、key: value的数据结构，使用 Map 结构，模拟现实世界的实体对象时，使用 Object</h3></li>
-<li><h3 id="13、用class取代需要-prototype-的操作，使用extends实现继承"><a href="#13、用class取代需要-prototype-的操作，使用extends实现继承" class="headerlink" title="13、用class取代需要 prototype 的操作，使用extends实现继承"></a>13、用class取代需要 prototype 的操作，使用extends实现继承</h3></li>
-<li><h3 id="14、import取代require-、export取代module-exports"><a href="#14、import取代require-、export取代module-exports" class="headerlink" title="14、import取代require()、export取代module.exports"></a>14、import取代require()、export取代module.exports</h3></li>
-<li><h3 id="15、模块只有一个输出值，使用export-defaul，"><a href="#15、模块只有一个输出值，使用export-defaul，" class="headerlink" title="15、模块只有一个输出值，使用export defaul，"></a>15、模块只有一个输出值，使用export defaul，</h3><ul>
+<li><h3 id="key-value的数据结构，使用-Map-结构，模拟现实世界的实体对象时，使用-Object"><a href="#key-value的数据结构，使用-Map-结构，模拟现实世界的实体对象时，使用-Object" class="headerlink" title="key: value的数据结构，使用 Map 结构，模拟现实世界的实体对象时，使用 Object"></a>key: value的数据结构，使用 Map 结构，模拟现实世界的实体对象时，使用 Object</h3></li>
+<li><h3 id="用class取代需要-prototype-的操作，使用extends实现继承"><a href="#用class取代需要-prototype-的操作，使用extends实现继承" class="headerlink" title="用class取代需要 prototype 的操作，使用extends实现继承"></a>用class取代需要 prototype 的操作，使用extends实现继承</h3></li>
+<li><h3 id="import取代require-、export取代module-exports"><a href="#import取代require-、export取代module-exports" class="headerlink" title="import取代require()、export取代module.exports"></a>import取代require()、export取代module.exports</h3></li>
+<li><h3 id="模块只有一个输出值，使用export-defaul，"><a href="#模块只有一个输出值，使用export-defaul，" class="headerlink" title="模块只有一个输出值，使用export defaul，"></a>模块只有一个输出值，使用export defaul，</h3><ul>
 <li>输出的<code>函数名</code>的首字母应该<code>小写</code>，<code>对象名</code>的首字母应该<code>大写</code></li>
 </ul>
 </li>
-<li><h3 id="16、在项目的根目录安装-ESLint"><a href="#16、在项目的根目录安装-ESLint" class="headerlink" title="16、在项目的根目录安装 ESLint"></a>16、在项目的根目录安装 ESLint</h3></li>
+<li><h3 id="在项目的根目录安装-ESLint"><a href="#在项目的根目录安装-ESLint" class="headerlink" title="在项目的根目录安装 ESLint"></a>在项目的根目录安装 ESLint</h3></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev eslint</span><br><span class="line">npm install --save-dev eslint-config-airbnb</span><br><span class="line">npm install --save-dev eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react</span><br><span class="line"></span><br><span class="line">在项目的根目录下新建一个.eslintrc文件，配置 ESLint。</span><br><span class="line">&#123;</span><br><span class="line">    &quot;extends&quot;: &quot;eslint-config-airbnb&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev eslint</span><br><span class="line">npm install --save-dev eslint-config-airbnb</span><br><span class="line">npm install --save-dev eslint-plugin-<span class="keyword">import</span> eslint-plugin-jsx-a11y eslint-plugin-react</span><br><span class="line"></span><br><span class="line">在项目的根目录下新建一个.<span class="property">eslintrc</span>文件，配置 <span class="title class_">ESLint</span>。</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;extends&quot;</span>: <span class="string">&quot;eslint-config-airbnb&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </article>
     
     
@@ -432,7 +432,7 @@
         <a href="/2024/10/31/ES6/es6-%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%8B%93%E5%B1%95/" class="trm-cover-frame trm-anima-link">
             
             
-                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+                <img alt="cover" class="no-fancybox" src="https://img.tukuppt.com/photo-big/00/00/74/6152d9dc09d26908.jpg">
             
         </a>
         
@@ -464,7 +464,7 @@
         <a href="/2024/10/31/ES6/es6-set%E5%92%8Cmap/" class="trm-cover-frame trm-anima-link">
             
             
-                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+                <img alt="cover" class="no-fancybox" src="https://img.tukuppt.com/photo-big/00/00/74/6152d9dc09d26908.jpg">
             
         </a>
         
@@ -529,7 +529,7 @@
 
     
         <div class="trm-footer-item">
-            基于大数据，学习参考、练习，网站正在逐步完善中...
+            网站正在逐步完善中...
         </div>
      
 </footer>
@@ -544,8 +544,24 @@
 
             
 
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-3" title="块级作用域和上下文会改变用let"><a rel="nofollow" class="trm-toc-link" href="#块级作用域和上下文会改变用let"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">块级作用域和上下文会改变用let</span></a></li><li class="trm-toc-item trm-toc-level-3" title="全局用常量const，表示不应该改变"><a rel="nofollow" class="trm-toc-link" href="#全局用常量const，表示不应该改变"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">全局用常量const，表示不应该改变</span></a></li><li class="trm-toc-item trm-toc-level-3" title="静态字符串一律使用单引号或反引号。动态字符串使用反引号。"><a rel="nofollow" class="trm-toc-link" href="#静态字符串一律使用单引号或反引号。动态字符串使用反引号。"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">静态字符串一律使用单引号或反引号。动态字符串使用反引号。</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用数组&#x2F;对象成员对变量赋值时和返回多个值时，优先使用解构赋值。"><a rel="nofollow" class="trm-toc-link" href="#使用数组-对象成员对变量赋值时和返回多个值时，优先使用解构赋值。"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">使用数组&#x2F;对象成员对变量赋值时和返回多个值时，优先使用解构赋值。</span></a></li><li class="trm-toc-item trm-toc-level-3" title="单行定义的对象，最后不以逗号结尾。多行，最后以逗号结尾"><a rel="nofollow" class="trm-toc-link" href="#单行定义的对象，最后不以逗号结尾。多行，最后以逗号结尾"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">单行定义的对象，最后不以逗号结尾。多行，最后以逗号结尾</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用扩展运算符（…）拷贝数组，使用Array.from 方法，将类数组的对象转为数组"><a rel="nofollow" class="trm-toc-link" href="#使用扩展运算符（…）拷贝数组，使用Array-from-方法，将类数组的对象转为数组"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">使用扩展运算符（…）拷贝数组，使用Array.from 方法，将类数组的对象转为数组</span></a></li><li class="trm-toc-item trm-toc-level-3" title="立即执行函数可以写成箭头函数的形式。"><a rel="nofollow" class="trm-toc-link" href="#立即执行函数可以写成箭头函数的形式。"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">立即执行函数可以写成箭头函数的形式。</span></a></li><li class="trm-toc-item trm-toc-level-3" title="所有配置项都应该集中在一个对象，放在最后一个参数，布尔值不可以直接作为参数。"><a rel="nofollow" class="trm-toc-link" href="#所有配置项都应该集中在一个对象，放在最后一个参数，布尔值不可以直接作为参数。"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">所有配置项都应该集中在一个对象，放在最后一个参数，布尔值不可以直接作为参数。</span></a></li><li class="trm-toc-item trm-toc-level-3" title="不要在函数体内使用 arguments 变量，使用 rest 运算符（…）代替"><a rel="nofollow" class="trm-toc-link" href="#不要在函数体内使用-arguments-变量，使用-rest-运算符（…）代替"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">不要在函数体内使用 arguments 变量，使用 rest 运算符（…）代替</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用默认值语法设置函数参数的默认值。"><a rel="nofollow" class="trm-toc-link" href="#使用默认值语法设置函数参数的默认值。"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">使用默认值语法设置函数参数的默认值。</span></a></li><li class="trm-toc-item trm-toc-level-3" title="key: value的数据结构，使用 Map 结构，模拟现实世界的实体对象时，使用 Object"><a rel="nofollow" class="trm-toc-link" href="#key-value的数据结构，使用-Map-结构，模拟现实世界的实体对象时，使用-Object"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">key: value的数据结构，使用 Map 结构，模拟现实世界的实体对象时，使用 Object</span></a></li><li class="trm-toc-item trm-toc-level-3" title="用class取代需要 prototype 的操作，使用extends实现继承"><a rel="nofollow" class="trm-toc-link" href="#用class取代需要-prototype-的操作，使用extends实现继承"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">用class取代需要 prototype 的操作，使用extends实现继承</span></a></li><li class="trm-toc-item trm-toc-level-3" title="import取代require()、export取代module.exports"><a rel="nofollow" class="trm-toc-link" href="#import取代require-、export取代module-exports"><span class="trm-toc-number">13.</span> <span class="trm-toc-text">import取代require()、export取代module.exports</span></a></li><li class="trm-toc-item trm-toc-level-3" title="模块只有一个输出值，使用export defaul，"><a rel="nofollow" class="trm-toc-link" href="#模块只有一个输出值，使用export-defaul，"><span class="trm-toc-number">14.</span> <span class="trm-toc-text">模块只有一个输出值，使用export defaul，</span></a></li><li class="trm-toc-item trm-toc-level-3" title="在项目的根目录安装 ESLint"><a rel="nofollow" class="trm-toc-link" href="#在项目的根目录安装-ESLint"><span class="trm-toc-number">15.</span> <span class="trm-toc-text">在项目的根目录安装 ESLint</span></a></li></ol>
+      </div>
+    </div>
+
             
 <div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
     
     
         <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">

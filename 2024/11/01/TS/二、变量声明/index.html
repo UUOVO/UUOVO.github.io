@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="变量声明 大纲 var声明 let 和 const 声明 type 类型别名 数组解构 对象解构 属性重命名 默认值 函数声明 展开操作符 …  var 存在变量提升 同一变量重复声明多次只拿到一个结果 可以在包含它的函数、模块、命名空间、全局作用域内部任何位置被访问  let 和 const 都有块级作用域 一个作用域内只能声明一次 不能在被声明之前读或写 直到声明前的区域都属于暂时性死区">
+<meta name="description" content="var 存在变量提升 同一变量重复声明多次只拿到一个结果 可以在包含它的函数、模块、命名空间、全局作用域内部任何位置被访问  let 和 const 都有块级作用域 一个作用域内只能声明一次 不能在被声明之前读或写 直到声明前的区域都属于暂时性死区   使用最小特权原则，所有变量除了计划去修改的都应该使用const  type 类型别名type Second &#x3D; number&#x2F;&amp;#x2F">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TS-变量声明">
 <meta property="og:url" content="http://example.com/2024/11/01/TS/%E4%BA%8C%E3%80%81%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="变量声明 大纲 var声明 let 和 const 声明 type 类型别名 数组解构 对象解构 属性重命名 默认值 函数声明 展开操作符 …  var 存在变量提升 同一变量重复声明多次只拿到一个结果 可以在包含它的函数、模块、命名空间、全局作用域内部任何位置被访问  let 和 const 都有块级作用域 一个作用域内只能声明一次 不能在被声明之前读或写 直到声明前的区域都属于暂时性死区">
+<meta property="og:description" content="var 存在变量提升 同一变量重复声明多次只拿到一个结果 可以在包含它的函数、模块、命名空间、全局作用域内部任何位置被访问  let 和 const 都有块级作用域 一个作用域内只能声明一次 不能在被声明之前读或写 直到声明前的区域都属于暂时性死区   使用最小特权原则，所有变量除了计划去修改的都应该使用const  type 类型别名type Second &#x3D; number&#x2F;&amp;#x2F">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-11-01T03:40:57.274Z">
-<meta property="article:modified_time" content="2024-11-01T03:47:51.472Z">
+<meta property="article:modified_time" content="2024-11-04T07:24:31.021Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -63,7 +63,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-01 11:47:51"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-04 15:24:31"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -377,24 +377,12 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <h1 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h1><hr>
-<h2 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h2><ul>
-<li><a href="#ref1">var声明</a></li>
-<li><a href="#ref2">let 和 const 声明</a></li>
-<li><a href="#ref3">type 类型别名</a></li>
-<li><a href="#ref4">数组解构</a></li>
-<li><a href="#ref5">对象解构</a></li>
-<li><a href="#ref6">属性重命名</a></li>
-<li><a href="#ref7">默认值</a></li>
-<li><a href="#ref8">函数声明</a></li>
-<li><a href="#ref9">展开操作符 …</a></li>
-</ul>
-<h2 id="var"><a href="#var" class="headerlink" title="var"></a><p id="ref1">var</p></h2><ol>
+    <h2 id="var"><a href="#var" class="headerlink" title="var"></a>var</h2><ol>
 <li>存在变量提升</li>
 <li>同一变量重复声明多次只拿到一个结果</li>
 <li>可以在包含它的函数、模块、命名空间、全局作用域内部任何位置被访问</li>
 </ol>
-<h2 id="let-和-const"><a href="#let-和-const" class="headerlink" title="let 和 const"></a><p id="ref2">let 和 const</p></h2><ol>
+<h2 id="let-和-const"><a href="#let-和-const" class="headerlink" title="let 和 const"></a>let 和 const</h2><ol>
 <li>都有块级作用域</li>
 <li>一个作用域内只能声明一次</li>
 <li>不能在被声明之前读或写</li>
@@ -403,8 +391,8 @@
 <ul>
 <li>使用最小特权原则，所有变量除了计划去修改的都应该使用const</li>
 </ul>
-<h2 id="type-类型别名"><a href="#type-类型别名" class="headerlink" title="type 类型别名"></a><p id="ref3">type 类型别名</p></h2><p><code>type Second = number</code><br>&#x2F;&#x2F; 给number这个类型命名为second，而second引用这个类型</p>
-<h2 id="数组解构：一一对应"><a href="#数组解构：一一对应" class="headerlink" title="数组解构：一一对应"></a><p id="ref4">数组解构：一一对应</p></h2><ul>
+<h2 id="type-类型别名"><a href="#type-类型别名" class="headerlink" title="type 类型别名"></a>type 类型别名</h2><p><code>type Second = number</code><br>&#x2F;&#x2F; 给number这个类型命名为second，而second引用这个类型</p>
+<h2 id="数组解构：一一对应"><a href="#数组解构：一一对应" class="headerlink" title="数组解构：一一对应"></a>数组解构：一一对应</h2><ul>
 <li>let [, second, , fourth] &#x3D; [1, 2, 3, 4]</li>
 <li>使用…语法创建剩余变量 ：<ul>
 <li>let [first, …rest] &#x3D; [1, 2, 3, 4];</li>
@@ -412,14 +400,14 @@
 </ul>
 </li>
 </ul>
-<h2 id="对象解构：一一对应"><a href="#对象解构：一一对应" class="headerlink" title="对象解构：一一对应"></a><p id="ref5">对象解构：一一对应</p></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> o = &#123;</span><br><span class="line">	<span class="attr">a</span>: <span class="string">&quot;foo&quot;</span>,</span><br><span class="line">	<span class="attr">b</span>: <span class="number">12</span>,</span><br><span class="line">	<span class="attr">c</span>: <span class="string">&quot;bar&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> &#123; a, b &#125; = o <span class="comment">// 直接解构对象</span></span><br><span class="line"></span><br><span class="line">(&#123; a, b &#125; = &#123; <span class="attr">a</span>: <span class="string">&quot;baz&quot;</span>, <span class="attr">b</span>: <span class="number">101</span> &#125;) <span class="comment">// 没有声明的赋值，要加()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123; a, ...passthrough &#125; = o <span class="comment">// ...语法创建剩余变量</span></span><br></pre></td></tr></table></figure>
+<h2 id="对象解构：一一对应"><a href="#对象解构：一一对应" class="headerlink" title="对象解构：一一对应"></a>对象解构：一一对应</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> o = &#123;</span><br><span class="line">	<span class="attr">a</span>: <span class="string">&quot;foo&quot;</span>,</span><br><span class="line">	<span class="attr">b</span>: <span class="number">12</span>,</span><br><span class="line">	<span class="attr">c</span>: <span class="string">&quot;bar&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> &#123; a, b &#125; = o <span class="comment">// 直接解构对象</span></span><br><span class="line"></span><br><span class="line">(&#123; a, b &#125; = &#123; <span class="attr">a</span>: <span class="string">&quot;baz&quot;</span>, <span class="attr">b</span>: <span class="number">101</span> &#125;) <span class="comment">// 没有声明的赋值，要加()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123; a, ...passthrough &#125; = o <span class="comment">// ...语法创建剩余变量</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="属性重命名"><a href="#属性重命名" class="headerlink" title="属性重命名"></a><p id="ref6">属性重命名</p></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123; <span class="attr">a</span>: newName1, <span class="attr">b</span>: newName2 &#125; = o <span class="comment">// 从左到右读，a重命名为newName1</span></span><br><span class="line"><span class="keyword">let</span> o = &#123;</span><br><span class="line">	<span class="attr">a</span>: <span class="string">&quot;foo&quot;</span>,</span><br><span class="line">	<span class="attr">b</span>: <span class="number">12</span>,</span><br><span class="line">	<span class="attr">c</span>: <span class="string">&quot;bar&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="默认值：属性为-undefined-时使用缺省值"><a href="#默认值：属性为-undefined-时使用缺省值" class="headerlink" title="默认值：属性为 undefined 时使用缺省值"></a><p id="ref7">默认值：属性为 undefined 时使用缺省值</p></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">tempObject</span>(<span class="attr">wholeObject</span>: &#123; <span class="attr">a</span>: string, b?: number &#125;) =&gt; &#123;</span><br><span class="line">	<span class="comment">// 即使b没有传值也为undefined</span></span><br><span class="line">	<span class="keyword">let</span> &#123; a, b = <span class="number">1001</span> &#125; = wholeObject </span><br><span class="line">	<span class="comment">// 当b位undefined时使用默认值1001</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="属性重命名"><a href="#属性重命名" class="headerlink" title="属性重命名"></a>属性重命名</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123; <span class="attr">a</span>: newName1, <span class="attr">b</span>: newName2 &#125; = o <span class="comment">// 从左到右读，a重命名为newName1</span></span><br><span class="line"><span class="keyword">let</span> o = &#123;</span><br><span class="line">	<span class="attr">a</span>: <span class="string">&quot;foo&quot;</span>,</span><br><span class="line">	<span class="attr">b</span>: <span class="number">12</span>,</span><br><span class="line">	<span class="attr">c</span>: <span class="string">&quot;bar&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="默认值：属性为-undefined-时使用缺省值"><a href="#默认值：属性为-undefined-时使用缺省值" class="headerlink" title="默认值：属性为 undefined 时使用缺省值"></a>默认值：属性为 undefined 时使用缺省值</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">tempObject</span>(<span class="attr">wholeObject</span>: &#123; <span class="attr">a</span>: string, b?: number &#125;) =&gt; &#123;</span><br><span class="line">	<span class="comment">// 即使b没有传值也为undefined</span></span><br><span class="line">	<span class="keyword">let</span> &#123; a, b = <span class="number">1001</span> &#125; = wholeObject </span><br><span class="line">	<span class="comment">// 当b位undefined时使用默认值1001</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a><p id="ref8">函数声明</p></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">type C = &#123; <span class="attr">a</span>: string, b?: number &#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">&#123; a, b &#125;: C</span>): <span class="keyword">void</span> &#123; </span><br><span class="line">	<span class="comment">// 解构赋值：a，b为对象C里面的值，该函数本身无返回值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">&#123; a=<span class="string">&quot;&quot;</span>, b=<span class="number">0</span> &#125; = &#123;&#125;</span>): <span class="keyword">void</span> &#123; <span class="comment">/*给a，b指定默认值*/</span> &#125;</span><br><span class="line"><span class="title function_">f</span>();</span><br></pre></td></tr></table></figure>
+<h2 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">type C = &#123; <span class="attr">a</span>: string, b?: number &#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">&#123; a, b &#125;: C</span>): <span class="keyword">void</span> &#123; </span><br><span class="line">	<span class="comment">// 解构赋值：a，b为对象C里面的值，该函数本身无返回值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">&#123; a=<span class="string">&quot;&quot;</span>, b=<span class="number">0</span> &#125; = &#123;&#125;</span>): <span class="keyword">void</span> &#123; <span class="comment">/*给a，b指定默认值*/</span> &#125;</span><br><span class="line"><span class="title function_">f</span>();</span><br></pre></td></tr></table></figure>
 
-<h2 id="展开操作符…"><a href="#展开操作符…" class="headerlink" title="展开操作符…"></a><p id="ref9">展开操作符…</p></h2><ul>
+<h2 id="展开操作符…"><a href="#展开操作符…" class="headerlink" title="展开操作符…"></a>展开操作符…</h2><ul>
 <li><h3 id="数组："><a href="#数组：" class="headerlink" title="数组："></a>数组：</h3></li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> first = [<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line"><span class="keyword">let</span> second = [<span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="keyword">let</span> bothPlus = [<span class="number">0</span>, ...first, ...second, <span class="number">5</span>]</span><br><span class="line"><span class="comment">// 对first和second的浅拷贝，不会对原数组进行改变</span></span><br></pre></td></tr></table></figure>
@@ -444,10 +432,10 @@
     
         <div class="col-lg-6">
     <div class="trm-blog-card trm-scroll-animation">
-        <a href="/2024/11/01/TS/%E4%B8%83%E3%80%81%E7%B1%BB%E5%9E%8B%E5%85%BC%E5%AE%B9%E6%80%A7/" class="trm-cover-frame trm-anima-link">
+        <a href="/2024/11/01/TS/%E5%85%AD%E3%80%81%E6%9E%9A%E4%B8%BE/" class="trm-cover-frame trm-anima-link">
             
             
-                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+                <img alt="cover" class="no-fancybox" src="https://img.tukuppt.com/photo-big/00/00/74/6152d9dc09d26908.jpg">
             
         </a>
         
@@ -458,8 +446,8 @@
                 </a>
             </div>
             <h5>
-                <a href="/2024/11/01/TS/%E4%B8%83%E3%80%81%E7%B1%BB%E5%9E%8B%E5%85%BC%E5%AE%B9%E6%80%A7/" class="trm-anima-link">
-                    TS-类型兼容
+                <a href="/2024/11/01/TS/%E5%85%AD%E3%80%81%E6%9E%9A%E4%B8%BE/" class="trm-anima-link">
+                    TS-枚举
                 </a>
             </h5>
             <div class="trm-divider trm-mb-20 trm-mt-20"></div>
@@ -479,7 +467,7 @@
         <a href="/2024/11/01/TS/%E4%B9%9D%E3%80%81symbols%E5%92%8C%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8/" class="trm-cover-frame trm-anima-link">
             
             
-                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+                <img alt="cover" class="no-fancybox" src="https://img.tukuppt.com/photo-big/00/00/74/6152d9dc09d26908.jpg">
             
         </a>
         
@@ -544,7 +532,7 @@
 
     
         <div class="trm-footer-item">
-            基于大数据，学习参考、练习，网站正在逐步完善中...
+            网站正在逐步完善中...
         </div>
      
 </footer>
@@ -559,8 +547,24 @@
 
             
 
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="var"><a rel="nofollow" class="trm-toc-link" href="#var"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">var</span></a></li><li class="trm-toc-item trm-toc-level-2" title="let 和 const"><a rel="nofollow" class="trm-toc-link" href="#let-和-const"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">let 和 const</span></a></li><li class="trm-toc-item trm-toc-level-2" title="type 类型别名"><a rel="nofollow" class="trm-toc-link" href="#type-类型别名"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">type 类型别名</span></a></li><li class="trm-toc-item trm-toc-level-2" title="数组解构：一一对应"><a rel="nofollow" class="trm-toc-link" href="#数组解构：一一对应"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">数组解构：一一对应</span></a></li><li class="trm-toc-item trm-toc-level-2" title="对象解构：一一对应"><a rel="nofollow" class="trm-toc-link" href="#对象解构：一一对应"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">对象解构：一一对应</span></a></li><li class="trm-toc-item trm-toc-level-2" title="属性重命名"><a rel="nofollow" class="trm-toc-link" href="#属性重命名"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">属性重命名</span></a></li><li class="trm-toc-item trm-toc-level-2" title="默认值：属性为 undefined 时使用缺省值"><a rel="nofollow" class="trm-toc-link" href="#默认值：属性为-undefined-时使用缺省值"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">默认值：属性为 undefined 时使用缺省值</span></a></li><li class="trm-toc-item trm-toc-level-2" title="函数声明"><a rel="nofollow" class="trm-toc-link" href="#函数声明"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">函数声明</span></a></li><li class="trm-toc-item trm-toc-level-2" title="展开操作符…"><a rel="nofollow" class="trm-toc-link" href="#展开操作符…"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">展开操作符…</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="数组："><a rel="nofollow" class="trm-toc-link" href="#数组："><span class="trm-toc-number">9.1.</span> <span class="trm-toc-text">数组：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="对象：从左向右处理，所以后面的属性会覆盖前面的属性"><a rel="nofollow" class="trm-toc-link" href="#对象：从左向右处理，所以后面的属性会覆盖前面的属性"><span class="trm-toc-number">9.2.</span> <span class="trm-toc-text">对象：从左向右处理，所以后面的属性会覆盖前面的属性</span></a></li></ol></li></ol>
+      </div>
+    </div>
+
             
 <div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
     
     
         <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">

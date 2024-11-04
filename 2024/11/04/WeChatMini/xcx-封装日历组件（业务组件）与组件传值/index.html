@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="封装日历组件 基于封装日历组件，学会封装业务组件到使用的流程   新建baseCalendar文件夹(具体步骤👉微信小程序-二次封装组件和自定义组件) 在该文件夹下的json文件中添加1234567&#123;  &quot;component&quot;: true,  &quot;styleIsolation&quot;: &quot;shared&quot;,  &quot;usingCo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序-封装日历组件与组件传值">
+<meta property="og:url" content="http://example.com/2024/11/04/WeChatMini/xcx-%E5%B0%81%E8%A3%85%E6%97%A5%E5%8E%86%E7%BB%84%E4%BB%B6%EF%BC%88%E4%B8%9A%E5%8A%A1%E7%BB%84%E4%BB%B6%EF%BC%89%E4%B8%8E%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%80%BC/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="封装日历组件 基于封装日历组件，学会封装业务组件到使用的流程   新建baseCalendar文件夹(具体步骤👉微信小程序-二次封装组件和自定义组件) 在该文件夹下的json文件中添加1234567&#123;  &quot;component&quot;: true,  &quot;styleIsolation&quot;: &quot;shared&quot;,  &quot;usingCo">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-11-04T01:57:31.952Z">
+<meta property="article:modified_time" content="2024-11-04T03:35:00.510Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="微信小程序">
+
+
+<title >微信小程序-封装日历组件与组件传值</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-04 11:35:00"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            UUOVO<span>个人站点</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/test1/" target="">
+                            test1
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            微信小程序-封装日历组件与组件传值
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+        <a href="https://zh-hans.react.dev/" title="React" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-react"></i>
+        </a>
+    
+        <a href="https://zh.javascript.info/" title="Javascript" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node-js"></i>
+        </a>
+    
+        <a href="https://nodejs.cn/" title="Node" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-node"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            11/04
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            09:57
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="封装日历组件"><a href="#封装日历组件" class="headerlink" title="封装日历组件"></a>封装日历组件</h2><blockquote>
+<p>基于封装日历组件，学会封装业务组件到使用的流程</p>
+</blockquote>
+<ol>
+<li>新建baseCalendar文件夹(具体步骤👉<a href="/2024/11/04/WeChatMini/xcx-%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85%E7%BB%84%E4%BB%B6%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6/" title="微信小程序-二次封装组件和自定义组件">微信小程序-二次封装组件和自定义组件</a>)</li>
+<li>在该文件夹下的json文件中添加<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;component&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;styleIsolation&quot;</span><span class="punctuation">:</span> <span class="string">&quot;shared&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;usingComponents&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;van-calendar&quot;</span><span class="punctuation">:</span> <span class="string">&quot;@vant/weapp/calendar/index&quot;</span> <span class="comment">// 要封装组件的路径</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li>
+<li>从原组件的js文件中将props中需要的内容复制到封装组件的js文件中的properties中</li>
+<li>在封装组件的wxml文件下使用原组件和添加插槽</li>
+<li>在<code>app.json</code>中的<code>usingComponents</code>定义的封装组件标签名和路径</li>
+<li>页面通过使用封装组件的标签来使用原组件加自定义的方法和样式</li>
+<li>更改组件的样式，通过官方的文档找到对应组件的样式和属性进行更改</li>
+</ol>
+<h2 id="组件的传值"><a href="#组件的传值" class="headerlink" title="组件的传值"></a>组件的传值</h2><ol>
+<li><h3 id="页面使用"><a href="#页面使用" class="headerlink" title="页面使用"></a>页面使用</h3><ul>
+<li>如：页面中的组件要使用这个属性或方法<code>minDate=&quot;&#123;&#123; minTimestamp &#125;&#125;&quot;</code></li>
+</ul>
+</li>
+<li><h3 id="页面数据初始化"><a href="#页面数据初始化" class="headerlink" title="页面数据初始化"></a>页面数据初始化</h3><ul>
+<li>在页面的js文件中的data定义一个初始值<code>minTimestamp: 0</code></li>
+</ul>
+</li>
+<li><h3 id="组件类型初始化"><a href="#组件类型初始化" class="headerlink" title="组件类型初始化"></a>组件类型初始化</h3><ul>
+<li>在组件的js文件的<code>properties</code>中写上属性名及其类型,两种写法<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">方式一：<span class="attr">minDate</span>: <span class="title class_">Number</span></span><br><span class="line">方式二：<span class="attr">minDate</span>:&#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="title class_">Number</span>,</span><br><span class="line">  <span class="attr">value</span>: <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><h3 id="组件使用"><a href="#组件使用" class="headerlink" title="组件使用"></a>组件使用</h3><ul>
+<li>组件页面中也要使用到<code>minDate=&quot;&#123;&#123; minDate &#125;&#125;&quot;</code></li>
+</ul>
+</li>
+<li><h3 id="页面更改"><a href="#页面更改" class="headerlink" title="页面更改"></a>页面更改</h3><ul>
+<li>页面js文件就可以通过函数方法去更改minTimestamp的值，来更新数据</li>
+</ul>
+</li>
+<li>完成传值（简单类型）</li>
+</ol>
+<h2 id="调api获取数据后-页面向组件传值（以获取数据显示该日期是否约满为例）"><a href="#调api获取数据后-页面向组件传值（以获取数据显示该日期是否约满为例）" class="headerlink" title="调api获取数据后 页面向组件传值（以获取数据显示该日期是否约满为例）"></a>调api获取数据后 页面向组件传值（以获取数据显示该日期是否约满为例）</h2><ol>
+<li>页面引入api文件，发请求，获取约满的数据，data中要初始化一下<code>fullTimes: []</code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="title function_">getFullTimes</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> result = <span class="keyword">await</span> <span class="variable constant_">API</span>.<span class="title function_">getFullTimes</span>()</span><br><span class="line">	<span class="variable language_">this</span>.<span class="title function_">setData</span>(&#123;</span><br><span class="line">    <span class="attr">fullTimes</span>: result.<span class="property">result</span>.<span class="property">list</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>在onLoad()中调用初始化<ul>
+<li><code>onLoad() &#123;this.getFullTimes()&#125;</code></li>
+</ul>
+</li>
+<li>页面的组件中要使用这个属性或方法<code>fullTimes=&quot;&#123;&#123; fullTimes &#125;&#125;&quot;</code></li>
+<li>在封装组件js文件中的<code>properties</code>中写上属性名及其类型<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">fullTimes</span>: &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="title class_">Array</span>,</span><br><span class="line">  <span class="attr">value</span>: [],</span><br><span class="line">  <span class="comment">// 监听这边是否接收到fullTimes，有数据才初始化，防止二次初始化</span></span><br><span class="line">  <span class="title function_">observer</span>(<span class="params">newFullTimes</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (newFullTimes.<span class="property">length</span>) &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="title function_">initCalendarDateFormat</span>()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>组件wxml文件也要使用到这个<code>formatter=&quot;&#123;&#123; formatter &#125;&#125;&quot;</code></li>
+<li>在组件的js文件中的data初始化<code>formatter: null</code></li>
+<li>在组件的methods方法下初始化日历的状态<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">initCalendarDateFormat</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> fullTimes = <span class="variable language_">this</span>.<span class="property">data</span>.<span class="property">fullTimes</span></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">formatter</span> = (<span class="params">day</span>) =&gt; &#123;</span><br><span class="line">    <span class="comment">// 此处使用了封装的函数</span></span><br><span class="line">    <span class="keyword">const</span> today = <span class="title function_">isTodday</span>(<span class="title class_">Date</span>.<span class="title function_">now</span>(), day.<span class="property">date</span>.<span class="title function_">valueOf</span>())</span><br><span class="line">    <span class="comment">// includes() 方法:判断fullTimes是否包含一个day.date.valueOf()值</span></span><br><span class="line">    <span class="keyword">if</span> (fullTimes.<span class="title function_">includes</span>(day.<span class="property">date</span>.<span class="title function_">valueOf</span>())) &#123;</span><br><span class="line">      day.<span class="property">type</span> = <span class="string">&#x27;disabled&#x27;</span></span><br><span class="line">      day.<span class="property">bottomInfo</span> = <span class="string">&#x27;约满&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (today) &#123;</span><br><span class="line">      day.<span class="property">type</span> = <span class="string">&#x27;disabled&#x27;</span></span><br><span class="line">      day.<span class="property">bottomInfo</span> = <span class="string">&#x27;今天&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> day</span><br><span class="line">  &#125;</span><br><span class="line">      </span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">setData</span>(&#123;</span><br><span class="line">    formatter</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>在组件的生命周期的lifetimes中的ready再次初始化</li>
+<li>完成传值（复杂类型）</li>
+</ol>
+<h3 id="封装函数"><a href="#封装函数" class="headerlink" title="封装函数"></a>封装函数</h3><p>  另开文档写一个方法或函数，然后要使用的页面引入即可直接使用</p>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/04/WeChatMini/xcx-%E6%8E%A5%E6%94%B6api/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="https://img.tukuppt.com/photo-big/00/00/74/6152d9dc09d26908.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                    微信小程序
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/04/WeChatMini/xcx-%E6%8E%A5%E6%94%B6api/" class="trm-anima-link">
+                    微信小程序-封装api到使用的一系列总结
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/04</li>
+                <li>09:57</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/04/WeChatMini/xcx-%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85%E7%BB%84%E4%BB%B6%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="https://img.tukuppt.com/photo-big/00/00/74/6152d9dc09d26908.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                    微信小程序
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/04/WeChatMini/xcx-%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85%E7%BB%84%E4%BB%B6%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6/" class="trm-anima-link">
+                    微信小程序-二次封装组件和自定义组件
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/04</li>
+                <li>09:57</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            网站正在逐步完善中...
+        </div>
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="封装日历组件"><a rel="nofollow" class="trm-toc-link" href="#封装日历组件"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">封装日历组件</span></a></li><li class="trm-toc-item trm-toc-level-2" title="组件的传值"><a rel="nofollow" class="trm-toc-link" href="#组件的传值"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">组件的传值</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="页面使用"><a rel="nofollow" class="trm-toc-link" href="#页面使用"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">页面使用</span></a></li><li class="trm-toc-item trm-toc-level-3" title="页面数据初始化"><a rel="nofollow" class="trm-toc-link" href="#页面数据初始化"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">页面数据初始化</span></a></li><li class="trm-toc-item trm-toc-level-3" title="组件类型初始化"><a rel="nofollow" class="trm-toc-link" href="#组件类型初始化"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">组件类型初始化</span></a></li><li class="trm-toc-item trm-toc-level-3" title="组件使用"><a rel="nofollow" class="trm-toc-link" href="#组件使用"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">组件使用</span></a></li><li class="trm-toc-item trm-toc-level-3" title="页面更改"><a rel="nofollow" class="trm-toc-link" href="#页面更改"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">页面更改</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="调api获取数据后 页面向组件传值（以获取数据显示该日期是否约满为例）"><a rel="nofollow" class="trm-toc-link" href="#调api获取数据后-页面向组件传值（以获取数据显示该日期是否约满为例）"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">调api获取数据后 页面向组件传值（以获取数据显示该日期是否约满为例）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="封装函数"><a rel="nofollow" class="trm-toc-link" href="#封装函数"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">封装函数</span></a></li></ol></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

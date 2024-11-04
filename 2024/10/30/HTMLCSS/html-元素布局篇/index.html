@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="目录 水平居中 ↔️ 使用 text-align 属性 定宽块级元素水平居中 — 方式一 定宽块级元素水平居中 — 方式二 定宽块级元素水平居中 — 方式三 定宽块级元素水平居中 — 方式四 Flex Grid   垂直居中 ↕️ 行内块级元素垂直居中 定位方式 — 方式一 定位方式 — 方式二 定位方式 — 方式三 Flex Grid   水平垂直居中 ➕ 行内块级 定位 — 方式一 定位 —">
+<meta name="description" content="注意：有用到 float 的，记得在父容器添加 clearfix1234567.clearfix:after &#123;  content: &#x27;&#x27;;  display: block;  height: 0;  clear: both;  visibility: hidden;&#125;  水平居中使用 text-align 属性 当子元素为行内块元素，即 display:i">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Html-元素布局篇">
 <meta property="og:url" content="http://example.com/2024/10/30/HTMLCSS/html-%E5%85%83%E7%B4%A0%E5%B8%83%E5%B1%80%E7%AF%87/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="目录 水平居中 ↔️ 使用 text-align 属性 定宽块级元素水平居中 — 方式一 定宽块级元素水平居中 — 方式二 定宽块级元素水平居中 — 方式三 定宽块级元素水平居中 — 方式四 Flex Grid   垂直居中 ↕️ 行内块级元素垂直居中 定位方式 — 方式一 定位方式 — 方式二 定位方式 — 方式三 Flex Grid   水平垂直居中 ➕ 行内块级 定位 — 方式一 定位 —">
+<meta property="og:description" content="注意：有用到 float 的，记得在父容器添加 clearfix1234567.clearfix:after &#123;  content: &#x27;&#x27;;  display: block;  height: 0;  clear: both;  visibility: hidden;&#125;  水平居中使用 text-align 属性 当子元素为行内块元素，即 display:i">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-30T07:29:11.173Z">
-<meta property="article:modified_time" content="2024-10-30T09:23:18.052Z">
+<meta property="article:modified_time" content="2024-11-04T08:41:16.152Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -63,7 +63,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-10-30 17:23:18"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-04 16:41:16"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -377,134 +377,50 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
-<li><a href="#ref1">水平居中 ↔️</a><ul>
-<li>使用 text-align 属性</li>
-<li>定宽块级元素水平居中 — 方式一</li>
-<li>定宽块级元素水平居中 — 方式二</li>
-<li>定宽块级元素水平居中 — 方式三</li>
-<li>定宽块级元素水平居中 — 方式四</li>
-<li>Flex</li>
-<li>Grid</li>
-</ul>
-</li>
-<li><a href="#ref2">垂直居中 ↕️</a><ul>
-<li>行内块级元素垂直居中</li>
-<li>定位方式 — 方式一</li>
-<li>定位方式 — 方式二</li>
-<li>定位方式 — 方式三</li>
-<li>Flex</li>
-<li>Grid</li>
-</ul>
-</li>
-<li><a href="#ref3">水平垂直居中 ➕</a><ul>
-<li>行内块级</li>
-<li>定位 — 方式一</li>
-<li>定位 — 方式二</li>
-<li>定位 — 方式三</li>
-<li>定位 — 方式四</li>
-<li>Flex</li>
-<li>Grid</li>
-</ul>
-</li>
-<li><a href="#ref4">两列布局</a><blockquote>
-<p>两列布局: 一列定宽(也有可能由子元素决定宽度)，一列自适应的布局。</p>
-</blockquote>
-<ul>
-<li>float + calc()</li>
-<li>float + margin-left</li>
-<li>absolute + margin-left</li>
-<li>float + overflow</li>
-<li>Flex</li>
-<li>Grid</li>
-</ul>
-</li>
-<li><a href="#ref5">三列布局</a><blockquote>
-<p>一种是前两列定宽，最后一列自适应，与两列布局差不多<br>一种是前后两列定宽，中间自适应 (以下讨论这个)</p>
-</blockquote>
-<ul>
-<li>Float — 方式一</li>
-<li>Float — 方式二</li>
-<li>Position</li>
-<li>Flex</li>
-<li>Grid</li>
-</ul>
-</li>
-<li><a href="#ref6">等分布局</a><blockquote>
-<p>一个容器均匀分配几个空间</p>
-</blockquote>
-<ul>
-<li>浮动 + 百分比</li>
-<li>行内块级 + 百分比</li>
-<li>Flex</li>
-<li>Grid</li>
-</ul>
-</li>
-<li><a href="#ref7">Sticky Footer 布局</a><blockquote>
-<p>内容没有超过窗口时，底部一直在底部<br>内容超过窗口时， 底部在内容后面</p>
-</blockquote>
-<ul>
-<li>绝对定位</li>
-<li>calc()</li>
-<li>Flex</li>
-<li>Grid</li>
-</ul>
-</li>
-<li><a href="#ref8">全屏布局</a><blockquote>
-<p>头 header 尾 footer 中间左导航 右自适应</p>
-</blockquote>
-<ul>
-<li>calc()</li>
-<li>Flex</li>
-<li>Grid</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h4 id="注意：有用到-float-的，记得在父容器添加-clearfix"><a href="#注意：有用到-float-的，记得在父容器添加-clearfix" class="headerlink" title="注意：有用到 float 的，记得在父容器添加 clearfix"></a>注意：有用到 float 的，记得在父容器添加 clearfix</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">clearfix</span>:after &#123;</span><br><span class="line">  <span class="attr">content</span>: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="attr">display</span>: block;</span><br><span class="line">  <span class="attr">height</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attr">clear</span>: both;</span><br><span class="line">  <span class="attr">visibility</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <h4 id="注意：有用到-float-的，记得在父容器添加-clearfix"><a href="#注意：有用到-float-的，记得在父容器添加-clearfix" class="headerlink" title="注意：有用到 float 的，记得在父容器添加 clearfix"></a>注意：有用到 float 的，记得在父容器添加 clearfix</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">clearfix</span>:after &#123;</span><br><span class="line">  <span class="attr">content</span>: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="attr">display</span>: block;</span><br><span class="line">  <span class="attr">height</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attr">clear</span>: both;</span><br><span class="line">  <span class="attr">visibility</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a><p id="ref1" style="color: green">水平居中</p></h2><h3 id="1-使用-text-align-属性"><a href="#1-使用-text-align-属性" class="headerlink" title="1. 使用 text-align 属性"></a>1. 使用 text-align 属性</h3><ul>
+<h2 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h2><h3 id="使用-text-align-属性"><a href="#使用-text-align-属性" class="headerlink" title="使用 text-align 属性"></a>使用 text-align 属性</h3><ul>
 <li>当<span style="color:purple">子元素</span>为行内块元素，即 <code>display:inline-block;</code></li>
 <li><span style="color:red">父元素</span>设置 <code>text-align: center</code>，即可实现水平居中</li>
 </ul>
-<h3 id="2-定宽块级元素水平居中-—-方式一"><a href="#2-定宽块级元素水平居中-—-方式一" class="headerlink" title="2. 定宽块级元素水平居中 — 方式一"></a>2. 定宽块级元素水平居中 — 方式一</h3><ul>
+<h3 id="定宽块级元素水平居中-—-方式一"><a href="#定宽块级元素水平居中-—-方式一" class="headerlink" title="定宽块级元素水平居中 — 方式一"></a>定宽块级元素水平居中 — 方式一</h3><ul>
 <li><span style="color:purple">子元素</span>使用 <code>margin：0 auto;</code></li>
 </ul>
-<h3 id="3-定宽块级元素水平居中-—-方式二"><a href="#3-定宽块级元素水平居中-—-方式二" class="headerlink" title="3. 定宽块级元素水平居中 — 方式二"></a>3. 定宽块级元素水平居中 — 方式二</h3><ul>
+<h3 id="定宽块级元素水平居中-—-方式二"><a href="#定宽块级元素水平居中-—-方式二" class="headerlink" title="定宽块级元素水平居中 — 方式二"></a>定宽块级元素水平居中 — 方式二</h3><ul>
 <li><span style="color:purple">子元素</span>使用 <code>relative;left:50%;margin-left:-(子元素width/2);</code></li>
 </ul>
-<h3 id="4-定宽块级元素水平居中-—-方式三"><a href="#4-定宽块级元素水平居中-—-方式三" class="headerlink" title="4. 定宽块级元素水平居中 — 方式三"></a>4. 定宽块级元素水平居中 — 方式三</h3><ul>
+<h3 id="定宽块级元素水平居中-—-方式三"><a href="#定宽块级元素水平居中-—-方式三" class="headerlink" title="定宽块级元素水平居中 — 方式三"></a>定宽块级元素水平居中 — 方式三</h3><ul>
 <li><span style="color:red">父元素</span>使用 <code>relative;height:子元素height;</code></li>
 <li><span style="color:purple">子元素</span>使用 <code>absolute;left:0;right:0;width:子元素原宽度;margin:auto;</code></li>
 </ul>
-<h3 id="5-定宽块级元素水平居中-—-方式四"><a href="#5-定宽块级元素水平居中-—-方式四" class="headerlink" title="5. 定宽块级元素水平居中 — 方式四"></a>5. 定宽块级元素水平居中 — 方式四</h3><ul>
+<h3 id="定宽块级元素水平居中-—-方式四"><a href="#定宽块级元素水平居中-—-方式四" class="headerlink" title="定宽块级元素水平居中 — 方式四"></a>定宽块级元素水平居中 — 方式四</h3><ul>
 <li><span style="color:red">父元素</span>使用 <code>relative</code></li>
 <li><span style="color:purple">子元素</span>使用 <code>absolute;left:50%;transform:translateX(-50%)</code></li>
 </ul>
-<h3 id="6-flex"><a href="#6-flex" class="headerlink" title="6. flex"></a>6. flex</h3><ul>
+<h3 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h3><ul>
 <li><span style="color:red">父元素</span>使用<code>height:子元素高度;diaplay:flex;justify-content:center;</code></li>
 <li><span style="color:purple">子元素</span>使用<code>margin:auto</code></li>
 </ul>
-<h3 id="7-Grid"><a href="#7-Grid" class="headerlink" title="7. Grid"></a>7. Grid</h3><ul>
+<h3 id="Grid"><a href="#Grid" class="headerlink" title="Grid"></a>Grid</h3><ul>
 <li>除了把 flex 改为 grid，其它跟 6 一样</li>
 </ul>
-<h2 id="垂直布局"><a href="#垂直布局" class="headerlink" title="垂直布局"></a><p id="ref2" style="color: green">垂直布局</p></h2><h3 id="1-行内块级元素垂直居中"><a href="#1-行内块级元素垂直居中" class="headerlink" title="1. 行内块级元素垂直居中"></a>1. 行内块级元素垂直居中</h3><ul>
+<h2 id="垂直布局"><a href="#垂直布局" class="headerlink" title="垂直布局"></a>垂直布局</h2><h3 id="行内块级元素垂直居中"><a href="#行内块级元素垂直居中" class="headerlink" title="行内块级元素垂直居中"></a>行内块级元素垂直居中</h3><ul>
 <li><span style="color:red">父元素</span>设置<code>line-height: 父元素高度;</code></li>
 <li><span style="color:purple">子元素</span>设置<code>display:inline-block; vertical-align:middle;</code></li>
 </ul>
-<h3 id="2-定位方式-—-方式一"><a href="#2-定位方式-—-方式一" class="headerlink" title="2. 定位方式 — 方式一"></a>2. 定位方式 — 方式一</h3><ul>
+<h3 id="定位方式-—-方式一"><a href="#定位方式-—-方式一" class="headerlink" title="定位方式 — 方式一"></a>定位方式 — 方式一</h3><ul>
 <li><span style="color:red">父元素</span>设置<code>relative</code></li>
 <li><span style="color:purple">子元素</span>设置<code>absolute;top:50%;margin-top: -(子元素高度 / 2)px</code></li>
 </ul>
-<h3 id="3-定位方式-—-方式二"><a href="#3-定位方式-—-方式二" class="headerlink" title="3. 定位方式 — 方式二"></a>3. 定位方式 — 方式二</h3><ul>
+<h3 id="定位方式-—-方式二"><a href="#定位方式-—-方式二" class="headerlink" title="定位方式 — 方式二"></a>定位方式 — 方式二</h3><ul>
 <li><span style="color:red">父元素</span>设置<code>relative</code></li>
 <li><span style="color:purple">子元素</span>设置<code>absolute;top:0;bottom:0;margin:auto;height: 子元素高度</code></li>
 </ul>
-<h3 id="4-定位方式-—-方式三"><a href="#4-定位方式-—-方式三" class="headerlink" title="4. 定位方式 — 方式三"></a>4. 定位方式 — 方式三</h3><ul>
+<h3 id="定位方式-—-方式三"><a href="#定位方式-—-方式三" class="headerlink" title="定位方式 — 方式三"></a>定位方式 — 方式三</h3><ul>
 <li><span style="color:red">父元素</span>设置<code>relative</code></li>
 <li><span style="color:purple">子元素</span>设置<code>absolute;top:50%;transform:translateY(-50%)</code></li>
 </ul>
-<h3 id="5-Flex"><a href="#5-Flex" class="headerlink" title="5. Flex"></a>5. Flex</h3><ul>
+<h3 id="Flex"><a href="#Flex" class="headerlink" title="Flex"></a>Flex</h3><ul>
 <li><span style="color:red">父元素</span>设置<code>display:flex;</code><ul>
 <li>方法一：aligin-items:center;</li>
 </ul>
@@ -514,7 +430,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="6-Grid"><a href="#6-Grid" class="headerlink" title="6. Grid"></a>6. Grid</h3><ul>
+<h3 id="Grid-1"><a href="#Grid-1" class="headerlink" title="Grid"></a>Grid</h3><ul>
 <li><span style="color:red">父元素</span>设置<code>display:grid;</code><ul>
 <li>方法一：<code>aligin-items:center</code></li>
 </ul>
@@ -525,34 +441,34 @@
 </ul>
 </li>
 </ul>
-<h2 id="水平垂直居中-➕"><a href="#水平垂直居中-➕" class="headerlink" title="水平垂直居中 ➕"></a><p id="ref3" style="color: green">水平垂直居中 ➕</p></h2><h3 id="1-行内块级"><a href="#1-行内块级" class="headerlink" title="1. 行内块级"></a>1. 行内块级</h3><ul>
+<h2 id="水平垂直居中-➕"><a href="#水平垂直居中-➕" class="headerlink" title="水平垂直居中 ➕"></a>水平垂直居中 ➕</h2><h3 id="行内块级"><a href="#行内块级" class="headerlink" title="行内块级"></a>行内块级</h3><ul>
 <li><span style="color:red">父元素</span>设置 <code>line-height: 父元素高度;text-align:center</code></li>
 <li><span style="color:purple">子元素</span>设置<code>display:inline-block;vertical-align:middle;</code></li>
 </ul>
-<h3 id="2-定位-—-方式一"><a href="#2-定位-—-方式一" class="headerlink" title="2. 定位 — 方式一"></a>2. 定位 — 方式一</h3><ul>
+<h3 id="定位-—-方式一"><a href="#定位-—-方式一" class="headerlink" title="定位 — 方式一"></a>定位 — 方式一</h3><ul>
 <li><span style="color:red">父元素</span>设置<code>relative</code></li>
 <li><span style="color:purple">子元素</span>设置<code>absolute;left:calc(50%-(子元素宽度/2)px);top:calc(50% - (子元素高度/2)px)</code></li>
 </ul>
-<h3 id="3-定位-—-方式二"><a href="#3-定位-—-方式二" class="headerlink" title="3. 定位 — 方式二"></a>3. 定位 — 方式二</h3><ul>
+<h3 id="定位-—-方式二"><a href="#定位-—-方式二" class="headerlink" title="定位 — 方式二"></a>定位 — 方式二</h3><ul>
 <li><span style="color:red">父元素</span>设置<code>relative</code></li>
 <li><span style="color:purple">子元素</span>设置<code>absolute;left:50%;top:50%;margin-left: -(子元素宽度 / 2)px;margin-top: -(子元素高度/2)px</code></li>
 </ul>
-<h3 id="4-定位-—-方式三"><a href="#4-定位-—-方式三" class="headerlink" title="4. 定位 — 方式三"></a>4. 定位 — 方式三</h3><ul>
+<h3 id="定位-—-方式三"><a href="#定位-—-方式三" class="headerlink" title="定位 — 方式三"></a>定位 — 方式三</h3><ul>
 <li><span style="color:red">父元素</span>设置<code>relative</code></li>
 <li><span style="color:purple">子元素</span>设置<code>absolute;left:0;top:0;right:0;bottom:0;margin: auto</code></li>
 </ul>
-<h3 id="5-定位-—-方式四"><a href="#5-定位-—-方式四" class="headerlink" title="5. 定位 — 方式四"></a>5. 定位 — 方式四</h3><ul>
+<h3 id="定位-—-方式四"><a href="#定位-—-方式四" class="headerlink" title="定位 — 方式四"></a>定位 — 方式四</h3><ul>
 <li><span style="color:red">父元素</span>设置<code>relative</code></li>
 <li><span style="color:purple">子元素</span>设置<code>absolute;left:50%;top:50%;transform:translate(-50%,-50%)</code></li>
 </ul>
-<h3 id="6-Flex"><a href="#6-Flex" class="headerlink" title="6. Flex"></a>6. Flex</h3><ul>
+<h3 id="Flex-1"><a href="#Flex-1" class="headerlink" title="Flex"></a>Flex</h3><ul>
 <li><span style="color:red">父元素</span>设置<code>display:flex;</code><ul>
 <li>方法一：<code>align-items:center;justify-content:center</code></li>
 </ul>
 </li>
 <li><span style="color:purple">子元素</span>设置<code>方法二：margin:auto;</code></li>
 </ul>
-<h3 id="7-Grid-1"><a href="#7-Grid-1" class="headerlink" title="7. Grid"></a>7. Grid</h3><ul>
+<h3 id="Grid-2"><a href="#Grid-2" class="headerlink" title="Grid"></a>Grid</h3><ul>
 <li><span style="color:red">父元素</span>设置<code>display:grid;</code><ul>
 <li>方法一：<code>place-items:center;</code></li>
 <li>方法二:<code>place-content:center;</code></li>
@@ -564,95 +480,95 @@
 </ul>
 </li>
 </ul>
-<h2 id="两列布局"><a href="#两列布局" class="headerlink" title="两列布局"></a><p id="ref4" style="color: green">两列布局</p></h2><blockquote>
+<h2 id="两列布局"><a href="#两列布局" class="headerlink" title="两列布局"></a>两列布局</h2><blockquote>
 <p>两列布局: 一列定宽(也有可能由子元素决定宽度)，一列自适应的布局。(以左列定宽，右列自适应为例，高度一样)</p>
 </blockquote>
-<h3 id="1-float-calc-–-左容器宽度不可以由子元素撑起"><a href="#1-float-calc-–-左容器宽度不可以由子元素撑起" class="headerlink" title="1. float + calc() – 左容器宽度不可以由子元素撑起"></a>1. float + calc() – 左容器宽度不可以由子元素撑起</h3><ul>
+<h3 id="float-calc-–-左容器宽度不可以由子元素撑起"><a href="#float-calc-–-左容器宽度不可以由子元素撑起" class="headerlink" title="float + calc() – 左容器宽度不可以由子元素撑起"></a>float + calc() – 左容器宽度不可以由子元素撑起</h3><ul>
 <li><span style="color:blue">左容器</span>设置<code>float: left;</code></li>
 <li><span style="color:brown">右容器</span>设置<code>float:left; width:calc(100% - 左容器的宽度)</code></li>
 </ul>
-<h3 id="2-float-margin-left-–-左容器宽度不可以由子元素撑起"><a href="#2-float-margin-left-–-左容器宽度不可以由子元素撑起" class="headerlink" title="2. float + margin-left – 左容器宽度不可以由子元素撑起"></a>2. float + margin-left – 左容器宽度不可以由子元素撑起</h3><ul>
+<h3 id="float-margin-left-–-左容器宽度不可以由子元素撑起"><a href="#float-margin-left-–-左容器宽度不可以由子元素撑起" class="headerlink" title="float + margin-left – 左容器宽度不可以由子元素撑起"></a>float + margin-left – 左容器宽度不可以由子元素撑起</h3><ul>
 <li><span style="color:blue">左容器</span>设置<code>float: left;</code></li>
 <li><span style="color:brown">右容器</span>设置<code>margin-left:左容器的宽度</code></li>
 </ul>
-<h3 id="3-absolute-margin-left-–-左容器宽度不可以由子元素撑起"><a href="#3-absolute-margin-left-–-左容器宽度不可以由子元素撑起" class="headerlink" title="3. absolute + margin-left – 左容器宽度不可以由子元素撑起"></a>3. absolute + margin-left – 左容器宽度不可以由子元素撑起</h3><ul>
+<h3 id="absolute-margin-left-–-左容器宽度不可以由子元素撑起"><a href="#absolute-margin-left-–-左容器宽度不可以由子元素撑起" class="headerlink" title="absolute + margin-left – 左容器宽度不可以由子元素撑起"></a>absolute + margin-left – 左容器宽度不可以由子元素撑起</h3><ul>
 <li><span style="color:blue">左容器</span>设置<code>position: absolute</code></li>
 <li><span style="color:brown">右容器</span>设置<code>margin-left: 左容器的宽度</code></li>
 </ul>
-<h3 id="4-float-overflow-–-无限制"><a href="#4-float-overflow-–-无限制" class="headerlink" title="4. float + overflow – 无限制"></a>4. float + overflow – 无限制</h3><ul>
+<h3 id="float-overflow-–-无限制"><a href="#float-overflow-–-无限制" class="headerlink" title="float + overflow – 无限制"></a>float + overflow – 无限制</h3><ul>
 <li><span style="color:blue">左容器</span>设置<code>float: left</code></li>
 <li><span style="color:brown">右容器</span>设置<code>overflow: hidden</code></li>
 </ul>
-<h3 id="5-Flex-–-无限制"><a href="#5-Flex-–-无限制" class="headerlink" title="5. Flex – 无限制"></a>5. Flex – 无限制</h3><ul>
+<h3 id="Flex-–-无限制"><a href="#Flex-–-无限制" class="headerlink" title="Flex – 无限制"></a>Flex – 无限制</h3><ul>
 <li><span style="color:pink">左右父级容器</span>设置<code>display:flex</code></li>
 <li><span style="color:brown">右容器</span>设置<code>flex: 1</code></li>
 </ul>
-<h3 id="4-Grid-–-无限制"><a href="#4-Grid-–-无限制" class="headerlink" title="4. Grid – 无限制"></a>4. Grid – 无限制</h3><ul>
+<h3 id="Grid-–-无限制"><a href="#Grid-–-无限制" class="headerlink" title="Grid – 无限制"></a>Grid – 无限制</h3><ul>
 <li><span style="color:pink">左右父级容器</span>设置<code>display:grid;grid-template-columns: auto 1fr</code></li>
 </ul>
-<h2 id="三列布局"><a href="#三列布局" class="headerlink" title="三列布局"></a><p id="ref5" style="color: green">三列布局</p></h2><h3 id="1-Float-—-方式一"><a href="#1-Float-—-方式一" class="headerlink" title="1. Float — 方式一"></a>1. Float — 方式一</h3><ul>
+<h2 id="三列布局"><a href="#三列布局" class="headerlink" title="三列布局"></a>三列布局</h2><h3 id="Float-—-方式一"><a href="#Float-—-方式一" class="headerlink" title="Float — 方式一"></a>Float — 方式一</h3><ul>
 <li><span style="color:blue">左容器</span>设置<code>float:left;</code></li>
 <li><span style="color:brown">右容器</span>设置：<code>float: right;</code></li>
 <li><span style="color:pink">中间</span>设置：<code>overflow: hidden</code></li>
 </ul>
-<h3 id="2-Float-—-方式二"><a href="#2-Float-—-方式二" class="headerlink" title="2. Float — 方式二"></a>2. Float — 方式二</h3><ul>
+<h3 id="Float-—-方式二"><a href="#Float-—-方式二" class="headerlink" title="Float — 方式二"></a>Float — 方式二</h3><ul>
 <li><span style="color:blue">左容器</span>设置<code>float:left;</code></li>
 <li><span style="color:brown">右容器</span>设置：<code>float: right;</code></li>
 <li><span style="color:pink">中间</span>设置：<code>width：calc(100% -左右宽度之和)</code></li>
 </ul>
-<h3 id="3-Position"><a href="#3-Position" class="headerlink" title="3. Position"></a>3. Position</h3><ul>
+<h3 id="Position"><a href="#Position" class="headerlink" title="Position"></a>Position</h3><ul>
 <li><span style="color:blue">左容器</span>设置<code>position:absolute;left:0;top:0;</code></li>
 <li><span style="color:brown">右容器</span>设置：<code>position:absolute;right:0;top:0;</code></li>
 <li><span style="color:pink">中间</span>设置：<code>width：calc(100% -左右宽度之和); margin-left: 左容器宽度;  margin-right: 有容器宽度;</code></li>
 </ul>
-<h3 id="4-Flex"><a href="#4-Flex" class="headerlink" title="4. Flex"></a>4. Flex</h3><ul>
+<h3 id="Flex-2"><a href="#Flex-2" class="headerlink" title="Flex"></a>Flex</h3><ul>
 <li><span style="color:red">父容器</span>设置<code>display:flex;</code></li>
 <li><span style="color:brown">右容器</span>设置：<code>flex:1;</code></li>
 </ul>
-<h3 id="5-Grid"><a href="#5-Grid" class="headerlink" title="5. Grid"></a>5. Grid</h3><ul>
+<h3 id="Grid-3"><a href="#Grid-3" class="headerlink" title="Grid"></a>Grid</h3><ul>
 <li><span style="color:red">父容器</span>设置<code>display:grid; grid-template-columns: auto ifr auto;</code></li>
 </ul>
-<h2 id="等分布局"><a href="#等分布局" class="headerlink" title="等分布局"></a><p id="ref6" style="color: green">等分布局</p></h2><h3 id="1-浮动-百分比"><a href="#1-浮动-百分比" class="headerlink" title="1. 浮动 + 百分比"></a>1. 浮动 + 百分比</h3><ul>
+<h2 id="等分布局"><a href="#等分布局" class="headerlink" title="等分布局"></a>等分布局</h2><h3 id="浮动-百分比"><a href="#浮动-百分比" class="headerlink" title="浮动 + 百分比"></a>浮动 + 百分比</h3><ul>
 <li><span style="color:purple">子元素共有类</span>设置<code>width: 25%; float: left;</code></li>
 </ul>
-<h3 id="2-行内块级-百分比"><a href="#2-行内块级-百分比" class="headerlink" title="2. 行内块级 + 百分比"></a>2. 行内块级 + 百分比</h3><ul>
+<h3 id="行内块级-百分比"><a href="#行内块级-百分比" class="headerlink" title="行内块级 + 百分比"></a>行内块级 + 百分比</h3><ul>
 <li><span style="color:purple">子元素共有类</span>设置<code>width: 24.5%; display:inline-block;</code></li>
 </ul>
-<h3 id="3-Flex"><a href="#3-Flex" class="headerlink" title="3. Flex"></a>3. Flex</h3><ul>
+<h3 id="Flex-3"><a href="#Flex-3" class="headerlink" title="Flex"></a>Flex</h3><ul>
 <li><span style="color: red">父容器</span>设置<code>display:flex</code></li>
 <li><span style="color:purple">子元素共有类</span>设置<code>flex:1;</code></li>
 </ul>
-<h3 id="4-Grid"><a href="#4-Grid" class="headerlink" title="4. Grid"></a>4. Grid</h3><ul>
+<h3 id="Grid-4"><a href="#Grid-4" class="headerlink" title="Grid"></a>Grid</h3><ul>
 <li><span style="color: red">父容器</span>设置<code>display:grid;grid-template-columns:repeat(4, 1fr)</code></li>
 </ul>
-<h2 id="Sticky-Footer-布局"><a href="#Sticky-Footer-布局" class="headerlink" title="Sticky Footer 布局"></a><p id="ref7" style="color: green">Sticky Footer 布局</p></h2><h3 id="1-绝对定位"><a href="#1-绝对定位" class="headerlink" title="1. 绝对定位"></a>1. 绝对定位</h3><ul>
+<h2 id="Sticky-Footer-布局"><a href="#Sticky-Footer-布局" class="headerlink" title="Sticky Footer 布局"></a>Sticky Footer 布局</h2><h3 id="绝对定位"><a href="#绝对定位" class="headerlink" title="绝对定位"></a>绝对定位</h3><ul>
 <li><span style="color:pink">html,body</span>设置<code>height: 100%</code></li>
 <li><span style="color:red">父级容器</span>设置<code>position: relative; height:100%</code></li>
 <li><span style="color:brown">中间容器</span>设置<code>padding-bottom: 底部的高度</code></li>
 <li><span style="color:purple">底部</span>设置<code>absolute;width:100%;bottom:0</code></li>
 </ul>
-<h3 id="2-calc"><a href="#2-calc" class="headerlink" title="2. calc()"></a>2. calc()</h3><ul>
+<h3 id="calc"><a href="#calc" class="headerlink" title="calc()"></a>calc()</h3><ul>
 <li><span style="color:brown">中间容器</span>设置<code>min-height: calc(100vh- 底部高度)</code></li>
 </ul>
-<h3 id="3-Flex-1"><a href="#3-Flex-1" class="headerlink" title="3. Flex"></a>3. Flex</h3><ul>
+<h3 id="Flex-4"><a href="#Flex-4" class="headerlink" title="Flex"></a>Flex</h3><ul>
 <li><span style="color:red">父级容器</span>设置<code>display: flex; flex-flow: column; min- height: 100vh</code></li>
 <li><span style="color:brown">中间容器</span>设置<code>flex:1</code></li>
 </ul>
-<h3 id="4-Grid-1"><a href="#4-Grid-1" class="headerlink" title="4. Grid"></a>4. Grid</h3><ul>
+<h3 id="Grid-5"><a href="#Grid-5" class="headerlink" title="Grid"></a>Grid</h3><ul>
 <li><span style="color:red">父级容器</span>设置<code>display: grid; grid-template-rows: auto 1fr auto; min-height: 100vh;</code></li>
 </ul>
-<h2 id="全屏布局"><a href="#全屏布局" class="headerlink" title="全屏布局"></a><p id="ref8" style="color: green">全屏布局</p></h2><h3 id="1-calc"><a href="#1-calc" class="headerlink" title="1. calc()"></a>1. calc()</h3><ul>
+<h2 id="全屏布局"><a href="#全屏布局" class="headerlink" title="全屏布局"></a>全屏布局</h2><h3 id="calc-1"><a href="#calc-1" class="headerlink" title="calc()"></a>calc()</h3><ul>
 <li><span style="color:red">中间父容器</span>设置<code>overflow: hidden; height: calc(100vh - 底部高度)</code></li>
 <li><span style="color:purple">中间左</span>设置<code>height: 100%</code></li>
 <li><span style="color:brown">中间右</span>设置<code>overflow:auto;height: 100%;</code></li>
 <li><span style="color:pink">中间右内容器</span>设置<code>height: 任意高度</code></li>
 </ul>
-<h3 id="2-Flex"><a href="#2-Flex" class="headerlink" title="2. Flex"></a>2. Flex</h3><ul>
+<h3 id="Flex-5"><a href="#Flex-5" class="headerlink" title="Flex"></a>Flex</h3><ul>
 <li><span style="color:brown">父容器</span>设置<code>display:flex;flex-flow:column</code></li>
 <li><span style="color:red">中间父容器</span>设置<code>overflow:auto;flex:1</code></li>
 <li><span style="color:pink">中间右内容器</span>设置<code>height: 任意高度</code></li>
 </ul>
-<h3 id="2-Grid"><a href="#2-Grid" class="headerlink" title="2. Grid"></a>2. Grid</h3><ul>
+<h3 id="Grid-6"><a href="#Grid-6" class="headerlink" title="Grid"></a>Grid</h3><ul>
 <li><span style="color:brown">父容器</span>设置<code>display:grid;grid-template-rows: auto 1fr auto</code></li>
 <li><span style="color:red">中间父容器</span>设置<code>overflow:auto;</code></li>
 <li><span style="color:pink">中间右内容器</span>设置<code>height: 任意高度</code></li>
@@ -677,7 +593,7 @@
         <a href="/2024/10/30/HTMLCSS/html5%E5%92%8CCSS3%E6%96%B0%E7%89%B9%E6%80%A7/" class="trm-cover-frame trm-anima-link">
             
             
-                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+                <img alt="cover" class="no-fancybox" src="https://img.tukuppt.com/photo-big/00/00/74/6152d9dc09d26908.jpg">
             
         </a>
         
@@ -709,7 +625,7 @@
         <a href="/2024/10/30/HTMLCSS/html-%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80%E6%8A%80%E6%9C%AF%E7%AF%87/" class="trm-cover-frame trm-anima-link">
             
             
-                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+                <img alt="cover" class="no-fancybox" src="https://img.tukuppt.com/photo-big/00/00/74/6152d9dc09d26908.jpg">
             
         </a>
         
@@ -774,7 +690,7 @@
 
     
         <div class="trm-footer-item">
-            基于大数据，学习参考、练习，网站正在逐步完善中...
+            网站正在逐步完善中...
         </div>
      
 </footer>
@@ -789,8 +705,24 @@
 
             
 
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="水平居中"><a rel="nofollow" class="trm-toc-link" href="#水平居中"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">水平居中</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="使用 text-align 属性"><a rel="nofollow" class="trm-toc-link" href="#使用-text-align-属性"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">使用 text-align 属性</span></a></li><li class="trm-toc-item trm-toc-level-3" title="定宽块级元素水平居中 — 方式一"><a rel="nofollow" class="trm-toc-link" href="#定宽块级元素水平居中-—-方式一"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">定宽块级元素水平居中 — 方式一</span></a></li><li class="trm-toc-item trm-toc-level-3" title="定宽块级元素水平居中 — 方式二"><a rel="nofollow" class="trm-toc-link" href="#定宽块级元素水平居中-—-方式二"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">定宽块级元素水平居中 — 方式二</span></a></li><li class="trm-toc-item trm-toc-level-3" title="定宽块级元素水平居中 — 方式三"><a rel="nofollow" class="trm-toc-link" href="#定宽块级元素水平居中-—-方式三"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">定宽块级元素水平居中 — 方式三</span></a></li><li class="trm-toc-item trm-toc-level-3" title="定宽块级元素水平居中 — 方式四"><a rel="nofollow" class="trm-toc-link" href="#定宽块级元素水平居中-—-方式四"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">定宽块级元素水平居中 — 方式四</span></a></li><li class="trm-toc-item trm-toc-level-3" title="flex"><a rel="nofollow" class="trm-toc-link" href="#flex"><span class="trm-toc-number">1.6.</span> <span class="trm-toc-text">flex</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Grid"><a rel="nofollow" class="trm-toc-link" href="#Grid"><span class="trm-toc-number">1.7.</span> <span class="trm-toc-text">Grid</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="垂直布局"><a rel="nofollow" class="trm-toc-link" href="#垂直布局"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">垂直布局</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="行内块级元素垂直居中"><a rel="nofollow" class="trm-toc-link" href="#行内块级元素垂直居中"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">行内块级元素垂直居中</span></a></li><li class="trm-toc-item trm-toc-level-3" title="定位方式 — 方式一"><a rel="nofollow" class="trm-toc-link" href="#定位方式-—-方式一"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">定位方式 — 方式一</span></a></li><li class="trm-toc-item trm-toc-level-3" title="定位方式 — 方式二"><a rel="nofollow" class="trm-toc-link" href="#定位方式-—-方式二"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">定位方式 — 方式二</span></a></li><li class="trm-toc-item trm-toc-level-3" title="定位方式 — 方式三"><a rel="nofollow" class="trm-toc-link" href="#定位方式-—-方式三"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">定位方式 — 方式三</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Flex"><a rel="nofollow" class="trm-toc-link" href="#Flex"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">Flex</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Grid"><a rel="nofollow" class="trm-toc-link" href="#Grid-1"><span class="trm-toc-number">2.6.</span> <span class="trm-toc-text">Grid</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="水平垂直居中 ➕"><a rel="nofollow" class="trm-toc-link" href="#水平垂直居中-➕"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">水平垂直居中 ➕</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="行内块级"><a rel="nofollow" class="trm-toc-link" href="#行内块级"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">行内块级</span></a></li><li class="trm-toc-item trm-toc-level-3" title="定位 — 方式一"><a rel="nofollow" class="trm-toc-link" href="#定位-—-方式一"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">定位 — 方式一</span></a></li><li class="trm-toc-item trm-toc-level-3" title="定位 — 方式二"><a rel="nofollow" class="trm-toc-link" href="#定位-—-方式二"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">定位 — 方式二</span></a></li><li class="trm-toc-item trm-toc-level-3" title="定位 — 方式三"><a rel="nofollow" class="trm-toc-link" href="#定位-—-方式三"><span class="trm-toc-number">3.4.</span> <span class="trm-toc-text">定位 — 方式三</span></a></li><li class="trm-toc-item trm-toc-level-3" title="定位 — 方式四"><a rel="nofollow" class="trm-toc-link" href="#定位-—-方式四"><span class="trm-toc-number">3.5.</span> <span class="trm-toc-text">定位 — 方式四</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Flex"><a rel="nofollow" class="trm-toc-link" href="#Flex-1"><span class="trm-toc-number">3.6.</span> <span class="trm-toc-text">Flex</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Grid"><a rel="nofollow" class="trm-toc-link" href="#Grid-2"><span class="trm-toc-number">3.7.</span> <span class="trm-toc-text">Grid</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="两列布局"><a rel="nofollow" class="trm-toc-link" href="#两列布局"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">两列布局</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="float + calc() – 左容器宽度不可以由子元素撑起"><a rel="nofollow" class="trm-toc-link" href="#float-calc-–-左容器宽度不可以由子元素撑起"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">float + calc() – 左容器宽度不可以由子元素撑起</span></a></li><li class="trm-toc-item trm-toc-level-3" title="float + margin-left – 左容器宽度不可以由子元素撑起"><a rel="nofollow" class="trm-toc-link" href="#float-margin-left-–-左容器宽度不可以由子元素撑起"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">float + margin-left – 左容器宽度不可以由子元素撑起</span></a></li><li class="trm-toc-item trm-toc-level-3" title="absolute + margin-left – 左容器宽度不可以由子元素撑起"><a rel="nofollow" class="trm-toc-link" href="#absolute-margin-left-–-左容器宽度不可以由子元素撑起"><span class="trm-toc-number">4.3.</span> <span class="trm-toc-text">absolute + margin-left – 左容器宽度不可以由子元素撑起</span></a></li><li class="trm-toc-item trm-toc-level-3" title="float + overflow – 无限制"><a rel="nofollow" class="trm-toc-link" href="#float-overflow-–-无限制"><span class="trm-toc-number">4.4.</span> <span class="trm-toc-text">float + overflow – 无限制</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Flex – 无限制"><a rel="nofollow" class="trm-toc-link" href="#Flex-–-无限制"><span class="trm-toc-number">4.5.</span> <span class="trm-toc-text">Flex – 无限制</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Grid – 无限制"><a rel="nofollow" class="trm-toc-link" href="#Grid-–-无限制"><span class="trm-toc-number">4.6.</span> <span class="trm-toc-text">Grid – 无限制</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="三列布局"><a rel="nofollow" class="trm-toc-link" href="#三列布局"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">三列布局</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="Float — 方式一"><a rel="nofollow" class="trm-toc-link" href="#Float-—-方式一"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">Float — 方式一</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Float — 方式二"><a rel="nofollow" class="trm-toc-link" href="#Float-—-方式二"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">Float — 方式二</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Position"><a rel="nofollow" class="trm-toc-link" href="#Position"><span class="trm-toc-number">5.3.</span> <span class="trm-toc-text">Position</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Flex"><a rel="nofollow" class="trm-toc-link" href="#Flex-2"><span class="trm-toc-number">5.4.</span> <span class="trm-toc-text">Flex</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Grid"><a rel="nofollow" class="trm-toc-link" href="#Grid-3"><span class="trm-toc-number">5.5.</span> <span class="trm-toc-text">Grid</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="等分布局"><a rel="nofollow" class="trm-toc-link" href="#等分布局"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">等分布局</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="浮动 + 百分比"><a rel="nofollow" class="trm-toc-link" href="#浮动-百分比"><span class="trm-toc-number">6.1.</span> <span class="trm-toc-text">浮动 + 百分比</span></a></li><li class="trm-toc-item trm-toc-level-3" title="行内块级 + 百分比"><a rel="nofollow" class="trm-toc-link" href="#行内块级-百分比"><span class="trm-toc-number">6.2.</span> <span class="trm-toc-text">行内块级 + 百分比</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Flex"><a rel="nofollow" class="trm-toc-link" href="#Flex-3"><span class="trm-toc-number">6.3.</span> <span class="trm-toc-text">Flex</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Grid"><a rel="nofollow" class="trm-toc-link" href="#Grid-4"><span class="trm-toc-number">6.4.</span> <span class="trm-toc-text">Grid</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="Sticky Footer 布局"><a rel="nofollow" class="trm-toc-link" href="#Sticky-Footer-布局"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">Sticky Footer 布局</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="绝对定位"><a rel="nofollow" class="trm-toc-link" href="#绝对定位"><span class="trm-toc-number">7.1.</span> <span class="trm-toc-text">绝对定位</span></a></li><li class="trm-toc-item trm-toc-level-3" title="calc()"><a rel="nofollow" class="trm-toc-link" href="#calc"><span class="trm-toc-number">7.2.</span> <span class="trm-toc-text">calc()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Flex"><a rel="nofollow" class="trm-toc-link" href="#Flex-4"><span class="trm-toc-number">7.3.</span> <span class="trm-toc-text">Flex</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Grid"><a rel="nofollow" class="trm-toc-link" href="#Grid-5"><span class="trm-toc-number">7.4.</span> <span class="trm-toc-text">Grid</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="全屏布局"><a rel="nofollow" class="trm-toc-link" href="#全屏布局"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">全屏布局</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="calc()"><a rel="nofollow" class="trm-toc-link" href="#calc-1"><span class="trm-toc-number">8.1.</span> <span class="trm-toc-text">calc()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Flex"><a rel="nofollow" class="trm-toc-link" href="#Flex-5"><span class="trm-toc-number">8.2.</span> <span class="trm-toc-text">Flex</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Grid"><a rel="nofollow" class="trm-toc-link" href="#Grid-6"><span class="trm-toc-number">8.3.</span> <span class="trm-toc-text">Grid</span></a></li></ol></li></ol>
+      </div>
+    </div>
+
             
 <div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
     
     
         <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
