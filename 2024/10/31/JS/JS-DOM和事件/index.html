@@ -7,16 +7,18 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="目录 DOM 事件 文档的加载 BOM  DOM( Document Object Model) 文档对象模型，通过 DOM 可以来任意来修改网页中各个内容   文档：指的是网页，一个网页就是一个文档 对象：指将网页中的每一个节点都转换为对象，转换完后，以一种纯面向对象的形式来操作网页 模型：用来表示节点和节点之间的关系，方便操作页面 节点(Node)：构成网页的最基本的单元，网页中的每一个部分都">
+<meta name="description" content="DOM( Document Object Model) 文档对象模型，通过 DOM 可以来任意来修改网页中各个内容   文档：指的是网页，一个网页就是一个文档 对象：指将网页中的每一个节点都转换为对象，转换完后，以一种纯面向对象的形式来操作网页 模型：用来表示节点和节点之间的关系，方便操作页面 节点(Node)：构成网页的最基本的单元，网页中的每一个部分都可以称为是一个节点 常用的节点(每个节点的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS-DOM和事件">
 <meta property="og:url" content="http://example.com/2024/10/31/JS/JS-DOM%E5%92%8C%E4%BA%8B%E4%BB%B6/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="目录 DOM 事件 文档的加载 BOM  DOM( Document Object Model) 文档对象模型，通过 DOM 可以来任意来修改网页中各个内容   文档：指的是网页，一个网页就是一个文档 对象：指将网页中的每一个节点都转换为对象，转换完后，以一种纯面向对象的形式来操作网页 模型：用来表示节点和节点之间的关系，方便操作页面 节点(Node)：构成网页的最基本的单元，网页中的每一个部分都">
+<meta property="og:description" content="DOM( Document Object Model) 文档对象模型，通过 DOM 可以来任意来修改网页中各个内容   文档：指的是网页，一个网页就是一个文档 对象：指将网页中的每一个节点都转换为对象，转换完后，以一种纯面向对象的形式来操作网页 模型：用来表示节点和节点之间的关系，方便操作页面 节点(Node)：构成网页的最基本的单元，网页中的每一个部分都可以称为是一个节点 常用的节点(每个节点的">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-31T03:05:32.024Z">
-<meta property="article:modified_time" content="2024-10-31T06:13:11.423Z">
+<meta property="article:modified_time" content="2024-11-05T06:18:59.772Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="DOM">
+<meta property="article:tag" content="事件">
 <meta name="twitter:card" content="summary">
 
     <meta name="keywords" content="DOM, 事件">
@@ -26,12 +28,16 @@
 
 <!-- Favicon -->
 
-    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+    <link href='/img/sitelogo16.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
 
 
-    <link href='/img/favicon.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+    <link href='/img/sitelogo32.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
 
 
+    <link href='/apple-touch-icon.png?v=2.2.3' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
 
 
 <!-- Plugin -->
@@ -62,8 +68,8 @@
 
 
 <!-- Variable -->
-<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)Hey! Good again!","hide_text":"(●—●)Oh, crash!"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-10-31 14:13:11"};</script>
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["https://ts1.cn.mm.bing.net/th/id/R-C.b8e84a0907bf9b5128dfa48be0ae48af?rik=tfH6k%2fT3hkauqw&riu=http%3a%2f%2fwww.08lr.cn%2fuploads%2fallimg%2f220330%2f1-2300141M0.jpg&ehk=dR6hTo1o7lNsHkpE62oIzMtJ%2bmxktf7%2fx6tp3Zt2uB8%3d&risl=&pid=ImgRaw&r=0","https://tse2-mm.cn.bing.net/th/id/OIP-C.AUTXb2JnogYGuhh_89lj1gHaHa?rs=1&pid=ImgDetMain","https://img.shetu66.com/2023/04/25/1682391094827084.png","https://ts1.cn.mm.bing.net/th/id/R-C.d88442788ee5a458d50e40f0a8cb1e05?rik=EoPp8GhejYeQfw&riu=http%3a%2f%2fimg.pconline.com.cn%2fimages%2fupload%2fupc%2ftx%2fwallpaper%2f1307%2f10%2fc2%2f23151595_1373424485102.jpg&ehk=J7xq%2f50bCmdD4jUXfnTlau2s5WiVsBxQArAjvJzqIo4%3d&risl=&pid=ImgRaw&r=0","https://tse2-mm.cn.bing.net/th/id/OIP-C.i-rpdJ5FGbHEgzs2aKDZLgHaHa?pid=ImgDet&w=474&h=474&rs=1","https://img.tukuppt.com/photo-big/00/00/74/6152d9dc09d26908.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"placeholder":"搜索文章...","result_placeholder":"请输入关键词进行搜索","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-05 14:18:59"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -132,7 +138,7 @@
 			<!-- logo -->
 <a href="/" class="trm-logo-frame trm-anima-link">
     
-        <img alt="logo" src="/img/favicon.svg">
+        <img alt="logo" src="/img/sitelogo32.svg">
     
     
         <div class="trm-logo-text">
@@ -153,11 +159,18 @@
                     首页
                 </a>
                 
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
                 <ul>
                     
                     <li>
-                        <a  href="/test1/" target="">
-                            test1
+                        <a  href="/tags/" target="">
+                            标签
                         </a>
                     </li>
                     
@@ -166,15 +179,120 @@
             </li>
             
             <li class="menu-item-has-children ">
-                <a  href="/archives/" target="">
-                    归档
+                <a  href="/categories/" target="">
+                    分类
                 </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" target="">
+                            微信小程序
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%B7%A5%E5%85%B7/" target="">
+                            前端工程化工具
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/React/" target="">
+                            React
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/VUE/" target="">
+                            VUE
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/TypeScript/" target="">
+                            TypeScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JavaScript/" target="">
+                            JavaScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/CSS&HTML/" target="">
+                            CSS&HTML
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="">
+                            网络与数据结构
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/uniapp/" target="">
+                            uniapp
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ThreeJS/" target="">
+                            ThreeJS
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/Node/" target="">
+                            Node
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JQuery/" target="">
+                            JQuery
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ES6/" target="">
+                            ES6
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/AJAX/" target="">
+                            AJAX
+                        </a>
+                    </li>
+                    
+                </ul>
                 
             </li>
             
             <li class="menu-item-has-children ">
-                <a  href="/categories/" target="">
-                    分类
+                <a  href="/gallery/" target="">
+                    相册
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/gallery/wallpaper/" target="">
+                            相册详情页
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/about/" target="">
+                    关于
                 </a>
                 
             </li>
@@ -196,6 +314,12 @@
     <!-- mode switcher place end -->
 
 			
+    
+    <div id="trm-search-btn" class="trm-search-btn">
+        <i class="iconfont fas fa-search"></i>
+    </div>
+     
+
 		</div>
 		<div class="trm-menu-btn">
 			<span></span>
@@ -288,7 +412,7 @@
         <!-- card header -->
 <div class="trm-mc-header">
     <div class="trm-avatar-frame trm-mb-20">
-        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar1.jpg">
     </div>
     <h5 class="trm-name trm-mb-15">
         UUOVO
@@ -308,24 +432,12 @@
 <div class="trm-divider trm-mb-40 trm-mt-40"></div>
 <div class="trm-social">
     
-        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+        <a href="https://github.com/UUOVO" title="Github" rel="nofollow" target="_blank">
             <i class="iconfont fab fa-github"></i>
         </a>
     
-        <a href="https://gitee.com/" title="Gitee" rel="nofollow" target="_blank">
+        <a href="https://gitee.com/ovouu" title="Gitee" rel="nofollow" target="_blank">
             <i class="iconfont fab fa-google"></i>
-        </a>
-    
-        <a href="https://zh-hans.react.dev/" title="React" rel="nofollow" target="_blank">
-            <i class="iconfont fab fa-react"></i>
-        </a>
-    
-        <a href="https://zh.javascript.info/" title="Javascript" rel="nofollow" target="_blank">
-            <i class="iconfont fab fa-node-js"></i>
-        </a>
-    
-        <a href="https://nodejs.cn/" title="Node" rel="nofollow" target="_blank">
-            <i class="iconfont fab fa-node"></i>
         </a>
     
 </div>
@@ -377,13 +489,7 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
-<li><a href="#ref1">DOM</a></li>
-<li><a href="#ref2">事件</a></li>
-<li><a href="#ref3">文档的加载</a></li>
-<li><a href="#ref4">BOM</a></li>
-</ul>
-<h1 id="DOM-Document-Object-Model"><a href="#DOM-Document-Object-Model" class="headerlink" title="DOM( Document Object Model)"></a><p id="ref1">DOM( Document Object Model)</p></h1><blockquote>
+    <h1 id="DOM-Document-Object-Model"><a href="#DOM-Document-Object-Model" class="headerlink" title="DOM( Document Object Model)"></a>DOM( Document Object Model)</h1><blockquote>
 <p>文档对象模型，通过 DOM 可以来任意来修改网页中各个内容</p>
 </blockquote>
 <ul>
@@ -582,7 +688,7 @@
 </ul>
 </li>
 </ul>
-<h1 id="事件（Event）"><a href="#事件（Event）" class="headerlink" title="事件（Event）"></a><p id="ref2">事件（Event）</p></h1><blockquote>
+<h1 id="事件（Event）"><a href="#事件（Event）" class="headerlink" title="事件（Event）"></a>事件（Event）</h1><blockquote>
 <p>事件指的是用户和浏览器之间的交互行为。比如：点击按钮、关闭窗口、鼠标移动等</p>
 </blockquote>
 <hr>
@@ -741,7 +847,7 @@
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> box1 = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;box1&quot;</span>);</span><br><span class="line">	<span class="keyword">var</span> box2 = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;box2&quot;</span>);</span><br><span class="line">	<span class="keyword">var</span> img1 = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;img1&quot;</span>);</span><br><span class="line">	<span class="comment">//开启box1的拖拽</span></span><br><span class="line">	<span class="title function_">drag</span>(box1);</span><br><span class="line">	<span class="comment">//开启box2的</span></span><br><span class="line">	<span class="title function_">drag</span>(box2);</span><br><span class="line">	<span class="title function_">drag</span>(img1);</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	* 提取一个专门用来设置拖拽的函数</span></span><br><span class="line"><span class="comment">	* 参数：开启拖拽的元素</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">drag</span>(<span class="params">obj</span>)&#123;</span><br><span class="line">		obj.<span class="property">onmousedown</span> = <span class="keyword">function</span>(<span class="params">event</span>)&#123;</span><br><span class="line">		<span class="comment">// 设置box1捕获所有鼠标按下的事件</span></span><br><span class="line">		<span class="comment">/*</span></span><br><span class="line"><span class="comment">		 * setCapture()</span></span><br><span class="line"><span class="comment">		 * 	- 只有IE支持，但是在火狐中调用时不会报错，而如果使用chrome调用，会报错</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		obj.<span class="property">setCapture</span> &amp;&amp; obj.<span class="title function_">setCapture</span>();</span><br><span class="line">		event = event || <span class="variable language_">window</span>.<span class="property">event</span>;</span><br><span class="line">		<span class="comment">// div的偏移量 鼠标.clentX - 元素.offsetLeft</span></span><br><span class="line">		<span class="comment">// div的偏移量 鼠标.clentY - 元素.offsetTop</span></span><br><span class="line">		<span class="keyword">var</span> ol = event.<span class="property">clientX</span> - obj.<span class="property">offsetLeft</span>;</span><br><span class="line">		<span class="keyword">var</span> ot = event.<span class="property">clientY</span> - obj.<span class="property">offsetTop</span>;</span><br><span class="line">		<span class="comment">// 为document绑定一个onmousemove事件</span></span><br><span class="line">		<span class="variable language_">document</span>.<span class="property">onmousemove</span> = <span class="keyword">function</span>(<span class="params">event</span>)&#123;</span><br><span class="line">			event = event || <span class="variable language_">window</span>.<span class="property">event</span>;</span><br><span class="line">			<span class="comment">// 当鼠标移动时被拖拽元素跟随鼠标移动 onmousemove</span></span><br><span class="line">			<span class="comment">// 获取鼠标的坐标</span></span><br><span class="line">			<span class="keyword">var</span> left = event.<span class="property">clientX</span> - ol;</span><br><span class="line">			<span class="keyword">var</span> top = event.<span class="property">clientY</span> - ot;</span><br><span class="line">			<span class="comment">// 修改box1的位置</span></span><br><span class="line">			obj.<span class="property">style</span>.<span class="property">left</span> = left+<span class="string">&quot;px&quot;</span>;</span><br><span class="line">			obj.<span class="property">style</span>.<span class="property">top</span> = top+<span class="string">&quot;px&quot;</span>;</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="comment">// 为document绑定一个鼠标松开事件</span></span><br><span class="line">		<span class="variable language_">document</span>.<span class="property">onmouseup</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">			<span class="comment">// 当鼠标松开时，被拖拽元素固定在当前位置	onmouseup</span></span><br><span class="line">			<span class="comment">// 取消document的onmousemove事件</span></span><br><span class="line">			<span class="variable language_">document</span>.<span class="property">onmousemove</span> = <span class="literal">null</span>;</span><br><span class="line">			<span class="comment">// 取消document的onmouseup事件</span></span><br><span class="line">			<span class="variable language_">document</span>.<span class="property">onmouseup</span> = <span class="literal">null</span>;</span><br><span class="line">			<span class="comment">// 当鼠标松开时，取消对事件的捕获</span></span><br><span class="line">			obj.<span class="property">releaseCapture</span> &amp;&amp; obj.<span class="title function_">releaseCapture</span>();</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="comment">/*</span></span><br><span class="line"><span class="comment">		 * 当我们拖拽一个网页中的内容时，浏览器会默认去搜索引擎中搜索内容，</span></span><br><span class="line"><span class="comment">		 * 	此时会导致拖拽功能的异常，这个是浏览器提供的默认行为，</span></span><br><span class="line"><span class="comment">		 * 	可以通过return false来取消默认行为，但是这招对IE8不起作用</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;;</span><br></pre></td></tr></table></figure>
 
-<h1 id="文档的加载"><a href="#文档的加载" class="headerlink" title="文档的加载"></a><p id="ref3">文档的加载</p></h1><ul>
+<h1 id="文档的加载"><a href="#文档的加载" class="headerlink" title="文档的加载"></a>文档的加载</h1><ul>
 <li>浏览器在加载一个页面时，是按照自上向下的顺序加载的，加载一行执行一行。</li>
 <li>如果将 js 代码编写到页面的上边，当代码执行时，页面中的 DOM 对象还没有加载，<br>此时将会无法正常获取到 DOM 对象，导致 DOM 操作失败。</li>
 <li>解决方式一：<ul>
@@ -762,7 +868,7 @@
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	<span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">		<span class="keyword">var</span> btn = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;btn&quot;</span>);</span><br><span class="line">		btn.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;&#125;;</span><br><span class="line">	&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
-<h1 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a><p id="ref4">BOM</p></h1><blockquote>
+<h1 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h1><blockquote>
 <p>浏览器对象模型</p>
 </blockquote>
 <ul>
@@ -855,14 +961,14 @@
         <a href="/2024/10/31/JS/JS-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="trm-cover-frame trm-anima-link">
             
             
-                <img alt="cover" class="no-fancybox" src="https://img.tukuppt.com/photo-big/00/00/74/6152d9dc09d26908.jpg">
+                <div class="trm-cover-img" data-random-img></div>
             
         </a>
         
         <div class="trm-card-descr">
             <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/js/">
-                    js
+                <a href=" /categories/JavaScript/">
+                    JavaScript
                 </a>
             </div>
             <h5>
@@ -875,6 +981,10 @@
                 <li>24/10/31</li>
                 <li>11:05</li>
                 
+                    <li>2.3k</li>
+                
+                
+                    <li>9</li>
                 
             </ul>
         </div>
@@ -887,14 +997,14 @@
         <a href="/2024/10/31/JS/JS-%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%B9%E6%B3%95/" class="trm-cover-frame trm-anima-link">
             
             
-                <img alt="cover" class="no-fancybox" src="https://img.tukuppt.com/photo-big/00/00/74/6152d9dc09d26908.jpg">
+                <div class="trm-cover-img" data-random-img></div>
             
         </a>
         
         <div class="trm-card-descr">
             <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/js/">
-                    js
+                <a href=" /categories/JavaScript/">
+                    JavaScript
                 </a>
             </div>
             <h5>
@@ -907,6 +1017,10 @@
                 <li>24/10/31</li>
                 <li>11:05</li>
                 
+                    <li>1.5k</li>
+                
+                
+                    <li>5</li>
                 
             </ul>
         </div>
@@ -975,7 +1089,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="目录"><a rel="nofollow" class="trm-toc-link" href="#目录"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">目录</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-1" title="DOM( Document Object Model)"><a rel="nofollow" class="trm-toc-link" href="#DOM-Document-Object-Model"><span class="trm-toc-number"></span> <span class="trm-toc-text">DOM( Document Object Model)</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="DOM 操作"><a rel="nofollow" class="trm-toc-link" href="#DOM-操作"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">DOM 操作</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="document 查询方法："><a rel="nofollow" class="trm-toc-link" href="#document-查询方法："><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">document 查询方法：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="具体的元素节点查询"><a rel="nofollow" class="trm-toc-link" href="#具体的元素节点查询"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">具体的元素节点查询</span></a></li><li class="trm-toc-item trm-toc-level-3" title="DOM 修改"><a rel="nofollow" class="trm-toc-link" href="#DOM-修改"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">DOM 修改</span></a></li><li class="trm-toc-item trm-toc-level-3" title="元素的属性"><a rel="nofollow" class="trm-toc-link" href="#元素的属性"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">元素的属性</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用 DOM 操作 CSS"><a rel="nofollow" class="trm-toc-link" href="#使用-DOM-操作-CSS"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">使用 DOM 操作 CSS</span></a></li></ol></li></ol></li><li class="trm-toc-item trm-toc-level-1" title="事件（Event）"><a rel="nofollow" class="trm-toc-link" href="#事件（Event）"><span class="trm-toc-number"></span> <span class="trm-toc-text">事件（Event）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="事件对象"><a rel="nofollow" class="trm-toc-link" href="#事件对象"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">事件对象</span></a></li><li class="trm-toc-item trm-toc-level-2" title="事件的冒泡（Bubble）"><a rel="nofollow" class="trm-toc-link" href="#事件的冒泡（Bubble）"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">事件的冒泡（Bubble）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="事件的委派"><a rel="nofollow" class="trm-toc-link" href="#事件的委派"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">事件的委派</span></a></li><li class="trm-toc-item trm-toc-level-2" title="事件的绑定"><a rel="nofollow" class="trm-toc-link" href="#事件的绑定"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">事件的绑定</span></a></li><li class="trm-toc-item trm-toc-level-2" title="事件的传播"><a rel="nofollow" class="trm-toc-link" href="#事件的传播"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">事件的传播</span></a></li><li class="trm-toc-item trm-toc-level-2" title="滚轮事件"><a rel="nofollow" class="trm-toc-link" href="#滚轮事件"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">滚轮事件</span></a></li><li class="trm-toc-item trm-toc-level-2" title="键盘事件"><a rel="nofollow" class="trm-toc-link" href="#键盘事件"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">键盘事件</span></a></li><li class="trm-toc-item trm-toc-level-2" title="拖拽事件"><a rel="nofollow" class="trm-toc-link" href="#拖拽事件"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">拖拽事件</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-1" title="文档的加载"><a rel="nofollow" class="trm-toc-link" href="#文档的加载"><span class="trm-toc-number"></span> <span class="trm-toc-text">文档的加载</span></a></li><li class="trm-toc-item trm-toc-level-1" title="BOM"><a rel="nofollow" class="trm-toc-link" href="#BOM"><span class="trm-toc-number"></span> <span class="trm-toc-text">BOM</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="BOM 对象"><a rel="nofollow" class="trm-toc-link" href="#BOM-对象"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">BOM 对象</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-1" title="DOM( Document Object Model)"><a rel="nofollow" class="trm-toc-link" href="#DOM-Document-Object-Model"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">DOM( Document Object Model)</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="DOM 操作"><a rel="nofollow" class="trm-toc-link" href="#DOM-操作"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">DOM 操作</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="document 查询方法："><a rel="nofollow" class="trm-toc-link" href="#document-查询方法："><span class="trm-toc-number">1.1.1.</span> <span class="trm-toc-text">document 查询方法：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="具体的元素节点查询"><a rel="nofollow" class="trm-toc-link" href="#具体的元素节点查询"><span class="trm-toc-number">1.1.2.</span> <span class="trm-toc-text">具体的元素节点查询</span></a></li><li class="trm-toc-item trm-toc-level-3" title="DOM 修改"><a rel="nofollow" class="trm-toc-link" href="#DOM-修改"><span class="trm-toc-number">1.1.3.</span> <span class="trm-toc-text">DOM 修改</span></a></li><li class="trm-toc-item trm-toc-level-3" title="元素的属性"><a rel="nofollow" class="trm-toc-link" href="#元素的属性"><span class="trm-toc-number">1.1.4.</span> <span class="trm-toc-text">元素的属性</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用 DOM 操作 CSS"><a rel="nofollow" class="trm-toc-link" href="#使用-DOM-操作-CSS"><span class="trm-toc-number">1.1.5.</span> <span class="trm-toc-text">使用 DOM 操作 CSS</span></a></li></ol></li></ol></li><li class="trm-toc-item trm-toc-level-1" title="事件（Event）"><a rel="nofollow" class="trm-toc-link" href="#事件（Event）"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">事件（Event）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="事件对象"><a rel="nofollow" class="trm-toc-link" href="#事件对象"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">事件对象</span></a></li><li class="trm-toc-item trm-toc-level-2" title="事件的冒泡（Bubble）"><a rel="nofollow" class="trm-toc-link" href="#事件的冒泡（Bubble）"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">事件的冒泡（Bubble）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="事件的委派"><a rel="nofollow" class="trm-toc-link" href="#事件的委派"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">事件的委派</span></a></li><li class="trm-toc-item trm-toc-level-2" title="事件的绑定"><a rel="nofollow" class="trm-toc-link" href="#事件的绑定"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">事件的绑定</span></a></li><li class="trm-toc-item trm-toc-level-2" title="事件的传播"><a rel="nofollow" class="trm-toc-link" href="#事件的传播"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">事件的传播</span></a></li><li class="trm-toc-item trm-toc-level-2" title="滚轮事件"><a rel="nofollow" class="trm-toc-link" href="#滚轮事件"><span class="trm-toc-number">2.6.</span> <span class="trm-toc-text">滚轮事件</span></a></li><li class="trm-toc-item trm-toc-level-2" title="键盘事件"><a rel="nofollow" class="trm-toc-link" href="#键盘事件"><span class="trm-toc-number">2.7.</span> <span class="trm-toc-text">键盘事件</span></a></li><li class="trm-toc-item trm-toc-level-2" title="拖拽事件"><a rel="nofollow" class="trm-toc-link" href="#拖拽事件"><span class="trm-toc-number">2.8.</span> <span class="trm-toc-text">拖拽事件</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-1" title="文档的加载"><a rel="nofollow" class="trm-toc-link" href="#文档的加载"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">文档的加载</span></a></li><li class="trm-toc-item trm-toc-level-1" title="BOM"><a rel="nofollow" class="trm-toc-link" href="#BOM"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">BOM</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="BOM 对象"><a rel="nofollow" class="trm-toc-link" href="#BOM-对象"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">BOM 对象</span></a></li></ol></li></ol>
       </div>
     </div>
 
@@ -992,6 +1106,10 @@
         </div>
     
     
+        <div class="trm-fixed-btn hidden-md" data-title="Toggle between single-column and double-column" onclick="asyncFun.switchSingleColumn()">
+            <i class="iconfont fas fa-arrows-alt-h"></i>
+        </div>
+    
     <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
         <i class="iconfont fas fa-arrow-up"></i>
     </div>
@@ -1003,6 +1121,43 @@
   <!-- app wrapper end -->
 
   
+    <div class="trm-search-popup">
+        <div class="trm-search-wrapper">
+            <div class="form trm-search-form">
+                <div class="trm-search-input-icon">
+                    <i class="iconfont fas fa-search"></i>
+                </div>
+                <input class="trm-search-input" type="text" placeholder="Searching...">
+                <div class="trm-search-btn-close">
+                    <i class="iconfont fas fa-times"></i>
+                </div>
+            </div>
+            <div class="trm-search-result-container">
+                <div class="trm-search-empty">
+                    Please enter keywords to search
+                </div>
+            </div>
+            <div class="trm-search-footer">
+                <div class="trm-search-stats"></div>
+                <ul class="trm-search-commands">
+                    <li>
+                        <kbd class="command-palette-commands-key">
+                            <svg width="15" height="15" aria-label="Escape key" role="img">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.2">
+                                    <path
+                                        d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956">
+                                    </path>
+                                </g>
+                            </svg>
+                        </kbd>
+                        <span class="command-palette-Label">to close</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
   <!-- Plugin -->
 
 
@@ -1021,6 +1176,11 @@
     
 
     
+        
+<script src="https://unpkg.com/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+
+        <script src="/js/plugins/local_search.js?v=2.2.3"></script>
+    
 
     <!-- 数学公式 -->
     
@@ -1032,6 +1192,8 @@
         
     
 
+		
+			<script src="/js/plugins/danmu.js?v=2.2.3"></script>
 		
 
 
