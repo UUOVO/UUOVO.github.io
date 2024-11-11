@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="zh-Hans,en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="创建一个正则表达式 方法一：使用正则表达式字面量 示例： const reg &#x3D; &#x2F;正则表达式&#x2F;匹配模式   方法二：调用 RegExp 对象的构造函数 示例：const reg &#x3D; new RegExp(“正则表达式”,”匹配模式(可选)”)   注：使用 typeof 检查正则对象，会返回 object  匹配模式 i：忽略大小写 g：全局匹配模式 m：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS-正则表达式">
+<meta property="og:url" content="http://example.com/en/2024/10/31/JS/JS-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="创建一个正则表达式 方法一：使用正则表达式字面量 示例： const reg &#x3D; &#x2F;正则表达式&#x2F;匹配模式   方法二：调用 RegExp 对象的构造函数 示例：const reg &#x3D; new RegExp(“正则表达式”,”匹配模式(可选)”)   注：使用 typeof 检查正则对象，会返回 object  匹配模式 i：忽略大小写 g：全局匹配模式 m：">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-31T03:05:32.028Z">
+<meta property="article:modified_time" content="2024-11-05T06:18:59.772Z">
+<meta property="article:author" content="UUOVO">
+<meta property="article:tag" content="正则表达式">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="js,正则表达式">
+
+
+<title >JS-正则表达式</title>
+
+<!-- Favicon -->
+
+    <link href='/img/sitelogo16.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/sitelogo32.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/apple-touch-icon.png?v=2.2.3' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-05 14:18:59"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/sitelogo32.svg">
+    
+    
+        <div class="trm-logo-text">
+            UU<span>OVO</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/tags/" target="">
+                            标签
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" target="">
+                            微信小程序
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%B7%A5%E5%85%B7/" target="">
+                            前端工程化工具
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/React/" target="">
+                            React
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/VUE/" target="">
+                            VUE
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/TypeScript/" target="">
+                            TypeScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JavaScript/" target="">
+                            JavaScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/CSS&HTML/" target="">
+                            CSS&HTML
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="">
+                            网络与数据结构
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/uniapp/" target="">
+                            uniapp
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ThreeJS/" target="">
+                            ThreeJS
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/Node/" target="">
+                            Node
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JQuery/" target="">
+                            JQuery
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ES6/" target="">
+                            ES6
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/AJAX/" target="">
+                            AJAX
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/gallery/" target="">
+                    相册
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/gallery/wallpaper/" target="">
+                            相册详情页
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/about/" target="">
+                    关于
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/links/" target="">
+                            友链
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+    
+    <div id="trm-search-btn" class="trm-search-btn">
+        <i class="iconfont fas fa-search"></i>
+    </div>
+     
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            JS-正则表达式
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        en
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar1.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/UUOVO" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/ovouu" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                City:
+            </div>
+            <div class="trm-label trm-label-light">
+                City
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                Age:
+            </div>
+            <div class="trm-label trm-label-light">
+                Age
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:1370203877@qq.com" class="trm-btn">
+            Contact Me
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            10/31
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            11:05
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            UUOVO
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="创建一个正则表达式"><a href="#创建一个正则表达式" class="headerlink" title="创建一个正则表达式"></a>创建一个正则表达式</h2><ul>
+<li><h3 id="方法一：使用正则表达式字面量"><a href="#方法一：使用正则表达式字面量" class="headerlink" title="方法一：使用正则表达式字面量"></a>方法一：使用正则表达式字面量</h3><ul>
+<li>示例： const reg &#x3D; &#x2F;正则表达式&#x2F;匹配模式</li>
+</ul>
+</li>
+<li><h3 id="方法二：调用-RegExp-对象的构造函数"><a href="#方法二：调用-RegExp-对象的构造函数" class="headerlink" title="方法二：调用 RegExp 对象的构造函数"></a>方法二：调用 RegExp 对象的构造函数</h3><ul>
+<li>示例：const reg &#x3D; new RegExp(“正则表达式”,”匹配模式(可选)”)</li>
+</ul>
+</li>
+<li>注：使用 typeof 检查正则对象，会返回 object</li>
+</ul>
+<h2 id="匹配模式"><a href="#匹配模式" class="headerlink" title="匹配模式"></a>匹配模式</h2><ul>
+<li><code>i</code>：忽略大小写</li>
+<li><code>g</code>：全局匹配模式</li>
+<li><code>m</code>：多行匹配，使边界字符 ^ 和 $ 匹配每一行的开头和结尾</li>
+<li><code>s</code>：(es2018)匹配单个字符，与.一起使用，使.代表一切字符，称为 dotAll 模式<ul>
+<li>使用 reg.dotAll 来判断该正则表达式是否处于动 dotAll 模式</li>
+</ul>
+</li>
+</ul>
+<h2 id="正则表达式规则"><a href="#正则表达式规则" class="headerlink" title="正则表达式规则"></a>正则表达式规则</h2><ul>
+<li><code>^</code>：匹配开头</li>
+<li><code>$</code>：匹配结尾</li>
+<li><code>\w</code>：匹配任意字母、数字、_ &#x3D;&#x3D; [A-z0-9_]</li>
+<li><code>\W</code>：匹配除了字母、数字、_ &#x3D;&#x3D; [^A-z0-9_]</li>
+<li><code>\d</code>：匹配任意的数字 &#x3D;&#x3D; [0-9]</li>
+<li><code>\D</code>：匹配除了数字 &#x3D;&#x3D; [^0-9]</li>
+<li><code>\s</code>：匹配空格</li>
+<li><code>\S</code>：匹配除了空格</li>
+<li><code>\b</code>：单词边界（在单词两边使用，表示在这个字符串中完整匹配这个单词）</li>
+<li><code>\B</code>：匹配除了单词边界</li>
+<li><code>[a-z]</code>：任意小写字母</li>
+<li><code>[A-Z]</code>：任意大写字母</li>
+<li><code>[A-z]</code>：任意字母</li>
+<li><code>[0-9]</code>：任意数字</li>
+<li><code>[ ]</code>：匹配括号内的任意一个字符。</li>
+<li><code>[^ ]</code>：匹配除了括号内的字符以外的任意一个字符</li>
+</ul>
+<h2 id="量词-—-只对它前边的一个内容起作用"><a href="#量词-—-只对它前边的一个内容起作用" class="headerlink" title="量词 — 只对它前边的一个内容起作用"></a>量词 — 只对它前边的一个内容起作用</h2><ul>
+<li><code>&#123;n&#125;</code>：正好出现 n 次</li>
+<li><code>&#123;m,n&#125;</code>：出现 m-n 次</li>
+<li><code>&#123;m,&#125;</code>：m 次以上</li>
+<li><code>+</code>：至少一个 &#x3D;&#x3D; {1,}</li>
+<li><code>*</code>：0 个或多个 &#x3D;&#x3D; {0,}</li>
+<li><code>?</code>：0 个或 1 个 &#x3D;&#x3D; {0,1}</li>
+<li><code>.</code>：表示任意字符(除了换行符)</li>
+<li>注：<code>*、+</code> 都是贪婪的，<code>会尽可能匹配更多的文字</code>，在它们<code>后面加上？</code>就可以实现非贪婪或<code>最小匹配</code></li>
+</ul>
+<h2 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h2><ul>
+<li><code>\</code>: 转义字符，用于匹配特殊字符本身</li>
+<li><code>|</code> ：用于指定多个模式的选择</li>
+<li><code>( )</code>：用于分组和捕获子表达式</li>
+<li><code>(?: )</code>：用于分组但不捕获子表达式</li>
+<li><code>?=</code>：exp1(?&#x3D;exp2)：查找 exp2 前面的 exp1，即<code>先行断言</code></li>
+<li><code>?&lt;=</code>：(?&lt;&#x3D;exp2)exp1：查找 exp2 后面的 exp1，即<code>后行断言</code>，es2018</li>
+<li><code>?!</code>：exp1(?!exp2)：查找后面不是 exp2 的 exp1，即<code>先行否定断言</code></li>
+<li><code>?&lt;!</code>：exp1(?&lt;!exp2)：查找前面不是 exp2 的 exp1，即<code>后行否定断言</code>，es2018</li>
+<li><code>\1</code>：指定第一个子匹配项。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eg1</span>:去除开头的空格</span><br><span class="line">str = str.<span class="title function_">replace</span>(<span class="regexp">/^\s*/</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line"><span class="attr">eg2</span>:去除结尾的空格</span><br><span class="line">str = str.<span class="title function_">replace</span>(<span class="regexp">/\s*$/</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line"><span class="attr">eg3</span>:<span class="string">`/^\s*`</span> | <span class="string">`\s*$/g`</span> 匹配开头和结尾的空格</span><br><span class="line">str = str.<span class="title function_">replace</span>(<span class="regexp">/^\s* | \s*$/g</span>, <span class="string">&quot;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="常见的匹配规则"><a href="#常见的匹配规则" class="headerlink" title="常见的匹配规则"></a>常见的匹配规则</h2><ul>
+<li>匹配 HTML 标记 — <code>&lt;[a-zA-Z]+.*?&gt;([\s\S]*?)&lt;/[a-zA-Z]*?&gt;</code></li>
+<li>匹配空行 — <code>/^\s*$/</code></li>
+<li>一个单词连续出现的位置 — <code>/\b([a-z]+) \1\b/gi</code></li>
+<li>匹配一个 URL 解析为协议、域、端口及相对路径 — <code>/(\w+):\/\/([^/:]+)(:\d*)?([^# ]*)/</code></li>
+<li>定位章节的位置 — <code>/^(?:Chapter|Section) [1-9][0-9]&#123;0,1&#125;$/</code></li>
+</ul>
+<h2 id="合法手机号"><a href="#合法手机号" class="headerlink" title="合法手机号"></a>合法手机号</h2><ul>
+<li>手机号的规则：<ol>
+<li>以 1 开头</li>
+<li>第二位 3-9 任意数字</li>
+<li>三位以后任意数字 9 个</li>
+</ol>
+</li>
+<li>匹配模式：<code>/^1[3-9][0-9]&#123;9&#125;$/</code></li>
+</ul>
+<h2 id="邮箱"><a href="#邮箱" class="headerlink" title="邮箱"></a>邮箱</h2><ul>
+<li>邮件的规则：<ol>
+<li>前边可以是任意字符</li>
+<li>跟着一个@</li>
+<li>后边可以是任意字符</li>
+<li>后面是.com | .cn 等</li>
+</ol>
+</li>
+<li>匹配模式：<code>[\w.%+-]+@[\w.-]+(\.[A-z]&#123;2,5&#125;)&#123;1,2&#125;$</code></li>
+</ul>
+<h2 id="字符串的正则方法"><a href="#字符串的正则方法" class="headerlink" title="字符串的正则方法"></a>字符串的正则方法</h2><ul>
+<li><h3 id="exec"><a href="#exec" class="headerlink" title="exec()"></a>exec()</h3><ul>
+<li>在字符串中搜索匹配,返回一个结果数组或 null</li>
+</ul>
+</li>
+<li><h3 id="matchAll"><a href="#matchAll" class="headerlink" title="matchAll()"></a>matchAll()</h3><ul>
+<li>可以一次性取出所有匹配,返回的是一个遍历器。正则表达式必须使用全局匹配模式</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> string = <span class="string">&#x27;test1test2test3&#x27;</span></span><br><span class="line"><span class="keyword">const</span> regex = <span class="regexp">/t(e)(st(\d?))/g</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> match <span class="keyword">of</span> string.<span class="title function_">matchAll</span>(regex)) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(match)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="match"><a href="#match" class="headerlink" title="match()"></a>match()</h3><ul>
+<li>从字符串中将符合正则表达式规则的内容中，返回数组或 null</li>
+<li>默认，仅返回第一个匹配的结果 &#x3D;&#x3D; exec()方法</li>
+<li>使用全局匹配模式 g，返回与完整正则表达式匹配的所有结果 &#x3D;&#x3D; matchAll()</li>
+</ul>
+</li>
+<li><h3 id="test"><a href="#test" class="headerlink" title="test()"></a>test()</h3><ul>
+<li>用来查看正则表达式与指定的字符串是否匹配,返回 true 或 false</li>
+</ul>
+</li>
+<li><h3 id="search"><a href="#search" class="headerlink" title="search()"></a>search()</h3><ul>
+<li>可以搜索字符串中是否含有指定内容,返回索引值</li>
+<li>如果搜索到指定内容，则会返回第一次出现的索引，如果没有搜索到返回-1</li>
+<li>注：serach()只会查找第一个，即使设置全局匹配也没用</li>
+</ul>
+</li>
+<li><h3 id="replace"><a href="#replace" class="headerlink" title="replace()"></a>replace()</h3><ul>
+<li>可以将字符串中指定内容替换为新的内容，返回字符串</li>
+<li>参数：</li>
+</ul>
+<ul>
+<li>被替换的内容，可以接受一个正则表达式作为参数</li>
+<li>新的内容</li>
+</ul>
+</li>
+<li><h3 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h3><ul>
+<li>可以将一个字符串拆分为一个数组</li>
+<li>如果传递一个空串作为参数，则会将每个字符都拆分为数组中的一个元素</li>
+</ul>
+</li>
+</ul>
+<h2 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h2><ul>
+<li><h3 id="U-修饰符"><a href="#U-修饰符" class="headerlink" title="U 修饰符"></a>U 修饰符</h3><ul>
+<li>es6 新增，末尾加 u，代表 Unicode 模式（正确识别码点大于 0xFFFF 的 Unicode 字符）</li>
+</ul>
+</li>
+<li><h3 id="i-修饰符-u-修饰符"><a href="#i-修饰符-u-修饰符" class="headerlink" title="i 修饰符 + u 修饰符"></a>i 修饰符 + u 修饰符</h3><ul>
+<li>可以识别非规范的 K 字符</li>
+</ul>
+</li>
+<li><h3 id="点字符-u-修饰符"><a href="#点字符-u-修饰符" class="headerlink" title="点字符 + u 修饰符"></a>点字符 + u 修饰符</h3><ul>
+<li>识别码点大于 0xFFFF 的 Unicode 字符</li>
+</ul>
+</li>
+<li><h3 id="使用大括号表示-Unicode-字符，在正则表达式中必须加上-u-修饰符，否则大括号内容识别成量词"><a href="#使用大括号表示-Unicode-字符，在正则表达式中必须加上-u-修饰符，否则大括号内容识别成量词" class="headerlink" title="使用大括号表示 Unicode 字符，在正则表达式中必须加上 u 修饰符，否则大括号内容识别成量词"></a>使用大括号表示 Unicode 字符，在正则表达式中必须加上 u 修饰符，否则大括号内容识别成量词</h3><ul>
+<li>示例：&#x2F;\u{61}&#x2F;u.test(‘a’) &#x2F;&#x2F; true</li>
+</ul>
+</li>
+<li><h3 id="使用-u-修饰符，量词会正确识别-Unicode-字符"><a href="#使用-u-修饰符，量词会正确识别-Unicode-字符" class="headerlink" title="使用 u 修饰符，量词会正确识别 Unicode 字符"></a>使用 u 修饰符，量词会正确识别 Unicode 字符</h3></li>
+<li><h3 id="S-u-test-‘𠮷’"><a href="#S-u-test-‘𠮷’" class="headerlink" title="&#x2F;^\S$&#x2F;u.test(‘𠮷’)"></a>&#x2F;^\S$&#x2F;u.test(‘𠮷’)</h3><ul>
+<li>&#x2F;S 匹配所有非空白字符，加了 u，能正确匹配码点大于 0xFFFF 的 Unicode 字符</li>
+</ul>
+</li>
+<li><h3 id="RegExp-prototype-unicode-属性"><a href="#RegExp-prototype-unicode-属性" class="headerlink" title="RegExp.prototype.unicode 属性"></a>RegExp.prototype.unicode 属性</h3><ul>
+<li>判断是否加了 u 修饰符</li>
+</ul>
+</li>
+<li><h3 id="y修饰符"><a href="#y修饰符" class="headerlink" title="y修饰符"></a><code>y修饰符</code></h3><ul>
+<li><code>全局匹配</code>，后一次匹配都从上一次匹配成功的下一个位置开始[<code>必须从剩余的第一个位置开始</code>]</li>
+<li>reg.lastIndex — 指定从那个位置开始匹配，但<code>必须从这个位置发现匹配</code></li>
+<li>reg.sticky — 表示是否设置了 y 修饰符。</li>
+<li>reg.flags — 返回正则表达式的修饰符</li>
+</ul>
+</li>
+<li><p>示例：</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> s = <span class="string">&#x27;aaa_aa_a&#x27;</span></span><br><span class="line">/a+<span class="regexp">/g.exec(s) /</span>/ 第一回：aaa，第二回：aa</span><br><span class="line">/a+<span class="regexp">/y.exec(s) /</span>/ 第一回：aaa，第二回：<span class="literal">null</span></span><br><span class="line"><span class="comment">// y修饰符+ g修饰符 ：已数组的形式返回所有符合y修饰符规则的元素</span></span><br><span class="line"><span class="string">&#x27;a1a2a3&#x27;</span>.<span class="title function_">match</span>(<span class="regexp">/a\d/y</span>) <span class="comment">// [&quot;a1&quot;]</span></span><br><span class="line"><span class="string">&#x27;a1a2a3&#x27;</span>.<span class="title function_">match</span>(<span class="regexp">/a\d/gy</span>) <span class="comment">// [&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="修饰符-g-与修饰符-y-区别："><a href="#修饰符-g-与修饰符-y-区别：" class="headerlink" title="修饰符 g 与修饰符 y 区别："></a>修饰符 g 与修饰符 y 区别：</h3><ul>
+<li>g：可以在剩余的位置中只要找到对应的内容，就匹配返回</li>
+<li>y：必须从剩余第一位匹配，如果第一位不是就返回 null</li>
+</ul>
+</li>
+<li><h3 id="v-修饰符：属性类的运算"><a href="#v-修饰符：属性类的运算" class="headerlink" title="v 修饰符：属性类的运算"></a><code>v 修饰符</code>：属性类的运算</h3><ul>
+<li>前提： 正则表达式必须使用 v 修饰符。</li>
+<li>差集运算（A 减去 B）：[A–B]</li>
+<li>交集运算（A 与 B 的交集）：[A&amp;&amp;B]</li>
+<li>示例：[\p{Decimal_Number}–[0-9]] &#x2F;&#x2F; 十进制去除 ASCII 码的 0 到 9</li>
+</ul>
+</li>
+<li><h3 id="d修饰符：-正则匹配索引"><a href="#d修饰符：-正则匹配索引" class="headerlink" title="d修饰符： 正则匹配索引"></a><code>d修饰符</code>： 正则匹配索引</h3><ul>
+<li>让<code>exec()</code>、<code>match()</code>的返回结果<code>添加indices</code>属性，在该属性上可以拿到<code>匹配的开始位置</code>和<code>结束位置</code></li>
+<li>注：开始位置包含在匹配结果之中，相当于匹配结果的第一个字符的位置。但是，结束位置不包含在匹配结果之中，是匹配结果的下一个字符。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> text = <span class="string">&#x27;zabbcdef&#x27;</span></span><br><span class="line"><span class="keyword">const</span> re = <span class="regexp">/ab+(cd)/</span>d</span><br><span class="line"><span class="keyword">const</span> result = re.<span class="title function_">exec</span>(text)</span><br><span class="line"><span class="comment">// 匹配ab到cd的开始和cd的开始</span></span><br><span class="line">result.<span class="property">indices</span> <span class="comment">// [ [ 1, 6 ], [ 4, 6 ] ]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Unicode-属性类"><a href="#Unicode-属性类" class="headerlink" title="Unicode 属性类"></a>Unicode 属性类</h2><ul>
+<li>默认是 <code>\u&#123;…&#125;</code></li>
+<li>es2018，<code>\p&#123;…&#125;</code>：匹配满足条件的所有字符。（加上 u 修饰符）</li>
+<li>es2018，<code>\P&#123;…&#125;</code>：是<code>\p&#123;…&#125;</code>的<code>反向匹配</code>，即匹配不满足条件的所有字符。（加上 u 修饰符）</li>
+<li>标准形式：<ul>
+<li>\p{UnicodePropertyName&#x3D;UnicodePropertyValue}</li>
+<li>可以只写属性名或属性值</li>
+</ul>
+</li>
+<li>示例：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// \p&#123;Number&#125;匹配所有数组，包括罗马数字。</span></span><br><span class="line"><span class="keyword">const</span> regex = <span class="regexp">/^\p&#123;Number&#125;+$/u</span>;</span><br><span class="line"><span class="comment">// 匹配所有空格</span></span><br><span class="line">\p&#123;<span class="title class_">White</span>_Space&#125;</span><br><span class="line"><span class="comment">// 匹配各种文字的所有字母，等同于 Unicode 版的 \w</span></span><br><span class="line">[\p&#123;<span class="title class_">Alphabetic</span>&#125;\p&#123;<span class="title class_">Mark</span>&#125;\p&#123;<span class="title class_">Decimal</span>_Number&#125;\p&#123;<span class="title class_">Connector</span>_Punctuation&#125;\p&#123;<span class="title class_">Join</span>_Control&#125;]</span><br><span class="line"><span class="comment">// 匹配各种文字的所有非字母的字符，等同于 Unicode 版的 \W</span></span><br><span class="line">[^\p&#123;<span class="title class_">Alphabetic</span>&#125;\p&#123;<span class="title class_">Mark</span>&#125;\p&#123;<span class="title class_">Decimal</span>_Number&#125;\p&#123;<span class="title class_">Connector</span>_Punctuation&#125;\p&#123;<span class="title class_">Join</span>_Control&#125;]</span><br><span class="line"><span class="comment">// 匹配 Emoji</span></span><br><span class="line">/\p&#123;<span class="title class_">Emoji</span>_Modifier_Base&#125;\p&#123;<span class="title class_">Emoji</span>_Modifier&#125;?|\p&#123;<span class="title class_">Emoji</span>_Presentation&#125;|\p&#123;<span class="title class_">Emoji</span>&#125;\uFE0F/gu</span><br><span class="line"><span class="comment">// 匹配所有的箭头字符</span></span><br><span class="line"><span class="keyword">const</span> regexArrows = <span class="regexp">/^\p&#123;Block=Arrows&#125;+$/u</span>;</span><br><span class="line">regexArrows.<span class="title function_">test</span>(<span class="string">&#x27;←↑→↓↔↕↖↗↘↙⇏⇐⇑⇒⇓⇔⇕⇖⇗⇘⇙⇧⇩&#x27;</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="具名组匹配"><a href="#具名组匹配" class="headerlink" title="具名组匹配"></a>具名组匹配</h2><ul>
+<li>在<code>圆括号内部</code>，模式的头部添加<code>“问号 + 尖括号 + 组名”</code>（?<year>）</li>
+<li>然后在<code>exec方法</code>返回结果的<code>groups</code>属性上引用该组名。</li>
+<li><code>数字序号</code>引用（matchObj[1]）依然<code>有效</code>。</li>
+<li>如果具名组<code>没有匹配</code>，那么<code>对应的groups</code>对象属性会是<code>undefined</code>,但<code>键名</code>再 groups 始终<code>存在</code>。</li>
+<li>在正则表达式内部引用某个“具名组匹配”，可以使用\k&lt;组名&gt;的写法</li>
+<li>示例：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="variable constant_">RE_DATE</span> = <span class="regexp">/(?&lt;year&gt;\d&#123;4&#125;)-(?&lt;month&gt;\d&#123;2&#125;)-(?&lt;day&gt;\d&#123;2&#125;)/</span></span><br><span class="line"><span class="keyword">const</span> matchObj = <span class="variable constant_">RE_DATE</span>.<span class="title function_">exec</span>(<span class="string">&#x27;1999-12-31&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> year = matchObj.<span class="property">groups</span>.<span class="property">year</span> <span class="comment">// 1999</span></span><br><span class="line"><span class="keyword">const</span> month = matchObj.<span class="property">groups</span>.<span class="property">month</span> <span class="comment">// 12</span></span><br><span class="line"><span class="keyword">const</span> day = matchObj.<span class="property">groups</span>.<span class="property">day</span> <span class="comment">// 31</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">RE_TWICE</span> = <span class="regexp">/^(?&lt;word&gt;[a-z]+)!\k&lt;word&gt;!\1$/</span></span><br><span class="line"><span class="variable constant_">RE_TWICE</span>.<span class="title function_">test</span>(<span class="string">&#x27;abc!abc!abc&#x27;</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="解构赋值和替换"><a href="#解构赋值和替换" class="headerlink" title="解构赋值和替换"></a>解构赋值和替换</h2><ul>
+<li>字符串替换时，使用$&lt;组名&gt;引用具名组。</li>
+<li>示例：<ul>
+<li>let re &#x3D; &#x2F;(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})&#x2F;u;</li>
+<li>‘2015-01-02’.replace(re, ‘$<day>&#x2F;$<month>&#x2F;$<year>‘)</li>
+</ul>
+</li>
+</ul>
+<h2 id="遍历器转为数组"><a href="#遍历器转为数组" class="headerlink" title="遍历器转为数组"></a>遍历器转为数组</h2><ul>
+<li>方法一：[…string.matchAll(regex)]</li>
+<li>方法二：Array.from(string.matchAll(regex))</li>
+</ul>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/31/JS/JS-%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <div class="trm-cover-img" data-random-img></div>
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/JavaScript/">
+                    JavaScript
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/31/JS/JS-%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7/" class="trm-anima-link">
+                    JS-对象高级
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/31</li>
+                <li>11:05</li>
+                
+                    <li>906</li>
+                
+                
+                    <li>3</li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/31/JS/JS-DOM%E5%92%8C%E4%BA%8B%E4%BB%B6/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <div class="trm-cover-img" data-random-img></div>
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/JavaScript/">
+                    JavaScript
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/31/JS/JS-DOM%E5%92%8C%E4%BA%8B%E4%BB%B6/" class="trm-anima-link">
+                    JS-DOM和事件
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/31</li>
+                <li>11:05</li>
+                
+                    <li>5.1k</li>
+                
+                
+                    <li>19</li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+    
+        <div class="trm-footer-item blog-run-long"></div>
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="创建一个正则表达式"><a rel="nofollow" class="trm-toc-link" href="#创建一个正则表达式"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">创建一个正则表达式</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="方法一：使用正则表达式字面量"><a rel="nofollow" class="trm-toc-link" href="#方法一：使用正则表达式字面量"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">方法一：使用正则表达式字面量</span></a></li><li class="trm-toc-item trm-toc-level-3" title="方法二：调用 RegExp 对象的构造函数"><a rel="nofollow" class="trm-toc-link" href="#方法二：调用-RegExp-对象的构造函数"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">方法二：调用 RegExp 对象的构造函数</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="匹配模式"><a rel="nofollow" class="trm-toc-link" href="#匹配模式"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">匹配模式</span></a></li><li class="trm-toc-item trm-toc-level-2" title="正则表达式规则"><a rel="nofollow" class="trm-toc-link" href="#正则表达式规则"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">正则表达式规则</span></a></li><li class="trm-toc-item trm-toc-level-2" title="量词 — 只对它前边的一个内容起作用"><a rel="nofollow" class="trm-toc-link" href="#量词-—-只对它前边的一个内容起作用"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">量词 — 只对它前边的一个内容起作用</span></a></li><li class="trm-toc-item trm-toc-level-2" title="特殊字符"><a rel="nofollow" class="trm-toc-link" href="#特殊字符"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">特殊字符</span></a></li><li class="trm-toc-item trm-toc-level-2" title="常见的匹配规则"><a rel="nofollow" class="trm-toc-link" href="#常见的匹配规则"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">常见的匹配规则</span></a></li><li class="trm-toc-item trm-toc-level-2" title="合法手机号"><a rel="nofollow" class="trm-toc-link" href="#合法手机号"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">合法手机号</span></a></li><li class="trm-toc-item trm-toc-level-2" title="邮箱"><a rel="nofollow" class="trm-toc-link" href="#邮箱"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">邮箱</span></a></li><li class="trm-toc-item trm-toc-level-2" title="字符串的正则方法"><a rel="nofollow" class="trm-toc-link" href="#字符串的正则方法"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">字符串的正则方法</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="exec()"><a rel="nofollow" class="trm-toc-link" href="#exec"><span class="trm-toc-number">9.1.</span> <span class="trm-toc-text">exec()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="matchAll()"><a rel="nofollow" class="trm-toc-link" href="#matchAll"><span class="trm-toc-number">9.2.</span> <span class="trm-toc-text">matchAll()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="match()"><a rel="nofollow" class="trm-toc-link" href="#match"><span class="trm-toc-number">9.3.</span> <span class="trm-toc-text">match()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="test()"><a rel="nofollow" class="trm-toc-link" href="#test"><span class="trm-toc-number">9.4.</span> <span class="trm-toc-text">test()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="search()"><a rel="nofollow" class="trm-toc-link" href="#search"><span class="trm-toc-number">9.5.</span> <span class="trm-toc-text">search()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="replace()"><a rel="nofollow" class="trm-toc-link" href="#replace"><span class="trm-toc-number">9.6.</span> <span class="trm-toc-text">replace()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="split()"><a rel="nofollow" class="trm-toc-link" href="#split"><span class="trm-toc-number">9.7.</span> <span class="trm-toc-text">split()</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="修饰符"><a rel="nofollow" class="trm-toc-link" href="#修饰符"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">修饰符</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="U 修饰符"><a rel="nofollow" class="trm-toc-link" href="#U-修饰符"><span class="trm-toc-number">10.1.</span> <span class="trm-toc-text">U 修饰符</span></a></li><li class="trm-toc-item trm-toc-level-3" title="i 修饰符 + u 修饰符"><a rel="nofollow" class="trm-toc-link" href="#i-修饰符-u-修饰符"><span class="trm-toc-number">10.2.</span> <span class="trm-toc-text">i 修饰符 + u 修饰符</span></a></li><li class="trm-toc-item trm-toc-level-3" title="点字符 + u 修饰符"><a rel="nofollow" class="trm-toc-link" href="#点字符-u-修饰符"><span class="trm-toc-number">10.3.</span> <span class="trm-toc-text">点字符 + u 修饰符</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用大括号表示 Unicode 字符，在正则表达式中必须加上 u 修饰符，否则大括号内容识别成量词"><a rel="nofollow" class="trm-toc-link" href="#使用大括号表示-Unicode-字符，在正则表达式中必须加上-u-修饰符，否则大括号内容识别成量词"><span class="trm-toc-number">10.4.</span> <span class="trm-toc-text">使用大括号表示 Unicode 字符，在正则表达式中必须加上 u 修饰符，否则大括号内容识别成量词</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用 u 修饰符，量词会正确识别 Unicode 字符"><a rel="nofollow" class="trm-toc-link" href="#使用-u-修饰符，量词会正确识别-Unicode-字符"><span class="trm-toc-number">10.5.</span> <span class="trm-toc-text">使用 u 修饰符，量词会正确识别 Unicode 字符</span></a></li><li class="trm-toc-item trm-toc-level-3" title="&#x2F;^\S$&#x2F;u.test(‘𠮷’)"><a rel="nofollow" class="trm-toc-link" href="#S-u-test-‘𠮷’"><span class="trm-toc-number">10.6.</span> <span class="trm-toc-text">&#x2F;^\S$&#x2F;u.test(‘𠮷’)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="RegExp.prototype.unicode 属性"><a rel="nofollow" class="trm-toc-link" href="#RegExp-prototype-unicode-属性"><span class="trm-toc-number">10.7.</span> <span class="trm-toc-text">RegExp.prototype.unicode 属性</span></a></li><li class="trm-toc-item trm-toc-level-3" title="y修饰符"><a rel="nofollow" class="trm-toc-link" href="#y修饰符"><span class="trm-toc-number">10.8.</span> <span class="trm-toc-text">y修饰符</span></a></li><li class="trm-toc-item trm-toc-level-3" title="修饰符 g 与修饰符 y 区别："><a rel="nofollow" class="trm-toc-link" href="#修饰符-g-与修饰符-y-区别："><span class="trm-toc-number">10.9.</span> <span class="trm-toc-text">修饰符 g 与修饰符 y 区别：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="v 修饰符：属性类的运算"><a rel="nofollow" class="trm-toc-link" href="#v-修饰符：属性类的运算"><span class="trm-toc-number">10.10.</span> <span class="trm-toc-text">v 修饰符：属性类的运算</span></a></li><li class="trm-toc-item trm-toc-level-3" title="d修饰符： 正则匹配索引"><a rel="nofollow" class="trm-toc-link" href="#d修饰符：-正则匹配索引"><span class="trm-toc-number">10.11.</span> <span class="trm-toc-text">d修饰符： 正则匹配索引</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="Unicode 属性类"><a rel="nofollow" class="trm-toc-link" href="#Unicode-属性类"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">Unicode 属性类</span></a></li><li class="trm-toc-item trm-toc-level-2" title="具名组匹配"><a rel="nofollow" class="trm-toc-link" href="#具名组匹配"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">具名组匹配</span></a></li><li class="trm-toc-item trm-toc-level-2" title="解构赋值和替换"><a rel="nofollow" class="trm-toc-link" href="#解构赋值和替换"><span class="trm-toc-number">13.</span> <span class="trm-toc-text">解构赋值和替换</span></a></li><li class="trm-toc-item trm-toc-level-2" title="遍历器转为数组"><a rel="nofollow" class="trm-toc-link" href="#遍历器转为数组"><span class="trm-toc-number">14.</span> <span class="trm-toc-text">遍历器转为数组</span></a></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn hidden-md" data-title="Toggle between single-column and double-column" onclick="asyncFun.switchSingleColumn()">
+            <i class="iconfont fas fa-arrows-alt-h"></i>
+        </div>
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+    <div class="trm-search-popup">
+        <div class="trm-search-wrapper">
+            <div class="form trm-search-form">
+                <div class="trm-search-input-icon">
+                    <i class="iconfont fas fa-search"></i>
+                </div>
+                <input class="trm-search-input" type="text" placeholder="Searching...">
+                <div class="trm-search-btn-close">
+                    <i class="iconfont fas fa-times"></i>
+                </div>
+            </div>
+            <div class="trm-search-result-container">
+                <div class="trm-search-empty">
+                    Please enter keywords to search
+                </div>
+            </div>
+            <div class="trm-search-footer">
+                <div class="trm-search-stats"></div>
+                <ul class="trm-search-commands">
+                    <li>
+                        <kbd class="command-palette-commands-key">
+                            <svg width="15" height="15" aria-label="Escape key" role="img">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.2">
+                                    <path
+                                        d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956">
+                                    </path>
+                                </g>
+                            </svg>
+                        </kbd>
+                        <span class="command-palette-Label">to close</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+        
+<script src="https://unpkg.com/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+
+        <script src="/js/plugins/local_search.js?v=2.2.3"></script>
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+			<script src="/js/plugins/danmu.js?v=2.2.3"></script>
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

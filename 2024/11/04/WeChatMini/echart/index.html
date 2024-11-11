@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans,en">
 
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -7,17 +7,17 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="⭐ echarts 初始化篇React+Taro+TS+微信小程序篇 使用分包将对应图形的ec-canvas放在分包组件中 新建一个.tsx后缀的页面，引入ec-canvas中的echarts 定义data类型 初始化data数据、option和charts.init 在页面返回&lt;ec-canvas id&#x3D;&quot;自己定&quot; canvas-id&#x3D;&quot;自己定&quot; e">
+<meta name="description" content="echarts 初始化篇React+Taro+TS+微信小程序篇 使用分包将对应图形的ec-canvas放在分包组件中 新建一个.tsx后缀的页面，引入ec-canvas中的echarts 定义data类型 初始化data数据、option和charts.init 在页面返回&lt;ec-canvas id&#x3D;&quot;自己定&quot; canvas-id&#x3D;&quot;自己定&quot; ec&#x3D;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信小程序-关于Echarts图表的相关内容">
 <meta property="og:url" content="http://example.com/2024/11/04/WeChatMini/echart/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="⭐ echarts 初始化篇React+Taro+TS+微信小程序篇 使用分包将对应图形的ec-canvas放在分包组件中 新建一个.tsx后缀的页面，引入ec-canvas中的echarts 定义data类型 初始化data数据、option和charts.init 在页面返回&lt;ec-canvas id&#x3D;&quot;自己定&quot; canvas-id&#x3D;&quot;自己定&quot; e">
-<meta property="og:locale" content="en_US">
+<meta property="og:description" content="echarts 初始化篇React+Taro+TS+微信小程序篇 使用分包将对应图形的ec-canvas放在分包组件中 新建一个.tsx后缀的页面，引入ec-canvas中的echarts 定义data类型 初始化data数据、option和charts.init 在页面返回&lt;ec-canvas id&#x3D;&quot;自己定&quot; canvas-id&#x3D;&quot;自己定&quot; ec&#x3D;">
+<meta property="og:locale">
 <meta property="og:image" content="http://example.com/img/404.jpg">
 <meta property="article:published_time" content="2024-11-04T01:57:31.851Z">
-<meta property="article:modified_time" content="2024-11-05T03:43:58.209Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:modified_time" content="2024-11-08T06:55:39.474Z">
+<meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="echart">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/img/404.jpg">
@@ -69,8 +69,8 @@
 
 
 <!-- Variable -->
-<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["https://ts1.cn.mm.bing.net/th/id/R-C.b8e84a0907bf9b5128dfa48be0ae48af?rik=tfH6k%2fT3hkauqw&riu=http%3a%2f%2fwww.08lr.cn%2fuploads%2fallimg%2f220330%2f1-2300141M0.jpg&ehk=dR6hTo1o7lNsHkpE62oIzMtJ%2bmxktf7%2fx6tp3Zt2uB8%3d&risl=&pid=ImgRaw&r=0","https://tse2-mm.cn.bing.net/th/id/OIP-C.AUTXb2JnogYGuhh_89lj1gHaHa?rs=1&pid=ImgDetMain","https://img.shetu66.com/2023/04/25/1682391094827084.png","https://ts1.cn.mm.bing.net/th/id/R-C.d88442788ee5a458d50e40f0a8cb1e05?rik=EoPp8GhejYeQfw&riu=http%3a%2f%2fimg.pconline.com.cn%2fimages%2fupload%2fupc%2ftx%2fwallpaper%2f1307%2f10%2fc2%2f23151595_1373424485102.jpg&ehk=J7xq%2f50bCmdD4jUXfnTlau2s5WiVsBxQArAjvJzqIo4%3d&risl=&pid=ImgRaw&r=0","https://tse2-mm.cn.bing.net/th/id/OIP-C.i-rpdJ5FGbHEgzs2aKDZLgHaHa?pid=ImgDet&w=474&h=474&rs=1","https://img.tukuppt.com/photo-big/00/00/74/6152d9dc09d26908.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"placeholder":"搜索文章...","result_placeholder":"请输入关键词进行搜索","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-05 11:43:58"};</script>
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-08 14:55:39"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -143,7 +143,7 @@
     
     
         <div class="trm-logo-text">
-            UUOVO<span>个人站点</span>
+            UU<span>OVO</span>
         </div>
     
 </a>
@@ -295,6 +295,16 @@
                 <a  href="/about/" target="">
                     关于
                 </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/links/" target="">
+                            友链
+                        </a>
+                    </li>
+                    
+                </ul>
                 
             </li>
             
@@ -457,10 +467,38 @@
             </div>
         </li>
     
+        <li>
+            <div class="trm-label">
+                City:
+            </div>
+            <div class="trm-label trm-label-light">
+                City
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                Age:
+            </div>
+            <div class="trm-label trm-label-light">
+                Age
+            </div>
+        </li>
+    
 </ul>
 <!-- info end -->
 
         
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:1370203877@qq.com" class="trm-btn">
+            联系我
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
     </div>
 </div>
                     <!-- main card end -->
@@ -484,13 +522,13 @@
     <div class="col-sm-4">
         <div id="post-author" class="trm-card trm-label trm-label-light text-center">
             <i class="iconfont far fa-user trm-icon"></i><br>
-            John Doe
+            UUOVO
         </div>
     </div>
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <h2 id="⭐-echarts-初始化篇"><a href="#⭐-echarts-初始化篇" class="headerlink" title="⭐ echarts 初始化篇"></a>⭐ echarts 初始化篇</h2><h3 id="React-Taro-TS-微信小程序篇"><a href="#React-Taro-TS-微信小程序篇" class="headerlink" title="React+Taro+TS+微信小程序篇"></a>React+Taro+TS+微信小程序篇</h3><ol>
+    <h2 id="echarts-初始化篇"><a href="#echarts-初始化篇" class="headerlink" title="echarts 初始化篇"></a>echarts 初始化篇</h2><h3 id="React-Taro-TS-微信小程序篇"><a href="#React-Taro-TS-微信小程序篇" class="headerlink" title="React+Taro+TS+微信小程序篇"></a>React+Taro+TS+微信小程序篇</h3><ol>
 <li>使用分包将对应图形的ec-canvas放在分包组件中</li>
 <li>新建一个.tsx后缀的页面，引入ec-canvas中的echarts</li>
 <li>定义data类型</li>
@@ -509,9 +547,9 @@
 <li>把获取dom和高度及初始化ECharts的方法先封装好写成组件</li>
 <li>示例（适用多个类型的echart）</li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> echarts <span class="keyword">from</span> <span class="string">&#x27;echarts&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123;useEffect, useRef&#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line">type <span class="title class_">Chart</span> = &#123; </span><br><span class="line">  <span class="attr">option</span>:any</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">MoneyChart</span>:<span class="title class_">React</span>.<span class="property">FC</span>&lt;<span class="title class_">Chart</span>&gt; = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123;option&#125; = props</span><br><span class="line">  <span class="keyword">const</span> chartWrapper = useRef&lt;<span class="title class_">HTMLDivElement</span>&gt;(<span class="literal">null</span>)</span><br><span class="line">  <span class="keyword">const</span> chart = useRef&lt;any&gt;(<span class="literal">null</span>)</span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> height = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>)?.<span class="property">clientHeight</span> </span><br><span class="line">    <span class="keyword">if</span>(!chartWrapper.<span class="property">current</span>)&#123;<span class="keyword">return</span>&#125;</span><br><span class="line">      chartWrapper.<span class="property">current</span>.<span class="property">style</span>.<span class="property">height</span> =<span class="string">`<span class="subst">$&#123;height&#125;</span>px`</span></span><br><span class="line">      chart.<span class="property">current</span>=echarts.<span class="title function_">init</span>(chartWrapper.<span class="property">current</span>,<span class="string">&#x27;vintage&#x27;</span>) <span class="comment">//初始化ECharts</span></span><br><span class="line">  &#125;,[])</span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    chart.<span class="property">current</span>.<span class="title function_">setOption</span>(option)</span><br><span class="line">  &#125;,[option])</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ref</span>=<span class="string">&#123;chartWrapper&#125;</span> <span class="attr">style</span>=<span class="string">&#123;&#123;height:</span>&#x27;<span class="attr">600px</span>&#x27;&#125;&#125;/&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">MoneyChart</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> echarts <span class="keyword">from</span> <span class="string">&#x27;echarts&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123;useEffect, useRef&#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line">type <span class="title class_">Chart</span> = &#123; </span><br><span class="line">  <span class="attr">option</span>:any</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">MoneyChart</span>:<span class="title class_">React</span>.<span class="property">FC</span>&lt;<span class="title class_">Chart</span>&gt; = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123;option&#125; = props</span><br><span class="line">  <span class="keyword">const</span> chartWrapper = useRef&lt;<span class="title class_">HTMLDivElement</span>&gt;(<span class="literal">null</span>)</span><br><span class="line">  <span class="keyword">const</span> chart = useRef&lt;any&gt;(<span class="literal">null</span>)</span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> height = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>)?.<span class="property">clientHeight</span> </span><br><span class="line">    <span class="keyword">if</span>(!chartWrapper.<span class="property">current</span>)&#123;<span class="keyword">return</span>&#125;</span><br><span class="line">      chartWrapper.<span class="property">current</span>.<span class="property">style</span>.<span class="property">height</span> =<span class="string">`<span class="subst">$&#123;height&#125;</span>px`</span></span><br><span class="line">      chart.<span class="property">current</span>=echarts.<span class="title function_">init</span>(chartWrapper.<span class="property">current</span>,<span class="string">&#x27;vintage&#x27;</span>) <span class="comment">//初始化ECharts</span></span><br><span class="line">  &#125;,[])</span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    chart.<span class="property">current</span>.<span class="title function_">setOption</span>(option)</span><br><span class="line">  &#125;,[option])</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ref</span>=<span class="string">&#123;chartWrapper&#125;</span> <span class="attr">style</span>=<span class="string">&#123;&#123;height:</span>&#x27;<span class="attr">600px</span>&#x27;&#125;&#125;/&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">MoneyChart</span></span><br></pre></td></tr></table></figure>
 
-<ol>
+<ol start="4">
 <li>在父组件中调用组件</li>
 <li>初始化option和data</li>
 <li>分别设置option和data</li>
@@ -537,37 +575,37 @@
 </ul>
 </li>
 </ul>
-<h3 id="⭐-echart图表警告：没有宽高"><a href="#⭐-echart图表警告：没有宽高" class="headerlink" title="⭐ echart图表警告：没有宽高"></a>⭐ echart图表警告：没有宽高</h3><ul>
+<h3 id="echart图表警告：没有宽高"><a href="#echart图表警告：没有宽高" class="headerlink" title="echart图表警告：没有宽高"></a>echart图表警告：没有宽高</h3><ul>
 <li>解决方法：用style指定宽高</li>
 </ul>
-<h3 id="⭐-echart图表在小程序体积过大"><a href="#⭐-echart图表在小程序体积过大" class="headerlink" title="⭐ echart图表在小程序体积过大"></a>⭐ echart图表在小程序体积过大</h3><ul>
-<li>解决方法：使用分包</li>
+<h3 id="echart图表在小程序体积过大"><a href="#echart图表在小程序体积过大" class="headerlink" title="echart图表在小程序体积过大"></a>echart图表在小程序体积过大</h3><ul>
+<li>解决方法：使用分包<ul>
 <li>1、把对应的图形的ec-canvas下载下来，</li>
 <li>2、将整个ec-canvas放在使用分包的组件内</li>
 <li>3、调用</li>
 </ul>
-<h3 id="⭐-echarts-使用极坐标或坐标图时提示Cannot-read-properties-of-undefined-reading-‘findAxisModel’"><a href="#⭐-echarts-使用极坐标或坐标图时提示Cannot-read-properties-of-undefined-reading-‘findAxisModel’" class="headerlink" title="⭐ echarts 使用极坐标或坐标图时提示Cannot read properties of undefined (reading ‘findAxisModel’)"></a>⭐ echarts 使用极坐标或坐标图时提示Cannot read properties of undefined (reading ‘findAxisModel’)</h3><ul>
+</li>
+</ul>
+<h3 id="echarts-使用极坐标或坐标图时提示Cannot-read-properties-of-undefined-reading-‘findAxisModel’"><a href="#echarts-使用极坐标或坐标图时提示Cannot-read-properties-of-undefined-reading-‘findAxisModel’" class="headerlink" title="echarts 使用极坐标或坐标图时提示Cannot read properties of undefined (reading ‘findAxisModel’)"></a>echarts 使用极坐标或坐标图时提示Cannot read properties of undefined (reading ‘findAxisModel’)</h3><ul>
 <li>解决方法：检查option的参数是否配置正确，是否少了polar配置或者其他参数</li>
 </ul>
-<h3 id="⭐-echarts-给饼图上的文本标签加⚪点样式"><a href="#⭐-echarts-给饼图上的文本标签加⚪点样式" class="headerlink" title="⭐ echarts 给饼图上的文本标签加⚪点样式"></a>⭐ echarts 给饼图上的文本标签加⚪点样式</h3><ul>
-<li>解决方法：设置series中的label，在label中的rich中写好样式然后通过的formatter实现</li>
-<li>示例：</li>
+<h3 id="echarts-给饼图上的文本标签加⚪点样式"><a href="#echarts-给饼图上的文本标签加⚪点样式" class="headerlink" title="echarts 给饼图上的文本标签加⚪点样式"></a>echarts 给饼图上的文本标签加⚪点样式</h3><ul>
+<li><p>解决方法：设置series中的label，在label中的rich中写好样式然后通过的formatter实现</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">label</span>: &#123;</span><br><span class="line">  <span class="attr">formatter</span>: <span class="function">(<span class="params">params</span>) =&gt;</span> &#123;</span><br><span class="line">    returvn <span class="string">`&#123;hr|&#125; &#123;name|<span class="subst">$&#123;params.name&#125;</span>&#125;\n&#123;value|<span class="subst">$&#123;params.value&#125;</span>%&#125;`</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">minMargin</span>: <span class="number">5</span>,</span><br><span class="line">  <span class="attr">lineHeight</span>: <span class="number">15</span>,</span><br><span class="line">  <span class="attr">fontSize</span>: <span class="number">14</span>,</span><br><span class="line">  <span class="attr">rich</span>: &#123;</span><br><span class="line">    <span class="attr">name</span>: &#123;</span><br><span class="line">      <span class="attr">fontWeight</span>: <span class="number">600</span>,</span><br><span class="line">      <span class="attr">lineHeight</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">value</span>: &#123;</span><br><span class="line">      <span class="attr">fontWeight</span>: <span class="string">&#x27;normal&#x27;</span>,</span><br><span class="line">      <span class="attr">color</span>: <span class="string">&#x27;rgba(0, 0, 0, 0.65)&#x27;</span>,</span><br><span class="line">      <span class="attr">lineHeight</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">hr</span>: &#123;</span><br><span class="line">      <span class="attr">backgroundColor</span>: <span class="string">&#x27;auto&#x27;</span>,</span><br><span class="line">      <span class="attr">borderRadius</span>: <span class="number">5</span>,</span><br><span class="line">      <span class="attr">width</span>: <span class="number">5</span>,</span><br><span class="line">      <span class="attr">height</span>: <span class="number">5</span>,</span><br><span class="line">      <span class="attr">padding</span>: [<span class="number">5</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>效果图<br><img src="/../../img/WeChatMini/%E9%A5%BC%E5%9B%BE%E5%9B%BE%E5%BD%A2%E6%96%87%E6%9C%AC%E6%A0%B7%E5%BC%8F.jpg" alt="饼图图形文本样式"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+</li>
 </ul>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">label</span>: &#123;</span><br><span class="line">  <span class="attr">formatter</span>: <span class="function">(<span class="params">params</span>) =&gt;</span> &#123;</span><br><span class="line">    returvn <span class="string">`&#123;hr|&#125; &#123;name|<span class="subst">$&#123;params.name&#125;</span>&#125;\n&#123;value|<span class="subst">$&#123;params.value&#125;</span>%&#125;`</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">minMargin</span>: <span class="number">5</span>,</span><br><span class="line">  <span class="attr">lineHeight</span>: <span class="number">15</span>,</span><br><span class="line">  <span class="attr">fontSize</span>: <span class="number">14</span>,</span><br><span class="line">  <span class="attr">rich</span>: &#123;</span><br><span class="line">    <span class="attr">name</span>: &#123;</span><br><span class="line">      <span class="attr">fontWeight</span>: <span class="number">600</span>,</span><br><span class="line">      <span class="attr">lineHeight</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">value</span>: &#123;</span><br><span class="line">      <span class="attr">fontWeight</span>: <span class="string">&#x27;normal&#x27;</span>,</span><br><span class="line">      <span class="attr">color</span>: <span class="string">&#x27;rgba(0, 0, 0, 0.65)&#x27;</span>,</span><br><span class="line">      <span class="attr">lineHeight</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">hr</span>: &#123;</span><br><span class="line">      <span class="attr">backgroundColor</span>: <span class="string">&#x27;auto&#x27;</span>,</span><br><span class="line">      <span class="attr">borderRadius</span>: <span class="number">5</span>,</span><br><span class="line">      <span class="attr">width</span>: <span class="number">5</span>,</span><br><span class="line">      <span class="attr">height</span>: <span class="number">5</span>,</span><br><span class="line">      <span class="attr">padding</span>: [<span class="number">5</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>效果图<br><img src="/../../img/WeChatMini/%E9%A5%BC%E5%9B%BE%E5%9B%BE%E5%BD%A2%E6%96%87%E6%9C%AC%E6%A0%B7%E5%BC%8F.jpg" alt="饼图图形文本样式"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
-</ul>
-<h3 id="⭐-echarts-给饼图去掉鼠标滑过的放大效果"><a href="#⭐-echarts-给饼图去掉鼠标滑过的放大效果" class="headerlink" title="⭐ echarts 给饼图去掉鼠标滑过的放大效果"></a>⭐ echarts 给饼图去掉鼠标滑过的放大效果</h3><ul>
+<h3 id="echarts-给饼图去掉鼠标滑过的放大效果"><a href="#echarts-给饼图去掉鼠标滑过的放大效果" class="headerlink" title="echarts 给饼图去掉鼠标滑过的放大效果"></a>echarts 给饼图去掉鼠标滑过的放大效果</h3><ul>
 <li>解决方法：设置series里的emphasis配置<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">emphasis</span>: &#123;</span><br><span class="line">  <span class="attr">disabled</span>: <span class="literal">true</span>, <span class="comment">// 关闭高亮</span></span><br><span class="line">  <span class="attr">scale</span>: <span class="literal">false</span>, <span class="comment">// 关闭放大</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="⭐-echarts-使用自定义颜色时标签与颜色不一致"><a href="#⭐-echarts-使用自定义颜色时标签与颜色不一致" class="headerlink" title="⭐ echarts 使用自定义颜色时标签与颜色不一致"></a>⭐ echarts 使用自定义颜色时标签与颜色不一致</h3><ul>
+<h3 id="echarts-使用自定义颜色时标签与颜色不一致"><a href="#echarts-使用自定义颜色时标签与颜色不一致" class="headerlink" title="echarts 使用自定义颜色时标签与颜色不一致"></a>echarts 使用自定义颜色时标签与颜色不一致</h3><ul>
 <li>解决方法：在处理data数据时添加itemStyle:{color: ‘’}</li>
 <li>示例：</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line"> <span class="keyword">const</span> _data = list.<span class="title function_">map</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> value = item.<span class="property">percent</span>.<span class="title function_">slice</span>(<span class="number">0</span>, -<span class="number">1</span>)</span><br><span class="line">   <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="built_in">parseInt</span>(value),</span><br><span class="line">    <span class="attr">name</span>: item.<span class="property">name</span>,</span><br><span class="line">    <span class="attr">itemStyle</span>: &#123; <span class="attr">color</span>: item.<span class="property">val</span> &#125;,</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;)</span><br><span class="line"> <span class="title function_">setPieData</span>(_data)</span><br><span class="line">&#125;, [list, setPieData])</span><br></pre></td></tr></table></figure>
-<hr>
-
 </article>
     
     
@@ -577,7 +615,7 @@
     <div class="col-lg-12">
         <!-- title -->
         <h5 class="trm-title-with-divider">
-            Other Articles
+            其他文章
             <span data-number="02"></span>
         </h5>
     </div>
@@ -607,7 +645,7 @@
                 <li>24/11/04</li>
                 <li>09:57</li>
                 
-                    <li>275</li>
+                    <li>273</li>
                 
                 
                     <li>1</li>
@@ -677,23 +715,21 @@
     
         <div class="trm-footer-item">
             <span>
-                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+                由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v7.3.0
             </span>
             <span class="footer-separator" data-separator=" | "></span>
             <span> 
-                Theme - 
+                主题 - 
                 <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
                 v2.2.3
             </span>
         </div>
       
 
+    
+        <div class="trm-footer-item blog-run-long"></div>
      
 
-    
-        <div class="trm-footer-item">
-            网站正在逐步完善中...
-        </div>
      
 </footer>
                     <!-- footer end -->
@@ -709,34 +745,34 @@
 
     <div id="post-toc" class="trm-post-toc">
       <div class="trm-post-toc-header">
-        Article table of contents
+        目录导航
 				<span id="post-toc-top">
-					TOP
+					置顶
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="⭐ echarts 初始化篇"><a rel="nofollow" class="trm-toc-link" href="#⭐-echarts-初始化篇"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">⭐ echarts 初始化篇</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="React+Taro+TS+微信小程序篇"><a rel="nofollow" class="trm-toc-link" href="#React-Taro-TS-微信小程序篇"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">React+Taro+TS+微信小程序篇</span></a></li><li class="trm-toc-item trm-toc-level-3" title="React+TS篇"><a rel="nofollow" class="trm-toc-link" href="#React-TS篇"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">React+TS篇</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="遇到的问题"><a rel="nofollow" class="trm-toc-link" href="#遇到的问题"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">遇到的问题</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="关于echart图表显示不出来的问题"><a rel="nofollow" class="trm-toc-link" href="#关于echart图表显示不出来的问题"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">关于echart图表显示不出来的问题</span></a></li><li class="trm-toc-item trm-toc-level-3" title="关于标签显示不全问题，标签数据太多，当某个角度的标签太多，标签文字超出边界则显示不出来"><a rel="nofollow" class="trm-toc-link" href="#关于标签显示不全问题，标签数据太多，当某个角度的标签太多，标签文字超出边界则显示不出来"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">关于标签显示不全问题，标签数据太多，当某个角度的标签太多，标签文字超出边界则显示不出来</span></a></li><li class="trm-toc-item trm-toc-level-3" title="⭐ echart图表警告：没有宽高"><a rel="nofollow" class="trm-toc-link" href="#⭐-echart图表警告：没有宽高"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">⭐ echart图表警告：没有宽高</span></a></li><li class="trm-toc-item trm-toc-level-3" title="⭐ echart图表在小程序体积过大"><a rel="nofollow" class="trm-toc-link" href="#⭐-echart图表在小程序体积过大"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">⭐ echart图表在小程序体积过大</span></a></li><li class="trm-toc-item trm-toc-level-3" title="⭐ echarts 使用极坐标或坐标图时提示Cannot read properties of undefined (reading ‘findAxisModel’)"><a rel="nofollow" class="trm-toc-link" href="#⭐-echarts-使用极坐标或坐标图时提示Cannot-read-properties-of-undefined-reading-‘findAxisModel’"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">⭐ echarts 使用极坐标或坐标图时提示Cannot read properties of undefined (reading ‘findAxisModel’)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="⭐ echarts 给饼图上的文本标签加⚪点样式"><a rel="nofollow" class="trm-toc-link" href="#⭐-echarts-给饼图上的文本标签加⚪点样式"><span class="trm-toc-number">2.6.</span> <span class="trm-toc-text">⭐ echarts 给饼图上的文本标签加⚪点样式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="⭐ echarts 给饼图去掉鼠标滑过的放大效果"><a rel="nofollow" class="trm-toc-link" href="#⭐-echarts-给饼图去掉鼠标滑过的放大效果"><span class="trm-toc-number">2.7.</span> <span class="trm-toc-text">⭐ echarts 给饼图去掉鼠标滑过的放大效果</span></a></li><li class="trm-toc-item trm-toc-level-3" title="⭐ echarts 使用自定义颜色时标签与颜色不一致"><a rel="nofollow" class="trm-toc-link" href="#⭐-echarts-使用自定义颜色时标签与颜色不一致"><span class="trm-toc-number">2.8.</span> <span class="trm-toc-text">⭐ echarts 使用自定义颜色时标签与颜色不一致</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="echarts 初始化篇"><a rel="nofollow" class="trm-toc-link" href="#echarts-初始化篇"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">echarts 初始化篇</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="React+Taro+TS+微信小程序篇"><a rel="nofollow" class="trm-toc-link" href="#React-Taro-TS-微信小程序篇"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">React+Taro+TS+微信小程序篇</span></a></li><li class="trm-toc-item trm-toc-level-3" title="React+TS篇"><a rel="nofollow" class="trm-toc-link" href="#React-TS篇"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">React+TS篇</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="遇到的问题"><a rel="nofollow" class="trm-toc-link" href="#遇到的问题"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">遇到的问题</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="关于echart图表显示不出来的问题"><a rel="nofollow" class="trm-toc-link" href="#关于echart图表显示不出来的问题"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">关于echart图表显示不出来的问题</span></a></li><li class="trm-toc-item trm-toc-level-3" title="关于标签显示不全问题，标签数据太多，当某个角度的标签太多，标签文字超出边界则显示不出来"><a rel="nofollow" class="trm-toc-link" href="#关于标签显示不全问题，标签数据太多，当某个角度的标签太多，标签文字超出边界则显示不出来"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">关于标签显示不全问题，标签数据太多，当某个角度的标签太多，标签文字超出边界则显示不出来</span></a></li><li class="trm-toc-item trm-toc-level-3" title="echart图表警告：没有宽高"><a rel="nofollow" class="trm-toc-link" href="#echart图表警告：没有宽高"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">echart图表警告：没有宽高</span></a></li><li class="trm-toc-item trm-toc-level-3" title="echart图表在小程序体积过大"><a rel="nofollow" class="trm-toc-link" href="#echart图表在小程序体积过大"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">echart图表在小程序体积过大</span></a></li><li class="trm-toc-item trm-toc-level-3" title="echarts 使用极坐标或坐标图时提示Cannot read properties of undefined (reading ‘findAxisModel’)"><a rel="nofollow" class="trm-toc-link" href="#echarts-使用极坐标或坐标图时提示Cannot-read-properties-of-undefined-reading-‘findAxisModel’"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">echarts 使用极坐标或坐标图时提示Cannot read properties of undefined (reading ‘findAxisModel’)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="echarts 给饼图上的文本标签加⚪点样式"><a rel="nofollow" class="trm-toc-link" href="#echarts-给饼图上的文本标签加⚪点样式"><span class="trm-toc-number">2.6.</span> <span class="trm-toc-text">echarts 给饼图上的文本标签加⚪点样式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="echarts 给饼图去掉鼠标滑过的放大效果"><a rel="nofollow" class="trm-toc-link" href="#echarts-给饼图去掉鼠标滑过的放大效果"><span class="trm-toc-number">2.7.</span> <span class="trm-toc-text">echarts 给饼图去掉鼠标滑过的放大效果</span></a></li><li class="trm-toc-item trm-toc-level-3" title="echarts 使用自定义颜色时标签与颜色不一致"><a rel="nofollow" class="trm-toc-link" href="#echarts-使用自定义颜色时标签与颜色不一致"><span class="trm-toc-number">2.8.</span> <span class="trm-toc-text">echarts 使用自定义颜色时标签与颜色不一致</span></a></li></ol></li></ol>
       </div>
     </div>
 
             
 <div class="trm-fixed-container">
     
-        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
             <i class="iconfont fas fa-th-list"></i>
         </div>
     
     
-        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
             <i class="iconfont fas fa-book-reader"></i>
         </div>
     
     
-        <div class="trm-fixed-btn hidden-md" data-title="Toggle between single-column and double-column" onclick="asyncFun.switchSingleColumn()">
+        <div class="trm-fixed-btn hidden-md" data-title="单栏和双栏切换" onclick="asyncFun.switchSingleColumn()">
             <i class="iconfont fas fa-arrows-alt-h"></i>
         </div>
     
-    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
         <i class="iconfont fas fa-arrow-up"></i>
     </div>
 </div>
@@ -753,14 +789,14 @@
                 <div class="trm-search-input-icon">
                     <i class="iconfont fas fa-search"></i>
                 </div>
-                <input class="trm-search-input" type="text" placeholder="Searching...">
+                <input class="trm-search-input" type="text" placeholder="搜索文章...">
                 <div class="trm-search-btn-close">
                     <i class="iconfont fas fa-times"></i>
                 </div>
             </div>
             <div class="trm-search-result-container">
                 <div class="trm-search-empty">
-                    Please enter keywords to search
+                    请输入关键词进行搜索
                 </div>
             </div>
             <div class="trm-search-footer">

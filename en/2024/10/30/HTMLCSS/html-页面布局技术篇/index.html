@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="zh-Hans,en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="目录 💚自适应布局 百分比布局 弹性布局 - Flex布局 rem 布局 vw、vh 布局   💚响应式布局 媒体查询 - Html-媒体查询布局   静态布局(固定布局) 流式布局(Flow) — 默认网页模型 — CSS 盒布局模型 块级元素自上而下垂直分布，默认状态下，块级元素的宽度为 100%，占整行 内联元素会在所处的最近父级容器元素内从左到右水平分布   浮动布局(Float) —">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Html-页面布局技术篇">
+<meta property="og:url" content="http://example.com/en/2024/10/30/HTMLCSS/html-%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80%E6%8A%80%E6%9C%AF%E7%AF%87/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="目录 💚自适应布局 百分比布局 弹性布局 - Flex布局 rem 布局 vw、vh 布局   💚响应式布局 媒体查询 - Html-媒体查询布局   静态布局(固定布局) 流式布局(Flow) — 默认网页模型 — CSS 盒布局模型 块级元素自上而下垂直分布，默认状态下，块级元素的宽度为 100%，占整行 内联元素会在所处的最近父级容器元素内从左到右水平分布   浮动布局(Float) —">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-30T07:29:11.168Z">
+<meta property="article:modified_time" content="2024-11-05T06:32:15.230Z">
+<meta property="article:author" content="UUOVO">
+<meta property="article:tag" content="Html">
+<meta property="article:tag" content="布局">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="页面布局,html">
+
+
+<title >Html-页面布局技术篇</title>
+
+<!-- Favicon -->
+
+    <link href='/img/sitelogo16.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/sitelogo32.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/apple-touch-icon.png?v=2.2.3' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-05 14:32:15"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/sitelogo32.svg">
+    
+    
+        <div class="trm-logo-text">
+            UU<span>OVO</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/tags/" target="">
+                            标签
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" target="">
+                            微信小程序
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%B7%A5%E5%85%B7/" target="">
+                            前端工程化工具
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/React/" target="">
+                            React
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/VUE/" target="">
+                            VUE
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/TypeScript/" target="">
+                            TypeScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JavaScript/" target="">
+                            JavaScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/CSS&HTML/" target="">
+                            CSS&HTML
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="">
+                            网络与数据结构
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/uniapp/" target="">
+                            uniapp
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ThreeJS/" target="">
+                            ThreeJS
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/Node/" target="">
+                            Node
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JQuery/" target="">
+                            JQuery
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ES6/" target="">
+                            ES6
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/AJAX/" target="">
+                            AJAX
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/gallery/" target="">
+                    相册
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/gallery/wallpaper/" target="">
+                            相册详情页
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/about/" target="">
+                    关于
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/links/" target="">
+                            友链
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+    
+    <div id="trm-search-btn" class="trm-search-btn">
+        <i class="iconfont fas fa-search"></i>
+    </div>
+     
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            Html-页面布局技术篇
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        en
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar1.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/UUOVO" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/ovouu" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                City:
+            </div>
+            <div class="trm-label trm-label-light">
+                City
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                Age:
+            </div>
+            <div class="trm-label trm-label-light">
+                Age
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:1370203877@qq.com" class="trm-btn">
+            Contact Me
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            10/30
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            15:29
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            UUOVO
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li>💚<span style="color: green">自适应布局</span><ul>
+<li><p style="color: orange">百分比布局</p></li>
+<li><span style="color: orange">弹性布局</span> - <a href="/2024/10/30/HTMLCSS/html-Flex%E5%B8%83%E5%B1%80/" title="Html-弹性布局（Flex）">Flex布局</a></li>
+<li><p style="color: orange">rem 布局</p></li>
+<li><p style="color: orange">vw、vh 布局</p></li>
+</ul>
+</li>
+<li>💚<span style="color: green">响应式布局</span><ul>
+<li><span style="color: orange">媒体查询</span> - <a href="/2024/10/30/HTMLCSS/html-%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2%E5%B8%83%E5%B1%80/" title="Html-媒体查询布局">Html-媒体查询布局</a></li>
+</ul>
+</li>
+<li><p style="color: green">静态布局(固定布局)</p></li>
+<li><span style="color: green">流式布局(Flow)</span> — 默认网页模型 — CSS 盒布局模型<ul>
+<li>块级元素自上而下垂直分布，默认状态下，块级元素的宽度为 100%，占整行</li>
+<li>内联元素会在所处的最近父级容器元素内从左到右水平分布</li>
+</ul>
+</li>
+<li><span style="color: green">浮动布局(Float)</span> — CSS 盒布局模型 - <a href="/2024/10/30/HTMLCSS/html-float%E5%B8%83%E5%B1%80/" title="Html-浮动布局(Float)">Html-浮动布局(Float)</a></li>
+<li><span style="color: green">Layer 布局(定位)</span> — CSS 盒布局模型</li>
+</ul>
+<hr>
+<h3 id="自适应"><a href="#自适应" class="headerlink" title="自适应"></a>自适应</h3><ul>
+<li>特点：不管屏幕大小(分辨率)怎么变化，页面的元素的位置会变化而大小不会变化。</li>
+<li>方法：<ul>
+<li>使用 flex 布局</li>
+<li>使用百分比</li>
+<li>避免写死宽高</li>
+<li>使用 rem</li>
+</ul>
+</li>
+</ul>
+<h3 id="响应式"><a href="#响应式" class="headerlink" title="响应式"></a>响应式</h3><ul>
+<li>特点：在同一套项目中做兼容(设计多个方案和不同方案对应的样式)</li>
+<li>方法：使用 @media 媒体查询 和网格系统 (Grid System) 配合相对布局单位进行布局</li>
+<li>优点：面对不同的分辨率设备灵活性强，适合中小型网站</li>
+<li>缺点：如果浏览器大小改变时，需要改变的样式太多，那么多套样式代码会很繁琐</li>
+</ul>
+<h3 id="自适应与响应式的区别"><a href="#自适应与响应式的区别" class="headerlink" title="自适应与响应式的区别"></a>自适应与响应式的区别</h3><ul>
+<li>响应式是先@media 确定设备，再有需要的地方，css 用上%或者 vw，vh 等</li>
+<li>自适应是属于 pc、手机等设备都做一套设计</li>
+</ul>
+<hr>
+<h2 id="百分比布局"><a href="#百分比布局" class="headerlink" title="百分比布局"></a>百分比布局</h2><ul>
+<li>视窗变化时，height、width、padding、margin、border 都是依托父组件的宽高，并且单位为%</li>
+<li>子元素的 margin、padding 为百分比参照父级容器的宽度</li>
+<li>border-radius 为百分比，则是相对于自身的宽度</li>
+<li>子元素的 top、bottom|(right、left)为百分比则相对于非 static 定位的父元素的高度|(宽度)。</li>
+<li>缺点：计算困难</li>
+</ul>
+<h2 id="rem-布局"><a href="#rem-布局" class="headerlink" title="rem 布局"></a>rem 布局</h2><ul>
+<li>本质是<code>等比缩放</code>，<code>依赖于整体的html根标签</code>，通常用来适配<code>移动端</code>布局，字体，图片高度</li>
+<li>缺点：<ul>
+<li>数据量大：所有图片，盒子都需要给一个准确的值，才能保证不同机型的适配</li>
+<li>在响应式布局中，必须通过 js 来动态控制根元素 font-size 的大小，即 css 样式和 js 代码有一定的耦合性，且必须将改变 font-size 的代码放在 css 样式之前</li>
+</ul>
+</li>
+<li>解决：使用 flexible.js 插件</li>
+</ul>
+<h2 id="vw、vh-布局"><a href="#vw、vh-布局" class="headerlink" title="vw、vh 布局"></a>vw、vh 布局</h2><ul>
+<li>1vw(vh) &#x3D; (视窗宽度(高度) &#x2F; 100)px</li>
+</ul>
+<h2 id="静态布局-—-定宽"><a href="#静态布局-—-定宽" class="headerlink" title="静态布局 — 定宽"></a>静态布局 — 定宽</h2><ul>
+<li>特点：常规 pc 网站都是静态布局，即就是设置了 min-width,小于宽度出滚动条，大于内容居中加背景。</li>
+<li>方法：<ul>
+<li>PC：居中布局，所有样式使用绝对宽度&#x2F;高度(px)，设计一个 Layout，在屏幕宽高有调整时，使用横向和竖向的滚动条来查阅被遮掩部分；</li>
+<li>移动设备：另外建立移动网站，单独设计一个布局，使用不同的域名如 wap.或 m.。</li>
+</ul>
+</li>
+<li>在移动端开发中采用静态布局的两种方式：(来自：流布局与响应式网页设计有什么区别？)<ul>
+<li>在 viewport meta 标签上设置 width&#x3D;320，页面的各个元素也采用 px 作为单位。通过用 JS 动态修改标签的 initial-scale 使得页面等比缩放，从而刚好占满整个屏幕。</li>
+<li>在 viewport meta 标签上设置 content&#x3D;”width&#x3D;640,user-scalable&#x3D;no”，页面的各个元素也采用 px 作为单位。由于 640px 超出了手机宽度，浏览器会自动缩小页面至刚好全屏。</li>
+</ul>
+</li>
+<li>缺点：不能根据用户的屏幕尺寸做出不同的表现。</li>
+</ul>
+<hr>
+<h2 id="定位（Layer-布局-—-层级布局模型）"><a href="#定位（Layer-布局-—-层级布局模型）" class="headerlink" title="定位（Layer 布局 — 层级布局模型）"></a>定位（Layer 布局 — 层级布局模型）</h2><h3 id="相对定位（relative）"><a href="#相对定位（relative）" class="headerlink" title="相对定位（relative）"></a>相对定位（relative）</h3><ul>
+<li>该属性本身不做任何事，但可以用 top、left 来操作它的位置</li>
+</ul>
+<ol>
+<li>相对于元素自身在文档流中的位置进行定位</li>
+<li>相对定位的元素<code>不会脱离文档流</code>，定位元素的性质不会改变，块还是块，内联还是内联</li>
+<li>如果不设置偏移量，元素不会发生任何的变化</li>
+<li>会提升元素的层级</li>
+</ol>
+<h3 id="绝对定位（absolute）"><a href="#绝对定位（absolute）" class="headerlink" title="绝对定位（absolute）"></a>绝对定位（absolute）</h3><ul>
+<li>将元素移除正常布局，屏幕滚动时也会跟着滚动。</li>
+</ul>
+<ol>
+<li>开启绝对定位后，如果不设置偏移量元素的位置不会发生变化</li>
+<li>开启绝对定位后，<code>元素脱离文档流中</code></li>
+<li>绝对定位会改变元素的性质，行内变成块，块的宽高被内容撑开</li>
+<li>绝对定位会使元素提升一个层级</li>
+<li>绝对定位元素是相对于包含块进行定位的，使用 left、right、top、bottom 操作</li>
+</ol>
+<ul>
+<li>包含块(containing block)<ul>
+<li>正常情况下，包含块就是离当前元素最近的祖先块元素</li>
+<li>绝对定位的包含块:<ul>
+<li>包含块就是离它最近的开启了定位的祖先元素，</li>
+</ul>
+</li>
+<li>如果所有的祖先元素都没有开启定位则根元素就是它的包含块<ul>
+<li>html（根元素、初始包含块）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="固定定位（fixed）"><a href="#固定定位（fixed）" class="headerlink" title="固定定位（fixed）"></a>固定定位（fixed）</h3><ul>
+<li>固定定位也是一种绝对定位，和绝对定位是大致相同的</li>
+<li>不同的是：<ul>
+<li>fixed 永远相对于浏览器窗口进行定位</li>
+<li>fixed 会固定在浏览器的指定的位置，不会随页面一起滚动</li>
+</ul>
+</li>
+</ul>
+<h3 id="粘滞定位（sticky）"><a href="#粘滞定位（sticky）" class="headerlink" title="粘滞定位（sticky）"></a>粘滞定位（sticky）</h3><ul>
+<li>粘滞定位和相对定位的特点基本一致</li>
+<li>不同的是粘滞定位可以在元素到达某个位置时将其固定</li>
+<li>理解：在页面中的某个位置设置后，当滚动到顶部时，层级最高，滚回来后回到原来的位置</li>
+</ul>
+<h3 id="偏移量（offset）"><a href="#偏移量（offset）" class="headerlink" title="偏移量（offset）"></a>偏移量（offset）</h3><ul>
+<li>当元素开启了定位以后，可以通过偏移量来设置元素的位置<ul>
+<li><code>top</code>：相对于定位位置的顶部的偏移量</li>
+<li><code>bottom</code>：相对于定位位置的底部的偏移量</li>
+<li>定位元素垂直方向的位置由 top 和 bottom 两个属性来控制</li>
+<li><code>left</code>：相对于定位位置的左侧的偏移量</li>
+<li><code>right</code>：相对于定位位置的右侧的偏移量</li>
+<li>定位元素水平方向的位置由 left 和 right 两个属性来控制</li>
+<li>一般只需要使用两个值即可给元素进行定位<ul>
+<li>top left</li>
+<li>top right</li>
+<li>bottom left</li>
+<li>bottom right</li>
+</ul>
+</li>
+<li>偏移量也可以指定一个负值，如果是负值则元素会向相反的方向移动</li>
+</ul>
+</li>
+</ul>
+<h3 id="层级（z-index-number-）"><a href="#层级（z-index-number-）" class="headerlink" title="层级（z-index: number;）"></a>层级（z-index: number;）</h3><ul>
+<li>需要一个正整数作为参数，值越大层级越高，层级越高越优先显示</li>
+<li>如果层级一样，则后边的会盖住前边的，父元素永远都不会盖住子元素。</li>
+<li><code>文档流 &lt; 浮动 &lt; 定位</code></li>
+</ul>
+<h3 id="元素的透明"><a href="#元素的透明" class="headerlink" title="元素的透明"></a>元素的透明</h3><ul>
+<li>使用 <code>opacity</code> 来设置元素的透明度<ul>
+<li>需要一个 0-1 之间的值</li>
+<li>0 表示完全透明</li>
+<li>1 表示完全不透明</li>
+</ul>
+</li>
+<li>IE8 及以下的浏览器不支持该样式，需要使用如下方式来设置<ul>
+<li><code>filter:alpha(opacity=透明度);</code><ul>
+<li>需要一个 0-100 之间的值</li>
+<li>0 表示完全透明</li>
+<li>100 表示完全不透明</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/30/HTMLCSS/html-%E5%85%83%E7%B4%A0%E5%B8%83%E5%B1%80%E7%AF%87/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <div class="trm-cover-img" data-random-img></div>
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/CSS-HTML/">
+                    CSS&HTML
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/30/HTMLCSS/html-%E5%85%83%E7%B4%A0%E5%B8%83%E5%B1%80%E7%AF%87/" class="trm-anima-link">
+                    Html-元素布局篇
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/30</li>
+                <li>15:29</li>
+                
+                    <li>1.3k</li>
+                
+                
+                    <li>5</li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/30/HTMLCSS/html-%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2%E5%B8%83%E5%B1%80/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <div class="trm-cover-img" data-random-img></div>
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/CSS-HTML/">
+                    CSS&HTML
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/30/HTMLCSS/html-%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2%E5%B8%83%E5%B1%80/" class="trm-anima-link">
+                    Html-媒体查询布局
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/30</li>
+                <li>15:29</li>
+                
+                    <li>810</li>
+                
+                
+                    <li>3</li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+    
+        <div class="trm-footer-item blog-run-long"></div>
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="目录"><a rel="nofollow" class="trm-toc-link" href="#目录"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">目录</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="自适应"><a rel="nofollow" class="trm-toc-link" href="#自适应"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">自适应</span></a></li><li class="trm-toc-item trm-toc-level-3" title="响应式"><a rel="nofollow" class="trm-toc-link" href="#响应式"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">响应式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="自适应与响应式的区别"><a rel="nofollow" class="trm-toc-link" href="#自适应与响应式的区别"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">自适应与响应式的区别</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="百分比布局"><a rel="nofollow" class="trm-toc-link" href="#百分比布局"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">百分比布局</span></a></li><li class="trm-toc-item trm-toc-level-2" title="rem 布局"><a rel="nofollow" class="trm-toc-link" href="#rem-布局"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">rem 布局</span></a></li><li class="trm-toc-item trm-toc-level-2" title="vw、vh 布局"><a rel="nofollow" class="trm-toc-link" href="#vw、vh-布局"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">vw、vh 布局</span></a></li><li class="trm-toc-item trm-toc-level-2" title="静态布局 — 定宽"><a rel="nofollow" class="trm-toc-link" href="#静态布局-—-定宽"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">静态布局 — 定宽</span></a></li><li class="trm-toc-item trm-toc-level-2" title="定位（Layer 布局 — 层级布局模型）"><a rel="nofollow" class="trm-toc-link" href="#定位（Layer-布局-—-层级布局模型）"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">定位（Layer 布局 — 层级布局模型）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="相对定位（relative）"><a rel="nofollow" class="trm-toc-link" href="#相对定位（relative）"><span class="trm-toc-number">6.1.</span> <span class="trm-toc-text">相对定位（relative）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="绝对定位（absolute）"><a rel="nofollow" class="trm-toc-link" href="#绝对定位（absolute）"><span class="trm-toc-number">6.2.</span> <span class="trm-toc-text">绝对定位（absolute）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="固定定位（fixed）"><a rel="nofollow" class="trm-toc-link" href="#固定定位（fixed）"><span class="trm-toc-number">6.3.</span> <span class="trm-toc-text">固定定位（fixed）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="粘滞定位（sticky）"><a rel="nofollow" class="trm-toc-link" href="#粘滞定位（sticky）"><span class="trm-toc-number">6.4.</span> <span class="trm-toc-text">粘滞定位（sticky）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="偏移量（offset）"><a rel="nofollow" class="trm-toc-link" href="#偏移量（offset）"><span class="trm-toc-number">6.5.</span> <span class="trm-toc-text">偏移量（offset）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="层级（z-index: number;）"><a rel="nofollow" class="trm-toc-link" href="#层级（z-index-number-）"><span class="trm-toc-number">6.6.</span> <span class="trm-toc-text">层级（z-index: number;）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="元素的透明"><a rel="nofollow" class="trm-toc-link" href="#元素的透明"><span class="trm-toc-number">6.7.</span> <span class="trm-toc-text">元素的透明</span></a></li></ol></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn hidden-md" data-title="Toggle between single-column and double-column" onclick="asyncFun.switchSingleColumn()">
+            <i class="iconfont fas fa-arrows-alt-h"></i>
+        </div>
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+    <div class="trm-search-popup">
+        <div class="trm-search-wrapper">
+            <div class="form trm-search-form">
+                <div class="trm-search-input-icon">
+                    <i class="iconfont fas fa-search"></i>
+                </div>
+                <input class="trm-search-input" type="text" placeholder="Searching...">
+                <div class="trm-search-btn-close">
+                    <i class="iconfont fas fa-times"></i>
+                </div>
+            </div>
+            <div class="trm-search-result-container">
+                <div class="trm-search-empty">
+                    Please enter keywords to search
+                </div>
+            </div>
+            <div class="trm-search-footer">
+                <div class="trm-search-stats"></div>
+                <ul class="trm-search-commands">
+                    <li>
+                        <kbd class="command-palette-commands-key">
+                            <svg width="15" height="15" aria-label="Escape key" role="img">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.2">
+                                    <path
+                                        d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956">
+                                    </path>
+                                </g>
+                            </svg>
+                        </kbd>
+                        <span class="command-palette-Label">to close</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+        
+<script src="https://unpkg.com/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+
+        <script src="/js/plugins/local_search.js?v=2.2.3"></script>
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+			<script src="/js/plugins/danmu.js?v=2.2.3"></script>
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

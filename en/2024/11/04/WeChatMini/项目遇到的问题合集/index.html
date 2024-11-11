@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="zh-Hans,en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content=".en {   color: orange;   font-weight: 600; }  .ans {   font-size:14px; }    注意事项： 重复调用请求影响服务器性能尤其是全局调用时要多检查		 微信小程序的三目运算格式中冒号前后如果是字符串的一定要用双引号或单引号包起来，否则不生效。示例：a ? ‘b’ : ‘c’  		 tailwind 、taro 、小程序之间的问">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序-项目遇到的问题合集">
+<meta property="og:url" content="http://example.com/en/2024/11/04/WeChatMini/%E9%A1%B9%E7%9B%AE%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%90%88%E9%9B%86/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content=".en {   color: orange;   font-weight: 600; }  .ans {   font-size:14px; }    注意事项： 重复调用请求影响服务器性能尤其是全局调用时要多检查		 微信小程序的三目运算格式中冒号前后如果是字符串的一定要用双引号或单引号包起来，否则不生效。示例：a ? ‘b’ : ‘c’  		 tailwind 、taro 、小程序之间的问">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-11-04T01:57:32.116Z">
+<meta property="article:modified_time" content="2024-11-06T04:03:28.044Z">
+<meta property="article:author" content="UUOVO">
+<meta property="article:tag" content="问题与方案">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="微信小程序, tailwind, taro, vscode">
+
+
+<title >微信小程序-项目遇到的问题合集</title>
+
+<!-- Favicon -->
+
+    <link href='/img/sitelogo16.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/sitelogo32.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/apple-touch-icon.png?v=2.2.3' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-06 12:03:28"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/sitelogo32.svg">
+    
+    
+        <div class="trm-logo-text">
+            UU<span>OVO</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/tags/" target="">
+                            标签
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" target="">
+                            微信小程序
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%B7%A5%E5%85%B7/" target="">
+                            前端工程化工具
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/React/" target="">
+                            React
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/VUE/" target="">
+                            VUE
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/TypeScript/" target="">
+                            TypeScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JavaScript/" target="">
+                            JavaScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/CSS&HTML/" target="">
+                            CSS&HTML
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="">
+                            网络与数据结构
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/uniapp/" target="">
+                            uniapp
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ThreeJS/" target="">
+                            ThreeJS
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/Node/" target="">
+                            Node
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JQuery/" target="">
+                            JQuery
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ES6/" target="">
+                            ES6
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/AJAX/" target="">
+                            AJAX
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/gallery/" target="">
+                    相册
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/gallery/wallpaper/" target="">
+                            相册详情页
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/about/" target="">
+                    关于
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/links/" target="">
+                            友链
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+    
+    <div id="trm-search-btn" class="trm-search-btn">
+        <i class="iconfont fas fa-search"></i>
+    </div>
+     
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            微信小程序-项目遇到的问题合集
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        en
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar1.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/UUOVO" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/ovouu" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                City:
+            </div>
+            <div class="trm-label trm-label-light">
+                City
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                Age:
+            </div>
+            <div class="trm-label trm-label-light">
+                Age
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:1370203877@qq.com" class="trm-btn">
+            Contact Me
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            11/04
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            09:57
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            UUOVO
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <style>
+.en {
+  color: orange;
+  font-weight: 600;
+}
+
+.ans {
+  font-size:14px;
+}
+
+</style>
+
+<h2 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h2><ul>
+<li>重复调用请求影响服务器性能尤其是全局调用时要多检查		</li>
+<li>微信小程序的三目运算格式中冒号前后如果是字符串的一定要用双引号或单引号包起来，否则不生效。示例：a ? ‘b’ : ‘c’</li>
+</ul>
+<p>		</p>
+<h2 id="tailwind-、taro-、小程序之间的问题"><a href="#tailwind-、taro-、小程序之间的问题" class="headerlink" title="tailwind 、taro 、小程序之间的问题"></a>tailwind 、taro 、小程序之间的问题</h2><h3 id="解决构建后生成的miniprogram-npm包太大，主包超过2M"><a href="#解决构建后生成的miniprogram-npm包太大，主包超过2M" class="headerlink" title="解决构建后生成的miniprogram_npm包太大，主包超过2M"></a>解决构建后生成的miniprogram_npm包太大，主包超过2M</h3><ul>
+<li>在project.config.json中的setting设置<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;ignoreDevUnusedFiles&quot;</span>: <span class="literal">true</span>, <span class="comment">// 预览、真机调试和本地模拟器等开发阶段是否过滤无依赖文件，默认为true</span></span><br><span class="line"><span class="string">&quot;ignoreUploadUnusedFiles&quot;</span>: <span class="literal">true</span> <span class="comment">// 上传时过滤无依赖文件</span></span><br></pre></td></tr></table></figure></li>
+<li>其他配置参考<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html">微信小程序项目配置文件</a></li>
+</ul>
+<h3 id="解决vscode中ts插件与小程序的api的飘红线问题"><a href="#解决vscode中ts插件与小程序的api的飘红线问题" class="headerlink" title="解决vscode中ts插件与小程序的api的飘红线问题"></a>解决vscode中ts插件与小程序的api的飘红线问题</h3><ul>
+<li>在typings&#x2F;index上添加<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// &lt;reference path=&quot;../node_modules/miniprogram-api-typings/index.d.ts&quot; /&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="解决tsconfig-json报错【找不到“sass”的类型定义文件。程序包含该文件是因为-隐式类型库-“sass”-的入口点】"><a href="#解决tsconfig-json报错【找不到“sass”的类型定义文件。程序包含该文件是因为-隐式类型库-“sass”-的入口点】" class="headerlink" title="解决tsconfig.json报错【找不到“sass”的类型定义文件。程序包含该文件是因为:隐式类型库 “sass” 的入口点】"></a>解决tsconfig.json报错【找不到“sass”的类型定义文件。程序包含该文件是因为:隐式类型库 “sass” 的入口点】</h3><ul>
+<li>1.安装<span class="en">npm install –save-dev @types&#x2F;<a href="mailto:&#x73;&#x61;&#x73;&#115;&#64;&#x31;&#46;&#x34;&#51;&#x2e;&#x31;">&#x73;&#x61;&#x73;&#115;&#64;&#x31;&#46;&#x34;&#51;&#x2e;&#x31;</a></span></li>
+<li>2.然后重启vscode</li>
+<li>3.如果还飘红，则在tsconfig.json中添加以下配置项<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;types&quot;</span>: [<span class="string">&quot;sass&quot;</span>] </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="解决tailwindcss和小程序的结合后-tailwind-base-之类的增加到app-scss中微信小程序报错【app-wxss-unexpected-token-“-”】"><a href="#解决tailwindcss和小程序的结合后-tailwind-base-之类的增加到app-scss中微信小程序报错【app-wxss-unexpected-token-“-”】" class="headerlink" title="解决tailwindcss和小程序的结合后 @tailwind base;之类的增加到app.scss中微信小程序报错【app.wxss unexpected token “;”】"></a>解决tailwindcss和小程序的结合后 @tailwind base;之类的增加到app.scss中微信小程序报错【app.wxss unexpected token “;”】</h3><ul>
+<li>1.执行<span class="en">npx tailwindcss -o .&#x2F;src&#x2F;style&#x2F;tailwind.css</span></li>
+<li>2.在index.html中的head标签添加<span class="en"><code>&lt;link href=&quot;./style/tailwind.css&quot; rel=&quot;stylesheet&quot; /&gt;</code></span></li>
+</ul>
+<h3 id="解决发现tailwind的样式在小程序中不生效"><a href="#解决发现tailwind的样式在小程序中不生效" class="headerlink" title="解决发现tailwind的样式在小程序中不生效"></a>解决发现tailwind的样式在小程序中不生效</h3><ul>
+<li>参考文档：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7246328828838510653">Taro项目引入Tailwindcss的几种方式</a></li>
+<li>1.安装<span class="en">npm install -D tailwindcss postcss autoprefixer weapp-tailwindcss</span></li>
+<li>2.初始化配置<span class="en">npx tailwindcss init</span></li>
+<li>3.在tailwindcss.config.js增加配置<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** <span class="doctag">@type</span> &#123;<span class="type">import(&#x27;tailwindcss&#x27;).Config</span>&#125; */</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// 不在 content 包括的文件内编写的 class，不会生成对应的工具类</span></span><br><span class="line">  <span class="attr">content</span>: [<span class="string">&#x27;./public/index.html&#x27;</span>, <span class="string">&#x27;./src/**/*.&#123;html,js,ts,jsx,tsx,vue&#125;&#x27;</span>],</span><br><span class="line">  <span class="comment">// 其他配置项</span></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="attr">corePlugins</span>: &#123;</span><br><span class="line">    <span class="comment">// 不需要 preflight，因为这主要是给 h5 的，如果你要同时开发小程序和 h5 端，你应该使用环境变量来控制它</span></span><br><span class="line">    <span class="attr">preflight</span>: <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>4.创建postcss.config.js,并注册tailwindcss<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// postcss.config.js</span></span><br><span class="line"><span class="comment">// 假如你使用的框架/工具不支持 postcss.config.js，则可以使用内联的写法</span></span><br><span class="line"><span class="comment">// 其中 `autoprefixer` 有可能已经内置了，假如框架内置了可以去除</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">plugins</span>: &#123;</span><br><span class="line">    <span class="attr">tailwindcss</span>: &#123;&#125;,</span><br><span class="line">    <span class="attr">autoprefixer</span>: &#123;&#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>5.在项目的配置文件 config&#x2F;index中注册weapp-tailwindcss:<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config/index.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">UnifiedWebpackPluginV5</span> &#125; = <span class="title function_">require</span>(<span class="params"><span class="string">&#x27;weapp-tailwindcss/webpack&#x27;</span></span>)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">mini</span>: &#123;</span><br><span class="line">    <span class="title function_">webpackChain</span>(<span class="params">chain, webpack</span>) &#123;</span><br><span class="line">      chain.<span class="title function_">merge</span>(&#123;</span><br><span class="line">        <span class="attr">plugin</span>: &#123;</span><br><span class="line">          <span class="attr">install</span>: &#123;</span><br><span class="line">            <span class="attr">plugin</span>: <span class="title class_">UnifiedWebpackPluginV5</span>,</span><br><span class="line">            <span class="attr">args</span>: [&#123;</span><br><span class="line">              <span class="attr">appType</span>: <span class="string">&#x27;taro&#x27;</span></span><br><span class="line">            &#125;]</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>6.和@tarojs&#x2F;plugin-html 一起使用时，需要配置下 postcss-html-transform 这个插件，不然它会移除整个 Tailwindcss 注入的  css var 区域块，造成所有 tw-* 相关变量找不到。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config/index.js</span></span><br><span class="line">config = &#123;</span><br><span class="line">  <span class="attr">mini</span>: &#123;</span><br><span class="line">    <span class="attr">postcss</span>: &#123;</span><br><span class="line">      <span class="attr">htmltransform</span>: &#123;</span><br><span class="line">        <span class="attr">enable</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="comment">// 设置成 false 表示 不去除 * 相关的选择器区块</span></span><br><span class="line">        <span class="comment">// 假如开启这个配置，它会把 tailwindcss 整个 css var 的区域块直接去除掉</span></span><br><span class="line">        <span class="comment">// 需要用 config 套一层，官方文档上是错的</span></span><br><span class="line">        <span class="attr">config</span>: &#123;</span><br><span class="line">          <span class="attr">removeCursorStyle</span>: <span class="literal">false</span>,</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>7.在项目入口(app.scss)引入tailwindcss<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> <span class="string">&quot;tailwindcss/base&quot;</span>;</span><br><span class="line">@<span class="keyword">import</span> <span class="string">&quot;tailwindcss/utilities&quot;</span>;</span><br><span class="line">@<span class="keyword">import</span> <span class="string">&quot;tailwindcss/components&quot;</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="关于js、node配置的问题"><a href="#关于js、node配置的问题" class="headerlink" title="关于js、node配置的问题"></a>关于js、node配置的问题</h2><h3 id="运行js文件时"><a href="#运行js文件时" class="headerlink" title="运行js文件时"></a>运行js文件时</h3><ul>
+<li>解决提示<span class="ans">【Warning: To load an ES module, set “type” - “module” in JS】</span></li>
+<li>在package.json中配置<span class="en">type:”module”</span>即可</li>
+</ul>
+<h3 id="运行js文件时-1"><a href="#运行js文件时-1" class="headerlink" title="运行js文件时"></a>运行js文件时</h3><ul>
+<li>解决提示<span class="ans">【Invalid package config E:\practice\p-four\node_modules\iconv-lite\package.json while importing “iconv-lite” from xxxx.js. Unexpected token &lt; in JSON at position 101】</span></li>
+<li>运行<span class="en">npm install</span></li>
+</ul>
+<h3 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h3><ul>
+<li>解决提示<span class="ans">【Error [ERR_MODULE_NOT_FOUND]: Cannot find module ‘xxx\config\webpack.common’ imported from xxx\config\webpack.dev.js】</span></li>
+<li>把package.json的type去掉</li>
+</ul>
+<h3 id="运行项目网页"><a href="#运行项目网页" class="headerlink" title="运行项目网页"></a>运行项目网页</h3><ul>
+<li>解决提示<span class="ans">【Refused to apply style from ‘<a target="_blank" rel="noopener" href="http://localhost:9000/comp/asset/main.css">http://localhost:9000/comp/asset/main.css</a>‘ because its MIME type (‘text&#x2F;html’) is not a supported stylesheet MIME type, and strict MIME checking is enabled.】</span></li>
+<li>webpack.config.js 添加 publicPath 属性<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">path</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&quot;build&quot;</span>),</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&quot;build.[contenthash:10].js&quot;</span>,</span><br><span class="line">    <span class="attr">publicPath</span>: <span class="string">&quot;/&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>参考文章：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6979855519490474021">该文章最后一个问题</a></li>
+</ul>
+<h3 id="项目运行后"><a href="#项目运行后" class="headerlink" title="项目运行后"></a>项目运行后</h3><ul>
+<li>解决刷新就会提示<span class="ans">【GET <a target="_blank" rel="noopener" href="http://localhost:9000/comp/asset/image/gongzuotai.png">http://localhost:9000/comp/asset/image/gongzuotai.png</a> 404 (Not Found)】</span></li>
+<li>图片的路径不对，在所有使用图片的路径中使用<span class="en"><code>/asset/image/xxx.jpg</code></span> 而不是<code>asset/image.xxx.jpg</code></li>
+</ul>
+<h3 id="遇到提示"><a href="#遇到提示" class="headerlink" title="遇到提示"></a>遇到提示</h3><ul>
+<li>解决<code>&lt;view&gt;</code>…之类的标签报错问题或者template_v0_p1之类的问题，大概率是项目中不支持该标签</li>
+<li>排查标签使用是否正确。例如：遇到页面使用<code>&lt;div&gt;</code>标签，然后用来小程序使用的<code>&lt;view&gt;</code>标签</li>
+</ul>
+<h3 id="npm报错"><a href="#npm报错" class="headerlink" title="npm报错"></a>npm报错</h3><ul>
+<li><span class="ans">request to <a target="_blank" rel="noopener" href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a> failed, reason certificate has expired</span></li>
+<li>解决提示淘宝镜像过期</li>
+<li>1.<span class="en">npm config list</span> 查看当前的npm镜像</li>
+<li>2.<span class="en">npm cache clean –force</span> 清空缓存</li>
+<li>3.<span class="en">npm config set registry <a target="_blank" rel="noopener" href="https://registry.npmmirror.com/">https://registry.npmmirror.com</a></span> 【推荐】 修改镜像</li>
+<li>或者 <span class="en">npm config set registry <a target="_blank" rel="noopener" href="https://registry.npmjs.org/">https://registry.npmjs.org/</a></span> (或npm config delete registry) </li>
+<li>即修改完毕可正常使用</li>
+</ul>
+<h3 id="npm构建报错"><a href="#npm构建报错" class="headerlink" title="npm构建报错"></a>npm构建报错</h3><ul>
+<li>解决构建不出miniprogram_npm</li>
+<li>在project.config.json中添加配置   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;packNpmManually&quot;</span>: <span class="literal">true</span>,</span><br><span class="line"><span class="string">&quot;packNpmRelationList&quot;</span>: [</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">&quot;packageJsonPath&quot;</span>: <span class="string">&quot;./package.json&quot;</span>,</span><br><span class="line">		<span class="string">&quot;miniprogramNpmDistDir&quot;</span>: <span class="string">&quot;./&quot;</span></span><br><span class="line">	&#125;</span><br><span class="line">],</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/04/WeChatMini/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BC%98%E5%8C%96/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <div class="trm-cover-img" data-random-img></div>
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                    微信小程序
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/04/WeChatMini/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BC%98%E5%8C%96/" class="trm-anima-link">
+                    微信小程序-小程序优化 | 学习笔记
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/04</li>
+                <li>09:57</li>
+                
+                    <li>6.1k</li>
+                
+                
+                    <li>22</li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+    
+        <div class="trm-footer-item blog-run-long"></div>
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="注意事项："><a rel="nofollow" class="trm-toc-link" href="#注意事项："><span class="trm-toc-number">1.</span> <span class="trm-toc-text">注意事项：</span></a></li><li class="trm-toc-item trm-toc-level-2" title="tailwind 、taro 、小程序之间的问题"><a rel="nofollow" class="trm-toc-link" href="#tailwind-、taro-、小程序之间的问题"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">tailwind 、taro 、小程序之间的问题</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="解决构建后生成的miniprogram_npm包太大，主包超过2M"><a rel="nofollow" class="trm-toc-link" href="#解决构建后生成的miniprogram-npm包太大，主包超过2M"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">解决构建后生成的miniprogram_npm包太大，主包超过2M</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决vscode中ts插件与小程序的api的飘红线问题"><a rel="nofollow" class="trm-toc-link" href="#解决vscode中ts插件与小程序的api的飘红线问题"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">解决vscode中ts插件与小程序的api的飘红线问题</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决tsconfig.json报错【找不到“sass”的类型定义文件。程序包含该文件是因为:隐式类型库 “sass” 的入口点】"><a rel="nofollow" class="trm-toc-link" href="#解决tsconfig-json报错【找不到“sass”的类型定义文件。程序包含该文件是因为-隐式类型库-“sass”-的入口点】"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">解决tsconfig.json报错【找不到“sass”的类型定义文件。程序包含该文件是因为:隐式类型库 “sass” 的入口点】</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决tailwindcss和小程序的结合后 @tailwind base;之类的增加到app.scss中微信小程序报错【app.wxss unexpected token “;”】"><a rel="nofollow" class="trm-toc-link" href="#解决tailwindcss和小程序的结合后-tailwind-base-之类的增加到app-scss中微信小程序报错【app-wxss-unexpected-token-“-”】"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">解决tailwindcss和小程序的结合后 @tailwind base;之类的增加到app.scss中微信小程序报错【app.wxss unexpected token “;”】</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决发现tailwind的样式在小程序中不生效"><a rel="nofollow" class="trm-toc-link" href="#解决发现tailwind的样式在小程序中不生效"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">解决发现tailwind的样式在小程序中不生效</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="关于js、node配置的问题"><a rel="nofollow" class="trm-toc-link" href="#关于js、node配置的问题"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">关于js、node配置的问题</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="运行js文件时"><a rel="nofollow" class="trm-toc-link" href="#运行js文件时"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">运行js文件时</span></a></li><li class="trm-toc-item trm-toc-level-3" title="运行js文件时"><a rel="nofollow" class="trm-toc-link" href="#运行js文件时-1"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">运行js文件时</span></a></li><li class="trm-toc-item trm-toc-level-3" title="运行项目"><a rel="nofollow" class="trm-toc-link" href="#运行项目"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">运行项目</span></a></li><li class="trm-toc-item trm-toc-level-3" title="运行项目网页"><a rel="nofollow" class="trm-toc-link" href="#运行项目网页"><span class="trm-toc-number">3.4.</span> <span class="trm-toc-text">运行项目网页</span></a></li><li class="trm-toc-item trm-toc-level-3" title="项目运行后"><a rel="nofollow" class="trm-toc-link" href="#项目运行后"><span class="trm-toc-number">3.5.</span> <span class="trm-toc-text">项目运行后</span></a></li><li class="trm-toc-item trm-toc-level-3" title="遇到提示"><a rel="nofollow" class="trm-toc-link" href="#遇到提示"><span class="trm-toc-number">3.6.</span> <span class="trm-toc-text">遇到提示</span></a></li><li class="trm-toc-item trm-toc-level-3" title="npm报错"><a rel="nofollow" class="trm-toc-link" href="#npm报错"><span class="trm-toc-number">3.7.</span> <span class="trm-toc-text">npm报错</span></a></li><li class="trm-toc-item trm-toc-level-3" title="npm构建报错"><a rel="nofollow" class="trm-toc-link" href="#npm构建报错"><span class="trm-toc-number">3.8.</span> <span class="trm-toc-text">npm构建报错</span></a></li></ol></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn hidden-md" data-title="Toggle between single-column and double-column" onclick="asyncFun.switchSingleColumn()">
+            <i class="iconfont fas fa-arrows-alt-h"></i>
+        </div>
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+    <div class="trm-search-popup">
+        <div class="trm-search-wrapper">
+            <div class="form trm-search-form">
+                <div class="trm-search-input-icon">
+                    <i class="iconfont fas fa-search"></i>
+                </div>
+                <input class="trm-search-input" type="text" placeholder="Searching...">
+                <div class="trm-search-btn-close">
+                    <i class="iconfont fas fa-times"></i>
+                </div>
+            </div>
+            <div class="trm-search-result-container">
+                <div class="trm-search-empty">
+                    Please enter keywords to search
+                </div>
+            </div>
+            <div class="trm-search-footer">
+                <div class="trm-search-stats"></div>
+                <ul class="trm-search-commands">
+                    <li>
+                        <kbd class="command-palette-commands-key">
+                            <svg width="15" height="15" aria-label="Escape key" role="img">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.2">
+                                    <path
+                                        d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956">
+                                    </path>
+                                </g>
+                            </svg>
+                        </kbd>
+                        <span class="command-palette-Label">to close</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+        
+<script src="https://unpkg.com/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+
+        <script src="/js/plugins/local_search.js?v=2.2.3"></script>
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+			<script src="/js/plugins/danmu.js?v=2.2.3"></script>
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="zh-Hans,en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="HTML 全称是 HyperText Markup Language，即超文本标记语言，它不是编程语言，而是一种用来告知浏览器如何组织页面的标记语言，用来描述网页的表现，展示效果或功能及行为。   超文本（hypertext) 是指连接单个网站或多个网站网页的链接 HTML 使用标记（markup) 来注明文本、图片和其它内容 HTML 通过标签（tag）标记元素，标签由在&lt;和&gt;中包裹">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Html-基础">
+<meta property="og:url" content="http://example.com/en/2024/10/30/HTMLCSS/html-%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="HTML 全称是 HyperText Markup Language，即超文本标记语言，它不是编程语言，而是一种用来告知浏览器如何组织页面的标记语言，用来描述网页的表现，展示效果或功能及行为。   超文本（hypertext) 是指连接单个网站或多个网站网页的链接 HTML 使用标记（markup) 来注明文本、图片和其它内容 HTML 通过标签（tag）标记元素，标签由在&lt;和&gt;中包裹">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-30T07:29:11.161Z">
+<meta property="article:modified_time" content="2024-11-05T06:32:15.258Z">
+<meta property="article:author" content="UUOVO">
+<meta property="article:tag" content="知识">
+<meta property="article:tag" content="Html">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="实体,video,audio,img,html">
+
+
+<title >Html-基础</title>
+
+<!-- Favicon -->
+
+    <link href='/img/sitelogo16.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/sitelogo32.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/apple-touch-icon.png?v=2.2.3' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-05 14:32:15"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/sitelogo32.svg">
+    
+    
+        <div class="trm-logo-text">
+            UU<span>OVO</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/tags/" target="">
+                            标签
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" target="">
+                            微信小程序
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%B7%A5%E5%85%B7/" target="">
+                            前端工程化工具
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/React/" target="">
+                            React
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/VUE/" target="">
+                            VUE
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/TypeScript/" target="">
+                            TypeScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JavaScript/" target="">
+                            JavaScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/CSS&HTML/" target="">
+                            CSS&HTML
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="">
+                            网络与数据结构
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/uniapp/" target="">
+                            uniapp
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ThreeJS/" target="">
+                            ThreeJS
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/Node/" target="">
+                            Node
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JQuery/" target="">
+                            JQuery
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ES6/" target="">
+                            ES6
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/AJAX/" target="">
+                            AJAX
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/gallery/" target="">
+                    相册
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/gallery/wallpaper/" target="">
+                            相册详情页
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/about/" target="">
+                    关于
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/links/" target="">
+                            友链
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+    
+    <div id="trm-search-btn" class="trm-search-btn">
+        <i class="iconfont fas fa-search"></i>
+    </div>
+     
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            Html-基础
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        en
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar1.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/UUOVO" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/ovouu" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                City:
+            </div>
+            <div class="trm-label trm-label-light">
+                City
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                Age:
+            </div>
+            <div class="trm-label trm-label-light">
+                Age
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:1370203877@qq.com" class="trm-btn">
+            Contact Me
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            10/30
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            15:29
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            UUOVO
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><blockquote>
+<p>全称是 HyperText Markup Language，即超文本标记语言，它不是编程语言，而是一种用来告知浏览器如何组织页面的标记语言，用来描述网页的表现，展示效果或功能及行为。</p>
+</blockquote>
+<ul>
+<li><code>超文本</code>（hypertext) 是指连接单个网站或多个网站网页的链接</li>
+<li>HTML 使用<code>标记</code>（markup) 来注明文本、图片和其它内容</li>
+<li>HTML 通过<code>标签</code>（tag）标记元素，标签由在&lt;和&gt;中包裹的元素名组成</li>
+<li>HTML 标签里的元素名<code>不区分大小写</code></li>
+</ul>
+<h2 id="实体"><a href="#实体" class="headerlink" title="实体"></a>实体</h2><blockquote>
+<p>需要在网页中书写特殊的符号，则需要使用 html 中的实体（转义字符）</p>
+</blockquote>
+<ul>
+<li>实体的语法：&amp;实体的名字;</li>
+<li>常见的实体：<ul>
+<li><code>&amp;nbsp;</code> 空格</li>
+<li><code>&amp;gt;</code> &gt;</li>
+<li><code>&amp;lt;</code> &lt;</li>
+<li><code>&amp;copy;</code> 版权符号</li>
+<li><code>&amp;quot;</code> “</li>
+<li><code>&amp;apos;</code> ‘</li>
+<li><code>$amp;</code> &amp;</li>
+</ul>
+</li>
+</ul>
+<h2 id="文档声明"><a href="#文档声明" class="headerlink" title="文档声明"></a>文档声明</h2><blockquote>
+<p>告诉浏览器当前网页的版本</p>
+<ul>
+<li>html5 的文档声明: <code>&lt;!Doctype HTML&gt;</code></li>
+</ul>
+</blockquote>
+<h2 id="进制"><a href="#进制" class="headerlink" title="进制"></a>进制</h2><h3 id="十进制（日常使用）"><a href="#十进制（日常使用）" class="headerlink" title="十进制（日常使用）"></a>十进制（日常使用）</h3><blockquote>
+<ul>
+<li>特点：满 10 进 1</li>
+<li>单位数字：10 个 （0-9）</li>
+</ul>
+</blockquote>
+<h3 id="二进制（计算机底层的进制）"><a href="#二进制（计算机底层的进制）" class="headerlink" title="二进制（计算机底层的进制）"></a>二进制（计算机底层的进制）</h3><blockquote>
+<ul>
+<li>特点：满 2 进 1</li>
+<li>计数：0 1 10 11 100 101 110 111</li>
+<li>单位数字：2 个 （0-1）</li>
+<li>扩展：<ul>
+<li>所有数据在计算机底层都会以二进制的形式保存</li>
+<li>将内存想象为一个有多个小格子组成的容器，每个小格子中存储一个 1 或一个 0,这个小格子在内存中被称为 1 位（bit）</li>
+<li>换算：<ul>
+<li>8bit &#x3D; 1byte(字节)</li>
+<li>1024byte &#x3D; 1kb(千字节)</li>
+<li>1024kb &#x3D; 1mb(兆字节)</li>
+<li>1024mb &#x3D; 1gb(吉字节)</li>
+<li>1024gb &#x3D; 1tb(特字节)</li>
+<li>1024tp &#x3D; 1pb</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="八进制"><a href="#八进制" class="headerlink" title="八进制"></a>八进制</h3><blockquote>
+<ul>
+<li>特点：满 8 进 1</li>
+<li>单位数字：8 个 （0-7）</li>
+</ul>
+</blockquote>
+<h3 id="十六进制-一般显示一个二进制数字时，都会转换为十六进制"><a href="#十六进制-一般显示一个二进制数字时，都会转换为十六进制" class="headerlink" title="十六进制(一般显示一个二进制数字时，都会转换为十六进制)"></a>十六进制(一般显示一个二进制数字时，都会转换为十六进制)</h3><blockquote>
+<ul>
+<li>特点：满 16 进 1</li>
+<li>计数：0 1 2 … 9 a b c d e f 10 11 12 …19 1a 1b 1c 1d 1e 1f 20</li>
+<li>单位数字：16 个（0-f）</li>
+</ul>
+</blockquote>
+<h3 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h3><blockquote>
+<ul>
+<li>所有数据在计算机中存储时都是以二进制形式存储的，文字也不例外。</li>
+<li>而计算机会将编码转换为字符，供我们阅读</li>
+</ul>
+</blockquote>
+<h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3><ul>
+<li>将<code>字符</code>转换为<code>二进制</code>码的过程</li>
+</ul>
+<h3 id="解码"><a href="#解码" class="headerlink" title="解码"></a>解码</h3><ul>
+<li>将<code>二进制</code>码转换为<code>字符</code>的过程</li>
+</ul>
+<h3 id="字符集（charset）"><a href="#字符集（charset）" class="headerlink" title="字符集（charset）"></a>字符集（charset）</h3><ul>
+<li>编码和解码所采用的规则</li>
+</ul>
+<h3 id="乱码问题："><a href="#乱码问题：" class="headerlink" title="乱码问题："></a>乱码问题：</h3><ul>
+<li>如果编码和解码所采用的字符集不同就会出现乱码问题</li>
+</ul>
+<h3 id="常见的字符集："><a href="#常见的字符集：" class="headerlink" title="常见的字符集："></a>常见的字符集：</h3><blockquote>
+<ul>
+<li>ASCII</li>
+<li>ISO88591</li>
+<li>GB2312</li>
+<li>GBK</li>
+<li>UTF-8，在开发时我们使用的字符集都是 UTF-8</li>
+</ul>
+</blockquote>
+<h2 id="head-的内容"><a href="#head-的内容" class="headerlink" title="head 的内容"></a>head 的内容</h2><h3 id="元数据：元素"><a href="#元数据：元素" class="headerlink" title="元数据：元素"></a>元数据：<meta>元素</h3><blockquote>
+<ul>
+<li><code>meta</code>可提供有关某个 HTML 元素的元信息，比如描述、针对搜索引擎的关键词以及刷新频率</li>
+<li><code>charset</code>：指定网页的字符集 <code>&lt;meta charset=&quot;utf-8&quot; /&gt;</code></li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/jsref/prop-meta-name.html">name</a>：指定 meta 元素的类型；说明该元素包含的信息。<ul>
+<li><code>keywords</code>：表网站的<code>关键字</code>，可以同时指定多个关键字，使用,隔开，<code>SEO相关</code></li>
+<li><code>description</code>：规定页面的<code>描述</code>。搜索引擎会把这个描述显示在搜索结果中，<code>SEO相关</code></li>
+<li><code>application-name</code>：规定页面所代表的 Web 应用程序的名称。</li>
+<li><code>author</code>：规定文档的作者的名字。</li>
+</ul>
+</li>
+<li><code>content</code>：指定的实际的数据内容</li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/jsref/dom-obj-meter.html">http-equiv</a>：设置或者返回 content 属性中 HTTP 头部信息<ul>
+<li><code>content-type</code>：返回内容的 MIME 类型，通常用于字符集的设置。</li>
+<li><code>refresh</code>：定义间隔多久后刷新页面</li>
+</ul>
+</li>
+<li>示例：<ul>
+<li><code>&lt;meta name=&quot;keywords&quot; content=&quot;HTML5,前端,CSS3&quot;&gt;</code></li>
+<li><code>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;300&quot;&gt;</code> — 定义间隔多久后刷新页面。</li>
+<li><code>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;3;url=https://www.mozilla.org&quot;&gt;</code> — 重定向火狐</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="title-标签"><a href="#title-标签" class="headerlink" title="title 标签"></a>title 标签</h3><ul>
+<li>内容会作为搜索结果的超链接上的文字显示</li>
+</ul>
+<h2 id="表象元素"><a href="#表象元素" class="headerlink" title="表象元素"></a>表象元素</h2><ul>
+<li>概念：仅仅影响表象而且没有语义的元素</li>
+<li><code>&lt;i&gt;</code>标签：被用来传达传统上用斜体表达的意义：外国文字，分类名称，技术术语，一种思想……</li>
+<li><code>&lt;b&gt;</code>标签：被用来传达传统上用粗体表达的意义：关键字，产品名称，引导句……</li>
+<li><code>&lt;u&gt;</code>标签：被用来传达传统上用下划线表达的意义：专有名词，拼写错误……</li>
+</ul>
+<h2 id="标签的属性"><a href="#标签的属性" class="headerlink" title="标签的属性"></a>标签的属性</h2><ul>
+<li>在标签中（开始标签或自结束标签）还可以设置属性</li>
+<li>属性是一个名值对（x&#x3D;y）</li>
+<li>属性用来设置标签中的内容如何显示</li>
+<li>属性和标签名或其他属性应该使用空格隔开</li>
+<li>如果有属性值，属性值应该使用引号引起来</li>
+</ul>
+<h2 id="语义化标签"><a href="#语义化标签" class="headerlink" title="语义化标签"></a>语义化标签</h2><ul>
+<li>语义对无障碍、SEO（搜索引擎优化）等非常重要</li>
+</ul>
+<h3 id="标题标签"><a href="#标题标签" class="headerlink" title="标题标签"></a>标题标签</h3><ul>
+<li><code>h1 ~ h6标签</code><ul>
+<li>代表分别从一级标题到六级标题</li>
+<li>从 h1~h6 重要性递减，h1 最重要，h6 最不重要</li>
+<li>h1 在网页中的重要性仅次于 title 标签，一般情况下一个页面中只会有一个 h1</li>
+<li>一般情况下标题标签只会使用到 h1<del>h3，h4</del>h6 很少用</li>
+<li>标题标签都是块元素</li>
+</ul>
+</li>
+<li><code>hgroup标签</code><ul>
+<li>作用：为标题分组，可以将一组相关的标题同时放入到 hgroup</li>
+</ul>
+</li>
+<li><code>p标签</code><ul>
+<li>表示页面中的一个段落</li>
+<li>p 标签也是一个块元素</li>
+</ul>
+</li>
+<li><code>em标签(倾斜)</code><ul>
+<li>用于表示语音语调的一个加重</li>
+</ul>
+</li>
+<li><code>strong标签(加粗)</code><ul>
+<li>表示强调，重要内容！</li>
+</ul>
+</li>
+<li><code>blockquote标签</code><ul>
+<li>表示一个长引用</li>
+</ul>
+</li>
+<li><code>q标签</code><ul>
+<li>表示一个短引用</li>
+</ul>
+</li>
+<li><code>br标签</code><ul>
+<li>表示页面中的换行</li>
+</ul>
+</li>
+</ul>
+<h3 id="块元素-和-行内元素"><a href="#块元素-和-行内元素" class="headerlink" title="块元素 和 行内元素"></a>块元素 和 行内元素</h3><ul>
+<li><code>块元素</code>(block element)：在页面中独占一行的元素<ul>
+<li>在网页中一般通过块元素来对页面进行布局</li>
+</ul>
+</li>
+<li><code>行内元素</code>(inline element)：在页面中不会独占一行的元素<ul>
+<li>行内元素主要用来包裹文字</li>
+</ul>
+</li>
+<li>注：<ul>
+<li>一般情况下会在块元素中放行内元素，而不会在行内元素中放块元素</li>
+<li>块元素中基本上什么都能放</li>
+<li>p 元素中不能放任何的块元素</li>
+<li>浏览器在解析网页时，会自动对网页中不符合规范的内容进行修正</li>
+</ul>
+</li>
+</ul>
+<h3 id="布局标签（结构化语义标签）"><a href="#布局标签（结构化语义标签）" class="headerlink" title="布局标签（结构化语义标签）"></a>布局标签（结构化语义标签）</h3><ul>
+<li><code>header标签</code>：表示网页的头部</li>
+<li><code>main标签</code>：表示网页的主体部分(一个页面中仅一个)</li>
+<li><code>footer标签</code>：表示网页的底部</li>
+<li><code>nav标签</code>：表示网页中的导航</li>
+<li><code>aside标签</code>：和主体相关的其他内容（侧边栏）</li>
+<li><code>article标签</code>：表示一个独立的文章</li>
+<li><code>section标签</code>：表示一个独立的区块，上边的标签都不能表示时使用 section</li>
+<li><code>div标签</code>：无语义，表示一个盒子，主要的布局元素</li>
+<li><code>span标签</code>：行内元素，无语义，用于在网页中选中文字</li>
+</ul>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><ul>
+<li>在 html 中也可以创建列表，html 列表一共有三种：<ol>
+<li>有序列表<ul>
+<li>使用<code>ol标签</code>来创建有序，带编号列表</li>
+<li>使用 li 表示列表项</li>
+</ul>
+</li>
+<li>无序列表<ul>
+<li>使用<code>ul标签</code>来创建无序列表</li>
+<li>使用 li 表示列表项</li>
+</ul>
+</li>
+<li>定义列表<ul>
+<li>使用 dl 标签来创建一个定义列表</li>
+<li>使用 dt 来表示定义的内容</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>使用 dd 来对内容进行解释说明</li>
+</ul>
+</li>
+<li>列表之间可以互相嵌套</li>
+</ul>
+<h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><blockquote>
+<p>可以让我们从一个页面跳转到其他页面，或者是当前页面的其他的位置</p>
+</blockquote>
+<ul>
+<li>使用 a 标签来定义超链接</li>
+<li>属性：<ul>
+<li>href 属性<ul>
+<li>作用：指定跳转的目标路径</li>
+<li>值<ul>
+<li>当值为<code>javascript:;</code>,点击这个超链接什么也不会发生</li>
+<li>当值为<code>#</code>,可以跳到当前页面的顶部的位置</li>
+<li>当值为<code>#目标元素的id属性值</code>,可以跳转到页面的指定位置</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>target 属性<ul>
+<li>作用：用来指定超链接打开的位置</li>
+<li>可选值：<ul>
+<li>_self：默认值，在当前页面中打开超链接</li>
+<li>_blank：在一个新的页面中打开超链接</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>id 属性（唯一不重复的）<ul>
+<li>每一个标签都可以添加一个 id 属性</li>
+<li>id 属性就是元素的唯一标识，同一个页面中不能出现重复的 id 属性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>行内元素，在 a 标签中可以嵌套除它自身外的任何元素</li>
+</ul>
+<h3 id="相对路径"><a href="#相对路径" class="headerlink" title="相对路径"></a>相对路径</h3><ul>
+<li>跳转一个服务器内部的页面时，一般使用相对路径</li>
+<li>相对路径都会<code>使用./或../开头</code></li>
+<li><code>./</code>：表示<code>当前文件所在的目录</code>,可以省略不写</li>
+<li><code>../</code>：表示<code>当前文件所在目录的上一级目录</code></li>
+</ul>
+<h3 id="常用的例子"><a href="#常用的例子" class="headerlink" title="常用的例子"></a>常用的例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 绝对URL</span></span><br><span class="line">&lt;a href=<span class="string">&quot;https://www.baidu.com&quot;</span>&gt;超链接&lt;/a&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;07.列表.html&quot;</span>&gt;</span>超链接2<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="comment">// 相对URL</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;./target.html&quot;</span>&gt;</span>超链接1<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;../07.列表.html&quot;</span>&gt;</span>超链接2<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="comment">// 值为javascript:;，点击无效果</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;javascript:;&quot;</span>&gt;</span>这是一个新的超链接<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="comment">// 点击在标签中打开新的页面</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;07.列表.html&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span>&gt;</span>超链接<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="comment">// 跳到页面容器id为#bottom的位置</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#bottom&quot;</span>&gt;</span>去底部<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="comment">// #回到顶部</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">&quot;bottom&quot;</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>回到顶部<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="图片标签"><a href="#图片标签" class="headerlink" title="图片标签"></a>图片标签</h2><ul>
+<li>作用：向当前页面中引入一个外部图片</li>
+<li>使用 img 标签来引入外部图片，img 标签是一个自结束标签</li>
+<li>img 这种元素属于替换元素（块和行内元素之间，具有两种元素的特点）</li>
+</ul>
+<h3 id="img-的属性："><a href="#img-的属性：" class="headerlink" title="img 的属性："></a>img 的属性：</h3><ul>
+<li><code>src</code>：属性指定的是外部图片的路径（路径规则和超链接是一样的）</li>
+<li><code>alt</code>：图片的描述，这个描述默认情况下不会显示，有些浏览器会图片无法加载时显示<br>搜索引擎会根据 alt 中的内容来识别图片，如果不写 alt 属性则图片不会被搜索引擎所收录</li>
+<li><code>width</code>：图片的宽度 (单位是像素)</li>
+<li><code>height</code>：图片的高度 (单位是像素)<ul>
+<li>宽度和高度中如果只修改了一个，则另一个会等比例缩放</li>
+</ul>
+</li>
+<li><code>loading</code>：指定浏览器是应立即加载图像还是延迟加载图像。<ul>
+<li>eager：立即加载</li>
+<li>lazy：延迟加载</li>
+</ul>
+</li>
+<li>注意：<ul>
+<li>一般情况在 pc 端，不建议修改图片的大小，需要多大的图片就裁多大</li>
+<li>但是在移动端，经常需要对图片进行缩放（大图缩小）</li>
+</ul>
+</li>
+</ul>
+<h3 id="图片的格式："><a href="#图片的格式：" class="headerlink" title="图片的格式："></a>图片的格式：</h3><ul>
+<li><code>jpeg(jpg)</code><ul>
+<li>支持的颜色比较丰富，不支持透明效果，不支持动图</li>
+<li>一般用来显示照片</li>
+</ul>
+</li>
+<li><code>gif</code><ul>
+<li>支持的颜色比较少，支持简单透明，支持动图</li>
+<li>颜色单一的图片，动图</li>
+</ul>
+</li>
+<li><code>png</code><ul>
+<li>支持的颜色丰富，支持复杂透明，不支持动图</li>
+<li>颜色丰富，复杂透明图片（专为网页而生）</li>
+</ul>
+</li>
+<li><code>webp</code><ul>
+<li>这种格式是谷歌新推出的专门用来表示网页中的图片的一种格式</li>
+<li>它具备其他图片格式的所有优点，而且文件还特别的小</li>
+<li>缺点：兼容性不好</li>
+</ul>
+</li>
+<li><code>base64 </code><ul>
+<li>将图片使用 base64 编码，这样可以将图片转换为字符，通过字符的形式来引入图片</li>
+<li>一般都是一些需要和网页一起加载的图片才会使用 base64</li>
+</ul>
+</li>
+<li>示例：<code>&lt;img src=&quot;./img/1.gif&quot; alt=&quot;松鼠&quot;&gt;</code></li>
+</ul>
+<h2 id="音视频"><a href="#音视频" class="headerlink" title="音视频"></a>音视频</h2><h3 id="audio-标签"><a href="#audio-标签" class="headerlink" title="audio 标签"></a>audio 标签</h3><ul>
+<li><p>支持 ie9 以上</p>
+</li>
+<li><p>用来向页面中引入一个外部的音频文件的</p>
+</li>
+<li><p>音视频文件引入时，默认情况下不允许用户自己控制播放停止</p>
+</li>
+<li><p>属性：</p>
+<ul>
+<li><code>controls</code> 是否允许用户控制播放</li>
+<li><code>autoplay</code> 音频文件是否自动播放<ul>
+<li>如果设置了 autoplay 则音乐在打开页面时会自动播放</li>
+<li>但是目前来讲大部分浏览器都不会自动对音乐进行播放</li>
+</ul>
+</li>
+<li><code>loop</code> 音乐是否循环播放</li>
+</ul>
+</li>
+<li><p>除了通过 src 来指定外部文件的路径以外，还可以通过 source 来指定文件的路径,使用 source 最好指定源是什么 type</p>
+</li>
+<li><p>示例：</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;&gt;</span><br><span class="line">&lt;audio controls&gt;</span><br><span class="line">	&lt;!-- 对不起，您的浏览器不支持播放音频！请升级浏览器！ --&gt;</span><br><span class="line">	&lt;source src=&quot;./source/audio.mp3&quot;&gt;</span><br><span class="line">	&lt;source src=&quot;./source/audio.ogg&quot;&gt;</span><br><span class="line">	&lt;embed src=&quot;./source/audio.mp3&quot; type=&quot;audio/mp3&quot; width=&quot;300&quot; height=&quot;100&quot;&gt;</span><br><span class="line">&lt;/audio&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="video-标签"><a href="#video-标签" class="headerlink" title="video 标签"></a>video 标签</h3><ul>
+<li>支持 ie9 以上</li>
+<li>向网页中引入一个视频</li>
+<li>属性:<ul>
+<li><code>controls</code> 是否允许用户控制播放</li>
+<li><code>autoplay</code> 音频文件是否自动播放<ul>
+<li>如果设置了 autoplay 则音乐在打开页面时会自动播放</li>
+<li>但是目前来讲大部分浏览器都不会自动对音乐进行播放</li>
+</ul>
+</li>
+<li><code>loop</code> 音乐是否循环播放</li>
+<li><code>width | height</code> 播放器宽高</li>
+<li><code>poster: &quot;url&quot;</code> 加载等待的画面图片</li>
+<li><code>muted</code> 静音播放</li>
+</ul>
+</li>
+<li>示例：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;video width=<span class="string">&quot;300&quot;</span> height=<span class="string">&quot;150&quot;</span> controls loop&gt;&lt;/video&gt;</span><br><span class="line">&lt;video controls&gt;</span><br><span class="line">	&lt;source src=&quot;./source/flower.webm&quot;&gt;</span><br><span class="line">	&lt;source src=&quot;./source/flower.mp4&quot;&gt;</span><br><span class="line">	&lt;embed src=&quot;./source/flower.mp4&quot; type=&quot;video/mp4&quot;&gt;</span><br><span class="line">&lt;/video&gt;</span><br></pre></td></tr></table></figure>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/30/HTMLCSS/html-%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2%E5%B8%83%E5%B1%80/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <div class="trm-cover-img" data-random-img></div>
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/CSS-HTML/">
+                    CSS&HTML
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/30/HTMLCSS/html-%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2%E5%B8%83%E5%B1%80/" class="trm-anima-link">
+                    Html-媒体查询布局
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/30</li>
+                <li>15:29</li>
+                
+                    <li>810</li>
+                
+                
+                    <li>3</li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/30/HTMLCSS/html-%E7%9B%92%E5%AD%90%E5%B8%83%E5%B1%80/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <div class="trm-cover-img" data-random-img></div>
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/CSS-HTML/">
+                    CSS&HTML
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/30/HTMLCSS/html-%E7%9B%92%E5%AD%90%E5%B8%83%E5%B1%80/" class="trm-anima-link">
+                    Html-盒子布局
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/30</li>
+                <li>15:29</li>
+                
+                    <li>2.2k</li>
+                
+                
+                    <li>8</li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+    
+        <div class="trm-footer-item blog-run-long"></div>
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="HTML"><a rel="nofollow" class="trm-toc-link" href="#HTML"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">HTML</span></a></li><li class="trm-toc-item trm-toc-level-2" title="实体"><a rel="nofollow" class="trm-toc-link" href="#实体"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">实体</span></a></li><li class="trm-toc-item trm-toc-level-2" title="文档声明"><a rel="nofollow" class="trm-toc-link" href="#文档声明"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">文档声明</span></a></li><li class="trm-toc-item trm-toc-level-2" title="进制"><a rel="nofollow" class="trm-toc-link" href="#进制"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">进制</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="十进制（日常使用）"><a rel="nofollow" class="trm-toc-link" href="#十进制（日常使用）"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">十进制（日常使用）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="二进制（计算机底层的进制）"><a rel="nofollow" class="trm-toc-link" href="#二进制（计算机底层的进制）"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">二进制（计算机底层的进制）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="八进制"><a rel="nofollow" class="trm-toc-link" href="#八进制"><span class="trm-toc-number">4.3.</span> <span class="trm-toc-text">八进制</span></a></li><li class="trm-toc-item trm-toc-level-3" title="十六进制(一般显示一个二进制数字时，都会转换为十六进制)"><a rel="nofollow" class="trm-toc-link" href="#十六进制-一般显示一个二进制数字时，都会转换为十六进制"><span class="trm-toc-number">4.4.</span> <span class="trm-toc-text">十六进制(一般显示一个二进制数字时，都会转换为十六进制)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="字符编码"><a rel="nofollow" class="trm-toc-link" href="#字符编码"><span class="trm-toc-number">4.5.</span> <span class="trm-toc-text">字符编码</span></a></li><li class="trm-toc-item trm-toc-level-3" title="编码"><a rel="nofollow" class="trm-toc-link" href="#编码"><span class="trm-toc-number">4.6.</span> <span class="trm-toc-text">编码</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解码"><a rel="nofollow" class="trm-toc-link" href="#解码"><span class="trm-toc-number">4.7.</span> <span class="trm-toc-text">解码</span></a></li><li class="trm-toc-item trm-toc-level-3" title="字符集（charset）"><a rel="nofollow" class="trm-toc-link" href="#字符集（charset）"><span class="trm-toc-number">4.8.</span> <span class="trm-toc-text">字符集（charset）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="乱码问题："><a rel="nofollow" class="trm-toc-link" href="#乱码问题："><span class="trm-toc-number">4.9.</span> <span class="trm-toc-text">乱码问题：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="常见的字符集："><a rel="nofollow" class="trm-toc-link" href="#常见的字符集："><span class="trm-toc-number">4.10.</span> <span class="trm-toc-text">常见的字符集：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="head 的内容"><a rel="nofollow" class="trm-toc-link" href="#head-的内容"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">head 的内容</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="元数据：元素"><a rel="nofollow" class="trm-toc-link" href="#元数据：元素"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">元数据：元素</span></a></li><li class="trm-toc-item trm-toc-level-3" title="title 标签"><a rel="nofollow" class="trm-toc-link" href="#title-标签"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">title 标签</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="表象元素"><a rel="nofollow" class="trm-toc-link" href="#表象元素"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">表象元素</span></a></li><li class="trm-toc-item trm-toc-level-2" title="标签的属性"><a rel="nofollow" class="trm-toc-link" href="#标签的属性"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">标签的属性</span></a></li><li class="trm-toc-item trm-toc-level-2" title="语义化标签"><a rel="nofollow" class="trm-toc-link" href="#语义化标签"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">语义化标签</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="标题标签"><a rel="nofollow" class="trm-toc-link" href="#标题标签"><span class="trm-toc-number">8.1.</span> <span class="trm-toc-text">标题标签</span></a></li><li class="trm-toc-item trm-toc-level-3" title="块元素 和 行内元素"><a rel="nofollow" class="trm-toc-link" href="#块元素-和-行内元素"><span class="trm-toc-number">8.2.</span> <span class="trm-toc-text">块元素 和 行内元素</span></a></li><li class="trm-toc-item trm-toc-level-3" title="布局标签（结构化语义标签）"><a rel="nofollow" class="trm-toc-link" href="#布局标签（结构化语义标签）"><span class="trm-toc-number">8.3.</span> <span class="trm-toc-text">布局标签（结构化语义标签）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="列表"><a rel="nofollow" class="trm-toc-link" href="#列表"><span class="trm-toc-number">8.4.</span> <span class="trm-toc-text">列表</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="超链接"><a rel="nofollow" class="trm-toc-link" href="#超链接"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">超链接</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="相对路径"><a rel="nofollow" class="trm-toc-link" href="#相对路径"><span class="trm-toc-number">9.1.</span> <span class="trm-toc-text">相对路径</span></a></li><li class="trm-toc-item trm-toc-level-3" title="常用的例子"><a rel="nofollow" class="trm-toc-link" href="#常用的例子"><span class="trm-toc-number">9.2.</span> <span class="trm-toc-text">常用的例子</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="图片标签"><a rel="nofollow" class="trm-toc-link" href="#图片标签"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">图片标签</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="img 的属性："><a rel="nofollow" class="trm-toc-link" href="#img-的属性："><span class="trm-toc-number">10.1.</span> <span class="trm-toc-text">img 的属性：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="图片的格式："><a rel="nofollow" class="trm-toc-link" href="#图片的格式："><span class="trm-toc-number">10.2.</span> <span class="trm-toc-text">图片的格式：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="音视频"><a rel="nofollow" class="trm-toc-link" href="#音视频"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">音视频</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="audio 标签"><a rel="nofollow" class="trm-toc-link" href="#audio-标签"><span class="trm-toc-number">11.1.</span> <span class="trm-toc-text">audio 标签</span></a></li><li class="trm-toc-item trm-toc-level-3" title="video 标签"><a rel="nofollow" class="trm-toc-link" href="#video-标签"><span class="trm-toc-number">11.2.</span> <span class="trm-toc-text">video 标签</span></a></li></ol></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn hidden-md" data-title="Toggle between single-column and double-column" onclick="asyncFun.switchSingleColumn()">
+            <i class="iconfont fas fa-arrows-alt-h"></i>
+        </div>
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+    <div class="trm-search-popup">
+        <div class="trm-search-wrapper">
+            <div class="form trm-search-form">
+                <div class="trm-search-input-icon">
+                    <i class="iconfont fas fa-search"></i>
+                </div>
+                <input class="trm-search-input" type="text" placeholder="Searching...">
+                <div class="trm-search-btn-close">
+                    <i class="iconfont fas fa-times"></i>
+                </div>
+            </div>
+            <div class="trm-search-result-container">
+                <div class="trm-search-empty">
+                    Please enter keywords to search
+                </div>
+            </div>
+            <div class="trm-search-footer">
+                <div class="trm-search-stats"></div>
+                <ul class="trm-search-commands">
+                    <li>
+                        <kbd class="command-palette-commands-key">
+                            <svg width="15" height="15" aria-label="Escape key" role="img">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.2">
+                                    <path
+                                        d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956">
+                                    </path>
+                                </g>
+                            </svg>
+                        </kbd>
+                        <span class="command-palette-Label">to close</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+        
+<script src="https://unpkg.com/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+
+        <script src="/js/plugins/local_search.js?v=2.2.3"></script>
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+			<script src="/js/plugins/danmu.js?v=2.2.3"></script>
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

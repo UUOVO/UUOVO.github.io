@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans,en">
 
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -7,16 +7,16 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="1.点击海报生成,跳转页面 应用场景：一般是需要生成海报时跳转到新页面，先看一下海报整体预览的效果，然后在点击这个页面的保存来保存海报  2.进入该海报页面要有一个加载效果3.加载数据,显示图片效果，用canvas生成海报 1.使用canvas在wxml页面占位 2.给canvas添加一个id，类型选择2d，宽高都要自适应 3.在函数中使用wx.createSelectorQuery()来初始化c">
+<meta name="description" content="应用场景：一般是需要生成海报时跳转到新页面，先看一下海报整体预览的效果，然后在点击这个页面的保存来保存海报  步骤 点击海报生成,跳转页面 进入该海报页面要有一个加载效果 加载数据,显示图片效果，用canvas生成海报 1.使用canvas在wxml页面占位 2.给canvas添加一个id，类型选择2d，宽高都要自适应 3.在函数中使用wx.createSelectorQuery()来初始化ca">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信小程序-海报生成">
 <meta property="og:url" content="http://example.com/2024/11/04/WeChatMini/%E6%B5%B7%E6%8A%A5%E7%94%9F%E6%88%90/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1.点击海报生成,跳转页面 应用场景：一般是需要生成海报时跳转到新页面，先看一下海报整体预览的效果，然后在点击这个页面的保存来保存海报  2.进入该海报页面要有一个加载效果3.加载数据,显示图片效果，用canvas生成海报 1.使用canvas在wxml页面占位 2.给canvas添加一个id，类型选择2d，宽高都要自适应 3.在函数中使用wx.createSelectorQuery()来初始化c">
-<meta property="og:locale" content="en_US">
+<meta property="og:description" content="应用场景：一般是需要生成海报时跳转到新页面，先看一下海报整体预览的效果，然后在点击这个页面的保存来保存海报  步骤 点击海报生成,跳转页面 进入该海报页面要有一个加载效果 加载数据,显示图片效果，用canvas生成海报 1.使用canvas在wxml页面占位 2.给canvas添加一个id，类型选择2d，宽高都要自适应 3.在函数中使用wx.createSelectorQuery()来初始化ca">
+<meta property="og:locale">
 <meta property="article:published_time" content="2024-11-04T01:57:32.066Z">
-<meta property="article:modified_time" content="2024-11-05T03:43:58.211Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:modified_time" content="2024-11-06T09:40:10.445Z">
+<meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="canvas">
 <meta name="twitter:card" content="summary">
 
@@ -67,8 +67,8 @@
 
 
 <!-- Variable -->
-<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["https://ts1.cn.mm.bing.net/th/id/R-C.b8e84a0907bf9b5128dfa48be0ae48af?rik=tfH6k%2fT3hkauqw&riu=http%3a%2f%2fwww.08lr.cn%2fuploads%2fallimg%2f220330%2f1-2300141M0.jpg&ehk=dR6hTo1o7lNsHkpE62oIzMtJ%2bmxktf7%2fx6tp3Zt2uB8%3d&risl=&pid=ImgRaw&r=0","https://tse2-mm.cn.bing.net/th/id/OIP-C.AUTXb2JnogYGuhh_89lj1gHaHa?rs=1&pid=ImgDetMain","https://img.shetu66.com/2023/04/25/1682391094827084.png","https://ts1.cn.mm.bing.net/th/id/R-C.d88442788ee5a458d50e40f0a8cb1e05?rik=EoPp8GhejYeQfw&riu=http%3a%2f%2fimg.pconline.com.cn%2fimages%2fupload%2fupc%2ftx%2fwallpaper%2f1307%2f10%2fc2%2f23151595_1373424485102.jpg&ehk=J7xq%2f50bCmdD4jUXfnTlau2s5WiVsBxQArAjvJzqIo4%3d&risl=&pid=ImgRaw&r=0","https://tse2-mm.cn.bing.net/th/id/OIP-C.i-rpdJ5FGbHEgzs2aKDZLgHaHa?pid=ImgDet&w=474&h=474&rs=1","https://img.tukuppt.com/photo-big/00/00/74/6152d9dc09d26908.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"placeholder":"搜索文章...","result_placeholder":"请输入关键词进行搜索","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-05 11:43:58"};</script>
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-06 17:40:10"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -141,7 +141,7 @@
     
     
         <div class="trm-logo-text">
-            UUOVO<span>个人站点</span>
+            UU<span>OVO</span>
         </div>
     
 </a>
@@ -293,6 +293,16 @@
                 <a  href="/about/" target="">
                     关于
                 </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/links/" target="">
+                            友链
+                        </a>
+                    </li>
+                    
+                </ul>
                 
             </li>
             
@@ -455,10 +465,38 @@
             </div>
         </li>
     
+        <li>
+            <div class="trm-label">
+                City:
+            </div>
+            <div class="trm-label trm-label-light">
+                City
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                Age:
+            </div>
+            <div class="trm-label trm-label-light">
+                Age
+            </div>
+        </li>
+    
 </ul>
 <!-- info end -->
 
         
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:1370203877@qq.com" class="trm-btn">
+            联系我
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
     </div>
 </div>
                     <!-- main card end -->
@@ -482,25 +520,34 @@
     <div class="col-sm-4">
         <div id="post-author" class="trm-card trm-label trm-label-light text-center">
             <i class="iconfont far fa-user trm-icon"></i><br>
-            John Doe
+            UUOVO
         </div>
     </div>
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <h3 id="1-点击海报生成-跳转页面"><a href="#1-点击海报生成-跳转页面" class="headerlink" title="1.点击海报生成,跳转页面"></a>1.点击海报生成,跳转页面</h3><ul>
-<li>应用场景：一般是需要生成海报时跳转到新页面，先看一下海报整体预览的效果，然后在点击这个页面的保存来保存海报</li>
-</ul>
-<h3 id="2-进入该海报页面要有一个加载效果"><a href="#2-进入该海报页面要有一个加载效果" class="headerlink" title="2.进入该海报页面要有一个加载效果"></a>2.进入该海报页面要有一个加载效果</h3><h3 id="3-加载数据-显示图片效果，用canvas生成海报"><a href="#3-加载数据-显示图片效果，用canvas生成海报" class="headerlink" title="3.加载数据,显示图片效果，用canvas生成海报"></a>3.加载数据,显示图片效果，用canvas生成海报</h3><ul>
+    <blockquote>
+<p>应用场景：一般是需要生成海报时跳转到新页面，先看一下海报整体预览的效果，然后在点击这个页面的保存来保存海报</p>
+</blockquote>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul>
+<li><h3 id="点击海报生成-跳转页面"><a href="#点击海报生成-跳转页面" class="headerlink" title="点击海报生成,跳转页面"></a>点击海报生成,跳转页面</h3></li>
+<li><h3 id="进入该海报页面要有一个加载效果"><a href="#进入该海报页面要有一个加载效果" class="headerlink" title="进入该海报页面要有一个加载效果"></a>进入该海报页面要有一个加载效果</h3></li>
+<li><h3 id="加载数据-显示图片效果，用canvas生成海报"><a href="#加载数据-显示图片效果，用canvas生成海报" class="headerlink" title="加载数据,显示图片效果，用canvas生成海报"></a>加载数据,显示图片效果，用canvas生成海报</h3><ul>
 <li>1.使用canvas在wxml页面占位</li>
 <li>2.给canvas添加一个id，类型选择2d，宽高都要自适应</li>
 <li>3.在函数中使用wx.createSelectorQuery()来初始化canvas</li>
 <li>4.在ready函数中使用该函数，并且保存canvas到data中</li>
 </ul>
-<h3 id="4-通过页面中的按钮来触发wx-canvasToTempFilePath把生成后的数据及形状绘制成图片"><a href="#4-通过页面中的按钮来触发wx-canvasToTempFilePath把生成后的数据及形状绘制成图片" class="headerlink" title="4.通过页面中的按钮来触发wx.canvasToTempFilePath把生成后的数据及形状绘制成图片"></a>4.通过页面中的按钮来触发wx.canvasToTempFilePath把生成后的数据及形状绘制成图片</h3><h3 id="5-点击保存弹出一个加载效果"><a href="#5-点击保存弹出一个加载效果" class="headerlink" title="5.点击保存弹出一个加载效果"></a>5.点击保存弹出一个加载效果</h3><h3 id="6-成功保存就地址给手机的地址-失败提示"><a href="#6-成功保存就地址给手机的地址-失败提示" class="headerlink" title="6.成功保存就地址给手机的地址,失败提示"></a>6.成功保存就地址给手机的地址,失败提示</h3><h3 id="7-涉及到获取二维码"><a href="#7-涉及到获取二维码" class="headerlink" title="7.涉及到获取二维码"></a>7.涉及到获取二维码</h3><ul>
+</li>
+<li><h3 id="通过页面中的按钮来触发wx-canvasToTempFilePath把生成后的数据及形状绘制成图片"><a href="#通过页面中的按钮来触发wx-canvasToTempFilePath把生成后的数据及形状绘制成图片" class="headerlink" title="通过页面中的按钮来触发wx.canvasToTempFilePath把生成后的数据及形状绘制成图片"></a>通过页面中的按钮来触发wx.canvasToTempFilePath把生成后的数据及形状绘制成图片</h3></li>
+<li><h3 id="点击保存弹出一个加载效果"><a href="#点击保存弹出一个加载效果" class="headerlink" title="点击保存弹出一个加载效果"></a>点击保存弹出一个加载效果</h3></li>
+<li><h3 id="成功保存就地址给手机的地址-失败提示"><a href="#成功保存就地址给手机的地址-失败提示" class="headerlink" title="成功保存就地址给手机的地址,失败提示"></a>成功保存就地址给手机的地址,失败提示</h3></li>
+<li><h3 id="涉及到获取二维码"><a href="#涉及到获取二维码" class="headerlink" title="涉及到获取二维码"></a>涉及到获取二维码</h3><ul>
 <li>可以先生成二维码，然后通过数据传递到canvas中对应的位置</li>
 </ul>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*wxml*/</span></span><br><span class="line">&lt;view <span class="keyword">class</span>=<span class="string">&quot;cantainer&quot;</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;Canvasbg&quot;</span> <span class="attr">type</span>=<span class="string">&quot;2d&quot;</span> <span class="attr">style</span>=<span class="string">&quot; width: 100%; height: 100vh;&quot;</span>  <span class="attr">class</span>=<span class="string">&quot;poster&quot;</span>/&gt;</span></span></span><br><span class="line">  &lt;!-- <span class="language-xml"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;myCanvas&quot;</span> <span class="attr">type</span>=<span class="string">&quot;2d&quot;</span> <span class="attr">style</span>=<span class="string">&quot;border: 1px solid; width: 300px; height: 150px;&quot;</span> /&gt;</span></span> --&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;cantainer-bottom&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;info&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">text</span> &gt;</span>图片已生成,保存发布出来让朋友点赞吧!<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;btn&quot;</span> <span class="attr">size</span>=<span class="string">&quot;default&quot;</span> <span class="attr">bind:tap</span>=<span class="string">&quot;saveImage&quot;</span>&gt;</span>保存<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span></span><br><span class="line">&lt;/view&gt;</span><br><span class="line"><span class="comment">/*sass*/</span></span><br><span class="line">.<span class="property">cantainer</span>&#123;</span><br><span class="line">  <span class="attr">display</span>: flex;</span><br><span class="line">  flex-<span class="attr">direction</span>: column;</span><br><span class="line">  flex-<span class="attr">grow</span>: <span class="number">1</span>;</span><br><span class="line">  background-<span class="attr">color</span>: skyblue;</span><br><span class="line">  <span class="attr">height</span>: inherit;</span><br><span class="line">  &amp;-bottom &#123;</span><br><span class="line">    <span class="attr">display</span>: flex;</span><br><span class="line">    flex-<span class="attr">direction</span>: column;</span><br><span class="line">    <span class="attr">height</span>: 600rpx;</span><br><span class="line">    background-<span class="attr">color</span>: white;</span><br><span class="line">    justify-<span class="attr">content</span>: center;</span><br><span class="line">    align-<span class="attr">items</span>: center;</span><br><span class="line"></span><br><span class="line">    .<span class="property">info</span> &#123;</span><br><span class="line">      <span class="attr">height</span>: 100rpx;</span><br><span class="line">      font-<span class="attr">size</span>: 32rpx;</span><br><span class="line">      line-<span class="attr">height</span>: 32rpx;</span><br><span class="line">    &#125;</span><br><span class="line">    .<span class="property">btn</span>&#123; </span><br><span class="line">      background-<span class="attr">color</span>: <span class="title function_">var</span>(--primary-color);</span><br><span class="line">      <span class="attr">width</span>: 240rpx;</span><br><span class="line">      <span class="attr">height</span>: 80rpx;</span><br><span class="line">      <span class="attr">color</span>: white;</span><br><span class="line">      border-<span class="attr">radius</span>: 40rpx;</span><br><span class="line">    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*ts*/</span></span><br><span class="line">  <span class="attr">data</span>: &#123;</span><br><span class="line">    <span class="attr">photo</span>:<span class="string">&quot;../../../asset/squase.jpg&quot;</span>,</span><br><span class="line">    <span class="attr">imgUrl</span>:<span class="string">&quot;../../../asset/squase.jpg&quot;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;demo&#x27;</span>,</span><br><span class="line">    <span class="attr">desc</span>: <span class="string">&#x27;一个海报的demo&#x27;</span>,</span><br><span class="line">    <span class="attr">address</span>: <span class="string">&#x27;小行星&#x27;</span>,</span><br><span class="line">    <span class="attr">canvas</span>:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">onReady</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">draw</span>()</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">draw</span>(<span class="params"></span>) &#123;</span><br><span class="line">    wx.<span class="title function_">createSelectorQuery</span>()</span><br><span class="line">    .<span class="title function_">select</span>(<span class="string">&#x27;#Canvasbg&#x27;</span>)</span><br><span class="line">    .<span class="title function_">fields</span>(&#123; <span class="attr">node</span>: <span class="literal">true</span> ,<span class="attr">size</span>: <span class="literal">true</span>&#125;)</span><br><span class="line">    .<span class="title function_">exec</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> canvas = res[<span class="number">0</span>].<span class="property">node</span></span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">      <span class="keyword">const</span> ctx = canvas.<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>)</span><br><span class="line">      <span class="keyword">const</span> dpr = wx.<span class="title function_">getSystemInfoSync</span>().<span class="property">pixelRatio</span></span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(ctx)</span><br><span class="line">      <span class="keyword">const</span> width = res[<span class="number">0</span>].<span class="property">width</span></span><br><span class="line">      <span class="keyword">const</span> height = res[<span class="number">0</span>].<span class="property">height</span></span><br><span class="line">      canvas.<span class="property">width</span> = width * dpr</span><br><span class="line">      canvas.<span class="property">height</span> = height * dpr</span><br><span class="line">      ctx.<span class="title function_">clearRect</span>(<span class="number">0</span>, <span class="number">0</span>, width, height)</span><br><span class="line">      <span class="comment">// 绘制底部白色背景</span></span><br><span class="line">      ctx.<span class="title function_">save</span>()</span><br><span class="line">      ctx.<span class="property">fillStyle</span>= <span class="string">&#x27;white&#x27;</span></span><br><span class="line">      ctx.<span class="title function_">fillRect</span>(<span class="number">150</span>,<span class="number">200</span>,<span class="number">800</span>,<span class="number">1000</span>)</span><br><span class="line">      ctx.<span class="title function_">restore</span>()</span><br><span class="line">      <span class="comment">// 绘制图片 rect 矩形路径,fillRect 绘制矩形填充颜色</span></span><br><span class="line">      <span class="comment">// drawImage(图,图的x,图的y,图的宽,图的高)</span></span><br><span class="line">      <span class="keyword">let</span> img = canvas.<span class="title function_">createImage</span>()</span><br><span class="line">      img.<span class="property">src</span>= <span class="variable language_">this</span>.<span class="property">data</span>.<span class="property">imgUrl</span>      </span><br><span class="line">      img.<span class="property">onload</span> =<span class="function">() =&gt;</span>&#123;</span><br><span class="line">        ctx.<span class="title function_">save</span>()</span><br><span class="line">        ctx.<span class="title function_">beginPath</span>()</span><br><span class="line">        ctx.<span class="title function_">rect</span>(<span class="number">150</span>,<span class="number">200</span>,<span class="number">800</span>,<span class="number">1000</span>)          </span><br><span class="line">        ctx.<span class="title function_">clip</span>()</span><br><span class="line">        ctx.<span class="title function_">drawImage</span>(img,<span class="number">0</span>,<span class="number">150</span>,<span class="number">1000</span>,<span class="number">550</span>)</span><br><span class="line">        ctx.<span class="title function_">closePath</span>()</span><br><span class="line">        ctx.<span class="title function_">restore</span>()</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 绘制文本</span></span><br><span class="line">      ctx.<span class="property">font</span>=<span class="string">&quot;40px Arial&quot;</span></span><br><span class="line">      ctx.<span class="title function_">fillText</span>(<span class="string">`N A M E: <span class="subst">$&#123;<span class="variable language_">this</span>.data.name&#125;</span>`</span>,<span class="number">200</span>,<span class="number">900</span>)</span><br><span class="line">      ctx.<span class="title function_">fillText</span>(<span class="string">`A D D R E S S: <span class="subst">$&#123;<span class="variable language_">this</span>.data.address&#125;</span>`</span>,<span class="number">200</span>,<span class="number">980</span>)</span><br><span class="line">      ctx.<span class="title function_">fillText</span>(<span class="string">`D E S C R I P T I O N: <span class="subst">$&#123;<span class="variable language_">this</span>.data.desc&#125;</span>`</span>,<span class="number">200</span>,<span class="number">1060</span>)</span><br><span class="line">      <span class="comment">// 绘制头像 bug</span></span><br><span class="line">      <span class="keyword">let</span> photo =  canvas.<span class="title function_">createImage</span>()</span><br><span class="line">      photo.<span class="property">src</span>= <span class="variable language_">this</span>.<span class="property">data</span>.<span class="property">photo</span> <span class="comment">// 绘制图片一定要加上这个</span></span><br><span class="line">      photo.<span class="property">onload</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        ctx.<span class="title function_">save</span>()</span><br><span class="line">        ctx.<span class="title function_">beginPath</span>()</span><br><span class="line">        ctx.<span class="title function_">arc</span>(<span class="number">830</span>,<span class="number">900</span>,<span class="number">100</span>,<span class="number">0</span>,<span class="number">2</span> * <span class="title class_">Math</span>.<span class="property">PI</span>)        </span><br><span class="line">        ctx.<span class="title function_">clip</span>()</span><br><span class="line">        ctx.<span class="title function_">drawImage</span>(photo,<span class="number">710</span>,<span class="number">800</span>,<span class="number">400</span>,<span class="number">400</span>)</span><br><span class="line">        ctx.<span class="title function_">closePath</span>()</span><br><span class="line">        ctx.<span class="title function_">restore</span>()</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="title function_">setData</span>(&#123;</span><br><span class="line">        canvas</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">saveImage</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 生成图片</span></span><br><span class="line">    <span class="keyword">const</span> canvas =  <span class="variable language_">this</span>.<span class="property">data</span></span><br><span class="line">    wx.<span class="title function_">showLoading</span>(&#123;<span class="attr">title</span>:<span class="string">&#x27;海报生成中...&#x27;</span>&#125;),</span><br><span class="line">    wx.<span class="title function_">canvasToTempFilePath</span>(&#123;</span><br><span class="line">      canvas,</span><br><span class="line">      <span class="attr">success</span>: <span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 生成的图片临时文件路径</span></span><br><span class="line">      <span class="keyword">const</span> tempFilePath = res.<span class="property">tempFilePath</span></span><br><span class="line">      wx.<span class="title function_">hideLoading</span>()</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(tempFilePath)</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">fail</span>: <span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">        wx.<span class="title function_">hideLoading</span>()</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;保存失败，请重试!&#x27;</span>,err)</span><br><span class="line">      &#125;</span><br><span class="line">		&#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*wxml*/</span></span><br><span class="line">&lt;view <span class="keyword">class</span>=<span class="string">&quot;cantainer&quot;</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;Canvasbg&quot;</span> <span class="attr">type</span>=<span class="string">&quot;2d&quot;</span> <span class="attr">style</span>=<span class="string">&quot; width: 100%; height: 100vh;&quot;</span>  <span class="attr">class</span>=<span class="string">&quot;poster&quot;</span>/&gt;</span></span></span><br><span class="line">  &lt;!-- <span class="language-xml"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;myCanvas&quot;</span> <span class="attr">type</span>=<span class="string">&quot;2d&quot;</span> <span class="attr">style</span>=<span class="string">&quot;border: 1px solid; width: 300px; height: 150px;&quot;</span> /&gt;</span></span> --&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;cantainer-bottom&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;info&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">text</span> &gt;</span>图片已生成,保存发布出来让朋友点赞吧!<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;btn&quot;</span> <span class="attr">size</span>=<span class="string">&quot;default&quot;</span> <span class="attr">bind:tap</span>=<span class="string">&quot;saveImage&quot;</span>&gt;</span>保存<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span></span><br><span class="line">&lt;/view&gt;</span><br><span class="line"><span class="comment">/*sass*/</span></span><br><span class="line">.<span class="property">cantainer</span>&#123;</span><br><span class="line">  <span class="attr">display</span>: flex;</span><br><span class="line">  flex-<span class="attr">direction</span>: column;</span><br><span class="line">  flex-<span class="attr">grow</span>: <span class="number">1</span>;</span><br><span class="line">  background-<span class="attr">color</span>: skyblue;</span><br><span class="line">  <span class="attr">height</span>: inherit;</span><br><span class="line">  &amp;-bottom &#123;</span><br><span class="line">    <span class="attr">display</span>: flex;</span><br><span class="line">    flex-<span class="attr">direction</span>: column;</span><br><span class="line">    <span class="attr">height</span>: 600rpx;</span><br><span class="line">    background-<span class="attr">color</span>: white;</span><br><span class="line">    justify-<span class="attr">content</span>: center;</span><br><span class="line">    align-<span class="attr">items</span>: center;</span><br><span class="line"></span><br><span class="line">    .<span class="property">info</span> &#123;</span><br><span class="line">      <span class="attr">height</span>: 100rpx;</span><br><span class="line">      font-<span class="attr">size</span>: 32rpx;</span><br><span class="line">      line-<span class="attr">height</span>: 32rpx;</span><br><span class="line">    &#125;</span><br><span class="line">    .<span class="property">btn</span>&#123; </span><br><span class="line">      background-<span class="attr">color</span>: <span class="title function_">var</span>(--primary-color);</span><br><span class="line">      <span class="attr">width</span>: 240rpx;</span><br><span class="line">      <span class="attr">height</span>: 80rpx;</span><br><span class="line">      <span class="attr">color</span>: white;</span><br><span class="line">      border-<span class="attr">radius</span>: 40rpx;</span><br><span class="line">    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*ts*/</span></span><br><span class="line">  <span class="attr">data</span>: &#123;</span><br><span class="line">    <span class="attr">photo</span>:<span class="string">&quot;../../../asset/squase.jpg&quot;</span>,</span><br><span class="line">    <span class="attr">imgUrl</span>:<span class="string">&quot;../../../asset/squase.jpg&quot;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;demo&#x27;</span>,</span><br><span class="line">    <span class="attr">desc</span>: <span class="string">&#x27;一个海报的demo&#x27;</span>,</span><br><span class="line">    <span class="attr">address</span>: <span class="string">&#x27;小行星&#x27;</span>,</span><br><span class="line">    <span class="attr">canvas</span>:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">onReady</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">draw</span>()</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">draw</span>(<span class="params"></span>) &#123;</span><br><span class="line">    wx.<span class="title function_">createSelectorQuery</span>()</span><br><span class="line">    .<span class="title function_">select</span>(<span class="string">&#x27;#Canvasbg&#x27;</span>)</span><br><span class="line">    .<span class="title function_">fields</span>(&#123; <span class="attr">node</span>: <span class="literal">true</span> ,<span class="attr">size</span>: <span class="literal">true</span>&#125;)</span><br><span class="line">    .<span class="title function_">exec</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> canvas = res[<span class="number">0</span>].<span class="property">node</span></span><br><span class="line">      <span class="keyword">const</span> ctx = canvas.<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>)</span><br><span class="line">      <span class="keyword">const</span> dpr = wx.<span class="title function_">getSystemInfoSync</span>().<span class="property">pixelRatio</span></span><br><span class="line">      <span class="keyword">const</span> width = res[<span class="number">0</span>].<span class="property">width</span></span><br><span class="line">      <span class="keyword">const</span> height = res[<span class="number">0</span>].<span class="property">height</span></span><br><span class="line">      canvas.<span class="property">width</span> = width * dpr</span><br><span class="line">      canvas.<span class="property">height</span> = height * dpr</span><br><span class="line">      ctx.<span class="title function_">clearRect</span>(<span class="number">0</span>, <span class="number">0</span>, width, height)</span><br><span class="line">      <span class="comment">// 绘制底部白色背景</span></span><br><span class="line">      ctx.<span class="title function_">save</span>()</span><br><span class="line">      ctx.<span class="property">fillStyle</span>= <span class="string">&#x27;white&#x27;</span></span><br><span class="line">      ctx.<span class="title function_">fillRect</span>(<span class="number">150</span>,<span class="number">200</span>,<span class="number">800</span>,<span class="number">1000</span>)</span><br><span class="line">      ctx.<span class="title function_">restore</span>()</span><br><span class="line">      <span class="comment">// 绘制图片 rect 矩形路径,fillRect 绘制矩形填充颜色</span></span><br><span class="line">      <span class="comment">// drawImage(图,图的x,图的y,图的宽,图的高)</span></span><br><span class="line">      <span class="keyword">let</span> img = canvas.<span class="title function_">createImage</span>()</span><br><span class="line">      img.<span class="property">src</span>= <span class="variable language_">this</span>.<span class="property">data</span>.<span class="property">imgUrl</span>      </span><br><span class="line">      img.<span class="property">onload</span> =<span class="function">() =&gt;</span>&#123;</span><br><span class="line">        ctx.<span class="title function_">save</span>()</span><br><span class="line">        ctx.<span class="title function_">beginPath</span>()</span><br><span class="line">        ctx.<span class="title function_">rect</span>(<span class="number">150</span>,<span class="number">200</span>,<span class="number">800</span>,<span class="number">1000</span>)          </span><br><span class="line">        ctx.<span class="title function_">clip</span>()</span><br><span class="line">        ctx.<span class="title function_">drawImage</span>(img,<span class="number">0</span>,<span class="number">150</span>,<span class="number">1000</span>,<span class="number">550</span>)</span><br><span class="line">        ctx.<span class="title function_">closePath</span>()</span><br><span class="line">        ctx.<span class="title function_">restore</span>()</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 绘制文本</span></span><br><span class="line">      ctx.<span class="property">font</span>=<span class="string">&quot;40px Arial&quot;</span></span><br><span class="line">      ctx.<span class="title function_">fillText</span>(<span class="string">`N A M E: <span class="subst">$&#123;<span class="variable language_">this</span>.data.name&#125;</span>`</span>,<span class="number">200</span>,<span class="number">900</span>)</span><br><span class="line">      ctx.<span class="title function_">fillText</span>(<span class="string">`A D D R E S S: <span class="subst">$&#123;<span class="variable language_">this</span>.data.address&#125;</span>`</span>,<span class="number">200</span>,<span class="number">980</span>)</span><br><span class="line">      ctx.<span class="title function_">fillText</span>(<span class="string">`D E S C R I P T I O N: <span class="subst">$&#123;<span class="variable language_">this</span>.data.desc&#125;</span>`</span>,<span class="number">200</span>,<span class="number">1060</span>)</span><br><span class="line">      <span class="comment">// 绘制头像 bug</span></span><br><span class="line">      <span class="keyword">let</span> photo =  canvas.<span class="title function_">createImage</span>()</span><br><span class="line">      photo.<span class="property">src</span>= <span class="variable language_">this</span>.<span class="property">data</span>.<span class="property">photo</span> <span class="comment">// 绘制图片一定要加上这个</span></span><br><span class="line">      photo.<span class="property">onload</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        ctx.<span class="title function_">save</span>()</span><br><span class="line">        ctx.<span class="title function_">beginPath</span>()</span><br><span class="line">        ctx.<span class="title function_">arc</span>(<span class="number">830</span>,<span class="number">900</span>,<span class="number">100</span>,<span class="number">0</span>,<span class="number">2</span> * <span class="title class_">Math</span>.<span class="property">PI</span>)        </span><br><span class="line">        ctx.<span class="title function_">clip</span>()</span><br><span class="line">        ctx.<span class="title function_">drawImage</span>(photo,<span class="number">710</span>,<span class="number">800</span>,<span class="number">400</span>,<span class="number">400</span>)</span><br><span class="line">        ctx.<span class="title function_">closePath</span>()</span><br><span class="line">        ctx.<span class="title function_">restore</span>()</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="title function_">setData</span>(&#123;</span><br><span class="line">        canvas</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">saveImage</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 生成图片</span></span><br><span class="line">    <span class="keyword">const</span> canvas =  <span class="variable language_">this</span>.<span class="property">data</span></span><br><span class="line">    wx.<span class="title function_">showLoading</span>(&#123;<span class="attr">title</span>:<span class="string">&#x27;海报生成中...&#x27;</span>&#125;),</span><br><span class="line">    wx.<span class="title function_">canvasToTempFilePath</span>(&#123;</span><br><span class="line">      canvas,</span><br><span class="line">      <span class="attr">success</span>: <span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 生成的图片临时文件路径</span></span><br><span class="line">      <span class="keyword">const</span> tempFilePath = res.<span class="property">tempFilePath</span></span><br><span class="line">      wx.<span class="title function_">hideLoading</span>()</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">fail</span>: <span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">        wx.<span class="title function_">hideLoading</span>()</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;保存失败，请重试!&#x27;</span>,err)</span><br><span class="line">      &#125;</span><br><span class="line">		&#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 </article>
     
     
@@ -510,46 +557,10 @@
     <div class="col-lg-12">
         <!-- title -->
         <h5 class="trm-title-with-divider">
-            Other Articles
+            其他文章
             <span data-number="02"></span>
         </h5>
     </div>
-    
-        <div class="col-lg-6">
-    <div class="trm-blog-card trm-scroll-animation">
-        <a href="/2024/11/04/WeChatMini/%E8%A7%A3%E5%86%B3%E6%BB%9A%E5%8A%A8%E5%88%B0%E5%AF%B9%E5%BA%94%E8%A7%86%E5%9B%BE%E6%A0%87%E7%AD%BE%E4%B9%9F%E9%9A%8F%E7%9D%80%E5%8A%A8/" class="trm-cover-frame trm-anima-link">
-            
-            
-                <div class="trm-cover-img" data-random-img></div>
-            
-        </a>
-        
-        <div class="trm-card-descr">
-            <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
-                    微信小程序
-                </a>
-            </div>
-            <h5>
-                <a href="/2024/11/04/WeChatMini/%E8%A7%A3%E5%86%B3%E6%BB%9A%E5%8A%A8%E5%88%B0%E5%AF%B9%E5%BA%94%E8%A7%86%E5%9B%BE%E6%A0%87%E7%AD%BE%E4%B9%9F%E9%9A%8F%E7%9D%80%E5%8A%A8/" class="trm-anima-link">
-                    微信小程序-解决滚动到对应试图标签也随着动
-                </a>
-            </h5>
-            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
-            <ul class="trm-card-data trm-label">
-                <li>24/11/04</li>
-                <li>09:57</li>
-                
-                    <li>261</li>
-                
-                
-                    <li>1</li>
-                
-            </ul>
-        </div>
-    </div>
-</div>
-    
     
         <div class="col-lg-6">
     <div class="trm-blog-card trm-scroll-animation">
@@ -576,10 +587,46 @@
                 <li>24/11/04</li>
                 <li>09:57</li>
                 
-                    <li>4.6k</li>
+                    <li>4.8k</li>
                 
                 
                     <li>18</li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/04/WeChatMini/%E5%AF%8C%E6%96%87%E6%9C%AC/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <div class="trm-cover-img" data-random-img></div>
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                    微信小程序
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/04/WeChatMini/%E5%AF%8C%E6%96%87%E6%9C%AC/" class="trm-anima-link">
+                    微信小程序-富文本
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/04</li>
+                <li>09:57</li>
+                
+                    <li>363</li>
+                
+                
+                    <li>1</li>
                 
             </ul>
         </div>
@@ -610,23 +657,21 @@
     
         <div class="trm-footer-item">
             <span>
-                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+                由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v7.3.0
             </span>
             <span class="footer-separator" data-separator=" | "></span>
             <span> 
-                Theme - 
+                主题 - 
                 <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
                 v2.2.3
             </span>
         </div>
       
 
+    
+        <div class="trm-footer-item blog-run-long"></div>
      
 
-    
-        <div class="trm-footer-item">
-            网站正在逐步完善中...
-        </div>
      
 </footer>
                     <!-- footer end -->
@@ -642,34 +687,34 @@
 
     <div id="post-toc" class="trm-post-toc">
       <div class="trm-post-toc-header">
-        Article table of contents
+        目录导航
 				<span id="post-toc-top">
-					TOP
+					置顶
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-3" title="1.点击海报生成,跳转页面"><a rel="nofollow" class="trm-toc-link" href="#1-点击海报生成-跳转页面"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">1.点击海报生成,跳转页面</span></a></li><li class="trm-toc-item trm-toc-level-3" title="2.进入该海报页面要有一个加载效果"><a rel="nofollow" class="trm-toc-link" href="#2-进入该海报页面要有一个加载效果"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">2.进入该海报页面要有一个加载效果</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.加载数据,显示图片效果，用canvas生成海报"><a rel="nofollow" class="trm-toc-link" href="#3-加载数据-显示图片效果，用canvas生成海报"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">3.加载数据,显示图片效果，用canvas生成海报</span></a></li><li class="trm-toc-item trm-toc-level-3" title="4.通过页面中的按钮来触发wx.canvasToTempFilePath把生成后的数据及形状绘制成图片"><a rel="nofollow" class="trm-toc-link" href="#4-通过页面中的按钮来触发wx-canvasToTempFilePath把生成后的数据及形状绘制成图片"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">4.通过页面中的按钮来触发wx.canvasToTempFilePath把生成后的数据及形状绘制成图片</span></a></li><li class="trm-toc-item trm-toc-level-3" title="5.点击保存弹出一个加载效果"><a rel="nofollow" class="trm-toc-link" href="#5-点击保存弹出一个加载效果"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">5.点击保存弹出一个加载效果</span></a></li><li class="trm-toc-item trm-toc-level-3" title="6.成功保存就地址给手机的地址,失败提示"><a rel="nofollow" class="trm-toc-link" href="#6-成功保存就地址给手机的地址-失败提示"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">6.成功保存就地址给手机的地址,失败提示</span></a></li><li class="trm-toc-item trm-toc-level-3" title="7.涉及到获取二维码"><a rel="nofollow" class="trm-toc-link" href="#7-涉及到获取二维码"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">7.涉及到获取二维码</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="示例"><a rel="nofollow" class="trm-toc-link" href="#示例"><span class="trm-toc-number"></span> <span class="trm-toc-text">示例</span></a>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="步骤"><a rel="nofollow" class="trm-toc-link" href="#步骤"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">步骤</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="点击海报生成,跳转页面"><a rel="nofollow" class="trm-toc-link" href="#点击海报生成-跳转页面"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">点击海报生成,跳转页面</span></a></li><li class="trm-toc-item trm-toc-level-3" title="进入该海报页面要有一个加载效果"><a rel="nofollow" class="trm-toc-link" href="#进入该海报页面要有一个加载效果"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">进入该海报页面要有一个加载效果</span></a></li><li class="trm-toc-item trm-toc-level-3" title="加载数据,显示图片效果，用canvas生成海报"><a rel="nofollow" class="trm-toc-link" href="#加载数据-显示图片效果，用canvas生成海报"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">加载数据,显示图片效果，用canvas生成海报</span></a></li><li class="trm-toc-item trm-toc-level-3" title="通过页面中的按钮来触发wx.canvasToTempFilePath把生成后的数据及形状绘制成图片"><a rel="nofollow" class="trm-toc-link" href="#通过页面中的按钮来触发wx-canvasToTempFilePath把生成后的数据及形状绘制成图片"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">通过页面中的按钮来触发wx.canvasToTempFilePath把生成后的数据及形状绘制成图片</span></a></li><li class="trm-toc-item trm-toc-level-3" title="点击保存弹出一个加载效果"><a rel="nofollow" class="trm-toc-link" href="#点击保存弹出一个加载效果"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">点击保存弹出一个加载效果</span></a></li><li class="trm-toc-item trm-toc-level-3" title="成功保存就地址给手机的地址,失败提示"><a rel="nofollow" class="trm-toc-link" href="#成功保存就地址给手机的地址-失败提示"><span class="trm-toc-number">1.6.</span> <span class="trm-toc-text">成功保存就地址给手机的地址,失败提示</span></a></li><li class="trm-toc-item trm-toc-level-3" title="涉及到获取二维码"><a rel="nofollow" class="trm-toc-link" href="#涉及到获取二维码"><span class="trm-toc-number">1.7.</span> <span class="trm-toc-text">涉及到获取二维码</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="示例"><a rel="nofollow" class="trm-toc-link" href="#示例"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">示例</span></a></li></ol>
       </div>
     </div>
 
             
 <div class="trm-fixed-container">
     
-        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
             <i class="iconfont fas fa-th-list"></i>
         </div>
     
     
-        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
             <i class="iconfont fas fa-book-reader"></i>
         </div>
     
     
-        <div class="trm-fixed-btn hidden-md" data-title="Toggle between single-column and double-column" onclick="asyncFun.switchSingleColumn()">
+        <div class="trm-fixed-btn hidden-md" data-title="单栏和双栏切换" onclick="asyncFun.switchSingleColumn()">
             <i class="iconfont fas fa-arrows-alt-h"></i>
         </div>
     
-    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
         <i class="iconfont fas fa-arrow-up"></i>
     </div>
 </div>
@@ -686,14 +731,14 @@
                 <div class="trm-search-input-icon">
                     <i class="iconfont fas fa-search"></i>
                 </div>
-                <input class="trm-search-input" type="text" placeholder="Searching...">
+                <input class="trm-search-input" type="text" placeholder="搜索文章...">
                 <div class="trm-search-btn-close">
                     <i class="iconfont fas fa-times"></i>
                 </div>
             </div>
             <div class="trm-search-result-container">
                 <div class="trm-search-empty">
-                    Please enter keywords to search
+                    请输入关键词进行搜索
                 </div>
             </div>
             <div class="trm-search-footer">

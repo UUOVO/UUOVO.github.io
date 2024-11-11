@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans,en">
 
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -7,16 +7,16 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="问题：scene 太长(参数少但长)，生成不了小程序码⭐ 首先我们要了解为什么要使用BigInt? JS 中的 NUmber 类型只能安全地表示-(2^53-1)和(2^53-1)之间的整数 任何超过这个范围的整数值都会丢失精度（四舍五入） 而使用BigInt就不会丢失精度，可以运算大整数  使用 JSBI 插件 安装： npm install jsbi –save 用法： JSBI.BigInt">
+<meta name="description" content=".en {   color: orange;   font-weight:600; }   问题：scene 太长(参数少但长)，生成不了小程序码原因： 使用getUnlimitedQRCode获取无限制的小程序码时，可接受页面参数scene的长度不能超过32位字符  了解BigInt JS 中的 NUmber 类型只能安全地表示-(2^53-1)和(2^53-1)之间的整数 任何超过这个范围的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信小程序-生成二维码scene问题">
 <meta property="og:url" content="http://example.com/2024/11/04/WeChatMini/scene%E5%A4%AA%E9%95%BF%EF%BC%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="问题：scene 太长(参数少但长)，生成不了小程序码⭐ 首先我们要了解为什么要使用BigInt? JS 中的 NUmber 类型只能安全地表示-(2^53-1)和(2^53-1)之间的整数 任何超过这个范围的整数值都会丢失精度（四舍五入） 而使用BigInt就不会丢失精度，可以运算大整数  使用 JSBI 插件 安装： npm install jsbi –save 用法： JSBI.BigInt">
-<meta property="og:locale" content="en_US">
+<meta property="og:description" content=".en {   color: orange;   font-weight:600; }   问题：scene 太长(参数少但长)，生成不了小程序码原因： 使用getUnlimitedQRCode获取无限制的小程序码时，可接受页面参数scene的长度不能超过32位字符  了解BigInt JS 中的 NUmber 类型只能安全地表示-(2^53-1)和(2^53-1)之间的整数 任何超过这个范围的">
+<meta property="og:locale">
 <meta property="article:published_time" content="2024-11-04T01:57:31.884Z">
-<meta property="article:modified_time" content="2024-11-05T03:43:58.209Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:modified_time" content="2024-11-08T06:48:50.833Z">
+<meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="二维码">
 <meta name="twitter:card" content="summary">
 
@@ -67,8 +67,8 @@
 
 
 <!-- Variable -->
-<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["https://ts1.cn.mm.bing.net/th/id/R-C.b8e84a0907bf9b5128dfa48be0ae48af?rik=tfH6k%2fT3hkauqw&riu=http%3a%2f%2fwww.08lr.cn%2fuploads%2fallimg%2f220330%2f1-2300141M0.jpg&ehk=dR6hTo1o7lNsHkpE62oIzMtJ%2bmxktf7%2fx6tp3Zt2uB8%3d&risl=&pid=ImgRaw&r=0","https://tse2-mm.cn.bing.net/th/id/OIP-C.AUTXb2JnogYGuhh_89lj1gHaHa?rs=1&pid=ImgDetMain","https://img.shetu66.com/2023/04/25/1682391094827084.png","https://ts1.cn.mm.bing.net/th/id/R-C.d88442788ee5a458d50e40f0a8cb1e05?rik=EoPp8GhejYeQfw&riu=http%3a%2f%2fimg.pconline.com.cn%2fimages%2fupload%2fupc%2ftx%2fwallpaper%2f1307%2f10%2fc2%2f23151595_1373424485102.jpg&ehk=J7xq%2f50bCmdD4jUXfnTlau2s5WiVsBxQArAjvJzqIo4%3d&risl=&pid=ImgRaw&r=0","https://tse2-mm.cn.bing.net/th/id/OIP-C.i-rpdJ5FGbHEgzs2aKDZLgHaHa?pid=ImgDet&w=474&h=474&rs=1","https://img.tukuppt.com/photo-big/00/00/74/6152d9dc09d26908.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"placeholder":"搜索文章...","result_placeholder":"请输入关键词进行搜索","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-05 11:43:58"};</script>
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-08 14:48:50"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -141,7 +141,7 @@
     
     
         <div class="trm-logo-text">
-            UUOVO<span>个人站点</span>
+            UU<span>OVO</span>
         </div>
     
 </a>
@@ -293,6 +293,16 @@
                 <a  href="/about/" target="">
                     关于
                 </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/links/" target="">
+                            友链
+                        </a>
+                    </li>
+                    
+                </ul>
                 
             </li>
             
@@ -455,10 +465,38 @@
             </div>
         </li>
     
+        <li>
+            <div class="trm-label">
+                City:
+            </div>
+            <div class="trm-label trm-label-light">
+                City
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                Age:
+            </div>
+            <div class="trm-label trm-label-light">
+                Age
+            </div>
+        </li>
+    
 </ul>
 <!-- info end -->
 
         
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:1370203877@qq.com" class="trm-btn">
+            联系我
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
     </div>
 </div>
                     <!-- main card end -->
@@ -482,34 +520,47 @@
     <div class="col-sm-4">
         <div id="post-author" class="trm-card trm-label trm-label-light text-center">
             <i class="iconfont far fa-user trm-icon"></i><br>
-            John Doe
+            UUOVO
         </div>
     </div>
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <h2 id="问题：scene-太长-参数少但长-，生成不了小程序码"><a href="#问题：scene-太长-参数少但长-，生成不了小程序码" class="headerlink" title="问题：scene 太长(参数少但长)，生成不了小程序码"></a>问题：scene 太长(参数少但长)，生成不了小程序码</h2><h3 id="⭐-首先我们要了解为什么要使用BigInt"><a href="#⭐-首先我们要了解为什么要使用BigInt" class="headerlink" title="⭐ 首先我们要了解为什么要使用BigInt?"></a>⭐ 首先我们要了解为什么要使用BigInt?</h3><ul>
+    <style>
+.en {
+  color: orange;
+  font-weight:600;
+}
+</style>
+
+<h2 id="问题：scene-太长-参数少但长-，生成不了小程序码"><a href="#问题：scene-太长-参数少但长-，生成不了小程序码" class="headerlink" title="问题：scene 太长(参数少但长)，生成不了小程序码"></a>问题：scene 太长(参数少但长)，生成不了小程序码</h2><h3 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h3><ul>
+<li>使用getUnlimitedQRCode获取无限制的小程序码时，可接受页面参数scene的长度不能超过32位字符</li>
+</ul>
+<h3 id="了解BigInt"><a href="#了解BigInt" class="headerlink" title="了解BigInt"></a>了解BigInt</h3><ul>
 <li>JS 中的 NUmber 类型只能安全地表示-(2^53-1)和(2^53-1)之间的整数</li>
 <li>任何超过这个范围的整数值都会丢失精度（四舍五入）</li>
 <li>而使用<code>BigInt</code>就<code>不会丢失精度</code>，可以运算大整数</li>
 </ul>
 <h3 id="使用-JSBI-插件"><a href="#使用-JSBI-插件" class="headerlink" title="使用 JSBI 插件"></a><a target="_blank" rel="noopener" href="https://github.com/GoogleChromeLabs/jsbi">使用 JSBI 插件</a></h3><ul>
-<li>安装： npm install jsbi –save</li>
-<li>用法： JSBI.BigInt()</li>
+<li>安装：<span class="en">npm install jsbi –save</span></li>
+<li>用法：<span class="en">JSBI.BigInt()</span></li>
 </ul>
 <h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
 <li>1.先把scene的<code>每个参数</code>用<code>JSBI.BigInt()</code>包裹住，防止在转格式的时候丢失精度</li>
-<li>2.然后调用<code>.toString(36)</code>转为36进制<ul>
+<li>2.然后调用<span class="en"><code>.toString(36)</code></span>转为36进制<ul>
 <li>因为scene为32位的十进制，所以先转为36进制的.如果不满足可以考虑其他进制</li>
 </ul>
 </li>
-<li>3.然后使用<code>encodeURIComponent()</code>,生成二维码</li>
+<li>3.然后使用<span class="en"><code>encodeURIComponent()</code></span>,生成二维码</li>
 <li>4.按照分隔符解码和解构赋值得到参数：<ul>
-<li><code>[a,b,c,d] = decodeURIComponent(params.scene).split(&#39;;&#39;)</code>, </li>
+<li><span class="en"><code>[a,b,c,d] = decodeURIComponent(params.scene).split(&#39;;&#39;)</code></span>, </li>
 <li>此时拿到的参数是36进制的还要再转回十进制</li>
 </ul>
 </li>
 <li>5.转为十进制即可</li>
+</ul>
+<h3 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/qrcode-link/qr-code/getUnlimitedQRCode.html">获取不限制的小程序码</a></li>
 </ul>
 
 </article>
@@ -521,7 +572,7 @@
     <div class="col-lg-12">
         <!-- title -->
         <h5 class="trm-title-with-divider">
-            Other Articles
+            其他文章
             <span data-number="02"></span>
         </h5>
     </div>
@@ -543,7 +594,7 @@
             </div>
             <h5>
                 <a href="/2024/11/04/WeChatMini/xcx-%E5%8A%A8%E6%80%81tabbar/" class="trm-anima-link">
-                    微信小程序-动态tabbar
+                    微信小程序-动态tabbar(底部菜单)
                 </a>
             </h5>
             <div class="trm-divider trm-mb-20 trm-mt-20"></div>
@@ -551,7 +602,7 @@
                 <li>24/11/04</li>
                 <li>09:57</li>
                 
-                    <li>260</li>
+                    <li>245</li>
                 
                 
                     <li>1</li>
@@ -587,7 +638,7 @@
                 <li>24/11/04</li>
                 <li>09:57</li>
                 
-                    <li>275</li>
+                    <li>273</li>
                 
                 
                     <li>1</li>
@@ -621,23 +672,21 @@
     
         <div class="trm-footer-item">
             <span>
-                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+                由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v7.3.0
             </span>
             <span class="footer-separator" data-separator=" | "></span>
             <span> 
-                Theme - 
+                主题 - 
                 <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
                 v2.2.3
             </span>
         </div>
       
 
+    
+        <div class="trm-footer-item blog-run-long"></div>
      
 
-    
-        <div class="trm-footer-item">
-            网站正在逐步完善中...
-        </div>
      
 </footer>
                     <!-- footer end -->
@@ -653,34 +702,34 @@
 
     <div id="post-toc" class="trm-post-toc">
       <div class="trm-post-toc-header">
-        Article table of contents
+        目录导航
 				<span id="post-toc-top">
-					TOP
+					置顶
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="问题：scene 太长(参数少但长)，生成不了小程序码"><a rel="nofollow" class="trm-toc-link" href="#问题：scene-太长-参数少但长-，生成不了小程序码"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">问题：scene 太长(参数少但长)，生成不了小程序码</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="⭐ 首先我们要了解为什么要使用BigInt?"><a rel="nofollow" class="trm-toc-link" href="#⭐-首先我们要了解为什么要使用BigInt"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">⭐ 首先我们要了解为什么要使用BigInt?</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用 JSBI 插件"><a rel="nofollow" class="trm-toc-link" href="#使用-JSBI-插件"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">使用 JSBI 插件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决方案"><a rel="nofollow" class="trm-toc-link" href="#解决方案"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">解决方案</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="问题：scene 太长(参数少但长)，生成不了小程序码"><a rel="nofollow" class="trm-toc-link" href="#问题：scene-太长-参数少但长-，生成不了小程序码"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">问题：scene 太长(参数少但长)，生成不了小程序码</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="原因："><a rel="nofollow" class="trm-toc-link" href="#原因："><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">原因：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="了解BigInt"><a rel="nofollow" class="trm-toc-link" href="#了解BigInt"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">了解BigInt</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用 JSBI 插件"><a rel="nofollow" class="trm-toc-link" href="#使用-JSBI-插件"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">使用 JSBI 插件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决方案"><a rel="nofollow" class="trm-toc-link" href="#解决方案"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">解决方案</span></a></li><li class="trm-toc-item trm-toc-level-3" title="相关文档"><a rel="nofollow" class="trm-toc-link" href="#相关文档"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">相关文档</span></a></li></ol></li></ol>
       </div>
     </div>
 
             
 <div class="trm-fixed-container">
     
-        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
             <i class="iconfont fas fa-th-list"></i>
         </div>
     
     
-        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
             <i class="iconfont fas fa-book-reader"></i>
         </div>
     
     
-        <div class="trm-fixed-btn hidden-md" data-title="Toggle between single-column and double-column" onclick="asyncFun.switchSingleColumn()">
+        <div class="trm-fixed-btn hidden-md" data-title="单栏和双栏切换" onclick="asyncFun.switchSingleColumn()">
             <i class="iconfont fas fa-arrows-alt-h"></i>
         </div>
     
-    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
         <i class="iconfont fas fa-arrow-up"></i>
     </div>
 </div>
@@ -697,14 +746,14 @@
                 <div class="trm-search-input-icon">
                     <i class="iconfont fas fa-search"></i>
                 </div>
-                <input class="trm-search-input" type="text" placeholder="Searching...">
+                <input class="trm-search-input" type="text" placeholder="搜索文章...">
                 <div class="trm-search-btn-close">
                     <i class="iconfont fas fa-times"></i>
                 </div>
             </div>
             <div class="trm-search-result-container">
                 <div class="trm-search-empty">
-                    Please enter keywords to search
+                    请输入关键词进行搜索
                 </div>
             </div>
             <div class="trm-search-footer">

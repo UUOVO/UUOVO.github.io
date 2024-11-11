@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="zh-Hans,en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="修改模型的child（创建3D贺卡的案例） 加载模型后通过回调函数来设置模型 获取模型的场景 const model &#x3D; gltf.scene   模型的缩放大小 model.scale.set(x,y,z)   遍历模型 – 这里能拿到模型的部件 注：Mesh是由几何体和材质组成的网格，而网格才能渲染在屏幕上123456model.traverse((child) &#x3D;&gt; &amp;#12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="threeJS-修改模型的child">
+<meta property="og:url" content="http://example.com/en/2024/11/01/threeJS/%E4%BF%AE%E6%94%B9%E6%A8%A1%E5%9E%8B%E7%9A%84child/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="修改模型的child（创建3D贺卡的案例） 加载模型后通过回调函数来设置模型 获取模型的场景 const model &#x3D; gltf.scene   模型的缩放大小 model.scale.set(x,y,z)   遍历模型 – 这里能拿到模型的部件 注：Mesh是由几何体和材质组成的网格，而网格才能渲染在屏幕上123456model.traverse((child) &#x3D;&gt; &amp;#12">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-11-01T03:01:03.721Z">
+<meta property="article:modified_time" content="2024-11-05T03:59:25.740Z">
+<meta property="article:author" content="UUOVO">
+<meta property="article:tag" content="案例">
+<meta property="article:tag" content="ThreeJS">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="threeJS">
+
+
+<title >threeJS-修改模型的child</title>
+
+<!-- Favicon -->
+
+    <link href='/img/sitelogo16.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/sitelogo32.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/apple-touch-icon.png?v=2.2.3' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-05 11:59:25"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/sitelogo32.svg">
+    
+    
+        <div class="trm-logo-text">
+            UU<span>OVO</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/tags/" target="">
+                            标签
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" target="">
+                            微信小程序
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%B7%A5%E5%85%B7/" target="">
+                            前端工程化工具
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/React/" target="">
+                            React
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/VUE/" target="">
+                            VUE
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/TypeScript/" target="">
+                            TypeScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JavaScript/" target="">
+                            JavaScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/CSS&HTML/" target="">
+                            CSS&HTML
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="">
+                            网络与数据结构
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/uniapp/" target="">
+                            uniapp
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ThreeJS/" target="">
+                            ThreeJS
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/Node/" target="">
+                            Node
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JQuery/" target="">
+                            JQuery
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ES6/" target="">
+                            ES6
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/AJAX/" target="">
+                            AJAX
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/gallery/" target="">
+                    相册
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/gallery/wallpaper/" target="">
+                            相册详情页
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/about/" target="">
+                    关于
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/links/" target="">
+                            友链
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+    
+    <div id="trm-search-btn" class="trm-search-btn">
+        <i class="iconfont fas fa-search"></i>
+    </div>
+     
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            threeJS-修改模型的child
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        en
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar1.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/UUOVO" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/ovouu" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                City:
+            </div>
+            <div class="trm-label trm-label-light">
+                City
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                Age:
+            </div>
+            <div class="trm-label trm-label-light">
+                Age
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:1370203877@qq.com" class="trm-btn">
+            Contact Me
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            11/01
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            11:01
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            UUOVO
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h1 id="修改模型的child（创建3D贺卡的案例）"><a href="#修改模型的child（创建3D贺卡的案例）" class="headerlink" title="修改模型的child（创建3D贺卡的案例）"></a>修改模型的child（创建3D贺卡的案例）</h1><ul>
+<li>加载模型后通过回调函数来设置模型</li>
+<li>获取模型的场景<ul>
+<li>const model &#x3D; gltf.scene</li>
+</ul>
+</li>
+<li>模型的缩放大小<ul>
+<li>model.scale.set(x,y,z)</li>
+</ul>
+</li>
+<li>遍历模型 – 这里能拿到模型的部件<ul>
+<li>注：Mesh是由几何体和材质组成的网格，而网格才能渲染在屏幕上<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">model.<span class="title function_">traverse</span>(<span class="function">(<span class="params">child</span>) =&gt;</span> &#123;</span><br><span class="line">	child.<span class="property">Mesh</span> <span class="comment">// 获取部件的网格</span></span><br><span class="line">	child.<span class="property">name</span> <span class="comment">// 获取部件的名称，可以用来控制对应部件要展示什么效果</span></span><br><span class="line">	child.<span class="property">visible</span> = <span class="literal">true</span>; <span class="comment">// 设置部件是否渲染，false不渲染</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>把模型添加到场景中 – 最重要<ul>
+<li>scene.add(model)</li>
+</ul>
+</li>
+</ul>
+<h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><ul>
+<li><p>设置模型&#x2F;网格在场景的位置(position)</p>
+<ul>
+<li>mesh.position.set(x,y,z) </li>
+<li>mesh.position.x &#x3D; x</li>
+<li>mesh.position &#x3D; new THREE.Vector3(x,y,z)</li>
+</ul>
+</li>
+<li><p>设置物体旋转(rotation)</p>
+<ul>
+<li>表示的是绕x&#x2F;y&#x2F;z轴旋转的弧度</li>
+<li>mesh.rotation.set(x,y,z) </li>
+<li>mesh.rotation.x &#x3D; x</li>
+<li>mesh.rotation &#x3D; new THREE.Vector3(x,y,z)</li>
+</ul>
+</li>
+<li><p>设置模型&#x2F;网格相对于原来位置的移动距离(translate) – 用法同position一样</p>
+</li>
+</ul>
+<h2 id="直射光-—-场景中物理材质一定要有，模拟阳光"><a href="#直射光-—-场景中物理材质一定要有，模拟阳光" class="headerlink" title="直射光 — 场景中物理材质一定要有，模拟阳光"></a>直射光 — 场景中物理材质一定要有，模拟阳光</h2><ul>
+<li>创建直射光<ul>
+<li>const light &#x3D; new THREE.DirectionalLight(灯光颜色， 强度默认1)</li>
+</ul>
+</li>
+<li>添加到场景中<ul>
+<li>scene.add(light)</li>
+</ul>
+</li>
+</ul>
+<h2 id="点光源"><a href="#点光源" class="headerlink" title="点光源"></a>点光源</h2><blockquote>
+<p>作用类似于让屋子亮灯，屋子开了个门，门口会投射灯光</p>
+</blockquote>
+<ul>
+<li>添加点光源<ul>
+<li>const pointlight &#x3D; new THREE.PointLight(光源的颜色, 光的强度)</li>
+</ul>
+</li>
+<li>适当调整位置</li>
+<li>设置灯光投射阴影<ul>
+<li>pointlight.castShadow &#x3D; true</li>
+</ul>
+</li>
+<li>设置渲染器允许光源有阴影<ul>
+<li>renderer.shadowMap.enabled &#x3D; true</li>
+</ul>
+</li>
+<li>在模型中设置允许接受阴影和投射阴影<ul>
+<li>if (child.Mesh) { <ul>
+<li>child.receiveShadow &#x3D; true </li>
+<li>child.castShadow &#x3D; true}</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>将光源添加到场景中<ul>
+<li>scene.add(pointlight)</li>
+</ul>
+</li>
+</ul>
+<h2 id="创建一个点光源组"><a href="#创建一个点光源组" class="headerlink" title="创建一个点光源组"></a>创建一个点光源组</h2><blockquote>
+<p>这是一个由球转载点光源的组</p>
+</blockquote>
+<ul>
+<li><p>创建一个光源组</p>
+<ul>
+<li>const pointLightGroup &#x3D; new THREE.Group()</li>
+</ul>
+</li>
+<li><p>调正光源组的位置</p>
+<ul>
+<li>pointLightGroup.position.set(2, 4, 2)</li>
+</ul>
+</li>
+<li><p>设置球体的半径</p>
+<ul>
+<li>const radius &#x3D; 3</li>
+</ul>
+</li>
+<li><p>设置一个空数组</p>
+<ul>
+<li>let pointLightArr &#x3D; []</li>
+</ul>
+</li>
+<li><p>通过循环产生n个球体光源</p>
+<ul>
+<li>for (let i &#x3D; 0; i&lt; n; i++) {}</li>
+</ul>
+</li>
+<li><p>在循环中创建球体</p>
+<ul>
+<li>const sphereGeometry &#x3D; new THREE.SphereGeometry(0.2, 32, 32)</li>
+</ul>
+</li>
+<li><p>创建球体的材质 — 物理材质（会通过周围的灯光映射颜色）</p>
+<ul>
+<li>const sphereMaterial &#x3D; new THREE.MeshStandardMaterial({<br>- color: 0xffffff,  &#x2F;&#x2F; 球体的颜色<br>- emissive: 0xffffff,  &#x2F;&#x2F; 光源的颜色<br>- emissiveIntensity: 10  &#x2F;&#x2F; 光源的强度<ul>
+<li>})</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>创建网格</p>
+<ul>
+<li>const sphere &#x3D; new THREE.Mesh(sphereGeometry, sphereMaterial)</li>
+</ul>
+</li>
+<li><p>创建点光源</p>
+<ul>
+<li>const pointLight &#x3D; new THREE.PointLight(0xffffff, 10)</li>
+</ul>
+</li>
+<li><p>创建好的添加到数组中</p>
+<ul>
+<li>pointLightArr.push(sphere)</li>
+</ul>
+</li>
+<li><p>设置球体的位置</p>
+<ul>
+<li>sphere.position.set(<ul>
+<li>radius * Math.cos((i * 2 * Math.PI) &#x2F;3), &#x2F;&#x2F; x</li>
+<li>Math.cos((i * 2 * Math.PI) &#x2F; 3), &#x2F;&#x2F; y</li>
+<li>radius * Math.sin((i * 2 * Math.PI) &#x2F;3), &#x2F;&#x2F; z</li>
+</ul>
+</li>
+<li>)</li>
+</ul>
+</li>
+<li><p>在球体中添加点光源</p>
+<ul>
+<li>sphere.add(pointLight)</li>
+</ul>
+</li>
+<li><p>将球体添加到组中</p>
+<ul>
+<li>pointLightGroup.add(sphere)</li>
+</ul>
+</li>
+<li><p>在场景中添加点光源组</p>
+<ul>
+<li>scene.add(pointLightGroup)</li>
+</ul>
+</li>
+</ul>
+<h2 id="使用补间动画让光源组旋转，上下移动"><a href="#使用补间动画让光源组旋转，上下移动" class="headerlink" title="使用补间动画让光源组旋转，上下移动"></a>使用补间动画让光源组旋转，上下移动</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> options = &#123; <span class="attr">angle</span>: <span class="number">0</span>&#125; <span class="comment">// 从零开始</span></span><br><span class="line">gsap.<span class="title function_">to</span>(options, &#123;</span><br><span class="line">  <span class="attr">angle</span>: <span class="number">2</span> * <span class="title class_">Math</span>.<span class="property">PI</span>, <span class="comment">// 旋转1周</span></span><br><span class="line">  <span class="attr">duration</span>: <span class="number">10</span>, <span class="comment">// 旋转一周所花的时间</span></span><br><span class="line">  <span class="attr">repeat</span>: -<span class="number">1</span>, <span class="comment">// 重复</span></span><br><span class="line">  <span class="attr">ease</span>: <span class="string">&quot;linear&quot;</span>,</span><br><span class="line">  <span class="attr">onUpdate</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    pointLightGroup.<span class="property">rotation</span>.<span class="property">y</span> = options.<span class="property">angle</span></span><br><span class="line">    pointLightArr.<span class="title function_">forEach</span>(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">      item.<span class="property">position</span>.<span class="title function_">set</span>(</span><br><span class="line">        radius * <span class="title class_">Math</span>.<span class="title function_">cos</span>((index * <span class="number">2</span> * <span class="title class_">Math</span>.<span class="property">PI</span>) / <span class="number">3</span>),</span><br><span class="line">        <span class="title class_">Math</span>.<span class="title function_">cos</span>((index * <span class="number">2</span> * <span class="title class_">Math</span>.<span class="property">PI</span>) / <span class="number">3</span> + options.<span class="property">angle</span> *<span class="number">5</span>), <span class="comment">// 上下移动</span></span><br><span class="line">        radius * <span class="title class_">Math</span>.<span class="title function_">sin</span>((index * <span class="number">2</span> * <span class="title class_">Math</span>.<span class="property">PI</span>) / <span class="number">3</span>)</span><br><span class="line">      )</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="水面"><a href="#水面" class="headerlink" title="水面"></a>水面</h2><ul>
+<li>引用水的模型包<ul>
+<li>import { Water} from “three&#x2F;examples&#x2F;jsm&#x2F;objects&#x2F;Water2”</li>
+</ul>
+</li>
+<li>创建一个圆的平面<ul>
+<li>const waterGeometry &#x3D; new THREE.CircleGeometry(半径,分段默认32)</li>
+</ul>
+</li>
+<li>创建水面<ul>
+<li>const water &#x3D; new Water(waterGeometry, {<ul>
+<li>textureWidth: 1024, &#x2F;&#x2F; 画布的宽度</li>
+<li>textureHeight: 1024, &#x2F;&#x2F; 画布的高度</li>
+<li>color: 0xededed, &#x2F;&#x2F; 水面颜色</li>
+<li>flowDirection: new THREE.Vector2(1,1), &#x2F;&#x2F; 水流动方向</li>
+<li>scale:100,	&#x2F;&#x2F; 水波方位</li>
+</ul>
+</li>
+<li>})</li>
+</ul>
+</li>
+<li>由于水面创造出来是垂直于模型，需旋转90度<ul>
+<li>water.rotation.x &#x3D; -Math.PI &#x2F; 2</li>
+</ul>
+</li>
+<li>添加到场景中<ul>
+<li>scene.add(water)</li>
+</ul>
+</li>
+</ul>
+<h2 id="色调映射"><a href="#色调映射" class="headerlink" title="色调映射"></a>色调映射</h2><p>…renderer.xxx</p>
+<h2 id="相机位置与文字切屏"><a href="#相机位置与文字切屏" class="headerlink" title="相机位置与文字切屏"></a>相机位置与文字切屏</h2><ul>
+<li>使用补间动画移动相机<ul>
+<li>调用gasp的timeline()创建两个变量</li>
+</ul>
+</li>
+<li>封装一个相机移动函数，并使用这两个变量分别控制相机要移动的位置和聚焦，并设置xyz，duration和ease</li>
+<li>写一个对象数组，其中包括文本信息和回调函数，回调函数中调用相机移动函数，并给予坐标</li>
+<li>监听鼠标滚轮事件判断滚轮是否向下滚动，<ul>
+<li>是，变量+1并判断只有当变量小于对象数组的长度-1时，才加一，否则为0；</li>
+<li>否，直接调用对象数组的第变量对象的回调函数。</li>
+<li>建议增加防抖操作，防抖变量为true返回，鼠标滚动时，延时一定时间让防抖变量为false</li>
+</ul>
+</li>
+<li>最后在页面中通过遍历来展示文本，在最外层则通过<code>:style=&quot;&#123;transform: </code>translate3d(0, ${-index*100}vh, 0)<code>&#125;&quot;</code>来控制滚轮动时文本页跟着变。</li>
+</ul>
+<h2 id="创建漫天星星"><a href="#创建漫天星星" class="headerlink" title="创建漫天星星"></a>创建漫天星星</h2><ul>
+<li>通过InstancedMesh来创建100个以上的球的实例</li>
+<li>随机分配到天上<ul>
+<li>创建开始位置和结束位置的空数组</li>
+<li>通过for循环，获取随机的x，y,z 并添加到开始数组中</li>
+<li>创建一个矩阵，并设置位置，然后设置实例的矩阵</li>
+</ul>
+</li>
+<li>添加到场景中，</li>
+<li>使用贝塞尔曲线话爱心路径</li>
+<li>根据路径获取点getPoint<ul>
+<li>通过for循环获取曲线的每一个点，并添加到结束数组，如果图形太大可以给x，y乘以一个小数</li>
+</ul>
+<p> 	</p>
+</li>
+<li>创建爱心动画<ul>
+<li>定义一个参数，设置时间为0</li>
+<li>然后使用补间动画从0执行到1，更新时是实时获取开始数组的当前位置+ （结束位置-开始位置）* 参数的时间</li>
+<li>创建一个矩阵，并设置位置，然后设置实例的矩阵</li>
+<li>设置实例的矩阵需要更新</li>
+</ul>
+</li>
+<li>创建复原的函数<ul>
+<li>与爱心动画一样，只需要把开始数组替换为结束数组，结束数组替换为开始数据即可</li>
+</ul>
+</li>
+<li>在对象数组中需要呈现的回调函数中调用爱心动画函数</li>
+<li>在监听事件中，当变量要设置为0 时添加复原函数</li>
+</ul>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/TS/ts%E5%AE%9E%E7%94%A8%E7%B1%BB/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <div class="trm-cover-img" data-random-img></div>
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/TypeScript/">
+                    TypeScript
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/TS/ts%E5%AE%9E%E7%94%A8%E7%B1%BB/" class="trm-anima-link">
+                    TS-实用类 Utility Types
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>11:40</li>
+                
+                    <li>248</li>
+                
+                
+                    <li>1</li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/threeJS/%E7%89%A9%E4%BD%93%E7%9A%84%E6%B0%B4%E6%99%B6%E6%95%88%E6%9E%9C/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <div class="trm-cover-img" data-random-img></div>
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/ThreeJS/">
+                    ThreeJS
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/threeJS/%E7%89%A9%E4%BD%93%E7%9A%84%E6%B0%B4%E6%99%B6%E6%95%88%E6%9E%9C/" class="trm-anima-link">
+                    threeJS-物体的水晶效果
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>11:01</li>
+                
+                    <li>117</li>
+                
+                
+                    <li>1</li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+    
+        <div class="trm-footer-item blog-run-long"></div>
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-1" title="修改模型的child（创建3D贺卡的案例）"><a rel="nofollow" class="trm-toc-link" href="#修改模型的child（创建3D贺卡的案例）"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">修改模型的child（创建3D贺卡的案例）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="基础语法"><a rel="nofollow" class="trm-toc-link" href="#基础语法"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">基础语法</span></a></li><li class="trm-toc-item trm-toc-level-2" title="直射光 — 场景中物理材质一定要有，模拟阳光"><a rel="nofollow" class="trm-toc-link" href="#直射光-—-场景中物理材质一定要有，模拟阳光"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">直射光 — 场景中物理材质一定要有，模拟阳光</span></a></li><li class="trm-toc-item trm-toc-level-2" title="点光源"><a rel="nofollow" class="trm-toc-link" href="#点光源"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">点光源</span></a></li><li class="trm-toc-item trm-toc-level-2" title="创建一个点光源组"><a rel="nofollow" class="trm-toc-link" href="#创建一个点光源组"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">创建一个点光源组</span></a></li><li class="trm-toc-item trm-toc-level-2" title="使用补间动画让光源组旋转，上下移动"><a rel="nofollow" class="trm-toc-link" href="#使用补间动画让光源组旋转，上下移动"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">使用补间动画让光源组旋转，上下移动</span></a></li><li class="trm-toc-item trm-toc-level-2" title="水面"><a rel="nofollow" class="trm-toc-link" href="#水面"><span class="trm-toc-number">1.6.</span> <span class="trm-toc-text">水面</span></a></li><li class="trm-toc-item trm-toc-level-2" title="色调映射"><a rel="nofollow" class="trm-toc-link" href="#色调映射"><span class="trm-toc-number">1.7.</span> <span class="trm-toc-text">色调映射</span></a></li><li class="trm-toc-item trm-toc-level-2" title="相机位置与文字切屏"><a rel="nofollow" class="trm-toc-link" href="#相机位置与文字切屏"><span class="trm-toc-number">1.8.</span> <span class="trm-toc-text">相机位置与文字切屏</span></a></li><li class="trm-toc-item trm-toc-level-2" title="创建漫天星星"><a rel="nofollow" class="trm-toc-link" href="#创建漫天星星"><span class="trm-toc-number">1.9.</span> <span class="trm-toc-text">创建漫天星星</span></a></li></ol></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn hidden-md" data-title="Toggle between single-column and double-column" onclick="asyncFun.switchSingleColumn()">
+            <i class="iconfont fas fa-arrows-alt-h"></i>
+        </div>
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+    <div class="trm-search-popup">
+        <div class="trm-search-wrapper">
+            <div class="form trm-search-form">
+                <div class="trm-search-input-icon">
+                    <i class="iconfont fas fa-search"></i>
+                </div>
+                <input class="trm-search-input" type="text" placeholder="Searching...">
+                <div class="trm-search-btn-close">
+                    <i class="iconfont fas fa-times"></i>
+                </div>
+            </div>
+            <div class="trm-search-result-container">
+                <div class="trm-search-empty">
+                    Please enter keywords to search
+                </div>
+            </div>
+            <div class="trm-search-footer">
+                <div class="trm-search-stats"></div>
+                <ul class="trm-search-commands">
+                    <li>
+                        <kbd class="command-palette-commands-key">
+                            <svg width="15" height="15" aria-label="Escape key" role="img">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.2">
+                                    <path
+                                        d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956">
+                                    </path>
+                                </g>
+                            </svg>
+                        </kbd>
+                        <span class="command-palette-Label">to close</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+        
+<script src="https://unpkg.com/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+
+        <script src="/js/plugins/local_search.js?v=2.2.3"></script>
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+			<script src="/js/plugins/danmu.js?v=2.2.3"></script>
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

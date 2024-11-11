@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans,en">
 
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -7,16 +7,16 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="定义token的类型和初始化token 封装好网络请求,然后在登录的接口中调用 通过wx.login()从微信服务端获取code 发送请求,请求接口,获取参数 登陆后设置头部token,检验接口,并通过wx.setStorageSync()存储在缓存中 判断是否登录,未登录,等待登录,设置头部;已登陆则从缓存中拿到数据并设置头部 在请求页面再次封装一个请求,一个通用,一个用来判断 在判断方法中,">
+<meta name="description" content="步骤 1、定义token的类型和初始化token12345678910111213let token &#x3D; &#123;  &#x2F;&#x2F; token是由后端服务在用户登录时生成并返回给小程序，所以小程序端定义时需要了解后端需要传输什么在定义&#125;&#x2F;&#x2F; token管理器const tokenManager &#x3D; &#123;  getToken()&#123;    return token  &amp;#125">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信小程序-登录流程">
 <meta property="og:url" content="http://example.com/2024/11/04/WeChatMini/%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="定义token的类型和初始化token 封装好网络请求,然后在登录的接口中调用 通过wx.login()从微信服务端获取code 发送请求,请求接口,获取参数 登陆后设置头部token,检验接口,并通过wx.setStorageSync()存储在缓存中 判断是否登录,未登录,等待登录,设置头部;已登陆则从缓存中拿到数据并设置头部 在请求页面再次封装一个请求,一个通用,一个用来判断 在判断方法中,">
-<meta property="og:locale" content="en_US">
+<meta property="og:description" content="步骤 1、定义token的类型和初始化token12345678910111213let token &#x3D; &#123;  &#x2F;&#x2F; token是由后端服务在用户登录时生成并返回给小程序，所以小程序端定义时需要了解后端需要传输什么在定义&#125;&#x2F;&#x2F; token管理器const tokenManager &#x3D; &#123;  getToken()&#123;    return token  &amp;#125">
+<meta property="og:locale">
 <meta property="article:published_time" content="2024-11-04T01:57:32.016Z">
-<meta property="article:modified_time" content="2024-11-05T03:38:45.120Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:modified_time" content="2024-11-08T03:42:03.887Z">
+<meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="登录流程">
 <meta name="twitter:card" content="summary">
 
@@ -67,8 +67,8 @@
 
 
 <!-- Variable -->
-<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["https://ts1.cn.mm.bing.net/th/id/R-C.b8e84a0907bf9b5128dfa48be0ae48af?rik=tfH6k%2fT3hkauqw&riu=http%3a%2f%2fwww.08lr.cn%2fuploads%2fallimg%2f220330%2f1-2300141M0.jpg&ehk=dR6hTo1o7lNsHkpE62oIzMtJ%2bmxktf7%2fx6tp3Zt2uB8%3d&risl=&pid=ImgRaw&r=0","https://tse2-mm.cn.bing.net/th/id/OIP-C.AUTXb2JnogYGuhh_89lj1gHaHa?rs=1&pid=ImgDetMain","https://img.shetu66.com/2023/04/25/1682391094827084.png","https://ts1.cn.mm.bing.net/th/id/R-C.d88442788ee5a458d50e40f0a8cb1e05?rik=EoPp8GhejYeQfw&riu=http%3a%2f%2fimg.pconline.com.cn%2fimages%2fupload%2fupc%2ftx%2fwallpaper%2f1307%2f10%2fc2%2f23151595_1373424485102.jpg&ehk=J7xq%2f50bCmdD4jUXfnTlau2s5WiVsBxQArAjvJzqIo4%3d&risl=&pid=ImgRaw&r=0","https://tse2-mm.cn.bing.net/th/id/OIP-C.i-rpdJ5FGbHEgzs2aKDZLgHaHa?pid=ImgDet&w=474&h=474&rs=1","https://img.tukuppt.com/photo-big/00/00/74/6152d9dc09d26908.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"placeholder":"搜索文章...","result_placeholder":"请输入关键词进行搜索","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-05 11:38:45"};</script>
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-08 11:42:03"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -141,7 +141,7 @@
     
     
         <div class="trm-logo-text">
-            UUOVO<span>个人站点</span>
+            UU<span>OVO</span>
         </div>
     
 </a>
@@ -293,6 +293,16 @@
                 <a  href="/about/" target="">
                     关于
                 </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/links/" target="">
+                            友链
+                        </a>
+                    </li>
+                    
+                </ul>
                 
             </li>
             
@@ -455,10 +465,38 @@
             </div>
         </li>
     
+        <li>
+            <div class="trm-label">
+                City:
+            </div>
+            <div class="trm-label trm-label-light">
+                City
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                Age:
+            </div>
+            <div class="trm-label trm-label-light">
+                Age
+            </div>
+        </li>
+    
 </ul>
 <!-- info end -->
 
         
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:1370203877@qq.com" class="trm-btn">
+            联系我
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
     </div>
 </div>
                     <!-- main card end -->
@@ -482,23 +520,26 @@
     <div class="col-sm-4">
         <div id="post-author" class="trm-card trm-label trm-label-light text-center">
             <i class="iconfont far fa-user trm-icon"></i><br>
-            John Doe
+            UUOVO
         </div>
     </div>
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <ol>
-<li>定义token的类型和初始化token</li>
-<li>封装好网络请求,然后在登录的接口中调用</li>
-<li>通过<code>wx.login()</code>从微信服务端获取code</li>
-<li>发送请求,请求接口,获取参数</li>
-<li>登陆后设置头部<code>token</code>,检验接口,并通过<code>wx.setStorageSync()</code>存储在缓存中</li>
-<li>判断是否登录,未登录,等待登录,设置头部;已登陆则从缓存中拿到数据并设置头部</li>
-<li>在请求页面再次封装一个请求,一个通用,一个用来判断</li>
-<li>在判断方法中,请求数据并返回数据</li>
-<li>全局静默登录</li>
-</ol>
+    <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul>
+<li>1、定义token的类型和初始化token<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> token = &#123;</span><br><span class="line">  <span class="comment">// token是由后端服务在用户登录时生成并返回给小程序，所以小程序端定义时需要了解后端需要传输什么在定义</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// token管理器</span></span><br><span class="line"><span class="keyword">const</span> tokenManager = &#123;</span><br><span class="line">  <span class="title function_">getToken</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> token</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">setToken</span>(<span class="params">tokenData</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> (token = &#123;...token,...tokenData&#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>2、封装好请求处理<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">_request</span> = (<span class="params">url,data,method</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>) =&gt;</span> &#123;</span><br><span class="line">    wx.<span class="title function_">request</span>(&#123;</span><br><span class="line">      url,</span><br><span class="line">      data,</span><br><span class="line">      <span class="attr">header</span>: tokenManager.<span class="title function_">getToken</span>(),</span><br><span class="line">      method,</span><br><span class="line">      <span class="title function_">succes</span>(<span class="params">resp</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(resp.<span class="property">status</span>.<span class="property">code</span> === <span class="number">502</span> || resp.<span class="property">statusCode</span> === <span class="number">500</span>) &#123;</span><br><span class="line">          <span class="title function_">reject</span>(&#123;<span class="attr">errMsg</span>: <span class="string">&#x27;请求失败&#x27;</span>&#125;)</span><br><span class="line">          <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">const</span> data = resp.<span class="property">data</span></span><br><span class="line">        <span class="keyword">if</span>(data.<span class="property">err</span>) &#123;</span><br><span class="line">          <span class="keyword">const</span> &#123; result &#125; = data</span><br><span class="line">          <span class="keyword">const</span> msg = result.<span class="property">state</span>.<span class="property">msg</span></span><br><span class="line">          <span class="title function_">reject</span>(&#123;<span class="attr">errMsg</span>:msg || data.<span class="property">msg</span>,<span class="attr">data</span>:result&#125;)</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">const</span> result = resp.<span class="property">data</span></span><br><span class="line">          <span class="title function_">resolve</span>(result)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="title function_">fail</span>(<span class="params">err</span>) &#123;</span><br><span class="line">        <span class="title function_">reject</span>(err)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>3、继续封装网络请求和处理返回的数据格式,然后在登录的接口中调用<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">httpRequest</span> = <span class="keyword">async</span>(<span class="params">link,data=&#123;&#125;,method: <span class="string">&#x27;GET&#x27;</span>,showLoading=<span class="literal">false</span></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span>(showLoading) &#123;</span><br><span class="line">    wx.<span class="title function_">showLoading</span>(&#123;</span><br><span class="line">      <span class="attr">title</span>:<span class="string">&quot;请求中&quot;</span>,</span><br><span class="line">      <span class="attr">mask</span>: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> handleData = &#123;...data&#125;</span><br><span class="line">  <span class="keyword">if</span>(link.<span class="property">cross</span>)&#123;</span><br><span class="line">    handleData.<span class="property">cross</span> = link.<span class="property">cross</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> [error,response] = <span class="keyword">await</span> <span class="title function_">_to</span>(<span class="title function_">_request</span>(link.<span class="property">url</span>,handleData, method))</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(link.<span class="property">text</span>, respone, error)</span><br><span class="line">  <span class="keyword">if</span>(showLoading)&#123;</span><br><span class="line">    wx.<span class="title function_">hideLoading</span>()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">resolve</span>([error,response])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>4、统一封装和写好api请求，页面中直接调用请求和传参即可<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">getApi</span> = <span class="keyword">async</span>(<span class="params">pramas</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [err,res] = <span class="keyword">await</span> <span class="title function_">httpRequest</span>(apiurl,&#123;pramas&#125;)</span><br><span class="line">  <span class="keyword">if</span>(!err &amp;&amp; res) &#123;</span><br><span class="line">    <span class="keyword">return</span> res.<span class="property">result</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>5、处理登录模块，定义一个判断登录状态的变量，默认为null</li>
+<li>6、处理静默登录的逻辑并通过<code>wx.login()</code>从微信服务端获取code<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">_handleDefaultLogin</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> systemInfo = wx.<span class="title function_">getDeviceInfo</span>() <span class="comment">// 获取设备信息</span></span><br><span class="line">  <span class="keyword">const</span> [networkErr,networkRes] = <span class="keyword">await</span> <span class="title function_">_to</span>(wx.<span class="title function_">getNetworkType</span>()) <span class="comment">// 获取网络类型</span></span><br><span class="line">  <span class="keyword">if</span>(networkErr) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;获取网络失败&#x27;</span>)</span><br><span class="line">  <span class="keyword">const</span> [wxLoginErr, wxLoginRes] = <span class="keyword">await</span> <span class="title function_">_to</span>(wx.<span class="title function_">login</span>())</span><br><span class="line">  <span class="keyword">if</span>(wxLoginErr) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;微信登录失败&#x27;</span>)</span><br><span class="line">  <span class="comment">// 设置token</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">// 调用业务登录接口</span></span><br><span class="line">  <span class="keyword">const</span> [loginErr,loginRes] = awiat <span class="title function_">httpRequest</span>(loginlink,&#123;<span class="attr">code</span>: wxLoginRes.<span class="property">code</span> || <span class="string">&#x27;&#x27;</span>, ...token&#125;)</span><br><span class="line">  <span class="keyword">const</span> loginData = loginRes.<span class="property">result</span></span><br><span class="line">  <span class="keyword">if</span>(loginErr || !loginData) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(loginErr.<span class="property">errMsg</span>)</span><br><span class="line">  <span class="comment">// 从loginData中拿到服务端传来的token数据，sessionId 或sid二者一样，看服务断校验使用哪一个</span></span><br><span class="line">  <span class="comment">// 继续设置token</span></span><br><span class="line">  <span class="comment">// 全局存储用户信息</span></span><br><span class="line">  <span class="comment">// 返回用户信息  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>7、防止重复调用静默登录，处理静默登录判断，使用之前定义好的登录状态判断变量，因为静默登录每个页面都会触发才这样处理<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!_loginRecoed) &#123;</span><br><span class="line">  _loginRecord = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">_handleDefaultLogin</span>()</span><br><span class="line">      .<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;<span class="title function_">resolve</span>(res)&#125;)</span><br><span class="line">      .<span class="title function_">catch</span>(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">        _loginRecord = <span class="literal">null</span></span><br><span class="line">        <span class="title function_">reject</span>(err)</span><br><span class="line">      &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果全局只调用一次设置完token之后使用<code>wx.setStorageSync()</code>存储在缓存中，然后根据token的存在判断是否需要重新登录</li>
+</ul>
+</li>
+<li>8、之后在全局布局中去调用静默登录这个方法</li>
+</ul>
 <!-- ### 跳过,不需要
 优化: 在页面重复调用两次及以上时,只执行一次调用
 step 1: 再写一个函数,然后在该函数中判断是否调用过,调用过就不执行,没有则执行---框架
@@ -509,22 +550,23 @@ step 5: 已经调用返回不执行 ---4
 step 6: 没有调用,重置标签,返回要调用的函数 ---5
 step 7: 将这个函数赋值给一个变量,然后export ---6
 step 8: 在页面就可以多次调用,但只执行一次 ---7 -->
-<h2 id="⭐-优化"><a href="#⭐-优化" class="headerlink" title="⭐ 优化:"></a>⭐ 优化:</h2><h3 id="判断promise的登录状态-并行请求-先获取先展示"><a href="#判断promise的登录状态-并行请求-先获取先展示" class="headerlink" title="判断promise的登录状态(并行请求,先获取先展示)"></a>判断promise的登录状态(并行请求,先获取先展示)</h3><ol>
+
+<h2 id="优化"><a href="#优化" class="headerlink" title="优化:"></a>优化:</h2><h3 id="判断promise的登录状态-并行请求-先获取先展示"><a href="#判断promise的登录状态-并行请求-先获取先展示" class="headerlink" title="判断promise的登录状态(并行请求,先获取先展示)"></a>判断promise的登录状态(并行请求,先获取先展示)</h3><ol>
 <li>在全局封装一个登录状态,调用时如果没有登录状态就将静态登录的状态赋值给它</li>
 <li>然后await等待事件成功才继续执行下面的语句,没有成功不执行,最后完成重置状态</li>
 </ol>
-<h3 id="⭐-重复登录问题"><a href="#⭐-重复登录问题" class="headerlink" title="⭐ 重复登录问题:"></a>⭐ 重复登录问题:</h3><ol>
+<h3 id="重复登录问题"><a href="#重复登录问题" class="headerlink" title="重复登录问题:"></a>重复登录问题:</h3><ol>
 <li>在统一在登录逻辑哪里处理</li>
 <li>在默认登录时设置登陆后缓存,缓存数据最好使用序列化,把类型变为string</li>
 <li>写一个函数用来判断是否登录,获取缓存,判断有缓存,将数据反序列化后在设置token返回true</li>
 <li>完成后在整个登录逻辑那里去调用该函数,判断是否为true,返回</li>
 </ol>
-<h3 id="⭐-登录校验问题"><a href="#⭐-登录校验问题" class="headerlink" title="⭐ 登录校验问题:"></a>⭐ 登录校验问题:</h3><ol>
-<li>在不需要登录的路径上传参cross,然后到请求页面中返回时从路径拿到cross</li>
+<h3 id="登录校验问题"><a href="#登录校验问题" class="headerlink" title="登录校验问题:"></a>登录校验问题:</h3><ol>
+<li>在不需要登录的路径上传参数cross,然后到请求页面中返回时从路径拿到cross</li>
 <li>有cross时需与之前的data的合并</li>
 <li>之后在请求方法中判断不存在cross则进行原先判断静默登录状态是否登录,存在则请求结果返回</li>
 </ol>
-<h3 id="⭐-解决路径调用api时无提示-不报错问题"><a href="#⭐-解决路径调用api时无提示-不报错问题" class="headerlink" title="⭐ 解决路径调用api时无提示,不报错问题:"></a>⭐ 解决路径调用api时无提示,不报错问题:</h3><ol>
+<h3 id="解决路径调用api时无提示-不报错问题"><a href="#解决路径调用api时无提示-不报错问题" class="headerlink" title="解决路径调用api时无提示,不报错问题:"></a>解决路径调用api时无提示,不报错问题:</h3><ol>
 <li>在全局中使用函数和简单索引类型</li>
 <li>通过泛型让K遍历T中的每一项,返回T时拿到K</li>
 <li>使用时就有提示</li>
@@ -539,7 +581,7 @@ step 8: 在页面就可以多次调用,但只执行一次 ---7 -->
     <div class="col-lg-12">
         <!-- title -->
         <h5 class="trm-title-with-divider">
-            Other Articles
+            其他文章
             <span data-number="02"></span>
         </h5>
     </div>
@@ -569,7 +611,7 @@ step 8: 在页面就可以多次调用,但只执行一次 ---7 -->
                 <li>24/11/04</li>
                 <li>09:57</li>
                 
-                    <li>778</li>
+                    <li>789</li>
                 
                 
                     <li>3</li>
@@ -605,7 +647,7 @@ step 8: 在页面就可以多次调用,但只执行一次 ---7 -->
                 <li>24/11/04</li>
                 <li>09:57</li>
                 
-                    <li>740</li>
+                    <li>747</li>
                 
                 
                     <li>3</li>
@@ -639,23 +681,21 @@ step 8: 在页面就可以多次调用,但只执行一次 ---7 -->
     
         <div class="trm-footer-item">
             <span>
-                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+                由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v7.3.0
             </span>
             <span class="footer-separator" data-separator=" | "></span>
             <span> 
-                Theme - 
+                主题 - 
                 <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
                 v2.2.3
             </span>
         </div>
       
 
+    
+        <div class="trm-footer-item blog-run-long"></div>
      
 
-    
-        <div class="trm-footer-item">
-            网站正在逐步完善中...
-        </div>
      
 </footer>
                     <!-- footer end -->
@@ -671,34 +711,34 @@ step 8: 在页面就可以多次调用,但只执行一次 ---7 -->
 
     <div id="post-toc" class="trm-post-toc">
       <div class="trm-post-toc-header">
-        Article table of contents
+        目录导航
 				<span id="post-toc-top">
-					TOP
+					置顶
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="⭐ 优化:"><a rel="nofollow" class="trm-toc-link" href="#⭐-优化"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">⭐ 优化:</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="判断promise的登录状态(并行请求,先获取先展示)"><a rel="nofollow" class="trm-toc-link" href="#判断promise的登录状态-并行请求-先获取先展示"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">判断promise的登录状态(并行请求,先获取先展示)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="⭐ 重复登录问题:"><a rel="nofollow" class="trm-toc-link" href="#⭐-重复登录问题"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">⭐ 重复登录问题:</span></a></li><li class="trm-toc-item trm-toc-level-3" title="⭐ 登录校验问题:"><a rel="nofollow" class="trm-toc-link" href="#⭐-登录校验问题"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">⭐ 登录校验问题:</span></a></li><li class="trm-toc-item trm-toc-level-3" title="⭐ 解决路径调用api时无提示,不报错问题:"><a rel="nofollow" class="trm-toc-link" href="#⭐-解决路径调用api时无提示-不报错问题"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">⭐ 解决路径调用api时无提示,不报错问题:</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="步骤"><a rel="nofollow" class="trm-toc-link" href="#步骤"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">步骤</span></a></li><li class="trm-toc-item trm-toc-level-2" title="优化:"><a rel="nofollow" class="trm-toc-link" href="#优化"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">优化:</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="判断promise的登录状态(并行请求,先获取先展示)"><a rel="nofollow" class="trm-toc-link" href="#判断promise的登录状态-并行请求-先获取先展示"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">判断promise的登录状态(并行请求,先获取先展示)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="重复登录问题:"><a rel="nofollow" class="trm-toc-link" href="#重复登录问题"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">重复登录问题:</span></a></li><li class="trm-toc-item trm-toc-level-3" title="登录校验问题:"><a rel="nofollow" class="trm-toc-link" href="#登录校验问题"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">登录校验问题:</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决路径调用api时无提示,不报错问题:"><a rel="nofollow" class="trm-toc-link" href="#解决路径调用api时无提示-不报错问题"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">解决路径调用api时无提示,不报错问题:</span></a></li></ol></li></ol>
       </div>
     </div>
 
             
 <div class="trm-fixed-container">
     
-        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
             <i class="iconfont fas fa-th-list"></i>
         </div>
     
     
-        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
             <i class="iconfont fas fa-book-reader"></i>
         </div>
     
     
-        <div class="trm-fixed-btn hidden-md" data-title="Toggle between single-column and double-column" onclick="asyncFun.switchSingleColumn()">
+        <div class="trm-fixed-btn hidden-md" data-title="单栏和双栏切换" onclick="asyncFun.switchSingleColumn()">
             <i class="iconfont fas fa-arrows-alt-h"></i>
         </div>
     
-    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
         <i class="iconfont fas fa-arrow-up"></i>
     </div>
 </div>
@@ -715,14 +755,14 @@ step 8: 在页面就可以多次调用,但只执行一次 ---7 -->
                 <div class="trm-search-input-icon">
                     <i class="iconfont fas fa-search"></i>
                 </div>
-                <input class="trm-search-input" type="text" placeholder="Searching...">
+                <input class="trm-search-input" type="text" placeholder="搜索文章...">
                 <div class="trm-search-btn-close">
                     <i class="iconfont fas fa-times"></i>
                 </div>
             </div>
             <div class="trm-search-result-container">
                 <div class="trm-search-empty">
-                    Please enter keywords to search
+                    请输入关键词进行搜索
                 </div>
             </div>
             <div class="trm-search-footer">

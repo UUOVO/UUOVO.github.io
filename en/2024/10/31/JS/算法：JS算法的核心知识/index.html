@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="zh-Hans,en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="算常数总和-性能好-时间复杂度 O(1)：飞蛾公式： (n &#x2F; 2) *(1 + n) 题库：leetcode 性能上：for &gt; forEach &gt; map for in 是键值的遍历，for of 是 es6 的产物，是迭代器的遍历方式，需要判断遍历对象是否存在 本质上 forEach 和 map 是用来遍历 Array 反转字符串： str.split(‘’).redu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法-JS算法的核心知识">
+<meta property="og:url" content="http://example.com/en/2024/10/31/JS/%E7%AE%97%E6%B3%95%EF%BC%9AJS%E7%AE%97%E6%B3%95%E7%9A%84%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="算常数总和-性能好-时间复杂度 O(1)：飞蛾公式： (n &#x2F; 2) *(1 + n) 题库：leetcode 性能上：for &gt; forEach &gt; map for in 是键值的遍历，for of 是 es6 的产物，是迭代器的遍历方式，需要判断遍历对象是否存在 本质上 forEach 和 map 是用来遍历 Array 反转字符串： str.split(‘’).redu">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-31T03:05:32.127Z">
+<meta property="article:modified_time" content="2024-11-11T02:51:17.184Z">
+<meta property="article:author" content="UUOVO">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="js，递归，">
+
+
+<title >算法-JS算法的核心知识</title>
+
+<!-- Favicon -->
+
+    <link href='/img/sitelogo16.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/sitelogo32.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/apple-touch-icon.png?v=2.2.3' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-11 10:51:17"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/sitelogo32.svg">
+    
+    
+        <div class="trm-logo-text">
+            UU<span>OVO</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/tags/" target="">
+                            标签
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" target="">
+                            微信小程序
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%B7%A5%E5%85%B7/" target="">
+                            前端工程化工具
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/React/" target="">
+                            React
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/VUE/" target="">
+                            VUE
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/TypeScript/" target="">
+                            TypeScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JavaScript/" target="">
+                            JavaScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/CSS&HTML/" target="">
+                            CSS&HTML
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="">
+                            网络与数据结构
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/uniapp/" target="">
+                            uniapp
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ThreeJS/" target="">
+                            ThreeJS
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/Node/" target="">
+                            Node
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JQuery/" target="">
+                            JQuery
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ES6/" target="">
+                            ES6
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/AJAX/" target="">
+                            AJAX
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/gallery/" target="">
+                    相册
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/gallery/wallpaper/" target="">
+                            相册详情页
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/about/" target="">
+                    关于
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/links/" target="">
+                            友链
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+    
+    <div id="trm-search-btn" class="trm-search-btn">
+        <i class="iconfont fas fa-search"></i>
+    </div>
+     
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            算法-JS算法的核心知识
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        en
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar1.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/UUOVO" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/ovouu" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                City:
+            </div>
+            <div class="trm-label trm-label-light">
+                City
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                Age:
+            </div>
+            <div class="trm-label trm-label-light">
+                Age
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:1370203877@qq.com" class="trm-btn">
+            Contact Me
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            10/31
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            11:05
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            UUOVO
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <p>算常数总和-性能好-时间复杂度 O(1)：<br>飞蛾公式： (n &#x2F; 2) *(1 + n)</p>
+<h2 id="题库：leetcode"><a href="#题库：leetcode" class="headerlink" title="题库：leetcode"></a>题库：leetcode</h2><ul>
+<li>性能上：for &gt; forEach &gt; map</li>
+<li>for in 是键值的遍历，for of 是 es6 的产物，是迭代器的遍历方式，需要判断遍历对象是否存在</li>
+<li>本质上 forEach 和 map 是用来遍历 Array</li>
+<li><h3 id="反转字符串：-str-split-‘’-reduceRight-prev-curr-prev-curr"><a href="#反转字符串：-str-split-‘’-reduceRight-prev-curr-prev-curr" class="headerlink" title="反转字符串： str.split(‘’).reduceRight((prev,curr)&#x3D;&gt;prev+curr)"></a>反转字符串： str.split(‘’).reduceRight((prev,curr)&#x3D;&gt;prev+curr)</h3></li>
+</ul>
+<h2 id="时-空间复杂度"><a href="#时-空间复杂度" class="headerlink" title="时&#x2F;空间复杂度"></a>时&#x2F;空间复杂度</h2><ul>
+<li><a href="/2024/10/31/network/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%92%8C%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" title="时&#x2F;空间复杂度">时&#x2F;空间复杂度</a></li>
+</ul>
+<h3 id="计算时间复杂度？"><a href="#计算时间复杂度？" class="headerlink" title="计算时间复杂度？"></a>计算时间复杂度？</h3><ul>
+<li><h3 id="求数字的总和"><a href="#求数字的总和" class="headerlink" title="求数字的总和"></a>求数字的总和</h3></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">10</span>, <span class="number">50</span>]</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sumNumbers</span>(<span class="params">numbers</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> numbers.<span class="title function_">reduce</span>(<span class="function">(<span class="params">sum, curNum</span>) =&gt;</span> sum + curNum, <span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">sumNumbers</span>(numbers))</span><br><span class="line"></span><br><span class="line"><span class="comment">//T = 3 + n ==&gt; O(n) ==&gt; Linear Time Complexity ==&gt; 最好的结果，性能好</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h3></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// n = 5</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fib</span>(<span class="params">n</span>) &#123;</span><br><span class="line">	<span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">1</span>] <span class="comment">// 1</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">2</span>; i &lt; n + <span class="number">1</span>; i++) &#123;</span><br><span class="line">		<span class="comment">// 1</span></span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Running&#x27;</span>) <span class="comment">// n-1，可以在循环中写一个log，控制台可以看到它执行多少次</span></span><br><span class="line">		numbers.<span class="title function_">push</span>(numbers[i - <span class="number">2</span>] + numbers[i - <span class="number">1</span>]) <span class="comment">// n-1次</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> numbers[n] <span class="comment">// 1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// T = 1 + 1 + 1 + 2(n - 1) = 3 + 2n - 2 = 1 + 2n ==&gt; O(n) ==&gt; Linear Time Complexity</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>总结： 使用渐进分析法给每种算法分析以下 3 种情况，最后得到时间复杂度</p>
+<ul>
+<li>Best Case: number &#x3D; 1 OR number &#x3D; 2 &#x3D;&gt; O(1) &#x2F;&#x2F; 数值少</li>
+<li>Average Case: O(n)</li>
+<li>Worst Case: number &#x3D; 27,277 &#x3D;&gt; O(n) (Improved: O(sqrt(n))) &#x2F;&#x2F; 数值大</li>
+</ul>
+</li>
+<li><h3 id="判断是否为-2-的幂"><a href="#判断是否为-2-的幂" class="headerlink" title="判断是否为 2 的幂"></a>判断是否为 2 的幂</h3><ul>
+<li>使用位运算符：二进制 与 &amp;</li>
+<li>&amp;： 按位相乘，有 0 为 0,示例：<code>4 &amp; 7 ==&gt; 100 &amp; 111 ==&gt; 100 ==&gt; 4(最终结果)</code></li>
+<li>number &amp; (number - 1) &#x3D;&#x3D;&#x3D; 0: 始终返回 true</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">isPowerOfTwo</span>(<span class="params">number</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> (number &lt; <span class="number">1</span>) <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	<span class="keyword">return</span> (number &amp; (number - <span class="number">1</span>)) === <span class="number">0</span> <span class="comment">// O(1)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="递归算法"><a href="#递归算法" class="headerlink" title="递归算法"></a>递归算法</h2><ul>
+<li><h3 id="阶乘算法"><a href="#阶乘算法" class="headerlink" title="阶乘算法"></a>阶乘算法</h3></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fact</span>(<span class="params">number</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> (number === <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span> <span class="comment">// space complexity： 1</span></span><br><span class="line">	<span class="keyword">return</span> number * <span class="title function_">fact</span>(number - <span class="number">1</span>) <span class="comment">// space complexity： 1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 但n次调用的回调函数的时间复杂度是: O(n)</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">fact</span>(<span class="number">5</span>)) <span class="comment">// 5 * 4 * 3 * 2 * 1</span></span><br><span class="line"><span class="comment">// 空间复杂度：O(n)</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="以递归实现斐波那契数列来证明递归不全是最好的实现方式"><a href="#以递归实现斐波那契数列来证明递归不全是最好的实现方式" class="headerlink" title="以递归实现斐波那契数列来证明递归不全是最好的实现方式"></a>以递归实现斐波那契数列来证明递归不全是最好的实现方式</h3><ul>
+<li>问题：建立了一个嵌套树，从 n&#x3D;4 时会产生多余的相同结果</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fib</span>(<span class="params">n</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> (n === <span class="number">0</span> || n === <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="title function_">fib</span>(n - <span class="number">1</span>) + <span class="title function_">fib</span>(n - <span class="number">2</span>)</span><br><span class="line">	<span class="comment">// 每次执行回调函数都有两个函数要执行，表示时间长度是指数级增长</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 基于普通循环的时间复杂度为 O(n)</span></span><br><span class="line"><span class="comment">// 基于递归实现的时间复杂度为 O(n^2)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="动态编程-Dynamic-Programming"><a href="#动态编程-Dynamic-Programming" class="headerlink" title="动态编程(Dynamic Programming)"></a>动态编程(Dynamic Programming)</h2><ul>
+<li><p>在第一个函数也就是该方法的全局中添加存储空间的变量</p>
+</li>
+<li><p>在添加一个记忆变量的形式变量</p>
+</li>
+<li><p>在每次该回调函数结束前，把存储变量赋值给记忆变量</p>
+</li>
+<li><p>判断记忆变量有这个值就返回记忆变量的值不执行后面的内容避免冗余</p>
+</li>
+<li><h3 id="以递归实现的斐波那契为例进行改造"><a href="#以递归实现的斐波那契为例进行改造" class="headerlink" title="以递归实现的斐波那契为例进行改造"></a>以递归实现的斐波那契为例进行改造</h3></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fib</span>(<span class="params">n, memo</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> result</span><br><span class="line">	<span class="keyword">if</span> (memo[n]) <span class="keyword">return</span> memo[n]</span><br><span class="line">	<span class="keyword">if</span> (n === <span class="number">0</span> || n === <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		result = <span class="title function_">fib</span>(n - <span class="number">1</span>, memo) + <span class="title function_">fib</span>(n - <span class="number">2</span>, memo)</span><br><span class="line">	&#125;</span><br><span class="line">	memo[n] = result</span><br><span class="line">	<span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">fib</span>(<span class="number">5</span>, &#123;&#125;))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="自下而上的方法"><a href="#自下而上的方法" class="headerlink" title="自下而上的方法"></a>自下而上的方法</h3></li>
+</ul>
+<blockquote>
+<p>建立一个存储所有这些值的存储，将所有结果存储在此存储中的 bonachi 序列。执行方法的过程中，不断生成数据，知道目标值生成完成函数执行。当数据够多，一旦检索到 nf 元素然后我们取消完成函数执行。</p>
+</blockquote>
+<ul>
+<li>使用场景：<ol>
+<li>在循环中使用底部应用程序方法</li>
+<li>带有递归的动态规划方法</li>
+</ol>
+</li>
+</ul>
+<h2 id="搜索算法"><a href="#搜索算法" class="headerlink" title="搜索算法"></a>搜索算法</h2><ul>
+<li><h3 id="线性搜索-可以是任意类型的数据"><a href="#线性搜索-可以是任意类型的数据" class="headerlink" title="线性搜索(可以是任意类型的数据)"></a>线性搜索(可以是任意类型的数据)</h3><ul>
+<li>从头到尾遍历查找，找到对应的值就返回并停止，只返回第一个目标结果就停止</li>
+<li>适用于有序和无序列表，所以列表不必排序</li>
+<li>当然可以用系统内置的方法 find(), findIndex()</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 搜索对象</span></span><br><span class="line"><span class="keyword">const</span> obj = [</span><br><span class="line">	&#123; <span class="attr">name</span>: <span class="string">&#x27;mary&#x27;</span>, <span class="attr">age</span>: <span class="string">&#x27;18&#x27;</span> &#125;,</span><br><span class="line">	&#123; <span class="attr">name</span>: <span class="string">&#x27;moli&#x27;</span>, <span class="attr">age</span>: <span class="string">&#x27;22&#x27;</span> &#125;,</span><br><span class="line">]</span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">5</span>, <span class="number">3</span>, <span class="number">10</span>, -<span class="number">10</span>, <span class="number">33</span>, <span class="number">51</span>]</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">findElement</span>(<span class="params">arr, element, comparatorFn</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> index = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">const</span> item <span class="keyword">of</span> arr) &#123;</span><br><span class="line">		<span class="comment">// item只是临时的，并不依赖数组长度</span></span><br><span class="line">		<span class="keyword">if</span> (</span><br><span class="line">			<span class="keyword">typeof</span> element === <span class="string">&#x27;object&#x27;</span> &amp;&amp;</span><br><span class="line">			element !== <span class="literal">null</span> &amp;&amp;</span><br><span class="line">			<span class="title function_">comparatorFn</span>(element, item)</span><br><span class="line">		)</span><br><span class="line">			<span class="keyword">return</span> index</span><br><span class="line">		<span class="keyword">if</span> (item === element) <span class="keyword">return</span> index</span><br><span class="line">		index++ <span class="comment">// 只是改变现有的值，并不会返回新值</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">findElement</span>(arr, <span class="number">33</span>))</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(</span><br><span class="line">	<span class="title function_">findElement</span>(obj, &#123; <span class="attr">name</span>: <span class="string">&#x27;moli&#x27;</span>, <span class="attr">age</span>: <span class="string">&#x27;22&#x27;</span> &#125;, <span class="keyword">function</span> (<span class="params">el, it</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> el.<span class="property">name</span> === it.<span class="property">name</span></span><br><span class="line">	&#125;)</span><br><span class="line">)</span><br><span class="line"><span class="comment">// 空间复杂度为O(1)</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="二分搜索"><a href="#二分搜索" class="headerlink" title="二分搜索"></a>二分搜索</h3></li>
+</ul>
+<blockquote>
+<p>需要先排序，然后根据中有两边的值，从中间划分查找</p>
+</blockquote>
+<ol>
+<li>基于循环</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">13</span>, <span class="number">99</span>, <span class="number">100</span>]</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">findElement</span>(<span class="params">sortedArr, element</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> startIndex = <span class="number">0</span></span><br><span class="line">	<span class="keyword">let</span> endIndex = sortedArr.<span class="property">length</span> - <span class="number">1</span></span><br><span class="line">	<span class="keyword">while</span> (startIndex &lt;= endIndex) &#123;</span><br><span class="line">		<span class="keyword">const</span> middleIndex = startIndex + <span class="title class_">Math</span>.<span class="title function_">floor</span>((endIndex - startIndex) / <span class="number">2</span>)</span><br><span class="line">		<span class="keyword">if</span> (element === sortedArr[middleIndex]) <span class="keyword">return</span> middleIndex</span><br><span class="line">		<span class="keyword">if</span> (sortedArr[middleIndex] &lt; element) startIndex = middleIndex + <span class="number">1</span></span><br><span class="line">		<span class="keyword">else</span> endIndex = middleIndex - <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">findElement</span>(arr, <span class="number">9</span>))</span><br><span class="line"><span class="comment">// Best Case: 目标刚好正中间 O(1)</span></span><br><span class="line"><span class="comment">// Average Case: 趋于O(log n)</span></span><br><span class="line"><span class="comment">// Worst Case: 目标在开头或结尾 O(log n)</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>递归的二分查找</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">13</span>, <span class="number">99</span>, <span class="number">100</span>]</span><br><span class="line"><span class="comment">// sortedArr: 原数组   element： 目标元素   offset：索引偏移量,目标元素在新数组与旧数组的偏差</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">findElement</span>(<span class="params">sortedArr, element, offset</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> startIndex = <span class="number">0</span></span><br><span class="line">	<span class="keyword">let</span> endIndex = sortedArr.<span class="property">length</span> - <span class="number">1</span></span><br><span class="line">	<span class="keyword">while</span> (startIndex &lt;= endIndex) &#123;</span><br><span class="line">		<span class="keyword">const</span> middleIndex = <span class="title class_">Math</span>.<span class="title function_">floor</span>((endIndex - startIndex) / <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (element === sortedArr[middleIndex]) <span class="keyword">return</span> middleIndex + offset <span class="comment">// 返回目标元素在原数组的索引：当前元素索引+offest</span></span><br><span class="line">		<span class="keyword">if</span> (sortedArr[middleIndex] &lt; element) &#123;</span><br><span class="line">			startIndex = middleIndex + <span class="number">1</span></span><br><span class="line">			offset = offset + middleIndex + <span class="number">1</span></span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			endIndex = middleIndex</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="title function_">findElement</span>(</span><br><span class="line">			sortedArr.<span class="title function_">slice</span>(startIndex, endIndex + <span class="number">1</span>),</span><br><span class="line">			element,</span><br><span class="line">			offset</span><br><span class="line">		) <span class="comment">// endIndex +1 是为了防止元素出现在最末尾</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">findElement</span>(arr, <span class="number">9</span>, <span class="number">0</span>))</span><br><span class="line"><span class="comment">// a: 1 (这里看return那一句时递归的，只执行一次，所以为1)</span></span><br><span class="line"><span class="comment">// b: 2 (这里看切分成多少次，从代码看数组被切分成两次)</span></span><br><span class="line"><span class="comment">// O(n^logb a) =&gt; O(n^log2 1) =&gt; O(n^0) =&gt; O(1)</span></span><br><span class="line"><span class="comment">// overall the algorithms:O(n^logb alog n) =&gt; O(1 * log n) =&gt; O(log n)</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>与基于循环的解决方案的主要区别： 是在循环中只是改变了索引然后计算不同的中间指标</p>
+</li>
+<li><p>在递归方案中总是计算相同的中间指标，改变 index 来调用新函数，再次使用原始数组的子集。即真的切数组为不同函数调用分成切片，在不同的数组切片上操作</p>
+</li>
+<li><h3 id="主定理-Master-Theorem"><a href="#主定理-Master-Theorem" class="headerlink" title="主定理(Master Theorem)"></a>主定理(Master Theorem)</h3></li>
+<li><p>递归的运行时间： O(n<sup>log<sub>b</sub>a</sup>)</p>
+</li>
+<li><p>公式里的变量知识面意思?</p>
+<ul>
+<li>a：等于子问题数（递归拆分数）多久拆分一次数组</li>
+<li>b：等于相对子问题大小（每次拆分的输入减少）</li>
+<li>f(n)：等于递归外部运行时，指整个代码</li>
+</ul>
+</li>
+<li><p>使用主定理得到算法的整体时间复杂度的三种情况：</p>
+<ul>
+<li>case 1：递归步骤，完成最多工作，具有最大的运行时间，算法的运行时间为 O(n<sup>log<sub>b</sub>a</sup>)</li>
+<li>case 2：非递归部分做更多工作：O(fn(n))</li>
+<li>case 3：递归开始时的相同工作量推到整个算法的运行时间 O(n<sup>log<sub>b</sub>a</sup>log n)</li>
+</ul>
+</li>
+</ul>
+<h2 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h2><ul>
+<li><h3 id="冒泡算法"><a href="#冒泡算法" class="headerlink" title="冒泡算法"></a>冒泡算法</h3></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">sort</span>(<span class="params">arr</span>) &#123;</span><br><span class="line">	<span class="keyword">const</span> resultArr = [...arr]</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> outer = <span class="number">0</span>; outer &lt; resultArr.<span class="property">length</span>; outer++) &#123;</span><br><span class="line">		<span class="keyword">let</span> outerEl = resultArr[outer]</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">let</span> inner = outer + <span class="number">1</span>; inner &lt; resultArr.<span class="property">length</span>; inner++) &#123;</span><br><span class="line">			<span class="keyword">let</span> innerEl = resultArr[inner]</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (outerEl &gt; innerEl) &#123;</span><br><span class="line">				resultArr[outer] = innerEl</span><br><span class="line">				resultArr[inner] = outerEl</span><br><span class="line">				outerEl = resultArr[outer]</span><br><span class="line">				innerEl = resultArr[inner]</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> resultArr</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> sortedArr = <span class="title function_">sort</span>([<span class="number">3</span>, <span class="number">10</span>, -<span class="number">3</span>, <span class="number">48</span>, <span class="number">5</span>, <span class="number">33</span>, <span class="number">99</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">// Best Case: item 已经排序的情况 O(n)</span></span><br><span class="line"><span class="comment">// Average Case: 随机排序，趋于 O(n^2)</span></span><br><span class="line"><span class="comment">// Worst Case: O(n^2)</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">sort</span>(<span class="params">arr</span>) &#123;</span><br><span class="line">	<span class="keyword">const</span> copiedArr = [...arr]</span><br><span class="line">	<span class="keyword">if</span> (copiedArr.<span class="property">length</span> &lt;= <span class="number">1</span>) <span class="keyword">return</span> copiedArr</span><br><span class="line"></span><br><span class="line">	<span class="keyword">const</span> smElArr = []</span><br><span class="line">	<span class="keyword">const</span> bigElArr = []</span><br><span class="line">	<span class="keyword">const</span> pivotEl = copiedArr.<span class="title function_">shift</span>()</span><br><span class="line">	<span class="keyword">const</span> centerElArr = [pivotEl] <span class="comment">// 中心元素包含枢轴元素</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (copiedArr.<span class="property">length</span>) &#123;</span><br><span class="line">		<span class="keyword">const</span> currentEl = copiedArr.<span class="title function_">shift</span>()</span><br><span class="line">		<span class="keyword">if</span> (currentEl === pivotEl) centerElArr.<span class="title function_">push</span>(currentEl)</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (currentEl &lt; pivotEl) smElArr.<span class="title function_">push</span>(currentEl)</span><br><span class="line">		<span class="keyword">else</span> bigElArr.<span class="title function_">push</span>(currentEl)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">const</span> smElSortedArr = <span class="title function_">sort</span>(smElArr)</span><br><span class="line">	<span class="keyword">const</span> bigElSortedArr = <span class="title function_">sort</span>(bigElArr)</span><br><span class="line">	<span class="keyword">return</span> smElSortedArr.<span class="title function_">concat</span>(centerElArr, bigElSortedArr)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> sortArr = <span class="title function_">sort</span>([-<span class="number">3</span>, <span class="number">10</span>, <span class="number">1</span>, <span class="number">100</span>, -<span class="number">10</span>, <span class="number">22</span>, <span class="number">15</span>])</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(sortArr)</span><br><span class="line"><span class="comment">// 递归步骤的运行时间：O(n^logb a) =&gt; O(n^log2 2) =&gt; O(n^l) =&gt; O(n) // a,b为2是因为最大最小，一共两次</span></span><br><span class="line"><span class="comment">// 递归的外部运行时间：O(n)</span></span><br><span class="line"><span class="comment">// 算法的运行时间：O(n^logb a * log n) =&gt; O(n * log n)</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">sort</span>(<span class="params">arr</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> (arr.<span class="property">length</span> &lt; <span class="number">2</span>) <span class="keyword">return</span> arr</span><br><span class="line">	<span class="keyword">if</span> (arr.<span class="property">length</span> === <span class="number">2</span>) <span class="keyword">return</span> arr[<span class="number">0</span>] &gt; arr[<span class="number">1</span>] ? [arr[<span class="number">1</span>], arr[<span class="number">0</span>]] : arr</span><br><span class="line">	<span class="keyword">const</span> middle = <span class="title class_">Math</span>.<span class="title function_">floor</span>(arr.<span class="property">length</span> / <span class="number">2</span>)</span><br><span class="line">	<span class="keyword">const</span> leftArray = arr.<span class="title function_">slice</span>(<span class="number">0</span>, middle)</span><br><span class="line">	<span class="keyword">const</span> rightArray = arr.<span class="title function_">slice</span>(middle) <span class="comment">// 从这看出b=2</span></span><br><span class="line">	<span class="keyword">const</span> leftSortedArr = <span class="title function_">sort</span>(leftArray)</span><br><span class="line">	<span class="keyword">const</span> rightSortedArr = <span class="title function_">sort</span>(rightArray) <span class="comment">// 从这看出时间复杂度a=2，也看出空间复杂度值与数组长度有关</span></span><br><span class="line">	<span class="keyword">const</span> mergedArr = []</span><br><span class="line">	<span class="keyword">let</span> leftArrIndex = <span class="number">0</span></span><br><span class="line">	<span class="keyword">let</span> rightArrIndex = <span class="number">0</span></span><br><span class="line">	<span class="keyword">while</span> (</span><br><span class="line">		leftArrIndex &lt; leftSortedArr.<span class="property">length</span> ||</span><br><span class="line">		rightSortedArr &lt; rightSortedArr.<span class="property">length</span></span><br><span class="line">	) &#123;</span><br><span class="line">		<span class="keyword">if</span> (</span><br><span class="line">			leftArrIndex &gt;= leftSortedArr.<span class="property">length</span> ||</span><br><span class="line">			leftSortedArr[leftArrIndex] &gt; rightSortedArr[rightArrIndex]</span><br><span class="line">		) &#123;</span><br><span class="line">			mergedArr.<span class="title function_">push</span>(rightSortedArr[rightArrIndex])</span><br><span class="line">			rightArrIndex++</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			mergedArr.<span class="title function_">push</span>(leftSortedArr[leftArrIndex])</span><br><span class="line">			leftArrIndex++</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> mergedArr</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> sortedArray = <span class="title function_">sort</span>([-<span class="number">10</span>, <span class="number">33</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">3</span>, -<span class="number">19</span>, -<span class="number">99</span>, <span class="number">100</span>])</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(sortedArray)</span><br><span class="line"><span class="comment">// 时间复杂度：使用主定理推算</span></span><br><span class="line"><span class="comment">// 递归步骤的运行时间： O(n)</span></span><br><span class="line"><span class="comment">// 非递归的运行时间： O(n)</span></span><br><span class="line"><span class="comment">// 整体的运行时间：O(nlogn)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2><h2 id="集合-sets（数组）算法"><a href="#集合-sets（数组）算法" class="headerlink" title="集合 sets（数组）算法"></a>集合 sets（数组）算法</h2><ul>
+<li><h3 id="笛卡儿乘积算法"><a href="#笛卡儿乘积算法" class="headerlink" title="笛卡儿乘积算法"></a>笛卡儿乘积算法</h3></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 衣服制造问题--衣服尺码颜色组合问题</span></span><br><span class="line"><span class="comment">// 只能返回给定两个数组的组合集合</span></span><br><span class="line"><span class="comment">// [[&#x27;blue&#x27;,&#x27;m&#x27;],...]</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">cartProduct</span>(<span class="params">setA, setB</span>) &#123;</span><br><span class="line">	<span class="keyword">const</span> product = []</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> setAEl <span class="keyword">of</span> setA) &#123;</span><br><span class="line">		<span class="keyword">if</span> (!<span class="title class_">Array</span>.<span class="title function_">isArray</span>(setAEl)) setAEl = [setAEl]</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">const</span> setBEl <span class="keyword">of</span> setB) &#123;</span><br><span class="line">			product.<span class="title function_">push</span>([...setAEl, setBEl])</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> product</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 可以组合多种情况的集合,但要结合上面的函数</span></span><br><span class="line"><span class="comment">// [[&#x27;blue&#x27;,&#x27;m&#x27;,&#x27;v neck&#x27;], ...]</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">cartesian</span>(<span class="params">...sets</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> tempProduct = sets[<span class="number">0</span>]</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; sets.<span class="property">length</span>; i++) &#123;</span><br><span class="line">		tempProduct = <span class="title function_">cartProduct</span>(tempProduct, sets[i])</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> tempProduct</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> colors = [<span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;red&#x27;</span>]</span><br><span class="line"><span class="keyword">const</span> sizes = [<span class="string">&#x27;m&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;xl&#x27;</span>]</span><br><span class="line"><span class="keyword">const</span> styles = [<span class="string">&#x27;round neck&#x27;</span>, <span class="string">&#x27;v neck&#x27;</span>]</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">cartesian</span>(colors, sizes, styles))</span><br><span class="line"><span class="comment">// 时间复杂度： O(n) =&gt; O(n^x)</span></span><br><span class="line"><span class="comment">// 空间复杂度： O(n) =&gt; O(n^x)</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="全排列-无重复"><a href="#全排列-无重复" class="headerlink" title="全排列 无重复"></a>全排列 无重复</h3></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getPermutations</span>(<span class="params">options</span>) &#123;</span><br><span class="line">	<span class="keyword">const</span> permutations = []</span><br><span class="line">	<span class="keyword">if</span> (options.<span class="property">length</span> === <span class="number">1</span>) <span class="keyword">return</span> [options]</span><br><span class="line">	<span class="keyword">const</span> partialPermutations = <span class="title function_">getPermutations</span>(options.<span class="title function_">slice</span>(<span class="number">1</span>))</span><br><span class="line">	<span class="keyword">const</span> firstOption = options[<span class="number">0</span>]</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; partialPermutations.<span class="property">length</span>; i++) &#123;</span><br><span class="line">		<span class="keyword">const</span> partialPermutation = partialPermutations[i]</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; partialPermutation.<span class="property">length</span>; j++) &#123;</span><br><span class="line">			<span class="keyword">const</span> permutationInFront = partialPermutation.<span class="title function_">slice</span>(<span class="number">0</span>, j)</span><br><span class="line">			<span class="keyword">const</span> permutationAfter = partialPermutation.<span class="title function_">slice</span>(j)</span><br><span class="line">			permutations.<span class="title function_">push</span>(</span><br><span class="line">				permutationInFront.<span class="title function_">concat</span>([firstOption], permutationAfter)</span><br><span class="line">			)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> permutations</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> todoListItems = [<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;green&#x27;</span>, <span class="string">&#x27;orange&#x27;</span>, <span class="string">&#x27;sliver&#x27;</span>, <span class="string">&#x27;yellow&#x27;</span>]</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">getPermutations</span>(todoListItems))</span><br><span class="line"><span class="comment">// 时间复杂度：O(n!) =&gt; 4*3*2*1 =24 ,n指的是todoListItems的长度</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="全排列-有重复"><a href="#全排列-有重复" class="headerlink" title="全排列 有重复"></a>全排列 有重复</h3></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getPermutations</span>(<span class="params">options, length</span>) &#123;</span><br><span class="line">	<span class="keyword">const</span> permutations = []</span><br><span class="line">	<span class="keyword">if</span> (length === <span class="number">1</span>) <span class="keyword">return</span> options.<span class="title function_">map</span>(<span class="function">(<span class="params">option</span>) =&gt;</span> [option])</span><br><span class="line">	<span class="keyword">const</span> partialPermutations = <span class="title function_">getPermutations</span>(options, length - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">const</span> option <span class="keyword">of</span> options) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">const</span> existingPermutation <span class="keyword">of</span> partialPermutations) &#123;</span><br><span class="line">			permutations.<span class="title function_">push</span>([option].<span class="title function_">concat</span>(existingPermutation))</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> permutations</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> digits = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="keyword">const</span> resultLength = <span class="number">3</span> <span class="comment">// 生成的子数组不能超过这个长度</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">getPermutations</span>(digits, resultLength))</span><br><span class="line"><span class="comment">// 时间复杂度： O(n^r)  // n指的是digits的长度，r是生成的子数组的长度</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="复杂的算法和解决的方法"><a href="#复杂的算法和解决的方法" class="headerlink" title="复杂的算法和解决的方法"></a>复杂的算法和解决的方法</h2><ul>
+<li><h3 id="结构化方案"><a href="#结构化方案" class="headerlink" title="结构化方案"></a>结构化方案</h3><ol>
+<li>验证输入的问题</li>
+<li>思考问题和提出解决方案</li>
+<li>编写第一个版本的解决方案</li>
+<li>验证结果</li>
+<li>推到时间复杂度</li>
+<li>探索替代方案</li>
+</ol>
+</li>
+<li><h3 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h3></li>
+</ul>
+<blockquote>
+<p>排列出从所给的 items 中拿出不超过背包重量的 item</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">knapsack</span>(<span class="params">items, cap, itemIndex</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> (cap === <span class="number">0</span> || itemIndex &lt; <span class="number">0</span>) <span class="keyword">return</span> &#123; <span class="attr">items</span>: [], <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">weight</span>: <span class="number">0</span> &#125;</span><br><span class="line">	<span class="keyword">if</span> (cap &lt; items[itemIndex].<span class="property">weight</span>) <span class="keyword">return</span> <span class="title function_">knapsack</span>(items, cap, itemIndex - <span class="number">1</span>)</span><br><span class="line">	<span class="keyword">const</span> sackWithItem = <span class="title function_">knapsack</span>(</span><br><span class="line">		items,</span><br><span class="line">		cap - items[itemIndex].<span class="property">weight</span>,</span><br><span class="line">		itemIndex - <span class="number">1</span></span><br><span class="line">	)</span><br><span class="line">	<span class="keyword">const</span> sackWithoutItem = <span class="title function_">knapsack</span>(items, cap, itemIndex - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">const</span> valueWithItem = sackWithItem.<span class="property">value</span> + items[itemIndex].<span class="property">value</span></span><br><span class="line">	<span class="keyword">const</span> valueWithoutItem = sackWithItem.<span class="property">value</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (valueWithItem &gt; valueWithoutItem) &#123;</span><br><span class="line">		<span class="keyword">const</span> updateSack = &#123;</span><br><span class="line">			<span class="attr">items</span>: sackWithItem.<span class="property">items</span>.<span class="title function_">concat</span>(items[itemIndex]),</span><br><span class="line">			<span class="attr">value</span>: sackWithItem.<span class="property">value</span> + items[itemIndex].<span class="property">value</span>,</span><br><span class="line">			<span class="attr">weight</span>: sackWithItem.<span class="property">weight</span> + items[itemIndex].<span class="property">weight</span>,</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> updateSack</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> sackWithoutItem</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> items = [</span><br><span class="line">	&#123; <span class="attr">name</span>: <span class="string">&#x27;a&#x27;</span>, <span class="attr">value</span>: <span class="number">3</span>, <span class="attr">weight</span>: <span class="number">3</span> &#125;,</span><br><span class="line">	&#123; <span class="attr">name</span>: <span class="string">&#x27;b&#x27;</span>, <span class="attr">value</span>: <span class="number">6</span>, <span class="attr">weight</span>: <span class="number">8</span> &#125;,</span><br><span class="line">	&#123; <span class="attr">name</span>: <span class="string">&#x27;c&#x27;</span>, <span class="attr">value</span>: <span class="number">10</span>, <span class="attr">weight</span>: <span class="number">3</span> &#125;,</span><br><span class="line">]</span><br><span class="line"><span class="keyword">const</span> maxCap = <span class="number">8</span> <span class="comment">// 背包最大容量</span></span><br><span class="line"><span class="keyword">const</span> allPermutations = <span class="title function_">knapsack</span>(items, maxCap, items.<span class="property">length</span> - <span class="number">1</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(allPermutations)</span><br><span class="line"><span class="comment">// time complexity : 2^n</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>改进版</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">knapsackFn</span>(<span class="params">items, cap, itemIndex, memo</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> (memo[cap][itemIndex]) <span class="keyword">return</span> memo[cap][itemIndex]</span><br><span class="line">	<span class="keyword">if</span> (cap === <span class="number">0</span> || itemIndex &lt; <span class="number">0</span>) <span class="keyword">return</span> &#123; <span class="attr">items</span>: [], <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">weight</span>: <span class="number">0</span> &#125;</span><br><span class="line">	<span class="keyword">if</span> (cap &lt; items[itemIndex].<span class="property">weight</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="title function_">knapsackFn</span>(items, cap, itemIndex - <span class="number">1</span>, memo)</span><br><span class="line">	<span class="keyword">const</span> sackWithItem = <span class="title function_">knapsackFn</span>(</span><br><span class="line">		items,</span><br><span class="line">		cap - items[itemIndex].<span class="property">weight</span>,</span><br><span class="line">		itemIndex - <span class="number">1</span>,</span><br><span class="line">		memo</span><br><span class="line">	)</span><br><span class="line">	<span class="keyword">const</span> sackWithoutItem = <span class="title function_">knapsackFn</span>(items, cap, itemIndex - <span class="number">1</span>, memo)</span><br><span class="line">	<span class="keyword">const</span> valueWithItem = sackWithItem.<span class="property">value</span> + items[itemIndex].<span class="property">value</span></span><br><span class="line">	<span class="keyword">const</span> valueWithoutItem = sackWithItem.<span class="property">value</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">let</span> resultSack</span><br><span class="line">	<span class="keyword">if</span> (valueWithItem &gt; valueWithoutItem) &#123;</span><br><span class="line">		<span class="keyword">const</span> updateSack = &#123;</span><br><span class="line">			<span class="attr">items</span>: sackWithItem.<span class="property">items</span>.<span class="title function_">concat</span>(items[itemIndex]),</span><br><span class="line">			<span class="attr">value</span>: sackWithItem.<span class="property">value</span> + items[itemIndex].<span class="property">value</span>,</span><br><span class="line">			<span class="attr">weight</span>: sackWithItem.<span class="property">weight</span> + items[itemIndex].<span class="property">weight</span>,</span><br><span class="line">		&#125;</span><br><span class="line">		resultSack = updateSack</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		resultSack = sackWithoutItem</span><br><span class="line">	&#125;</span><br><span class="line">	memo[cap][itemIndex] = resultSack</span><br><span class="line">	<span class="keyword">return</span> resultSack</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 生成空的数组,from从高的值创建一个新数组, fill不会创建新数组， 这是创建内存的最好方法</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">knapsack</span>(<span class="params">items, cap, index</span>) &#123;</span><br><span class="line">	<span class="keyword">const</span> mem = <span class="title class_">Array</span>.<span class="title function_">from</span>(<span class="title class_">Array</span>(cap + <span class="number">1</span>), <span class="function">() =&gt;</span></span><br><span class="line">		<span class="title class_">Array</span>(items.<span class="property">length</span>).<span class="title function_">fill</span>(<span class="literal">undefined</span>)</span><br><span class="line">	)</span><br><span class="line">	<span class="keyword">return</span> <span class="title function_">knapsackFn</span>(items, cap, index, mem)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> items = [</span><br><span class="line">	&#123; <span class="attr">name</span>: <span class="string">&#x27;a&#x27;</span>, <span class="attr">value</span>: <span class="number">3</span>, <span class="attr">weight</span>: <span class="number">3</span> &#125;,</span><br><span class="line">	&#123; <span class="attr">name</span>: <span class="string">&#x27;b&#x27;</span>, <span class="attr">value</span>: <span class="number">6</span>, <span class="attr">weight</span>: <span class="number">8</span> &#125;,</span><br><span class="line">	&#123; <span class="attr">name</span>: <span class="string">&#x27;c&#x27;</span>, <span class="attr">value</span>: <span class="number">10</span>, <span class="attr">weight</span>: <span class="number">3</span> &#125;,</span><br><span class="line">]</span><br><span class="line"><span class="keyword">const</span> maxCap = <span class="number">8</span> <span class="comment">// 背包最大容量</span></span><br><span class="line"><span class="keyword">const</span> allPermutations = <span class="title function_">knapsack</span>(items, maxCap, items.<span class="property">length</span> - <span class="number">1</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(allPermutations)</span><br><span class="line"><span class="comment">// Time Complexity (without memoization): O(2^n)</span></span><br><span class="line"><span class="comment">// Time Complexity (with memoization): O(2*C) C指的是容量</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>贪心算法 vs 动态算法<ul>
+<li>解决背包问题的方式： 贪心 和 动态</li>
+</ul>
+</li>
+<li><h3 id="贪心背包算法"><a href="#贪心背包算法" class="headerlink" title="贪心背包算法"></a>贪心背包算法</h3></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一次只能返回一个满足要求的选项</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">knapsack</span>(<span class="params">elements, capacity</span>) &#123;</span><br><span class="line">	<span class="keyword">const</span> sack = &#123; <span class="attr">items</span>: [], <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">weight</span>: <span class="number">0</span> &#125;</span><br><span class="line">	<span class="keyword">let</span> remainingCapacity = capacity</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">const</span> el <span class="keyword">of</span> elements) &#123;</span><br><span class="line">		<span class="keyword">if</span> (el.<span class="property">weight</span> &lt; remainingCapacity) &#123;</span><br><span class="line">			sack.<span class="property">items</span>.<span class="title function_">push</span>(el)</span><br><span class="line">			sack.<span class="property">value</span> += el.<span class="property">value</span></span><br><span class="line">			sack.<span class="property">weight</span> += el.<span class="property">weight</span></span><br><span class="line">			remainingCapacity -= el.<span class="property">weight</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> sack</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> items = [</span><br><span class="line">	&#123; <span class="attr">name</span>: <span class="string">&#x27;a&#x27;</span>, <span class="attr">value</span>: <span class="number">3</span>, <span class="attr">weight</span>: <span class="number">3</span> &#125;,</span><br><span class="line">	&#123; <span class="attr">name</span>: <span class="string">&#x27;b&#x27;</span>, <span class="attr">value</span>: <span class="number">6</span>, <span class="attr">weight</span>: <span class="number">8</span> &#125;,</span><br><span class="line">	&#123; <span class="attr">name</span>: <span class="string">&#x27;c&#x27;</span>, <span class="attr">value</span>: <span class="number">10</span>, <span class="attr">weight</span>: <span class="number">3</span> &#125;,</span><br><span class="line">]</span><br><span class="line"><span class="keyword">const</span> maxCap = <span class="number">8</span> <span class="comment">// 背包最大容量</span></span><br><span class="line"><span class="keyword">const</span> sack = <span class="title function_">knapsack</span>(items, maxCap)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(sack)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="找零问题"><a href="#找零问题" class="headerlink" title="找零问题"></a>找零问题</h3></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  存储对象的值</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">computeChange</span>(<span class="params">coins, amount</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> remainingAmount = amount</span><br><span class="line">	<span class="keyword">const</span> calculatedChange = &#123;</span><br><span class="line">		<span class="attr">selectedCoins</span>: &#123;&#125;,</span><br><span class="line">		<span class="attr">numberOfCoins</span>: <span class="number">0</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">const</span> coin <span class="keyword">of</span> coins) &#123;</span><br><span class="line">		<span class="keyword">const</span> count = <span class="title class_">Math</span>.<span class="title function_">floor</span>(remainingAmount / coin)</span><br><span class="line">		calculatedChange[coin] = count</span><br><span class="line">		calculatedChange.<span class="property">numberOfCoins</span> += count</span><br><span class="line">		remainingAmount = remainingAmount - coin * count</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> calculatedChange</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> availableCoins = [<span class="number">100</span>, <span class="number">50</span>, <span class="number">20</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">1</span>]</span><br><span class="line"><span class="keyword">const</span> targetAmount = <span class="number">50</span></span><br><span class="line"><span class="keyword">const</span> change = <span class="title function_">computeChange</span>(availableCoins, targetAmount)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(change)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="暴力找零"><a href="#暴力找零" class="headerlink" title="暴力找零"></a>暴力找零</h3></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  存储对象的值</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">computeChange</span>(<span class="params">coins, amount</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> remainingAmount = amount</span><br><span class="line">	<span class="keyword">const</span> calculatedChange = &#123;</span><br><span class="line">		<span class="attr">selectedCoins</span>: &#123;&#125;,</span><br><span class="line">		<span class="attr">numberOfCoins</span>: <span class="number">0</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">const</span> coin <span class="keyword">of</span> coins) &#123;</span><br><span class="line">		<span class="keyword">const</span> count = <span class="title class_">Math</span>.<span class="title function_">floor</span>(remainingAmount / coin)</span><br><span class="line">		calculatedChange[coin] = count</span><br><span class="line">		calculatedChange.<span class="property">numberOfCoins</span> += count</span><br><span class="line">		remainingAmount = remainingAmount - coin * count</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> calculatedChange</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">computeChangeBruteForce</span>(<span class="params">coins, amount</span>) &#123;</span><br><span class="line">	<span class="keyword">const</span> results = []</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; coins.<span class="property">length</span>; i++) &#123;</span><br><span class="line">		results.<span class="title function_">push</span>(<span class="title function_">computeChange</span>(coins.<span class="title function_">slice</span>(i), amount))</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">let</span> smallestAmountOfCoins = <span class="title class_">Number</span>.<span class="property">MAX_SAFE_INTEGER</span></span><br><span class="line">	<span class="keyword">let</span> finalResult</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">const</span> result <span class="keyword">of</span> results) &#123;</span><br><span class="line">		<span class="keyword">if</span> (result.<span class="property">numberOfCoins</span> &lt; smallestAmountOfCoins) &#123;</span><br><span class="line">			smallestAmountOfCoins = result.<span class="property">numberOfCoins</span></span><br><span class="line">			finalResult = result</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> finalResult</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> availableCoins = [<span class="number">8</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">1</span>]</span><br><span class="line"><span class="keyword">const</span> targetAmount = <span class="number">83</span></span><br><span class="line"><span class="keyword">const</span> change = <span class="title function_">computeChangeBruteForce</span>(availableCoins, targetAmount)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(change)</span><br><span class="line"><span class="comment">// 贪心算法的解决方法的时间复杂度：O(n)</span></span><br><span class="line"><span class="comment">// 暴力算法的解决方法的时间复杂度：O(n^2)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Set-和-new-Map"><a href="#Set-和-new-Map" class="headerlink" title="Set 和 new Map"></a>Set 和 new Map</h2><ul>
+<li><h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3></li>
+</ul>
+<ol>
+<li>并集：利用 set 特性给两个数组去重</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr1 = [<span class="number">1</span>, <span class="number">22</span>, <span class="number">38</span>, <span class="number">31</span>, <span class="number">18</span>]</span><br><span class="line"><span class="keyword">const</span> arr2 = [<span class="number">1</span>, <span class="number">122</span>, <span class="number">138</span>, <span class="number">19</span>, <span class="number">18</span>]</span><br><span class="line"><span class="keyword">const</span> setArr1 = <span class="keyword">new</span> <span class="title class_">Set</span>(arr1)</span><br><span class="line"><span class="keyword">const</span> setArr2 = <span class="keyword">new</span> <span class="title class_">Set</span>(arr2)</span><br><span class="line"><span class="keyword">const</span> union = <span class="title function_">newSet</span>([...setArr1, ...setArr2])</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>交集：</p>
+<ul>
+<li>   <code>const intersection = new Set([...setArr1].filter((item) =&gt; setArr2.has(item)))</code></li>
+</ul>
+</li>
+<li><p>差集：</p>
+<ul>
+<li><code>const intersection = new Set([...setArr1].filter((item) =&gt; !setArr2.has(item)))</code></li>
+</ul>
+</li>
+<li><p>判断元素是否存在,时间复杂度为 O(1),速度快</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> nums = [<span class="number">11</span>, <span class="number">22</span>, <span class="number">38</span>, <span class="number">1</span>, <span class="number">8</span>]</span><br><span class="line"><span class="keyword">const</span> newNums = <span class="keyword">new</span> <span class="title class_">Set</span>(nums)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(newNums.<span class="title function_">has</span>(<span class="number">11</span>))</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>实现队列,队尾添加，队头删除&#x2F;栈的数据结构，在表尾即可完成添加和删除</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> alignment = <span class="keyword">new</span> <span class="title class_">Set</span>()</span><br><span class="line">alignment.<span class="title function_">add</span>(<span class="number">10</span>)</span><br><span class="line">alignment.<span class="title function_">add</span>(<span class="number">11</span>)</span><br><span class="line">alignment.<span class="title function_">delete</span>(alignment.<span class="title function_">values</span>().<span class="title function_">next</span>().<span class="property">value</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="new-Map"><a href="#new-Map" class="headerlink" title="new Map"></a>new Map</h3></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这种数据结构适用</span></span><br><span class="line"><span class="keyword">const</span> result = [</span><br><span class="line">	[<span class="string">&#x27;iphone4&#x27;</span>, <span class="number">19999</span>],</span><br><span class="line">	[<span class="string">&#x27;ipad&#x27;</span>, <span class="number">3999</span>],</span><br><span class="line">	[<span class="string">&#x27;iMac&#x27;</span>, <span class="number">29999</span>],</span><br><span class="line">	[<span class="string">&#x27;iphone13&#x27;</span>, <span class="number">6999</span>],</span><br><span class="line">]</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">findPrice</span> = (<span class="params">data, name</span>) =&gt; <span class="keyword">new</span> <span class="title class_">Map</span>(data).<span class="title function_">get</span>(name)</span><br><span class="line"><span class="title function_">finPrice</span>(result, <span class="string">&#x27;iMac&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="Object-与-new-Map"><a href="#Object-与-new-Map" class="headerlink" title="Object 与 new Map"></a>Object 与 new Map</h3></li>
+<li>创建一个 new Map(),可以适用.set(key,value)设置该 Map 的键值，使用.get(key)查找 Map 中该键的值，.has 是否存在该键</li>
+<li>Map 的键值支持正则，Map 是可迭代的，例如：forEach 循环 for…of…循环 ，Object 是不能直接迭代的</li>
+<li>适用场景：<ol>
+<li>当插入的顺序是需要考虑的，并且使用除 String 和 Symbol 以外的键名是，使用 Map</li>
+<li>需要遍历键值对并且需要考虑顺序，优先 Map</li>
+<li>频繁增删改查的场景使用 Map</li>
+<li>表单自定义字段使用 Map</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> map4 = <span class="keyword">new</span> <span class="title class_">Map</span>()</span><br><span class="line">map4.<span class="title function_">set</span>(<span class="string">&#x27;key1&#x27;</span>, <span class="string">&#x27;value1&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> entry <span class="keyword">of</span> map4) &#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> object4 = &#123;</span><br><span class="line">	<span class="attr">key1</span>: <span class="string">&#x27;value1&#x27;</span>,</span><br><span class="line">	<span class="attr">key2</span>: <span class="string">&#x27;value2&#x27;</span>,</span><br><span class="line">	<span class="attr">key3</span>: <span class="string">&#x27;value3&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> entry <span class="keyword">of</span> <span class="title class_">Object</span>.<span class="title function_">entries</span>(object4)) &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="元素的顺序和长度"><a href="#元素的顺序和长度" class="headerlink" title="元素的顺序和长度"></a>元素的顺序和长度</h3><ul>
+<li>Map 保持对长度的跟踪，使其能够在 O(1)复杂度中进行访问</li>
+<li>Object 想要获得对象的属性长度，需要手动进行迭代，使其文 O(n)复杂度，属性长度为 n</li>
+<li>Map 始终保持按插入顺序返回键名</li>
+<li>Object 从 es6 开始，String 和 Symbol 键是按顺序保存起来的，但是通过隐式转换保存成 String 的键是乱序的</li>
+</ul>
+</li>
+<li><h3 id="Set-的时间复杂度"><a href="#Set-的时间复杂度" class="headerlink" title="Set 的时间复杂度"></a>Set 的时间复杂度</h3><table>
+<thead>
+<tr>
+<th>Set 操作</th>
+<th>时间复杂度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Set.prototype.get()</td>
+<td>O(1) ~ O(logn)</td>
+</tr>
+<tr>
+<td>Set.prototype.add()</td>
+<td>O(1) ~ O(logn)</td>
+</tr>
+<tr>
+<td>Set.prototype.has()</td>
+<td>O(1) ~ O(logn)</td>
+</tr>
+<tr>
+<td>Set.prototype.forEach()</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>Set.prototype.entries()</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>Set.prototype.values()</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>Set.prototype.keys()</td>
+<td>O(n)</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h2 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h2><ul>
+<li>使用一层循环来获取需要双层循环的结果</li>
+<li>列举：求两数之和：<ol>
+<li>使用 new Map() 创建一个空的 map 数组</li>
+<li>在遍历的过程中通过 map 数组使用 has 方法判断 target-数组中的某一项得到的值是否存在<ul>
+<li>存在就使用 get 方法获取对应值的小标并返回</li>
+<li>不存在就使用 set 方法设置下标给 map 数组</li>
+</ul>
+</li>
+<li>如果把 for 循环换成 forEach 有问题</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> twoSum = <span class="keyword">function</span> (<span class="params">nums, target</span>) &#123;</span><br><span class="line">	<span class="keyword">const</span> map = <span class="keyword">new</span> <span class="title class_">Map</span>() <span class="comment">// 创建一个空映射</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.<span class="property">length</span>; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (map.<span class="title function_">has</span>(target - nums[i])) &#123;</span><br><span class="line">			<span class="comment">// 这个存在适当，map将两个符合要求的结果都已经存储的情况下执行的</span></span><br><span class="line">			<span class="keyword">return</span> [map.<span class="title function_">get</span>(target - nums[i]), i]</span><br><span class="line">		&#125;</span><br><span class="line">		map.<span class="title function_">set</span>(nums[i], i) <span class="comment">// 遍历第一回肯定不存在，就将键值添加到map中</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="回溯算法"><a href="#回溯算法" class="headerlink" title="回溯算法"></a>回溯算法</h2><ul>
+<li>本质：暴力穷举算法</li>
+<li>列如：给定两个整数 n 和 k，返回范围[1,n]中所有可能的 k 的组合，不要求顺序</li>
+<li>其中：k 指的是组合的长度，如[2,4],并且按照数学规范[最小值，最大值]， n 指最大区间</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">combine</span> = (<span class="params">n, k</span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">const</span> ans = []</span><br><span class="line">	<span class="keyword">const</span> <span class="title function_">getAns</span> = (<span class="params">val, arr</span>) =&gt; &#123;</span><br><span class="line">		arr.<span class="title function_">push</span>(val) <span class="comment">// 将获取到的值添加到数组中，并计算如果数组长度和k的长度一样就直接添加到对应数组中</span></span><br><span class="line">		<span class="keyword">if</span> (arr.<span class="property">length</span> === k) &#123;</span><br><span class="line">			ans.<span class="title function_">push</span>(arr)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (n - val &lt; k - arr.<span class="property">length</span>) <span class="keyword">return</span> <span class="comment">//  n-val &lt; k-arr.length ,是控制组合的展示形式符合数学规范，并且最大值不在选择范围</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">let</span> i = val + <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">			<span class="comment">// 如果长度不满足就再次进入循环知道满足</span></span><br><span class="line">			<span class="title function_">getAns</span>(i, [...arr])</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= n - k + <span class="number">1</span>; i++) &#123;</span><br><span class="line">		<span class="title function_">getAns</span>(i, []) <span class="comment">//  传一个空数组，用来存储k的组合，之后在把所有k组合存进ans中</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="动态规划-DP-算法"><a href="#动态规划-DP-算法" class="headerlink" title="动态规划 DP 算法"></a>动态规划 DP 算法</h2><ul>
+<li>设定一个数组，存放到达第 n 层的跳法，假定只能从当前元素的左和下移动<ul>
+<li>找一个位置，分析到达这个位置的前置条件，并将这些条件以二维数组的方式相加</li>
+<li>例如： a[i][j] &#x3D; a[i-1][j] + a[i][j-1]</li>
+</ul>
+</li>
+<li>倒着分析，找关系</li>
+<li>处理极值<ul>
+<li>arr[i][0] &#x3D; 1</li>
+<li>arr[0][j] &#x3D; 1</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 生成一个二维数据的空数组</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Array2</span>(<span class="params">m, n</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> _array = <span class="keyword">new</span> <span class="title class_">Array</span>(m)</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">		<span class="keyword">let</span> emptyArr = <span class="keyword">new</span> <span class="title class_">Array</span>(n)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">			emptyArr[j] = <span class="number">0</span></span><br><span class="line">		&#125;</span><br><span class="line">		_array2[i] = emptyArr</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> _array2</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">totalPath</span>(<span class="params">m, n</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> arr = <span class="title class_">Array2</span>(m, n)</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">		arr[i][<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">		arr[<span class="number">0</span>][j] = <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; m; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">1</span>; j &lt; n; j++) &#123;</span><br><span class="line">			arr[i][j] = arr[i - <span class="number">1</span>][j] + arr[i][j - <span class="number">1</span>]</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> arr[m - <span class="number">1</span>][n - <span class="number">1</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/31/JS/%E7%AE%97%E6%B3%95%EF%BC%9A%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <div class="trm-cover-img" data-random-img></div>
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/JavaScript/">
+                    JavaScript
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/31/JS/%E7%AE%97%E6%B3%95%EF%BC%9A%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3/" class="trm-anima-link">
+                    算法-数学相关
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/31</li>
+                <li>11:05</li>
+                
+                    <li>56</li>
+                
+                
+                    <li>1</li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/31/JS/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <div class="trm-cover-img" data-random-img></div>
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/JavaScript/">
+                    JavaScript
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/31/JS/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/" class="trm-anima-link">
+                    浏览器缓存
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/31</li>
+                <li>11:05</li>
+                
+                    <li>1.3k</li>
+                
+                
+                    <li>5</li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+    
+        <div class="trm-footer-item blog-run-long"></div>
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="题库：leetcode"><a rel="nofollow" class="trm-toc-link" href="#题库：leetcode"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">题库：leetcode</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="反转字符串： str.split(‘’).reduceRight((prev,curr)&#x3D;&gt;prev+curr)"><a rel="nofollow" class="trm-toc-link" href="#反转字符串：-str-split-‘’-reduceRight-prev-curr-prev-curr"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">反转字符串： str.split(‘’).reduceRight((prev,curr)&#x3D;&gt;prev+curr)</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="时&#x2F;空间复杂度"><a rel="nofollow" class="trm-toc-link" href="#时-空间复杂度"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">时&#x2F;空间复杂度</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="计算时间复杂度？"><a rel="nofollow" class="trm-toc-link" href="#计算时间复杂度？"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">计算时间复杂度？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="求数字的总和"><a rel="nofollow" class="trm-toc-link" href="#求数字的总和"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">求数字的总和</span></a></li><li class="trm-toc-item trm-toc-level-3" title="斐波那契数列"><a rel="nofollow" class="trm-toc-link" href="#斐波那契数列"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">斐波那契数列</span></a></li><li class="trm-toc-item trm-toc-level-3" title="判断是否为 2 的幂"><a rel="nofollow" class="trm-toc-link" href="#判断是否为-2-的幂"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">判断是否为 2 的幂</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="递归算法"><a rel="nofollow" class="trm-toc-link" href="#递归算法"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">递归算法</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="阶乘算法"><a rel="nofollow" class="trm-toc-link" href="#阶乘算法"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">阶乘算法</span></a></li><li class="trm-toc-item trm-toc-level-3" title="以递归实现斐波那契数列来证明递归不全是最好的实现方式"><a rel="nofollow" class="trm-toc-link" href="#以递归实现斐波那契数列来证明递归不全是最好的实现方式"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">以递归实现斐波那契数列来证明递归不全是最好的实现方式</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="动态编程(Dynamic Programming)"><a rel="nofollow" class="trm-toc-link" href="#动态编程-Dynamic-Programming"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">动态编程(Dynamic Programming)</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="以递归实现的斐波那契为例进行改造"><a rel="nofollow" class="trm-toc-link" href="#以递归实现的斐波那契为例进行改造"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">以递归实现的斐波那契为例进行改造</span></a></li><li class="trm-toc-item trm-toc-level-3" title="自下而上的方法"><a rel="nofollow" class="trm-toc-link" href="#自下而上的方法"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">自下而上的方法</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="搜索算法"><a rel="nofollow" class="trm-toc-link" href="#搜索算法"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">搜索算法</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="线性搜索(可以是任意类型的数据)"><a rel="nofollow" class="trm-toc-link" href="#线性搜索-可以是任意类型的数据"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">线性搜索(可以是任意类型的数据)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="二分搜索"><a rel="nofollow" class="trm-toc-link" href="#二分搜索"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">二分搜索</span></a></li><li class="trm-toc-item trm-toc-level-3" title="主定理(Master Theorem)"><a rel="nofollow" class="trm-toc-link" href="#主定理-Master-Theorem"><span class="trm-toc-number">5.3.</span> <span class="trm-toc-text">主定理(Master Theorem)</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="排序算法"><a rel="nofollow" class="trm-toc-link" href="#排序算法"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">排序算法</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="冒泡算法"><a rel="nofollow" class="trm-toc-link" href="#冒泡算法"><span class="trm-toc-number">6.1.</span> <span class="trm-toc-text">冒泡算法</span></a></li><li class="trm-toc-item trm-toc-level-3" title="快速排序"><a rel="nofollow" class="trm-toc-link" href="#快速排序"><span class="trm-toc-number">6.2.</span> <span class="trm-toc-text">快速排序</span></a></li><li class="trm-toc-item trm-toc-level-3" title="归并排序"><a rel="nofollow" class="trm-toc-link" href="#归并排序"><span class="trm-toc-number">6.3.</span> <span class="trm-toc-text">归并排序</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="空间复杂度"><a rel="nofollow" class="trm-toc-link" href="#空间复杂度"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">空间复杂度</span></a></li><li class="trm-toc-item trm-toc-level-2" title="集合 sets（数组）算法"><a rel="nofollow" class="trm-toc-link" href="#集合-sets（数组）算法"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">集合 sets（数组）算法</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="笛卡儿乘积算法"><a rel="nofollow" class="trm-toc-link" href="#笛卡儿乘积算法"><span class="trm-toc-number">8.1.</span> <span class="trm-toc-text">笛卡儿乘积算法</span></a></li><li class="trm-toc-item trm-toc-level-3" title="全排列 无重复"><a rel="nofollow" class="trm-toc-link" href="#全排列-无重复"><span class="trm-toc-number">8.2.</span> <span class="trm-toc-text">全排列 无重复</span></a></li><li class="trm-toc-item trm-toc-level-3" title="全排列 有重复"><a rel="nofollow" class="trm-toc-link" href="#全排列-有重复"><span class="trm-toc-number">8.3.</span> <span class="trm-toc-text">全排列 有重复</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="复杂的算法和解决的方法"><a rel="nofollow" class="trm-toc-link" href="#复杂的算法和解决的方法"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">复杂的算法和解决的方法</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="结构化方案"><a rel="nofollow" class="trm-toc-link" href="#结构化方案"><span class="trm-toc-number">9.1.</span> <span class="trm-toc-text">结构化方案</span></a></li><li class="trm-toc-item trm-toc-level-3" title="背包问题"><a rel="nofollow" class="trm-toc-link" href="#背包问题"><span class="trm-toc-number">9.2.</span> <span class="trm-toc-text">背包问题</span></a></li><li class="trm-toc-item trm-toc-level-3" title="贪心背包算法"><a rel="nofollow" class="trm-toc-link" href="#贪心背包算法"><span class="trm-toc-number">9.3.</span> <span class="trm-toc-text">贪心背包算法</span></a></li><li class="trm-toc-item trm-toc-level-3" title="找零问题"><a rel="nofollow" class="trm-toc-link" href="#找零问题"><span class="trm-toc-number">9.4.</span> <span class="trm-toc-text">找零问题</span></a></li><li class="trm-toc-item trm-toc-level-3" title="暴力找零"><a rel="nofollow" class="trm-toc-link" href="#暴力找零"><span class="trm-toc-number">9.5.</span> <span class="trm-toc-text">暴力找零</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="Set 和 new Map"><a rel="nofollow" class="trm-toc-link" href="#Set-和-new-Map"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">Set 和 new Map</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="Set"><a rel="nofollow" class="trm-toc-link" href="#Set"><span class="trm-toc-number">10.1.</span> <span class="trm-toc-text">Set</span></a></li><li class="trm-toc-item trm-toc-level-3" title="new Map"><a rel="nofollow" class="trm-toc-link" href="#new-Map"><span class="trm-toc-number">10.2.</span> <span class="trm-toc-text">new Map</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Object 与 new Map"><a rel="nofollow" class="trm-toc-link" href="#Object-与-new-Map"><span class="trm-toc-number">10.3.</span> <span class="trm-toc-text">Object 与 new Map</span></a></li><li class="trm-toc-item trm-toc-level-3" title="元素的顺序和长度"><a rel="nofollow" class="trm-toc-link" href="#元素的顺序和长度"><span class="trm-toc-number">10.4.</span> <span class="trm-toc-text">元素的顺序和长度</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Set 的时间复杂度"><a rel="nofollow" class="trm-toc-link" href="#Set-的时间复杂度"><span class="trm-toc-number">10.5.</span> <span class="trm-toc-text">Set 的时间复杂度</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="哈希表"><a rel="nofollow" class="trm-toc-link" href="#哈希表"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">哈希表</span></a></li><li class="trm-toc-item trm-toc-level-2" title="回溯算法"><a rel="nofollow" class="trm-toc-link" href="#回溯算法"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">回溯算法</span></a></li><li class="trm-toc-item trm-toc-level-2" title="动态规划 DP 算法"><a rel="nofollow" class="trm-toc-link" href="#动态规划-DP-算法"><span class="trm-toc-number">13.</span> <span class="trm-toc-text">动态规划 DP 算法</span></a></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn hidden-md" data-title="Toggle between single-column and double-column" onclick="asyncFun.switchSingleColumn()">
+            <i class="iconfont fas fa-arrows-alt-h"></i>
+        </div>
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+    <div class="trm-search-popup">
+        <div class="trm-search-wrapper">
+            <div class="form trm-search-form">
+                <div class="trm-search-input-icon">
+                    <i class="iconfont fas fa-search"></i>
+                </div>
+                <input class="trm-search-input" type="text" placeholder="Searching...">
+                <div class="trm-search-btn-close">
+                    <i class="iconfont fas fa-times"></i>
+                </div>
+            </div>
+            <div class="trm-search-result-container">
+                <div class="trm-search-empty">
+                    Please enter keywords to search
+                </div>
+            </div>
+            <div class="trm-search-footer">
+                <div class="trm-search-stats"></div>
+                <ul class="trm-search-commands">
+                    <li>
+                        <kbd class="command-palette-commands-key">
+                            <svg width="15" height="15" aria-label="Escape key" role="img">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.2">
+                                    <path
+                                        d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956">
+                                    </path>
+                                </g>
+                            </svg>
+                        </kbd>
+                        <span class="command-palette-Label">to close</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+        
+<script src="https://unpkg.com/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+
+        <script src="/js/plugins/local_search.js?v=2.2.3"></script>
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+			<script src="/js/plugins/danmu.js?v=2.2.3"></script>
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

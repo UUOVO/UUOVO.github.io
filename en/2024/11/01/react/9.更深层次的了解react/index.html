@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="zh-Hans,en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="什么是 React，它有什么好处？ React 是一个用于构建用户界面的 JavaScript 库。它用于构建Web应用程序，因为它允许开发人员创建可重用的UI组件，并以高效和有组织的方式管理应用程序的状态。  什么是虚拟 DOM，它是如何工作的？ 虚拟 DOM（文档对象模型）表示浏览器中的实际 DOM。它使 React 能够只更新网页中需要更改的特定部分，而不是重写整个页面，从而提高性能。 当组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React-面试题">
+<meta property="og:url" content="http://example.com/en/2024/11/01/react/9.%E6%9B%B4%E6%B7%B1%E5%B1%82%E6%AC%A1%E7%9A%84%E4%BA%86%E8%A7%A3react/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="什么是 React，它有什么好处？ React 是一个用于构建用户界面的 JavaScript 库。它用于构建Web应用程序，因为它允许开发人员创建可重用的UI组件，并以高效和有组织的方式管理应用程序的状态。  什么是虚拟 DOM，它是如何工作的？ 虚拟 DOM（文档对象模型）表示浏览器中的实际 DOM。它使 React 能够只更新网页中需要更改的特定部分，而不是重写整个页面，从而提高性能。 当组">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-11-01T01:41:47.846Z">
+<meta property="article:modified_time" content="2024-11-05T04:03:21.708Z">
+<meta property="article:author" content="UUOVO">
+<meta property="article:tag" content="知识">
+<meta property="article:tag" content="面试题">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="react">
+
+
+<title >React-面试题</title>
+
+<!-- Favicon -->
+
+    <link href='/img/sitelogo16.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/sitelogo32.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/apple-touch-icon.png?v=2.2.3' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-05 12:03:21"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/sitelogo32.svg">
+    
+    
+        <div class="trm-logo-text">
+            UU<span>OVO</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/tags/" target="">
+                            标签
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" target="">
+                            微信小程序
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%B7%A5%E5%85%B7/" target="">
+                            前端工程化工具
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/React/" target="">
+                            React
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/VUE/" target="">
+                            VUE
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/TypeScript/" target="">
+                            TypeScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JavaScript/" target="">
+                            JavaScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/CSS&HTML/" target="">
+                            CSS&HTML
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="">
+                            网络与数据结构
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/uniapp/" target="">
+                            uniapp
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ThreeJS/" target="">
+                            ThreeJS
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/Node/" target="">
+                            Node
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JQuery/" target="">
+                            JQuery
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ES6/" target="">
+                            ES6
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/AJAX/" target="">
+                            AJAX
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/gallery/" target="">
+                    相册
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/gallery/wallpaper/" target="">
+                            相册详情页
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/about/" target="">
+                    关于
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/links/" target="">
+                            友链
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+    
+    <div id="trm-search-btn" class="trm-search-btn">
+        <i class="iconfont fas fa-search"></i>
+    </div>
+     
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            React-面试题
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        en
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar1.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/UUOVO" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/ovouu" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                City:
+            </div>
+            <div class="trm-label trm-label-light">
+                City
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                Age:
+            </div>
+            <div class="trm-label trm-label-light">
+                Age
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:1370203877@qq.com" class="trm-btn">
+            Contact Me
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            11/01
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            09:41
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            UUOVO
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h3 id="什么是-React，它有什么好处？"><a href="#什么是-React，它有什么好处？" class="headerlink" title="什么是 React，它有什么好处？"></a>什么是 React，它有什么好处？</h3><ul>
+<li>React 是一个用于构建用户界面的 JavaScript 库。它用于构建Web应用程序，因为它允许开发人员创建可重用的UI组件，并以高效和有组织的方式管理应用程序的状态。</li>
+</ul>
+<h3 id="什么是虚拟-DOM，它是如何工作的？"><a href="#什么是虚拟-DOM，它是如何工作的？" class="headerlink" title="什么是虚拟 DOM，它是如何工作的？"></a>什么是虚拟 DOM，它是如何工作的？</h3><ul>
+<li>虚拟 DOM（文档对象模型）表示浏览器中的实际 DOM。它使 React 能够只更新网页中需要更改的特定部分，而不是重写整个页面，从而提高性能。</li>
+<li>当组件的状态或 props 发生变化时，React 将首先创建一个新版本的虚拟 DOM，以反映更新的状态或 props。然后，它将此新版本与以前的版本进行比较，以确定更改的内容。</li>
+<li>一旦确定了更改，React 将使用必要的最少操作数来更新实际的 DOM，以使其与新版本的虚拟 DOM 保持一致。这个过程被称为“和解”。</li>
+<li>使用虚拟 DOM 可以实现更高效的更新，因为它减少了对实际 DOM 的直接操作量，这可能是一个缓慢且资源密集型的过程。通过只更新实际更改的部分，React 可以提高应用程序的性能，尤其是在速度较慢的设备上或处理大量数据时。</li>
+</ul>
+<h3 id="React-如何处理更新和渲染？"><a href="#React-如何处理更新和渲染？" class="headerlink" title="React 如何处理更新和渲染？"></a>React 如何处理更新和渲染？</h3><ul>
+<li>React 通过虚拟 DOM 和基于组件的架构处理更新和渲染。当组件的状态或 props 发生变化时，React 会创建一个新版本的虚拟 DOM 来反映更新的状态或 props，然后将其与以前的版本进行比较以确定发生了什么变化。React 使用使其与新版本的虚拟 DOM 保持一致所需的最少操作数来更新实际的 DOM，这个过程称为“协调”。React 还使用基于组件的架构，其中每个组件都有自己的状态和渲染方法。它仅重新呈现实际更改的组件。它高效快速地做到这一点，这就是 React 以其性能而闻名的原因。</li>
+</ul>
+<h3 id="解释-React-中组件的概念？"><a href="#解释-React-中组件的概念？" class="headerlink" title="解释 React 中组件的概念？"></a>解释 React 中组件的概念？</h3><ul>
+<li>React 组件是一个返回 React 元素的 JavaScript 函数或类，该元素描述了应用程序的一部分的 UI。组件可以接受称为“props”的输入，并管理自己的状态。</li>
+</ul>
+<h3 id="什么是-JSX，为什么在-React-中使用它？"><a href="#什么是-JSX，为什么在-React-中使用它？" class="headerlink" title="什么是 JSX，为什么在 React 中使用它？"></a>什么是 JSX，为什么在 React 中使用它？</h3><ul>
+<li>JSX是JavaScript的语法扩展，允许在JavaScript中嵌入类似HTML的语法。它在 React 中用于描述 UI，并通过 Babel 等构建工具转换为普通的 JavaScript。</li>
+</ul>
+<h3 id="状态和道具有什么区别？"><a href="#状态和道具有什么区别？" class="headerlink" title="状态和道具有什么区别？"></a>状态和道具有什么区别？</h3><ul>
+<li>状态和 props 都用于在 React 组件中存储数据，但它们用于不同的目的并具有不同的特征。</li>
+<li>props 是一种将数据从父组件传递到子组件的方法。它们是只读的，不能由子组件修改。</li>
+<li>State 是一个对象，用于保存可以随时间变化的组件的数据。它可以使用 setState（） 方法进行更新，并用于控制组件的行为和呈现。</li>
+</ul>
+<h3 id="React-中受控组件和非受控组件有什么区别？"><a href="#React-中受控组件和非受控组件有什么区别？" class="headerlink" title="React 中受控组件和非受控组件有什么区别？"></a>React 中受控组件和非受控组件有什么区别？</h3><ul>
+<li>在 React 中，受控和不受控的组件是指表单的处理方式。</li>
+<li>受控组件是表单状态由 React 控制的组件，对表单输入的更新由事件处理程序处理。</li>
+<li>不受控制的组件依赖于浏览器的默认行为来处理对表单输入的更新。</li>
+<li>受控组件是输入字段的值由状态设置并且更改由 React 的事件处理程序管理的组件，这样可以更好地控制表单的行为和验证，并且可以轻松处理表单提交。</li>
+<li>不受控制的组件是输入字段的值由默认值属性设置的组件，并且更改由浏览器的默认行为管理，此方法性能较低，并且更难处理表单提交和验证。</li>
+</ul>
+<h3 id="什么是-Redux，它如何与-React-配合使用？"><a href="#什么是-Redux，它如何与-React-配合使用？" class="headerlink" title="什么是 Redux，它如何与 React 配合使用？"></a>什么是 Redux，它如何与 React 配合使用？</h3><ul>
+<li>Redux 是 JavaScript 应用程序的可预测状态管理库，通常与 React 一起使用。</li>
+<li>它为应用程序的状态提供了一个集中存储，并使用称为 reducer 的纯函数来更新状态以响应操作。</li>
+<li>在 React 应用程序中，Redux 通过 react-redux 库与 React 集成，该库提供了连接函数，用于将组件连接到 Redux 存储并调度操作。</li>
+<li>组件可以从存储访问状态，并通过连接函数提供的 props 调度操作以更新状态。</li>
+</ul>
+<h3 id="你能解释一下-React-中高阶组件-（HOC）-的概念吗？"><a href="#你能解释一下-React-中高阶组件-（HOC）-的概念吗？" class="headerlink" title="你能解释一下 React 中高阶组件 （HOC） 的概念吗？"></a>你能解释一下 React 中高阶组件 （HOC） 的概念吗？</h3><ul>
+<li>React 中的高阶组件 （HOC） 是一个函数，它接受一个组件并返回一个带有附加 props 的新组件。</li>
+<li>HOC 用于跨多个组件重用逻辑，例如添加常见行为或样式。</li>
+<li>HOC 通过将组件包装在 HOC 中使用，这将返回一个带有添加props的新组件。</li>
+<li>原始组件作为参数传递给 HOC，并通过解构接收额外的 props。</li>
+<li>HOC 是纯函数，这意味着它们不会修改原始组件，而是返回新的增强组件。</li>
+<li>HOC 可用于向组件添加身份验证行为，例如在呈现组件之前检查用户是否已登录。HOC 将处理检查用户是否已登录的逻辑，并将指示登录状态的 prop 传递给包装的组件。</li>
+<li>HOC 是 React 中一个强大的模式，允许代码重用和抽象，同时保持组件模块化且易于维护。</li>
+</ul>
+<h3 id="在-React-中，服务器端渲染和客户端渲染有什么区别？"><a href="#在-React-中，服务器端渲染和客户端渲染有什么区别？" class="headerlink" title="在 React 中，服务器端渲染和客户端渲染有什么区别？"></a>在 React 中，服务器端渲染和客户端渲染有什么区别？</h3><ul>
+<li>服务器端渲染 （SSR） 和客户端渲染 （CSR） 是渲染 React 应用程序的两种不同方式。</li>
+<li>在 SSR 中，初始 HTML 在服务器上生成，然后发送到客户端，在那里它被合到一个完整的 React 应用程序中。</li>
+<li>这导致更快的初始加载时间，因为HTML已经存在于页面上，并且可以被搜索引擎索引。</li>
+<li>在 CSR 中，初始 HTML 是一个最小的空文档，React 应用程序完全在客户端上构建和呈现。客户端进行 API 调用以获取呈现 UI 所需的数据。</li>
+<li>这会导致初始加载时间变慢，但响应速度更快、更动态的体验，因为所有呈现都是在客户端上完成的。</li>
+</ul>
+<h3 id="什么是-React-Hooks，它们是如何工作的？"><a href="#什么是-React-Hooks，它们是如何工作的？" class="headerlink" title="什么是 React Hooks，它们是如何工作的？"></a>什么是 React Hooks，它们是如何工作的？</h3><ul>
+<li>React Hooks 是 React 中的一个功能，它允许功能组件在不使用类组件的情况下具有状态和其他生命周期方法。</li>
+<li>它们使跨多个组件重用状态和逻辑变得更加容易，使代码更简洁、更易于阅读。</li>
+<li>钩子包括用于添加状态的 useState 和用于执行副作用以响应状态或 props 变化的 useEffect。它们使编写可重用、可维护的代码变得更加容易。</li>
+</ul>
+<h3 id="React-如何处理状态管理？"><a href="#React-如何处理状态管理？" class="headerlink" title="React 如何处理状态管理？"></a>React 如何处理状态管理？</h3><ul>
+<li>React 通过其状态对象和 setState() 方法处理状态管理。</li>
+<li>state 对象是一种数据结构，用于存储组件内更改的值，可以使用 setState() 方法进行更新。</li>
+<li>状态更新会触发组件的重新呈现，使其能够动态显示更新的值。</li>
+<li>React 以<code>异步和批处理</code>的方式更新状态，确保将多个 setState() 调用合并到单个更新中以获得更好的性能。</li>
+</ul>
+<h3 id="如何在-React-中使用useEffect钩子？"><a href="#如何在-React-中使用useEffect钩子？" class="headerlink" title="如何在 React 中使用useEffect钩子？"></a>如何在 React 中使用useEffect钩子？</h3><ul>
+<li>React 中的 useEffect 钩子允许开发人员在功能组件中执行副作用，例如数据获取、订阅和设置&#x2F;清理计时器。</li>
+<li>它在每次渲染（包括第一次渲染）之后以及渲染提交到屏幕后运行。</li>
+<li>useEffect 挂钩有两个参数 - 一个在每次渲染后运行的函数和一个确定何时运行效果的依赖项数组。如果依赖项数组为空或不存在，则效果将在每次渲染后运行。</li>
+</ul>
+<h3 id="你能解释一下-React-中服务器端渲染的概念吗？"><a href="#你能解释一下-React-中服务器端渲染的概念吗？" class="headerlink" title="你能解释一下 React 中服务器端渲染的概念吗？"></a>你能解释一下 React 中服务器端渲染的概念吗？</h3><ul>
+<li>React 中的服务器端渲染 （SSR） 是在服务器上渲染组件并将完全渲染的 HTML 发送到浏览器的过程。</li>
+<li>SSR 通过向浏览器提供完全渲染的 HTML、减少需要在客户端上解析和执行的 JavaScript 数量以及改进搜索引擎对网页的索引来提高 React 应用程序的初始加载性能和 SEO。</li>
+<li>在 SSR 中，React 组件呈现在服务器上，并作为完全格式的 HTML 字符串发送到客户端，从而缩短了初始加载时间并提供对 SEO 更友好的网页。</li>
+</ul>
+<h3 id="React-如何处理事件，有哪些常见的事件处理程序？"><a href="#React-如何处理事件，有哪些常见的事件处理程序？" class="headerlink" title="React 如何处理事件，有哪些常见的事件处理程序？"></a>React 如何处理事件，有哪些常见的事件处理程序？</h3><ul>
+<li>React 通过其事件处理系统处理事件，其中事件处理程序作为 props 传递给组件。</li>
+<li>React 中常见的事件处理程序包括 onClick、onChange、onSubmit 等。</li>
+<li>事件处理程序接收一个事件对象，该对象包含有关事件的信息，例如目标元素、事件类型以及与事件关联的任何数据。</li>
+<li>React 事件处理程序应作为 props 传递给组件，并且事件处理程序应在组件中或单独的帮助程序函数中定义。</li>
+</ul>
+<h3 id="你能解释一下-React-上下文的概念吗？"><a href="#你能解释一下-React-上下文的概念吗？" class="headerlink" title="你能解释一下 React 上下文的概念吗？"></a>你能解释一下 React 上下文的概念吗？</h3><ul>
+<li>React 上下文是一种在组件之间<code>共享数据</code>的方法，而无需手动通过组件树的每个级别传递 props。上下文是使用提供程序创建的，并由多个组件使用 useContext 挂钩使用。</li>
+</ul>
+<h3 id="React-如何处理路由，React-有哪些流行的路由库？"><a href="#React-如何处理路由，React-有哪些流行的路由库？" class="headerlink" title="React 如何处理路由，React 有哪些流行的路由库？"></a>React 如何处理路由，React 有哪些流行的路由库？</h3><ul>
+<li>React 通过使用 React 路由器库来处理路由，该库为 React 应用程序提供路由功能。一些流行的 React 路由库包括 React Router 和 Next.js。</li>
+</ul>
+<h3 id="在-React-中优化性能的最佳实践有哪些？"><a href="#在-React-中优化性能的最佳实践有哪些？" class="headerlink" title="在 React 中优化性能的最佳实践有哪些？"></a>在 React 中优化性能的最佳实践有哪些？</h3><ul>
+<li>在 React 中优化性能的最佳实践包括使用记忆、避免不必要的重新渲染、对组件和图像使用延迟加载以及使用正确的数据结构。</li>
+</ul>
+<h3 id="React-如何处理测试，有哪些流行的-React-测试框架？"><a href="#React-如何处理测试，有哪些流行的-React-测试框架？" class="headerlink" title="React 如何处理测试，有哪些流行的 React 测试框架？"></a>React 如何处理测试，有哪些流行的 React 测试框架？</h3><ul>
+<li>React 使用 Jest、Mocha 和 Enzyme 等测试框架来处理测试。</li>
+<li>Jest 是 React 应用程序的流行测试框架，而 Mocha 和 Enzyme 也被广泛使用。</li>
+</ul>
+<h3 id="如何在-React-中处理异步数据加载？"><a href="#如何在-React-中处理异步数据加载？" class="headerlink" title="如何在 React 中处理异步数据加载？"></a>如何在 React 中处理异步数据加载？</h3><ul>
+<li>React 中的异步数据加载可以使用各种方法进行处理，例如 fetch API、Axios 或其他网络库。</li>
+<li>还可以使用 useState 和 useEffect 挂钩来处理它，以便在从 API 调用返回数据时触发状态更新。</li>
+</ul>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/react/11.%E5%8A%A8%E7%94%BB%E4%B8%8E%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A1%88%E4%BE%8B/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <div class="trm-cover-img" data-random-img></div>
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/React/">
+                    React
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/react/11.%E5%8A%A8%E7%94%BB%E4%B8%8E%E5%AE%9A%E6%97%B6%E5%99%A8%E6%A1%88%E4%BE%8B/" class="trm-anima-link">
+                    React-动画与定时器案例
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>09:41</li>
+                
+                    <li>2k</li>
+                
+                
+                    <li>9</li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/11/01/react/7.router/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <div class="trm-cover-img" data-random-img></div>
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/React/">
+                    React
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/11/01/react/7.router/" class="trm-anima-link">
+                    React-路由器
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>09:41</li>
+                
+                    <li>714</li>
+                
+                
+                    <li>3</li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+    
+        <div class="trm-footer-item blog-run-long"></div>
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-3" title="什么是 React，它有什么好处？"><a rel="nofollow" class="trm-toc-link" href="#什么是-React，它有什么好处？"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">什么是 React，它有什么好处？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="什么是虚拟 DOM，它是如何工作的？"><a rel="nofollow" class="trm-toc-link" href="#什么是虚拟-DOM，它是如何工作的？"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">什么是虚拟 DOM，它是如何工作的？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="React 如何处理更新和渲染？"><a rel="nofollow" class="trm-toc-link" href="#React-如何处理更新和渲染？"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">React 如何处理更新和渲染？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解释 React 中组件的概念？"><a rel="nofollow" class="trm-toc-link" href="#解释-React-中组件的概念？"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">解释 React 中组件的概念？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="什么是 JSX，为什么在 React 中使用它？"><a rel="nofollow" class="trm-toc-link" href="#什么是-JSX，为什么在-React-中使用它？"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">什么是 JSX，为什么在 React 中使用它？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="状态和道具有什么区别？"><a rel="nofollow" class="trm-toc-link" href="#状态和道具有什么区别？"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">状态和道具有什么区别？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="React 中受控组件和非受控组件有什么区别？"><a rel="nofollow" class="trm-toc-link" href="#React-中受控组件和非受控组件有什么区别？"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">React 中受控组件和非受控组件有什么区别？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="什么是 Redux，它如何与 React 配合使用？"><a rel="nofollow" class="trm-toc-link" href="#什么是-Redux，它如何与-React-配合使用？"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">什么是 Redux，它如何与 React 配合使用？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="你能解释一下 React 中高阶组件 （HOC） 的概念吗？"><a rel="nofollow" class="trm-toc-link" href="#你能解释一下-React-中高阶组件-（HOC）-的概念吗？"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">你能解释一下 React 中高阶组件 （HOC） 的概念吗？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="在 React 中，服务器端渲染和客户端渲染有什么区别？"><a rel="nofollow" class="trm-toc-link" href="#在-React-中，服务器端渲染和客户端渲染有什么区别？"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">在 React 中，服务器端渲染和客户端渲染有什么区别？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="什么是 React Hooks，它们是如何工作的？"><a rel="nofollow" class="trm-toc-link" href="#什么是-React-Hooks，它们是如何工作的？"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">什么是 React Hooks，它们是如何工作的？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="React 如何处理状态管理？"><a rel="nofollow" class="trm-toc-link" href="#React-如何处理状态管理？"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">React 如何处理状态管理？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="如何在 React 中使用useEffect钩子？"><a rel="nofollow" class="trm-toc-link" href="#如何在-React-中使用useEffect钩子？"><span class="trm-toc-number">13.</span> <span class="trm-toc-text">如何在 React 中使用useEffect钩子？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="你能解释一下 React 中服务器端渲染的概念吗？"><a rel="nofollow" class="trm-toc-link" href="#你能解释一下-React-中服务器端渲染的概念吗？"><span class="trm-toc-number">14.</span> <span class="trm-toc-text">你能解释一下 React 中服务器端渲染的概念吗？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="React 如何处理事件，有哪些常见的事件处理程序？"><a rel="nofollow" class="trm-toc-link" href="#React-如何处理事件，有哪些常见的事件处理程序？"><span class="trm-toc-number">15.</span> <span class="trm-toc-text">React 如何处理事件，有哪些常见的事件处理程序？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="你能解释一下 React 上下文的概念吗？"><a rel="nofollow" class="trm-toc-link" href="#你能解释一下-React-上下文的概念吗？"><span class="trm-toc-number">16.</span> <span class="trm-toc-text">你能解释一下 React 上下文的概念吗？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="React 如何处理路由，React 有哪些流行的路由库？"><a rel="nofollow" class="trm-toc-link" href="#React-如何处理路由，React-有哪些流行的路由库？"><span class="trm-toc-number">17.</span> <span class="trm-toc-text">React 如何处理路由，React 有哪些流行的路由库？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="在 React 中优化性能的最佳实践有哪些？"><a rel="nofollow" class="trm-toc-link" href="#在-React-中优化性能的最佳实践有哪些？"><span class="trm-toc-number">18.</span> <span class="trm-toc-text">在 React 中优化性能的最佳实践有哪些？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="React 如何处理测试，有哪些流行的 React 测试框架？"><a rel="nofollow" class="trm-toc-link" href="#React-如何处理测试，有哪些流行的-React-测试框架？"><span class="trm-toc-number">19.</span> <span class="trm-toc-text">React 如何处理测试，有哪些流行的 React 测试框架？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="如何在 React 中处理异步数据加载？"><a rel="nofollow" class="trm-toc-link" href="#如何在-React-中处理异步数据加载？"><span class="trm-toc-number">20.</span> <span class="trm-toc-text">如何在 React 中处理异步数据加载？</span></a></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn hidden-md" data-title="Toggle between single-column and double-column" onclick="asyncFun.switchSingleColumn()">
+            <i class="iconfont fas fa-arrows-alt-h"></i>
+        </div>
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+    <div class="trm-search-popup">
+        <div class="trm-search-wrapper">
+            <div class="form trm-search-form">
+                <div class="trm-search-input-icon">
+                    <i class="iconfont fas fa-search"></i>
+                </div>
+                <input class="trm-search-input" type="text" placeholder="Searching...">
+                <div class="trm-search-btn-close">
+                    <i class="iconfont fas fa-times"></i>
+                </div>
+            </div>
+            <div class="trm-search-result-container">
+                <div class="trm-search-empty">
+                    Please enter keywords to search
+                </div>
+            </div>
+            <div class="trm-search-footer">
+                <div class="trm-search-stats"></div>
+                <ul class="trm-search-commands">
+                    <li>
+                        <kbd class="command-palette-commands-key">
+                            <svg width="15" height="15" aria-label="Escape key" role="img">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.2">
+                                    <path
+                                        d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956">
+                                    </path>
+                                </g>
+                            </svg>
+                        </kbd>
+                        <span class="command-palette-Label">to close</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+        
+<script src="https://unpkg.com/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+
+        <script src="/js/plugins/local_search.js?v=2.2.3"></script>
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+			<script src="/js/plugins/danmu.js?v=2.2.3"></script>
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

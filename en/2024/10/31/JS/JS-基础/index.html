@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="zh-Hans,en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="JavaScript 负责页面中的的行为,运行在浏览器端的脚本语言。  输出语句alert(“要输出的内容”); 该语句会在浏览器窗口中弹出一个警告框  document.write(“要输出的内容”); 该内容将会被写到 body 标签中，并在页面中显示  console.log(“要输出的内容”); 该内容会被写到开发者工具的控制台中  基本语法 单行注释 &#x2F;&#x2F; … 多行注">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS-基础">
+<meta property="og:url" content="http://example.com/en/2024/10/31/JS/JS-%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="JavaScript 负责页面中的的行为,运行在浏览器端的脚本语言。  输出语句alert(“要输出的内容”); 该语句会在浏览器窗口中弹出一个警告框  document.write(“要输出的内容”); 该内容将会被写到 body 标签中，并在页面中显示  console.log(“要输出的内容”); 该内容会被写到开发者工具的控制台中  基本语法 单行注释 &#x2F;&#x2F; … 多行注">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-31T03:05:31.979Z">
+<meta property="article:modified_time" content="2024-11-05T06:18:59.772Z">
+<meta property="article:author" content="UUOVO">
+<meta property="article:tag" content="知识">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="js">
+
+
+<title >JS-基础</title>
+
+<!-- Favicon -->
+
+    <link href='/img/sitelogo16.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/sitelogo32.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/apple-touch-icon.png?v=2.2.3' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-05 14:18:59"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/sitelogo32.svg">
+    
+    
+        <div class="trm-logo-text">
+            UU<span>OVO</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/tags/" target="">
+                            标签
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" target="">
+                            微信小程序
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%B7%A5%E5%85%B7/" target="">
+                            前端工程化工具
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/React/" target="">
+                            React
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/VUE/" target="">
+                            VUE
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/TypeScript/" target="">
+                            TypeScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JavaScript/" target="">
+                            JavaScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/CSS&HTML/" target="">
+                            CSS&HTML
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="">
+                            网络与数据结构
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/uniapp/" target="">
+                            uniapp
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ThreeJS/" target="">
+                            ThreeJS
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/Node/" target="">
+                            Node
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JQuery/" target="">
+                            JQuery
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ES6/" target="">
+                            ES6
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/AJAX/" target="">
+                            AJAX
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/gallery/" target="">
+                    相册
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/gallery/wallpaper/" target="">
+                            相册详情页
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/about/" target="">
+                    关于
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/links/" target="">
+                            友链
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+    
+    <div id="trm-search-btn" class="trm-search-btn">
+        <i class="iconfont fas fa-search"></i>
+    </div>
+     
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            JS-基础
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        en
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar1.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/UUOVO" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/ovouu" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                City:
+            </div>
+            <div class="trm-label trm-label-light">
+                City
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                Age:
+            </div>
+            <div class="trm-label trm-label-light">
+                Age
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:1370203877@qq.com" class="trm-btn">
+            Contact Me
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            10/31
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            11:05
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            UUOVO
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><blockquote>
+<p>负责页面中的的行为,运行在浏览器端的脚本语言。</p>
+</blockquote>
+<h2 id="输出语句"><a href="#输出语句" class="headerlink" title="输出语句"></a>输出语句</h2><h3 id="alert-“要输出的内容”"><a href="#alert-“要输出的内容”" class="headerlink" title="alert(“要输出的内容”);"></a>alert(“要输出的内容”);</h3><ul>
+<li>该语句会在浏览器窗口中弹出一个警告框</li>
+</ul>
+<h3 id="document-write-“要输出的内容”"><a href="#document-write-“要输出的内容”" class="headerlink" title="document.write(“要输出的内容”);"></a>document.write(“要输出的内容”);</h3><ul>
+<li>该内容将会被写到 body 标签中，并在页面中显示</li>
+</ul>
+<h3 id="console-log-“要输出的内容”"><a href="#console-log-“要输出的内容”" class="headerlink" title="console.log(“要输出的内容”);"></a>console.log(“要输出的内容”);</h3><ul>
+<li>该内容会被写到开发者工具的控制台中</li>
+</ul>
+<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><ul>
+<li>单行注释 &#x2F;&#x2F; …</li>
+<li>多行注释 &#x2F;_ … _&#x2F;</li>
+<li>JS 中严格区分大小写</li>
+<li>JS 中每一条语句以分号(;)结尾，只有单行内需要分割语句，这个分号才是必须的</li>
+<li>JS 中会忽略多个空格和换行</li>
+<li>JS 语句是按照自上向下的顺序一条一条执行的</li>
+<li>在 JS 中可以使用{}来为语句进行分组,同一个{}中的语句我们称为是一组语句，这一组语句我们也称为一个<code>代码块</code></li>
+</ul>
+<h2 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h2><ul>
+<li>在 JS 中所有的可以由我们自主命名的都可以称为是标识符</li>
+<li>例如：变量名、函数名、属性名都属于标识符</li>
+<li>JS 底层保存标识符时实际上是采用的 Unicode 编码，所以理论上讲，所有的 utf-8 中含有的内容都可以作为标识符</li>
+<li>命名规则：<ol>
+<li>标识符中<code>可以</code>含有字母、数字、_、$</li>
+<li>标识符<code>不能</code>以数字开头</li>
+<li>标识符<code>不能</code>是 ES 中的关键字或保留字</li>
+<li>标识符一般都采用<code>驼峰命名法</code> — aBbbCcc</li>
+</ol>
+</li>
+</ul>
+<h2 id="JS-的编写位置"><a href="#JS-的编写位置" class="headerlink" title="JS 的编写位置"></a>JS 的编写位置</h2><ul>
+<li>编写到外部 js 文件中，然后通过 script 标签引入(推荐)<ul>
+<li>好处：可以复用多个页面</li>
+<li>坏处：不能在编写修改，但是可以使用内部 script 标签</li>
+<li><code>&lt;script type=&quot;text/javascript&quot; src=&quot;文件路径&quot;&gt;&lt;/script&gt;</code></li>
+</ul>
+</li>
+<li>编写到 script 标签内 — 写在页面底部<ul>
+<li><code>&lt;script type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</code></li>
+</ul>
+</li>
+<li>写在超链接的 href 属性中，这样当点击超链接时，会执行 js 代码<ul>
+<li><code>&lt;a href=&quot;javascript:alert(&#39;点击弹窗&#39;);&quot;&gt;弹窗&lt;/a&gt;</code></li>
+</ul>
+</li>
+<li>编写到标签的 onclick 属性中，当我们点击按钮时，js 代码才会执行(不推荐)<ul>
+<li><code>&lt;button onclick=&quot;alert(&quot;点击弹窗&quot;)&quot;&gt;&lt;/button&gt;</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="数据-内存-变量"><a href="#数据-内存-变量" class="headerlink" title="数据 | 内存 | 变量"></a>数据 | 内存 | 变量</h2><h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><ul>
+<li>存储于内存中代表特定信息的, 本质就是 0101 二进制</li>
+<li>具有可读和可传递的基本特性</li>
+<li>万物(一切)皆数据, 函数也是数据</li>
+</ul>
+<h3 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h3><ul>
+<li>内存条通电后产生的存储空间(临时的)</li>
+<li>产生和死亡: 内存条(集成电路板)&#x3D;&#x3D;&gt;通电&#x3D;&#x3D;&gt;产生一定容量的存储空间&#x3D;&#x3D;&gt;存储各种数据&#x3D;&#x3D;&gt;断电&#x3D;&#x3D;&gt;内存全部消失</li>
+<li>内存的空间是临时的, 而硬盘的空间是持久的</li>
+<li>一块内存包含 2 个数据<ul>
+<li>内部存储的数据(一般数据&#x2F;地址数据)</li>
+<li>内存地址值数据</li>
+</ul>
+</li>
+<li>内存分类<ul>
+<li>栈: 全局变量, 局部变量 (空间较小)</li>
+<li>堆: 对象 (空间较大)</li>
+</ul>
+</li>
+</ul>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><ul>
+<li>值可以变化的量, 由变量名与变量值组成</li>
+<li>一个变量对应一块小内存, 变量名用来查找到内存, 变量值就是内存中保存的内容</li>
+<li>声明变量<ul>
+<li>使用 var、const、 let 关键字声明</li>
+<li>var a;</li>
+</ul>
+</li>
+<li>为变量赋值： a &#x3D; xxx;</li>
+<li>声明和赋值同时进行：var a &#x3D; xx;</li>
+</ul>
+<h3 id="三者之间的关系"><a href="#三者之间的关系" class="headerlink" title="三者之间的关系"></a>三者之间的关系</h3><ul>
+<li>内存是一个容器, 用来存储程序运行需要操作的数据</li>
+<li>变量是内存的标识, 我们通过变量找到对应的内存, 进而操作(读&#x2F;写)内存中的数据</li>
+</ul>
+<h3 id="问题-JS-引擎如何管理内存"><a href="#问题-JS-引擎如何管理内存" class="headerlink" title="问题: JS 引擎如何管理内存?"></a>问题: JS 引擎如何管理内存?</h3><ul>
+<li>内存生命周期<ol>
+<li>分配需要的内存</li>
+<li>使用分配到的内存</li>
+<li>不需要时将其释放&#x2F;归还</li>
+</ol>
+</li>
+<li>释放内存<ul>
+<li>为执行函数分配的栈空间内存: 函数执行完自动释放</li>
+<li>存储对象的堆空间内存: 当内存没有引用指向时, 对象成为垃圾对象, 垃圾回收器后面就会回收释放此内存</li>
+</ul>
+</li>
+</ul>
+<h2 id="var-let-const"><a href="#var-let-const" class="headerlink" title="var &amp; let &amp; const"></a>var &amp; let &amp; const</h2><blockquote>
+<p>es6 之前创建变量只有 var，let&#x2F;const 是 es6 后出来的</p>
+</blockquote>
+<ul>
+<li>var 定义的变量，没有块的概念，可以跨块访问，不能跨函数</li>
+<li>let 定义的变量，只能在块作用域里访问，不能跨块访问，也不能跨函数访问</li>
+<li>const 用来定义常量，使用时必须初始化(即赋值)，只能块作用域里访问，且不能修改</li>
+<li>var 定义的变量可以先使用，后声明，存在变量提升，let 必须先声明后使用</li>
+<li>var 允许在相同作用域内重复声明同一个变量，let 和 const 不允许</li>
+<li>在全局上下文中，基于 var 声明的变量会和全局对象(window)有映射，而 let 不会</li>
+<li>会产生暂时性死区：检测一个未被声明的变量类型时，不会报错，会返回 undefined</li>
+<li>let、const 会把当前所在的大括号作为一个全新的块级上下文</li>
+</ul>
+<h2 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h2><blockquote>
+<p>可以用来保存字面量，而且变量的值是可以任意改变的</p>
+</blockquote>
+<ul>
+<li>JS 中的变量都是保存到栈内存中的，</li>
+<li><code>基本数据类型的值</code>直接在<code>栈内存</code>中存储，值与值之间是<code>独立</code>存在，修改一个变量<code>不会影响</code>其他的变量</li>
+<li><code>对象</code>是保存到<code>堆内存</code>中的，每创建一个新的对象，就会在堆内存中开辟出一个新的空间，</li>
+<li>而<code>变量保存</code>的是<code>对象的内存地址</code>(对象的引用)，如果两个变量<code>保存</code>的是<code>同一个</code>对象引用，当一个通过一个变量修改属性时，另一个也<code>会受到影响</code></li>
+<li><code>比较</code>两个<code>基本数据类型的值</code>时，<code>就是比较值</code>。</li>
+<li><code>比较</code>两个<code>引用数据类型</code>时，它是<code>比较对象的内存地址</code>，如果两个对象是一样，但是地址不同，它也会返回 false</li>
+</ul>
+<h3 id="关于引用变量赋值问题"><a href="#关于引用变量赋值问题" class="headerlink" title="关于引用变量赋值问题"></a>关于引用变量赋值问题</h3><ul>
+<li>2 个引用变量指向同一个对象, 通过一个引用变量修改对象内部数据, 另一个引用变量也看得见</li>
+<li>2 个引用变量指向同一个对象,让一个引用变量指向另一个对象, 另一个引用变量还是指向原来的对象</li>
+</ul>
+<h3 id="问题-在-js-调用函数时传递变量参数时-是值传递还是引用传递"><a href="#问题-在-js-调用函数时传递变量参数时-是值传递还是引用传递" class="headerlink" title="问题: 在 js 调用函数时传递变量参数时, 是值传递还是引用传递"></a>问题: 在 js 调用函数时传递变量参数时, 是值传递还是引用传递</h3><ul>
+<li>只有值传递, 没有引用传递, 传递的都是变量的值, 只是这个值可能是基本数据, 也可能是地址(引用)数据</li>
+<li>如果后一种看成是引用传递, 那就值传递和引用传递都可以有</li>
+</ul>
+<h2 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h2><ul>
+<li><code>\&quot;</code>：表示 “</li>
+<li><code>\&#39;</code>：表示 ‘</li>
+<li><code>\n</code>：表示换行</li>
+<li><code>\t</code>：制表符</li>
+<li><code>\\</code>：表示\</li>
+</ul>
+<h2 id="js-的数据类型"><a href="#js-的数据类型" class="headerlink" title="js 的数据类型"></a>js 的数据类型</h2><ul>
+<li>七种基本类型，一种引用类型</li>
+<li><code>Number</code>、<code>Boolean</code>、<code>String</code>、<code>undefined</code>、<code>null</code>、<code>Bigint</code>(es2020 新增，范围比 Number 的大)、<code>Symbol</code>(ES6 新增)</li>
+<li><code>Object对象</code>(包括普通<code>Object</code>、<code>Function</code>、<code>Array</code>、<code>Date</code>、<code>RegExp</code>、<code>Math</code>)</li>
+</ul>
+<h3 id="Number-数值"><a href="#Number-数值" class="headerlink" title="Number 数值"></a>Number 数值</h3><ul>
+<li>特殊的数字<br>Infinity 正无穷<br>-Infinity 负无穷<br>NaN 非法数字（Not A Number）</li>
+<li>进制：</li>
+<li>如果需要表示<code>16进制</code>的数字，则需要<code>以0x开头</code></li>
+<li>如果需要表示<code>8进制</code>的数字，则需要<code>以0开头</code></li>
+<li>如果要要表示<code>2进制</code>的数字，则需要<code>以0b开头</code>,但是<code>不是所有的浏览器都支持</code><ul>
+<li>示例：像”070”这种字符串，有些浏览器会当成 8 进制解析，有些会当成 10 进制解析</li>
+</ul>
+</li>
+<li>可以在<code>parseInt()</code>中传递一个<code>第二个参数</code>，来<code>指定数字的进制</code><ul>
+<li>示例：a &#x3D; parseInt(a,10);</li>
+</ul>
+</li>
+</ul>
+<h3 id="null-和-undefined"><a href="#null-和-undefined" class="headerlink" title="null 和 undefined"></a>null 和 undefined</h3><ul>
+<li>undefined 代表没有赋值</li>
+<li>null 代表赋值了, 只是值为 null</li>
+<li>由于 undefined 衍生自 null，所以 null &#x3D;&#x3D; undefined 会返回 true。</li>
+<li>但是 null &#x3D;&#x3D;&#x3D; undefined 会返回 false。</li>
+<li>null 的使用<ul>
+<li>var a &#x3D; null &#x2F;&#x2F; a 将指向一个对象, 但对象此时还没有确定</li>
+<li>a &#x3D; null &#x2F;&#x2F; 让 a 指向不再使用的对象成为垃圾对象(垃圾回收机制 GC)</li>
+</ul>
+</li>
+</ul>
+<h3 id="NaN"><a href="#NaN" class="headerlink" title="NaN"></a>NaN</h3><ul>
+<li><code>与任何值都不相等，包括自身</code></li>
+<li>可以通过 isNaN()函数来判断一个值是否是 NaN</li>
+<li>function isNaN(x){ return x! &#x3D; x}</li>
+<li>机制：会先判断参数是不是 Number 类型，不是尝试转为 Number，之后再去判断是不是 NaN</li>
+</ul>
+<h3 id="Unicode-编码"><a href="#Unicode-编码" class="headerlink" title="Unicode 编码"></a>Unicode 编码</h3><ul>
+<li><code>\u四位编码</code>：在字符串中使用的 Unicode 编码</li>
+<li><code>&amp;#编码</code>：在网页中使用的 Unicode 编码，这里的编码需要的是 10 进制<ul>
+<li>示例：<code>&lt;h1 style=&quot;font-size: 200px;&quot;&gt;&amp;#9760;&lt;/h1&gt;</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="typeof-—-类型检测方案"><a href="#typeof-—-类型检测方案" class="headerlink" title="typeof — 类型检测方案"></a>typeof — 类型检测方案</h2><blockquote>
+<p>区分数据类型，并返回 number、 string、 boolean、undefined、object、function、symbol</p>
+</blockquote>
+<ul>
+<li>对于<code>基本数据</code>类型，<code>除null``都</code>可以<code>正确判断</code></li>
+<li>对于<code>引用类型</code>，<code>除function</code>外，<code>都</code>会<code>返回object</code></li>
+<li>typeof 返回值是 string，即<code>双层typeof</code>返回的类型是<code>string</code></li>
+<li>typeof<code>未定义的变量</code>，返回<code>&quot;undefined&quot;</code></li>
+<li>typeof(<code>null</code>) —&gt; “<code>object</code>“</li>
+<li>typeof(<code>NaN</code>) —&gt; “<code>number</code>“</li>
+<li>typeof(<code>Infinity</code>) —&gt; “<code>number</code>“</li>
+</ul>
+<h2 id="instanceof-—-类型检测方案"><a href="#instanceof-—-类型检测方案" class="headerlink" title="instanceof — 类型检测方案"></a>instanceof — 类型检测方案</h2><blockquote>
+<p>判断对象的原型链上是否存在构造函数的原型。只能判断引用类型。检查一个对象是否是一个类的实例</p>
+</blockquote>
+<ul>
+<li>语法：A instanceof B,常用来判断 A 是否为 B 的实例，如果是，则返回 true，否则返回 false,</li>
+<li>如果 B 函数的显式原型对象在 A 对象的原型链上, 返回 true, 否则返回 false</li>
+<li>arr instanceof Array ，可以<code>判断数组类型</code>，但<code>不推荐</code>，因为如果网页存在多个 iframe，便会存在多个 Array 构造函数，此时判断会存在问题</li>
+<li>所有的对象都是 Object 的后代，所以任何对象和 Object 左 instanceof 检查时都会返回 true</li>
+<li>Number、Boolean、String 基本类型不能判断</li>
+</ul>
+<h2 id="Object-prototype-toString-call-value-—-类型检测方案"><a href="#Object-prototype-toString-call-value-—-类型检测方案" class="headerlink" title="Object.prototype.toString.call([value]) — 类型检测方案"></a>Object.prototype.toString.call([value]) — 类型检测方案</h2><blockquote>
+<p>可以精准判断数据类型，与 Array.isArray 结合使用可以判断数组和对象，此方式兼容性最好</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="title class_">Array</span>.<span class="property">isArray</span>) &#123;</span><br><span class="line">	<span class="title class_">Array</span>.<span class="property">isArray</span> = <span class="keyword">function</span> (<span class="params">o</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> (</span><br><span class="line">			<span class="keyword">typeof</span> o === <span class="string">&#x27;object&#x27;</span> &amp;&amp;</span><br><span class="line">			<span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(o) === <span class="string">&#x27;[object Array]&#x27;</span></span><br><span class="line">		)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><blockquote>
+<p>在 js 中，只有三种类型转换</p>
+</blockquote>
+<h3 id="转换为-Number-类型：Number-parseFloat-parseInt"><a href="#转换为-Number-类型：Number-parseFloat-parseInt" class="headerlink" title="转换为 Number 类型：Number()&#x2F;parseFloat()&#x2F;parseInt()"></a>转换为 Number 类型：Number()&#x2F;parseFloat()&#x2F;parseInt()</h3><ul>
+<li>Number 类型使用 toString(整数)可以将数字转为指定的进制，默认 10 进制</li>
+<li>显式&#x2F;强制：直接使用 Number()&#x2F;parseFloat()&#x2F;parseInt()</li>
+<li>隐式：比较操作(&lt;,&gt;,&lt;&#x3D;,&gt;&#x3D;)、按位操作(|,&amp;,^,~)、算术操作(+,-,*,&#x2F;,%)、一元+-操作</li>
+<li>parseInt: 把一个字符串转换为一个整数，将一个字符串中的有效的整数内容取出来<ul>
+<li>[‘1’,’2’,’3’].map(parseInt)相当于执行了以下三次过程：</li>
+<li>parseInt(‘1’, 0, [‘1’,’2’,’3’]): radix 为 0 时，默认取 10，最后返回 1</li>
+<li>parseInt(‘2’, 1, [‘1’,’2’,’3’]): radix 取值为 2~36，返回 NaN</li>
+<li>parseInt(‘3’, 2, [‘1’,’2’,’3’]): radix 取值为 2，二进制只包括 0，1，返回 NaN</li>
+</ul>
+</li>
+<li>parseFloat() 把一个字符串转换为一个浮点数</li>
+<li>对非 String 使用 parseInt()或 parseFloat()，它会先将其转换为 String 然后在操作</li>
+<li>字符串 –&gt; 数字<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>undefined</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>null</td>
+<td>+0</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>true：1，false：+0</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>返回对应的值</td>
+</tr>
+<tr>
+<td>String</td>
+<td>空字符串返回 0，出现任何一个非有效数字返回 NaN，其他的直接转换为对应的值</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>先执行 ToPrimitive 方法，再执行 Number 类型转换</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="转换为-String-类型：String-toString"><a href="#转换为-String-类型：String-toString" class="headerlink" title="转换为 String 类型：String()&#x2F;toString()"></a>转换为 String 类型：String()&#x2F;toString()</h3><ul>
+<li>显式&#x2F;强制：直接使用 String()&#x2F;toString()</li>
+<li>隐式：+ 运算符有一侧操作数为 string 类型</li>
+<li>null 或 undefined 调用 String()方法，返回字符串格式式它们本身</li>
+<li>null 或 undefined 使用 toString()会报错</li>
+</ul>
+<h3 id="转化为-Boolean-类型：Boolean"><a href="#转化为-Boolean-类型：Boolean" class="headerlink" title="转化为 Boolean 类型：Boolean()"></a>转化为 Boolean 类型：Boolean()</h3><ul>
+<li>显式&#x2F;强制：直接使用 Boolean()</li>
+<li>隐式：通过 !! 或 !</li>
+<li>除 0,-0,null,NaN,undefined,或空字符串(“”)为 false 外，其余全为 true</li>
+</ul>
+<h3 id="隐式转换规则"><a href="#隐式转换规则" class="headerlink" title="==隐式转换规则"></a><code>==</code>隐式转换规则</h3><ul>
+<li>类型相同的比较<ul>
+<li>类型是 undefined 或 null， 返回 true<ul>
+<li>null &#x3D;&#x3D; null &#x2F;&#x2F; true</li>
+<li>undefined &#x3D;&#x3D; undefined &#x2F;&#x2F; true</li>
+</ul>
+</li>
+<li>如果一个是+0，另一个是-0，返回 true<ul>
+<li>+0 &#x3D;&#x3D; -0 &#x2F;&#x2F;true</li>
+</ul>
+</li>
+<li>如果类型是对象，二者引用同一个对象，返回 true，繁殖返回 false<ul>
+<li>{} &#x3D;&#x3D; {} &#x2F;&#x2F; false</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>null 和 undefined 比较，仅当它们之间比较返回 true<ul>
+<li>null &#x3D;&#x3D; undefined &#x2F;&#x2F; true</li>
+</ul>
+</li>
+<li>NaN 比较，NaN 与任何之后比较都返回 false，包括自己<ul>
+<li>NaN &#x3D;&#x3D; NaN &#x2F;&#x2F; false</li>
+</ul>
+</li>
+<li>字符串与数字比较，先将字符串转换为数字在比较</li>
+<li>布尔值与非布尔值比较：先将布尔值转换为数字在比较</li>
+<li>对象与原始类型比较，将对象通过<sup><a href="#ref1">ToPrimitive</a></sup>转换为原始类型对应的类型在比较<ul>
+<li>{} &#x3D;&#x3D; 1 &#x2F;&#x2F; false</li>
+</ul>
+</li>
+<li>! 的优先级高，所以遇到[] &#x3D;&#x3D; ![] ,先进行非运算, 任何对象转换成布尔值都得到 true<ul>
+<li>即 [] &#x3D;&#x3D; false, 根据&#x3D;&#x3D;隐式转换规则，对象与原始类型转换，两边先转为数字在比较</li>
+<li>[] 经过 ToPrimitive 方法 转换为’’,为’’ &#x3D;&#x3D; 0,</li>
+<li>然后根据字符串与数字比较，先将字符串转为数字在比较,’’ 的布尔值为 0</li>
+<li>即 0 &#x3D;&#x3D; 0 ，为 true</li>
+</ul>
+</li>
+</ul>
+<h2 id="toString-和-valueOf-方法有什么区别"><a href="#toString-和-valueOf-方法有什么区别" class="headerlink" title="toString 和 valueOf 方法有什么区别"></a>toString 和 valueOf 方法有什么区别</h2><blockquote>
+<p>都属于 Object 对象，是为了解决 JavaScript 值运算与显示的问题。</p>
+</blockquote>
+<ul>
+<li>js 对象的键必须是字符串</li>
+<li>toString(): 返回当前对象的字符串形式</li>
+<li>valueOf() : 返回该对象的原始值<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>valueOf</th>
+<th>toString</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Array[1,2,3]</td>
+<td>数组本身[1,2,3]</td>
+<td>1,2,3</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>对象本身</td>
+<td>[object Object]</td>
+</tr>
+<tr>
+<td>Boolean 类型</td>
+<td>Boolean 值</td>
+<td>“true” 或”false”</td>
+</tr>
+<tr>
+<td>Function</td>
+<td>函数本身</td>
+<td>function fnName(){code}</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>数值</td>
+<td>数值的字符串形式</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>毫米格式时间戳</td>
+<td>GMT 格式时间字符串</td>
+</tr>
+</tbody></table>
+</li>
+<li>隐式转换会自动调用 toString 和 valueOf<ul>
+<li>强制转化为字符串类型时，优先调用 toString</li>
+<li>强制转化为数值类型时，优先调用 valueOf</li>
+<li>使用运算符操作符情况下，valueOf 优先级高于 toString</li>
+<li>对象类型转换为原始值回调用内置的[ToPrimitive]函数<ul>
+<li><span id="ref1" style="color:green">ToPrimitive 方法</span>接受两个参数，一个是输入的值 value，一个是期望转换的类型 Type<ol>
+<li>如果未传入 PreferredType 参数，让 hint 等于’default’,后面会将 hint 修改为”number”</li>
+<li>如果 value 是 基本类型，直接返回对应的类型的值</li>
+<li>否则，调用 valueOf 方法，如果得到原始值，则返回</li>
+<li>否则，调用 toString 方法，如果得到原始值，则返回</li>
+<li>否则，报错</li>
+</ol>
+</li>
+<li>OrdinaryToPrimitive(input,hint)<ol>
+<li>如果 hint 是 ‘string’，那么就将 methodNames 设置为 toString、valueOf</li>
+<li>如果 hint 是 ‘number’，那么就将 methodNames 设置为 valueOf、toString</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- 设变量a=&#123;x：<span class="number">100</span>&#125;，obj=&#123;&#125;，然后设obj[a] = <span class="number">100</span> ,则此时obj[a]为多少？</span><br><span class="line">  - 解：由于js对象的键必须为字符串，所以先将变量a转换为字符串，即a = <span class="string">&quot;&#123;x:100&#125;&quot;</span></span><br><span class="line">然后因为强制转化为字符串类型时，优先调用toString，通过上方表格可知，obj[a]为[object <span class="title class_">Object</span>]</span><br><span class="line">- &#123;&#125; + <span class="number">1</span> ：js引擎回解析成<span class="number">1</span>个代码块和<span class="number">1</span>个<span class="number">1</span>，最终结果为<span class="number">1</span></span><br><span class="line">- <span class="number">1</span> + &#123;&#125; ：先将&#123;&#125;调用<span class="title class_">ToPrimitive</span>转为<span class="string">&#x27;[object Object]&#x27;</span>，然后跟<span class="number">1</span>拼串，最终结果<span class="number">1</span>[object <span class="title class_">Object</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><ul>
+<li><code>!!</code>： 将变量<code>转</code>化为<code>布尔</code>值</li>
+<li><code>!</code>：取反，对非 boolean 类型的元素，则会将其<code>转boolean</code>类型<code>再取反</code></li>
+<li><code>&amp;&amp;</code>：只有两个值都为 true 时，才会返回 true，如果第一个值为 false，则不会看第二个值<ul>
+<li>对于非布尔值进行与或运算时，会先将其转换为布尔值，然后再运算，并且返回原值</li>
+<li>如果<code>第一个值为true</code>，则必然<code>返回第二个值</code></li>
+<li>如果<code>第一个值为false</code>，则直接<code>返回第一个值</code></li>
+<li>如果两个值<code>都为true</code>，则<code>返回后边的</code></li>
+</ul>
+</li>
+<li><code>||</code>：两个值中只要有一个 true，就返回 true，如果第一个值为 true，则不会检查第二个值<ul>
+<li>对于非布尔值进行与或运算时，会先将其转换为布尔值，然后再运算，并且返回原值</li>
+<li>如果<code>第一个值为true</code>，则直接<code>返回第一个值</code></li>
+<li>如果<code>第一个值为false</code>，则<code>返回第二个值</code></li>
+<li>如果<code>两个值中有false</code>，则<code>返回靠前的false</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><ul>
+<li><code>=</code>：赋值</li>
+<li><code>+=</code>：a +&#x3D; 5 相当于 a &#x3D; a+5</li>
+<li><code>-=</code>：a -&#x3D; 5 相当于 a &#x3D; a-5</li>
+<li><code>*=</code>：a <em>&#x3D; 5 相当于 a &#x3D; a</em>5</li>
+<li><code>/=</code>：a &#x2F;&#x3D; 5 相当于 a &#x3D; a&#x2F;5</li>
+<li><code>%=</code>：a %&#x3D; 5 相当于 a &#x3D; a%5</li>
+<li><code>n++，n--</code>：先自增，自减，并且赋值时，把自增、自减前的值的赋值,即得到的结果是<code>变量的原值</code></li>
+<li><code>++n，--n</code>：先自增，自减，并且把变化后的值赋值给变量,即得到的结果是<code>变量的新值</code></li>
+<li>示例：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> n1 = <span class="number">10</span></span><br><span class="line"><span class="keyword">const</span> n2 = <span class="number">10</span></span><br><span class="line"><span class="keyword">var</span> n = n1++ <span class="comment">//n1 = 11  n1++ = 10 n = 10</span></span><br><span class="line"><span class="keyword">var</span> m = ++n2 <span class="comment">//n2 = 11  ++n1 = 11 n = 11</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="相等运算符"><a href="#相等运算符" class="headerlink" title="相等运算符"></a>相等运算符</h3><ul>
+<li><code>==</code>：等于，值相等返回 true，如果值的类型不同，则会自动进行类型转换，将其转换为相同的类型，然后在比较</li>
+<li><code>!=</code>：不等于，两个值是否不相等，不相等返回 true，也会对变量进行自动的类型转换，然后在比较</li>
+<li><code>===</code>：绝对等于，类型也相等,不会做自动的类型转换</li>
+<li><code>!==</code>：不全等，不会做自动的类型转换，如果两个值的类型不同，直接返回 true</li>
+</ul>
+<h3 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h3><ul>
+<li><code>+、-、*、/</code>：加减乘除，任何值做-、&#x2F;、*运算时都会自动转换为 Number</li>
+<li><code>%</code>：算数运算符，取模运算（取余数）</li>
+</ul>
+<h3 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h3><ul>
+<li><code>&gt;、&gt;=、&lt;、&lt;=</code><ul>
+<li>对于<code>非数值</code>进行比较时，会将其<code>转</code>换为<code>数字</code>然后<code>在比较</code></li>
+<li>如果符号两侧的值<code>都</code>是<code>字符串</code>时，会分别<code>一位一位比较</code>字符串中字符的<code>Unicode编码</code></li>
+<li>注：在比较两个字符串型的数字时，一定要转型</li>
+</ul>
+</li>
+</ul>
+<h3 id="三元运算符-条件运算符"><a href="#三元运算符-条件运算符" class="headerlink" title="三元运算符(条件运算符)"></a>三元运算符(条件运算符)</h3><ul>
+<li>语法：<code>条件表达式?语句1:语句2</code>;</li>
+<li>执行的流程：<ul>
+<li>条件运算符在执行时，首先对条件表达式进行求值，</li>
+<li>为 true，则执行语句 1，并返回执行结果，为 false，则执行语句 2，并返回执行结果</li>
+<li>如果条件的表达式的求值结果是一个非布尔值，会将其转换为布尔值然后在运算</li>
+</ul>
+</li>
+</ul>
+<h3 id="一元运算符"><a href="#一元运算符" class="headerlink" title="一元运算符"></a>一元运算符</h3><ul>
+<li><code>+、-</code>：<code>正负号，只需要一个操作数</code><ul>
+<li>对于非 Number 类型的值，会先转换为 Number，然后在运算</li>
+<li><code>+</code> 变量<code>转</code>化为<code>Number</code>类型</li>
+<li><code>任何值和字符串相加都会转换为字符串</code>，叫做拼串操作</li>
+</ul>
+</li>
+</ul>
+<h2 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h2><h3 id="条件判断语句"><a href="#条件判断语句" class="headerlink" title="条件判断语句"></a>条件判断语句</h3><ul>
+<li>语法一：if(条件表达式){为 true 语句…}</li>
+<li>语法二：if(条件表达式){为 true 语句…}else{为 false 语句…}</li>
+<li>语法三：if(条件表达式){语句…}else if(条件表达式){语句…}else{语句…}</li>
+</ul>
+<h3 id="条件分支语句-switch"><a href="#条件分支语句-switch" class="headerlink" title="条件分支语句 switch"></a>条件分支语句 switch</h3><ul>
+<li>语法：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(条件表达式)&#123;</span><br><span class="line">	<span class="keyword">case</span> 表达式：</span><br><span class="line">		语句...</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">default</span>：</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>执行流程<ul>
+<li>依次将 case 后的表达式的值和 switch 后的条件表达式的值进行全等比较，如果为 true，则从当前 case 处开始执行代码。</li>
+<li>为 false，则继续向下比较，知道所有结果都为 false，只执行 default 后的语句</li>
+</ul>
+</li>
+</ul>
+<h3 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h3><ul>
+<li><code>for循环</code><ul>
+<li>语法：for(① 初始化表达式;② 条件表达式;④ 更新表达式){ 语句… }</li>
+<li>执行流程：<ul>
+<li>执行初始化表达式，初始化变量（初始化表达式只会执行一次）</li>
+<li>执行条件表达式，判断是否执行循环。为 true，则执行循环，为 false，终止循环</li>
+<li>执行更新表达式，更新表达式执行完毕继续重复上一步</li>
+</ul>
+</li>
+<li>注：for 循环中的三个部分都可以省略，也可以写在外部，for(;;){}死循环</li>
+<li>示例：</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">打印<span class="number">2</span>-<span class="number">1000</span>质数</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">2</span> ; i&lt;=<span class="number">1000</span>; i++)&#123;</span><br><span class="line">	<span class="keyword">var</span> flag = <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">2</span> ; j&lt;=<span class="title class_">Math</span>.<span class="title function_">sqrt</span>(i) ; j++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(i%j == <span class="number">0</span>)&#123;</span><br><span class="line">			<span class="comment">//如果进入判断则证明i不是质数,修改flag值为false</span></span><br><span class="line">			flag = <span class="literal">false</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//如果是质数，则打印i的值</span></span><br><span class="line">	<span class="keyword">if</span>(flag)&#123;</span><br><span class="line">		<span class="variable language_">document</span>.<span class="title function_">write</span>(i+<span class="string">&#x27;  &#x27;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">打印九九乘法表</span><br><span class="line"><span class="comment">//创建外层循环，用来控制乘法表的高度</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span> ; i&lt;=<span class="number">9</span> ; i++ )&#123;</span><br><span class="line">	<span class="comment">// 创建一个内层循环来控制图形的宽度</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">1</span> ; j&lt;=i ; j++)&#123;</span><br><span class="line">		<span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;&lt;span&gt;&quot;</span>+j+<span class="string">&quot;*&quot;</span>+i+<span class="string">&quot;=&quot;</span>+i*j+<span class="string">&quot;&lt;/span&gt;&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;&lt;br /&gt;&quot;</span>); <span class="comment">//输出一个换行</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>while循环</code><ul>
+<li>语法：while(条件表达式){ 语句… }</li>
+<li>执行流程<ul>
+<li>先对条件表达式进行求值判断，</li>
+<li>如果值为 true，则执行循环体，</li>
+<li>循环体执行完毕以后，继续对表达式进行判断，以此类推</li>
+<li>如果值为 false，则终止循环</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>do...while循环</code><ul>
+<li>语法：do{ 语句… }while(条件表达式)</li>
+<li>执行流程：<ul>
+<li>先执行循环体，</li>
+<li>循环体执行完毕以后，在对 while 后的条件表达式进行判断，</li>
+<li>如果结果为 true，则继续执行循环体，执行完毕继续判断以此类推 -如果结果为 false，则终止循环</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>do...while循环和while循环区别</code>：<ul>
+<li>while 是先判断后执行，</li>
+<li>而 do…while 会先执行后判断，</li>
+<li>do…while 可以保证循环体至少执行一次，而 while 不能<br>var n &#x3D; 1;</li>
+</ul>
+</li>
+<li>将条件表达式写死为 true 的循环，叫做死循环,可以使用 break，来终止循环</li>
+</ul>
+<h2 id="函数-function"><a href="#函数-function" class="headerlink" title="函数 function"></a>函数 function</h2><blockquote>
+<p>函数也是一个对象，函数中可以封装一些功能，在需要时可以执行这些功能</p>
+</blockquote>
+<h3 id="创建一个函数对象"><a href="#创建一个函数对象" class="headerlink" title="创建一个函数对象"></a>创建一个函数对象</h3><ul>
+<li>方法一：使用构造函数(少用)<ul>
+<li>语法：const fun &#x3D; new Function(语句…);</li>
+</ul>
+</li>
+<li>方法二：使用函数声明<ul>
+<li>语法：function 函数名([形参 1,形参 2…形参 N]){ 语句… }</li>
+</ul>
+</li>
+<li>方法三： 使用函数表达式<ul>
+<li>语法： const 函数名 &#x3D; function([形参 1,形参 2…形参 N]){ 语句… }</li>
+</ul>
+</li>
+</ul>
+<h3 id="调用方法："><a href="#调用方法：" class="headerlink" title="调用方法："></a>调用方法：</h3><ul>
+<li>函数对象([实参 1，实参 2])</li>
+<li>new 函数对象()</li>
+<li>对象.函数对象()</li>
+<li>函数对象.call&#x2F;apply(obj)</li>
+</ul>
+<h3 id="形参与实参："><a href="#形参与实参：" class="headerlink" title="形参与实参："></a>形参与实参：</h3><ul>
+<li>实参：<ul>
+<li>在调用函数时，可以在()中指定，实参将会赋值给函数中对应的形参</li>
+<li>调用函数时解析器不会检查实参的类型和数量，可以传递任意数据类型的值</li>
+<li>多余实参不会被赋值，如果实参的数量少于形参的数量，则没有对应实参的形参将是 undefined</li>
+</ul>
+</li>
+<li>形参：<ul>
+<li>定义函数时，可以在()中定义一个或多个形参，形参之间使用,隔开</li>
+<li>定义形参就相当于在函数内声明了对应的变量但是并不赋值，形参会在调用时才赋值。</li>
+</ul>
+</li>
+</ul>
+<h3 id="构造函数："><a href="#构造函数：" class="headerlink" title="构造函数："></a>构造函数：</h3><ul>
+<li>创建一个构造函数：与普通函数一样，但首字母要大写</li>
+<li>调用方式：使用 new 关键字来调用</li>
+<li>构造函数是专门用来创建对象的函数</li>
+<li>一个构造函数我们也可以称为一个类</li>
+<li>通过一个构造函数创建的对象，我们称该对象时这个构造函数的实例</li>
+<li>通过同一个构造函数创建的对象，我们称为一类对象</li>
+<li>构造函数就是一个普通的函数，只是他的调用方式不同，<ul>
+<li>如果直接调用，它就是一个普通函数</li>
+<li>如果使用 new 来调用，则它就是一个构造函数</li>
+</ul>
+</li>
+<li>执行流程：<ol>
+<li>立刻创建一个新的对象</li>
+<li>将新建的对象设置为函数中 this,在构造函数中可以使用 this 来引用新建的对象</li>
+<li>逐行执行函数中的代码</li>
+<li>将新建的对象作为返回值返回</li>
+</ol>
+</li>
+</ul>
+<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><ul>
+<li>定义：变量与函数的可访问范围，由当前环境与上层环境的一系列变量对象组成。</li>
+<li><h3 id="全局作用域："><a href="#全局作用域：" class="headerlink" title="全局作用域："></a>全局作用域：</h3><ul>
+<li>直接编写在 script 标签中的 JS 代码，都在全局作用域</li>
+<li>全局作用域在页面打开时创建，在页面关闭时销毁</li>
+<li>在全局作用域中有一个全局对象 window，</li>
+<li>创建的变量都会作为 window 对象的属性保存</li>
+<li>创建的函数都会作为 window 对象的方法保存</li>
+<li>全局作用域中的变量都是全局变量，在页面的任意的部分都可以访问的到</li>
+<li>在函数作用域中也可以访问到全局作用域的变量。</li>
+<li>尽量不要在全局中创建变量</li>
+</ul>
+</li>
+<li><h3 id="函数作用域：函数执行时创建的作用域"><a href="#函数作用域：函数执行时创建的作用域" class="headerlink" title="函数作用域：函数执行时创建的作用域"></a>函数作用域：函数执行时创建的作用域</h3><ul>
+<li>函数作用域在函数执行时创建，在函数执行结束时销毁。</li>
+<li>每调用一次函数就会创建一个新的函数作用域，他们之间是互相独立的</li>
+<li>在函数作用域中可以访问到全局作用域的变量，反过来不行</li>
+<li>在函数中要访问全局变量可以使用 window 对象</li>
+</ul>
+</li>
+<li>作用：隔离变量，不同作用域同名变量不会有冲突。</li>
+</ul>
+<h3 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h3><ul>
+<li>定义：调用某个函数或属性时，先在当前作用域寻找，如果找不到的情况下去父级寻找，如果父级找不到继续向上级寻找，直到找到全局作用域为止，如果全局作用域中依然没有找到，则会报错 ReferenceError，这就是链式查找的过程</li>
+</ul>
+<h2 id="声明提前"><a href="#声明提前" class="headerlink" title="声明提前"></a>声明提前</h2><h3 id="变量的声明提前"><a href="#变量的声明提前" class="headerlink" title="变量的声明提前"></a>变量的声明提前</h3><ul>
+<li>使用 var 关键字声明的变量，会在所有的代码执行之前被声明（但是不会赋值）</li>
+<li>但是如果声明变量时不使用 var 关键字，则变量不会被声明提前</li>
+<li>在函数作用域中，也具有以上特性</li>
+<li>在函数作用域中，不使用关键字声明的变量都会成为全局变量</li>
+</ul>
+<h3 id="函数的声明提前"><a href="#函数的声明提前" class="headerlink" title="函数的声明提前"></a>函数的声明提前</h3><ul>
+<li>在全局作用域中， 使用<code>函数声明形式</code>创建的函数 function 函数(){}，会在所有的代码执行之前就被创建，所以我们<code>可以</code>在函数声明前来调用函数</li>
+<li>在全局作用域中，使用<code>函数表达式</code>创建的函数 var fun &#x3D; function(){}，<code>不会</code>被声明提前，所以<code>不能</code>在声明前调用</li>
+<li>在函数作用域中，使用函数声明创建的函数，会在所有的函数中的代码执行之前就被创建好了。</li>
+</ul>
+<h3 id="函数的方法"><a href="#函数的方法" class="headerlink" title="函数的方法"></a>函数的方法</h3><ul>
+<li>call() 和 apply()<ul>
+<li>这两个方法都是函数对象的方法，需要通过函数对象来调用</li>
+<li>通过两个方法可以直接调用函数，并且可以通过第一个实参(对象)来指定函数执行中 this</li>
+<li>call()方法可以将实参在对象之后<code>依次传递</code></li>
+<li>apply()方法需要将实参<code>封装</code>到一个<code>数组</code>中<code>统一传递</code></li>
+</ul>
+</li>
+<li>arguments(封装实参的对象)<ul>
+<li>arguments 和 this 类似，都是函数中的隐含的参数</li>
+<li>arguments 是一个类数组元素，它可以通过索引来操作数据，获取长度</li>
+<li>在调用函数时，我们所传递的实参都会在 arguments 中保存</li>
+<li>arguments.length 可以用来获取实参的长度</li>
+<li>arguments 中有一个属性 callee 表示当前执行的函数对象<ul>
+<li>function fun(a,b) { console.log(arguments.callee &#x3D;&#x3D; fun) } &#x2F;&#x2F; true</li>
+</ul>
+</li>
+<li>即使不定义形参，也可以通过 arguments 来使用实参<ul>
+<li>arguments[0] 表示第一个实参</li>
+<li>arguments[1] 表示第二个实参</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="this-函数的上下文对象"><a href="#this-函数的上下文对象" class="headerlink" title="this(函数的上下文对象)"></a>this(函数的上下文对象)</h3><ul>
+<li>解析器在每次调用函数都会向函数内部传递进一个隐含的参数,这个隐含的参数就是 this</li>
+<li>this 指向的是一个对象，这个对象我们称为函数执行的上下文对象</li>
+<li>使用 this 来引用上下文对象，根据函数的调用形式不同，this 的值也不同</li>
+<li>当<code>以函数的形式调用</code>时，<code>this是window</code> — xxx()，指向 window</li>
+<li>当<code>以方法的形式调用</code>时，<code>谁调用方法this就是谁</code> — obj.xxx(), 指向 obj</li>
+<li>当<code>以构造函数的形式调用</code>时，<code>this就是新创建的那个对象</code></li>
+<li>通过 call&#x2F;apply 指定谁调用: xxx.call(obj)，指向 obj</li>
+<li>在全局作用域中 this 代表 window</li>
+<li>示例</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">name, age, gender</span>) &#123;</span><br><span class="line">	<span class="comment">// 定义了形参，创建构造函数</span></span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">name</span> = name</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">age</span> = age</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">gender</span> = gender</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">sayName</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">		<span class="title function_">alert</span>(<span class="variable language_">this</span>.<span class="property">name</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> per = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;孙悟空&#x27;</span>, <span class="number">18</span>, <span class="string">&#x27;男&#x27;</span>) <span class="comment">// this执行per，并传了实参</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="（IIFE）立即执行函数："><a href="#（IIFE）立即执行函数：" class="headerlink" title="（IIFE）立即执行函数："></a>（IIFE）立即执行函数：</h3><ul>
+<li>全称: Immediately-Invoked Function Expression 立即调用函数表达式</li>
+<li>别名: 匿名函数自调用</li>
+<li>定义：函数定义完，立即被调用，往往只会执行一次</li>
+<li>语法：(function(){ alert(“我是一个匿名函数~~~”); })();</li>
+<li>作用<ul>
+<li>隐藏内部实现</li>
+<li>不污染外部命名空间</li>
+</ul>
+</li>
+</ul>
+<h3 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h3><ul>
+<li>定义：定义了该函数，没有直接执行，需要按下或者在一定时候才会执行的函数</li>
+<li>常见的回调函数<ul>
+<li>DOM 事件函数</li>
+<li>定时器函数</li>
+<li>ajax 回调函数</li>
+<li>生命周期回调函数</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// DOM事件函数</span></span><br><span class="line"><span class="keyword">var</span> btn = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;btn&#x27;</span>)</span><br><span class="line">btn.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">	<span class="title function_">alert</span>(<span class="variable language_">this</span>.<span class="property">innerHTML</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 定时器函数</span></span><br><span class="line"><span class="built_in">setInterval</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">	<span class="comment">// alert(&#x27;到点啦!&#x27;)</span></span><br><span class="line">&#125;, <span class="number">20000</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><h3 id="对象的分类："><a href="#对象的分类：" class="headerlink" title="对象的分类："></a>对象的分类：</h3><ul>
+<li>内建对象 — 由 ES 标准中定义的对象，在任何的 ES 的实现中都可以使用<ul>
+<li>比如：Math String Number Boolean Function Object….</li>
+</ul>
+</li>
+<li>宿主对象 — 由 JS 的运行环境提供的对象，目前来讲主要指由浏览器提供的对象<ul>
+<li>比如 BOM DOM</li>
+</ul>
+</li>
+<li>自定义对象 — 由开发人员自己创建的对象</li>
+</ul>
+<h3 id="in-运算符"><a href="#in-运算符" class="headerlink" title="in 运算符"></a>in 运算符</h3><ul>
+<li>定义：检查一个对象中是否含有指定的属性，有则返回 true，没有则返回 false</li>
+<li>语法：”属性名” in 对象</li>
+</ul>
+<h3 id="使用-new-关键字创建一个对象"><a href="#使用-new-关键字创建一个对象" class="headerlink" title="使用 new 关键字创建一个对象"></a>使用 new 关键字创建一个对象</h3><ul>
+<li>语法：使用 new 关键字调用的函数，是构造函数 constructor，var obj &#x3D; new Object();</li>
+<li>向对象中<code>添加</code>属性：<code>对象.属性名 = 属性值</code>(可以是任意类型，也可以是个函数)<ul>
+<li>特殊属性名的添加方式：对象[“属性名”] &#x3D; 属性值</li>
+</ul>
+</li>
+<li><code>读取</code>对象中的属性：<code>对象.属性名</code>，如果读取对象中没有的属性，返回 undefined<ul>
+<li>特殊属性名的读取方式：对象[“属性名”]</li>
+</ul>
+</li>
+<li><code>修改</code>对象的属性值：<code>对象.属性名 = 新值</code></li>
+<li><code>删除</code>对象的属性：<code>delete 对象.属性名</code></li>
+<li>调用方法：对象.函数对象(); &#x2F;&#x2F; 如果一个函数作为一个对象的属性值保存，那么我们称这个函数是这个对象的方法</li>
+</ul>
+<h3 id="使用对象字面量来创建一个对象"><a href="#使用对象字面量来创建一个对象" class="headerlink" title="使用对象字面量来创建一个对象"></a>使用对象字面量来创建一个对象</h3><ul>
+<li>语法：const 对象 &#x3D; {属性名:属性值,属性名:属性值….}; &#x2F;&#x2F; 可以在创建对象时，直接指定对象中的属性，也可以为空</li>
+<li>属性名可以加引号也可以不加，如果要使用一些特殊的名字，则必须加引号</li>
+<li>属性名和属性值是一组一组的名值对结构，名和值之间使用:连接，多个名值对之间使用,隔开</li>
+<li>示例</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="string">&#x27;孙悟空&#x27;</span>,</span><br><span class="line">	<span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">	<span class="attr">gender</span>: <span class="string">&#x27;男&#x27;</span>,</span><br><span class="line">	<span class="attr">address</span>: <span class="string">&#x27;花果山&#x27;</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用工厂方法传建对象"><a href="#使用工厂方法传建对象" class="headerlink" title="使用工厂方法传建对象"></a>使用工厂方法传建对象</h3><ul>
+<li>优点：可以批量创建</li>
+<li>缺点：创建的对象都是 Object 这个类型，无法区分出多种不同类型的对象</li>
+<li>示例：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">createPerson</span>(<span class="params">name, age, gender</span>) &#123;</span><br><span class="line">	<span class="comment">//创建一个新的对象</span></span><br><span class="line">	<span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="title class_">Object</span>()</span><br><span class="line">	<span class="comment">//向对象中添加属性</span></span><br><span class="line">	obj.<span class="property">name</span> = name</span><br><span class="line">	obj.<span class="property">age</span> = age</span><br><span class="line">	obj.<span class="property">gender</span> = gender</span><br><span class="line">	obj.<span class="property">sayName</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">		<span class="title function_">alert</span>(<span class="variable language_">this</span>.<span class="property">name</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//将新的对象返回</span></span><br><span class="line">	<span class="keyword">return</span> obj</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj2 = <span class="title function_">createPerson</span>(<span class="string">&#x27;猪八戒&#x27;</span>, <span class="number">28</span>, <span class="string">&#x27;男&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> obj3 = <span class="title function_">createPerson</span>(<span class="string">&#x27;蜘蛛精&#x27;</span>, <span class="number">18</span>, <span class="string">&#x27;女&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="枚举对象中的属性使用-for-…-in-语句"><a href="#枚举对象中的属性使用-for-…-in-语句" class="headerlink" title="枚举对象中的属性使用 for … in 语句"></a>枚举对象中的属性使用 for … in 语句</h3><ul>
+<li>语法：for(var 变量 in 对象){}</li>
+<li>for…in 语句 对象中有几个属性，循环体就会执行几次</li>
+<li>每次执行时，会将对象中的一个属性的名字赋值给变量</li>
+<li>示例</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> n <span class="keyword">in</span> obj) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;属性名:&#x27;</span> + n)</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;属性值:&#x27;</span> + obj[n])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="break-continue-return"><a href="#break-continue-return" class="headerlink" title="break | continue | return"></a>break | continue | return</h2><h3 id="break-关键字-—-会立即终止离他最近的那个循环语句"><a href="#break-关键字-—-会立即终止离他最近的那个循环语句" class="headerlink" title="break 关键字 — 会立即终止离他最近的那个循环语句"></a>break 关键字 — 会立即终止离他最近的那个循环语句</h3><ul>
+<li>可以用来退出 switch 或循环语句，</li>
+<li>不能在 if 语句中使用 break 和 continue</li>
+</ul>
+<h3 id="label-—-标识当前的循环"><a href="#label-—-标识当前的循环" class="headerlink" title="label — 标识当前的循环"></a>label — 标识当前的循环</h3><ul>
+<li>语法：label:循环语句</li>
+<li>使用 break 语句时，可以在 break 后跟着一个 label，这样 break 将会结束指定的循环</li>
+<li>示例</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 给循环标识了一个label</span></span><br><span class="line"><span class="attr">outer</span>: <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;@外层循环&#x27;</span> + i)</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">5</span>; j++) &#123;</span><br><span class="line">		<span class="keyword">break</span> outer <span class="comment">// 退出时，结束outer这个循环</span></span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;内层循环:&#x27;</span> + j)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="continue-关键字-—-用来跳过当次循环"><a href="#continue-关键字-—-用来跳过当次循环" class="headerlink" title="continue 关键字 — 用来跳过当次循环"></a>continue 关键字 — 用来跳过当次循环</h3><ul>
+<li>同样 continue 也是默认只会对离他最近的循环循环起作用</li>
+</ul>
+<h3 id="return-—-可以结束整个函数"><a href="#return-—-可以结束整个函数" class="headerlink" title="return — 可以结束整个函数"></a>return — 可以结束整个函数</h3><ul>
+<li>语法：return 值(任意类型的值，不写相当于 undefined)</li>
+<li>可以使用 return 来设置函数的返回值，值将会作为函数的执行结果返回</li>
+<li>在 return 后的语句都不会执行</li>
+</ul>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/31/JS/JS-%E6%95%B0%E7%BB%84/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <div class="trm-cover-img" data-random-img></div>
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/JavaScript/">
+                    JavaScript
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/31/JS/JS-%E6%95%B0%E7%BB%84/" class="trm-anima-link">
+                    JS-数组
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/31</li>
+                <li>11:05</li>
+                
+                    <li>1.7k</li>
+                
+                
+                    <li>6</li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/30/HTMLCSS/%E6%A1%88%E4%BE%8B%20-%20%E6%97%B6%E9%97%B4%E8%BD%B4%E7%89%B9%E6%95%88/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <div class="trm-cover-img" data-random-img></div>
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/CSS-HTML/">
+                    CSS&HTML
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/30/HTMLCSS/%E6%A1%88%E4%BE%8B%20-%20%E6%97%B6%E9%97%B4%E8%BD%B4%E7%89%B9%E6%95%88/" class="trm-anima-link">
+                    案例-时间轴特效
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/30</li>
+                <li>15:29</li>
+                
+                    <li>885</li>
+                
+                
+                    <li>3</li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+    
+        <div class="trm-footer-item blog-run-long"></div>
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-1" title="JavaScript"><a rel="nofollow" class="trm-toc-link" href="#JavaScript"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">JavaScript</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="输出语句"><a rel="nofollow" class="trm-toc-link" href="#输出语句"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">输出语句</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="alert(“要输出的内容”);"><a rel="nofollow" class="trm-toc-link" href="#alert-“要输出的内容”"><span class="trm-toc-number">1.1.1.</span> <span class="trm-toc-text">alert(“要输出的内容”);</span></a></li><li class="trm-toc-item trm-toc-level-3" title="document.write(“要输出的内容”);"><a rel="nofollow" class="trm-toc-link" href="#document-write-“要输出的内容”"><span class="trm-toc-number">1.1.2.</span> <span class="trm-toc-text">document.write(“要输出的内容”);</span></a></li><li class="trm-toc-item trm-toc-level-3" title="console.log(“要输出的内容”);"><a rel="nofollow" class="trm-toc-link" href="#console-log-“要输出的内容”"><span class="trm-toc-number">1.1.3.</span> <span class="trm-toc-text">console.log(“要输出的内容”);</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="基本语法"><a rel="nofollow" class="trm-toc-link" href="#基本语法"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">基本语法</span></a></li><li class="trm-toc-item trm-toc-level-2" title="标识符"><a rel="nofollow" class="trm-toc-link" href="#标识符"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">标识符</span></a></li><li class="trm-toc-item trm-toc-level-2" title="JS 的编写位置"><a rel="nofollow" class="trm-toc-link" href="#JS-的编写位置"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">JS 的编写位置</span></a></li><li class="trm-toc-item trm-toc-level-2" title="数据 | 内存 | 变量"><a rel="nofollow" class="trm-toc-link" href="#数据-内存-变量"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">数据 | 内存 | 变量</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="数据"><a rel="nofollow" class="trm-toc-link" href="#数据"><span class="trm-toc-number">1.5.1.</span> <span class="trm-toc-text">数据</span></a></li><li class="trm-toc-item trm-toc-level-3" title="内存"><a rel="nofollow" class="trm-toc-link" href="#内存"><span class="trm-toc-number">1.5.2.</span> <span class="trm-toc-text">内存</span></a></li><li class="trm-toc-item trm-toc-level-3" title="变量"><a rel="nofollow" class="trm-toc-link" href="#变量"><span class="trm-toc-number">1.5.3.</span> <span class="trm-toc-text">变量</span></a></li><li class="trm-toc-item trm-toc-level-3" title="三者之间的关系"><a rel="nofollow" class="trm-toc-link" href="#三者之间的关系"><span class="trm-toc-number">1.5.4.</span> <span class="trm-toc-text">三者之间的关系</span></a></li><li class="trm-toc-item trm-toc-level-3" title="问题: JS 引擎如何管理内存?"><a rel="nofollow" class="trm-toc-link" href="#问题-JS-引擎如何管理内存"><span class="trm-toc-number">1.5.5.</span> <span class="trm-toc-text">问题: JS 引擎如何管理内存?</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="var &amp; let &amp; const"><a rel="nofollow" class="trm-toc-link" href="#var-let-const"><span class="trm-toc-number">1.6.</span> <span class="trm-toc-text">var &amp; let &amp; const</span></a></li><li class="trm-toc-item trm-toc-level-2" title="数据存储"><a rel="nofollow" class="trm-toc-link" href="#数据存储"><span class="trm-toc-number">1.7.</span> <span class="trm-toc-text">数据存储</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="关于引用变量赋值问题"><a rel="nofollow" class="trm-toc-link" href="#关于引用变量赋值问题"><span class="trm-toc-number">1.7.1.</span> <span class="trm-toc-text">关于引用变量赋值问题</span></a></li><li class="trm-toc-item trm-toc-level-3" title="问题: 在 js 调用函数时传递变量参数时, 是值传递还是引用传递"><a rel="nofollow" class="trm-toc-link" href="#问题-在-js-调用函数时传递变量参数时-是值传递还是引用传递"><span class="trm-toc-number">1.7.2.</span> <span class="trm-toc-text">问题: 在 js 调用函数时传递变量参数时, 是值传递还是引用传递</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="转义字符"><a rel="nofollow" class="trm-toc-link" href="#转义字符"><span class="trm-toc-number">1.8.</span> <span class="trm-toc-text">转义字符</span></a></li><li class="trm-toc-item trm-toc-level-2" title="js 的数据类型"><a rel="nofollow" class="trm-toc-link" href="#js-的数据类型"><span class="trm-toc-number">1.9.</span> <span class="trm-toc-text">js 的数据类型</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="Number 数值"><a rel="nofollow" class="trm-toc-link" href="#Number-数值"><span class="trm-toc-number">1.9.1.</span> <span class="trm-toc-text">Number 数值</span></a></li><li class="trm-toc-item trm-toc-level-3" title="null 和 undefined"><a rel="nofollow" class="trm-toc-link" href="#null-和-undefined"><span class="trm-toc-number">1.9.2.</span> <span class="trm-toc-text">null 和 undefined</span></a></li><li class="trm-toc-item trm-toc-level-3" title="NaN"><a rel="nofollow" class="trm-toc-link" href="#NaN"><span class="trm-toc-number">1.9.3.</span> <span class="trm-toc-text">NaN</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Unicode 编码"><a rel="nofollow" class="trm-toc-link" href="#Unicode-编码"><span class="trm-toc-number">1.9.4.</span> <span class="trm-toc-text">Unicode 编码</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="typeof — 类型检测方案"><a rel="nofollow" class="trm-toc-link" href="#typeof-—-类型检测方案"><span class="trm-toc-number">1.10.</span> <span class="trm-toc-text">typeof — 类型检测方案</span></a></li><li class="trm-toc-item trm-toc-level-2" title="instanceof — 类型检测方案"><a rel="nofollow" class="trm-toc-link" href="#instanceof-—-类型检测方案"><span class="trm-toc-number">1.11.</span> <span class="trm-toc-text">instanceof — 类型检测方案</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Object.prototype.toString.call([value]) — 类型检测方案"><a rel="nofollow" class="trm-toc-link" href="#Object-prototype-toString-call-value-—-类型检测方案"><span class="trm-toc-number">1.12.</span> <span class="trm-toc-text">Object.prototype.toString.call([value]) — 类型检测方案</span></a></li><li class="trm-toc-item trm-toc-level-2" title="类型转换"><a rel="nofollow" class="trm-toc-link" href="#类型转换"><span class="trm-toc-number">1.13.</span> <span class="trm-toc-text">类型转换</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="转换为 Number 类型：Number()&#x2F;parseFloat()&#x2F;parseInt()"><a rel="nofollow" class="trm-toc-link" href="#转换为-Number-类型：Number-parseFloat-parseInt"><span class="trm-toc-number">1.13.1.</span> <span class="trm-toc-text">转换为 Number 类型：Number()&#x2F;parseFloat()&#x2F;parseInt()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="转换为 String 类型：String()&#x2F;toString()"><a rel="nofollow" class="trm-toc-link" href="#转换为-String-类型：String-toString"><span class="trm-toc-number">1.13.2.</span> <span class="trm-toc-text">转换为 String 类型：String()&#x2F;toString()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="转化为 Boolean 类型：Boolean()"><a rel="nofollow" class="trm-toc-link" href="#转化为-Boolean-类型：Boolean"><span class="trm-toc-number">1.13.3.</span> <span class="trm-toc-text">转化为 Boolean 类型：Boolean()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="&#x3D;&#x3D;隐式转换规则"><a rel="nofollow" class="trm-toc-link" href="#隐式转换规则"><span class="trm-toc-number">1.13.4.</span> <span class="trm-toc-text">&#x3D;&#x3D;隐式转换规则</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="toString 和 valueOf 方法有什么区别"><a rel="nofollow" class="trm-toc-link" href="#toString-和-valueOf-方法有什么区别"><span class="trm-toc-number">1.14.</span> <span class="trm-toc-text">toString 和 valueOf 方法有什么区别</span></a></li><li class="trm-toc-item trm-toc-level-2" title="运算符"><a rel="nofollow" class="trm-toc-link" href="#运算符"><span class="trm-toc-number">1.15.</span> <span class="trm-toc-text">运算符</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="逻辑运算符"><a rel="nofollow" class="trm-toc-link" href="#逻辑运算符"><span class="trm-toc-number">1.15.1.</span> <span class="trm-toc-text">逻辑运算符</span></a></li><li class="trm-toc-item trm-toc-level-3" title="赋值运算符"><a rel="nofollow" class="trm-toc-link" href="#赋值运算符"><span class="trm-toc-number">1.15.2.</span> <span class="trm-toc-text">赋值运算符</span></a></li><li class="trm-toc-item trm-toc-level-3" title="相等运算符"><a rel="nofollow" class="trm-toc-link" href="#相等运算符"><span class="trm-toc-number">1.15.3.</span> <span class="trm-toc-text">相等运算符</span></a></li><li class="trm-toc-item trm-toc-level-3" title="算数运算符"><a rel="nofollow" class="trm-toc-link" href="#算数运算符"><span class="trm-toc-number">1.15.4.</span> <span class="trm-toc-text">算数运算符</span></a></li><li class="trm-toc-item trm-toc-level-3" title="关系运算符"><a rel="nofollow" class="trm-toc-link" href="#关系运算符"><span class="trm-toc-number">1.15.5.</span> <span class="trm-toc-text">关系运算符</span></a></li><li class="trm-toc-item trm-toc-level-3" title="三元运算符(条件运算符)"><a rel="nofollow" class="trm-toc-link" href="#三元运算符-条件运算符"><span class="trm-toc-number">1.15.6.</span> <span class="trm-toc-text">三元运算符(条件运算符)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="一元运算符"><a rel="nofollow" class="trm-toc-link" href="#一元运算符"><span class="trm-toc-number">1.15.7.</span> <span class="trm-toc-text">一元运算符</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="流程控制语句"><a rel="nofollow" class="trm-toc-link" href="#流程控制语句"><span class="trm-toc-number">1.16.</span> <span class="trm-toc-text">流程控制语句</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="条件判断语句"><a rel="nofollow" class="trm-toc-link" href="#条件判断语句"><span class="trm-toc-number">1.16.1.</span> <span class="trm-toc-text">条件判断语句</span></a></li><li class="trm-toc-item trm-toc-level-3" title="条件分支语句 switch"><a rel="nofollow" class="trm-toc-link" href="#条件分支语句-switch"><span class="trm-toc-number">1.16.2.</span> <span class="trm-toc-text">条件分支语句 switch</span></a></li><li class="trm-toc-item trm-toc-level-3" title="循环语句"><a rel="nofollow" class="trm-toc-link" href="#循环语句"><span class="trm-toc-number">1.16.3.</span> <span class="trm-toc-text">循环语句</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="函数 function"><a rel="nofollow" class="trm-toc-link" href="#函数-function"><span class="trm-toc-number">1.17.</span> <span class="trm-toc-text">函数 function</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="创建一个函数对象"><a rel="nofollow" class="trm-toc-link" href="#创建一个函数对象"><span class="trm-toc-number">1.17.1.</span> <span class="trm-toc-text">创建一个函数对象</span></a></li><li class="trm-toc-item trm-toc-level-3" title="调用方法："><a rel="nofollow" class="trm-toc-link" href="#调用方法："><span class="trm-toc-number">1.17.2.</span> <span class="trm-toc-text">调用方法：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="形参与实参："><a rel="nofollow" class="trm-toc-link" href="#形参与实参："><span class="trm-toc-number">1.17.3.</span> <span class="trm-toc-text">形参与实参：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="构造函数："><a rel="nofollow" class="trm-toc-link" href="#构造函数："><span class="trm-toc-number">1.17.4.</span> <span class="trm-toc-text">构造函数：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="作用域"><a rel="nofollow" class="trm-toc-link" href="#作用域"><span class="trm-toc-number">1.17.5.</span> <span class="trm-toc-text">作用域</span></a></li><li class="trm-toc-item trm-toc-level-3" title="全局作用域："><a rel="nofollow" class="trm-toc-link" href="#全局作用域："><span class="trm-toc-number">1.17.6.</span> <span class="trm-toc-text">全局作用域：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="函数作用域：函数执行时创建的作用域"><a rel="nofollow" class="trm-toc-link" href="#函数作用域：函数执行时创建的作用域"><span class="trm-toc-number">1.17.7.</span> <span class="trm-toc-text">函数作用域：函数执行时创建的作用域</span></a></li><li class="trm-toc-item trm-toc-level-3" title="作用域链"><a rel="nofollow" class="trm-toc-link" href="#作用域链"><span class="trm-toc-number">1.17.8.</span> <span class="trm-toc-text">作用域链</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="声明提前"><a rel="nofollow" class="trm-toc-link" href="#声明提前"><span class="trm-toc-number">1.18.</span> <span class="trm-toc-text">声明提前</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="变量的声明提前"><a rel="nofollow" class="trm-toc-link" href="#变量的声明提前"><span class="trm-toc-number">1.18.1.</span> <span class="trm-toc-text">变量的声明提前</span></a></li><li class="trm-toc-item trm-toc-level-3" title="函数的声明提前"><a rel="nofollow" class="trm-toc-link" href="#函数的声明提前"><span class="trm-toc-number">1.18.2.</span> <span class="trm-toc-text">函数的声明提前</span></a></li><li class="trm-toc-item trm-toc-level-3" title="函数的方法"><a rel="nofollow" class="trm-toc-link" href="#函数的方法"><span class="trm-toc-number">1.18.3.</span> <span class="trm-toc-text">函数的方法</span></a></li><li class="trm-toc-item trm-toc-level-3" title="this(函数的上下文对象)"><a rel="nofollow" class="trm-toc-link" href="#this-函数的上下文对象"><span class="trm-toc-number">1.18.4.</span> <span class="trm-toc-text">this(函数的上下文对象)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="（IIFE）立即执行函数："><a rel="nofollow" class="trm-toc-link" href="#（IIFE）立即执行函数："><span class="trm-toc-number">1.18.5.</span> <span class="trm-toc-text">（IIFE）立即执行函数：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="回调函数"><a rel="nofollow" class="trm-toc-link" href="#回调函数"><span class="trm-toc-number">1.18.6.</span> <span class="trm-toc-text">回调函数</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="对象"><a rel="nofollow" class="trm-toc-link" href="#对象"><span class="trm-toc-number">1.19.</span> <span class="trm-toc-text">对象</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="对象的分类："><a rel="nofollow" class="trm-toc-link" href="#对象的分类："><span class="trm-toc-number">1.19.1.</span> <span class="trm-toc-text">对象的分类：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="in 运算符"><a rel="nofollow" class="trm-toc-link" href="#in-运算符"><span class="trm-toc-number">1.19.2.</span> <span class="trm-toc-text">in 运算符</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用 new 关键字创建一个对象"><a rel="nofollow" class="trm-toc-link" href="#使用-new-关键字创建一个对象"><span class="trm-toc-number">1.19.3.</span> <span class="trm-toc-text">使用 new 关键字创建一个对象</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用对象字面量来创建一个对象"><a rel="nofollow" class="trm-toc-link" href="#使用对象字面量来创建一个对象"><span class="trm-toc-number">1.19.4.</span> <span class="trm-toc-text">使用对象字面量来创建一个对象</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用工厂方法传建对象"><a rel="nofollow" class="trm-toc-link" href="#使用工厂方法传建对象"><span class="trm-toc-number">1.19.5.</span> <span class="trm-toc-text">使用工厂方法传建对象</span></a></li><li class="trm-toc-item trm-toc-level-3" title="枚举对象中的属性使用 for … in 语句"><a rel="nofollow" class="trm-toc-link" href="#枚举对象中的属性使用-for-…-in-语句"><span class="trm-toc-number">1.19.6.</span> <span class="trm-toc-text">枚举对象中的属性使用 for … in 语句</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="break | continue | return"><a rel="nofollow" class="trm-toc-link" href="#break-continue-return"><span class="trm-toc-number">1.20.</span> <span class="trm-toc-text">break | continue | return</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="break 关键字 — 会立即终止离他最近的那个循环语句"><a rel="nofollow" class="trm-toc-link" href="#break-关键字-—-会立即终止离他最近的那个循环语句"><span class="trm-toc-number">1.20.1.</span> <span class="trm-toc-text">break 关键字 — 会立即终止离他最近的那个循环语句</span></a></li><li class="trm-toc-item trm-toc-level-3" title="label — 标识当前的循环"><a rel="nofollow" class="trm-toc-link" href="#label-—-标识当前的循环"><span class="trm-toc-number">1.20.2.</span> <span class="trm-toc-text">label — 标识当前的循环</span></a></li><li class="trm-toc-item trm-toc-level-3" title="continue 关键字 — 用来跳过当次循环"><a rel="nofollow" class="trm-toc-link" href="#continue-关键字-—-用来跳过当次循环"><span class="trm-toc-number">1.20.3.</span> <span class="trm-toc-text">continue 关键字 — 用来跳过当次循环</span></a></li><li class="trm-toc-item trm-toc-level-3" title="return — 可以结束整个函数"><a rel="nofollow" class="trm-toc-link" href="#return-—-可以结束整个函数"><span class="trm-toc-number">1.20.4.</span> <span class="trm-toc-text">return — 可以结束整个函数</span></a></li></ol></li></ol></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn hidden-md" data-title="Toggle between single-column and double-column" onclick="asyncFun.switchSingleColumn()">
+            <i class="iconfont fas fa-arrows-alt-h"></i>
+        </div>
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+    <div class="trm-search-popup">
+        <div class="trm-search-wrapper">
+            <div class="form trm-search-form">
+                <div class="trm-search-input-icon">
+                    <i class="iconfont fas fa-search"></i>
+                </div>
+                <input class="trm-search-input" type="text" placeholder="Searching...">
+                <div class="trm-search-btn-close">
+                    <i class="iconfont fas fa-times"></i>
+                </div>
+            </div>
+            <div class="trm-search-result-container">
+                <div class="trm-search-empty">
+                    Please enter keywords to search
+                </div>
+            </div>
+            <div class="trm-search-footer">
+                <div class="trm-search-stats"></div>
+                <ul class="trm-search-commands">
+                    <li>
+                        <kbd class="command-palette-commands-key">
+                            <svg width="15" height="15" aria-label="Escape key" role="img">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.2">
+                                    <path
+                                        d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956">
+                                    </path>
+                                </g>
+                            </svg>
+                        </kbd>
+                        <span class="command-palette-Label">to close</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+        
+<script src="https://unpkg.com/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+
+        <script src="/js/plugins/local_search.js?v=2.2.3"></script>
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+			<script src="/js/plugins/danmu.js?v=2.2.3"></script>
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="zh-Hans,en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="字符串的相关的方法 length — 获取字符串的长度 charAt() — 可以返回字符串中指定位置的字符 charCodeAt() — 根据索引获取指定的字符编码 String.fromCharCode() — 根据字符编码获取字符 示例    1234str &#x3D; &#x27;中Hello Atguigu&#x27;result &#x3D; str.charAt(5) &#x2F;&#x2F; oresult &#x3D; str">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS-工具函数和方法">
+<meta property="og:url" content="http://example.com/en/2024/10/31/JS/JS-%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="字符串的相关的方法 length — 获取字符串的长度 charAt() — 可以返回字符串中指定位置的字符 charCodeAt() — 根据索引获取指定的字符编码 String.fromCharCode() — 根据字符编码获取字符 示例    1234str &#x3D; &#x27;中Hello Atguigu&#x27;result &#x3D; str.charAt(5) &#x2F;&#x2F; oresult &#x3D; str">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-31T03:05:32.013Z">
+<meta property="article:modified_time" content="2024-11-05T06:18:59.706Z">
+<meta property="article:author" content="UUOVO">
+<meta property="article:tag" content="字符串">
+<meta property="article:tag" content="工具函数">
+<meta property="article:tag" content="JSON">
+<meta property="article:tag" content="Math">
+<meta property="article:tag" content="eval()">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="css,Date,eval,JSON">
+
+
+<title >JS-工具函数和方法</title>
+
+<!-- Favicon -->
+
+    <link href='/img/sitelogo16.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/sitelogo32.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/apple-touch-icon.png?v=2.2.3' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-05 14:18:59"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/sitelogo32.svg">
+    
+    
+        <div class="trm-logo-text">
+            UU<span>OVO</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/tags/" target="">
+                            标签
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" target="">
+                            微信小程序
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%B7%A5%E5%85%B7/" target="">
+                            前端工程化工具
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/React/" target="">
+                            React
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/VUE/" target="">
+                            VUE
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/TypeScript/" target="">
+                            TypeScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JavaScript/" target="">
+                            JavaScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/CSS&HTML/" target="">
+                            CSS&HTML
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="">
+                            网络与数据结构
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/uniapp/" target="">
+                            uniapp
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ThreeJS/" target="">
+                            ThreeJS
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/Node/" target="">
+                            Node
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JQuery/" target="">
+                            JQuery
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ES6/" target="">
+                            ES6
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/AJAX/" target="">
+                            AJAX
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/gallery/" target="">
+                    相册
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/gallery/wallpaper/" target="">
+                            相册详情页
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/about/" target="">
+                    关于
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/links/" target="">
+                            友链
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+    
+    <div id="trm-search-btn" class="trm-search-btn">
+        <i class="iconfont fas fa-search"></i>
+    </div>
+     
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            JS-工具函数和方法
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        en
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar1.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/UUOVO" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/ovouu" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                City:
+            </div>
+            <div class="trm-label trm-label-light">
+                City
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                Age:
+            </div>
+            <div class="trm-label trm-label-light">
+                Age
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:1370203877@qq.com" class="trm-btn">
+            Contact Me
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            10/31
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            11:05
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            UUOVO
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="字符串的相关的方法"><a href="#字符串的相关的方法" class="headerlink" title="字符串的相关的方法"></a>字符串的相关的方法</h2><ul>
+<li>length — 获取字符串的长度</li>
+<li>charAt() — 可以返回字符串中指定位置的字符</li>
+<li>charCodeAt() — 根据索引获取指定的字符编码</li>
+<li>String.fromCharCode() — 根据字符编码获取字符<ul>
+<li>示例</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">str = <span class="string">&#x27;中Hello Atguigu&#x27;</span></span><br><span class="line">result = str.<span class="title function_">charAt</span>(<span class="number">5</span>) <span class="comment">// o</span></span><br><span class="line">result = str.<span class="title function_">charCodeAt</span>(<span class="number">1</span>) <span class="comment">// 72</span></span><br><span class="line">result = <span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(<span class="number">0x2692</span>) <span class="comment">// &#x27;⚒&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>concat() — 可以用来连接两个或多个字符串，参数是字符串，用逗号分隔</li>
+<li>indexOf() 和 lastIndexOf()<ul>
+<li>从一个字符串中检索是否含有指定内容</li>
+<li>如果字符串中含有该内容，则会返回其第一次出现的索引，没有找到则返回-1。</li>
+<li>可以指定一个第二个参数，来表示开始查找的位置</li>
+<li>indexOf()是从前向后找</li>
+<li>lastIndexOf()是从后向前找</li>
+</ul>
+</li>
+<li>slice()<ul>
+<li>从一个字符串中截取指定的内容，并将截取到内容返回，不会影响原字符串</li>
+<li>参数：<ul>
+<li>第一个：截取开始的位置（包括开始）</li>
+<li>第二个：截取结束的位置（不包括结束）<ul>
+<li>可以省略第二个参数，如果省略则一直截取到最后</li>
+</ul>
+</li>
+<li>可以传负数，如果是负数则从后往前数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>substr()<ul>
+<li>和 slice()基本一致，不同的是它第二个参数不是索引，而是截取的数量</li>
+</ul>
+</li>
+<li>substring()<ul>
+<li>和 slice()基本一致，不同的是它不能接受负值作为参数，如果设置一个负值，则会自动修正为 0，</li>
+<li>substring()中如果第二个参数小于第一个，自动调整位置</li>
+</ul>
+</li>
+<li>toLowerCase() — 将字符串转换为小写并返回</li>
+<li>toUpperCase() — 将字符串转换为大写并返回</li>
+</ul>
+<h2 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h2><blockquote>
+<p>日期的对象，在 JS 中通过 Date 对象来表示一个时间</p>
+</blockquote>
+<h3 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h3><ul>
+<li>创建一个当前的时间对象,使用构造函数<ul>
+<li>语法：var d &#x3D; new Date();</li>
+</ul>
+</li>
+<li>创建一个指定的时间对象，需要传递一个表示时间的字符串作为参数<ul>
+<li>语法：var d &#x3D; new Date(“月&#x2F;日&#x2F;年 时:分:秒”);</li>
+</ul>
+</li>
+</ul>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><ul>
+<li>getDate() — 当前日期对象是几日（1-31）</li>
+<li>getDay() — 返回当前日期对象时周几（0-6）<ul>
+<li>0 表示周日</li>
+<li>1 表示周一 ，以此类推</li>
+</ul>
+</li>
+<li>getMonth() — 返回当前日期对象的月份（0-11）<ul>
+<li>0 表示 一月，以此类推</li>
+</ul>
+</li>
+<li>getFullYear() — 获取当前日期对象的年份</li>
+<li>getHours() — 返回 Date 对象的小时 (0 ~ 23)。</li>
+<li>getMinutes() — 返回 Date 对象的分钟 (0 ~ 59)。</li>
+<li>getSeconds() — 返回 Date 对象的秒数 (0 ~ 59)。</li>
+<li>getMilliseconds() — 返回 Date 对象的毫秒(0 ~ 999)。</li>
+<li>getTime() — 返回当前日期对象的时间戳<ul>
+<li>时间戳，指的是从格林威治标准时间的 1970 年月 1 日 0 时 0 分 0 秒，到现在时间的毫秒数</li>
+<li>计算机底层保存时间都是以时间戳的形式保存的。</li>
+</ul>
+</li>
+<li>Date.now() — 可以获取当前代码执行时的时间戳</li>
+</ul>
+<h2 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h2><blockquote>
+<p>Math 属于一个工具类，它不需要我们创建对象，它里边封装了属性运算相关的常量和方法</p>
+</blockquote>
+<ul>
+<li>Math.PI — 常量，圆周率</li>
+<li>Math.abs() — 绝对值运算</li>
+<li>Math.ceil() — 向上取整，小数位只有有值就自动进 1</li>
+<li>Math.floor() — 向下取整，小数部分会被舍掉</li>
+<li>Math.round() — 四舍五入取整</li>
+<li>Math.random() — 生成一个 0-1 之间的随机数<ul>
+<li>生成一个 x-y 之间的随机数: Math.round(Math.random()*(y-x)+x);</li>
+<li>生成一个 0-x 之间的随机数: Math.round(Math.random()*x);</li>
+</ul>
+</li>
+<li>Math.pow(x,y) — 求 x 的 y 次幂</li>
+<li>Math.sqrt() — 对一个数进行开方</li>
+<li>Math.max() — 求多个数中最大值</li>
+<li>Math.min() — 求多个数中的最小值</li>
+</ul>
+<h2 id="包装类-–-将基本数据类型的数据转换为对象（不建议）"><a href="#包装类-–-将基本数据类型的数据转换为对象（不建议）" class="headerlink" title="包装类 – 将基本数据类型的数据转换为对象（不建议）"></a>包装类 – 将基本数据类型的数据转换为对象（不建议）</h2><blockquote>
+<p>在 JS 中为我们提供了三个包装类：String() Boolean() Number()</p>
+</blockquote>
+<ul>
+<li>示例：const num &#x3D; new Number()</li>
+<li>当我们去操作一个基本数据类型的属性和方法时，解析器会临时将其转换为对应的包装类，然后再去操作属性和方法，操作完成以后再将这个临时对象进行销毁。</li>
+<li>方法和属性只能添加给对象，不能添加给基本数据类型，不会报错结果为 undefined</li>
+</ul>
+<h2 id="JSON-JavaScript-Object-Notation-JS-对象表示法"><a href="#JSON-JavaScript-Object-Notation-JS-对象表示法" class="headerlink" title="JSON(JavaScript Object Notation,JS 对象表示法)"></a>JSON(JavaScript Object Notation,JS 对象表示法)</h2><blockquote>
+<p>一个特殊格式的字符串，可以被任意的语言所识别，并且可以转换为任意语言中的对象，在开发中主要用来数据的交互</p>
+</blockquote>
+<ul>
+<li>如果需要兼容 IE7 及以下的 JSON 操作，则可以通过引入一个外部的 js 文件来处理</li>
+<li>JS 中的对象只有 JS 自己认识，其他的语言都不认识</li>
+<li>JSON 和 JS 对象的格式一样，只不过 JSON 字符串中的属性名必须加双引号,其他的和 JS 语法一致</li>
+<li>JSON 分类：<ol>
+<li>对象 {}</li>
+<li>数组 []</li>
+</ol>
+</li>
+<li>JSON 中允许的值：<ol>
+<li>字符串</li>
+<li>数值</li>
+<li>布尔值</li>
+<li>null</li>
+<li>对象</li>
+<li>数组</li>
+</ol>
+</li>
+</ul>
+<h3 id="JSON-字符串与-JS-互转"><a href="#JSON-字符串与-JS-互转" class="headerlink" title="JSON 字符串与 JS 互转"></a>JSON 字符串与 JS 互转</h3><ul>
+<li>JSON.parse()<ul>
+<li>可以将以 JSON 字符串转换为 js 对象</li>
+<li>它需要一个 JSON 字符串作为参数，会将该字符串转换为 JS 对象并返回</li>
+</ul>
+</li>
+<li>JSON.stringify()<ul>
+<li>可以将一个 JS 对象转换为 JSON 字符串</li>
+<li>需要一个 js 对象作为参数，会返回一个 JSON 字符串</li>
+</ul>
+</li>
+<li>JSON 这个对象在 IE7 及以下的浏览器中不支持，所以在这些浏览器中调用时会报错</li>
+</ul>
+<h3 id="eval"><a href="#eval" class="headerlink" title="eval()"></a>eval()</h3><ul>
+<li>这个函数可以用来执行一段字符串形式的 JS 代码，并将执行结果返回</li>
+<li>如果使用 eval()执行的字符串中含有{},它会将{}当成是代码块</li>
+<li>如果不希望将其当成代码块解析，则需要在字符串前后各加一个()</li>
+<li>eval()这个函数的功能很强大，可以直接执行一个字符串中的 js 代码，</li>
+<li>但是在开发中尽量不要使用，首先它的执行性能比较差，然后它还具有安全隐患</li>
+<li>示例：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var str = &#x27;&#123;&quot;name&quot;:&quot;孙悟空&quot;,&quot;age&quot;:18,&quot;gender&quot;:&quot;男&quot;&#125;&#x27;;</span><br><span class="line">var obj = eval(&quot;(&quot;+str+&quot;)&quot;);</span><br></pre></td></tr></table></figure>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/31/JS/JS-DOM%E5%92%8C%E4%BA%8B%E4%BB%B6/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <div class="trm-cover-img" data-random-img></div>
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/JavaScript/">
+                    JavaScript
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/31/JS/JS-DOM%E5%92%8C%E4%BA%8B%E4%BB%B6/" class="trm-anima-link">
+                    JS-DOM和事件
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/31</li>
+                <li>11:05</li>
+                
+                    <li>5.1k</li>
+                
+                
+                    <li>19</li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/10/31/JS/JS-%E6%95%B0%E7%BB%84/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <div class="trm-cover-img" data-random-img></div>
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/JavaScript/">
+                    JavaScript
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/10/31/JS/JS-%E6%95%B0%E7%BB%84/" class="trm-anima-link">
+                    JS-数组
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/31</li>
+                <li>11:05</li>
+                
+                    <li>1.7k</li>
+                
+                
+                    <li>6</li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+    
+        <div class="trm-footer-item blog-run-long"></div>
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="字符串的相关的方法"><a rel="nofollow" class="trm-toc-link" href="#字符串的相关的方法"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">字符串的相关的方法</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Date"><a rel="nofollow" class="trm-toc-link" href="#Date"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">Date</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="创建对象"><a rel="nofollow" class="trm-toc-link" href="#创建对象"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">创建对象</span></a></li><li class="trm-toc-item trm-toc-level-3" title="常用方法"><a rel="nofollow" class="trm-toc-link" href="#常用方法"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">常用方法</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="Math"><a rel="nofollow" class="trm-toc-link" href="#Math"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">Math</span></a></li><li class="trm-toc-item trm-toc-level-2" title="包装类 – 将基本数据类型的数据转换为对象（不建议）"><a rel="nofollow" class="trm-toc-link" href="#包装类-–-将基本数据类型的数据转换为对象（不建议）"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">包装类 – 将基本数据类型的数据转换为对象（不建议）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="JSON(JavaScript Object Notation,JS 对象表示法)"><a rel="nofollow" class="trm-toc-link" href="#JSON-JavaScript-Object-Notation-JS-对象表示法"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">JSON(JavaScript Object Notation,JS 对象表示法)</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="JSON 字符串与 JS 互转"><a rel="nofollow" class="trm-toc-link" href="#JSON-字符串与-JS-互转"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">JSON 字符串与 JS 互转</span></a></li><li class="trm-toc-item trm-toc-level-3" title="eval()"><a rel="nofollow" class="trm-toc-link" href="#eval"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">eval()</span></a></li></ol></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn hidden-md" data-title="Toggle between single-column and double-column" onclick="asyncFun.switchSingleColumn()">
+            <i class="iconfont fas fa-arrows-alt-h"></i>
+        </div>
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+    <div class="trm-search-popup">
+        <div class="trm-search-wrapper">
+            <div class="form trm-search-form">
+                <div class="trm-search-input-icon">
+                    <i class="iconfont fas fa-search"></i>
+                </div>
+                <input class="trm-search-input" type="text" placeholder="Searching...">
+                <div class="trm-search-btn-close">
+                    <i class="iconfont fas fa-times"></i>
+                </div>
+            </div>
+            <div class="trm-search-result-container">
+                <div class="trm-search-empty">
+                    Please enter keywords to search
+                </div>
+            </div>
+            <div class="trm-search-footer">
+                <div class="trm-search-stats"></div>
+                <ul class="trm-search-commands">
+                    <li>
+                        <kbd class="command-palette-commands-key">
+                            <svg width="15" height="15" aria-label="Escape key" role="img">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.2">
+                                    <path
+                                        d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956">
+                                    </path>
+                                </g>
+                            </svg>
+                        </kbd>
+                        <span class="command-palette-Label">to close</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+        
+<script src="https://unpkg.com/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+
+        <script src="/js/plugins/local_search.js?v=2.2.3"></script>
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+			<script src="/js/plugins/danmu.js?v=2.2.3"></script>
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>
