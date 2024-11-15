@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="函数 函数类型：创建有名字的函数和匿名函数 具名函数：function add(x,y)&#123;return x+y&#125; 匿名函数：const ada &#x3D; function(x,y)&#123;return x+y&#125;   完整的函数类型 定义一个变量：(形参：参数类型) &#x3D;&gt; 返回类型 &#x3D; 函数(形参：参数类型)：返回类型&#123;&#125;  示例：let add">
+<meta name="description" content=".key {         color: #483D8B;       font-weight: 700;     }     .en {         color: orangered;         font-weight: 600;     }   函数 函数类型：创建有名字的函数和匿名函数 具名函数：function add(x,y) { return x+y } 匿名函数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TS-函数和this">
 <meta property="og:url" content="http://example.com/2024/11/01/TS/%E5%9B%9B%E3%80%81%E5%87%BD%E6%95%B0%E5%92%8Cthis/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="函数 函数类型：创建有名字的函数和匿名函数 具名函数：function add(x,y)&#123;return x+y&#125; 匿名函数：const ada &#x3D; function(x,y)&#123;return x+y&#125;   完整的函数类型 定义一个变量：(形参：参数类型) &#x3D;&gt; 返回类型 &#x3D; 函数(形参：参数类型)：返回类型&#123;&#125;  示例：let add">
+<meta property="og:description" content=".key {         color: #483D8B;       font-weight: 700;     }     .en {         color: orangered;         font-weight: 600;     }   函数 函数类型：创建有名字的函数和匿名函数 具名函数：function add(x,y) { return x+y } 匿名函数">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-11-01T03:40:57.357Z">
-<meta property="article:modified_time" content="2024-11-05T03:56:09.190Z">
+<meta property="article:modified_time" content="2024-11-12T09:24:20.834Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="TypeScript">
 <meta name="twitter:card" content="summary">
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-05 11:56:09"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-12 17:24:20"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -526,58 +526,58 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><ul>
+    <style>
+    .key {
+        color: #483D8B;
+      font-weight: 700;
+    }
+    .en {
+        color: orangered;
+        font-weight: 600;
+    }
+</style>
+
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><ul>
 <li><h3 id="函数类型：创建有名字的函数和匿名函数"><a href="#函数类型：创建有名字的函数和匿名函数" class="headerlink" title="函数类型：创建有名字的函数和匿名函数"></a>函数类型：创建有名字的函数和匿名函数</h3><ul>
-<li>具名函数：<code>function add(x,y)&#123;return x+y&#125;</code></li>
-<li>匿名函数：<code>const ada = function(x,y)&#123;return x+y&#125;</code></li>
+<li>具名函数：<span class="en">function add(x,y) { return x+y }</span></li>
+<li>匿名函数：<span class="en">const ada &#x3D; function(x,y){ return x+y }</span></li>
 </ul>
 </li>
 <li><h3 id="完整的函数类型"><a href="#完整的函数类型" class="headerlink" title="完整的函数类型"></a>完整的函数类型</h3><ul>
-<li>定义一个变量：<code>(形参：参数类型) =&gt; 返回类型 = 函数(形参：参数类型)：返回类型&#123;&#125; </code></li>
-<li>示例：let add: (x:number,y:number) &#x3D;&gt; number &#x3D; function(x:number,y:number):number{return x+y}</li>
+<li>定义一个变量：<span class="key">(形参：参数类型) &#x3D;&gt; 返回类型 &#x3D; 函数(形参：参数类型)：返回类型{}</span></li>
+<li>示例：<span class="en">let add: (x:number,y:number) &#x3D;&gt; number &#x3D;&#x3D; function(x:number,y:number):number{return x+y}</span></li>
 </ul>
 </li>
 <li><h3 id="推断类型-ts编译器会自动识别出类型"><a href="#推断类型-ts编译器会自动识别出类型" class="headerlink" title="推断类型: ts编译器会自动识别出类型"></a>推断类型: ts编译器会自动识别出类型</h3></li>
 <li><h3 id="可选和默认参数"><a href="#可选和默认参数" class="headerlink" title="可选和默认参数"></a>可选和默认参数</h3><ul>
-<li>ts规定，<code>形参个数和传参个数要一致</code></li>
-<li><code>可选必须放在必选后面</code>，没传默认为undefined</li>
-<li>没传或传undefined时叫默认初始值。<code>带默认值的参数为可选，位置随意</code></li>
-<li><code>可选参数与末尾的默认参数共享参数类型</code></li>
+<li>ts规定，<span class="key">形参个数和传参个数要一致</span></li>
+<li><span class="key">可选必须放在必选后面</span>，没传默认为undefined</li>
+<li>没传或传undefined时叫默认初始值。<span class="key">带默认值的参数为可选，位置随意</span></li>
+<li><span class="key">可选参数与末尾的默认参数共享参数类型</span></li>
 </ul>
 </li>
 <li><h3 id="剩余参数：个数不限的可选参数"><a href="#剩余参数：个数不限的可选参数" class="headerlink" title="剩余参数：个数不限的可选参数"></a>剩余参数：个数不限的可选参数</h3></li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">buildName</span>(<span class="params">firstName: string, ...restOfName: string[]</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> firstName + <span class="string">&quot; &quot;</span> + restOfName.<span class="title function_">join</span>(<span class="string">&quot; &quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">buildName</span>(<span class="params">firstName: string, ...restOfName: string[]</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> firstName + <span class="string">&quot; &quot;</span> + restOfName.<span class="title function_">join</span>(<span class="string">&quot; &quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><ul>
-<li><h3 id="call方法"><a href="#call方法" class="headerlink" title="call方法"></a>call方法</h3></li>
-</ul>
-<ol>
+<h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><h3 id="call方法"><a href="#call方法" class="headerlink" title="call方法"></a>call方法</h3><ol>
 <li>从参数1到末尾创建参数列表</li>
-<li>call方法的参数一是this值，其余的参数是调用函数的形参<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hello</span>(<span class="params">thing</span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span> + <span class="string">&quot; says hello &quot;</span> + thing)</span><br><span class="line">&#125;</span><br><span class="line">hello.<span class="title function_">call</span>(<span class="string">&quot;Yehuda&quot;</span>, <span class="string">&quot;world&quot;</span>) <span class="comment">// Yehuda says hello world</span></span><br></pre></td></tr></table></figure></li>
+<li>call方法的参数一是this值，其余的参数是调用函数的形参<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hello</span>(<span class="params">thing</span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span> + <span class="string">&quot; says hello &quot;</span> + thing)</span><br><span class="line">&#125;</span><br><span class="line">hello.<span class="title function_">call</span>(<span class="string">&quot;Yehuda&quot;</span>, <span class="string">&quot;world&quot;</span>) <span class="comment">// Yehuda says hello world</span></span><br></pre></td></tr></table></figure></li>
 </ol>
-<ul>
-<li><h3 id="this和箭头函数"><a href="#this和箭头函数" class="headerlink" title="this和箭头函数"></a>this和箭头函数</h3></li>
-<li><p><code>在js中，顶级的非方法式调用会将this视为window</code></p>
-</li>
-<li><p>注意：<code>在严格模式下，this为undefined而不是window</code></p>
-</li>
-<li><p>解决方法：<code>使用箭头函数</code>，在函数被返回时就绑好正确的this，箭头函数能保存函数创建时的 this值，而不是调用时的值</p>
-</li>
-<li><p>ts中设置–noImplicitThis标记。它会指出里的this的类型</p>
-</li>
-<li><h3 id="this参数：是假的参数-形式：function-f-this-void"><a href="#this参数：是假的参数-形式：function-f-this-void" class="headerlink" title="this参数：是假的参数(形式：function f(this: void) {})"></a>this参数：是假的参数(形式：function f(this: void) {})</h3></li>
-<li><h3 id="回调函数里的this参数"><a href="#回调函数里的this参数" class="headerlink" title="回调函数里的this参数"></a>回调函数里的this参数</h3></li>
-<li><p>显式指定this类型，函数要带有this:void。但只能这个实例里的这个函数可用。</p>
-</li>
-<li><p>用箭头函数，它不会捕获this，实例里的this都指向一个。但每个对象都会创建一次。</p>
-</li>
-<li><h3 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h3></li>
+<h3 id="this和箭头函数"><a href="#this和箭头函数" class="headerlink" title="this和箭头函数"></a>this和箭头函数</h3><ul>
+<li><span class="key">在js中，顶级的非方法式调用会将this视为window</span></li>
+<li>注意：<span class="key">在严格模式下，this为undefined而不是window</span></li>
+<li>解决方法：<span class="key">使用箭头函数</span>，在函数被返回时就绑好正确的this，箭头函数能保存函数创建时的 this值，而不是调用时的值</li>
+<li>ts中设置–noImplicitThis标记。它会指出里的this的类型</li>
 </ul>
-<blockquote>
-<p>同一个函数提供多个函数类型定义来进行函数重载</p>
-</blockquote>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> suits = [<span class="string">&quot;hearts&quot;</span>, <span class="string">&quot;spades&quot;</span>, <span class="string">&quot;clubs&quot;</span>, <span class="string">&quot;diamonds&quot;</span>]</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">pickCard</span>(<span class="params"><span class="attr">x</span>: &#123;suit: <span class="built_in">string</span>; card: <span class="built_in">number</span>; &#125;[]</span>): <span class="built_in">number</span> <span class="comment">// 接收对象</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">pickCard</span>(<span class="params"><span class="attr">x</span>: <span class="built_in">number</span></span>): &#123;<span class="attr">suit</span>: <span class="built_in">string</span>; <span class="attr">card</span>: <span class="built_in">number</span>;&#125; <span class="comment">// 接收数字</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">pickCard</span>(<span class="params">x</span>): <span class="built_in">any</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">typeof</span> x == <span class="string">&quot;object&quot;</span>) &#123; <span class="comment">// 传对象进入这个判断</span></span><br><span class="line">			<span class="keyword">let</span> pickedCard = <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>() * x.<span class="property">length</span>)</span><br><span class="line">			<span class="keyword">return</span> pickedCard</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> x == <span class="string">&quot;number&quot;</span>) &#123; <span class="comment">// 传数字进入这个判断</span></span><br><span class="line">			<span class="keyword">let</span> pickedSuit = <span class="title class_">Math</span>.<span class="title function_">floor</span>(x / <span class="number">13</span>)</span><br><span class="line">			<span class="keyword">return</span> &#123; <span class="attr">suit</span>: suits[pickedSuit], <span class="attr">card</span>: x % <span class="number">13</span> &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> myDeck = [&#123;<span class="attr">suit</span>: <span class="string">&quot;diamonds&quot;</span>, <span class="attr">card</span>: <span class="number">2</span>&#125;, &#123;<span class="attr">suit</span>: <span class="string">&quot;spades&quot;</span>, <span class="attr">card</span>: <span class="number">10</span>&#125;, &#123;<span class="attr">suit</span>: <span class="string">&quot;hearts&quot;</span>, <span class="attr">card</span>: <span class="number">4</span>&#125;] <span class="comment">// 定义一组数据</span></span><br><span class="line"><span class="keyword">let</span> pickedCard1 = myDeck[<span class="title function_">pickCard</span>(myDeck)] <span class="comment">// 传值</span></span><br><span class="line"><span class="title function_">alert</span>(<span class="string">&quot;card: &quot;</span> + pickedCard1.<span class="property">card</span> + <span class="string">&quot; of &quot;</span> + pickedCard1.<span class="property">suit</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> pickedCard2 = <span class="title function_">pickCard</span>(<span class="number">15</span>)</span><br><span class="line"> <span class="title function_">alert</span>(<span class="string">&quot;card: &quot;</span> + pickedCard2.<span class="property">card</span> + <span class="string">&quot; of &quot;</span> + pickedCard2.<span class="property">suit</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="this参数：是假的参数-形式：function-f-this-void"><a href="#this参数：是假的参数-形式：function-f-this-void" class="headerlink" title="this参数：是假的参数(形式：function f(this: void) {})"></a>this参数：是假的参数(形式：function f(this: void) {})</h3><h3 id="回调函数里的this参数"><a href="#回调函数里的this参数" class="headerlink" title="回调函数里的this参数"></a>回调函数里的this参数</h3><ul>
+<li>显式指定this类型，函数要带有this:void。但只能这个实例里的这个函数可用。</li>
+<li>用箭头函数，它不会捕获this，实例里的this都指向一个。但每个对象都会创建一次。</li>
+</ul>
+<h3 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h3><ul>
+<li>同一个函数提供多个函数类型定义来进行函数重载<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> suits = [<span class="string">&quot;hearts&quot;</span>, <span class="string">&quot;spades&quot;</span>, <span class="string">&quot;clubs&quot;</span>, <span class="string">&quot;diamonds&quot;</span>]</span><br><span class="line"><span class="comment">// 接收对象数组,并返回数字类型</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">pickCard</span>(<span class="params"><span class="attr">x</span>: &#123;suit: <span class="built_in">string</span>; card: <span class="built_in">number</span>&#125;[]</span>): <span class="built_in">number</span></span><br><span class="line"><span class="comment">// 接收数字，并返回一个对象类型</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">pickCard</span>(<span class="params"><span class="attr">x</span>: <span class="built_in">number</span></span>): &#123;<span class="attr">suit</span>: <span class="built_in">string</span>; <span class="attr">card</span>: <span class="built_in">number</span>&#125; </span><br><span class="line"><span class="keyword">function</span> <span class="title function_">pickCard</span>(<span class="params">x</span>): <span class="built_in">any</span> &#123;</span><br><span class="line">	<span class="comment">// typeof检测非undefined，string，number，boolean之外，都只会返回object</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">typeof</span> x == <span class="string">&quot;object&quot;</span>) &#123; <span class="comment">// 传对象数组进入这个判断</span></span><br><span class="line">		<span class="keyword">let</span> pickedCard = <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>() * x.<span class="property">length</span>)</span><br><span class="line">		<span class="keyword">return</span> pickedCard</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> x == <span class="string">&quot;number&quot;</span>) &#123; <span class="comment">// 传数字进入这个判断</span></span><br><span class="line">		<span class="keyword">let</span> pickedSuit = <span class="title class_">Math</span>.<span class="title function_">floor</span>(x / <span class="number">13</span>)</span><br><span class="line">		<span class="keyword">return</span> &#123; <span class="attr">suit</span>: suits[pickedSuit], <span class="attr">card</span>: x % <span class="number">13</span> &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> myDeck = [&#123;</span><br><span class="line">	<span class="attr">suit</span>: <span class="string">&quot;diamonds&quot;</span>, <span class="attr">card</span>: <span class="number">2</span></span><br><span class="line">	&#125;, &#123;</span><br><span class="line">	<span class="attr">suit</span>: <span class="string">&quot;spades&quot;</span>, <span class="attr">card</span>: <span class="number">10</span></span><br><span class="line">	&#125;, &#123;</span><br><span class="line">	<span class="attr">suit</span>: <span class="string">&quot;hearts&quot;</span>, <span class="attr">card</span>: <span class="number">4</span>&#125;] <span class="comment">// 定义一组数据</span></span><br><span class="line"><span class="keyword">let</span> pickedCard1 = myDeck[<span class="title function_">pickCard</span>(myDeck)] <span class="comment">// 传值</span></span><br><span class="line"><span class="keyword">let</span> pickedCard2 = <span class="title function_">pickCard</span>(<span class="number">15</span>)</span><br></pre></td></tr></table></figure></li>
+</ul>
+
 </article>
     
     
@@ -593,35 +593,20 @@
     </div>
     
         <div class="col-lg-6">
-    <div class="trm-blog-card trm-scroll-animation">
-        <a href="/2024/11/01/TS/%E4%BA%94%E3%80%81%E6%B3%9B%E5%9E%8B/" class="trm-cover-frame trm-anima-link">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
             
-            
-                <div class="trm-cover-img" data-random-img></div>
-            
-        </a>
-        
-        <div class="trm-card-descr">
-            <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/TypeScript/">
-                    TypeScript
-                </a>
-            </div>
-            <h5>
-                <a href="/2024/11/01/TS/%E4%BA%94%E3%80%81%E6%B3%9B%E5%9E%8B/" class="trm-anima-link">
-                    TS-泛型 &lt;&gt;
-                </a>
-            </h5>
-            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/TS/%E4%BA%94%E3%80%81%E6%B3%9B%E5%9E%8B/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">TS-泛型 &lt;&gt;</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
                 <li>24/11/01</li>
                 <li>11:40</li>
-                
-                    <li>583</li>
-                
-                
-                    <li>2</li>
-                
+                <li>TypeScript</li>
             </ul>
         </div>
     </div>
@@ -629,35 +614,20 @@
     
     
         <div class="col-lg-6">
-    <div class="trm-blog-card trm-scroll-animation">
-        <a href="/2024/11/01/TS/%E5%8D%81%E4%B8%80%E3%80%81%E6%A8%A1%E5%9D%97%E8%A7%A3%E6%9E%90/" class="trm-cover-frame trm-anima-link">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
             
-            
-                <div class="trm-cover-img" data-random-img></div>
-            
-        </a>
-        
-        <div class="trm-card-descr">
-            <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/TypeScript/">
-                    TypeScript
-                </a>
-            </div>
-            <h5>
-                <a href="/2024/11/01/TS/%E5%8D%81%E4%B8%80%E3%80%81%E6%A8%A1%E5%9D%97%E8%A7%A3%E6%9E%90/" class="trm-anima-link">
-                    TS-模块解析
-                </a>
-            </h5>
-            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/TS/%E5%8D%81%E4%B8%80%E3%80%81%E6%A8%A1%E5%9D%97%E8%A7%A3%E6%9E%90/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">TS-模块解析</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
                 <li>24/11/01</li>
                 <li>11:40</li>
-                
-                    <li>857</li>
-                
-                
-                    <li>3</li>
-                
+                <li>TypeScript</li>
             </ul>
         </div>
     </div>

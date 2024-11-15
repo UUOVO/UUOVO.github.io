@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="类不能与其它类或变量合并   针对同一个名字的两个独立声明合并为单一声明。  合并后的声明同时拥有原先两个声明的特性。  任何数量的声明都可被合并；不局限于两个声明  大纲 基础概念 合并接口 合并命名空间 命名空间与类和函数和枚举类型合并  基础概念 ts中的声明会创建三种实体之一：命名空间，类型或值。  创建命名空间的声明: 新建一个命名空间，它包含了用（.）符号来访问使用的名字 创建类型的">
+<meta name="description" content="类不能与其它类或变量合并 针对同一个名字的两个独立声明合并为单一声明。  合并后的声明同时拥有原先两个声明的特性。  任何数量的声明都可被合并；不局限于两个声明  基础概念 ts中的声明会创建三种实体之一：命名空间，类型或值。  创建命名空间的声明: 新建一个命名空间，它包含了用（.）符号来访问使用的名字 创建类型的声明是：用声明的模型创建一个类型并绑定到给定的名字上 创建值的声明: 创建在Ja">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TS-声明合并">
 <meta property="og:url" content="http://example.com/en/2024/11/01/TS/%E5%8D%81%E4%BA%8C%E3%80%81%E5%A3%B0%E6%98%8E%E5%90%88%E5%B9%B6/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="类不能与其它类或变量合并   针对同一个名字的两个独立声明合并为单一声明。  合并后的声明同时拥有原先两个声明的特性。  任何数量的声明都可被合并；不局限于两个声明  大纲 基础概念 合并接口 合并命名空间 命名空间与类和函数和枚举类型合并  基础概念 ts中的声明会创建三种实体之一：命名空间，类型或值。  创建命名空间的声明: 新建一个命名空间，它包含了用（.）符号来访问使用的名字 创建类型的">
+<meta property="og:description" content="类不能与其它类或变量合并 针对同一个名字的两个独立声明合并为单一声明。  合并后的声明同时拥有原先两个声明的特性。  任何数量的声明都可被合并；不局限于两个声明  基础概念 ts中的声明会创建三种实体之一：命名空间，类型或值。  创建命名空间的声明: 新建一个命名空间，它包含了用（.）符号来访问使用的名字 创建类型的声明是：用声明的模型创建一个类型并绑定到给定的名字上 创建值的声明: 创建在Ja">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-11-01T03:40:57.324Z">
-<meta property="article:modified_time" content="2024-11-05T03:56:09.241Z">
+<meta property="article:modified_time" content="2024-11-13T07:58:39.256Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="TypeScript">
 <meta name="twitter:card" content="summary">
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-05 11:56:09"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-13 15:58:39"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -526,32 +526,26 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <blockquote>
-<p>类不能与其它类或变量合并</p>
-</blockquote>
-<ul>
+    <ul>
+<li>类不能与其它类或变量合并</li>
 <li>针对同一个名字的两个独立声明合并为单一声明。 </li>
 <li>合并后的声明同时拥有原先两个声明的特性。 </li>
 <li>任何数量的声明都可被合并；不局限于两个声明</li>
 </ul>
-<h2 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h2><ul>
-<li><a href="ref1">基础概念</a></li>
-<li><a href="ref2">合并接口</a></li>
-<li><a href="ref3">合并命名空间</a></li>
-<li><a href="ref4">命名空间与类和函数和枚举类型合并</a></li>
-</ul>
-<h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a><p id="ref1">基础概念</p></h2><ul>
+<h3 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h3><ul>
 <li>ts中的声明会创建三种实体之一：命名空间，类型或值。 </li>
 <li>创建命名空间的声明: 新建一个命名空间，它包含了用（.）符号来访问使用的名字</li>
 <li>创建类型的声明是：用声明的模型创建一个类型并绑定到给定的名字上</li>
 <li>创建值的声明: 创建在JavaScript输出中看到的值</li>
 </ul>
-<h2 id="合并接口-把双方的成员放到一个同名的接口里"><a href="#合并接口-把双方的成员放到一个同名的接口里" class="headerlink" title="合并接口: 把双方的成员放到一个同名的接口里"></a><p id="ref2">合并接口: 把双方的成员放到一个同名的接口里</p></h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">接口的非函数的成员应该是唯一的(就是上面接口有一个a ,下面的接口最好不要有a),且类型要相同</span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Box</span> &#123;</span><br><span class="line">  <span class="attr">a</span>: <span class="built_in">string</span>,</span><br><span class="line">  b :<span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Box</span> &#123;</span><br><span class="line">  c : <span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> box : <span class="title class_">Box</span> = &#123;a : <span class="string">&quot;d&quot;</span> , b : <span class="string">&quot;k&quot;</span> ,c : <span class="string">&quot;10&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">对于函数成员,每个同名函数声明,都会当成这个函数的一个重载,且后来合并的接口优先级更高</span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Box</span> &#123;</span><br><span class="line">  <span class="title function_">clone</span> (animal : <span class="title class_">Dog</span>) : <span class="title class_">Dog</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Box</span> &#123;</span><br><span class="line">  <span class="title function_">clone</span> (animal : <span class="title class_">Sheep</span>) : <span class="title class_">Sheep</span></span><br><span class="line">  <span class="title function_">clone</span> (animal : <span class="title class_">Fish</span>) : <span class="title class_">Fish</span></span><br><span class="line">  <span class="title function_">clone</span> (tagName : <span class="string">&quot;yyyy&quot;</span>) : vjukg</span><br><span class="line">&#125;</span><br><span class="line">等同于 :<span class="keyword">interface</span> <span class="title class_">Box</span>&#123;</span><br><span class="line">  <span class="title function_">clone</span> (tagName : <span class="string">&quot;yyyy&quot;</span>) : vjukg <span class="comment">//参数的类型是单一的字符串字面量的也会提到最前面</span></span><br><span class="line">  <span class="title function_">clone</span> (animal : <span class="title class_">Sheep</span>) : <span class="title class_">Sheep</span>  <span class="comment">//后来合并的接口顺序往前</span></span><br><span class="line">  <span class="title function_">clone</span> (animal : <span class="title class_">Fish</span>) : <span class="title class_">Fish</span></span><br><span class="line">  <span class="title function_">clone</span> (animal : <span class="title class_">Dog</span>) : <span class="title class_">Dog</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="合并命名空间-namespace-xxx"><a href="#合并命名空间-namespace-xxx" class="headerlink" title="合并命名空间: namespace xxx{}"></a><p id="ref3">合并命名空间: namespace xxx{}</p></h2><ul>
-<li>之后合并的添加上来,非export成员合并后仅在原有命名空间可见(因为没有导出),无法访问非export成员</li>
+<h3 id="合并接口-把双方的成员放到一个同名的接口里"><a href="#合并接口-把双方的成员放到一个同名的接口里" class="headerlink" title="合并接口: 把双方的成员放到一个同名的接口里"></a>合并接口: 把双方的成员放到一个同名的接口里</h3><ul>
+<li>接口的非函数的成员应该是唯一的(就是上面接口有一个a ,下面的接口最好不要有a),且类型要相同<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Box</span> &#123;</span><br><span class="line">  <span class="attr">a</span>: <span class="built_in">string</span>,</span><br><span class="line">  b :<span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Box</span> &#123;</span><br><span class="line">  c : <span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> box : <span class="title class_">Box</span> = &#123;a : <span class="string">&quot;d&quot;</span> , b : <span class="string">&quot;k&quot;</span> ,c : <span class="string">&quot;10&quot;</span>&#125;</span><br></pre></td></tr></table></figure></li>
+<li>对于函数成员,每个同名函数声明,都会当成这个函数的一个重载,且后来合并的接口优先级更高<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Box</span> &#123;</span><br><span class="line">  <span class="title function_">clone</span> (animal : <span class="title class_">Dog</span>) : <span class="title class_">Dog</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Box</span> &#123;</span><br><span class="line">  <span class="title function_">clone</span> (animal : <span class="title class_">Sheep</span>) : <span class="title class_">Sheep</span></span><br><span class="line">  <span class="title function_">clone</span> (animal : <span class="title class_">Fish</span>) : <span class="title class_">Fish</span></span><br><span class="line">  <span class="title function_">clone</span> (tagName : <span class="string">&quot;yyyy&quot;</span>) : vjukg</span><br><span class="line">&#125;</span><br><span class="line">等同于 :<span class="keyword">interface</span> <span class="title class_">Box</span>&#123;</span><br><span class="line">  <span class="title function_">clone</span> (tagName : <span class="string">&quot;yyyy&quot;</span>) : vjukg <span class="comment">//参数的类型是单一的字符串字面量的也会提到最前面</span></span><br><span class="line">  <span class="title function_">clone</span> (animal : <span class="title class_">Sheep</span>) : <span class="title class_">Sheep</span>  <span class="comment">//后来合并的接口顺序往前</span></span><br><span class="line">  <span class="title function_">clone</span> (animal : <span class="title class_">Fish</span>) : <span class="title class_">Fish</span></span><br><span class="line">  <span class="title function_">clone</span> (animal : <span class="title class_">Dog</span>) : <span class="title class_">Dog</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="命名空间与类和函数和枚举类型合并-合并结果包含两者的声明"><a href="#命名空间与类和函数和枚举类型合并-合并结果包含两者的声明" class="headerlink" title="命名空间与类和函数和枚举类型合并: 合并结果包含两者的声明"></a><p id="ref4">命名空间与类和函数和枚举类型合并: 合并结果包含两者的声明</p></h2>
+<h3 id="合并命名空间-namespace-xxx"><a href="#合并命名空间-namespace-xxx" class="headerlink" title="合并命名空间: namespace xxx{}"></a>合并命名空间: namespace xxx{}</h3><ul>
+<li>非export成员合并后仅在原有命名空间可见(因为没有导出),无法访问非export成员</li>
+</ul>
+<h3 id="命名空间与类和函数和枚举类型合并-合并结果包含两者的声明"><a href="#命名空间与类和函数和枚举类型合并-合并结果包含两者的声明" class="headerlink" title="命名空间与类和函数和枚举类型合并: 合并结果包含两者的声明"></a>命名空间与类和函数和枚举类型合并: 合并结果包含两者的声明</h3>
 </article>
     
     
@@ -567,35 +561,20 @@
     </div>
     
         <div class="col-lg-6">
-    <div class="trm-blog-card trm-scroll-animation">
-        <a href="/2024/11/01/TS/%E5%8D%81%E5%9B%9B%E3%80%81%E8%A3%85%E9%A5%B0%E5%99%A8/" class="trm-cover-frame trm-anima-link">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
             
-            
-                <div class="trm-cover-img" data-random-img></div>
-            
-        </a>
-        
-        <div class="trm-card-descr">
-            <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/TypeScript/">
-                    TypeScript
-                </a>
-            </div>
-            <h5>
-                <a href="/2024/11/01/TS/%E5%8D%81%E5%9B%9B%E3%80%81%E8%A3%85%E9%A5%B0%E5%99%A8/" class="trm-anima-link">
-                    TS-装饰器
-                </a>
-            </h5>
-            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/TS/%E5%8D%81%E4%BA%94%E3%80%81js%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">TS-JS文件类型检查</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
                 <li>24/11/01</li>
                 <li>11:40</li>
-                
-                    <li>931</li>
-                
-                
-                    <li>3</li>
-                
+                <li>TypeScript</li>
             </ul>
         </div>
     </div>
@@ -603,35 +582,20 @@
     
     
         <div class="col-lg-6">
-    <div class="trm-blog-card trm-scroll-animation">
-        <a href="/2024/11/01/TS/%E5%8D%81%E3%80%81%E6%A8%A1%E5%9D%97%E5%92%8C%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/" class="trm-cover-frame trm-anima-link">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
             
-            
-                <div class="trm-cover-img" data-random-img></div>
-            
-        </a>
-        
-        <div class="trm-card-descr">
-            <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/TypeScript/">
-                    TypeScript
-                </a>
-            </div>
-            <h5>
-                <a href="/2024/11/01/TS/%E5%8D%81%E3%80%81%E6%A8%A1%E5%9D%97%E5%92%8C%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/" class="trm-anima-link">
-                    TS-模块和命名空间
-                </a>
-            </h5>
-            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/TS/%E5%8D%81%E3%80%81%E6%A8%A1%E5%9D%97%E5%92%8C%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">TS-模块和命名空间</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
                 <li>24/11/01</li>
                 <li>11:40</li>
-                
-                    <li>1.2k</li>
-                
-                
-                    <li>5</li>
-                
+                <li>TypeScript</li>
             </ul>
         </div>
     </div>
@@ -697,7 +661,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="大纲"><a rel="nofollow" class="trm-toc-link" href="#大纲"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">大纲</span></a></li><li class="trm-toc-item trm-toc-level-2" title="基础概念"><a rel="nofollow" class="trm-toc-link" href="#基础概念"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">基础概念</span></a></li><li class="trm-toc-item trm-toc-level-2" title="合并接口: 把双方的成员放到一个同名的接口里"><a rel="nofollow" class="trm-toc-link" href="#合并接口-把双方的成员放到一个同名的接口里"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">合并接口: 把双方的成员放到一个同名的接口里</span></a></li><li class="trm-toc-item trm-toc-level-2" title="合并命名空间: namespace xxx{}"><a rel="nofollow" class="trm-toc-link" href="#合并命名空间-namespace-xxx"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">合并命名空间: namespace xxx{}</span></a></li><li class="trm-toc-item trm-toc-level-2" title="命名空间与类和函数和枚举类型合并: 合并结果包含两者的声明"><a rel="nofollow" class="trm-toc-link" href="#命名空间与类和函数和枚举类型合并-合并结果包含两者的声明"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">命名空间与类和函数和枚举类型合并: 合并结果包含两者的声明</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-3" title="基础概念"><a rel="nofollow" class="trm-toc-link" href="#基础概念"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">基础概念</span></a></li><li class="trm-toc-item trm-toc-level-3" title="合并接口: 把双方的成员放到一个同名的接口里"><a rel="nofollow" class="trm-toc-link" href="#合并接口-把双方的成员放到一个同名的接口里"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">合并接口: 把双方的成员放到一个同名的接口里</span></a></li><li class="trm-toc-item trm-toc-level-3" title="合并命名空间: namespace xxx{}"><a rel="nofollow" class="trm-toc-link" href="#合并命名空间-namespace-xxx"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">合并命名空间: namespace xxx{}</span></a></li><li class="trm-toc-item trm-toc-level-3" title="命名空间与类和函数和枚举类型合并: 合并结果包含两者的声明"><a rel="nofollow" class="trm-toc-link" href="#命名空间与类和函数和枚举类型合并-合并结果包含两者的声明"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">命名空间与类和函数和枚举类型合并: 合并结果包含两者的声明</span></a></li></ol>
       </div>
     </div>
 

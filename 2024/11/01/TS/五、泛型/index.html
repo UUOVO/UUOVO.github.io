@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="无法创建泛型枚举和泛型命名空间  泛型变量T 相当与一个形参变量,只是它返回的是值的类型,传什么类型就返回什么类型,保证传入的值和返回的类型相同  1234function test&lt;T&gt;(arg: T): T &#123;   return arg&#125;let a &#x3D; test&lt;string&gt;(&#x27;arg&#x27;)  调用签名的对象字面量来定义泛型函">
+<meta name="description" content="无法创建泛型枚举和泛型命名空间  泛型变量T 相当与一个形参变量,只是它返回的是值的类型,传什么类型就返回什么类型,保证传入的值和返回的类型相同  1234function test&lt;T&gt;(arg: T): T &#123;   return arg&#125;let a &#x3D; test&lt;string&gt;(&#x27;arg&#x27;)  泛型函数 调用签名的对象字面量来">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TS-泛型 &lt;&gt;">
 <meta property="og:url" content="http://example.com/2024/11/01/TS/%E4%BA%94%E3%80%81%E6%B3%9B%E5%9E%8B/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="无法创建泛型枚举和泛型命名空间  泛型变量T 相当与一个形参变量,只是它返回的是值的类型,传什么类型就返回什么类型,保证传入的值和返回的类型相同  1234function test&lt;T&gt;(arg: T): T &#123;   return arg&#125;let a &#x3D; test&lt;string&gt;(&#x27;arg&#x27;)  调用签名的对象字面量来定义泛型函">
+<meta property="og:description" content="无法创建泛型枚举和泛型命名空间  泛型变量T 相当与一个形参变量,只是它返回的是值的类型,传什么类型就返回什么类型,保证传入的值和返回的类型相同  1234function test&lt;T&gt;(arg: T): T &#123;   return arg&#125;let a &#x3D; test&lt;string&gt;(&#x27;arg&#x27;)  泛型函数 调用签名的对象字面量来">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-11-01T03:40:57.357Z">
-<meta property="article:modified_time" content="2024-11-05T03:56:09.156Z">
+<meta property="article:modified_time" content="2024-11-12T08:48:33.190Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="TypeScript">
 <meta name="twitter:card" content="summary">
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-05 11:56:09"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-12 16:48:33"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -529,31 +529,39 @@
     <blockquote>
 <p> 无法创建泛型枚举和泛型命名空间</p>
 </blockquote>
-<h3 id="泛型变量T"><a href="#泛型变量T" class="headerlink" title="泛型变量T"></a>泛型变量T</h3><blockquote>
+<h2 id="泛型变量T"><a href="#泛型变量T" class="headerlink" title="泛型变量T"></a>泛型变量T</h2><blockquote>
 <p>相当与一个形参变量,只是它返回的是值的类型,传什么类型就返回什么类型,保证传入的值和返回的类型相同</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> test&lt;T&gt;(<span class="attr">arg</span>: T): T &#123; </span><br><span class="line">  <span class="keyword">return</span> arg</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = test&lt;string&gt;(<span class="string">&#x27;arg&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> test&lt;T&gt;(<span class="attr">arg</span>: T): T &#123; </span><br><span class="line">  <span class="keyword">return</span> arg</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = test&lt;string&gt;(<span class="string">&#x27;arg&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
-<h3 id="调用签名的对象字面量来定义泛型函数"><a href="#调用签名的对象字面量来定义泛型函数" class="headerlink" title="调用签名的对象字面量来定义泛型函数"></a>调用<code>签名</code>的对象字面量来定义泛型函数</h3><ul>
-<li><code>let mytest: &#123;&lt;T&gt;(arg: T): T&#125; = identity</code></li>
+<h2 id="泛型函数"><a href="#泛型函数" class="headerlink" title="泛型函数"></a>泛型函数</h2><ul>
+<li><h3 id="调用签名的对象字面量来定义泛型函数"><a href="#调用签名的对象字面量来定义泛型函数" class="headerlink" title="调用签名的对象字面量来定义泛型函数"></a>调用签名的对象字面量来定义泛型函数</h3></li>
 </ul>
-<h3 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型<code>接口</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">interface fnType&#123;</span><br><span class="line">  &lt;T&gt;(arg : T) : T</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> test&lt;T&gt;(<span class="attr">arg</span>: T): T &#123;</span><br><span class="line">  <span class="keyword">return</span> arg</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">mytest</span>: fnType = test <span class="comment">// 添加类型指定泛型类型</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">mytest</span>: &#123;&lt;T&gt;(<span class="attr">arg</span>: T): T&#125; = identity</span><br></pre></td></tr></table></figure>
 
-<h3 id="泛型类-ClassName-指的是实例部分的类型-类的静态属性不能使用"><a href="#泛型类-ClassName-指的是实例部分的类型-类的静态属性不能使用" class="headerlink" title="泛型类 ClassName: 指的是实例部分的类型,类的静态属性不能使用"></a>泛型类 ClassName<T>: 指的是实例部分的类型,类的静态属性不能使用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">GenericNumber</span>&lt;T&gt; &#123;</span><br><span class="line">  <span class="attr">zeroValue</span>: T</span><br><span class="line">  <span class="attr">add</span>: <span class="function">(<span class="params">x: T, y: T</span>) =&gt;</span> T</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> myGenericNumber = <span class="keyword">new</span> <span class="title class_">GenericNumber</span>&lt;number&gt;()</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h3></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">interface fnType&#123;</span><br><span class="line">  &lt;T&gt;(arg : T) : T</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> test&lt;T&gt;(<span class="attr">arg</span>: T): T &#123;</span><br><span class="line">  <span class="keyword">return</span> arg</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">mytest</span>: fnType = test <span class="comment">// 添加类型指定泛型类型</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="泛型约束"><a href="#泛型约束" class="headerlink" title="泛型约束"></a>泛型约束</h3><ul>
+<ul>
+<li><h3 id="泛型类-ClassName-指的是实例部分的类型-类的静态属性不能使用"><a href="#泛型类-ClassName-指的是实例部分的类型-类的静态属性不能使用" class="headerlink" title="泛型类 ClassName: 指的是实例部分的类型,类的静态属性不能使用"></a>泛型类 ClassName<T>: 指的是实例部分的类型,类的静态属性不能使用</h3></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">GenericNumber</span>&lt;T&gt; &#123;</span><br><span class="line">  <span class="attr">zeroValue</span>: T</span><br><span class="line">  <span class="attr">add</span>: <span class="function">(<span class="params">x: T, y: T</span>) =&gt;</span> T</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> myGenericNumber = <span class="keyword">new</span> <span class="title class_">GenericNumber</span>&lt;number&gt;()</span><br></pre></td></tr></table></figure>
+
+<h2 id="泛型约束"><a href="#泛型约束" class="headerlink" title="泛型约束"></a>泛型约束</h2><ul>
 <li><p>操作某类型的值时,发现某类型具有T类型,但在调用某个属性时，编译器不能保证T中具有该属性就会报错。所以要继承一个任意类的包含的属性，这样在任意类型中就可以使用且不报错</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">Lengthwise</span> &#123; <span class="comment">// 1.将这个属性放在接口中</span></span><br><span class="line">  length : number</span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">function</span> check&lt;T <span class="keyword">extends</span> <span class="title class_">Lengthwise</span>&gt;(<span class="attr">arg</span>: T) : T&#123; <span class="comment">// 2.让T继承这个接口</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(arg.<span class="property">length</span>)</span><br><span class="line">  <span class="keyword">return</span> arg</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">check</span>(&#123;<span class="attr">length</span>: <span class="number">10</span>&#125;) <span class="comment">// 3.使用,一定要传入length里的必须属性</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">Lengthwise</span> &#123; <span class="comment">// 1.将这个属性放在接口中</span></span><br><span class="line">  length : number</span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">function</span> check&lt;T <span class="keyword">extends</span> <span class="title class_">Lengthwise</span>&gt;(<span class="attr">arg</span>: T) : T&#123; <span class="comment">// 2.让T继承这个接口</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(arg.<span class="property">length</span>)</span><br><span class="line">  <span class="keyword">return</span> arg</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">check</span>(&#123;<span class="attr">length</span>: <span class="number">10</span>&#125;) <span class="comment">// 3.使用,一定要传入length里的必须属性</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><h3 id="在泛型约束中使用类型参数：通过调用属性名从对象上获取属性-同时保证这个属性就在这个对象上"><a href="#在泛型约束中使用类型参数：通过调用属性名从对象上获取属性-同时保证这个属性就在这个对象上" class="headerlink" title="在泛型约束中使用类型参数：通过调用属性名从对象上获取属性,同时保证这个属性就在这个对象上"></a>在泛型约束中使用类型参数：通过调用属性名从对象上获取属性,同时保证这个属性就在这个对象上</h3></li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getProperty</span>(<span class="params">obj: T, key: K</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> obj[key] <span class="comment">// obj[]是对象的一种写法,将key作为obj里面的一个key,返回value</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><h4 id="在泛型里使用类类型-使用泛型创建工厂函数时，需要引用构造函数的类类型"><a href="#在泛型里使用类类型-使用泛型创建工厂函数时，需要引用构造函数的类类型" class="headerlink" title="在泛型里使用类类型: 使用泛型创建工厂函数时，需要引用构造函数的类类型"></a>在泛型里使用类类型: 使用泛型创建工厂函数时，需要引用构造函数的类类型</h4></li>
+<li><h3 id="在泛型里使用类类型-使用泛型创建工厂函数时，需要引用构造函数的类类型"><a href="#在泛型里使用类类型-使用泛型创建工厂函数时，需要引用构造函数的类类型" class="headerlink" title="在泛型里使用类类型: 使用泛型创建工厂函数时，需要引用构造函数的类类型"></a>在泛型里使用类类型: 使用泛型创建工厂函数时，需要引用构造函数的类类型</h3></li>
 <li>调用的函数可以调用继承父类的方法</li>
 <li>使用场景: 多个类继承一个父类</li>
-<li>定义：定义几个类和一个父类,然后创建多个子类继承父类并在对象中将某个类赋值给变量，这个变量要统一，这样就可以使用多个子类、某个类和父类的方法和变量</li>
-<li>使用：createInstance(子类).父类方法.子类方法<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> createInstance&lt;T <span class="keyword">extends</span> 父类&gt;(<span class="attr">c</span>: &#123;<span class="title function_">new</span>(): T&#125;): T &#123; </span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title function_">c</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>定义：定义几个类和一个父类,然后创建多个子类继承父类,并且子类中将某个子类赋值给变量(这个变量要统一)，这样就可以使用多个子类、某个类和父类的方法和变量</li>
+<li>使用：createInstance(子类).父类方法.子类方法<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> createInstance&lt;T <span class="keyword">extends</span> 父类&gt;(<span class="attr">c</span>: <span class="title function_">new</span>() =&gt;T): T &#123; </span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title function_">c</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 
 </article>
@@ -571,35 +579,20 @@
     </div>
     
         <div class="col-lg-6">
-    <div class="trm-blog-card trm-scroll-animation">
-        <a href="/2024/11/01/TS/%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B%E5%92%8C%E7%B1%BB%E5%9E%8B%E6%8E%A8%E8%AE%BA/" class="trm-cover-frame trm-anima-link">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
             
-            
-                <div class="trm-cover-img" data-random-img></div>
-            
-        </a>
-        
-        <div class="trm-card-descr">
-            <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/TypeScript/">
-                    TypeScript
-                </a>
-            </div>
-            <h5>
-                <a href="/2024/11/01/TS/%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B%E5%92%8C%E7%B1%BB%E5%9E%8B%E6%8E%A8%E8%AE%BA/" class="trm-anima-link">
-                    TS-基础类型和类型推论
-                </a>
-            </h5>
-            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/TS/%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B%E5%92%8C%E7%B1%BB%E5%9E%8B%E6%8E%A8%E8%AE%BA/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">TS-基础类型和类型推论</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
                 <li>24/11/01</li>
                 <li>11:40</li>
-                
-                    <li>725</li>
-                
-                
-                    <li>2</li>
-                
+                <li>TypeScript</li>
             </ul>
         </div>
     </div>
@@ -607,35 +600,20 @@
     
     
         <div class="col-lg-6">
-    <div class="trm-blog-card trm-scroll-animation">
-        <a href="/2024/11/01/TS/%E5%9B%9B%E3%80%81%E5%87%BD%E6%95%B0%E5%92%8Cthis/" class="trm-cover-frame trm-anima-link">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
             
-            
-                <div class="trm-cover-img" data-random-img></div>
-            
-        </a>
-        
-        <div class="trm-card-descr">
-            <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/TypeScript/">
-                    TypeScript
-                </a>
-            </div>
-            <h5>
-                <a href="/2024/11/01/TS/%E5%9B%9B%E3%80%81%E5%87%BD%E6%95%B0%E5%92%8Cthis/" class="trm-anima-link">
-                    TS-函数和this
-                </a>
-            </h5>
-            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/TS/%E5%9B%9B%E3%80%81%E5%87%BD%E6%95%B0%E5%92%8Cthis/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">TS-函数和this</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
                 <li>24/11/01</li>
                 <li>11:40</li>
-                
-                    <li>677</li>
-                
-                
-                    <li>2</li>
-                
+                <li>TypeScript</li>
             </ul>
         </div>
     </div>
@@ -701,7 +679,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-3" title="泛型变量T"><a rel="nofollow" class="trm-toc-link" href="#泛型变量T"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">泛型变量T</span></a></li><li class="trm-toc-item trm-toc-level-3" title="调用签名的对象字面量来定义泛型函数"><a rel="nofollow" class="trm-toc-link" href="#调用签名的对象字面量来定义泛型函数"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">调用签名的对象字面量来定义泛型函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="泛型接口"><a rel="nofollow" class="trm-toc-link" href="#泛型接口"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">泛型接口</span></a></li><li class="trm-toc-item trm-toc-level-3" title="泛型类 ClassName: 指的是实例部分的类型,类的静态属性不能使用"><a rel="nofollow" class="trm-toc-link" href="#泛型类-ClassName-指的是实例部分的类型-类的静态属性不能使用"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">泛型类 ClassName: 指的是实例部分的类型,类的静态属性不能使用</span></a></li><li class="trm-toc-item trm-toc-level-3" title="泛型约束"><a rel="nofollow" class="trm-toc-link" href="#泛型约束"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">泛型约束</span></a></li><li class="trm-toc-item trm-toc-level-3" title="在泛型约束中使用类型参数：通过调用属性名从对象上获取属性,同时保证这个属性就在这个对象上"><a rel="nofollow" class="trm-toc-link" href="#在泛型约束中使用类型参数：通过调用属性名从对象上获取属性-同时保证这个属性就在这个对象上"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">在泛型约束中使用类型参数：通过调用属性名从对象上获取属性,同时保证这个属性就在这个对象上</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="泛型变量T"><a rel="nofollow" class="trm-toc-link" href="#泛型变量T"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">泛型变量T</span></a></li><li class="trm-toc-item trm-toc-level-2" title="泛型函数"><a rel="nofollow" class="trm-toc-link" href="#泛型函数"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">泛型函数</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="调用签名的对象字面量来定义泛型函数"><a rel="nofollow" class="trm-toc-link" href="#调用签名的对象字面量来定义泛型函数"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">调用签名的对象字面量来定义泛型函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="泛型接口"><a rel="nofollow" class="trm-toc-link" href="#泛型接口"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">泛型接口</span></a></li><li class="trm-toc-item trm-toc-level-3" title="泛型类 ClassName: 指的是实例部分的类型,类的静态属性不能使用"><a rel="nofollow" class="trm-toc-link" href="#泛型类-ClassName-指的是实例部分的类型-类的静态属性不能使用"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">泛型类 ClassName: 指的是实例部分的类型,类的静态属性不能使用</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="泛型约束"><a rel="nofollow" class="trm-toc-link" href="#泛型约束"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">泛型约束</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="在泛型约束中使用类型参数：通过调用属性名从对象上获取属性,同时保证这个属性就在这个对象上"><a rel="nofollow" class="trm-toc-link" href="#在泛型约束中使用类型参数：通过调用属性名从对象上获取属性-同时保证这个属性就在这个对象上"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">在泛型约束中使用类型参数：通过调用属性名从对象上获取属性,同时保证这个属性就在这个对象上</span></a></li><li class="trm-toc-item trm-toc-level-3" title="在泛型里使用类类型: 使用泛型创建工厂函数时，需要引用构造函数的类类型"><a rel="nofollow" class="trm-toc-link" href="#在泛型里使用类类型-使用泛型创建工厂函数时，需要引用构造函数的类类型"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">在泛型里使用类类型: 使用泛型创建工厂函数时，需要引用构造函数的类类型</span></a></li></ol></li></ol>
       </div>
     </div>
 

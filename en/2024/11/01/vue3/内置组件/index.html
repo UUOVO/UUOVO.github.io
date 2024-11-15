@@ -16,7 +16,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/404.jpg">
 <meta property="article:published_time" content="2024-11-01T06:39:25.165Z">
-<meta property="article:modified_time" content="2024-11-05T03:48:45.388Z">
+<meta property="article:modified_time" content="2024-11-14T09:07:18.380Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="vue3">
 <meta name="twitter:card" content="summary">
@@ -70,7 +70,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-05 11:48:45"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-14 17:07:18"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -542,21 +542,14 @@
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gsap <span class="keyword">from</span> <span class="string">&#x27;gsap&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="title function_">data</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">number</span>: <span class="number">0</span>,</span><br><span class="line">      <span class="attr">tweened</span>: <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">watch</span>: &#123;</span><br><span class="line">    <span class="title function_">number</span>(<span class="params">n</span>) &#123;</span><br><span class="line">      gsap.<span class="title function_">to</span>(<span class="variable language_">this</span>, &#123; <span class="attr">duration</span>: <span class="number">0.5</span>, <span class="attr">tweened</span>: <span class="title class_">Number</span>(n) || <span class="number">0</span> &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Type</span> a <span class="attr">number</span>: <span class="language-xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model.number</span>=<span class="string">&quot;number&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; tweened.toFixed(0) &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><h3 id="基于-CSS-的过渡效果"><a href="#基于-CSS-的过渡效果" class="headerlink" title="基于 CSS 的过渡效果"></a>基于 CSS 的过渡效果</h3></li>
+<li><h3 id="基于-CSS-的过渡效果"><a href="#基于-CSS-的过渡效果" class="headerlink" title="基于 CSS 的过渡效果"></a>基于 CSS 的过渡效果</h3><ul>
+<li>v-enter-from: 进入动画的起始状态</li>
+<li>v-enter-active： 进入动画的生效状态</li>
+<li>v-enter-to：进入动画的结束状态</li>
+<li>v-leave-from： 离开动画的起始状态</li>
+<li>v-leave-active：离开动画的生效状态</li>
+<li>v-leave-to：离开动画的结束状态<br><img src="/../../img/vue3/transition-classes.png" alt="transition-classes"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
 </ul>
-<p><img src="/../../img/vue3/transition-classes.png" alt="transition-classes"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
-<ul>
-<li><p>v-enter-from : 进入动画的起始状态</p>
-</li>
-<li><p>v-enter-active ： 进入动画的生效状态</p>
-</li>
-<li><p>v-enter-to ：进入动画的结束状态</p>
-</li>
-<li><p>v-leave-from ： 离开动画的起始状态</p>
-</li>
-<li><p>v-leave-active ：离开动画的生效状态</p>
-</li>
-<li><p>v-leave-to ：离开动画的结束状态</p>
 </li>
 <li><h3 id="为过渡效果命名-—-给-Transition-上添加name属性"><a href="#为过渡效果命名-—-给-Transition-上添加name属性" class="headerlink" title="为过渡效果命名 — 给 Transition 上添加name属性"></a>为过渡效果命名 — 给 Transition 上添加name属性</h3><ul>
 <li><code>&lt;Transition name=&quot;fade&quot;&gt;...&lt;/Transition&gt;</code></li>
@@ -571,19 +564,14 @@
 <li>*-enter-from 不是在元素插入后立即移除，而是在一个 animationend 事件触发时被移除<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">bounce</span>-enter-active &#123;</span><br><span class="line">  <span class="attr">animation</span>: bounce-<span class="keyword">in</span> <span class="number">0.</span>5s;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="property">bounce</span>-leave-active &#123;</span><br><span class="line">  <span class="attr">animation</span>: bounce-<span class="keyword">in</span> <span class="number">0.</span>5s reverse;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@keyframes</span> bounce-<span class="keyword">in</span> &#123;</span><br><span class="line">  <span class="number">0</span>% &#123;</span><br><span class="line">    <span class="attr">transform</span>: <span class="title function_">scale</span>(<span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">50</span>% &#123;</span><br><span class="line">    <span class="attr">transform</span>: <span class="title function_">scale</span>(<span class="number">1.25</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">100</span>% &#123;</span><br><span class="line">    <span class="attr">transform</span>: <span class="title function_">scale</span>(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><h3 id="自定义过渡-class-—-使用覆盖默认class"><a href="#自定义过渡-class-—-使用覆盖默认class" class="headerlink" title="自定义过渡 class — 使用覆盖默认class"></a>自定义过渡 class — 使用覆盖默认class</h3></li>
-<li><p>enter-from-class</p>
-</li>
-<li><p>enter-active-class</p>
-</li>
-<li><p>enter-to-class</p>
-</li>
-<li><p>leave-from-class</p>
-</li>
-<li><p>leave-active-class</p>
-</li>
-<li><p>leave-to-class</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 假设你已经在页面中引入了 Animate.css</span></span><br><span class="line">&lt;<span class="title class_">Transition</span></span><br><span class="line">  name=<span class="string">&quot;custom-classes&quot;</span></span><br><span class="line">  enter-active-<span class="keyword">class</span>=<span class="string">&quot;animate__animated animate__tada&quot;</span></span><br><span class="line">  leave-active-<span class="keyword">class</span>=<span class="string">&quot;animate__animated animate__bounceOutRight&quot;</span></span><br><span class="line">&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">p</span> <span class="attr">v-if</span>=<span class="string">&quot;show&quot;</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">&lt;/<span class="title class_">Transition</span>&gt;</span><br></pre></td></tr></table></figure>
+<li><h3 id="自定义过渡-class-—-使用覆盖默认class"><a href="#自定义过渡-class-—-使用覆盖默认class" class="headerlink" title="自定义过渡 class — 使用覆盖默认class"></a>自定义过渡 class — 使用覆盖默认class</h3><ul>
+<li>enter-from-class</li>
+<li>enter-active-class</li>
+<li>enter-to-class</li>
+<li>leave-from-class</li>
+<li>leave-active-class</li>
+<li>leave-to-class<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 假设你已经在页面中引入了 Animate.css</span></span><br><span class="line">&lt;<span class="title class_">Transition</span></span><br><span class="line">  name=<span class="string">&quot;custom-classes&quot;</span></span><br><span class="line">  enter-active-<span class="keyword">class</span>=<span class="string">&quot;animate__animated animate__tada&quot;</span></span><br><span class="line">  leave-active-<span class="keyword">class</span>=<span class="string">&quot;animate__animated animate__bounceOutRight&quot;</span></span><br><span class="line">&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">p</span> <span class="attr">v-if</span>=<span class="string">&quot;show&quot;</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">&lt;/<span class="title class_">Transition</span>&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
 </li>
 <li><h3 id="同时使用-transition-和-animation-传type"><a href="#同时使用-transition-和-animation-传type" class="headerlink" title="同时使用 transition 和 animation 传type"></a>同时使用 transition 和 animation 传type</h3></li>
 <li><h3 id="深层级过渡与显式过渡时长"><a href="#深层级过渡与显式过渡时长" class="headerlink" title="深层级过渡与显式过渡时长"></a>深层级过渡与显式过渡时长</h3></li>
@@ -640,35 +628,20 @@
     </div>
     
         <div class="col-lg-6">
-    <div class="trm-blog-card trm-scroll-animation">
-        <a href="/2024/11/01/vue3/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/" class="trm-cover-frame trm-anima-link">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
             
-            
-                <div class="trm-cover-img" data-random-img></div>
-            
-        </a>
-        
-        <div class="trm-card-descr">
-            <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/VUE/">
-                    VUE
-                </a>
-            </div>
-            <h5>
-                <a href="/2024/11/01/vue3/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/" class="trm-anima-link">
-                    VUE3-响应式原理
-                </a>
-            </h5>
-            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/vue3/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">VUE3-响应式原理</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
                 <li>24/11/01</li>
                 <li>14:39</li>
-                
-                    <li>345</li>
-                
-                
-                    <li>1</li>
-                
+                <li>VUE</li>
             </ul>
         </div>
     </div>
@@ -676,35 +649,20 @@
     
     
         <div class="col-lg-6">
-    <div class="trm-blog-card trm-scroll-animation">
-        <a href="/2024/11/01/vue3/%E6%8F%92%E4%BB%B6/" class="trm-cover-frame trm-anima-link">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
             
-            
-                <div class="trm-cover-img" data-random-img></div>
-            
-        </a>
-        
-        <div class="trm-card-descr">
-            <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/VUE/">
-                    VUE
-                </a>
-            </div>
-            <h5>
-                <a href="/2024/11/01/vue3/%E6%8F%92%E4%BB%B6/" class="trm-anima-link">
-                    VUE3-插件
-                </a>
-            </h5>
-            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/vue3/%E6%8F%92%E4%BB%B6/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">VUE3-插件</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
                 <li>24/11/01</li>
                 <li>14:39</li>
-                
-                    <li>154</li>
-                
-                
-                    <li>1</li>
-                
+                <li>VUE</li>
             </ul>
         </div>
     </div>

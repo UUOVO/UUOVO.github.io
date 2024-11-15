@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="是JavaScript应用程序的静态模块打包器。当webpack处理应用程序时，它会递归地构建一个依赖关系图，其中包含应用程序需要的每个模块，然后将所有模块打包成一个或多个bundle。   四个核心概念：入口(entry)、输出(output)、loader、插件(plugins) 依赖自动收集 自动构建并基于你所引用或导出的内容推断出依赖的图谱。   webpack优点 可以打包你的 Jav">
+<meta name="description" content="是JavaScript应用程序的静态模块打包器。当webpack处理应用程序时，它会递归地构建一个依赖关系图，其中包含应用程序需要的每个模块，然后将所有模块打包成一个或多个bundle。  四个核心概念： 入口(entry) 输出(output) loader 插件(plugins)  webpack优点 可以打包你的 JavaScript 应用程序（支持 ESM 和 CommonJS） 可以扩">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack --- 第一篇">
 <meta property="og:url" content="http://example.com/2024/11/01/Engineering/webpack--%E7%AC%AC%E4%B8%80%E7%AF%87%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="是JavaScript应用程序的静态模块打包器。当webpack处理应用程序时，它会递归地构建一个依赖关系图，其中包含应用程序需要的每个模块，然后将所有模块打包成一个或多个bundle。   四个核心概念：入口(entry)、输出(output)、loader、插件(plugins) 依赖自动收集 自动构建并基于你所引用或导出的内容推断出依赖的图谱。   webpack优点 可以打包你的 Jav">
+<meta property="og:description" content="是JavaScript应用程序的静态模块打包器。当webpack处理应用程序时，它会递归地构建一个依赖关系图，其中包含应用程序需要的每个模块，然后将所有模块打包成一个或多个bundle。  四个核心概念： 入口(entry) 输出(output) loader 插件(plugins)  webpack优点 可以打包你的 JavaScript 应用程序（支持 ESM 和 CommonJS） 可以扩">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-11-01T08:52:16.737Z">
-<meta property="article:modified_time" content="2024-11-05T06:41:21.495Z">
+<meta property="article:modified_time" content="2024-11-15T09:55:18.108Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="webpack">
 <meta name="twitter:card" content="summary">
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-05 14:41:21"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-15 17:55:18"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -529,24 +529,26 @@
     <blockquote>
 <p>是JavaScript应用程序的静态模块打包器。当webpack处理应用程序时，它会递归地构建一个依赖关系图，其中包含应用程序需要的每个模块，然后将所有模块打包成一个或多个bundle。</p>
 </blockquote>
-<ul>
-<li><h3 id="四个核心概念：入口-entry-、输出-output-、loader、插件-plugins"><a href="#四个核心概念：入口-entry-、输出-output-、loader、插件-plugins" class="headerlink" title="四个核心概念：入口(entry)、输出(output)、loader、插件(plugins)"></a>四个核心概念：入口(entry)、输出(output)、loader、插件(plugins)</h3></li>
-<li><h3 id="依赖自动收集"><a href="#依赖自动收集" class="headerlink" title="依赖自动收集"></a>依赖自动收集</h3><ul>
-<li>自动构建并基于你所引用或导出的内容推断出依赖的图谱。</li>
+<h2 id="四个核心概念："><a href="#四个核心概念：" class="headerlink" title="四个核心概念："></a>四个核心概念：</h2><ul>
+<li>入口(entry)</li>
+<li>输出(output)</li>
+<li>loader</li>
+<li>插件(plugins)</li>
 </ul>
-</li>
-<li><h3 id="webpack优点"><a href="#webpack优点" class="headerlink" title="webpack优点"></a>webpack优点</h3><ul>
-<li>可以打包你的 JavaScript 应用程序（支持 ESM 和 CommonJS）；</li>
-<li>可以扩展为支持许多不同的静态资源；</li>
-<li>关心性能和加载时间；</li>
-<li>始终在改进或添加新功能。</li>
-</ul>
-</li>
+<h2 id="webpack优点"><a href="#webpack优点" class="headerlink" title="webpack优点"></a>webpack优点</h2><ul>
+<li>可以打包你的 JavaScript 应用程序（支持 ESM 和 CommonJS）</li>
+<li>可以扩展为支持许多不同的静态资源</li>
+<li>关心性能和加载时间</li>
+<li>始终在改进或添加新功能</li>
+<li>依赖自动收集：自动构建并基于你所引用或导出的内容推断出依赖的图谱</li>
 </ul>
 <h2 id="入口"><a href="#入口" class="headerlink" title="入口"></a>入口</h2><blockquote>
 <p>入口起点(entry point)指示 webpack 应该使用哪个模块，来作为构建其内部依赖图的开始。进入入口起点后，webpack 会找出有哪些模块和库是入口起点（直接和间接）依赖的。</p>
 </blockquote>
-<h3 id="默认值：-src-index-js。也可在webpack-config-js中的module-exports里面配置entry-指定一个或多个不同的入口起点"><a href="#默认值：-src-index-js。也可在webpack-config-js中的module-exports里面配置entry-指定一个或多个不同的入口起点" class="headerlink" title="默认值：.&#x2F;src&#x2F;index.js。也可在webpack.config.js中的module.exports里面配置entry,指定一个或多个不同的入口起点"></a>默认值：.&#x2F;src&#x2F;index.js。也可在webpack.config.js中的module.exports里面配置entry,指定一个或多个不同的入口起点</h3><h3 id="配置方式"><a href="#配置方式" class="headerlink" title="配置方式"></a>配置方式</h3><ul>
+<h3 id="默认值：-src-index-js。"><a href="#默认值：-src-index-js。" class="headerlink" title="默认值：.&#x2F;src&#x2F;index.js。"></a>默认值：.&#x2F;src&#x2F;index.js。</h3><ul>
+<li>也可在webpack.config.js中的module.exports里面配置entry,指定一个或多个不同的入口起点</li>
+</ul>
+<h3 id="配置方式"><a href="#配置方式" class="headerlink" title="配置方式"></a>配置方式</h3><ul>
 <li>单个入口<ul>
 <li>用法：entry: string | Array<string></li>
 <li>示例：entry: ‘.&#x2F;path&#x2F;to&#x2F;my&#x2F;entry&#x2F;file.js’</li>
@@ -556,8 +558,9 @@
 <li>用法：entry: {[entryChunkName: string]: string | [string]&gt;}</li>
 </ul>
 </li>
-<li>示例：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">entry</span>: &#123;</span><br><span class="line">  <span class="attr">app</span>: <span class="string">&#x27;./src/app.js&#x27;</span>,</span><br><span class="line">  <span class="attr">adminApp</span>: <span class="string">&#x27;./src/adminApp.js&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>描述入口的对象<ul>
+<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">entry</span>: &#123;</span><br><span class="line">  <span class="attr">app</span>: <span class="string">&#x27;./src/app.js&#x27;</span>,</span><br><span class="line">  <span class="attr">adminApp</span>: <span class="string">&#x27;./src/adminApp.js&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="描述入口的对象"><a href="#描述入口的对象" class="headerlink" title="描述入口的对象"></a>描述入口的对象</h3><ul>
 <li>dependOn: 当前入口所依赖的入口。必须在该入口被加载前被加载。</li>
 <li>filename: 指定要输出的文件名称。</li>
 <li>import: 启动时需加载的模块。</li>
@@ -565,26 +568,21 @@
 <li>runtime: 运行时 chunk 的名字。在 webpack 5.43.0 之后可将其设为 false 以避免一个新的运行时 chunk。</li>
 <li>publicPath: 当该入口的输出文件在浏览器中被引用时，为它们指定一个公共 URL 地址。</li>
 </ul>
-</li>
-<li>常用场景<ul>
+<h3 id="常用场景"><a href="#常用场景" class="headerlink" title="常用场景"></a>常用场景</h3><ul>
 <li>分离应用程序(app)和第三方库(vendor)入口</li>
-<li>多页面程序<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 解析：告诉webpack需要三个独立分离的依赖图</span></span><br><span class="line"><span class="attr">entry</span>: &#123;</span><br><span class="line">  <span class="attr">pageOne</span>: <span class="string">&#x27;./src/pageOne/index.js&#x27;</span>,</span><br><span class="line">  <span class="attr">pageTwo</span>: <span class="string">&#x27;./src/pageTwo/index.js&#x27;</span>,</span><br><span class="line">  <span class="attr">pageThree</span>: <span class="string">&#x27;./src/pageThree/index.js&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
+<li>多页面程序<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 解析：告诉webpack需要三个独立分离的依赖图</span></span><br><span class="line"><span class="attr">entry</span>: &#123;</span><br><span class="line">  <span class="attr">pageOne</span>: <span class="string">&#x27;./src/pageOne/index.js&#x27;</span>,</span><br><span class="line">  <span class="attr">pageTwo</span>: <span class="string">&#x27;./src/pageTwo/index.js&#x27;</span>,</span><br><span class="line">  <span class="attr">pageThree</span>: <span class="string">&#x27;./src/pageThree/index.js&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><blockquote>
 <p>告诉 webpack 在哪里输出它所创建的 bundles，以及如何命名这些文件。只能有一个output</p>
 </blockquote>
-<h3 id="默认值"><a href="#默认值" class="headerlink" title="默认值:"></a>默认值:</h3><ul>
-<li>.&#x2F;dist，也可在webpack.config.js中的module.exports里面配置output属性</li>
+<h3 id="默认值-dist"><a href="#默认值-dist" class="headerlink" title="默认值: .&#x2F;dist"></a>默认值: .&#x2F;dist</h3><ul>
+<li>也可在webpack.config.js中的module.exports里面配置output属性</li>
 </ul>
 <h3 id="配置方式："><a href="#配置方式：" class="headerlink" title="配置方式："></a>配置方式：</h3><ul>
 <li>output最低要求是，将它的值设置为一个对象，然后给输出文件的文件名配置output.filename</li>
-<li>多个入口起点：使用占位符(substitutions)来确保每个文件具有唯一的名称<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">output</span>: &#123;</span><br><span class="line">  <span class="attr">filename</span>: <span class="string">&#x27;[name].js&#x27;</span>,</span><br><span class="line">  <span class="attr">path</span>: __dirname + <span class="string">&#x27;/dist&#x27;</span>, <span class="comment">//写入到./dist/filename</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
-<li>高阶进阶</li>
+<li>多个入口起点：使用占位符(substitutions)来确保每个文件具有唯一的名称<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">output</span>: &#123;</span><br><span class="line">  <span class="attr">filename</span>: <span class="string">&#x27;[name].js&#x27;</span>,</span><br><span class="line">  <span class="attr">path</span>: __dirname + <span class="string">&#x27;/dist&#x27;</span>, <span class="comment">//写入到./dist/filename</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
+<li>高阶进阶<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">output</span>: &#123;</span><br><span class="line">  <span class="attr">path</span>: <span class="string">&#x27;/home/proj/cdn/assets/[fullhash]&#x27;</span>,</span><br><span class="line">  <span class="attr">publicPath</span>: <span class="string">&#x27;https://cdn.example.com/assets/[fullhash]/&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// publicPath: &#x27;&#x27; 时，在运行时通过入口起点文件中的 __webpack_public_path__ 动态设置</span></span><br><span class="line">__webpack_public_path__ = myRuntimePublicPath;  </span><br></pre></td></tr></table></figure></li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">output</span>: &#123;</span><br><span class="line">  <span class="attr">path</span>: <span class="string">&#x27;/home/proj/cdn/assets/[fullhash]&#x27;</span>,</span><br><span class="line">  <span class="attr">publicPath</span>: <span class="string">&#x27;https://cdn.example.com/assets/[fullhash]/&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// publicPath: &#x27;&#x27; 时，在运行时通过入口起点文件中的 __webpack_public_path__ 动态设置</span></span><br><span class="line">__webpack_public_path__ = myRuntimePublicPath;  </span><br></pre></td></tr></table></figure>
-
 <h2 id="loader"><a href="#loader" class="headerlink" title="loader"></a>loader</h2><blockquote>
 <p>让 webpack 能够去处理其他类型的文件，并将它们转换为有效模块，以供应用程序使用，以及被添加到依赖图中。</p>
 </blockquote>
@@ -595,74 +593,58 @@
 <h3 id="安装对应的loader"><a href="#安装对应的loader" class="headerlink" title="安装对应的loader"></a>安装对应的loader</h3><ul>
 <li>npm install –save-dev css-loader ts-loader</li>
 </ul>
-<h3 id="使用loader"><a href="#使用loader" class="headerlink" title="使用loader"></a>使用loader</h3><ul>
-<li><h3 id="配置方式：-1"><a href="#配置方式：-1" class="headerlink" title="配置方式："></a>配置方式：</h3><ul>
+<h3 id="配置方式：-1"><a href="#配置方式：-1" class="headerlink" title="配置方式："></a>配置方式：</h3><ul>
 <li>在webpack.config.js中的config里的module.exports里面的module配置rules，指定loader</li>
 <li>例：rules:[{test:&#x2F;.css$&#x2F;,use:’css-loader’},]</li>
 <li>loader执行顺序: 从右到左（或从上到下）地取值（evaluate）&#x2F;执行（execute）</li>
+<li></li>
 </ul>
-</li>
-<li><h3 id="内联方式：在每个import语句中显式指定loader"><a href="#内联方式：在每个import语句中显式指定loader" class="headerlink" title="内联方式：在每个import语句中显式指定loader"></a>内联方式：在每个import语句中显式指定loader</h3></li>
-<li><h3 id="使用-前缀，将禁用所有已配置的normal-loader"><a href="#使用-前缀，将禁用所有已配置的normal-loader" class="headerlink" title="使用!前缀，将禁用所有已配置的normal loader"></a>使用!前缀，将禁用所有已配置的normal loader</h3><ul>
+<h3 id="使用loader"><a href="#使用loader" class="headerlink" title="使用loader"></a>使用loader</h3><ul>
+<li><strong>内联方式</strong>：在每个import语句中显式指定loader</li>
+<li><strong>使用!前缀，将禁用所有已配置的normal loader</strong><ul>
 <li>import Styles from ‘!style-loader!css-loader?modules!.&#x2F;styles.css’;</li>
 </ul>
 </li>
-<li><h3 id="使用-前缀，将禁用所有已配置的loader-preLoader-loader-postLoader"><a href="#使用-前缀，将禁用所有已配置的loader-preLoader-loader-postLoader" class="headerlink" title="使用!!前缀，将禁用所有已配置的loader(preLoader, loader, postLoader)"></a>使用!!前缀，将禁用所有已配置的loader(preLoader, loader, postLoader)</h3><ul>
+<li><strong>使用!!前缀，将禁用所有已配置的loader(preLoader, loader, postLoader)</strong><ul>
 <li>import Styles from ‘!!style-loader!css-loader?modules!.&#x2F;styles.css’;</li>
 </ul>
 </li>
-<li><h3 id="使用-前缀，将禁用所有已配置的preLoader和loader，但是不禁用postLoaders"><a href="#使用-前缀，将禁用所有已配置的preLoader和loader，但是不禁用postLoaders" class="headerlink" title="使用-!前缀，将禁用所有已配置的preLoader和loader，但是不禁用postLoaders"></a>使用-!前缀，将禁用所有已配置的preLoader和loader，但是不禁用postLoaders</h3><ul>
+<li><strong>使用-!前缀，将禁用所有已配置的preLoader和loader，但是不禁用postLoaders</strong><ul>
 <li>import Styles from ‘-!style-loader!css-loader?modules!.&#x2F;styles.css’;</li>
 <li>选项可以传递查询参数，例如 ?key&#x3D;value&amp;foo&#x3D;bar，或者一个 JSON 对象，例如 ?{“key”:”value”,”foo”:”bar”}</li>
 </ul>
 </li>
-<li><h3 id="loader-特性"><a href="#loader-特性" class="headerlink" title="loader 特性"></a>loader 特性</h3><ul>
+</ul>
+<h3 id="loader-特性"><a href="#loader-特性" class="headerlink" title="loader 特性"></a>loader 特性</h3><ul>
 <li>支持链式调用。链中的每个 loader 会将转换应用在已处理过的资源上。一组链式的 loader 将按照相反的顺序执行。链中的第一个 loader 将其结果传递给下一个 loader，依此类推。最后，链中的最后一个 loader，返回 webpack 所期望的 JavaScript。</li>
 <li>可以是同步的，也可以是异步的。</li>
 <li>运行在 Node.js 中，并且能够执行任何操作。</li>
 <li>除了通过 package.json 的 main 来将一个 npm 模块导出为 loader，还可以在 module.rules 中使用 loader 字段直接引用一个模块。</li>
 </ul>
-</li>
-<li><h3 id="解析loader"><a href="#解析loader" class="headerlink" title="解析loader"></a>解析loader</h3><ul>
+<h3 id="解析loader"><a href="#解析loader" class="headerlink" title="解析loader"></a>解析loader</h3><ul>
 <li>遵循标准模块解析规则。多数情况下，loader 将从模块路径加载（通常是从 npm install, node_modules 进行加载）</li>
 <li>loader 模块会导出为一个函数，并且编写为 Node.js 兼容的 JavaScript。loader 通常被命名为 xxx-loader。</li>
-</ul>
-</li>
 </ul>
 <h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><blockquote>
 <p>webpack的支柱功能，用于执行从打包优化和压缩，一直到重新定义环境中的变量的任务。具有apply方法的js对象。</p>
 </blockquote>
 <ul>
 <li>注意：如果在插件中使用了 webpack-sources 的 package，请使用 require(‘webpack’).sources 替代 require(‘webpack-sources’)，以避免持久缓存的版本冲突。</li>
-<li>用法<ul>
-<li>配置方式:<br>在webpack.config.js中，首先需要require() 它，然后添加一个new实例到module.exports里的plugins数组<ul>
-<li>const HtmlWebpackPlugin &#x3D; require(‘html-webpack-plugin’); &#x2F;&#x2F; 通过 npm 安装<br>- const webpack &#x3D; require(‘webpack’); &#x2F;&#x2F; 访问内置的插件</li>
-<li>plugins: [new webpack.ProgressPlugin(), &#x2F;&#x2F;用于自定义编译过程中的进度报告</li>
-<li>new HtmlWebpackPlugin({template: ‘.&#x2F;src&#x2F;index.html’})]</li>
 </ul>
-</li>
-<li>Node API方式<ul>
-<li>const webpack &#x3D; require(‘webpack’); &#x2F;&#x2F; 访问 webpack 运行时(runtime)</li>
-<li>const configuration &#x3D; require(‘.&#x2F;webpack.config.js’);</li>
-<li>let compiler &#x3D; webpack(configuration);</li>
-<li>new webpack.ProgressPlugin().apply(compiler);</li>
-<li>compiler.run(function (err, stats) {});</li>
+<h3 id="配置方式-1"><a href="#配置方式-1" class="headerlink" title="配置方式:"></a>配置方式:</h3><ul>
+<li>在webpack.config.js中，首先需要require() 它，然后添加一个new实例到module.exports里的plugins数组<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">HtmlWebpackPlugin</span> = <span class="built_in">require</span>(<span class="string">&#x27;html-webpack-plugin&#x27;</span>); <span class="comment">// 通过 npm 安装</span></span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">&#x27;webpack&#x27;</span>); <span class="comment">// 访问内置的插件</span></span><br><span class="line"><span class="attr">plugins</span>: [<span class="keyword">new</span> webpack.<span class="title class_">ProgressPlugin</span>(), <span class="comment">//用于自定义编译过程中的进度报告</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">HtmlWebpackPlugin</span>(&#123;<span class="attr">template</span>: <span class="string">&#x27;./src/index.html&#x27;</span>&#125;)]</span><br></pre></td></tr></table></figure></li>
+<li>Node API方式<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">&#x27;webpack&#x27;</span>); <span class="comment">// 访问 webpack 运行时(runtime)</span></span><br><span class="line"><span class="keyword">const</span> configuration = <span class="built_in">require</span>(<span class="string">&#x27;./webpack.config.js&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> compiler = <span class="title function_">webpack</span>(configuration);</span><br><span class="line"><span class="keyword">new</span> webpack.<span class="title class_">ProgressPlugin</span>().<span class="title function_">apply</span>(compiler);</span><br><span class="line">compiler.<span class="title function_">run</span>(<span class="keyword">function</span> (<span class="params">err, stats</span>) &#123;&#125;);</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><blockquote>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><blockquote>
 <p>webpack 的配置文件是 JavaScript 文件，文件内导出了一个 webpack 配置的对象。</p>
 </blockquote>
-<ul>
-<li>应避免操作<ul>
+<h2 id="应避免操作"><a href="#应避免操作" class="headerlink" title="应避免操作"></a>应避免操作</h2><ul>
 <li>当使用 webpack CLI 工具时，访问 CLI 参数（应编写自己的 CLI 工具替代，或者使用 –env）</li>
 <li>导出不确定的结果（两次调用 webpack 应产生相同的输出文件）</li>
 <li>编写超长的配置（应将配置文件拆分成多个）</li>
 </ul>
-</li>
-<li>基本配置<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&#x27;development&#x27;</span>,</span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&#x27;./foo.js&#x27;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">path</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;dist&#x27;</span>),</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&#x27;foo.bundle.js&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<h3 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&#x27;development&#x27;</span>,</span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&#x27;./foo.js&#x27;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">path</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;dist&#x27;</span>),</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&#x27;foo.bundle.js&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
 <li>多个target: 可以将其导出为多个配置</li>
 </ul>
 <h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><blockquote>
@@ -705,35 +687,20 @@
     </div>
     
         <div class="col-lg-6">
-    <div class="trm-blog-card trm-scroll-animation">
-        <a href="/2024/11/01/Engineering/webpack%E8%BF%81%E7%A7%BB/" class="trm-cover-frame trm-anima-link">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
             
-            
-                <div class="trm-cover-img" data-random-img></div>
-            
-        </a>
-        
-        <div class="trm-card-descr">
-            <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%B7%A5%E5%85%B7/">
-                    前端工程化工具
-                </a>
-            </div>
-            <h5>
-                <a href="/2024/11/01/Engineering/webpack%E8%BF%81%E7%A7%BB/" class="trm-anima-link">
-                    webpack迁移
-                </a>
-            </h5>
-            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/Engineering/webpack%E8%BF%81%E7%A7%BB/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">webpack迁移</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
                 <li>24/11/01</li>
                 <li>16:52</li>
-                
-                    <li>274</li>
-                
-                
-                    <li>1</li>
-                
+                <li>前端工程化工具</li>
             </ul>
         </div>
     </div>
@@ -741,35 +708,20 @@
     
     
         <div class="col-lg-6">
-    <div class="trm-blog-card trm-scroll-animation">
-        <a href="/2024/11/01/Engineering/webpack--%E7%AC%AC%E5%9B%9B%E7%AF%87%E5%8E%9F%E7%90%86/" class="trm-cover-frame trm-anima-link">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
             
-            
-                <div class="trm-cover-img" data-random-img></div>
-            
-        </a>
-        
-        <div class="trm-card-descr">
-            <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%B7%A5%E5%85%B7/">
-                    前端工程化工具
-                </a>
-            </div>
-            <h5>
-                <a href="/2024/11/01/Engineering/webpack--%E7%AC%AC%E5%9B%9B%E7%AF%87%E5%8E%9F%E7%90%86/" class="trm-anima-link">
-                    webpack --- 第四篇
-                </a>
-            </h5>
-            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/Engineering/webpack--%E7%AC%AC%E5%9B%9B%E7%AF%87%E5%8E%9F%E7%90%86/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">webpack --- 第四篇</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
                 <li>24/11/01</li>
                 <li>16:52</li>
-                
-                    <li>1.4k</li>
-                
-                
-                    <li>5</li>
-                
+                <li>前端工程化工具</li>
             </ul>
         </div>
     </div>
@@ -835,7 +787,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-3" title="四个核心概念：入口(entry)、输出(output)、loader、插件(plugins)"><a rel="nofollow" class="trm-toc-link" href="#四个核心概念：入口-entry-、输出-output-、loader、插件-plugins"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">四个核心概念：入口(entry)、输出(output)、loader、插件(plugins)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="依赖自动收集"><a rel="nofollow" class="trm-toc-link" href="#依赖自动收集"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">依赖自动收集</span></a></li><li class="trm-toc-item trm-toc-level-3" title="webpack优点"><a rel="nofollow" class="trm-toc-link" href="#webpack优点"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">webpack优点</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="入口"><a rel="nofollow" class="trm-toc-link" href="#入口"><span class="trm-toc-number"></span> <span class="trm-toc-text">入口</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="默认值：.&#x2F;src&#x2F;index.js。也可在webpack.config.js中的module.exports里面配置entry,指定一个或多个不同的入口起点"><a rel="nofollow" class="trm-toc-link" href="#默认值：-src-index-js。也可在webpack-config-js中的module-exports里面配置entry-指定一个或多个不同的入口起点"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">默认值：.&#x2F;src&#x2F;index.js。也可在webpack.config.js中的module.exports里面配置entry,指定一个或多个不同的入口起点</span></a></li><li class="trm-toc-item trm-toc-level-3" title="配置方式"><a rel="nofollow" class="trm-toc-link" href="#配置方式"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">配置方式</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="输出"><a rel="nofollow" class="trm-toc-link" href="#输出"><span class="trm-toc-number"></span> <span class="trm-toc-text">输出</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="默认值:"><a rel="nofollow" class="trm-toc-link" href="#默认值"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">默认值:</span></a></li><li class="trm-toc-item trm-toc-level-3" title="配置方式："><a rel="nofollow" class="trm-toc-link" href="#配置方式："><span class="trm-toc-number">2.</span> <span class="trm-toc-text">配置方式：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="loader"><a rel="nofollow" class="trm-toc-link" href="#loader"><span class="trm-toc-number"></span> <span class="trm-toc-text">loader</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="属性："><a rel="nofollow" class="trm-toc-link" href="#属性："><span class="trm-toc-number">1.</span> <span class="trm-toc-text">属性：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="安装对应的loader"><a rel="nofollow" class="trm-toc-link" href="#安装对应的loader"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">安装对应的loader</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用loader"><a rel="nofollow" class="trm-toc-link" href="#使用loader"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">使用loader</span></a></li><li class="trm-toc-item trm-toc-level-3" title="配置方式："><a rel="nofollow" class="trm-toc-link" href="#配置方式：-1"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">配置方式：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="内联方式：在每个import语句中显式指定loader"><a rel="nofollow" class="trm-toc-link" href="#内联方式：在每个import语句中显式指定loader"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">内联方式：在每个import语句中显式指定loader</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用!前缀，将禁用所有已配置的normal loader"><a rel="nofollow" class="trm-toc-link" href="#使用-前缀，将禁用所有已配置的normal-loader"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">使用!前缀，将禁用所有已配置的normal loader</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用!!前缀，将禁用所有已配置的loader(preLoader, loader, postLoader)"><a rel="nofollow" class="trm-toc-link" href="#使用-前缀，将禁用所有已配置的loader-preLoader-loader-postLoader"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">使用!!前缀，将禁用所有已配置的loader(preLoader, loader, postLoader)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用-!前缀，将禁用所有已配置的preLoader和loader，但是不禁用postLoaders"><a rel="nofollow" class="trm-toc-link" href="#使用-前缀，将禁用所有已配置的preLoader和loader，但是不禁用postLoaders"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">使用-!前缀，将禁用所有已配置的preLoader和loader，但是不禁用postLoaders</span></a></li><li class="trm-toc-item trm-toc-level-3" title="loader 特性"><a rel="nofollow" class="trm-toc-link" href="#loader-特性"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">loader 特性</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解析loader"><a rel="nofollow" class="trm-toc-link" href="#解析loader"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">解析loader</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="插件"><a rel="nofollow" class="trm-toc-link" href="#插件"><span class="trm-toc-number"></span> <span class="trm-toc-text">插件</span></a></li><li class="trm-toc-item trm-toc-level-2" title="配置"><a rel="nofollow" class="trm-toc-link" href="#配置"><span class="trm-toc-number"></span> <span class="trm-toc-text">配置</span></a></li><li class="trm-toc-item trm-toc-level-2" title="模块"><a rel="nofollow" class="trm-toc-link" href="#模块"><span class="trm-toc-number"></span> <span class="trm-toc-text">模块</span></a></li><li class="trm-toc-item trm-toc-level-2" title="模式"><a rel="nofollow" class="trm-toc-link" href="#模式"><span class="trm-toc-number"></span> <span class="trm-toc-text">模式</span></a></li><li class="trm-toc-item trm-toc-level-2" title="浏览器兼容及环境"><a rel="nofollow" class="trm-toc-link" href="#浏览器兼容及环境"><span class="trm-toc-number"></span> <span class="trm-toc-text">浏览器兼容及环境</span></a>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="四个核心概念："><a rel="nofollow" class="trm-toc-link" href="#四个核心概念："><span class="trm-toc-number">1.</span> <span class="trm-toc-text">四个核心概念：</span></a></li><li class="trm-toc-item trm-toc-level-2" title="webpack优点"><a rel="nofollow" class="trm-toc-link" href="#webpack优点"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">webpack优点</span></a></li><li class="trm-toc-item trm-toc-level-2" title="入口"><a rel="nofollow" class="trm-toc-link" href="#入口"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">入口</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="默认值：.&#x2F;src&#x2F;index.js。"><a rel="nofollow" class="trm-toc-link" href="#默认值：-src-index-js。"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">默认值：.&#x2F;src&#x2F;index.js。</span></a></li><li class="trm-toc-item trm-toc-level-3" title="配置方式"><a rel="nofollow" class="trm-toc-link" href="#配置方式"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">配置方式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="描述入口的对象"><a rel="nofollow" class="trm-toc-link" href="#描述入口的对象"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">描述入口的对象</span></a></li><li class="trm-toc-item trm-toc-level-3" title="常用场景"><a rel="nofollow" class="trm-toc-link" href="#常用场景"><span class="trm-toc-number">3.4.</span> <span class="trm-toc-text">常用场景</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="输出"><a rel="nofollow" class="trm-toc-link" href="#输出"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">输出</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="默认值: .&#x2F;dist"><a rel="nofollow" class="trm-toc-link" href="#默认值-dist"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">默认值: .&#x2F;dist</span></a></li><li class="trm-toc-item trm-toc-level-3" title="配置方式："><a rel="nofollow" class="trm-toc-link" href="#配置方式："><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">配置方式：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="loader"><a rel="nofollow" class="trm-toc-link" href="#loader"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">loader</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="属性："><a rel="nofollow" class="trm-toc-link" href="#属性："><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">属性：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="安装对应的loader"><a rel="nofollow" class="trm-toc-link" href="#安装对应的loader"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">安装对应的loader</span></a></li><li class="trm-toc-item trm-toc-level-3" title="配置方式："><a rel="nofollow" class="trm-toc-link" href="#配置方式：-1"><span class="trm-toc-number">5.3.</span> <span class="trm-toc-text">配置方式：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用loader"><a rel="nofollow" class="trm-toc-link" href="#使用loader"><span class="trm-toc-number">5.4.</span> <span class="trm-toc-text">使用loader</span></a></li><li class="trm-toc-item trm-toc-level-3" title="loader 特性"><a rel="nofollow" class="trm-toc-link" href="#loader-特性"><span class="trm-toc-number">5.5.</span> <span class="trm-toc-text">loader 特性</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解析loader"><a rel="nofollow" class="trm-toc-link" href="#解析loader"><span class="trm-toc-number">5.6.</span> <span class="trm-toc-text">解析loader</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="插件"><a rel="nofollow" class="trm-toc-link" href="#插件"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">插件</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="配置方式:"><a rel="nofollow" class="trm-toc-link" href="#配置方式-1"><span class="trm-toc-number">6.1.</span> <span class="trm-toc-text">配置方式:</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="配置文件"><a rel="nofollow" class="trm-toc-link" href="#配置文件"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">配置文件</span></a></li><li class="trm-toc-item trm-toc-level-2" title="应避免操作"><a rel="nofollow" class="trm-toc-link" href="#应避免操作"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">应避免操作</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="基本配置"><a rel="nofollow" class="trm-toc-link" href="#基本配置"><span class="trm-toc-number">8.1.</span> <span class="trm-toc-text">基本配置</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="模块"><a rel="nofollow" class="trm-toc-link" href="#模块"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">模块</span></a></li><li class="trm-toc-item trm-toc-level-2" title="模式"><a rel="nofollow" class="trm-toc-link" href="#模式"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">模式</span></a></li><li class="trm-toc-item trm-toc-level-2" title="浏览器兼容及环境"><a rel="nofollow" class="trm-toc-link" href="#浏览器兼容及环境"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">浏览器兼容及环境</span></a></li></ol>
       </div>
     </div>
 

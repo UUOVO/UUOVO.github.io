@@ -15,7 +15,7 @@
 <meta property="og:description" content="经典面试题 — 路由篇 编程式导航push与replace区别?  能记录历史记录：push 不能记住历史记录：replace   路由组件与非路由组件的区别  文件放置位置不同 路由组件一般需要在router文件夹中进行注册，非路由组件在使用的时候，一般但是以标签的形式使用 注册完路由，不管是路由组件还是非路由组件身上都有$route、$router属性 $route:一般获取路由信息【路径、q">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-11-01T05:58:26.586Z">
-<meta property="article:modified_time" content="2024-11-05T03:50:56.130Z">
+<meta property="article:modified_time" content="2024-11-15T07:31:57.093Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="知识">
 <meta property="article:tag" content="面试题">
@@ -70,7 +70,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-05 11:50:56"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-15 15:31:57"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -654,24 +654,18 @@
 </li>
 <li><p>懒加载</p>
 <ul>
-<li><h3 id="路由懒加载"><a href="#路由懒加载" class="headerlink" title="路由懒加载"></a>路由懒加载</h3><ul>
-<li>当用户访问的时候，加载对应组件进行展示</li>
-</ul>
-</li>
-<li><h3 id="图片懒加载"><a href="#图片懒加载" class="headerlink" title="图片懒加载"></a>图片懒加载</h3><ul>
-<li>vue-lazyload</li>
-</ul>
-</li>
+<li>路由懒加载: 当用户访问的时候，加载对应组件进行展示</li>
+<li>图片懒加载: vue-lazyload</li>
 </ul>
 </li>
 <li><p>框架 + 组件库的选择</p>
 <ul>
-<li><h3 id="react框架"><a href="#react框架" class="headerlink" title="react框架:"></a>react框架:</h3><ul>
+<li>react框架:<ul>
 <li>UI组件库antd【蚂蚁金服旗下PC端UI组件库】</li>
 <li>antd-mobile【蚂蚁金服旗下的移动端UI组件库】</li>
 </ul>
 </li>
-<li><h3 id="Vue框架"><a href="#Vue框架" class="headerlink" title="Vue框架:"></a>Vue框架:</h3><ul>
+<li>Vue框架:<ul>
 <li>element-UI【饿了么旗下的UI组件库，官方承认的PC组件库插件】</li>
 <li>vant【Vue官方提供移动端UI组件库】</li>
 </ul>
@@ -680,11 +674,11 @@
 </li>
 <li><p>插件</p>
 <ul>
-<li><h3 id="qrcode插件：展示二维码"><a href="#qrcode插件：展示二维码" class="headerlink" title="qrcode插件：展示二维码"></a>qrcode插件：展示二维码</h3><ul>
-<li>通过qrCode.toDataUrl方法，将字符串转换为加密的在线二维码链接，通过图片进行展示。</li>
+<li>qrcode插件：展示二维码<ul>
+<li>通过qrCode.toDataUrl方法，将字符串转换为加密的在线二维码链接，通过图片进行展示</li>
 </ul>
 </li>
-<li><h3 id="swiper-js：处理滚动屏"><a href="#swiper-js：处理滚动屏" class="headerlink" title="swiper.js：处理滚动屏"></a>swiper.js：处理滚动屏</h3><ul>
+<li>swiper.js：处理滚动屏<ul>
 <li>安装：swiper：cnpm install –save swiper@5</li>
 <li>引入：import Swiper from ‘swiper’</li>
 <li>使用：v-for&#x3D;”(carousel,index) in 轮播图请求返回的数据” :key&#x3D;”carousel.id”</li>
@@ -712,19 +706,18 @@
 <li>Vue.use(VeeValidate)</li>
 </ul>
 </li>
-<li>提示信息<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">VeeValidate</span>.<span class="property">Validator</span>.<span class="title function_">localize</span>(<span class="string">&#x27;zh_CN&#x27;</span>, &#123;</span><br><span class="line">	<span class="attr">messages</span>: &#123;</span><br><span class="line">		...zh_CN.<span class="property">messages</span>,</span><br><span class="line">		<span class="attr">is</span>: <span class="function">(<span class="params">field</span>) =&gt;</span> <span class="string">`<span class="subst">$&#123;field&#125;</span>必须与密码相同`</span> <span class="comment">// 修改内置规则的 message，让确认密码和密码相同</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">attributes</span>: &#123; <span class="comment">// 给校验的 field 属性名映射中文名称</span></span><br><span class="line">		<span class="attr">phone</span>: <span class="string">&#x27;手机号&#x27;</span>,</span><br><span class="line">		<span class="attr">code</span>: <span class="string">&#x27;验证码&#x27;</span>,</span><br><span class="line">		<span class="attr">password</span>:<span class="string">&#x27;密码&#x27;</span>,</span><br><span class="line">		<span class="attr">password1</span>:<span class="string">&#x27;确认密码&#x27;</span>,</span><br><span class="line">		<span class="attr">isCheck</span>:<span class="string">&#x27;协议&#x27;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>提示信息<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">VeeValidate</span>.<span class="property">Validator</span>.<span class="title function_">localize</span>(<span class="string">&#x27;zh_CN&#x27;</span>, &#123;</span><br><span class="line">	<span class="attr">messages</span>: &#123;</span><br><span class="line">		...zh_CN.<span class="property">messages</span>,</span><br><span class="line">		<span class="attr">is</span>: <span class="function">(<span class="params">field</span>) =&gt;</span> <span class="string">`<span class="subst">$&#123;field&#125;</span>必须与密码相同`</span> <span class="comment">// 修改内置规则的 message，让确认密码和密码相同</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">attributes</span>: &#123; <span class="comment">// 给校验的 field 属性名映射中文名称</span></span><br><span class="line">		<span class="attr">phone</span>: <span class="string">&#x27;手机号&#x27;</span>,</span><br><span class="line">		<span class="attr">code</span>: <span class="string">&#x27;验证码&#x27;</span>,</span><br><span class="line">		<span class="attr">password</span>:<span class="string">&#x27;密码&#x27;</span>,</span><br><span class="line">		<span class="attr">password1</span>:<span class="string">&#x27;确认密码&#x27;</span>,</span><br><span class="line">		<span class="attr">isCheck</span>:<span class="string">&#x27;协议&#x27;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
 <li>使用：在表单标签上添加<ul>
 <li>绑定v-model&#x3D;”attributes的字段”</li>
 <li>v-validate&#x3D;”{ required: true, regex: 验证规则 }”</li>
 <li>页面使用：errors.has(“字段”)来使用…</li>
 <li>代码等待全部验证：const success &#x3D; await this.$validator.validateAll()</li>
-<li>自定义校验规则：定义协议必须打勾同意</li>
+<li>自定义校验规则：定义协议必须打勾同意<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">VeeValidate</span>.<span class="property">Validator</span>.<span class="title function_">extend</span>(<span class="string">&#x27;agree&#x27;</span>, &#123;</span><br><span class="line">	<span class="attr">validate</span>: <span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> value</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">getMessage</span>: <span class="function"><span class="params">field</span> =&gt;</span> field + <span class="string">&#x27;必须同意&#x27;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">VeeValidate</span>.<span class="property">Validator</span>.<span class="title function_">extend</span>(<span class="string">&#x27;agree&#x27;</span>, &#123;</span><br><span class="line">	<span class="attr">validate</span>: <span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> value</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">getMessage</span>: <span class="function"><span class="params">field</span> =&gt;</span> field + <span class="string">&#x27;必须同意&#x27;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 </article>
     
@@ -741,35 +734,20 @@
     </div>
     
         <div class="col-lg-6">
-    <div class="trm-blog-card trm-scroll-animation">
-        <a href="/2024/11/01/vue2/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E7%9A%84%E6%80%BB%E7%BB%93/" class="trm-cover-frame trm-anima-link">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
             
-            
-                <div class="trm-cover-img" data-random-img></div>
-            
-        </a>
-        
-        <div class="trm-card-descr">
-            <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/VUE/">
-                    VUE
-                </a>
-            </div>
-            <h5>
-                <a href="/2024/11/01/vue2/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E7%9A%84%E6%80%BB%E7%BB%93/" class="trm-anima-link">
-                    VUE2-组件通信的总结
-                </a>
-            </h5>
-            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/vue2/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E7%9A%84%E6%80%BB%E7%BB%93/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">VUE2-组件通信的总结</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
                 <li>24/11/01</li>
                 <li>13:58</li>
-                
-                    <li>368</li>
-                
-                
-                    <li>1</li>
-                
+                <li>VUE</li>
             </ul>
         </div>
     </div>
@@ -777,35 +755,20 @@
     
     
         <div class="col-lg-6">
-    <div class="trm-blog-card trm-scroll-animation">
-        <a href="/2024/11/01/vue2/%E8%B7%AF%E7%94%B1/" class="trm-cover-frame trm-anima-link">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
             
-            
-                <div class="trm-cover-img" data-random-img></div>
-            
-        </a>
-        
-        <div class="trm-card-descr">
-            <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/VUE/">
-                    VUE
-                </a>
-            </div>
-            <h5>
-                <a href="/2024/11/01/vue2/%E8%B7%AF%E7%94%B1/" class="trm-anima-link">
-                    VUE2-路由（主了解）
-                </a>
-            </h5>
-            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/vue2/%E8%B7%AF%E7%94%B1/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">VUE2-路由（主了解）</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
                 <li>24/11/01</li>
                 <li>13:58</li>
-                
-                    <li>1.6k</li>
-                
-                
-                    <li>6</li>
-                
+                <li>VUE</li>
             </ul>
         </div>
     </div>
@@ -871,7 +834,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-3" title="经典面试题 — 路由篇"><a rel="nofollow" class="trm-toc-link" href="#经典面试题-—-路由篇"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">经典面试题 — 路由篇</span></a></li><li class="trm-toc-item trm-toc-level-3" title="经典面试题 — 其它"><a rel="nofollow" class="trm-toc-link" href="#经典面试题-—-其它"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">经典面试题 — 其它</span></a></li><li class="trm-toc-item trm-toc-level-3" title="其它知识"><a rel="nofollow" class="trm-toc-link" href="#其它知识"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">其它知识</span></a></li><li class="trm-toc-item trm-toc-level-3" title="路由懒加载"><a rel="nofollow" class="trm-toc-link" href="#路由懒加载"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">路由懒加载</span></a></li><li class="trm-toc-item trm-toc-level-3" title="图片懒加载"><a rel="nofollow" class="trm-toc-link" href="#图片懒加载"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">图片懒加载</span></a></li><li class="trm-toc-item trm-toc-level-3" title="react框架:"><a rel="nofollow" class="trm-toc-link" href="#react框架"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">react框架:</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Vue框架:"><a rel="nofollow" class="trm-toc-link" href="#Vue框架"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">Vue框架:</span></a></li><li class="trm-toc-item trm-toc-level-3" title="qrcode插件：展示二维码"><a rel="nofollow" class="trm-toc-link" href="#qrcode插件：展示二维码"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">qrcode插件：展示二维码</span></a></li><li class="trm-toc-item trm-toc-level-3" title="swiper.js：处理滚动屏"><a rel="nofollow" class="trm-toc-link" href="#swiper-js：处理滚动屏"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">swiper.js：处理滚动屏</span></a></li><li class="trm-toc-item trm-toc-level-3" title="moment.js：处理时间"><a rel="nofollow" class="trm-toc-link" href="#moment-js：处理时间"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">moment.js：处理时间</span></a></li><li class="trm-toc-item trm-toc-level-3" title="nprogress.js： 处理进度条"><a rel="nofollow" class="trm-toc-link" href="#nprogress-js：-处理进度条"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">nprogress.js： 处理进度条</span></a></li><li class="trm-toc-item trm-toc-level-3" title="vee-validate插件：Vue官方提供的一个表单验证的插件"><a rel="nofollow" class="trm-toc-link" href="#vee-validate插件：Vue官方提供的一个表单验证的插件"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">vee-validate插件：Vue官方提供的一个表单验证的插件</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-3" title="经典面试题 — 路由篇"><a rel="nofollow" class="trm-toc-link" href="#经典面试题-—-路由篇"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">经典面试题 — 路由篇</span></a></li><li class="trm-toc-item trm-toc-level-3" title="经典面试题 — 其它"><a rel="nofollow" class="trm-toc-link" href="#经典面试题-—-其它"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">经典面试题 — 其它</span></a></li><li class="trm-toc-item trm-toc-level-3" title="其它知识"><a rel="nofollow" class="trm-toc-link" href="#其它知识"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">其它知识</span></a></li><li class="trm-toc-item trm-toc-level-3" title="moment.js：处理时间"><a rel="nofollow" class="trm-toc-link" href="#moment-js：处理时间"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">moment.js：处理时间</span></a></li><li class="trm-toc-item trm-toc-level-3" title="nprogress.js： 处理进度条"><a rel="nofollow" class="trm-toc-link" href="#nprogress-js：-处理进度条"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">nprogress.js： 处理进度条</span></a></li><li class="trm-toc-item trm-toc-level-3" title="vee-validate插件：Vue官方提供的一个表单验证的插件"><a rel="nofollow" class="trm-toc-link" href="#vee-validate插件：Vue官方提供的一个表单验证的插件"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">vee-validate插件：Vue官方提供的一个表单验证的插件</span></a></li></ol>
       </div>
     </div>
 
