@@ -7,17 +7,17 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="原型 | 原型链原型 prototype 定义：每个函数都有一个 prototype 属性, 它默认指向一个 Object 空对象(即称为: 原型对象) 当函数以构造函数的形式调用时，它所创建的对象中都会有一个隐含的属性执行该原型对象，指向该构造函数的原型对象，这个隐含的属性可以通过对象.proto来访问。 原型对象中有一个属性 constructor, 它指向函数对象 理解： 原型对象就相当于一">
+<meta name="description" content=".en {     color: green;     font-weight: 600;   }   原型 | 原型链原型 prototype 定义：每个函数都有一个 prototype 属性, 它默认指向一个 Object 空对象(即称为: 原型对象) 当函数以构造函数的形式调用时，它所创建的对象中都会有一个隐含的属性执行该原型对象，指向该构造函数的原型对象，这个隐含的属性可以通过pro">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS-函数高级">
 <meta property="og:url" content="http://example.com/en/2024/10/31/JS/JS-%E5%87%BD%E6%95%B0%E9%AB%98%E7%BA%A7/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="原型 | 原型链原型 prototype 定义：每个函数都有一个 prototype 属性, 它默认指向一个 Object 空对象(即称为: 原型对象) 当函数以构造函数的形式调用时，它所创建的对象中都会有一个隐含的属性执行该原型对象，指向该构造函数的原型对象，这个隐含的属性可以通过对象.proto来访问。 原型对象中有一个属性 constructor, 它指向函数对象 理解： 原型对象就相当于一">
+<meta property="og:description" content=".en {     color: green;     font-weight: 600;   }   原型 | 原型链原型 prototype 定义：每个函数都有一个 prototype 属性, 它默认指向一个 Object 空对象(即称为: 原型对象) 当函数以构造函数的形式调用时，它所创建的对象中都会有一个隐含的属性执行该原型对象，指向该构造函数的原型对象，这个隐含的属性可以通过pro">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/404.jpg">
 <meta property="og:image" content="http://example.com/img/404.jpg">
 <meta property="article:published_time" content="2024-10-31T03:05:32.052Z">
-<meta property="article:modified_time" content="2024-11-05T06:18:59.706Z">
+<meta property="article:modified_time" content="2024-11-20T09:25:36.006Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="函数">
 <meta property="article:tag" content="原型链">
@@ -72,7 +72,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-05 14:18:59"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-20 17:25:36"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -225,7 +225,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/CSS&HTML/" target="">
+                        <a  href="/categories/CSS-HTML/" target="">
                             CSS&HTML
                         </a>
                     </li>
@@ -530,9 +530,16 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <h2 id="原型-原型链"><a href="#原型-原型链" class="headerlink" title="原型 | 原型链"></a>原型 | 原型链</h2><h3 id="原型-prototype"><a href="#原型-prototype" class="headerlink" title="原型 prototype"></a>原型 prototype</h3><ul>
+    <style>
+  .en {
+    color: green;
+    font-weight: 600;
+  }
+</style>
+
+<h2 id="原型-原型链"><a href="#原型-原型链" class="headerlink" title="原型 | 原型链"></a>原型 | 原型链</h2><h3 id="原型-prototype"><a href="#原型-prototype" class="headerlink" title="原型 prototype"></a>原型 prototype</h3><ul>
 <li>定义：每个函数都有一个 prototype 属性, 它默认指向一个 Object 空对象(即称为: 原型对象)</li>
-<li>当函数<code>以构造函数</code>的形式调用时，它所创建的对象中都会有一个隐含的属性执行该原型对象，<code>指向该构造函数的原型对象</code>，这个隐含的属性可以通过对象.<strong>proto</strong>来访问。</li>
+<li>当函数<span class="en">以构造函数</span>的形式调用时，它所创建的对象中都会有一个隐含的属性执行该原型对象，<span class="en">指向该构造函数的原型对象</span>，这个隐含的属性可以通过<span class="en"><strong>proto</strong></span>来访问。</li>
 <li>原型对象中有一个属性 constructor, 它指向函数对象</li>
 <li>理解：<ul>
 <li>原型对象就相当于一个公共区域，所有同一个类的实例都可以访问到这个原型对象</li>
@@ -542,41 +549,41 @@
 <li>函数的所有实例对象自动拥有原型中的属性(方法)</li>
 <li>示例</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">MyClass</span>(<span class="params"></span>) &#123;&#125; <span class="comment">// 普通函数</span></span><br><span class="line"><span class="title class_">MyClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">a</span> = <span class="number">123</span> <span class="comment">// 向MyClass的原型中添加属性a</span></span><br><span class="line"><span class="title class_">MyClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">sayHello</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">	<span class="comment">// 向MyClass的原型中添加一个方法</span></span><br><span class="line">	<span class="title function_">alert</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> mc = <span class="keyword">new</span> <span class="title class_">MyClass</span>() <span class="comment">// 创建一个构造函数</span></span><br><span class="line">此时mc.<span class="property">__proto__</span> == <span class="title class_">MyClass</span>.<span class="property"><span class="keyword">prototype</span></span>,</span><br><span class="line">	可以从<span class="title class_">MyClass</span>的原型上拿属性a和方法sayHello</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">MyClass</span>(<span class="params"></span>) &#123;&#125; <span class="comment">// 普通函数</span></span><br><span class="line"><span class="title class_">MyClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">a</span> = <span class="number">123</span> <span class="comment">// 向MyClass的原型中添加属性a</span></span><br><span class="line"><span class="title class_">MyClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">sayHello</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">	<span class="comment">// 向MyClass的原型中添加一个方法</span></span><br><span class="line">	<span class="title function_">alert</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> mc = <span class="keyword">new</span> <span class="title class_">MyClass</span>() <span class="comment">// 创建一个构造函数</span></span><br><span class="line">此时mc.<span class="property">__proto__</span> == <span class="title class_">MyClass</span>.<span class="property"><span class="keyword">prototype</span></span>,</span><br><span class="line">	可以从<span class="title class_">MyClass</span>的原型上拿属性a和方法sayHello</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>hasOwnProperty()：检查对象自身中是否含有该属性，只有当对象自身中含有属性时，才会返回 true</li>
 </ul>
 <h3 id="显示原型-隐式原型"><a href="#显示原型-隐式原型" class="headerlink" title="显示原型 | 隐式原型"></a>显示原型 | 隐式原型</h3><ul>
-<li>每个函数<code>function</code>都有一个特别的属性:<code>prototype</code>，即<code>显式原型</code>(属性)</li>
-<li>每个<code>实例对象</code>都有一个特别的属性:<code>__proto__</code>，可称为<code>隐式原型</code>(属性)</li>
-<li>对象的隐式原型的值为其对应构造函数的显式原型的值<br><img src="/img/%E6%98%BE%E5%BC%8F%E5%8E%9F%E5%9E%8B%E4%B8%8E%E9%9A%90%E5%BC%8F%E5%8E%9F%E5%9E%8B.png" alt="内存结构"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+<li>每个函数<span class="en">function</span>都有一个特别的属性:<span class="en">prototype</span>，即<span class="en">显式原型</span>(属性)</li>
+<li>每个<span class="en">实例对象</span>都有一个特别的属性:<span class="en"><code>__proto__</code></span>，可称为<span class="en">隐式原型</span>(属性)</li>
+<li>对象的隐式原型的值为其对应构造函数的显式原型的值<br><img src="/../../img/js/%E6%98%BE%E5%BC%8F%E5%8E%9F%E5%9E%8B%E4%B8%8E%E9%9A%90%E5%BC%8F%E5%8E%9F%E5%9E%8B.png" alt="内存结构"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
 <li>总结:<ul>
-<li>函数的<code>prototype</code>属性: 在<code>定义函数时自动添加</code>的, <code>默认值</code>是一个<code>空Object对象</code></li>
-<li>实例对象的<code>__proto__</code>属性: <code>创建对象时自动添加</code>的, <code>默认值</code>为<code>构造函数的prototype属性值</code></li>
+<li>函数的<span class="en"><code>prototype</code></span>属性: 在<span class="en">定义函数时自动添加</span>的, <span class="en">默认值</span>是一个<span class="en">空Object对象</span></li>
+<li>实例对象的<span class="en"><code>__proto__</code></span>属性: <span class="en"><code>创建对象时自动添加</code></span>的, <span class="en">默认值</span>为<span class="en">构造函数的prototype属性值</span></li>
 <li>程序员能直接操作显式原型, 但不能直接操作隐式原型(ES6 之前)</li>
-<li><code>原型对象即为当前实例对象的父对象</code></li>
+<li><span class="en">原型对象即为当前实例对象的父对象</span></li>
 </ul>
 </li>
 </ul>
 <h3 id="原型链-隐式原型链"><a href="#原型链-隐式原型链" class="headerlink" title="原型链(隐式原型链)"></a>原型链(隐式原型链)</h3><p><img src="/../../img/js/%E5%8E%9F%E5%9E%8B%E9%93%BE%E5%88%86%E6%9E%90.png" alt="原型链"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
 <ul>
 <li>定义：<ul>
-<li><code>当访问一个对象的属性或方法时</code>，<code>会先在自身属性中寻找</code>，找到返回，</li>
-<li>如果没有则<code>去原型对象prototype</code>中寻找，如果没有则<code>去原型的原型__proto__</code>中寻找,<code>直到找到Object对象的原型Object.prototype</code>，</li>
-<li>如果在 Object 原型中<code>依然没有</code>找到，则<code>返回undefined</code>，这样通过<strong>proto</strong>属性就形成了一个链的结构</li>
+<li><span class="en"><code>当访问一个对象的属性或方法时</code>，<code>会先在自身属性中寻找</code></span>，找到返回，</li>
+<li>如果没有则<span class="en"><code>去原型对象prototype</code></span>中寻找，如果没有则<span class="en"><code>去原型的原型__proto__</code></span>中寻找,<span class="en"><code>直到找到Object对象的原型Object.prototype</code></span>，</li>
+<li>如果在 Object 原型中<span class="en">依然没有</span>找到，则<span class="en">返回undefined</span>，这样通过__proto__属性就形成了一个链的结构</li>
 </ul>
 </li>
 <li>作用: 查找对象的属性(方法)</li>
 <li>注：<ul>
 <li>原型对象 prototype 也是对象，所以它也有原型</li>
-<li><code>Object对象的原型没有原型</code>，Object.prototype.<strong>proto</strong> &#x3D; null</li>
+<li><span class="en">Object对象的原型没有原型</span>，Object.prototype.<strong>proto</strong> &#x3D; null</li>
 <li>Function 是通过 new 自己产生的实例，所有函数都是 Function 的实例(包含 Function)</li>
-<li>所有的实例对象都有<strong>proto</strong>属性, 它指向的就是原型对象，Function.<strong>proto</strong>&#x3D;&#x3D;&#x3D;Function.prototype</li>
+<li>所有的实例对象都有__proto__属性, 它指向的就是原型对象，Function.<strong>proto</strong>&#x3D;&#x3D;&#x3D;Function.prototype</li>
 <li>当给对象属性赋值时不会使用原型链, 而只是在当前对象中进行操作</li>
-<li><code>读取对象的属性值时: 会自动到原型链中查找</code></li>
-<li><code>设置对象的属性值</code>时: 不会查找原型链,<code> 如果当前对象中没有</code>此属性, <code>直接添加此属性并设置其值</code></li>
-<li><code>方法一般定义在原型</code>中,<code> 属性</code>一般<code>通过构造函数定义在对象本身上</code></li>
+<li><span class="en"><code>读取对象的属性值时: 会自动到原型链中查找</code></span></li>
+<li><span class="en">设置对象的属性值</span>时: 不会查找原型链,<span class="en">如果当前对象中没有</span>此属性, <span class="en">直接添加此属性并设置其值</span></li>
+<li><span class="en">方法一般定义在原型</span>中,<span class="en">属性</span>一般<span class="en">通过构造函数定义在对象本身上</span></li>
 </ul>
 </li>
 </ul>
@@ -676,8 +683,9 @@
 <li>以此类推, 直到全局作用域, 如果还找不到就抛出找不到的异常</li>
 </ul>
 <h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h3 id="理解-2"><a href="#理解-2" class="headerlink" title="理解"></a>理解</h3><ul>
-<li>当<code>嵌套的内部函数``引用</code>了<code>外部函数的变量</code>时就产生了闭包</li>
-<li>通过 chrome 工具得知: 闭包<code>本质</code>是内部函数中的一个<code>对象</code>, 这个对象中<code>包含引用的变量属性</code></li>
+<li>当<span class="en">嵌套的内部函数引用 了外部函数的变量</span>时就产生了闭包</li>
+<li>通过 chrome 工具得知: 闭包<span class="en">本质</span>是内部函数中的一个<span class="en">对象</span>, 这个对象中<span class="en">包含引用的变量属性</span></li>
+<li>在问题的上下文中，闭包被用于保持对定时器变量的引用，即使创建闭包的函数已经返回。这使得取消函数能够访问并修改定时器变量，有效地取消了延迟函数的执行。</li>
 </ul>
 <h3 id="产生闭包的条件"><a href="#产生闭包的条件" class="headerlink" title="产生闭包的条件?"></a>产生闭包的条件?</h3><ul>
 <li>函数嵌套</li>
@@ -695,8 +703,8 @@
 <li>使用函数内部的变量在函数执行完后, 仍然存活在内存中(延长了局部变量的生命周期)</li>
 <li>让函数外部可以操作(读写)到函数内部的数据(变量&#x2F;函数)</li>
 <li>注：<ul>
-<li>函数<code>执行完后</code>, 函数<code>内部</code>声明的局部<code>变量</code>一般是<code>不存在</code>, 存在于<code>闭包中的变量</code>才可能<code>存在</code></li>
-<li>在函数<code>外部不能直接</code>访问函数<code>内部</code>的局部<code>变量,</code> 但我们可以<code>通过闭包</code>让外部<code>操作</code>它</li>
+<li>函数<span class="en">执行完后</span>, 函数<span class="en">内部</span>声明的局部<span class="en">变量一般是不存在</span>, 存在于<span class="en">闭包中的变量</span>才可能<span class="en">存在</span></li>
+<li>在函数<span class="en">外部不能直接</span>访问函数<span class="en">内部</span>的局部<span class="en">变量</span>, 但我们可以<span class="en">通过闭包让外部操作</span>它</li>
 </ul>
 </li>
 </ul>
@@ -714,7 +722,7 @@
 <li>函数执行完后, 函数内的局部变量没有释放, 占用内存时间会变长</li>
 <li>可能导致内存泄露</li>
 <li>解决:<ul>
-<li>及时释放 : f &#x3D; null; &#x2F;&#x2F;让内部函数对象成为垃圾对象</li>
+<li>及时释放: f &#x3D; null; &#x2F;&#x2F;让内部函数对象成为垃圾对象</li>
 </ul>
 </li>
 </ul>

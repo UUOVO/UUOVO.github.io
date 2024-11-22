@@ -15,7 +15,7 @@
 <meta property="og:description" content="修改模型的child（创建3D贺卡的案例） 加载模型后通过回调函数来设置模型 获取模型的场景 const model &#x3D; gltf.scene   模型的缩放大小 model.scale.set(x,y,z)   遍历模型 – 这里能拿到模型的部件 注：Mesh是由几何体和材质组成的网格，而网格才能渲染在屏幕上123456model.traverse((child) &#x3D;&gt; &amp;#12">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-11-01T03:01:03.721Z">
-<meta property="article:modified_time" content="2024-11-05T03:59:25.740Z">
+<meta property="article:modified_time" content="2024-11-20T03:25:17.942Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="案例">
 <meta property="article:tag" content="ThreeJS">
@@ -69,7 +69,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-05 11:59:25"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-20 11:25:17"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -222,7 +222,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/CSS&HTML/" target="">
+                        <a  href="/categories/CSS-HTML/" target="">
                             CSS&HTML
                         </a>
                     </li>
@@ -538,7 +538,7 @@
 </ul>
 </li>
 <li>遍历模型 – 这里能拿到模型的部件<ul>
-<li>注：Mesh是由几何体和材质组成的网格，而网格才能渲染在屏幕上<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">model.<span class="title function_">traverse</span>(<span class="function">(<span class="params">child</span>) =&gt;</span> &#123;</span><br><span class="line">	child.<span class="property">Mesh</span> <span class="comment">// 获取部件的网格</span></span><br><span class="line">	child.<span class="property">name</span> <span class="comment">// 获取部件的名称，可以用来控制对应部件要展示什么效果</span></span><br><span class="line">	child.<span class="property">visible</span> = <span class="literal">true</span>; <span class="comment">// 设置部件是否渲染，false不渲染</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>注：Mesh是由几何体和材质组成的网格，而网格才能渲染在屏幕上<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">model.<span class="title function_">traverse</span>(<span class="function">(<span class="params">child</span>) =&gt;</span> &#123;</span><br><span class="line">	child.<span class="property">Mesh</span> <span class="comment">// 获取部件的网格</span></span><br><span class="line">	child.<span class="property">name</span> <span class="comment">// 获取部件的名称，可以用来控制对应部件要展示什么效果</span></span><br><span class="line">	child.<span class="property">visible</span> = <span class="literal">true</span>; <span class="comment">// 设置部件是否渲染，false不渲染</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li>把模型添加到场景中 – 最重要<ul>
@@ -546,60 +546,31 @@
 </ul>
 </li>
 </ul>
-<h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><ul>
-<li><p>设置模型&#x2F;网格在场景的位置(position)</p>
-<ul>
-<li>mesh.position.set(x,y,z) </li>
-<li>mesh.position.x &#x3D; x</li>
-<li>mesh.position &#x3D; new THREE.Vector3(x,y,z)</li>
+<h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><h3 id="设置模型-网格在场景的位置-position"><a href="#设置模型-网格在场景的位置-position" class="headerlink" title="设置模型&#x2F;网格在场景的位置(position)"></a>设置模型&#x2F;网格在场景的位置(position)</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mesh.<span class="property">position</span>.<span class="title function_">set</span>(x,y,z) </span><br><span class="line">mesh.<span class="property">position</span>.<span class="property">x</span> = x</span><br><span class="line">mesh.<span class="property">position</span> = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">Vector3</span>(x,y,z)</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置物体旋转-rotation"><a href="#设置物体旋转-rotation" class="headerlink" title="设置物体旋转(rotation)"></a>设置物体旋转(rotation)</h3><ul>
+<li>表示的是绕x&#x2F;y&#x2F;z轴旋转的弧度<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mesh.<span class="property">rotation</span>.<span class="title function_">set</span>(x,y,z) </span><br><span class="line">mesh.<span class="property">rotation</span>.<span class="property">x</span> = x</span><br><span class="line">mesh.<span class="property">rotation</span> = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">Vector3</span>(x,y,z) </span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-<li><p>设置物体旋转(rotation)</p>
-<ul>
-<li>表示的是绕x&#x2F;y&#x2F;z轴旋转的弧度</li>
-<li>mesh.rotation.set(x,y,z) </li>
-<li>mesh.rotation.x &#x3D; x</li>
-<li>mesh.rotation &#x3D; new THREE.Vector3(x,y,z)</li>
-</ul>
-</li>
-<li><p>设置模型&#x2F;网格相对于原来位置的移动距离(translate) – 用法同position一样</p>
-</li>
-</ul>
-<h2 id="直射光-—-场景中物理材质一定要有，模拟阳光"><a href="#直射光-—-场景中物理材质一定要有，模拟阳光" class="headerlink" title="直射光 — 场景中物理材质一定要有，模拟阳光"></a>直射光 — 场景中物理材质一定要有，模拟阳光</h2><ul>
-<li>创建直射光<ul>
+<h3 id="设置模型-网格相对于原来位置的移动距离-translate-–-用法同position一样"><a href="#设置模型-网格相对于原来位置的移动距离-translate-–-用法同position一样" class="headerlink" title="设置模型&#x2F;网格相对于原来位置的移动距离(translate) – 用法同position一样"></a>设置模型&#x2F;网格相对于原来位置的移动距离(translate) – 用法同position一样</h3><h2 id="直射光-—-场景中物理材质一定要有，模拟阳光"><a href="#直射光-—-场景中物理材质一定要有，模拟阳光" class="headerlink" title="直射光 — 场景中物理材质一定要有，模拟阳光"></a>直射光 — 场景中物理材质一定要有，模拟阳光</h2><h3 id="创建直射光"><a href="#创建直射光" class="headerlink" title="创建直射光"></a>创建直射光</h3><ul>
 <li>const light &#x3D; new THREE.DirectionalLight(灯光颜色， 强度默认1)</li>
 </ul>
-</li>
-<li>添加到场景中<ul>
+<h3 id="添加到场景中"><a href="#添加到场景中" class="headerlink" title="添加到场景中"></a>添加到场景中</h3><ul>
 <li>scene.add(light)</li>
-</ul>
-</li>
 </ul>
 <h2 id="点光源"><a href="#点光源" class="headerlink" title="点光源"></a>点光源</h2><blockquote>
 <p>作用类似于让屋子亮灯，屋子开了个门，门口会投射灯光</p>
 </blockquote>
-<ul>
-<li>添加点光源<ul>
+<h3 id="添加点光源"><a href="#添加点光源" class="headerlink" title="添加点光源"></a>添加点光源</h3><ul>
 <li>const pointlight &#x3D; new THREE.PointLight(光源的颜色, 光的强度)</li>
 </ul>
-</li>
-<li>适当调整位置</li>
-<li>设置灯光投射阴影<ul>
+<h3 id="适当调整位置"><a href="#适当调整位置" class="headerlink" title="适当调整位置"></a>适当调整位置</h3><h3 id="设置灯光投射阴影"><a href="#设置灯光投射阴影" class="headerlink" title="设置灯光投射阴影"></a>设置灯光投射阴影</h3><ul>
 <li>pointlight.castShadow &#x3D; true</li>
 </ul>
-</li>
-<li>设置渲染器允许光源有阴影<ul>
+<h3 id="设置渲染器允许光源有阴影"><a href="#设置渲染器允许光源有阴影" class="headerlink" title="设置渲染器允许光源有阴影"></a>设置渲染器允许光源有阴影</h3><ul>
 <li>renderer.shadowMap.enabled &#x3D; true</li>
 </ul>
-</li>
-<li>在模型中设置允许接受阴影和投射阴影<ul>
-<li>if (child.Mesh) { <ul>
-<li>child.receiveShadow &#x3D; true </li>
-<li>child.castShadow &#x3D; true}</li>
-</ul>
-</li>
-</ul>
-</li>
+<h3 id="在模型中设置允许接受阴影和投射阴影"><a href="#在模型中设置允许接受阴影和投射阴影" class="headerlink" title="在模型中设置允许接受阴影和投射阴影"></a>在模型中设置允许接受阴影和投射阴影</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (child.<span class="property">Mesh</span>) &#123; </span><br><span class="line">	child.<span class="property">receiveShadow</span> = <span class="literal">true</span> </span><br><span class="line">	child.<span class="property">castShadow</span> = <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
 <li>将光源添加到场景中<ul>
 <li>scene.add(pointlight)</li>
 </ul>
@@ -608,118 +579,58 @@
 <h2 id="创建一个点光源组"><a href="#创建一个点光源组" class="headerlink" title="创建一个点光源组"></a>创建一个点光源组</h2><blockquote>
 <p>这是一个由球转载点光源的组</p>
 </blockquote>
-<ul>
-<li><p>创建一个光源组</p>
-<ul>
+<h3 id="创建一个光源组"><a href="#创建一个光源组" class="headerlink" title="创建一个光源组"></a>创建一个光源组</h3><ul>
 <li>const pointLightGroup &#x3D; new THREE.Group()</li>
 </ul>
-</li>
-<li><p>调正光源组的位置</p>
-<ul>
+<h3 id="调正光源组的位置"><a href="#调正光源组的位置" class="headerlink" title="调正光源组的位置"></a>调正光源组的位置</h3><ul>
 <li>pointLightGroup.position.set(2, 4, 2)</li>
 </ul>
-</li>
-<li><p>设置球体的半径</p>
-<ul>
+<h3 id="设置球体的半径"><a href="#设置球体的半径" class="headerlink" title="设置球体的半径"></a>设置球体的半径</h3><ul>
 <li>const radius &#x3D; 3</li>
 </ul>
-</li>
-<li><p>设置一个空数组</p>
-<ul>
+<h3 id="设置一个空数组"><a href="#设置一个空数组" class="headerlink" title="设置一个空数组"></a>设置一个空数组</h3><ul>
 <li>let pointLightArr &#x3D; []</li>
 </ul>
-</li>
-<li><p>通过循环产生n个球体光源</p>
-<ul>
+<h3 id="通过循环产生n个球体光源"><a href="#通过循环产生n个球体光源" class="headerlink" title="通过循环产生n个球体光源"></a>通过循环产生n个球体光源</h3><ul>
 <li>for (let i &#x3D; 0; i&lt; n; i++) {}</li>
 </ul>
-</li>
-<li><p>在循环中创建球体</p>
-<ul>
+<h3 id="在循环中创建球体"><a href="#在循环中创建球体" class="headerlink" title="在循环中创建球体"></a>在循环中创建球体</h3><ul>
 <li>const sphereGeometry &#x3D; new THREE.SphereGeometry(0.2, 32, 32)</li>
 </ul>
-</li>
-<li><p>创建球体的材质 — 物理材质（会通过周围的灯光映射颜色）</p>
-<ul>
-<li>const sphereMaterial &#x3D; new THREE.MeshStandardMaterial({<br>- color: 0xffffff,  &#x2F;&#x2F; 球体的颜色<br>- emissive: 0xffffff,  &#x2F;&#x2F; 光源的颜色<br>- emissiveIntensity: 10  &#x2F;&#x2F; 光源的强度<ul>
-<li>})</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>创建网格</p>
-<ul>
+<h3 id="创建球体的材质-—-物理材质（会通过周围的灯光映射颜色）"><a href="#创建球体的材质-—-物理材质（会通过周围的灯光映射颜色）" class="headerlink" title="创建球体的材质 — 物理材质（会通过周围的灯光映射颜色）"></a>创建球体的材质 — 物理材质（会通过周围的灯光映射颜色）</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sphereMaterial = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">MeshStandardMaterial</span>(&#123; </span><br><span class="line">	<span class="attr">color</span>: <span class="number">0xffffff</span>,  <span class="comment">// 球体的颜色</span></span><br><span class="line">	<span class="attr">emissive</span>: <span class="number">0xffffff</span>,  <span class="comment">// 光源的颜色</span></span><br><span class="line">	<span class="attr">emissiveIntensity</span>: <span class="number">10</span>  <span class="comment">// 光源的强度</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="创建网格"><a href="#创建网格" class="headerlink" title="创建网格"></a>创建网格</h3><ul>
 <li>const sphere &#x3D; new THREE.Mesh(sphereGeometry, sphereMaterial)</li>
 </ul>
-</li>
-<li><p>创建点光源</p>
-<ul>
+<h3 id="创建点光源"><a href="#创建点光源" class="headerlink" title="创建点光源"></a>创建点光源</h3><ul>
 <li>const pointLight &#x3D; new THREE.PointLight(0xffffff, 10)</li>
 </ul>
-</li>
-<li><p>创建好的添加到数组中</p>
-<ul>
+<h3 id="创建好的添加到数组中"><a href="#创建好的添加到数组中" class="headerlink" title="创建好的添加到数组中"></a>创建好的添加到数组中</h3><ul>
 <li>pointLightArr.push(sphere)</li>
 </ul>
-</li>
-<li><p>设置球体的位置</p>
-<ul>
-<li>sphere.position.set(<ul>
-<li>radius * Math.cos((i * 2 * Math.PI) &#x2F;3), &#x2F;&#x2F; x</li>
-<li>Math.cos((i * 2 * Math.PI) &#x2F; 3), &#x2F;&#x2F; y</li>
-<li>radius * Math.sin((i * 2 * Math.PI) &#x2F;3), &#x2F;&#x2F; z</li>
-</ul>
-</li>
-<li>)</li>
-</ul>
-</li>
-<li><p>在球体中添加点光源</p>
-<ul>
+<h3 id="设置球体的位置"><a href="#设置球体的位置" class="headerlink" title="设置球体的位置"></a>设置球体的位置</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sphere.<span class="property">position</span>.<span class="title function_">set</span>(</span><br><span class="line">radius * <span class="title class_">Math</span>.<span class="title function_">cos</span>((i * <span class="number">2</span> * <span class="title class_">Math</span>.<span class="property">PI</span>) /<span class="number">3</span>), <span class="comment">// x</span></span><br><span class="line"><span class="title class_">Math</span>.<span class="title function_">cos</span>((i * <span class="number">2</span> * <span class="title class_">Math</span>.<span class="property">PI</span>) / <span class="number">3</span>), <span class="comment">// y</span></span><br><span class="line">radius * <span class="title class_">Math</span>.<span class="title function_">sin</span>((i * <span class="number">2</span> * <span class="title class_">Math</span>.<span class="property">PI</span>) /<span class="number">3</span>), <span class="comment">// z</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="在球体中添加点光源"><a href="#在球体中添加点光源" class="headerlink" title="在球体中添加点光源"></a>在球体中添加点光源</h3><ul>
 <li>sphere.add(pointLight)</li>
 </ul>
-</li>
-<li><p>将球体添加到组中</p>
-<ul>
+<h3 id="将球体添加到组中"><a href="#将球体添加到组中" class="headerlink" title="将球体添加到组中"></a>将球体添加到组中</h3><ul>
 <li>pointLightGroup.add(sphere)</li>
 </ul>
-</li>
-<li><p>在场景中添加点光源组</p>
-<ul>
+<h3 id="在场景中添加点光源组"><a href="#在场景中添加点光源组" class="headerlink" title="在场景中添加点光源组"></a>在场景中添加点光源组</h3><ul>
 <li>scene.add(pointLightGroup)</li>
 </ul>
-</li>
-</ul>
-<h2 id="使用补间动画让光源组旋转，上下移动"><a href="#使用补间动画让光源组旋转，上下移动" class="headerlink" title="使用补间动画让光源组旋转，上下移动"></a>使用补间动画让光源组旋转，上下移动</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> options = &#123; <span class="attr">angle</span>: <span class="number">0</span>&#125; <span class="comment">// 从零开始</span></span><br><span class="line">gsap.<span class="title function_">to</span>(options, &#123;</span><br><span class="line">  <span class="attr">angle</span>: <span class="number">2</span> * <span class="title class_">Math</span>.<span class="property">PI</span>, <span class="comment">// 旋转1周</span></span><br><span class="line">  <span class="attr">duration</span>: <span class="number">10</span>, <span class="comment">// 旋转一周所花的时间</span></span><br><span class="line">  <span class="attr">repeat</span>: -<span class="number">1</span>, <span class="comment">// 重复</span></span><br><span class="line">  <span class="attr">ease</span>: <span class="string">&quot;linear&quot;</span>,</span><br><span class="line">  <span class="attr">onUpdate</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    pointLightGroup.<span class="property">rotation</span>.<span class="property">y</span> = options.<span class="property">angle</span></span><br><span class="line">    pointLightArr.<span class="title function_">forEach</span>(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">      item.<span class="property">position</span>.<span class="title function_">set</span>(</span><br><span class="line">        radius * <span class="title class_">Math</span>.<span class="title function_">cos</span>((index * <span class="number">2</span> * <span class="title class_">Math</span>.<span class="property">PI</span>) / <span class="number">3</span>),</span><br><span class="line">        <span class="title class_">Math</span>.<span class="title function_">cos</span>((index * <span class="number">2</span> * <span class="title class_">Math</span>.<span class="property">PI</span>) / <span class="number">3</span> + options.<span class="property">angle</span> *<span class="number">5</span>), <span class="comment">// 上下移动</span></span><br><span class="line">        radius * <span class="title class_">Math</span>.<span class="title function_">sin</span>((index * <span class="number">2</span> * <span class="title class_">Math</span>.<span class="property">PI</span>) / <span class="number">3</span>)</span><br><span class="line">      )</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="使用补间动画让光源组旋转，上下移动"><a href="#使用补间动画让光源组旋转，上下移动" class="headerlink" title="使用补间动画让光源组旋转，上下移动"></a>使用补间动画让光源组旋转，上下移动</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> options = &#123; <span class="attr">angle</span>: <span class="number">0</span>&#125; <span class="comment">// 从零开始</span></span><br><span class="line">gsap.<span class="title function_">to</span>(options, &#123;</span><br><span class="line">  <span class="attr">angle</span>: <span class="number">2</span> * <span class="title class_">Math</span>.<span class="property">PI</span>, <span class="comment">// 旋转1周</span></span><br><span class="line">  <span class="attr">duration</span>: <span class="number">10</span>, <span class="comment">// 旋转一周所花的时间</span></span><br><span class="line">  <span class="attr">repeat</span>: -<span class="number">1</span>, <span class="comment">// 重复</span></span><br><span class="line">  <span class="attr">ease</span>: <span class="string">&quot;linear&quot;</span>,</span><br><span class="line">  <span class="attr">onUpdate</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    pointLightGroup.<span class="property">rotation</span>.<span class="property">y</span> = options.<span class="property">angle</span></span><br><span class="line">    pointLightArr.<span class="title function_">forEach</span>(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">      item.<span class="property">position</span>.<span class="title function_">set</span>(</span><br><span class="line">        radius * <span class="title class_">Math</span>.<span class="title function_">cos</span>((index * <span class="number">2</span> * <span class="title class_">Math</span>.<span class="property">PI</span>) / <span class="number">3</span>),</span><br><span class="line">        <span class="title class_">Math</span>.<span class="title function_">cos</span>((index * <span class="number">2</span> * <span class="title class_">Math</span>.<span class="property">PI</span>) / <span class="number">3</span> + options.<span class="property">angle</span> *<span class="number">5</span>), <span class="comment">// 上下移动</span></span><br><span class="line">        radius * <span class="title class_">Math</span>.<span class="title function_">sin</span>((index * <span class="number">2</span> * <span class="title class_">Math</span>.<span class="property">PI</span>) / <span class="number">3</span>)</span><br><span class="line">      )</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<h2 id="水面"><a href="#水面" class="headerlink" title="水面"></a>水面</h2><ul>
-<li>引用水的模型包<ul>
+<h2 id="水面"><a href="#水面" class="headerlink" title="水面"></a>水面</h2><h3 id="引用水的模型包"><a href="#引用水的模型包" class="headerlink" title="引用水的模型包"></a>引用水的模型包</h3><ul>
 <li>import { Water} from “three&#x2F;examples&#x2F;jsm&#x2F;objects&#x2F;Water2”</li>
 </ul>
-</li>
-<li>创建一个圆的平面<ul>
+<h3 id="创建一个圆的平面"><a href="#创建一个圆的平面" class="headerlink" title="创建一个圆的平面"></a>创建一个圆的平面</h3><ul>
 <li>const waterGeometry &#x3D; new THREE.CircleGeometry(半径,分段默认32)</li>
 </ul>
-</li>
-<li>创建水面<ul>
-<li>const water &#x3D; new Water(waterGeometry, {<ul>
-<li>textureWidth: 1024, &#x2F;&#x2F; 画布的宽度</li>
-<li>textureHeight: 1024, &#x2F;&#x2F; 画布的高度</li>
-<li>color: 0xededed, &#x2F;&#x2F; 水面颜色</li>
-<li>flowDirection: new THREE.Vector2(1,1), &#x2F;&#x2F; 水流动方向</li>
-<li>scale:100,	&#x2F;&#x2F; 水波方位</li>
-</ul>
-</li>
-<li>})</li>
-</ul>
-</li>
-<li>由于水面创造出来是垂直于模型，需旋转90度<ul>
+<h3 id="创建水面"><a href="#创建水面" class="headerlink" title="创建水面"></a>创建水面</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> water = <span class="keyword">new</span> <span class="title class_">Water</span>(waterGeometry, &#123;</span><br><span class="line"><span class="attr">textureWidth</span>: <span class="number">1024</span>, <span class="comment">// 画布的宽度</span></span><br><span class="line"><span class="attr">textureHeight</span>: <span class="number">1024</span>, <span class="comment">// 画布的高度</span></span><br><span class="line"><span class="attr">color</span>: <span class="number">0xededed</span>, <span class="comment">// 水面颜色</span></span><br><span class="line"><span class="attr">flowDirection</span>: <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">Vector2</span>(<span class="number">1</span>,<span class="number">1</span>), <span class="comment">// 水流动方向</span></span><br><span class="line"><span class="attr">scale</span>:<span class="number">100</span>,	<span class="comment">// 水波方位</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="由于水面创造出来是垂直于模型，需旋转90度"><a href="#由于水面创造出来是垂直于模型，需旋转90度" class="headerlink" title="由于水面创造出来是垂直于模型，需旋转90度"></a>由于水面创造出来是垂直于模型，需旋转90度</h3><ul>
 <li>water.rotation.x &#x3D; -Math.PI &#x2F; 2</li>
 </ul>
-</li>
-<li>添加到场景中<ul>
+<h3 id="添加到场景中-1"><a href="#添加到场景中-1" class="headerlink" title="添加到场景中"></a>添加到场景中</h3><ul>
 <li>scene.add(water)</li>
-</ul>
-</li>
 </ul>
 <h2 id="色调映射"><a href="#色调映射" class="headerlink" title="色调映射"></a>色调映射</h2><p>…renderer.xxx</p>
 <h2 id="相机位置与文字切屏"><a href="#相机位置与文字切屏" class="headerlink" title="相机位置与文字切屏"></a>相机位置与文字切屏</h2><ul>
@@ -735,38 +646,29 @@
 <li>建议增加防抖操作，防抖变量为true返回，鼠标滚动时，延时一定时间让防抖变量为false</li>
 </ul>
 </li>
-<li>最后在页面中通过遍历来展示文本，在最外层则通过<code>:style=&quot;&#123;transform: </code>translate3d(0, ${-index*100}vh, 0)<code>&#125;&quot;</code>来控制滚轮动时文本页跟着变。</li>
+<li>最后在页面中通过遍历来展示文本，在最外层则通过<code>:style=&quot;&#123;transform: &#39;translate3d(0, $&#123;-index*100&#125;vh, 0)&#39;&#125;&quot;</code>来控制滚轮动时文本页跟着变。</li>
 </ul>
-<h2 id="创建漫天星星"><a href="#创建漫天星星" class="headerlink" title="创建漫天星星"></a>创建漫天星星</h2><ul>
-<li>通过InstancedMesh来创建100个以上的球的实例</li>
-<li>随机分配到天上<ul>
+<h2 id="创建漫天星星"><a href="#创建漫天星星" class="headerlink" title="创建漫天星星"></a>创建漫天星星</h2><h3 id="通过InstancedMesh来创建100个以上的球的实例"><a href="#通过InstancedMesh来创建100个以上的球的实例" class="headerlink" title="通过InstancedMesh来创建100个以上的球的实例"></a>通过InstancedMesh来创建100个以上的球的实例</h3><h3 id="随机分配到天上"><a href="#随机分配到天上" class="headerlink" title="随机分配到天上"></a>随机分配到天上</h3><ul>
 <li>创建开始位置和结束位置的空数组</li>
 <li>通过for循环，获取随机的x，y,z 并添加到开始数组中</li>
 <li>创建一个矩阵，并设置位置，然后设置实例的矩阵</li>
 </ul>
-</li>
-<li>添加到场景中，</li>
-<li>使用贝塞尔曲线话爱心路径</li>
-<li>根据路径获取点getPoint<ul>
+<h3 id="添加到场景中，"><a href="#添加到场景中，" class="headerlink" title="添加到场景中，"></a>添加到场景中，</h3><h3 id="使用贝塞尔曲线话爱心路径"><a href="#使用贝塞尔曲线话爱心路径" class="headerlink" title="使用贝塞尔曲线话爱心路径"></a>使用贝塞尔曲线话爱心路径</h3><h3 id="根据路径获取点getPoint"><a href="#根据路径获取点getPoint" class="headerlink" title="根据路径获取点getPoint"></a>根据路径获取点getPoint</h3><ul>
 <li>通过for循环获取曲线的每一个点，并添加到结束数组，如果图形太大可以给x，y乘以一个小数</li>
 </ul>
 <p> 	</p>
-</li>
-<li>创建爱心动画<ul>
-<li>定义一个参数，设置时间为0</li>
+<h3 id="创建爱心动画"><a href="#创建爱心动画" class="headerlink" title="创建爱心动画"></a>创建爱心动画</h3><ul>
+<li>定义一个参数，设置时间为0<ul>
 <li>然后使用补间动画从0执行到1，更新时是实时获取开始数组的当前位置+ （结束位置-开始位置）* 参数的时间</li>
 <li>创建一个矩阵，并设置位置，然后设置实例的矩阵</li>
+</ul>
+</li>
 <li>设置实例的矩阵需要更新</li>
 </ul>
-</li>
-<li>创建复原的函数<ul>
+<h3 id="创建复原的函数"><a href="#创建复原的函数" class="headerlink" title="创建复原的函数"></a>创建复原的函数</h3><ul>
 <li>与爱心动画一样，只需要把开始数组替换为结束数组，结束数组替换为开始数据即可</li>
 </ul>
-</li>
-<li>在对象数组中需要呈现的回调函数中调用爱心动画函数</li>
-<li>在监听事件中，当变量要设置为0 时添加复原函数</li>
-</ul>
-
+<h3 id="在对象数组中需要呈现的回调函数中调用爱心动画函数"><a href="#在对象数组中需要呈现的回调函数中调用爱心动画函数" class="headerlink" title="在对象数组中需要呈现的回调函数中调用爱心动画函数"></a>在对象数组中需要呈现的回调函数中调用爱心动画函数</h3><h3 id="在监听事件中，当变量要设置为0-时添加复原函数"><a href="#在监听事件中，当变量要设置为0-时添加复原函数" class="headerlink" title="在监听事件中，当变量要设置为0 时添加复原函数"></a>在监听事件中，当变量要设置为0 时添加复原函数</h3>
 </article>
     
     
@@ -882,7 +784,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-1" title="修改模型的child（创建3D贺卡的案例）"><a rel="nofollow" class="trm-toc-link" href="#修改模型的child（创建3D贺卡的案例）"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">修改模型的child（创建3D贺卡的案例）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="基础语法"><a rel="nofollow" class="trm-toc-link" href="#基础语法"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">基础语法</span></a></li><li class="trm-toc-item trm-toc-level-2" title="直射光 — 场景中物理材质一定要有，模拟阳光"><a rel="nofollow" class="trm-toc-link" href="#直射光-—-场景中物理材质一定要有，模拟阳光"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">直射光 — 场景中物理材质一定要有，模拟阳光</span></a></li><li class="trm-toc-item trm-toc-level-2" title="点光源"><a rel="nofollow" class="trm-toc-link" href="#点光源"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">点光源</span></a></li><li class="trm-toc-item trm-toc-level-2" title="创建一个点光源组"><a rel="nofollow" class="trm-toc-link" href="#创建一个点光源组"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">创建一个点光源组</span></a></li><li class="trm-toc-item trm-toc-level-2" title="使用补间动画让光源组旋转，上下移动"><a rel="nofollow" class="trm-toc-link" href="#使用补间动画让光源组旋转，上下移动"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">使用补间动画让光源组旋转，上下移动</span></a></li><li class="trm-toc-item trm-toc-level-2" title="水面"><a rel="nofollow" class="trm-toc-link" href="#水面"><span class="trm-toc-number">1.6.</span> <span class="trm-toc-text">水面</span></a></li><li class="trm-toc-item trm-toc-level-2" title="色调映射"><a rel="nofollow" class="trm-toc-link" href="#色调映射"><span class="trm-toc-number">1.7.</span> <span class="trm-toc-text">色调映射</span></a></li><li class="trm-toc-item trm-toc-level-2" title="相机位置与文字切屏"><a rel="nofollow" class="trm-toc-link" href="#相机位置与文字切屏"><span class="trm-toc-number">1.8.</span> <span class="trm-toc-text">相机位置与文字切屏</span></a></li><li class="trm-toc-item trm-toc-level-2" title="创建漫天星星"><a rel="nofollow" class="trm-toc-link" href="#创建漫天星星"><span class="trm-toc-number">1.9.</span> <span class="trm-toc-text">创建漫天星星</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-1" title="修改模型的child（创建3D贺卡的案例）"><a rel="nofollow" class="trm-toc-link" href="#修改模型的child（创建3D贺卡的案例）"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">修改模型的child（创建3D贺卡的案例）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="基础语法"><a rel="nofollow" class="trm-toc-link" href="#基础语法"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">基础语法</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="设置模型&#x2F;网格在场景的位置(position)"><a rel="nofollow" class="trm-toc-link" href="#设置模型-网格在场景的位置-position"><span class="trm-toc-number">1.1.1.</span> <span class="trm-toc-text">设置模型&#x2F;网格在场景的位置(position)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="设置物体旋转(rotation)"><a rel="nofollow" class="trm-toc-link" href="#设置物体旋转-rotation"><span class="trm-toc-number">1.1.2.</span> <span class="trm-toc-text">设置物体旋转(rotation)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="设置模型&#x2F;网格相对于原来位置的移动距离(translate) – 用法同position一样"><a rel="nofollow" class="trm-toc-link" href="#设置模型-网格相对于原来位置的移动距离-translate-–-用法同position一样"><span class="trm-toc-number">1.1.3.</span> <span class="trm-toc-text">设置模型&#x2F;网格相对于原来位置的移动距离(translate) – 用法同position一样</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="直射光 — 场景中物理材质一定要有，模拟阳光"><a rel="nofollow" class="trm-toc-link" href="#直射光-—-场景中物理材质一定要有，模拟阳光"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">直射光 — 场景中物理材质一定要有，模拟阳光</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="创建直射光"><a rel="nofollow" class="trm-toc-link" href="#创建直射光"><span class="trm-toc-number">1.2.1.</span> <span class="trm-toc-text">创建直射光</span></a></li><li class="trm-toc-item trm-toc-level-3" title="添加到场景中"><a rel="nofollow" class="trm-toc-link" href="#添加到场景中"><span class="trm-toc-number">1.2.2.</span> <span class="trm-toc-text">添加到场景中</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="点光源"><a rel="nofollow" class="trm-toc-link" href="#点光源"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">点光源</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="添加点光源"><a rel="nofollow" class="trm-toc-link" href="#添加点光源"><span class="trm-toc-number">1.3.1.</span> <span class="trm-toc-text">添加点光源</span></a></li><li class="trm-toc-item trm-toc-level-3" title="适当调整位置"><a rel="nofollow" class="trm-toc-link" href="#适当调整位置"><span class="trm-toc-number">1.3.2.</span> <span class="trm-toc-text">适当调整位置</span></a></li><li class="trm-toc-item trm-toc-level-3" title="设置灯光投射阴影"><a rel="nofollow" class="trm-toc-link" href="#设置灯光投射阴影"><span class="trm-toc-number">1.3.3.</span> <span class="trm-toc-text">设置灯光投射阴影</span></a></li><li class="trm-toc-item trm-toc-level-3" title="设置渲染器允许光源有阴影"><a rel="nofollow" class="trm-toc-link" href="#设置渲染器允许光源有阴影"><span class="trm-toc-number">1.3.4.</span> <span class="trm-toc-text">设置渲染器允许光源有阴影</span></a></li><li class="trm-toc-item trm-toc-level-3" title="在模型中设置允许接受阴影和投射阴影"><a rel="nofollow" class="trm-toc-link" href="#在模型中设置允许接受阴影和投射阴影"><span class="trm-toc-number">1.3.5.</span> <span class="trm-toc-text">在模型中设置允许接受阴影和投射阴影</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="创建一个点光源组"><a rel="nofollow" class="trm-toc-link" href="#创建一个点光源组"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">创建一个点光源组</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="创建一个光源组"><a rel="nofollow" class="trm-toc-link" href="#创建一个光源组"><span class="trm-toc-number">1.4.1.</span> <span class="trm-toc-text">创建一个光源组</span></a></li><li class="trm-toc-item trm-toc-level-3" title="调正光源组的位置"><a rel="nofollow" class="trm-toc-link" href="#调正光源组的位置"><span class="trm-toc-number">1.4.2.</span> <span class="trm-toc-text">调正光源组的位置</span></a></li><li class="trm-toc-item trm-toc-level-3" title="设置球体的半径"><a rel="nofollow" class="trm-toc-link" href="#设置球体的半径"><span class="trm-toc-number">1.4.3.</span> <span class="trm-toc-text">设置球体的半径</span></a></li><li class="trm-toc-item trm-toc-level-3" title="设置一个空数组"><a rel="nofollow" class="trm-toc-link" href="#设置一个空数组"><span class="trm-toc-number">1.4.4.</span> <span class="trm-toc-text">设置一个空数组</span></a></li><li class="trm-toc-item trm-toc-level-3" title="通过循环产生n个球体光源"><a rel="nofollow" class="trm-toc-link" href="#通过循环产生n个球体光源"><span class="trm-toc-number">1.4.5.</span> <span class="trm-toc-text">通过循环产生n个球体光源</span></a></li><li class="trm-toc-item trm-toc-level-3" title="在循环中创建球体"><a rel="nofollow" class="trm-toc-link" href="#在循环中创建球体"><span class="trm-toc-number">1.4.6.</span> <span class="trm-toc-text">在循环中创建球体</span></a></li><li class="trm-toc-item trm-toc-level-3" title="创建球体的材质 — 物理材质（会通过周围的灯光映射颜色）"><a rel="nofollow" class="trm-toc-link" href="#创建球体的材质-—-物理材质（会通过周围的灯光映射颜色）"><span class="trm-toc-number">1.4.7.</span> <span class="trm-toc-text">创建球体的材质 — 物理材质（会通过周围的灯光映射颜色）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="创建网格"><a rel="nofollow" class="trm-toc-link" href="#创建网格"><span class="trm-toc-number">1.4.8.</span> <span class="trm-toc-text">创建网格</span></a></li><li class="trm-toc-item trm-toc-level-3" title="创建点光源"><a rel="nofollow" class="trm-toc-link" href="#创建点光源"><span class="trm-toc-number">1.4.9.</span> <span class="trm-toc-text">创建点光源</span></a></li><li class="trm-toc-item trm-toc-level-3" title="创建好的添加到数组中"><a rel="nofollow" class="trm-toc-link" href="#创建好的添加到数组中"><span class="trm-toc-number">1.4.10.</span> <span class="trm-toc-text">创建好的添加到数组中</span></a></li><li class="trm-toc-item trm-toc-level-3" title="设置球体的位置"><a rel="nofollow" class="trm-toc-link" href="#设置球体的位置"><span class="trm-toc-number">1.4.11.</span> <span class="trm-toc-text">设置球体的位置</span></a></li><li class="trm-toc-item trm-toc-level-3" title="在球体中添加点光源"><a rel="nofollow" class="trm-toc-link" href="#在球体中添加点光源"><span class="trm-toc-number">1.4.12.</span> <span class="trm-toc-text">在球体中添加点光源</span></a></li><li class="trm-toc-item trm-toc-level-3" title="将球体添加到组中"><a rel="nofollow" class="trm-toc-link" href="#将球体添加到组中"><span class="trm-toc-number">1.4.13.</span> <span class="trm-toc-text">将球体添加到组中</span></a></li><li class="trm-toc-item trm-toc-level-3" title="在场景中添加点光源组"><a rel="nofollow" class="trm-toc-link" href="#在场景中添加点光源组"><span class="trm-toc-number">1.4.14.</span> <span class="trm-toc-text">在场景中添加点光源组</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="使用补间动画让光源组旋转，上下移动"><a rel="nofollow" class="trm-toc-link" href="#使用补间动画让光源组旋转，上下移动"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">使用补间动画让光源组旋转，上下移动</span></a></li><li class="trm-toc-item trm-toc-level-2" title="水面"><a rel="nofollow" class="trm-toc-link" href="#水面"><span class="trm-toc-number">1.6.</span> <span class="trm-toc-text">水面</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="引用水的模型包"><a rel="nofollow" class="trm-toc-link" href="#引用水的模型包"><span class="trm-toc-number">1.6.1.</span> <span class="trm-toc-text">引用水的模型包</span></a></li><li class="trm-toc-item trm-toc-level-3" title="创建一个圆的平面"><a rel="nofollow" class="trm-toc-link" href="#创建一个圆的平面"><span class="trm-toc-number">1.6.2.</span> <span class="trm-toc-text">创建一个圆的平面</span></a></li><li class="trm-toc-item trm-toc-level-3" title="创建水面"><a rel="nofollow" class="trm-toc-link" href="#创建水面"><span class="trm-toc-number">1.6.3.</span> <span class="trm-toc-text">创建水面</span></a></li><li class="trm-toc-item trm-toc-level-3" title="由于水面创造出来是垂直于模型，需旋转90度"><a rel="nofollow" class="trm-toc-link" href="#由于水面创造出来是垂直于模型，需旋转90度"><span class="trm-toc-number">1.6.4.</span> <span class="trm-toc-text">由于水面创造出来是垂直于模型，需旋转90度</span></a></li><li class="trm-toc-item trm-toc-level-3" title="添加到场景中"><a rel="nofollow" class="trm-toc-link" href="#添加到场景中-1"><span class="trm-toc-number">1.6.5.</span> <span class="trm-toc-text">添加到场景中</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="色调映射"><a rel="nofollow" class="trm-toc-link" href="#色调映射"><span class="trm-toc-number">1.7.</span> <span class="trm-toc-text">色调映射</span></a></li><li class="trm-toc-item trm-toc-level-2" title="相机位置与文字切屏"><a rel="nofollow" class="trm-toc-link" href="#相机位置与文字切屏"><span class="trm-toc-number">1.8.</span> <span class="trm-toc-text">相机位置与文字切屏</span></a></li><li class="trm-toc-item trm-toc-level-2" title="创建漫天星星"><a rel="nofollow" class="trm-toc-link" href="#创建漫天星星"><span class="trm-toc-number">1.9.</span> <span class="trm-toc-text">创建漫天星星</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="通过InstancedMesh来创建100个以上的球的实例"><a rel="nofollow" class="trm-toc-link" href="#通过InstancedMesh来创建100个以上的球的实例"><span class="trm-toc-number">1.9.1.</span> <span class="trm-toc-text">通过InstancedMesh来创建100个以上的球的实例</span></a></li><li class="trm-toc-item trm-toc-level-3" title="随机分配到天上"><a rel="nofollow" class="trm-toc-link" href="#随机分配到天上"><span class="trm-toc-number">1.9.2.</span> <span class="trm-toc-text">随机分配到天上</span></a></li><li class="trm-toc-item trm-toc-level-3" title="添加到场景中，"><a rel="nofollow" class="trm-toc-link" href="#添加到场景中，"><span class="trm-toc-number">1.9.3.</span> <span class="trm-toc-text">添加到场景中，</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用贝塞尔曲线话爱心路径"><a rel="nofollow" class="trm-toc-link" href="#使用贝塞尔曲线话爱心路径"><span class="trm-toc-number">1.9.4.</span> <span class="trm-toc-text">使用贝塞尔曲线话爱心路径</span></a></li><li class="trm-toc-item trm-toc-level-3" title="根据路径获取点getPoint"><a rel="nofollow" class="trm-toc-link" href="#根据路径获取点getPoint"><span class="trm-toc-number">1.9.5.</span> <span class="trm-toc-text">根据路径获取点getPoint</span></a></li><li class="trm-toc-item trm-toc-level-3" title="创建爱心动画"><a rel="nofollow" class="trm-toc-link" href="#创建爱心动画"><span class="trm-toc-number">1.9.6.</span> <span class="trm-toc-text">创建爱心动画</span></a></li><li class="trm-toc-item trm-toc-level-3" title="创建复原的函数"><a rel="nofollow" class="trm-toc-link" href="#创建复原的函数"><span class="trm-toc-number">1.9.7.</span> <span class="trm-toc-text">创建复原的函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="在对象数组中需要呈现的回调函数中调用爱心动画函数"><a rel="nofollow" class="trm-toc-link" href="#在对象数组中需要呈现的回调函数中调用爱心动画函数"><span class="trm-toc-number">1.9.8.</span> <span class="trm-toc-text">在对象数组中需要呈现的回调函数中调用爱心动画函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="在监听事件中，当变量要设置为0 时添加复原函数"><a rel="nofollow" class="trm-toc-link" href="#在监听事件中，当变量要设置为0-时添加复原函数"><span class="trm-toc-number">1.9.9.</span> <span class="trm-toc-text">在监听事件中，当变量要设置为0 时添加复原函数</span></a></li></ol></li></ol></li></ol>
       </div>
     </div>
 

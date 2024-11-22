@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="一个基于原生 ESM 的前端开发和构建工具，提供极速的服务启动、热重载、按需编译、类型支持和插件系统。  优点 服务器启动速度快：通过将应用中的模块区分为依赖和源码两类   依赖：大多为在开发时不会变动的纯 JS 使用 esbuild 预构建依赖 esbuild 使用 Go 编写，并且比以 JS 编写的打包器预构建依赖快 10-100 倍   源码：包含一些非.js文件（例如 JSX，CSS 或">
+<meta name="description" content=".en {         color: #3D82AC;         font-weight: 600;     }     .desc {         color: #CD853F;         font-weight: 600;         font-size:14px;     }    一个基于原生 ESM 的前端开发和构建工具，提供极速的服务启动、热重载、按需">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vite --- 新一代前端构建工具">
 <meta property="og:url" content="http://example.com/2024/11/01/Engineering/vite/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="一个基于原生 ESM 的前端开发和构建工具，提供极速的服务启动、热重载、按需编译、类型支持和插件系统。  优点 服务器启动速度快：通过将应用中的模块区分为依赖和源码两类   依赖：大多为在开发时不会变动的纯 JS 使用 esbuild 预构建依赖 esbuild 使用 Go 编写，并且比以 JS 编写的打包器预构建依赖快 10-100 倍   源码：包含一些非.js文件（例如 JSX，CSS 或">
+<meta property="og:description" content=".en {         color: #3D82AC;         font-weight: 600;     }     .desc {         color: #CD853F;         font-weight: 600;         font-size:14px;     }    一个基于原生 ESM 的前端开发和构建工具，提供极速的服务启动、热重载、按需">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-11-01T08:52:16.698Z">
-<meta property="article:modified_time" content="2024-11-05T06:41:21.414Z">
+<meta property="article:modified_time" content="2024-11-22T04:05:14.388Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="Vite">
 <meta name="twitter:card" content="summary">
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-05 14:41:21"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-22 12:05:14"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -221,7 +221,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/CSS&HTML/" target="">
+                        <a  href="/categories/CSS-HTML/" target="">
                             CSS&HTML
                         </a>
                     </li>
@@ -526,12 +526,23 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <blockquote>
+    <style>
+    .en {
+        color: #3D82AC;
+        font-weight: 600;
+    }
+    .desc {
+        color: #CD853F;
+        font-weight: 600;
+        font-size:14px;
+    }
+</style>
+
+<blockquote>
 <p>一个基于原生 ESM 的前端开发和构建工具，提供极速的服务启动、热重载、按需编译、类型支持和插件系统。</p>
 </blockquote>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
-<li>服务器启动速度快：通过将应用中的模块区分为依赖和源码两类</li>
-</ol>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li><p>1.服务器启动速度快：通过将应用中的模块区分为依赖和源码两类</p>
 <ul>
 <li>依赖：大多为在开发时不会变动的纯 JS<ul>
 <li>使用 esbuild 预构建依赖</li>
@@ -544,58 +555,53 @@
 </ul>
 </li>
 </ul>
-<ol start="2">
-<li>快速更新</li>
-</ol>
+</li>
+<li><p>2.快速更新</p>
 <ul>
 <li>在 Vite 中，HMR 是在原生 ESM 上执行的。当编辑一个文件时，精确地使已编辑的模块与其最近的 HMR 边界之间的链失活。</li>
 <li>同时利用 HTTP 头来加速整个页面的重新加载<br>- 源码模块的请求会根据 304 Not Modified 进行协商缓存<br>- 依赖模块请求则会通过 Cache-Control: max-age&#x3D;31536000,immutable 进行强缓存，一旦被缓存将不需要再次请求。</li>
 </ul>
-<h3 id="组成部分"><a href="#组成部分" class="headerlink" title="组成部分"></a>组成部分</h3><ol>
+</li>
+</ul>
+<h2 id="组成部分"><a href="#组成部分" class="headerlink" title="组成部分"></a>组成部分</h2><ol>
 <li>一个开发服务器，基于原生 ES 模块 提供了丰富的内建功能，如速度快到惊人的模块热更新（HMR）。</li>
 <li>一套构建指令，使用 Rollup 打包代码，并且是预配置的，可输出用于生产环境的高度优化过的静态资源。</li>
 </ol>
-<h3 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h3><ul>
+<h2 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h2><ul>
 <li>支持原生 ESM语法的script标签</li>
 <li>原生 ESM动态导入</li>
 <li>import.meta的浏览器</li>
 <li>传统浏览器可以通过插件@vitejs&#x2F;plugin-legacy支持</li>
 </ul>
-<h3 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a>创建应用</h3><ul>
+<h2 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a>创建应用</h2><ul>
 <li>提示：node版本要16+，14.18+</li>
-<li>安装：npm create vite@latest 文件名 –template react-ts</li>
+<li>安装：<span class="en">npm create vite@latest 文件名 –template react-ts</span></li>
 <li>注意：如果出现vite不是内部命令，可以执行npm i在执行npm run dev</li>
 <li>create-vite 是一个快速生成主流框架基础模板的工具。</li>
 <li>可以用如 degit 之类的工具，使用社区模版来搭建项目。<ul>
-<li>npx degit user&#x2F;project my-project</li>
-<li>npx degit user&#x2F;project#main my-project  &#x2F;&#x2F; 使用 main 作为默认分支</li>
+<li><span class="en">npx degit user&#x2F;project my-project</span></li>
+<li><span class="en">npx degit user&#x2F;project#main my-project</span>  &#x2F;&#x2F; 使用 main 作为默认分支</li>
 </ul>
 </li>
 </ul>
-<h3 id="index-html与项目根目录"><a href="#index-html与项目根目录" class="headerlink" title="index.html与项目根目录"></a>index.html与项目根目录</h3><ol>
-<li>index.html</li>
-</ol>
-<ul>
+<h2 id="index-html与项目根目录"><a href="#index-html与项目根目录" class="headerlink" title="index.html与项目根目录"></a>index.html与项目根目录</h2><ul>
+<li>index.html<ul>
 <li>是项目的入口文件。</li>
 <li>Vite 将index.html视为源码和模块图的一部分。标签指向源码，url能自动转换</li>
 </ul>
-<ol start="2">
-<li>根目录：即服务文件的位置，以 <root> 代称。</li>
-</ol>
-<ul>
+</li>
+<li>根目录：即服务文件的位置，以 <code>&lt;root&gt;</code> 代称。<ul>
 <li>源码中的绝对 URL 路径将以项目的 “根” 作为基础来解析。</li>
 <li>能够处理依赖关系，解析处于根目录外的文件位置。</li>
 <li>Vite 也支持多个 .html 作入口点的 多页面应用模式。</li>
 </ul>
-<ol start="3">
-<li>指定替代根目录</li>
-</ol>
-<ul>
-<li>vite serve some&#x2F;sub&#x2F;dir</li>
+</li>
+<li>指定替代根目录<ul>
+<li><span class="en">vite serve some&#x2F;sub&#x2F;dir</span></li>
 </ul>
-<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><ul>
-<li><p>npm依赖解析和预构建</p>
-<ul>
+</li>
+</ul>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><h3 id="npm依赖解析和预构建"><a href="#npm依赖解析和预构建" class="headerlink" title="npm依赖解析和预构建"></a>npm依赖解析和预构建</h3><ul>
 <li>将会检测到所有被加载源文件中的此类裸模块导入（import { someMethod } from ‘my-dep’），并执行以下操作:</li>
 </ul>
 <ol>
@@ -603,177 +609,143 @@
 <li>重写导入为合法的 URL以便浏览器能够正确导入。</li>
 <li>依赖是强缓存的,通过 HTTP 头来缓存请求得到的依赖。</li>
 </ol>
-</li>
-<li><p>模块热替换(create-vite 创建应用程序时已有)</p>
-<ul>
+<h3 id="模块热替换-create-vite-创建应用程序时已有"><a href="#模块热替换-create-vite-创建应用程序时已有" class="headerlink" title="模块热替换(create-vite 创建应用程序时已有)"></a>模块热替换(create-vite 创建应用程序时已有)</h3><ul>
 <li>具有 HMR 功能的框架可以利用该 API 提供即时、准确的更新，而无需重新加载页面或清除应用程序状态。</li>
 </ul>
-</li>
-<li><p>TypeScript</p>
-<ul>
+<h3 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h3><ul>
 <li>仅执行 .ts 文件的转译工作，不执行任何类型检查（构建命令之外运行 tsc –noEmit 或 单独的进程中运行 tsc –noEmit –watch 或 使用 vite-plugin-checker插件）</li>
 <li>使用 esbuild 将 ts 转译到 js，约是 tsc 速度的20~30倍，HMR 更新反映到浏览器的时间小于 50ms。</li>
 <li>使用仅含类型的导入和导出形式的语法可以避免 “仅含类型的导入被不正确打包” 的问题</li>
-<li>TypeScript编译器选项<ul>
+<li>TypeScript编译器选项</li>
 <li>“isolatedModules”:true —支持转译功能</li>
 <li>“skipLibCheck”: true —在一些库（如：vue）不支持isolatedModules时用</li>
 <li>“useDefineForClassFields”: true —ts的target是ES或更高，默认。</li>
 <li>代码库难迁移，可以用rollup-plugin-friendly-type-imports</li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>客户端类型</p>
-<ul>
-<li>默认类型定义是写给它的 Node.js API,要补充到Vite 应用的客户端代码环境中，<ul>
+<h3 id="客户端类型"><a href="#客户端类型" class="headerlink" title="客户端类型"></a>客户端类型</h3><ul>
+<li>默认类型定义是写给它的 Node.js API,要补充到Vite 应用的客户端代码环境中，</li>
 <li>添加一个 d.ts 声明文件：<code>/// &lt;reference types=&quot;vite/client&quot; /&gt;</code></li>
-<li>或者将 vite&#x2F;client 添加到 tsconfig.json 中的 compilerOptions.types 下：</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">		<span class="string">&quot;types&quot;</span>: [<span class="string">&quot;vite/client&quot;</span>]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>这将会提供以下类型定义补充：</p>
-<ul>
+<li>或者将 vite&#x2F;client 添加到 tsconfig.json 中的 compilerOptions.types 下：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">		<span class="string">&quot;types&quot;</span>: [<span class="string">&quot;vite/client&quot;</span>]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>这将会提供以下类型定义补充：<ul>
 <li>资源导入 (例如：导入一个 .svg 文件)</li>
 <li>import.meta.env 上 Vite 注入的环境变量的类型定义</li>
 <li>import.meta.hot 上的 HMR API 类型定义</li>
-<li>TIP：要覆盖默认的类型定义，请在三斜线注释前添加定义。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">例如，要为 <span class="title class_">React</span> 组件中的 *.<span class="property">svg</span> 文件定义类型：</span><br><span class="line">declare <span class="variable language_">module</span> <span class="string">&#x27;*.svg&#x27;</span> &#123;</span><br><span class="line">	<span class="keyword">const</span> <span class="attr">content</span>: <span class="title class_">React</span>.<span class="property">FC</span>&lt;<span class="title class_">React</span>.<span class="property">SVGProps</span>&lt;<span class="title class_">SVGElement</span>&gt;&gt;</span><br><span class="line">	<span class="keyword">export</span> <span class="keyword">default</span> content</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/// &lt;reference types=&quot;vite/client&quot; /&gt; </span></span><br></pre></td></tr></table></figure></li>
+<li>TIP：要覆盖默认的类型定义，请在三斜线注释前添加定义。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">例如，要为 <span class="title class_">React</span> 组件中的 *.<span class="property">svg</span> 文件定义类型：</span><br><span class="line">declare <span class="variable language_">module</span> <span class="string">&#x27;*.svg&#x27;</span> &#123;</span><br><span class="line">	<span class="keyword">const</span> <span class="attr">content</span>: <span class="title class_">React</span>.<span class="property">FC</span>&lt;<span class="title class_">React</span>.<span class="property">SVGProps</span>&lt;<span class="title class_">SVGElement</span>&gt;&gt;</span><br><span class="line">	<span class="keyword">export</span> <span class="keyword">default</span> content</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/// &lt;reference types=&quot;vite/client&quot; /&gt; </span></span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><p>Vue</p>
-<ul>
+</ul>
+<h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3><ul>
 <li>第一优先级支持</li>
 <li>Vue3 单文件组件支持：@vitejs&#x2F;plugin-vue</li>
 <li>Vue3 JSX 支持：@vitejs&#x2F;plugin-vue-jsx</li>
 <li>Vue2.7 SFC支持：@vitejs&#x2F;plugin-vue2</li>
 <li>Vue2.7 JSX支持：underfin&#x2F;plugin-vue2-jsx</li>
 </ul>
-</li>
-<li><p>JSX</p>
-<ul>
-<li>不在 React 或 Vue 中使用 JSX，自定义的 jsxFactory 和 jsxFragment 也可以使用 esbuild选项进行配置。<ul>
-<li>示例：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">如<span class="title class_">Preact</span>：</span><br><span class="line">  <span class="comment">// vite.config.js</span></span><br><span class="line">  <span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&#x27;vite&#x27;</span></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">    <span class="attr">esbuild</span>: &#123;</span><br><span class="line">      <span class="attr">jsxFactory</span>: <span class="string">&#x27;h&#x27;</span>,</span><br><span class="line">      <span class="attr">jsxFragment</span>: <span class="string">&#x27;Fragment&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">	使用 jsxInject为 <span class="variable constant_">JSX</span> 注入 helper，以避免手动导入：</span><br><span class="line">  <span class="comment">// vite.config.js</span></span><br><span class="line">  <span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&#x27;vite&#x27;</span></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">    <span class="attr">esbuild</span>: &#123;</span><br><span class="line">      <span class="attr">jsxInject</span>: <span class="string">`import React from &#x27;react&#x27;`</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure></li>
+<h3 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h3><ul>
+<li>不在 React 或 Vue 中使用 JSX，自定义的 jsxFactory 和 jsxFragment 也可以使用 esbuild选项进行配置。</li>
+<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">如<span class="title class_">Preact</span>：</span><br><span class="line"><span class="comment">// vite.config.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&#x27;vite&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">esbuild</span>: &#123;</span><br><span class="line">    <span class="attr">jsxFactory</span>: <span class="string">&#x27;h&#x27;</span>,</span><br><span class="line">    <span class="attr">jsxFragment</span>: <span class="string">&#x27;Fragment&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">使用 jsxInject为 <span class="variable constant_">JSX</span> 注入 helper，以避免手动导入：</span><br><span class="line"><span class="comment">// vite.config.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&#x27;vite&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">esbuild</span>: &#123;</span><br><span class="line">    <span class="attr">jsxInject</span>: <span class="string">`import React from &#x27;react&#x27;`</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>CSS</p>
-<ul>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><ul>
 <li><p>导入 .css 文件将会把内容插入到 <code>&lt;style&gt;</code> 标签中，同时也带有 HMR 支持。也能够以字符串的形式检索处理后的、作为其模块默认导出的 CSS。</p>
 </li>
-<li><p>@import 内联和变基</p>
+<li><p><strong>@import 内联和变基</strong></p>
 <ul>
 <li>通过 postcss-import 预配置支持了 CSS @import 内联，Vite 的路径别名也遵从 CSS @import。</li>
 <li>Sass 和 Less 文件也支持 @import 别名和 URL 变基。</li>
 </ul>
 </li>
-<li><p>PostCSS</p>
+<li><p><strong>PostCSS</strong></p>
 <ul>
 <li>如果项目包含有效的 PostCSS 配置 (例如 postcss.config.js)，将会自动应用于所有已导入的 CSS。</li>
 </ul>
 </li>
-<li><p>CSS Modules</p>
+<li><p><strong>CSS Modules</strong></p>
 <ul>
-<li>任何以 .module.css 为后缀名的文件都被认为是CSS modules 文件。导入会返回相应的模块对象<ul>
-<li>CSS modules 行为可以通过 css.modules 选项 进行配置。</li>
-<li>css.modules.localsConvention 开启了 camelCase 格式变量名转换，可以使用按名导入。</li>
+<li>任何以 .module.css 为后缀名的文件都被认为是CSS modules 文件。导入会返回相应的模块对象</li>
 </ul>
 </li>
+<li><p>CSS modules 行为可以通过 css.modules 选项 进行配置。</p>
+</li>
+<li><p>css.modules.localsConvention 开启了 camelCase 格式变量名转换，可以使用按名导入。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* example.module.css */</span></span><br><span class="line">.<span class="property">red</span> &#123;</span><br><span class="line">  <span class="attr">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*.js*/</span></span><br><span class="line"><span class="keyword">import</span> classes <span class="keyword">from</span> <span class="string">&#x27;./example.module.css&#x27;</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;foo&#x27;</span>).<span class="property">className</span> = classes.<span class="property">red</span></span><br><span class="line"><span class="comment">// .apply-color -&gt; applyColor</span></span><br><span class="line"><span class="keyword">import</span> &#123; applyColor &#125; <span class="keyword">from</span> <span class="string">&#x27;./example.module.css&#x27;</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;foo&#x27;</span>).<span class="property">className</span> = applyColor   </span><br></pre></td></tr></table></figure></li>
+<li><p><strong>CSS 预处理器：要安装依赖</strong></p>
+<ul>
+<li>.scss and .sass：<span class="en">npm add -D sass</span></li>
+<li>.less：<span class="en">npm add -D less</span></li>
+<li>.styl and .stylus：<span class="en">npm add -D stylus</span></li>
+<li>Sass 和 Less ，保证 Vite 别名也能被使用。</li>
+<li>@import 别名和 URL 变基不支持 Stylus。</li>
+<li>url() 中的相对路径引用的，与根文件不同目录中的 Sass&#x2F;Less 文件会自动变基。</li>
+<li>单文件组件，可以通过 <code>&lt;style lang=&quot;sass&quot;&gt;</code>形式自动开启。</li>
+<li>在文件扩展名前加上 .module 来结合使用 CSS modules 和预处理器。</li>
 </ul>
 </li>
-</ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* example.module.css */</span></span><br><span class="line">.<span class="property">red</span> &#123;</span><br><span class="line">  <span class="attr">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*.js*/</span></span><br><span class="line"><span class="keyword">import</span> classes <span class="keyword">from</span> <span class="string">&#x27;./example.module.css&#x27;</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;foo&#x27;</span>).<span class="property">className</span> = classes.<span class="property">red</span></span><br><span class="line"><span class="comment">// .apply-color -&gt; applyColor</span></span><br><span class="line"><span class="keyword">import</span> &#123; applyColor &#125; <span class="keyword">from</span> <span class="string">&#x27;./example.module.css&#x27;</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;foo&#x27;</span>).<span class="property">className</span> = applyColor   </span><br></pre></td></tr></table></figure>
+<li><p><strong>禁用CSS注入页面</strong></p>
 <ul>
-<li><p>CSS 预处理器：要安装依赖 </p>
-<ul>
-<li><p>.scss and .sass：npm add -D sass</p>
-</li>
-<li><p>.less ： npm add -D less</p>
-</li>
-<li><p>.styl and .stylus：npm add -D stylus</p>
-</li>
-<li><p>Sass 和 Less ，保证 Vite 别名也能被使用。</p>
-</li>
-<li><p>@import 别名和 URL 变基不支持 Stylus。</p>
-</li>
-<li><p>url() 中的相对路径引用的，与根文件不同目录中的 Sass&#x2F;Less 文件会自动变基。</p>
-</li>
-<li><p>单文件组件，可以通过 <code>&lt;style lang=&quot;sass&quot;&gt;</code>形式自动开启。</p>
-</li>
-<li><p>在文件扩展名前加上 .module 来结合使用 CSS modules 和预处理器。</p>
-</li>
-<li><p>禁用CSS注入页面</p>
-</li>
-<li><p>自动注入 CSS 内容的行为可以通过 ?inline 参数来关闭。</p>
-</li>
-<li><p>在关闭时，被处理过的 CSS 字符串将会作为该模块的默认导出，但样式并没有被注入到页面中。</p>
-<ul>
+<li>自动注入 CSS 内容的行为可以通过 ?inline 参数来关闭。</li>
+<li>在关闭时，被处理过的 CSS 字符串将会作为该模块的默认导出，但样式并没有被注入到页面中。<ul>
 <li>import styles from ‘.&#x2F;foo.css’ &#x2F;&#x2F; 样式将会注入页面</li>
 <li>import otherStyles from ‘.&#x2F;bar.css?inline’ &#x2F;&#x2F; 样式不会注入页面</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>静态资源处理</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">导入一个静态资源会返回解析后的 <span class="variable constant_">URL</span>：</span><br><span class="line"><span class="keyword">import</span> imgUrl <span class="keyword">from</span> <span class="string">&#x27;./img.png&#x27;</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;hero-img&#x27;</span>).<span class="property">src</span> = imgUrl</span><br><span class="line">添加一些特殊的查询参数可以更改资源被引入的方式：</span><br><span class="line"><span class="comment">// 显式加载资源为一个 URL</span></span><br><span class="line"><span class="keyword">import</span> assetAsURL <span class="keyword">from</span> <span class="string">&#x27;./asset.js?url&#x27;</span></span><br><span class="line"><span class="comment">// 以字符串形式加载资源</span></span><br><span class="line"><span class="keyword">import</span> assetAsString <span class="keyword">from</span> <span class="string">&#x27;./shader.glsl?raw&#x27;</span></span><br><span class="line"><span class="comment">// 加载为 Web Worker</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Worker</span> <span class="keyword">from</span> <span class="string">&#x27;./worker.js?worker&#x27;</span></span><br><span class="line"><span class="comment">// 在构建时 Web Worker 内联为 base64 字符串</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">InlineWorker</span> <span class="keyword">from</span> <span class="string">&#x27;./worker.js?worker&amp;inline&#x27;</span></span><br><span class="line">	<span class="string">``</span><span class="string">`			</span></span><br><span class="line"><span class="string">- JSON - 可以被直接导入,支持具名导入：</span></span><br><span class="line"><span class="string">  - import json from &#x27;./example.json&#x27; // 导入整个对象</span></span><br><span class="line"><span class="string">  - import &#123; field &#125; from &#x27;./example.json&#x27; // 对一个根字段使用具名导入 —— 有效帮助 treeshaking！</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">- Glob导入</span></span><br><span class="line"><span class="string">  - 支持使用特殊的 import.meta.glob 函数从文件系统导入多个模块：</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>javascript</span><br><span class="line">  <span class="comment">//将dir文件夹下的所有js文件导入</span></span><br><span class="line">  <span class="keyword">const</span> modules = <span class="keyword">import</span>.<span class="property">meta</span>.<span class="title function_">glob</span>(<span class="string">&#x27;./dir/*.js&#x27;</span>)</span><br><span class="line">  然后通过遍历modules的key来访问相应的模块</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> path <span class="keyword">in</span> modules) &#123;</span><br><span class="line">    modules[path]().<span class="title function_">then</span>(<span class="function">(<span class="params">mod</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(path, mod)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  匹配到的文件默认是懒加载的，通过动态导入实现，并会在构建时分离为独立的 chunk。</span><br><span class="line">  <span class="comment">//直接引入所有的模块，可以传入&#123;eager:true&#125;,作为第二参数</span></span><br><span class="line">  <span class="keyword">const</span> modules = <span class="keyword">import</span>.<span class="property">meta</span>.<span class="title function_">glob</span>(<span class="string">&#x27;./dir/*.js&#x27;</span>, &#123; <span class="attr">eager</span>: <span class="literal">true</span> &#125;)</span><br></pre></td></tr></table></figure>
+</ul>
+<h3 id="静态资源处理"><a href="#静态资源处理" class="headerlink" title="静态资源处理"></a>静态资源处理</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">导入一个静态资源会返回解析后的 <span class="variable constant_">URL</span>：</span><br><span class="line"><span class="keyword">import</span> imgUrl <span class="keyword">from</span> <span class="string">&#x27;./img.png&#x27;</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;hero-img&#x27;</span>).<span class="property">src</span> = imgUrl</span><br><span class="line">添加一些特殊的查询参数可以更改资源被引入的方式：</span><br><span class="line"><span class="comment">// 显式加载资源为一个 URL</span></span><br><span class="line"><span class="keyword">import</span> assetAsURL <span class="keyword">from</span> <span class="string">&#x27;./asset.js?url&#x27;</span></span><br><span class="line"><span class="comment">// 以字符串形式加载资源</span></span><br><span class="line"><span class="keyword">import</span> assetAsString <span class="keyword">from</span> <span class="string">&#x27;./shader.glsl?raw&#x27;</span></span><br><span class="line"><span class="comment">// 加载为 Web Worker</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Worker</span> <span class="keyword">from</span> <span class="string">&#x27;./worker.js?worker&#x27;</span></span><br><span class="line"><span class="comment">// 在构建时 Web Worker 内联为 base64 字符串</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">InlineWorker</span> <span class="keyword">from</span> <span class="string">&#x27;./worker.js?worker&amp;inline&#x27;</span></span><br><span class="line"><span class="string">``</span><span class="string">`			</span></span><br><span class="line"><span class="string">### JSON </span></span><br><span class="line"><span class="string">- 可以被直接导入,支持具名导入：</span></span><br><span class="line"><span class="string">  - import json from &#x27;./example.json&#x27; // 导入整个对象</span></span><br><span class="line"><span class="string">  - import &#123; field &#125; from &#x27;./example.json&#x27; // 对一个根字段使用具名导入 —— 有效帮助 treeshaking！</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">### Glob导入</span></span><br><span class="line"><span class="string">- 支持使用特殊的 import.meta.glob 函数从文件系统导入多个模块：</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line">  <span class="comment">//将dir文件夹下的所有js文件导入</span></span><br><span class="line">  <span class="keyword">const</span> modules = <span class="keyword">import</span>.<span class="property">meta</span>.<span class="title function_">glob</span>(<span class="string">&#x27;./dir/*.js&#x27;</span>)</span><br><span class="line">  然后通过遍历modules的key来访问相应的模块</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> path <span class="keyword">in</span> modules) &#123;</span><br><span class="line">    modules[path]().<span class="title function_">then</span>(<span class="function">(<span class="params">mod</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(path, mod)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  匹配到的文件默认是懒加载的，通过动态导入实现，并会在构建时分离为独立的 chunk。</span><br><span class="line">  <span class="comment">//直接引入所有的模块，可以传入&#123;eager:true&#125;,作为第二参数</span></span><br><span class="line">  <span class="keyword">const</span> modules = <span class="keyword">import</span>.<span class="property">meta</span>.<span class="title function_">glob</span>(<span class="string">&#x27;./dir/*.js&#x27;</span>, &#123; <span class="attr">eager</span>: <span class="literal">true</span> &#125;)</span><br></pre></td></tr></table></figure>
 <ul>
-<li>Glob 导入形式  <ul>
+<li><strong>Glob 导入形式</strong><ul>
 <li>支持以字符串形式导入文件。</li>
 <li>使用了 Import Reflection 语法对导入进行断言：</li>
 <li>const modules &#x3D; import.meta.glob(‘.&#x2F;dir&#x2F;*.js’, { as: ‘raw’ })</li>
 </ul>
 </li>
-<li>多个匹配模式<ul>
+<li><strong>多个匹配模式</strong><ul>
 <li>第一个参数是一个 glob 数组，例如：</li>
 <li>const modules &#x3D; import.meta.glob([‘.&#x2F;dir&#x2F;<em>.js’, ‘.&#x2F;another&#x2F;</em>.js’])</li>
 </ul>
 </li>
-<li>反面匹配模式(以 ! 作为前缀):排除匹配<ul>
+<li><strong>反面匹配模式(以 ! 作为前缀):排除匹配</strong><ul>
 <li>const modules &#x3D; import.meta.glob([‘.&#x2F;dir&#x2F;*.js’, ‘!**&#x2F;bar.js’])</li>
 </ul>
 </li>
-<li>具名导入（部分导入）<ul>
+<li><strong>具名导入（部分导入）</strong><ul>
 <li>const modules &#x3D; import.meta.glob(‘.&#x2F;dir&#x2F;*.js’, { import: ‘setup’ })</li>
 </ul>
 </li>
-<li>tree-shaking：移除 JavaScript 上下文中的未引用代码</li>
-<li>与 eager 在一起时，可以对这些模块进行 tree-shaking<ul>
+<li><strong>tree-shaking</strong>：移除 JavaScript 上下文中的未引用代码</li>
+<li><strong>与 eager 在一起时，可以对这些模块进行 tree-shaking</strong><ul>
 <li>{ import: ‘setup’, eager: true }</li>
 </ul>
 </li>
-<li>设置 import 为 default 可以加载默认导出<ul>
+<li><strong>设置 import 为 default 可以加载默认导出</strong><ul>
 <li>{import: ‘default’,eager: true}</li>
 </ul>
 </li>
-<li>自定义查询 ：使用 query 选项<ul>
+<li><strong>自定义查询</strong>：使用 query 选项<ul>
 <li>{query: { foo: ‘bar’, bar: true }}</li>
-<li>动态导入</li>
+</ul>
+</li>
+<li><strong>动态导入</strong><ul>
 <li>const module &#x3D; await import(<code>./dir/$&#123;file&#125;.js</code>)</li>
 </ul>
 </li>
 </ul>
-</li>
-<li><p>WebAssembly</p>
-<ul>
-<li>预编译的 .wasm 文件可以通过 ?init 来导入。默认导出一个初始化函数，返回值为所导出 wasm 实例对象的 Promise<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> init <span class="keyword">from</span> <span class="string">&#x27;./example.wasm?init&#x27;</span></span><br><span class="line"><span class="title function_">init</span>().<span class="title function_">then</span>(<span class="function">(<span class="params">instance</span>) =&gt;</span> &#123;</span><br><span class="line">  instance.<span class="property">exports</span>.<span class="title function_">test</span>()</span><br><span class="line">&#125;)</span><br><span class="line">还可以将传递给 <span class="title class_">WebAssembly</span>.<span class="property">instantiate</span> 的导入对象作为其第二个参数：</span><br><span class="line"><span class="title function_">init</span>(&#123;</span><br><span class="line">  <span class="attr">imports</span>: &#123;</span><br><span class="line">    <span class="attr">someFunc</span>: <span class="function">() =&gt;</span> &#123;&#125;</span><br><span class="line">  &#125;&#125;).<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;&#125;)</span><br><span class="line">在生产构建当中，体积小于 assetInlineLimit 的 .<span class="property">wasm</span> 文件将会被内联为 base64 字符串。否则，它们将作为资源复制到 dist 目录中，并按需获取。</span><br></pre></td></tr></table></figure></li>
+<h3 id="WebAssembly"><a href="#WebAssembly" class="headerlink" title="WebAssembly"></a>WebAssembly</h3><ul>
+<li>预编译的 .wasm 文件可以通过 ?init 来导入。默认导出一个初始化函数，返回值为所导出 wasm 实例对象的 Promise<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> init <span class="keyword">from</span> <span class="string">&#x27;./example.wasm?init&#x27;</span></span><br><span class="line"><span class="title function_">init</span>().<span class="title function_">then</span>(<span class="function">(<span class="params">instance</span>) =&gt;</span> &#123;</span><br><span class="line">  instance.<span class="property">exports</span>.<span class="title function_">test</span>()</span><br><span class="line">&#125;)</span><br><span class="line">还可以将传递给 <span class="title class_">WebAssembly</span>.<span class="property">instantiate</span> 的导入对象作为其第二个参数：</span><br><span class="line"><span class="title function_">init</span>(&#123;</span><br><span class="line">  <span class="attr">imports</span>: &#123;</span><br><span class="line">    <span class="attr">someFunc</span>: <span class="function">() =&gt;</span> &#123;&#125;</span><br><span class="line">  &#125;&#125;).<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;&#125;)</span><br><span class="line">在生产构建当中，体积小于 assetInlineLimit 的 .<span class="property">wasm</span> 文件将会被内联为 base64 字符串。否则，它们将作为资源复制到 dist 目录中，并按需获取。</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-<li><p>Web Workers</p>
-<ul>
-<li>通过构造器导入<br>- Web Worker 可以使用 new Worker() 和 new SharedWorker() 导入。<br>- type: ‘module’可以创建模块</li>
+<h3 id="Web-Workers"><a href="#Web-Workers" class="headerlink" title="Web Workers"></a>Web Workers</h3><ul>
+<li><strong>通过构造器导入</strong><ul>
+<li>Web Worker 可以使用 new Worker() 和 new SharedWorker() 导入。</li>
+<li>type: ‘module’可以创建模块</li>
 </ul>
 </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> worker = <span class="keyword">new</span> <span class="title class_">Worker</span>(<span class="keyword">new</span> <span class="title function_">URL</span>(<span class="string">&#x27;./worker.js&#x27;</span>, <span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">url</span>), &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;module&#x27;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> worker = <span class="keyword">new</span> <span class="title class_">Worker</span>(<span class="keyword">new</span> <span class="title function_">URL</span>(<span class="string">&#x27;./worker.js&#x27;</span>, <span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">url</span>), &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;module&#x27;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>带有查询后缀的导入</p>
-<ul>
-<li>在导入请求上添加 ?worker 或 ?sharedworker 查询参数来直接导入一个 web worker 脚本。<ul>
+<li><strong>带有查询后缀的导入</strong><ul>
+<li>在导入请求上添加 ?worker 或 ?sharedworker 查询参数来直接导入一个 web worker 脚本。</li>
+</ul>
+</li>
 <li>默认导出会是一个自定义 worker 的构造函数：<ul>
 <li>import MyWorker from ‘.&#x2F;worker?worker’</li>
 <li>const worker &#x3D; new MyWorker()</li>
@@ -788,110 +760,83 @@
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>构建优化</p>
-<ul>
-<li>CSS代码分割<ul>
-<li>自动地将一个异步 chunk 模块中使用到的 CSS 代码抽取出来并为其生成一个单独的文件。这个 CSS 文件将在该异步 chunk 加载完成时自动通过一个 <link> 标签载入，该异步 chunk 会保证只在 CSS 加载完毕后再执行，避免发生 FOUC 。</li>
+<h3 id="构建优化"><a href="#构建优化" class="headerlink" title="构建优化"></a>构建优化</h3><ul>
+<li><strong>CSS代码分割</strong><ul>
+<li>自动地将一个异步 chunk 模块中使用到的 CSS 代码抽取出来并为其生成一个单独的文件。这个 CSS 文件将在该异步 chunk 加载完成时自动通过一个 link 标签载入，该异步 chunk 会保证只在 CSS 加载完毕后再执行，避免发生 FOUC 。</li>
 <li>禁用 CSS 代码分割：通过设置 build.cssCodeSplit:false</li>
 </ul>
 </li>
-<li>预加载指令生成<ul>
-<li>为入口 chunk 和它们在打包出的 HTML 中的直接引入自动生成 <link rel="modulepreload"> 指令。</li>
+<li><strong>预加载指令生成</strong><ul>
+<li>为入口 chunk 和它们在打包出的 HTML 中的直接引入自动生成 <code>&lt;link rel=&quot;modulepreload&quot;&gt;</code> 指令。</li>
 </ul>
 </li>
-<li>异步chunk加载优化<ul>
+<li><strong>异步chunk加载优化</strong><ul>
 <li>将使用一个预加载步骤自动重写代码，来分割动态导入调用，以实现当 A 被请求时，C 也将 同时 被请求：Entry —&gt; (A + C)</li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><ul>
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><ul>
 <li>添加一个插件<ul>
 <li>安装好插件，然后在vite.config.js 配置文件中的 plugins 数组中引入</li>
 </ul>
 </li>
-<li>强制插件排序<ul>
+</ul>
+<h3 id="强制插件排序"><a href="#强制插件排序" class="headerlink" title="强制插件排序"></a>强制插件排序</h3><ul>
 <li>使用 enforce 修饰符来强制插件的位置:<ul>
 <li>pre：在 Vite 核心插件之前调用该插件</li>
 <li>post：在 Vite 构建插件之后调用该插件</li>
-<li>default：在 Vite 核心插件之后调用该插件<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      ...<span class="title function_">image</span>(),</span><br><span class="line">      <span class="attr">enforce</span>: <span class="string">&#x27;pre&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>default：在 Vite 核心插件之后调用该插件<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      ...<span class="title function_">image</span>(),</span><br><span class="line">      <span class="attr">enforce</span>: <span class="string">&#x27;pre&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
-</li>
-<li>按需应用<ul>
-<li>如果插件在服务或构建期间按需使用，请使用 apply 属性指明它们仅在 ‘build’ 或 ‘serve’ 模式时调用：  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> typescript2 <span class="keyword">from</span> <span class="string">&#x27;rollup-plugin-typescript2&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&#x27;vite&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      ...<span class="title function_">typescript2</span>(),</span><br><span class="line">      <span class="attr">apply</span>: <span class="string">&#x27;build&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<h3 id="按需应用"><a href="#按需应用" class="headerlink" title="按需应用"></a>按需应用</h3><ul>
+<li>如果插件在服务或构建期间按需使用，请使用 apply 属性指明它们仅在 ‘build’ 或 ‘serve’ 模式时调用：  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> typescript2 <span class="keyword">from</span> <span class="string">&#x27;rollup-plugin-typescript2&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&#x27;vite&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      ...<span class="title function_">typescript2</span>(),</span><br><span class="line">      <span class="attr">apply</span>: <span class="string">&#x27;build&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-</ul>
-<h3 id="依赖预构建（仅会在开发模式下应用）"><a href="#依赖预构建（仅会在开发模式下应用）" class="headerlink" title="依赖预构建（仅会在开发模式下应用）"></a>依赖预构建（仅会在开发模式下应用）</h3><ul>
-<li><p>目的</p>
-<ul>
+<h2 id="依赖预构建（仅会在开发模式下应用）"><a href="#依赖预构建（仅会在开发模式下应用）" class="headerlink" title="依赖预构建（仅会在开发模式下应用）"></a>依赖预构建（仅会在开发模式下应用）</h2><h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><ul>
 <li>CommonJS和UMD兼容性: 将作为 CommonJS&#x2F;UMD 发布的依赖项转换为 ESM。</li>
 <li>将有许多内部模块的 ESM 依赖关系转换为单个模块，以提高后续页面加载性能。</li>
 </ul>
-</li>
-<li><p>自动依赖搜寻</p>
-<ul>
+<h3 id="自动依赖搜寻"><a href="#自动依赖搜寻" class="headerlink" title="自动依赖搜寻"></a>自动依赖搜寻</h3><ul>
 <li>如果没有找到相应的缓存，将抓取源码，并自动寻找引入的依赖项，并将这些依赖项作为预构建包的入口点。</li>
 <li>在服务器已经启动之后，如果遇到一个新的依赖关系导入，且不在缓存中，将重新运行依赖构建进程并重新加载页面。</li>
 </ul>
-</li>
-<li><p>Monorepo 和链接依赖</p>
-<ul>
+<h3 id="Monorepo-和链接依赖"><a href="#Monorepo-和链接依赖" class="headerlink" title="Monorepo 和链接依赖"></a>Monorepo 和链接依赖</h3><ul>
 <li>monorepo 启动，该仓库中的某个包可能会成为另一个包的依赖。</li>
 <li>Vite 会自动侦测没有从 node_modules 解析的依赖项，并将链接的依赖视为源码。</li>
 <li>会分析被链接依赖的依赖列表。但被链接的依赖导出要为 ESM 格式。如果不是，在配置里将此依赖添加到 optimizeDeps.include和build.commonjsOptions.include 这两项中。</li>
 <li>当这个被链接的依赖发生变更后，在重启开发服务器时在命令中带上 –force 选项让所有更改生效。</li>
-<li>传递依赖项错误的去重，导致运行出错，使用npm pack 来修复<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">optimizeDeps</span>: &#123;</span><br><span class="line">    <span class="attr">include</span>: [<span class="string">&#x27;linked-dep&#x27;</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">build</span>: &#123;</span><br><span class="line">    <span class="attr">commonjsOptions</span>: &#123;</span><br><span class="line">      <span class="attr">include</span>: [<span class="regexp">/linked-dep/</span>, <span class="regexp">/node_modules/</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>传递依赖项错误的去重，导致运行出错，使用npm pack 来修复<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">optimizeDeps</span>: &#123;</span><br><span class="line">    <span class="attr">include</span>: [<span class="string">&#x27;linked-dep&#x27;</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">build</span>: &#123;</span><br><span class="line">    <span class="attr">commonjsOptions</span>: &#123;</span><br><span class="line">      <span class="attr">include</span>: [<span class="regexp">/linked-dep/</span>, <span class="regexp">/node_modules/</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-<li><p>自定义行为</p>
-<ul>
-<li>optimizeDeps.include：明确包含依赖依赖项很大或者是 CommonJS<ul>
+<h3 id="自定义行为"><a href="#自定义行为" class="headerlink" title="自定义行为"></a>自定义行为</h3><ul>
+<li>optimizeDeps.include：明确包含依赖依赖项很大或者是 CommonJS</li>
 <li>optimizeDeps.exclude：明确排除依赖项很小，并且已经是有效的 ESM</li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>缓存</p>
-<ul>
-<li>文件系统缓存<ul>
+<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><ul>
+<li><strong>文件系统缓存</strong><ul>
 <li>Vite 会将预构建的依赖缓存到 node_modules&#x2F;.vite。它基于以下几个源来决定是否需要重新运行预构建步骤:<ol>
 <li>补丁文件夹的修改时间</li>
-<li>包管理器的 lockfile，例如 package-lock.json, yarn.lock，或者 pnpm-lock.yaml或者 bun.lockb</li>
-<li>vite.config.js 中的相关字段<ol start="4">
+<li>包管理器的 lockfile，<span class="desc">例如 package-lock.json, yarn.lock，或者 pnpm-lock.yaml或者 bun.lockb</span></li>
+<li>vite.config.js 中的相关字段</li>
 <li>NODE_ENV 的值</li>
-</ol>
-</li>
 </ol>
 </li>
 <li>只有在上述其中一项发生更改时，才需要重新运行预构建。</li>
 <li>强制重新构建依赖，用 –force 命令行选项启动开发服务器，或者手动删除 node_modules&#x2F;.vite 目录。</li>
 </ul>
 </li>
-<li>浏览器缓存<ul>
-<li>已预构建的依赖请求使用 HTTP 头 max-age&#x3D;31536000,immutable 进行强缓存，一旦被缓存将不需要再次请求。<ul>
-<li>如安装了不同的版本的依赖项，则会通过附加的版本查询自动失效。</li>
-<li>如果想通过本地编辑来调试依赖项，则:</li>
+<li><strong>浏览器缓存</strong><ul>
+<li>已预构建的依赖请求使用 HTTP 头 max-age&#x3D;31536000,immutable 进行强缓存，一旦被缓存将不需要再次请求。</li>
 </ul>
-<ol>
+</li>
+<li>如安装了不同的版本的依赖项，则会通过附加的版本查询自动失效。</li>
+<li>如果想通过本地编辑来调试依赖项，则:<ol>
 <li>通过浏览器调试工具的 Network 选项卡暂时禁用缓存；</li>
 <li>重启 Vite 开发服务器指定 –force 选项，来重新构建依赖项</li>
 <li>重新载入页面。</li>
 </ol>
 </li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="静态资源处理"><a href="#静态资源处理" class="headerlink" title="静态资源处理"></a>静态资源处理</h3><ul>
-<li>将资源引入为 URL<ul>
+<h2 id="静态资源处理-1"><a href="#静态资源处理-1" class="headerlink" title="静态资源处理"></a>静态资源处理</h2><h3 id="将资源引入为-URL"><a href="#将资源引入为-URL" class="headerlink" title="将资源引入为 URL"></a>将资源引入为 URL</h3><ul>
 <li>服务时引入一个静态资源会返回解析后的公共路径：<ul>
 <li>import imgUrl from ‘.&#x2F;img.png’</li>
 <li>document.getElementById(‘hero-img’).src &#x3D; imgUrl</li>
@@ -903,147 +848,92 @@
 <li>常见的图像、媒体和字体文件类型被自动检测为资源。使用 assetsInclude 选项扩展内部列表。</li>
 <li>引用的资源作为构建资源图的一部分包括在内，将生成散列文件名，并可以由插件进行处理以进行优化。</li>
 <li>较小的资源体积小于 assetsInlineLimit 选项值则会被内联为 base64 data URL。</li>
-<li>Git LFS 占位符会自动排除在内联之外。要获得内联，请确保在构建之前通过 Git LFS 下载文件内容。<ul>
-<li>默认情况下，TypeScript 不会将静态资源导入视为有效的模块。要解决这个问题，需要添加 vite&#x2F;client。</li>
+<li>Git LFS 占位符会自动排除在内联之外。要获得内联，请确保在构建之前通过 Git LFS 下载文件内容。</li>
 </ul>
 </li>
+<li>默认情况下，TS 不会将静态资源导入视为有效的模块。要解决这个问题，需要添加 vite&#x2F;client。</li>
 </ul>
-</li>
-</ul>
-</li>
-<li>显示 URL 引入<ul>
+<h3 id="显示-URL-引入"><a href="#显示-URL-引入" class="headerlink" title="显示 URL 引入"></a>显示 URL 引入</h3><ul>
 <li>未被包含在内部列表或 assetsInclude 中的资源，可以使用 ?url 后缀显式导入为一个 URL。</li>
 </ul>
-</li>
-<li>将资源引入为 字符串<ul>
-<li>资源可以使用 ?raw 后缀声明作为字符串引入。<ul>
+<h3 id="将资源引入为-字符串"><a href="#将资源引入为-字符串" class="headerlink" title="将资源引入为 字符串"></a>将资源引入为 字符串</h3><ul>
+<li>资源可以使用 ?raw 后缀声明作为字符串引入。</li>
 <li>import shaderString from ‘.&#x2F;shader.glsl?raw</li>
 </ul>
-</li>
+<h3 id="导入脚本作为Worker"><a href="#导入脚本作为Worker" class="headerlink" title="导入脚本作为Worker"></a>导入脚本作为Worker</h3><ul>
+<li>通过 ?worker 或 ?sharedworker 后缀导入为 web worker。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在生产构建中将会分离出 chunk</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Worker</span> <span class="keyword">from</span> <span class="string">&#x27;./shader.js?worker&#x27;</span></span><br><span class="line"><span class="keyword">const</span> worker = <span class="keyword">new</span> <span class="title class_">Worker</span>()</span><br><span class="line"><span class="comment">// sharedworker</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">SharedWorker</span> <span class="keyword">from</span> <span class="string">&#x27;./shader.js?sharedworker&#x27;</span></span><br><span class="line"><span class="keyword">const</span> sharedWorker = <span class="keyword">new</span> <span class="title class_">SharedWorker</span>()</span><br><span class="line"><span class="comment">// 内联为 base64 字符串</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">InlineWorker</span> <span class="keyword">from</span> <span class="string">&#x27;./shader.js?worker&amp;inline&#x27;</span></span><br><span class="line"><span class="string">``</span><span class="string">`				</span></span><br><span class="line"><span class="string">### public 目录</span></span><br><span class="line"><span class="string">- 存放不会被源码引用、必须保持原有文件名、不想引入，只想得到url</span></span><br><span class="line"><span class="string">- 目录默认是 &lt;root&gt;/public，但可以通过 publicDir 选项 来配置</span></span><br><span class="line"><span class="string">- 注意：该目录资源不应该被js文件引用，应该使用/绝对路径</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">### new URL(url, import.meta.url)</span></span><br><span class="line"><span class="string">- 功能：暴露当前模块的 URL。</span></span><br><span class="line"><span class="string">- 将它与原生的 URL 构造器 组合使用，在一个 JS 模块中，通过相对路径我们就能得到一个被完整解析的静态资源 URL：</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line"><span class="comment">// URL字符串必须是静态的</span></span><br><span class="line"><span class="keyword">const</span> imgUrl = <span class="keyword">new</span> <span class="title function_">URL</span>(<span class="string">&#x27;./img.png&#x27;</span>, <span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">url</span>).<span class="property">href</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;hero-img&#x27;</span>).<span class="property">src</span> = imgUrl</span><br><span class="line">字符串模板支持动态 <span class="variable constant_">URL</span>：</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getImageUrl</span>(<span class="params">name</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title function_">URL</span>(<span class="string">`./dir/<span class="subst">$&#123;name&#125;</span>.png`</span>, <span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">url</span>).<span class="property">href</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-<li>导入脚本作为Worker<ul>
-<li>通过 ?worker 或 ?sharedworker 后缀导入为 web worker。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在生产构建中将会分离出 chunk</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Worker</span> <span class="keyword">from</span> <span class="string">&#x27;./shader.js?worker&#x27;</span></span><br><span class="line"><span class="keyword">const</span> worker = <span class="keyword">new</span> <span class="title class_">Worker</span>()</span><br><span class="line"><span class="comment">// sharedworker</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">SharedWorker</span> <span class="keyword">from</span> <span class="string">&#x27;./shader.js?sharedworker&#x27;</span></span><br><span class="line"><span class="keyword">const</span> sharedWorker = <span class="keyword">new</span> <span class="title class_">SharedWorker</span>()</span><br><span class="line"><span class="comment">// 内联为 base64 字符串</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">InlineWorker</span> <span class="keyword">from</span> <span class="string">&#x27;./shader.js?worker&amp;inline&#x27;</span></span><br><span class="line"><span class="string">``</span><span class="string">`				</span></span><br><span class="line"><span class="string">- public 目录</span></span><br><span class="line"><span class="string">	- 存放不会被源码引用、必须保持原有文件名、不想引入，只想得到url</span></span><br><span class="line"><span class="string">	- 目录默认是 &lt;root&gt;/public，但可以通过 publicDir 选项 来配置</span></span><br><span class="line"><span class="string">	- 注意：该目录资源不应该被js文件引用，应该使用/绝对路径</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">- new URL(url, import.meta.url)</span></span><br><span class="line"><span class="string">  - 功能：暴露当前模块的 URL。</span></span><br><span class="line"><span class="string">	- 将它与原生的 URL 构造器 组合使用，在一个 JS 模块中，通过相对路径我们就能得到一个被完整解析的静态资源 URL：</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>javascript</span><br><span class="line">  <span class="comment">// URL字符串必须是静态的</span></span><br><span class="line">  <span class="keyword">const</span> imgUrl = <span class="keyword">new</span> <span class="title function_">URL</span>(<span class="string">&#x27;./img.png&#x27;</span>, <span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">url</span>).<span class="property">href</span></span><br><span class="line">  <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;hero-img&#x27;</span>).<span class="property">src</span> = imgUrl</span><br><span class="line">字符串模板支持动态 <span class="variable constant_">URL</span>：</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">getImageUrl</span>(<span class="params">name</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title function_">URL</span>(<span class="string">`./dir/<span class="subst">$&#123;name&#125;</span>.png`</span>, <span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">url</span>).<span class="property">href</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h3 id="构建生产版本-vite-build"><a href="#构建生产版本-vite-build" class="headerlink" title="构建生产版本: vite build"></a>构建生产版本: vite build</h3><ul>
-<li><p>浏览器兼容性</p>
-<ul>
-<li>支持原生 ESM script 标签、支持原生 ESM 动态导入 和 import.meta 的浏览器<ul>
+<h2 id="构建生产版本-vite-build"><a href="#构建生产版本-vite-build" class="headerlink" title="构建生产版本: vite build"></a>构建生产版本: vite build</h2><h3 id="浏览器兼容性"><a href="#浏览器兼容性" class="headerlink" title="浏览器兼容性"></a>浏览器兼容性</h3><ul>
+<li>支持原生 ESM script 标签、支持原生 ESM 动态导入 和 import.meta 的浏览器</li>
 <li>通过 build.target 配置项指定构建目标，最低支持 es2015。</li>
 <li>默认情况下 Vite 只处理语法转译，且默认不包含任何 polyfill。</li>
-</ul>
-</li>
 <li>传统浏览器可以通过插件 @vitejs&#x2F;plugin-legacy 来支持。兼容版的 chunk 只会在不支持原生 ESM 的浏览器中进行按需加载。</li>
 </ul>
-</li>
-<li><p>公共基础路径</p>
-<ul>
-<li>在嵌套的公共路径下部署项目，需指定 base 配置项，然后所有资源的路径都将据此配置重写<ul>
+<h3 id="公共基础路径"><a href="#公共基础路径" class="headerlink" title="公共基础路径"></a>公共基础路径</h3><ul>
+<li>在嵌套的公共路径下部署项目，需指定 base 配置项，然后所有资源的路径都将据此配置重写</li>
 <li>也可以通过命令行参数指定，例如 vite build –base&#x3D;&#x2F;my&#x2F;public&#x2F;path&#x2F;。</li>
-</ul>
-</li>
-<li>当访问过程中需要使用动态连接的 url 时，可以使用全局注入的 import.meta.env.BASE_URL 变量，它的值为公共基础路径。<ul>
+<li>当访问过程中需要使用动态连接的 url 时，可以使用全局注入的 import.meta.env.BASE_URL 变量，它的值为公共基础路径。</li>
 <li>注意:这个变量在构建时会被静态替换，因此必须按 import.meta.env.BASE_URL 的原样出现</li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>自定义构建</p>
-<ul>
+<h3 id="自定义构建"><a href="#自定义构建" class="headerlink" title="自定义构建"></a>自定义构建</h3><ul>
 <li>通过 build.rollupOptions 直接调整底层的 Rollup 选项</li>
 </ul>
-</li>
-<li><p>产物分块策略</p>
-<ul>
-<li>通过配置 build.rollupOptions.output.manualChunks 来自定义 chunk 分割策略.<ul>
+<h3 id="产物分块策略"><a href="#产物分块策略" class="headerlink" title="产物分块策略"></a>产物分块策略</h3><ul>
+<li>通过配置 build.rollupOptions.output.manualChunks 来自定义 chunk 分割策略.</li>
 <li>默认的策略是将 chunk 分割为 index 和 vendor。可以通过在配置文件中添加 splitVendorChunkPlugin 来继续使用 “分割 Vendor Chunk” 策略</li>
 <li>也可用工厂函数 splitVendorChunk({ cache: SplitVendorChunkCache }) 来提供该策略，cache.reset() 需要在 buildStart 阶段被调用。</li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>文件变化时重新构建</p>
-<ul>
-<li>vite build –watch 来启用 rollup 的监听器。<ul>
+<h3 id="文件变化时重新构建"><a href="#文件变化时重新构建" class="headerlink" title="文件变化时重新构建"></a>文件变化时重新构建</h3><ul>
+<li>vite build –watch 来启用 rollup 的监听器。</li>
 <li>或直接通过 build.watch 调整底层的 WatcherOptions 选项。</li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>多页面应用模式</p>
-<ul>
+<h3 id="多页面应用模式"><a href="#多页面应用模式" class="headerlink" title="多页面应用模式"></a>多页面应用模式</h3><ul>
 <li>在构建过程中，只需指定多个 .html 文件作为入口点</li>
 <li>如果指定了另一个根目录，在解析输入路径时，__dirname 的值将仍然是 vite.config.js 文件所在的目录。因此，需要把对应入口文件的 root 的路径添加到 resolve 的参数中。</li>
 </ul>
-</li>
-<li><p>库模式</p>
-<ul>
+<h3 id="库模式"><a href="#库模式" class="headerlink" title="库模式"></a>库模式</h3><ul>
 <li>这个库要进行发布构建时，使用 build.rollupOptions.external 配置项确保将那些不想打包进库的依赖进行外部化处理</li>
-<li>在 package.json 中使用如下格式。来暴露多个入口起点：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;exports&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;.&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;import&quot;</span>: <span class="string">&quot;./dist/my-lib.mjs&quot;</span>,</span><br><span class="line">      <span class="string">&quot;require&quot;</span>: <span class="string">&quot;./dist/my-lib.cjs&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;./secondary&quot;</span>: &#123;<span class="comment">//暴露多个入口起点使用这种形式</span></span><br><span class="line">      <span class="string">&quot;import&quot;</span>: <span class="string">&quot;./dist/secondary.mjs&quot;</span>,</span><br><span class="line">      <span class="string">&quot;require&quot;</span>: <span class="string">&quot;./dist/secondary.cjs&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>注意：<ol>
+<li>在 package.json 中使用如下格式。来暴露多个入口起点：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;exports&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;.&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;import&quot;</span>: <span class="string">&quot;./dist/my-lib.mjs&quot;</span>,</span><br><span class="line">      <span class="string">&quot;require&quot;</span>: <span class="string">&quot;./dist/my-lib.cjs&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;./secondary&quot;</span>: &#123;<span class="comment">//暴露多个入口起点使用这种形式</span></span><br><span class="line">      <span class="string">&quot;import&quot;</span>: <span class="string">&quot;./dist/secondary.mjs&quot;</span>,</span><br><span class="line">      <span class="string">&quot;require&quot;</span>: <span class="string">&quot;./dist/secondary.cjs&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><ol>
 <li>如果 package.json 不包含 “type”: “module”，Vite 会生成不同的文件后缀名以兼容 Node.js。.js 会变为 .mjs 而 .cjs 会变为 .js 。</li>
 <li>在库模式下，所有 import.meta.env.* 用法在构建生产时都会被静态替换。但是，process.env.* 的用法不会被替换。如果不允许这样做，使用 define: { ‘process.env.NODE_ENV’: ‘“production”‘ } 。</li>
 </ol>
-</li>
+<h2 id="部署静态站点"><a href="#部署静态站点" class="headerlink" title="部署静态站点"></a>部署静态站点</h2><ul>
+<li>构建应用：<span class="en">npm run build</span></li>
+<li>本地测试应用：构建后运行<span class="en">npm run preview </span><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;preview&quot;</span>: <span class="string">&quot;vite preview --port 8080&quot;</span> <span class="comment">// 配置服务的运行端口</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="GitHub-Pages"><a href="#GitHub-Pages" class="headerlink" title="GitHub Pages"></a>GitHub Pages</h3><ul>
+<li>1.在 vite.config.js 中设置正确的 base。<ul>
+<li>部署在 <code>https://&lt;USERNAME&gt;.github.io/</code> 上，省略 base 使其默认为 ‘&#x2F;‘</li>
+<li>部署在 <code>https://&lt;USERNAME&gt;.github.io/&lt;REPO&gt;/</code> 上，设置 base 为 <code>&#39;/&lt;REPO&gt;/&#39;</code></li>
 </ul>
 </li>
+<li>2.进入仓库 settings 页面的 GitHub Pages 配置，选择部署来源为“GitHub Actions”</li>
 </ul>
-<h3 id="部署静态站点"><a href="#部署静态站点" class="headerlink" title="部署静态站点"></a>部署静态站点</h3><ul>
-<li><p>构建应用：npm run build</p>
-</li>
-<li><p>本地测试应用：构建后运行npm run preview </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;preview&quot;</span>: <span class="string">&quot;vite preview --port 8080&quot;</span> <span class="comment">// 配置服务的运行端口</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>GitHub Pages</p>
-<ol>
-<li>在 vite.config.js 中设置正确的 base。</li>
-</ol>
-<ul>
-<li>部署在 https:&#x2F;&#x2F;<USERNAME>.github.io&#x2F; 上，省略 base 使其默认为 ‘&#x2F;‘</li>
-<li>部署在 https:&#x2F;&#x2F;<USERNAME>.github.io&#x2F;<REPO>&#x2F; 上，设置 base 为 ‘&#x2F;<REPO>&#x2F;‘</li>
+<h3 id="GitLab-Pages-配合-GitLab-CI"><a href="#GitLab-Pages-配合-GitLab-CI" class="headerlink" title="GitLab Pages 配合 GitLab CI"></a>GitLab Pages 配合 GitLab CI</h3><ul>
+<li>1.在 vite.config.js 中设置正确的 base。</li>
+<li>部署在 <code>https://&lt;USERNAME or GROUP&gt;.gitlab.io/</code> 上，省略 base 使其默认为 ‘&#x2F;‘。</li>
+<li>部署在 <code>https://&lt;USERNAME or GROUP&gt;.gitlab.io/&lt;REPO&gt;/</code> 上，设置 base 为 <code>&#39;/&lt;REPO&gt;/&#39;</code>。</li>
+<li>2.在项目根目录创建一个 .gitlab-ci.yml 文件，并包含以下内容<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">image</span>: <span class="attr">node</span>:<span class="number">16.5</span><span class="number">.0</span></span><br><span class="line"><span class="attr">pages</span>:</span><br><span class="line">  <span class="attr">stage</span>: deploy</span><br><span class="line">  <span class="attr">cache</span>:</span><br><span class="line">    <span class="attr">key</span>:</span><br><span class="line">      <span class="attr">files</span>:</span><br><span class="line">        - package-lock.<span class="property">json</span></span><br><span class="line">      <span class="attr">prefix</span>: npm</span><br><span class="line">    <span class="attr">paths</span>:</span><br><span class="line">      - node_modules/</span><br><span class="line">  <span class="attr">script</span>:</span><br><span class="line">    - npm install</span><br><span class="line">    - npm run build</span><br><span class="line">    - cp -a dist/. public/</span><br><span class="line">  <span class="attr">artifacts</span>:</span><br><span class="line">    <span class="attr">paths</span>:</span><br><span class="line">      - public</span><br><span class="line">  <span class="attr">rules</span>:</span><br><span class="line">     - <span class="attr">if</span>: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH</span><br></pre></td></tr></table></figure></li>
 </ul>
-<ol start="2">
-<li>进入仓库 settings 页面的 GitHub Pages 配置，选择部署来源为“GitHub Actions”</li>
-</ol>
-</li>
-<li><p>GitLab Pages 配合 GitLab CI</p>
-<ol>
-<li>在 vite.config.js 中设置正确的 base。</li>
-</ol>
-<ul>
-<li>部署在 https:&#x2F;&#x2F;<USERNAME or GROUP>.gitlab.io&#x2F; 上，省略 base 使其默认为 ‘&#x2F;‘。</li>
-<li>部署在 https:&#x2F;&#x2F;<USERNAME or GROUP>.gitlab.io&#x2F;<REPO>&#x2F; 上，设置 base 为 ‘&#x2F;<REPO>&#x2F;‘。</li>
+<h2 id="环境变量与模式"><a href="#环境变量与模式" class="headerlink" title="环境变量与模式"></a>环境变量与模式</h2><h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><ul>
+<li><span class="en">import.meta.env.MODE: {string}</span>应用运行的模式。</li>
+<li><span class="en">import.meta.env.BASE_URL: {string}</span> 部署应用时的基本 URL。他由base 配置项决定。</li>
+<li><span class="en">import.meta.env.PROD: {boolean}</span> 应用是否运行在生产环境。</li>
+<li><span class="en">import.meta.env.DEV: {boolean}</span> 应用是否运行在开发环境 (永远与 import.meta.env.PROD相反)。</li>
+<li><span class="en">import.meta.env.SSR: {boolean}</span> 应用是否运行在 server 上。</li>
 </ul>
-<ol start="2">
-<li>在项目根目录创建一个 .gitlab-ci.yml 文件，并包含以下内容<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">image</span>: <span class="attr">node</span>:<span class="number">16.5</span><span class="number">.0</span></span><br><span class="line"><span class="attr">pages</span>:</span><br><span class="line">  <span class="attr">stage</span>: deploy</span><br><span class="line">  <span class="attr">cache</span>:</span><br><span class="line">    <span class="attr">key</span>:</span><br><span class="line">      <span class="attr">files</span>:</span><br><span class="line">        - package-lock.<span class="property">json</span></span><br><span class="line">      <span class="attr">prefix</span>: npm</span><br><span class="line">    <span class="attr">paths</span>:</span><br><span class="line">      - node_modules/</span><br><span class="line">  <span class="attr">script</span>:</span><br><span class="line">    - npm install</span><br><span class="line">    - npm run build</span><br><span class="line">    - cp -a dist/. public/</span><br><span class="line">  <span class="attr">artifacts</span>:</span><br><span class="line">    <span class="attr">paths</span>:</span><br><span class="line">      - public</span><br><span class="line">  <span class="attr">rules</span>:</span><br><span class="line">     - <span class="attr">if</span>: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ul>
-<h3 id="环境变量与模式"><a href="#环境变量与模式" class="headerlink" title="环境变量与模式"></a>环境变量与模式</h3><ul>
-<li><p>环境变量</p>
-<ul>
-<li>import.meta.env.MODE: {string} 应用运行的模式。</li>
-<li>import.meta.env.BASE_URL: {string} 部署应用时的基本 URL。他由base 配置项决定。</li>
-<li>import.meta.env.PROD: {boolean} 应用是否运行在生产环境。</li>
-<li>import.meta.env.DEV: {boolean} 应用是否运行在开发环境 (永远与 import.meta.env.PROD相反)。</li>
-<li>import.meta.env.SSR: {boolean} 应用是否运行在 server 上。</li>
-</ul>
-</li>
-<li><p>生产环境替换</p>
-<ul>
+<h3 id="生产环境替换"><a href="#生产环境替换" class="headerlink" title="生产环境替换"></a>生产环境替换</h3><ul>
 <li>在生产环境中，在引用环境变量时请使用完全静态的字符串。</li>
 <li>对于 JavaScript 字符串，可以使用 unicode 零宽度空格来分割这个字符串，例如： ‘import.meta\u200b.env.MODE’。</li>
 <li>对于 Vue 模板或其他编译到 JavaScript 字符串的 HTML，可以使用 <wbr> 标签，例如：import.meta.<wbr>env.MODE。</li>
 </ul>
-</li>
-<li><p>.env文件</p>
-<ul>
-<li>.env                # 所有情况下都会加载</li>
-<li>.env.local          # 所有情况下都会加载，但会被 git 忽略</li>
-<li>.env.[mode]         # 只在指定模式下加载</li>
-<li>.env.[mode].local   # 只在指定模式下加载，但会被 git 忽略</li>
+<h3 id="env文件"><a href="#env文件" class="headerlink" title=".env文件"></a>.env文件</h3><ul>
+<li><span class="en">.env </span>               # 所有情况下都会加载</li>
+<li><span class="en">.env.local </span>         # 所有情况下都会加载，但会被 git 忽略</li>
+<li><span class="en">.env.[mode] </span>        # 只在指定模式下加载</li>
+<li><span class="en">.env.[mode].local </span>  # 只在指定模式下加载，但会被 git 忽略</li>
 <li>环境加载优先级<ul>
 <li>Vite 执行时已经存在的环境变量有最高的优先级，不会被覆盖。</li>
 <li>一份用于指定模式的文件（例如 .env.production）会比通用形式的优先级更高（例如 .env）。</li>
@@ -1053,68 +943,49 @@
 <li>加载的环境变量也会通过 import.meta.env 以字符串形式暴露给客户端源码</li>
 <li>为了防止意外地将一些环境变量泄漏到客户端，只有以 VITE_ 为前缀的变量才会暴露给经过 vite 处理的代码。</li>
 </ul>
-</li>
-<li><p>TypeScript 的智能提示</p>
-<ul>
+<h3 id="TypeScript-的智能提示"><a href="#TypeScript-的智能提示" class="headerlink" title="TypeScript 的智能提示"></a>TypeScript 的智能提示</h3><ul>
 <li>获取以 VITE_ 为前缀的用户自定义环境变量的 TypeScript 智能提示：</li>
-<li>在 src 目录下创建一个 env.d.ts 文件，接着按下面这样增加 ImportMetaEnv 的定义：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// &lt;reference types=&quot;vite/client&quot; /&gt;</span></span><br><span class="line">interface <span class="title class_">ImportMetaEnv</span> &#123;</span><br><span class="line">  readonly <span class="attr">VITE_APP_TITLE</span>: string</span><br><span class="line">  <span class="comment">// 更多环境变量...</span></span><br><span class="line">&#125;</span><br><span class="line">interface <span class="title class_">ImportMeta</span> &#123;</span><br><span class="line">  readonly <span class="attr">env</span>: <span class="title class_">ImportMetaEnv</span></span><br><span class="line">&#125;</span><br><span class="line">如果代码依赖于浏览器环境的类型，比如 <span class="variable constant_">DOM</span> 和 <span class="title class_">WebWorker</span>，可以在 tsconfig.<span class="property">json</span> 中修改 lib 字段来获取类型支持。</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;lib&quot;</span>: [<span class="string">&quot;WebWorker&quot;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>在 src 目录下创建一个 env.d.ts 文件，接着按下面这样增加 ImportMetaEnv 的定义：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// &lt;reference types=&quot;vite/client&quot; /&gt;</span></span><br><span class="line">interface <span class="title class_">ImportMetaEnv</span> &#123;</span><br><span class="line">  readonly <span class="attr">VITE_APP_TITLE</span>: string</span><br><span class="line">  <span class="comment">// 更多环境变量...</span></span><br><span class="line">&#125;</span><br><span class="line">interface <span class="title class_">ImportMeta</span> &#123;</span><br><span class="line">  readonly <span class="attr">env</span>: <span class="title class_">ImportMetaEnv</span></span><br><span class="line">&#125;</span><br><span class="line">如果代码依赖于浏览器环境的类型，比如 <span class="variable constant_">DOM</span> 和 <span class="title class_">WebWorker</span>，可以在 tsconfig.<span class="property">json</span> 中修改 lib 字段来获取类型支持。</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;lib&quot;</span>: [<span class="string">&quot;WebWorker&quot;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-<li><p>模式</p>
-<ul>
+<h3 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h3><ul>
 <li>默认情况下，开发服务器 (dev 命令) 运行在 development模式，而 build 命令则运行在 production 模式。</li>
-<li>通过传递 –mode 选项标志来覆盖命令使用的默认模式: vite build –mode staging</li>
+<li>通过传递 –mode 选项标志来覆盖命令使用的默认模式: <span class="en">vite build –mode staging</span></li>
 </ul>
-</li>
-</ul>
-<h3 id="服务端渲染（SSR）"><a href="#服务端渲染（SSR）" class="headerlink" title="服务端渲染（SSR）"></a>服务端渲染（SSR）</h3><ul>
-<li><p>情景逻辑</p>
-<ul>
+<h2 id="服务端渲染（SSR）"><a href="#服务端渲染（SSR）" class="headerlink" title="服务端渲染（SSR）"></a>服务端渲染（SSR）</h2><ul>
+<li>情景逻辑<ul>
 <li>如果需要执行 SSR 和客户端间情景逻辑，可以使用：<br>-if (import.meta.env.SSR) { &#x2F;&#x2F; … 仅在服务端执行的逻辑 }</li>
 </ul>
 </li>
-<li><p>生产环境构建</p>
-<ol>
-<li>正常生成一个客户端构建；</li>
-<li>再生成一个 SSR 构建，使其通过 import() 直接加载，这样便无需再使用 Vite 的 ssrLoadModule；</li>
-</ol>
-<ul>
+</ul>
+<h3 id="生产环境构建"><a href="#生产环境构建" class="headerlink" title="生产环境构建"></a>生产环境构建</h3><ul>
+<li>1.正常生成一个客户端构建；</li>
+<li>2.再生成一个 SSR 构建，使其通过 import() 直接加载，这样便无需再使用 Vite 的 ssrLoadModule；<ul>
 <li>注意:使用 –ssr 标志表明这将会是一个 SSR 构建。同时需要指定 SSR 的入口。</li>
 </ul>
-<ol start="3">
-<li>在 server.js 中，通过 process.env.NODE_ENV 条件分支，需要添加一些用于生产环境的特定逻辑：</li>
-</ol>
-<ul>
+</li>
+<li>3.在 server.js 中，通过 process.env.NODE_ENV 条件分支，需要添加一些用于生产环境的特定逻辑：<ul>
 <li>使用 dist&#x2F;client&#x2F;index.html 作为模板，而不是根目录的 index.html，因为前者包含了到客户端构建的正确资源链接。</li>
 <li>使用 import(‘.&#x2F;dist&#x2F;server&#x2F;entry-server.js’) </li>
 <li>将 vite 开发服务器的创建和所有使用都移到 dev-only 条件分支后面，然后添加静态文件服务中间件来服务 dist&#x2F;client 中的文件。</li>
 </ul>
 </li>
-<li><p>生成预加载指令</p>
-<ul>
+</ul>
+<h3 id="生成预加载指令"><a href="#生成预加载指令" class="headerlink" title="生成预加载指令"></a>生成预加载指令</h3><ul>
 <li>使用 –ssrManifest 标志，这将会在构建输出目录中生成一份 ssr-manifest.json：<ul>
 <li>“build:client”: “vite build –outDir dist&#x2F;client –ssrManifest”,</li>
+</ul>
+</li>
 <li>@vitejs&#x2F;plugin-vue 会自动注册使用的组件模块 ID 到相关的 Vue SSR 上下文：</li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>预渲染 &#x2F; SSG</p>
-<ul>
+<h3 id="预渲染-SSG"><a href="#预渲染-SSG" class="headerlink" title="预渲染 &#x2F; SSG"></a>预渲染 &#x2F; SSG</h3><ul>
 <li>预先知道某些路由所需的路由和数据，可以使用与生产环境 SSR 相同的逻辑将这些路由预先渲染到静态 HTML中。</li>
 </ul>
-</li>
-<li><p>SSR 外部化</p>
-<ul>
-<li>当运行 SSR 时依赖会由 Vite 的 SSR 转换模块系统作外部化。<ul>
+<h3 id="SSR-外部化"><a href="#SSR-外部化" class="headerlink" title="SSR 外部化"></a>SSR 外部化</h3><ul>
+<li>当运行 SSR 时依赖会由 Vite 的 SSR 转换模块系统作外部化。</li>
 <li>如果依赖需要被 Vite 的管道转换,可以添加到 ssr.noExternal</li>
 <li>对于采用链接的依赖，它们将默认不会被外部化</li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>SSR 专有插件逻辑</p>
-<ul>
+<h3 id="SSR-专有插件逻辑"><a href="#SSR-专有插件逻辑" class="headerlink" title="SSR 专有插件逻辑"></a>SSR 专有插件逻辑</h3><ul>
 <li>一些框架，会根据客户端渲染和服务端渲染的区别，将组件编译成不同的格式。可以向以下的插件钩子中，给 Vite 传递额外的 options 对象，对象中包含 ssr 属性来支持根据情景转换：<ul>
 <li>resolveId</li>
 <li>load</li>
@@ -1122,50 +993,36 @@
 </ul>
 </li>
 </ul>
-</li>
-<li><p>SSR 构建目标</p>
-<ul>
+<h3 id="SSR-构建目标"><a href="#SSR-构建目标" class="headerlink" title="SSR 构建目标"></a>SSR 构建目标</h3><ul>
 <li>SSR 构建的默认目标为 node 环境，但也可以让服务运行在 Web Worker 上。可以将ssr.target 设置为 webworker，以将目标配置为 Web Worker。</li>
 </ul>
-</li>
-<li><p>SSR 构建产物</p>
-<ul>
+<h3 id="SSR-构建产物"><a href="#SSR-构建产物" class="headerlink" title="SSR 构建产物"></a>SSR 构建产物</h3><ul>
 <li>通过设置 ssr.noExternal 为 true 来将 SSR 打包成单个 JavaScript 文件。这将会做两件事：<ul>
 <li>将所有依赖视为 noExternal（非外部化）</li>
 <li>若任何 Node.js 内置内容被引入，将抛出一个错误</li>
 </ul>
 </li>
 </ul>
-</li>
-<li><p>Vite CLI</p>
-<ul>
+<h3 id="Vite-CLI"><a href="#Vite-CLI" class="headerlink" title="Vite CLI"></a>Vite CLI</h3><ul>
 <li>CLI 命令 $ vite dev 和 $ vite preview 也可以用于 SSR 应用：可以将SSR 中间件通过 configureServer 添加到开发服务器、以及通过 configurePreviewServer 添加到预览服务器。</li>
 </ul>
-</li>
-<li><p>SSR 格式</p>
-<ul>
-<li>默认情况下，Vite 生成的 SSR 打包产物是 ESM 格式。<ul>
+<h3 id="SSR-格式"><a href="#SSR-格式" class="headerlink" title="SSR 格式"></a>SSR 格式</h3><ul>
+<li>默认情况下，Vite 生成的 SSR 打包产物是 ESM 格式。</li>
 <li>如果SSR 项目不能使用 ESM，可以通过 Vite v2 外部启发式方法设置 legacy.buildSsrCjsExternalHeuristics: true 生成 CJS 格式的产物。</li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="后端集成-自定义"><a href="#后端集成-自定义" class="headerlink" title="后端集成(自定义)"></a>后端集成(自定义)</h3><ol>
-<li>在的 Vite 配置中配置入口文件和启用创建 manifest：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">build</span>: &#123;</span><br><span class="line">    <span class="comment">// 在 outDir 中生成 manifest.json</span></span><br><span class="line">    <span class="attr">manifest</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">rollupOptions</span>: &#123;</span><br><span class="line">			<span class="comment">// 覆盖默认的 .html 入口</span></span><br><span class="line">			<span class="attr">input</span>: <span class="string">&#x27;/path/to/main.js&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 如果没有禁用 module preload 的 polyfill，还需在入口处添加此 polyfill：</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;vite/modulepreload-polyfill&#x27;</span></span><br></pre></td></tr></table></figure></li>
-<li>在开发环境中，在服务器的 HTML 模板中注入以下内容：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果是在开发环境中</span></span><br><span class="line">&lt;script type=<span class="string">&quot;module&quot;</span> src=<span class="string">&quot;http://localhost:5173/@vite/client&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span> <span class="attr">src</span>=<span class="string">&quot;http://localhost:5173/main.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="string">&quot;为了正确地提供资源，有两种选项：&quot;</span></span><br><span class="line">  <span class="number">1.</span> 确保服务器被配置过，将会拦截代理资源请求给到 <span class="title class_">Vite</span> 服务器</span><br><span class="line">  <span class="number">2.</span> 设置 server.<span class="property">origin</span> 以求生成的资源链接将以服务器 <span class="variable constant_">URL</span> 形式被解析而非一个相对路径</span><br><span class="line"><span class="string">&quot;如果正使用 @vitejs/plugin-react 配合 React，还需要在上述脚本前添加下面这个，因为插件不能修改正在服务的 HTML&quot;</span></span><br><span class="line">&lt;script type=<span class="string">&quot;module&quot;</span>&gt;</span><br><span class="line">  <span class="keyword">import</span> <span class="title class_">RefreshRuntime</span> <span class="keyword">from</span> <span class="string">&#x27;http://localhost:5173/@react-refresh&#x27;</span></span><br><span class="line">  <span class="title class_">RefreshRuntime</span>.<span class="title function_">injectIntoGlobalHook</span>(<span class="variable language_">window</span>)</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">$RefreshReg$</span> = <span class="function">() =&gt;</span> &#123;&#125;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">$RefreshSig$</span> = <span class="function">() =&gt;</span> <span class="function">(<span class="params">type</span>) =&gt;</span> type</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">__vite_plugin_react_preamble_installed__</span> = <span class="literal">true</span></span><br><span class="line">&lt;/script&gt;</span><br><span class="line"><span class="comment">// 如果是在生产环境中</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;/assets/&#123;&#123; manifest[&#x27;main.js&#x27;].css &#125;&#125;&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span> <span class="attr">src</span>=<span class="string">&quot;/assets/&#123;&#123; manifest[&#x27;main.js&#x27;].file &#125;&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></li>
-<li>在生产环境中：在运行 vite build 之后，一个 manifest.json 文件将与静态资源文件一同生成。</li>
-</ol>
-<ul>
+<h2 id="后端集成-自定义"><a href="#后端集成-自定义" class="headerlink" title="后端集成(自定义)"></a>后端集成(自定义)</h2><ul>
+<li>1.在的 Vite 配置中配置入口文件和启用创建 manifest：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">build</span>: &#123;</span><br><span class="line">    <span class="comment">// 在 outDir 中生成 manifest.json</span></span><br><span class="line">    <span class="attr">manifest</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">rollupOptions</span>: &#123;</span><br><span class="line">			<span class="comment">// 覆盖默认的 .html 入口</span></span><br><span class="line">			<span class="attr">input</span>: <span class="string">&#x27;/path/to/main.js&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 如果没有禁用 module preload 的 polyfill，还需在入口处添加此 polyfill：</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;vite/modulepreload-polyfill&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li>2.在开发环境中，在服务器的 HTML 模板中注入以下内容：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果是在开发环境中</span></span><br><span class="line">&lt;script type=<span class="string">&quot;module&quot;</span> src=<span class="string">&quot;http://localhost:5173/@vite/client&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span> <span class="attr">src</span>=<span class="string">&quot;http://localhost:5173/main.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="string">&quot;为了正确地提供资源，有两种选项：&quot;</span></span><br><span class="line">  <span class="number">1.</span> 确保服务器被配置过，将会拦截代理资源请求给到 <span class="title class_">Vite</span> 服务器</span><br><span class="line">  <span class="number">2.</span> 设置 server.<span class="property">origin</span> 以求生成的资源链接将以服务器 <span class="variable constant_">URL</span> 形式被解析而非一个相对路径</span><br><span class="line"><span class="string">&quot;如果正使用 @vitejs/plugin-react 配合 React，还需要在上述脚本前添加下面这个，因为插件不能修改正在服务的 HTML&quot;</span></span><br><span class="line">&lt;script type=<span class="string">&quot;module&quot;</span>&gt;</span><br><span class="line">  <span class="keyword">import</span> <span class="title class_">RefreshRuntime</span> <span class="keyword">from</span> <span class="string">&#x27;http://localhost:5173/@react-refresh&#x27;</span></span><br><span class="line">  <span class="title class_">RefreshRuntime</span>.<span class="title function_">injectIntoGlobalHook</span>(<span class="variable language_">window</span>)</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">$RefreshReg$</span> = <span class="function">() =&gt;</span> &#123;&#125;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">$RefreshSig$</span> = <span class="function">() =&gt;</span> <span class="function">(<span class="params">type</span>) =&gt;</span> type</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">__vite_plugin_react_preamble_installed__</span> = <span class="literal">true</span></span><br><span class="line">&lt;/script&gt;</span><br><span class="line"><span class="comment">// 如果是在生产环境中</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;/assets/&#123;&#123; manifest[&#x27;main.js&#x27;].css &#125;&#125;&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span> <span class="attr">src</span>=<span class="string">&quot;/assets/&#123;&#123; manifest[&#x27;main.js&#x27;].file &#125;&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></li>
+<li>3.在生产环境中：在运行 vite build 之后，一个 manifest.json 文件将与静态资源文件一同生成。<ul>
 <li>清单是一个 Record&lt;name, chunk&gt; 结构的对象。</li>
 <li>对于 入口 或动态入口 chunk，键是相对于项目根目录的资源路径。</li>
 <li>对于非入口 chunk，键是生成文件的名称并加上前缀 _。</li>
 <li>Chunk 将信息包含在其静态和动态导入上（两者都是映射到清单中相应 chunk 的键)，以及任何与之相关的 CSS 和资源文件。</li>
 <li>可以使用这个文件来渲染链接或者用散列文件名预加载指令</li>
 </ul>
-<h3 id="插件API"><a href="#插件API" class="headerlink" title="插件API"></a>插件API</h3><ul>
-<li><p>约定</p>
-<ul>
+</li>
+</ul>
+<h2 id="插件API"><a href="#插件API" class="headerlink" title="插件API"></a>插件API</h2><h3 id="约定"><a href="#约定" class="headerlink" title="约定"></a>约定</h3><ul>
 <li>如果插件不使用 Vite 特有的钩子，可以作为兼容 Rollup 的插件来实现：<ul>
 <li>Rollup 插件应该有一个带 rollup-plugin- 前缀、语义清晰的名称。</li>
 <li>在 package.json 中包含 rollup-plugin 和 vite-plugin 关键字</li>
@@ -1183,24 +1040,15 @@
 </ul>
 </li>
 </ul>
-</li>
-<li><p>插件配置</p>
-<ul>
-<li>用户会将插件添加到项目的 devDependencies 中并使用数组形式的 plugins 选项配置它们。该数组将在内部被扁平化（flatten）。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.js</span></span><br><span class="line"><span class="keyword">import</span> vitePlugin <span class="keyword">from</span> <span class="string">&#x27;vite-plugin-feature&#x27;</span></span><br><span class="line"><span class="keyword">import</span> rollupPlugin <span class="keyword">from</span> <span class="string">&#x27;rollup-plugin-feature&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="title function_">vitePlugin</span>(), <span class="title function_">rollupPlugin</span>()] <span class="comment">// 可以接受将多个插件作为单个元素的预设</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>转换自定义文件类型<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fileRegex = <span class="regexp">/\.(my-file-ext)$/</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">myPlugin</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;transform-file&#x27;</span>,</span><br><span class="line">    <span class="title function_">transform</span>(<span class="params">src, id</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (fileRegex.<span class="title function_">test</span>(id)) &#123;</span><br><span class="line">         <span class="keyword">return</span> &#123;</span><br><span class="line">          <span class="attr">code</span>: <span class="title function_">compileFileToJS</span>(src),</span><br><span class="line">          <span class="attr">map</span>: <span class="literal">null</span> <span class="comment">// 如果可行将提供 source map</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
+<h3 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h3><ul>
+<li>用户会将插件添加到项目的 devDependencies 中并使用数组形式的 plugins 选项配置它们。该数组将在内部被扁平化（flatten）。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.js</span></span><br><span class="line"><span class="keyword">import</span> vitePlugin <span class="keyword">from</span> <span class="string">&#x27;vite-plugin-feature&#x27;</span></span><br><span class="line"><span class="keyword">import</span> rollupPlugin <span class="keyword">from</span> <span class="string">&#x27;rollup-plugin-feature&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="title function_">vitePlugin</span>(), <span class="title function_">rollupPlugin</span>()] <span class="comment">// 可以接受将多个插件作为单个元素的预设</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>转换自定义文件类型<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fileRegex = <span class="regexp">/\.(my-file-ext)$/</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">myPlugin</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;transform-file&#x27;</span>,</span><br><span class="line">    <span class="title function_">transform</span>(<span class="params">src, id</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (fileRegex.<span class="title function_">test</span>(id)) &#123;</span><br><span class="line">         <span class="keyword">return</span> &#123;</span><br><span class="line">          <span class="attr">code</span>: <span class="title function_">compileFileToJS</span>(src),</span><br><span class="line">          <span class="attr">map</span>: <span class="literal">null</span> <span class="comment">// 如果可行将提供 source map</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>虚拟模块</p>
-<ul>
+<h3 id="虚拟模块"><a href="#虚拟模块" class="headerlink" title="虚拟模块"></a>虚拟模块</h3><ul>
 <li>一种很实用的模式，使可以对使用 ESM 语法的源文件传入一些编译时信息。然后在js文件中引入。</li>
 <li>在 Vite（以及 Rollup）中都以 virtual: 为前缀。</li>
 </ul>
-</li>
-<li><p>通用钩子</p>
-<ul>
+<h3 id="通用钩子"><a href="#通用钩子" class="headerlink" title="通用钩子"></a>通用钩子</h3><ul>
 <li>以下钩子在服务器启动时被调用：<ul>
 <li>options</li>
 <li>buildStart</li>
@@ -1219,59 +1067,53 @@
 </li>
 <li>注意 moduleParsed 钩子在开发中是不会被调用的。可以认为 Vite 的开发服务器只调用了 rollup.rollup() 而没有调用 bundle.generate()。</li>
 </ul>
-</li>
-<li><p>Vite 独有钩子</p>
-<ul>
-<li>config<ul>
-<li>类型：(config: UserConfig, env: { mode: string, command: string }) &#x3D;&gt; UserConfig | null | void<ul>
-<li>种类：async, sequential</li>
+<h3 id="Vite-独有钩子"><a href="#Vite-独有钩子" class="headerlink" title="Vite 独有钩子"></a>Vite 独有钩子</h3><ul>
+<li><strong>config</strong><ul>
+<li>类型：(config: UserConfig, env: {mode: string, command: string}) &#x3D;&gt; UserConfig | null | void</li>
 </ul>
 </li>
-<li>在解析 Vite 配置前调用。钩子接收原始用户配置和一个描述配置环境的变量，包含正在使用的 mode 和 command。它可以返回一个将被深度合并到现有配置中的部分配置对象，或者直接改变配置。</li>
+<li><strong>种类：async, sequential</strong><ul>
+<li><span class="en">在解析 Vite 配置前调用。</span>钩子接收原始用户配置和一个描述配置环境的变量，包含正在使用的 mode 和 command。它可以返回一个将被深度合并到现有配置中的部分配置对象，或者直接改变配置。</li>
 </ul>
 </li>
-<li>configResolved<ul>
-<li>类型：(config: ResolvedConfig) &#x3D;&gt; void | Promise<void></li>
+<li><strong>configResolved</strong><ul>
+<li>类型：(config: ResolvedConfig) &#x3D;&gt; void | <code>Promise&lt;void&gt;</code></li>
 <li>种类：async, parallel</li>
-<li>在解析 Vite 配置后调用。使用这个钩子读取和存储最终解析的配置。</li>
+<li><span class="en">在解析 Vite 配置后调用。</span>使用这个钩子读取和存储最终解析的配置。</li>
 </ul>
 </li>
-<li>configureServer<ul>
+<li><strong>configureServer</strong><ul>
 <li>类型：(server: ViteDevServer) &#x3D;&gt; (() &#x3D;&gt; void) | void | Promise&lt;(() &#x3D;&gt; void) | void&gt;</li>
 <li>种类：async, sequential</li>
-<li>注入后置中间件：<ul>
-<li>configureServer 钩子将在内部中间件被安装前调用。如果想注入一个在内部中间件之后运行的中间件，可以从 configureServer 返回一个函数，将会在内部中间件安装后被调用<br>-存储服务器访问</li>
+<li>注入后置中间件：<span class="en">在内部中间件被安装前调用。</span>如果想注入一个在内部中间件之后运行的中间件，可以从 configureServer 返回一个函数，将会在内部中间件安装后被调用</li>
+<li>存储服务器访问</li>
 </ul>
 </li>
-</ul>
-</li>
-<li>configurePreviewServer<ul>
-<li>类型：(server: { middlewares: Connect.Server, httpServer: http.Server }) &#x3D;&gt; (() &#x3D;&gt; void) | void | Promise&lt;(() &#x3D;&gt; void) | void&gt;</li>
+<li><strong>configurePreviewServer</strong><ul>
+<li>类型：(server: {middlewares: Connect.Server, httpServer: http.Server}) &#x3D;&gt; (() &#x3D;&gt; void) | void | Promise&lt;(() &#x3D;&gt; void) | void&gt;</li>
 <li>种类：async, sequential</li>
-<li>用于预览服务器。configurePreviewServer 钩子也是在其他中间件安装前被调用的。想要在其他中间件之后安装一个插件，可以从 configurePreviewServer返回一个函数，它将会在内部中间件被安装之后再调用</li>
+<li><span class="en">用于预览服务器,在其他中间件安装前被调用的。</span>想要在其他中间件之后安装一个插件，可以从 configurePreviewServer返回一个函数，它将会在内部中间件被安装之后再调用</li>
 </ul>
 </li>
-<li>transformIndexHtml：转换 index.html 的专用钩子。<ul>
+<li><strong>transformIndexHtml：转换 index.html 的专用钩子。</strong><ul>
 <li>类型： IndexHtmlTransformHook | { enforce?: ‘pre’ | ‘post’, transform: IndexHtmlTransformHook }</li>
 <li>种类： async, sequential</li>
-<li>钩子接收当前的 HTML 字符串和转换上下文。上下文在开发期间暴露ViteDevServer实例，在构建期间暴露 Rollup 输出的包。</li>
-<li>这个钩子可以是异步的，并且可以返回以下其中之一:<ol>
+<li><span class="en">接收当前的 HTML 字符串和转换上下文。</span>上下文在开发期间暴露ViteDevServer实例，在构建期间暴露 Rollup 输出的包。</li>
+<li>这个钩子可以是异步的，并且可以返回以下其中之一:<ul>
 <li>经过转换的 HTML 字符串</li>
-<li>注入到现有HTML中的标签描述符对象数组({tag, attrs, children})。每个标签也可以指定它应该被注入到哪里（默认是在 <head> 之前）</li>
+<li>注入到现有HTML中的标签描述符对象数组({tag, attrs, children})。每个标签也可以指定它应该被注入到哪里（默认是在 <code>&lt;head&gt;</code> 之前）</li>
 <li>一个包含 { html, tags } 的对象</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>handleHotUpdate<ul>
-<li>类型： (ctx: HmrContext) &#x3D;&gt; Array<ModuleNode> | void | Promise&lt;Array<ModuleNode> | void&gt;</li>
-<li>执行自定义 HMR 更新处理。钩子接收一个带有以下签名的上下文对象：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">HmrContext</span> &#123;</span><br><span class="line">  <span class="attr">file</span>: string</span><br><span class="line">  <span class="attr">timestamp</span>: number</span><br><span class="line">  <span class="attr">modules</span>: <span class="title class_">Array</span>&lt;<span class="title class_">ModuleNode</span>&gt; <span class="comment">//是受更改文件影响的模块数组。</span></span><br><span class="line">  <span class="attr">read</span>: <span class="function">() =&gt;</span> string | <span class="title class_">Promise</span>&lt;string&gt;  <span class="comment">//异步读函数，它返回文件的内容</span></span><br><span class="line">  <span class="attr">server</span>: <span class="title class_">ViteDevServer</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>插件顺序</p>
-<ul>
+<li><strong>handleHotUpdate</strong><ul>
+<li>类型： (ctx: HmrContext) &#x3D;&gt; <code>Array&lt;ModuleNode&gt; | void | Promise&lt;Array&lt;ModuleNode&gt; | void&gt;</code></li>
+<li><span class="en">执行自定义 HMR 更新处理。</span>钩子接收一个带有以下签名的上下文对象：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">HmrContext</span> &#123;</span><br><span class="line">  <span class="attr">file</span>: string</span><br><span class="line">  <span class="attr">timestamp</span>: number</span><br><span class="line">  <span class="attr">modules</span>: <span class="title class_">Array</span>&lt;<span class="title class_">ModuleNode</span>&gt; <span class="comment">//是受更改文件影响的模块数组。</span></span><br><span class="line">  <span class="attr">read</span>: <span class="function">() =&gt;</span> string | <span class="title class_">Promise</span>&lt;string&gt;  <span class="comment">//异步读函数，它返回文件的内容</span></span><br><span class="line">  <span class="attr">server</span>: <span class="title class_">ViteDevServer</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="插件顺序"><a href="#插件顺序" class="headerlink" title="插件顺序"></a>插件顺序</h3><ul>
 <li>一个 Vite 插件可以额外指定一个 enforce 属性（类似于 webpack 加载器）来调整它的应用顺序。enforce 的值可以是pre 或 post。解析后的插件将按照以下顺序排列：<ul>
 <li>Alias</li>
 <li>带有 enforce: ‘pre’ 的用户插件</li>
@@ -1283,9 +1125,7 @@
 </ul>
 </li>
 </ul>
-</li>
-<li><p>Rollup 插件兼容性</p>
-<ul>
+<h3 id="Rollup-插件兼容性"><a href="#Rollup-插件兼容性" class="headerlink" title="Rollup 插件兼容性"></a>Rollup 插件兼容性</h3><ul>
 <li>只要 Rollup 插件符合以下标准，它就应该像 Vite 插件一样工作：<ul>
 <li>没有使用 moduleParsed 钩子。</li>
 <li>它在打包钩子和输出钩子之间没有很强的耦合。</li>
@@ -1293,72 +1133,62 @@
 </li>
 <li>如果一个 Rollup 插件只在构建阶段有意义，则在 build.rollupOptions.plugins 下指定即可。它的工作原理与 Vite 插件的 enforce: ‘post’ 和 apply: ‘build’ 相同。</li>
 </ul>
-</li>
-<li><p>路径规范化</p>
-<ul>
-<li>Vite在解析路径时使用 POSIX 分隔符（ &#x2F; ），同时保留了 Windows 中的卷名。<ul>
+<h3 id="路径规范化"><a href="#路径规范化" class="headerlink" title="路径规范化"></a>路径规范化</h3><ul>
+<li>Vite在解析路径时使用 POSIX 分隔符（ &#x2F; ），同时保留了 Windows 中的卷名。</li>
 <li>Rollup 在默认情况下保持解析的路径不变，因此解析的路径在 Windows 中会使用 win32 分隔符（ \ ）。</li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>过滤与include&#x2F;exclde模式</p>
-<ul>
+<h3 id="过滤与include-exclde模式"><a href="#过滤与include-exclde模式" class="headerlink" title="过滤与include&#x2F;exclde模式"></a>过滤与include&#x2F;exclde模式</h3><ul>
 <li>暴露 @rollup&#x2F;pluginutils 的 createFilter 函数，以支持 Vite 独有插件和集成使用标准的 include&#x2F;exclude 过滤模式</li>
 </ul>
-</li>
-<li><p>客户端与服务端间通信</p>
-<ul>
-<li>服务端到客户端<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">在插件一侧，我们可以使用 server.<span class="property">ws</span>.<span class="property">send</span> 去给所有客户端广播事件：</span><br><span class="line"><span class="comment">// vite.config.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">plugins</span>: [&#123;</span><br><span class="line">    <span class="title function_">configureServer</span>(<span class="params">server</span>) &#123;</span><br><span class="line">      server.<span class="property">ws</span>.<span class="title function_">send</span>(<span class="string">&#x27;my:greetings&#x27;</span>, &#123; <span class="attr">msg</span>: <span class="string">&#x27;hello&#x27;</span> &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;)</span><br><span class="line">在客户端侧，使用 hot.<span class="property">on</span> 去监听事件：</span><br><span class="line"><span class="comment">// client side</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">hot</span>) &#123;</span><br><span class="line">  <span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">hot</span>.<span class="title function_">on</span>(<span class="string">&#x27;my:greetings&#x27;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(data.<span class="property">msg</span>) <span class="comment">// hello</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">``</span><span class="string">`				</span></span><br><span class="line"><span class="string">  - 客户端到服务端</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>javascript</span><br><span class="line">为了从客户端向服务端发送事件，使用 hot.<span class="property">send</span>：</span><br><span class="line">  <span class="comment">// client side</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">hot</span>) &#123;</span><br><span class="line">    <span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">hot</span>.<span class="title function_">send</span>(<span class="string">&#x27;my:from-client&#x27;</span>, &#123; <span class="attr">msg</span>: <span class="string">&#x27;Hey!&#x27;</span> &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">然后使用 server.<span class="property">ws</span>.<span class="property">on</span> 并在服务端监听这些事件：</span><br><span class="line">  <span class="comment">// vite.config.js</span></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">    <span class="attr">plugins</span>: [&#123;</span><br><span class="line">      <span class="title function_">configureServer</span>(<span class="params">server</span>) &#123;</span><br><span class="line">        server.<span class="property">ws</span>.<span class="title function_">on</span>(<span class="string">&#x27;my:from-client&#x27;</span>, <span class="function">(<span class="params">data, client</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Message from client:&#x27;</span>, data.<span class="property">msg</span>) <span class="comment">// Hey!</span></span><br><span class="line">          <span class="comment">// reply only to the client (if needed)</span></span><br><span class="line">          client.<span class="title function_">send</span>(<span class="string">&#x27;my:ack&#x27;</span>, &#123; <span class="attr">msg</span>: <span class="string">&#x27;Hi! I got your message!&#x27;</span> &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;]</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure></li>
-<li>自定义事件的 TypeScript 类型定义指南<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">可以通过扩展 <span class="title class_">CustomEventMap</span> 这个 interface 来为自定义事件标注类型：</span><br><span class="line"><span class="comment">// events.d.ts</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;vite/types/customEvent&#x27;</span></span><br><span class="line">declare <span class="variable language_">module</span> <span class="string">&#x27;vite/types/customEvent&#x27;</span> &#123;</span><br><span class="line">  interface <span class="title class_">CustomEventMap</span> &#123;</span><br><span class="line">     <span class="string">&#x27;custom:foo&#x27;</span>: &#123; <span class="attr">msg</span>: string &#125;</span><br><span class="line">     <span class="comment">// &#x27;event-key&#x27;: payload</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<h3 id="客户端与服务端间通信"><a href="#客户端与服务端间通信" class="headerlink" title="客户端与服务端间通信"></a>客户端与服务端间通信</h3><ul>
+<li>服务端到客户端<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">在插件一侧，我们可以使用 server.<span class="property">ws</span>.<span class="property">send</span> 去给所有客户端广播事件：</span><br><span class="line"><span class="comment">// vite.config.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">plugins</span>: [&#123;</span><br><span class="line">    <span class="title function_">configureServer</span>(<span class="params">server</span>) &#123;</span><br><span class="line">      server.<span class="property">ws</span>.<span class="title function_">send</span>(<span class="string">&#x27;my:greetings&#x27;</span>, &#123; <span class="attr">msg</span>: <span class="string">&#x27;hello&#x27;</span> &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;)</span><br><span class="line">在客户端侧，使用 hot.<span class="property">on</span> 去监听事件：</span><br><span class="line"><span class="comment">// client side</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">hot</span>) &#123;</span><br><span class="line">  <span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">hot</span>.<span class="title function_">on</span>(<span class="string">&#x27;my:greetings&#x27;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(data.<span class="property">msg</span>) <span class="comment">// hello</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">``</span><span class="string">`				</span></span><br><span class="line"><span class="string">- 客户端到服务端</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line">为了从客户端向服务端发送事件，使用 hot.<span class="property">send</span>：</span><br><span class="line">  <span class="comment">// client side</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">hot</span>) &#123;</span><br><span class="line">    <span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">hot</span>.<span class="title function_">send</span>(<span class="string">&#x27;my:from-client&#x27;</span>, &#123; <span class="attr">msg</span>: <span class="string">&#x27;Hey!&#x27;</span> &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">然后使用 server.<span class="property">ws</span>.<span class="property">on</span> 并在服务端监听这些事件：</span><br><span class="line">  <span class="comment">// vite.config.js</span></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">    <span class="attr">plugins</span>: [&#123;</span><br><span class="line">      <span class="title function_">configureServer</span>(<span class="params">server</span>) &#123;</span><br><span class="line">        server.<span class="property">ws</span>.<span class="title function_">on</span>(<span class="string">&#x27;my:from-client&#x27;</span>, <span class="function">(<span class="params">data, client</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Message from client:&#x27;</span>, data.<span class="property">msg</span>) <span class="comment">// Hey!</span></span><br><span class="line">          <span class="comment">// reply only to the client (if needed)</span></span><br><span class="line">          client.<span class="title function_">send</span>(<span class="string">&#x27;my:ack&#x27;</span>, &#123; <span class="attr">msg</span>: <span class="string">&#x27;Hi! I got your message!&#x27;</span> &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;]</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure></li>
+<li>自定义事件的 TypeScript 类型定义指南<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">可以通过扩展 <span class="title class_">CustomEventMap</span> 这个 interface 来为自定义事件标注类型：</span><br><span class="line"><span class="comment">// events.d.ts</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;vite/types/customEvent&#x27;</span></span><br><span class="line">declare <span class="variable language_">module</span> <span class="string">&#x27;vite/types/customEvent&#x27;</span> &#123;</span><br><span class="line">  interface <span class="title class_">CustomEventMap</span> &#123;</span><br><span class="line">     <span class="string">&#x27;custom:foo&#x27;</span>: &#123; <span class="attr">msg</span>: string &#125;</span><br><span class="line">     <span class="comment">// &#x27;event-key&#x27;: payload</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-</ul>
-<h3 id="客户端-HMR-API-：通过-import-meta-hot-对象暴露手动-HMR-API。"><a href="#客户端-HMR-API-：通过-import-meta-hot-对象暴露手动-HMR-API。" class="headerlink" title="客户端 HMR API ：通过 import.meta.hot 对象暴露手动 HMR API。"></a>客户端 HMR API ：通过 import.meta.hot 对象暴露手动 HMR API。</h3><ul>
-<li>必需的条件守卫<ul>
-<li>确保用<code>一个条件语句</code>守护<code>所有 HMR API</code> 的使用<ul>
+<h2 id="客户端-HMR-API：通过-import-meta-hot-对象暴露手动-HMR-API。"><a href="#客户端-HMR-API：通过-import-meta-hot-对象暴露手动-HMR-API。" class="headerlink" title="客户端 HMR API：通过 import.meta.hot 对象暴露手动 HMR API。"></a>客户端 HMR API：通过 import.meta.hot 对象暴露手动 HMR API。</h2><h3 id="必需的条件守卫"><a href="#必需的条件守卫" class="headerlink" title="必需的条件守卫"></a>必需的条件守卫</h3><ul>
+<li>确保用<span class="en">一个条件语句</span>守护<span class="en">所有 HMR API</span> 的使用<ul>
 <li>if (import.meta.hot) { &#x2F;&#x2F; HMR 代码 }</li>
 </ul>
 </li>
 </ul>
-</li>
-<li>TypeScript 的智能提示<ul>
-<li>在 src 目录中创建env.d.ts，以便 TypeScript 获取类型定义：<ul>
+<h3 id="TypeScript-的智能提示-1"><a href="#TypeScript-的智能提示-1" class="headerlink" title="TypeScript 的智能提示"></a>TypeScript 的智能提示</h3><ul>
+<li>在 src 目录中创建env.d.ts，以便 TypeScript 获取类型定义：</li>
 <li><code>/// &lt;reference types=&quot;vite/client&quot; /&gt;</code></li>
 </ul>
-</li>
-</ul>
-</li>
-<li>hot.accept(cb)：接收模块自身<ul>
+<h3 id="hot-accept-cb-：接收模块自身"><a href="#hot-accept-cb-：接收模块自身" class="headerlink" title="hot.accept(cb)：接收模块自身"></a>hot.accept(cb)：接收模块自身</h3><ul>
 <li>参数:接收已更新模块的回调函数：</li>
 <li>“接受” 热更新的模块被认为是 HMR 边界。</li>
 </ul>
-</li>
-<li>hot.accept(deps, cb)：接受直接依赖项的更新，而无需重新加载自身<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; foo &#125; <span class="keyword">from</span> <span class="string">&#x27;./foo.js&#x27;</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setupSideEffect</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line"><span class="title function_">setupSideEffect</span>()</span><br><span class="line"><span class="title function_">foo</span>()</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">hot</span>) &#123;</span><br><span class="line">  <span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">hot</span>.<span class="title function_">accept</span>(<span class="string">&#x27;./foo.js&#x27;</span>, <span class="function">(<span class="params">newFoo</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 回调函数接收到更新后的&#x27;./foo.js&#x27; 模块</span></span><br><span class="line">    newFoo?.<span class="title function_">foo</span>()</span><br><span class="line">		<span class="comment">// 你可以使用新的模块实例来决定是否使其失效。</span></span><br><span class="line">		  <span class="keyword">if</span> (<span class="title function_">cannotHandleUpdate</span>(<span class="variable language_">module</span>)) &#123;</span><br><span class="line">		    <span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">hot</span>.<span class="title function_">invalidate</span>()</span><br><span class="line">		  &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"><span class="comment">// 也可以接受一个依赖模块的数组：</span></span><br><span class="line">  <span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">hot</span>.<span class="title function_">accept</span>(</span><br><span class="line">    [<span class="string">&#x27;./foo.js&#x27;</span>, <span class="string">&#x27;./bar.js&#x27;</span>],</span><br><span class="line">    <span class="function">(<span class="params">[newFooModule, newBarModule]</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 回调函数接收一个更新后模块的数组</span></span><br><span class="line">    &#125;</span><br><span class="line">   )</span><br><span class="line">	<span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">hot</span>.<span class="title function_">dispose</span>(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">     <span class="comment">// 清理副作用</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>hot.dispose(cb)：<ul>
-<li>一个接收自身的模块或一个期望被其他模块接收的模块可以使用 hot.dispose 来清除任何由其更新副本产生的持久副作用</li>
+<h3 id="hot-accept-deps-cb-：接受直接依赖项的更新，而无需重新加载自身"><a href="#hot-accept-deps-cb-：接受直接依赖项的更新，而无需重新加载自身" class="headerlink" title="hot.accept(deps, cb)：接受直接依赖项的更新，而无需重新加载自身"></a>hot.accept(deps, cb)：接受直接依赖项的更新，而无需重新加载自身</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; foo &#125; <span class="keyword">from</span> <span class="string">&#x27;./foo.js&#x27;</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setupSideEffect</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line"><span class="title function_">setupSideEffect</span>()</span><br><span class="line"><span class="title function_">foo</span>()</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">hot</span>) &#123;</span><br><span class="line">  <span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">hot</span>.<span class="title function_">accept</span>(<span class="string">&#x27;./foo.js&#x27;</span>, <span class="function">(<span class="params">newFoo</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 回调函数接收到更新后的&#x27;./foo.js&#x27; 模块</span></span><br><span class="line">    newFoo?.<span class="title function_">foo</span>()</span><br><span class="line">		<span class="comment">// 你可以使用新的模块实例来决定是否使其失效。</span></span><br><span class="line">		  <span class="keyword">if</span> (<span class="title function_">cannotHandleUpdate</span>(<span class="variable language_">module</span>)) &#123;</span><br><span class="line">		    <span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">hot</span>.<span class="title function_">invalidate</span>()</span><br><span class="line">		  &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"><span class="comment">// 也可以接受一个依赖模块的数组：</span></span><br><span class="line">  <span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">hot</span>.<span class="title function_">accept</span>(</span><br><span class="line">    [<span class="string">&#x27;./foo.js&#x27;</span>, <span class="string">&#x27;./bar.js&#x27;</span>],</span><br><span class="line">    <span class="function">(<span class="params">[newFooModule, newBarModule]</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 回调函数接收一个更新后模块的数组</span></span><br><span class="line">    &#125;</span><br><span class="line">   )</span><br><span class="line">	<span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">hot</span>.<span class="title function_">dispose</span>(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">     <span class="comment">// 清理副作用</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="hot-dispose-cb-："><a href="#hot-dispose-cb-：" class="headerlink" title="hot.dispose(cb)："></a>hot.dispose(cb)：</h3><ul>
+<li>一个接收自身的模块或一个期望被其他模块接收的模块可以使用 hot.dispose 来清除任何由新副本产生的持久副作用</li>
+</ul>
+<h3 id="hot-prune-cb"><a href="#hot-prune-cb" class="headerlink" title="hot.prune(cb):"></a>hot.prune(cb):</h3><ul>
+<li>注册一个回调，当模块在页面上不再被导入时调用</li>
+</ul>
+<h3 id="hot-data："><a href="#hot-data：" class="headerlink" title="hot.data："></a>hot.data：</h3><ul>
+<li>在同一个更新模块的不同实例之间持久化.将信息从模块的前一个版本传递到下一本</li>
+</ul>
+<h3 id="hot-decline-："><a href="#hot-decline-：" class="headerlink" title="hot.decline()："></a>hot.decline()：</h3><ul>
+<li>目前是一个空操作并暂留用于向后兼容。</li>
+</ul>
+<h3 id="hot-invalidate"><a href="#hot-invalidate" class="headerlink" title="hot.invalidate():"></a>hot.invalidate():</h3><ul>
+<li>指明某模块是不可热更新的,建议在 accept 回调中调用 invalidate</li>
+</ul>
+<h3 id="hot-on-event-cb-："><a href="#hot-on-event-cb-：" class="headerlink" title="hot.on(event, cb)："></a>hot.on(event, cb)：</h3><ul>
+<li>监听自定义 HMR 事件。以下事件自动触发：<ul>
+<li><strong>vite:beforeUpdate</strong> 当更新即将被应用时（例如，一个模块将被替换）</li>
+<li><strong>vite:afterUpdate</strong> 当更新已经被应用时</li>
+<li><strong>vite:beforeFullReload</strong> 当完整的重载即将发生时</li>
+<li><strong>vite:beforePrune</strong> 当不再需要的模块即将被剔除时</li>
+<li><strong>vite:invalidate</strong> 当使用import.meta.hot.invalidate()使一个模块失效时</li>
+<li><strong>vite:error</strong> 当发生错误时（例如，语法错误）</li>
 </ul>
 </li>
-<li>hot.prune(cb): 注册一个回调，当模块在页面上不再被导入时调用</li>
-<li>hot.data：在同一个更新模块的不同实例之间持久化.将信息从模块的前一个版本传递到下一个版本</li>
-<li>hot.decline()：目前是一个空操作并暂留用于向后兼容。</li>
-<li>hot.invalidate():指明某模块是不可热更新的,建议在 accept 回调中调用 invalidate</li>
-<li>hot.on(event, cb)：监听自定义 HMR 事件。以下事件自动触发：<ul>
-<li>‘vite:beforeUpdate’ 当更新即将被应用时（例如，一个模块将被替换）</li>
-<li>‘vite:afterUpdate’ 当更新已经被应用时<ul>
-<li>‘vite:beforeFullReload’ 当完整的重载即将发生时</li>
 </ul>
-</li>
-<li>‘vite:beforePrune’ 当不再需要的模块即将被剔除时</li>
-<li>‘vite:invalidate’ 当使用import.meta.hot.invalidate()使一个模块失效时<ul>
-<li>‘vite:error’ 当发生错误时（例如，语法错误）</li>
+<h3 id="hot-send-event-data-："><a href="#hot-send-event-data-：" class="headerlink" title="hot.send(event, data)："></a>hot.send(event, data)：</h3><ul>
+<li>发送自定义事件到 Vite 开发服务器。</li>
 </ul>
-</li>
-</ul>
-</li>
-<li>hot.send(event, data)：发送自定义事件到 Vite 开发服务器。</li>
-</ul>
-<h3 id="Javascript-API-—-看手册"><a href="#Javascript-API-—-看手册" class="headerlink" title="Javascript API — 看手册"></a>Javascript API — 看手册</h3>
+<h2 id="Javascript-API-—-看手册"><a href="#Javascript-API-—-看手册" class="headerlink" title="Javascript API — 看手册"></a>Javascript API — 看手册</h2>
 </article>
     
     
@@ -1474,7 +1304,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-3" title="优点"><a rel="nofollow" class="trm-toc-link" href="#优点"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">优点</span></a></li><li class="trm-toc-item trm-toc-level-3" title="组成部分"><a rel="nofollow" class="trm-toc-link" href="#组成部分"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">组成部分</span></a></li><li class="trm-toc-item trm-toc-level-3" title="浏览器支持"><a rel="nofollow" class="trm-toc-link" href="#浏览器支持"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">浏览器支持</span></a></li><li class="trm-toc-item trm-toc-level-3" title="创建应用"><a rel="nofollow" class="trm-toc-link" href="#创建应用"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">创建应用</span></a></li><li class="trm-toc-item trm-toc-level-3" title="index.html与项目根目录"><a rel="nofollow" class="trm-toc-link" href="#index-html与项目根目录"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">index.html与项目根目录</span></a></li><li class="trm-toc-item trm-toc-level-3" title="功能"><a rel="nofollow" class="trm-toc-link" href="#功能"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">功能</span></a></li><li class="trm-toc-item trm-toc-level-3" title="插件"><a rel="nofollow" class="trm-toc-link" href="#插件"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">插件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="依赖预构建（仅会在开发模式下应用）"><a rel="nofollow" class="trm-toc-link" href="#依赖预构建（仅会在开发模式下应用）"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">依赖预构建（仅会在开发模式下应用）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="静态资源处理"><a rel="nofollow" class="trm-toc-link" href="#静态资源处理"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">静态资源处理</span></a></li><li class="trm-toc-item trm-toc-level-3" title="构建生产版本: vite build"><a rel="nofollow" class="trm-toc-link" href="#构建生产版本-vite-build"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">构建生产版本: vite build</span></a></li><li class="trm-toc-item trm-toc-level-3" title="部署静态站点"><a rel="nofollow" class="trm-toc-link" href="#部署静态站点"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">部署静态站点</span></a></li><li class="trm-toc-item trm-toc-level-3" title="环境变量与模式"><a rel="nofollow" class="trm-toc-link" href="#环境变量与模式"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">环境变量与模式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="服务端渲染（SSR）"><a rel="nofollow" class="trm-toc-link" href="#服务端渲染（SSR）"><span class="trm-toc-number">13.</span> <span class="trm-toc-text">服务端渲染（SSR）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="后端集成(自定义)"><a rel="nofollow" class="trm-toc-link" href="#后端集成-自定义"><span class="trm-toc-number">14.</span> <span class="trm-toc-text">后端集成(自定义)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="插件API"><a rel="nofollow" class="trm-toc-link" href="#插件API"><span class="trm-toc-number">15.</span> <span class="trm-toc-text">插件API</span></a></li><li class="trm-toc-item trm-toc-level-3" title="客户端 HMR API ：通过 import.meta.hot 对象暴露手动 HMR API。"><a rel="nofollow" class="trm-toc-link" href="#客户端-HMR-API-：通过-import-meta-hot-对象暴露手动-HMR-API。"><span class="trm-toc-number">16.</span> <span class="trm-toc-text">客户端 HMR API ：通过 import.meta.hot 对象暴露手动 HMR API。</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Javascript API — 看手册"><a rel="nofollow" class="trm-toc-link" href="#Javascript-API-—-看手册"><span class="trm-toc-number">17.</span> <span class="trm-toc-text">Javascript API — 看手册</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="优点"><a rel="nofollow" class="trm-toc-link" href="#优点"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">优点</span></a></li><li class="trm-toc-item trm-toc-level-2" title="组成部分"><a rel="nofollow" class="trm-toc-link" href="#组成部分"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">组成部分</span></a></li><li class="trm-toc-item trm-toc-level-2" title="浏览器支持"><a rel="nofollow" class="trm-toc-link" href="#浏览器支持"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">浏览器支持</span></a></li><li class="trm-toc-item trm-toc-level-2" title="创建应用"><a rel="nofollow" class="trm-toc-link" href="#创建应用"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">创建应用</span></a></li><li class="trm-toc-item trm-toc-level-2" title="index.html与项目根目录"><a rel="nofollow" class="trm-toc-link" href="#index-html与项目根目录"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">index.html与项目根目录</span></a></li><li class="trm-toc-item trm-toc-level-2" title="功能"><a rel="nofollow" class="trm-toc-link" href="#功能"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">功能</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="npm依赖解析和预构建"><a rel="nofollow" class="trm-toc-link" href="#npm依赖解析和预构建"><span class="trm-toc-number">6.1.</span> <span class="trm-toc-text">npm依赖解析和预构建</span></a></li><li class="trm-toc-item trm-toc-level-3" title="模块热替换(create-vite 创建应用程序时已有)"><a rel="nofollow" class="trm-toc-link" href="#模块热替换-create-vite-创建应用程序时已有"><span class="trm-toc-number">6.2.</span> <span class="trm-toc-text">模块热替换(create-vite 创建应用程序时已有)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="TypeScript"><a rel="nofollow" class="trm-toc-link" href="#TypeScript"><span class="trm-toc-number">6.3.</span> <span class="trm-toc-text">TypeScript</span></a></li><li class="trm-toc-item trm-toc-level-3" title="客户端类型"><a rel="nofollow" class="trm-toc-link" href="#客户端类型"><span class="trm-toc-number">6.4.</span> <span class="trm-toc-text">客户端类型</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Vue"><a rel="nofollow" class="trm-toc-link" href="#Vue"><span class="trm-toc-number">6.5.</span> <span class="trm-toc-text">Vue</span></a></li><li class="trm-toc-item trm-toc-level-3" title="JSX"><a rel="nofollow" class="trm-toc-link" href="#JSX"><span class="trm-toc-number">6.6.</span> <span class="trm-toc-text">JSX</span></a></li><li class="trm-toc-item trm-toc-level-3" title="CSS"><a rel="nofollow" class="trm-toc-link" href="#CSS"><span class="trm-toc-number">6.7.</span> <span class="trm-toc-text">CSS</span></a></li><li class="trm-toc-item trm-toc-level-3" title="静态资源处理"><a rel="nofollow" class="trm-toc-link" href="#静态资源处理"><span class="trm-toc-number">6.8.</span> <span class="trm-toc-text">静态资源处理</span></a></li><li class="trm-toc-item trm-toc-level-3" title="WebAssembly"><a rel="nofollow" class="trm-toc-link" href="#WebAssembly"><span class="trm-toc-number">6.9.</span> <span class="trm-toc-text">WebAssembly</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Web Workers"><a rel="nofollow" class="trm-toc-link" href="#Web-Workers"><span class="trm-toc-number">6.10.</span> <span class="trm-toc-text">Web Workers</span></a></li><li class="trm-toc-item trm-toc-level-3" title="构建优化"><a rel="nofollow" class="trm-toc-link" href="#构建优化"><span class="trm-toc-number">6.11.</span> <span class="trm-toc-text">构建优化</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="插件"><a rel="nofollow" class="trm-toc-link" href="#插件"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">插件</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="强制插件排序"><a rel="nofollow" class="trm-toc-link" href="#强制插件排序"><span class="trm-toc-number">7.1.</span> <span class="trm-toc-text">强制插件排序</span></a></li><li class="trm-toc-item trm-toc-level-3" title="按需应用"><a rel="nofollow" class="trm-toc-link" href="#按需应用"><span class="trm-toc-number">7.2.</span> <span class="trm-toc-text">按需应用</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="依赖预构建（仅会在开发模式下应用）"><a rel="nofollow" class="trm-toc-link" href="#依赖预构建（仅会在开发模式下应用）"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">依赖预构建（仅会在开发模式下应用）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="目的"><a rel="nofollow" class="trm-toc-link" href="#目的"><span class="trm-toc-number">8.1.</span> <span class="trm-toc-text">目的</span></a></li><li class="trm-toc-item trm-toc-level-3" title="自动依赖搜寻"><a rel="nofollow" class="trm-toc-link" href="#自动依赖搜寻"><span class="trm-toc-number">8.2.</span> <span class="trm-toc-text">自动依赖搜寻</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Monorepo 和链接依赖"><a rel="nofollow" class="trm-toc-link" href="#Monorepo-和链接依赖"><span class="trm-toc-number">8.3.</span> <span class="trm-toc-text">Monorepo 和链接依赖</span></a></li><li class="trm-toc-item trm-toc-level-3" title="自定义行为"><a rel="nofollow" class="trm-toc-link" href="#自定义行为"><span class="trm-toc-number">8.4.</span> <span class="trm-toc-text">自定义行为</span></a></li><li class="trm-toc-item trm-toc-level-3" title="缓存"><a rel="nofollow" class="trm-toc-link" href="#缓存"><span class="trm-toc-number">8.5.</span> <span class="trm-toc-text">缓存</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="静态资源处理"><a rel="nofollow" class="trm-toc-link" href="#静态资源处理-1"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">静态资源处理</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="将资源引入为 URL"><a rel="nofollow" class="trm-toc-link" href="#将资源引入为-URL"><span class="trm-toc-number">9.1.</span> <span class="trm-toc-text">将资源引入为 URL</span></a></li><li class="trm-toc-item trm-toc-level-3" title="显示 URL 引入"><a rel="nofollow" class="trm-toc-link" href="#显示-URL-引入"><span class="trm-toc-number">9.2.</span> <span class="trm-toc-text">显示 URL 引入</span></a></li><li class="trm-toc-item trm-toc-level-3" title="将资源引入为 字符串"><a rel="nofollow" class="trm-toc-link" href="#将资源引入为-字符串"><span class="trm-toc-number">9.3.</span> <span class="trm-toc-text">将资源引入为 字符串</span></a></li><li class="trm-toc-item trm-toc-level-3" title="导入脚本作为Worker"><a rel="nofollow" class="trm-toc-link" href="#导入脚本作为Worker"><span class="trm-toc-number">9.4.</span> <span class="trm-toc-text">导入脚本作为Worker</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="构建生产版本: vite build"><a rel="nofollow" class="trm-toc-link" href="#构建生产版本-vite-build"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">构建生产版本: vite build</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="浏览器兼容性"><a rel="nofollow" class="trm-toc-link" href="#浏览器兼容性"><span class="trm-toc-number">10.1.</span> <span class="trm-toc-text">浏览器兼容性</span></a></li><li class="trm-toc-item trm-toc-level-3" title="公共基础路径"><a rel="nofollow" class="trm-toc-link" href="#公共基础路径"><span class="trm-toc-number">10.2.</span> <span class="trm-toc-text">公共基础路径</span></a></li><li class="trm-toc-item trm-toc-level-3" title="自定义构建"><a rel="nofollow" class="trm-toc-link" href="#自定义构建"><span class="trm-toc-number">10.3.</span> <span class="trm-toc-text">自定义构建</span></a></li><li class="trm-toc-item trm-toc-level-3" title="产物分块策略"><a rel="nofollow" class="trm-toc-link" href="#产物分块策略"><span class="trm-toc-number">10.4.</span> <span class="trm-toc-text">产物分块策略</span></a></li><li class="trm-toc-item trm-toc-level-3" title="文件变化时重新构建"><a rel="nofollow" class="trm-toc-link" href="#文件变化时重新构建"><span class="trm-toc-number">10.5.</span> <span class="trm-toc-text">文件变化时重新构建</span></a></li><li class="trm-toc-item trm-toc-level-3" title="多页面应用模式"><a rel="nofollow" class="trm-toc-link" href="#多页面应用模式"><span class="trm-toc-number">10.6.</span> <span class="trm-toc-text">多页面应用模式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="库模式"><a rel="nofollow" class="trm-toc-link" href="#库模式"><span class="trm-toc-number">10.7.</span> <span class="trm-toc-text">库模式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="注意："><a rel="nofollow" class="trm-toc-link" href="#注意："><span class="trm-toc-number">10.8.</span> <span class="trm-toc-text">注意：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="部署静态站点"><a rel="nofollow" class="trm-toc-link" href="#部署静态站点"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">部署静态站点</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="GitHub Pages"><a rel="nofollow" class="trm-toc-link" href="#GitHub-Pages"><span class="trm-toc-number">11.1.</span> <span class="trm-toc-text">GitHub Pages</span></a></li><li class="trm-toc-item trm-toc-level-3" title="GitLab Pages 配合 GitLab CI"><a rel="nofollow" class="trm-toc-link" href="#GitLab-Pages-配合-GitLab-CI"><span class="trm-toc-number">11.2.</span> <span class="trm-toc-text">GitLab Pages 配合 GitLab CI</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="环境变量与模式"><a rel="nofollow" class="trm-toc-link" href="#环境变量与模式"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">环境变量与模式</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="环境变量"><a rel="nofollow" class="trm-toc-link" href="#环境变量"><span class="trm-toc-number">12.1.</span> <span class="trm-toc-text">环境变量</span></a></li><li class="trm-toc-item trm-toc-level-3" title="生产环境替换"><a rel="nofollow" class="trm-toc-link" href="#生产环境替换"><span class="trm-toc-number">12.2.</span> <span class="trm-toc-text">生产环境替换</span></a></li><li class="trm-toc-item trm-toc-level-3" title=".env文件"><a rel="nofollow" class="trm-toc-link" href="#env文件"><span class="trm-toc-number">12.3.</span> <span class="trm-toc-text">.env文件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="TypeScript 的智能提示"><a rel="nofollow" class="trm-toc-link" href="#TypeScript-的智能提示"><span class="trm-toc-number">12.4.</span> <span class="trm-toc-text">TypeScript 的智能提示</span></a></li><li class="trm-toc-item trm-toc-level-3" title="模式"><a rel="nofollow" class="trm-toc-link" href="#模式"><span class="trm-toc-number">12.5.</span> <span class="trm-toc-text">模式</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="服务端渲染（SSR）"><a rel="nofollow" class="trm-toc-link" href="#服务端渲染（SSR）"><span class="trm-toc-number">13.</span> <span class="trm-toc-text">服务端渲染（SSR）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="生产环境构建"><a rel="nofollow" class="trm-toc-link" href="#生产环境构建"><span class="trm-toc-number">13.1.</span> <span class="trm-toc-text">生产环境构建</span></a></li><li class="trm-toc-item trm-toc-level-3" title="生成预加载指令"><a rel="nofollow" class="trm-toc-link" href="#生成预加载指令"><span class="trm-toc-number">13.2.</span> <span class="trm-toc-text">生成预加载指令</span></a></li><li class="trm-toc-item trm-toc-level-3" title="预渲染 &#x2F; SSG"><a rel="nofollow" class="trm-toc-link" href="#预渲染-SSG"><span class="trm-toc-number">13.3.</span> <span class="trm-toc-text">预渲染 &#x2F; SSG</span></a></li><li class="trm-toc-item trm-toc-level-3" title="SSR 外部化"><a rel="nofollow" class="trm-toc-link" href="#SSR-外部化"><span class="trm-toc-number">13.4.</span> <span class="trm-toc-text">SSR 外部化</span></a></li><li class="trm-toc-item trm-toc-level-3" title="SSR 专有插件逻辑"><a rel="nofollow" class="trm-toc-link" href="#SSR-专有插件逻辑"><span class="trm-toc-number">13.5.</span> <span class="trm-toc-text">SSR 专有插件逻辑</span></a></li><li class="trm-toc-item trm-toc-level-3" title="SSR 构建目标"><a rel="nofollow" class="trm-toc-link" href="#SSR-构建目标"><span class="trm-toc-number">13.6.</span> <span class="trm-toc-text">SSR 构建目标</span></a></li><li class="trm-toc-item trm-toc-level-3" title="SSR 构建产物"><a rel="nofollow" class="trm-toc-link" href="#SSR-构建产物"><span class="trm-toc-number">13.7.</span> <span class="trm-toc-text">SSR 构建产物</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Vite CLI"><a rel="nofollow" class="trm-toc-link" href="#Vite-CLI"><span class="trm-toc-number">13.8.</span> <span class="trm-toc-text">Vite CLI</span></a></li><li class="trm-toc-item trm-toc-level-3" title="SSR 格式"><a rel="nofollow" class="trm-toc-link" href="#SSR-格式"><span class="trm-toc-number">13.9.</span> <span class="trm-toc-text">SSR 格式</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="后端集成(自定义)"><a rel="nofollow" class="trm-toc-link" href="#后端集成-自定义"><span class="trm-toc-number">14.</span> <span class="trm-toc-text">后端集成(自定义)</span></a></li><li class="trm-toc-item trm-toc-level-2" title="插件API"><a rel="nofollow" class="trm-toc-link" href="#插件API"><span class="trm-toc-number">15.</span> <span class="trm-toc-text">插件API</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="约定"><a rel="nofollow" class="trm-toc-link" href="#约定"><span class="trm-toc-number">15.1.</span> <span class="trm-toc-text">约定</span></a></li><li class="trm-toc-item trm-toc-level-3" title="插件配置"><a rel="nofollow" class="trm-toc-link" href="#插件配置"><span class="trm-toc-number">15.2.</span> <span class="trm-toc-text">插件配置</span></a></li><li class="trm-toc-item trm-toc-level-3" title="虚拟模块"><a rel="nofollow" class="trm-toc-link" href="#虚拟模块"><span class="trm-toc-number">15.3.</span> <span class="trm-toc-text">虚拟模块</span></a></li><li class="trm-toc-item trm-toc-level-3" title="通用钩子"><a rel="nofollow" class="trm-toc-link" href="#通用钩子"><span class="trm-toc-number">15.4.</span> <span class="trm-toc-text">通用钩子</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Vite 独有钩子"><a rel="nofollow" class="trm-toc-link" href="#Vite-独有钩子"><span class="trm-toc-number">15.5.</span> <span class="trm-toc-text">Vite 独有钩子</span></a></li><li class="trm-toc-item trm-toc-level-3" title="插件顺序"><a rel="nofollow" class="trm-toc-link" href="#插件顺序"><span class="trm-toc-number">15.6.</span> <span class="trm-toc-text">插件顺序</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Rollup 插件兼容性"><a rel="nofollow" class="trm-toc-link" href="#Rollup-插件兼容性"><span class="trm-toc-number">15.7.</span> <span class="trm-toc-text">Rollup 插件兼容性</span></a></li><li class="trm-toc-item trm-toc-level-3" title="路径规范化"><a rel="nofollow" class="trm-toc-link" href="#路径规范化"><span class="trm-toc-number">15.8.</span> <span class="trm-toc-text">路径规范化</span></a></li><li class="trm-toc-item trm-toc-level-3" title="过滤与include&#x2F;exclde模式"><a rel="nofollow" class="trm-toc-link" href="#过滤与include-exclde模式"><span class="trm-toc-number">15.9.</span> <span class="trm-toc-text">过滤与include&#x2F;exclde模式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="客户端与服务端间通信"><a rel="nofollow" class="trm-toc-link" href="#客户端与服务端间通信"><span class="trm-toc-number">15.10.</span> <span class="trm-toc-text">客户端与服务端间通信</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="客户端 HMR API：通过 import.meta.hot 对象暴露手动 HMR API。"><a rel="nofollow" class="trm-toc-link" href="#客户端-HMR-API：通过-import-meta-hot-对象暴露手动-HMR-API。"><span class="trm-toc-number">16.</span> <span class="trm-toc-text">客户端 HMR API：通过 import.meta.hot 对象暴露手动 HMR API。</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="必需的条件守卫"><a rel="nofollow" class="trm-toc-link" href="#必需的条件守卫"><span class="trm-toc-number">16.1.</span> <span class="trm-toc-text">必需的条件守卫</span></a></li><li class="trm-toc-item trm-toc-level-3" title="TypeScript 的智能提示"><a rel="nofollow" class="trm-toc-link" href="#TypeScript-的智能提示-1"><span class="trm-toc-number">16.2.</span> <span class="trm-toc-text">TypeScript 的智能提示</span></a></li><li class="trm-toc-item trm-toc-level-3" title="hot.accept(cb)：接收模块自身"><a rel="nofollow" class="trm-toc-link" href="#hot-accept-cb-：接收模块自身"><span class="trm-toc-number">16.3.</span> <span class="trm-toc-text">hot.accept(cb)：接收模块自身</span></a></li><li class="trm-toc-item trm-toc-level-3" title="hot.accept(deps, cb)：接受直接依赖项的更新，而无需重新加载自身"><a rel="nofollow" class="trm-toc-link" href="#hot-accept-deps-cb-：接受直接依赖项的更新，而无需重新加载自身"><span class="trm-toc-number">16.4.</span> <span class="trm-toc-text">hot.accept(deps, cb)：接受直接依赖项的更新，而无需重新加载自身</span></a></li><li class="trm-toc-item trm-toc-level-3" title="hot.dispose(cb)："><a rel="nofollow" class="trm-toc-link" href="#hot-dispose-cb-："><span class="trm-toc-number">16.5.</span> <span class="trm-toc-text">hot.dispose(cb)：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="hot.prune(cb):"><a rel="nofollow" class="trm-toc-link" href="#hot-prune-cb"><span class="trm-toc-number">16.6.</span> <span class="trm-toc-text">hot.prune(cb):</span></a></li><li class="trm-toc-item trm-toc-level-3" title="hot.data："><a rel="nofollow" class="trm-toc-link" href="#hot-data："><span class="trm-toc-number">16.7.</span> <span class="trm-toc-text">hot.data：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="hot.decline()："><a rel="nofollow" class="trm-toc-link" href="#hot-decline-："><span class="trm-toc-number">16.8.</span> <span class="trm-toc-text">hot.decline()：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="hot.invalidate():"><a rel="nofollow" class="trm-toc-link" href="#hot-invalidate"><span class="trm-toc-number">16.9.</span> <span class="trm-toc-text">hot.invalidate():</span></a></li><li class="trm-toc-item trm-toc-level-3" title="hot.on(event, cb)："><a rel="nofollow" class="trm-toc-link" href="#hot-on-event-cb-："><span class="trm-toc-number">16.10.</span> <span class="trm-toc-text">hot.on(event, cb)：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="hot.send(event, data)："><a rel="nofollow" class="trm-toc-link" href="#hot-send-event-data-："><span class="trm-toc-number">16.11.</span> <span class="trm-toc-text">hot.send(event, data)：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="Javascript API — 看手册"><a rel="nofollow" class="trm-toc-link" href="#Javascript-API-—-看手册"><span class="trm-toc-number">17.</span> <span class="trm-toc-text">Javascript API — 看手册</span></a></li></ol>
       </div>
     </div>
 

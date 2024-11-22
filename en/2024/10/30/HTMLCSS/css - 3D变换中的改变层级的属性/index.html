@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="总结 transform-style 是用于辅助的，最好还是添加一下 perspective 和 transform:translateZ 为正值时可以使元素的层级提高到最前面  transform-style 有两个属性值,一是 flat(默认),二是 preserve-3d flat：将设置元素的子元素位于该元素的平面中 preserve-3d：将指示元素的子元素应位于 3D 空间中   不能">
+<meta name="description" content="总结 transform-style 是用于辅助的，最好还是添加一下 perspective 和 transform:translateZ 为正值时可以使元素的层级提高到最前面  transform-style属性值 flat：将设置元素的子元素位于该元素的平面中,默认值 preserve-3d：将指示元素的子元素应位于 3D 空间中  注意点 不能被子元素继承 效果作用于子元素,不作用于自身 要">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS-3D变换中的改变层级的属性">
 <meta property="og:url" content="http://example.com/en/2024/10/30/HTMLCSS/css%20-%203D%E5%8F%98%E6%8D%A2%E4%B8%AD%E7%9A%84%E6%94%B9%E5%8F%98%E5%B1%82%E7%BA%A7%E7%9A%84%E5%B1%9E%E6%80%A7/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="总结 transform-style 是用于辅助的，最好还是添加一下 perspective 和 transform:translateZ 为正值时可以使元素的层级提高到最前面  transform-style 有两个属性值,一是 flat(默认),二是 preserve-3d flat：将设置元素的子元素位于该元素的平面中 preserve-3d：将指示元素的子元素应位于 3D 空间中   不能">
+<meta property="og:description" content="总结 transform-style 是用于辅助的，最好还是添加一下 perspective 和 transform:translateZ 为正值时可以使元素的层级提高到最前面  transform-style属性值 flat：将设置元素的子元素位于该元素的平面中,默认值 preserve-3d：将指示元素的子元素应位于 3D 空间中  注意点 不能被子元素继承 效果作用于子元素,不作用于自身 要">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-30T07:29:10.520Z">
-<meta property="article:modified_time" content="2024-11-05T06:28:41.240Z">
+<meta property="article:modified_time" content="2024-11-22T06:46:09.465Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="CSS">
 <meta property="article:tag" content="案例">
@@ -70,7 +70,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-05 14:28:41"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-22 14:46:09"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -223,7 +223,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/CSS&HTML/" target="">
+                        <a  href="/categories/CSS-HTML/" target="">
                             CSS&HTML
                         </a>
                     </li>
@@ -532,46 +532,48 @@
 <li>transform-style 是用于辅助的，最好还是添加一下</li>
 <li>perspective 和 transform:translateZ 为正值时可以使元素的层级提高到最前面</li>
 </ul>
-<h2 id="transform-style"><a href="#transform-style" class="headerlink" title="transform-style"></a>transform-style</h2><ul>
-<li>有两个属性值,一是 flat(默认),二是 preserve-3d<ul>
-<li>flat：将设置元素的子元素位于该元素的平面中</li>
+<h2 id="transform-style"><a href="#transform-style" class="headerlink" title="transform-style"></a>transform-style</h2><h3 id="属性值"><a href="#属性值" class="headerlink" title="属性值"></a>属性值</h3><ul>
+<li>flat：将设置元素的子元素位于该元素的平面中,默认值</li>
 <li>preserve-3d：将指示元素的子元素应位于 3D 空间中</li>
 </ul>
-</li>
+<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><ul>
 <li>不能被子元素继承</li>
 <li>效果作用于子元素,不作用于自身</li>
 <li>要结合 transform 使用,否则没效果</li>
-<li>使用语法:transform-style:preserve-3d</li>
 </ul>
-<h2 id="transform-translateZ"><a href="#transform-translateZ" class="headerlink" title="transform:translateZ()"></a>transform:translateZ()</h2><ul>
+<h3 id="使用语法"><a href="#使用语法" class="headerlink" title="使用语法"></a>使用语法</h3><ul>
+<li>transform-style:preserve-3d</li>
+</ul>
+<h2 id="transform-translateZ"><a href="#transform-translateZ" class="headerlink" title="transform:translateZ()"></a>transform:translateZ()</h2><h3 id="理解Z轴："><a href="#理解Z轴：" class="headerlink" title="理解Z轴："></a>理解Z轴：</h3><ul>
 <li>在 3D 变化中,元素的 Z 轴是指元素在初始情况下,从元素背面穿过元素指向元素正面的方向,初始状态下元素的 Z 轴值为 0,沿着 Z 轴往下移动,Z 轴值为负值,反之则为正值</li>
+</ul>
+<h3 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h3><ul>
 <li>父元素没开启 3D 空间(transform: preserve-3d)的情况下,该属性无效</li>
 <li>该属性是 3D 变化中控制元素 Z 轴移动的属性<ul>
 <li>若兄弟元素有设置该属性,Z 轴值小的会处于 Z 轴值大的元素的下方</li>
 <li>若兄弟元素都没设置,HTML 结构中,后写的元素在上方</li>
 </ul>
 </li>
-<li>使用语法:transform:translateZ(100px)</li>
 </ul>
-<h2 id="透视-perspective"><a href="#透视-perspective" class="headerlink" title="透视 perspective"></a>透视 perspective</h2><ul>
-<li>原理：近大远小</li>
-<li>理解浏览器的坐标系：浏览器平面为 Z&#x3D;0 的平面，坐标原点默认为图片的中心，可以通过更改透视原点进行更改。</li>
+<h3 id="使用语法-1"><a href="#使用语法-1" class="headerlink" title="使用语法:"></a>使用语法:</h3><ul>
+<li>transform:translateZ(100px)</li>
+</ul>
+<h2 id="透视-perspective"><a href="#透视-perspective" class="headerlink" title="透视 perspective"></a>透视 perspective</h2><h3 id="原理：近大远小"><a href="#原理：近大远小" class="headerlink" title="原理：近大远小"></a>原理：近大远小</h3><h3 id="理解浏览器的坐标系："><a href="#理解浏览器的坐标系：" class="headerlink" title="理解浏览器的坐标系："></a>理解浏览器的坐标系：</h3><ul>
+<li>浏览器平面为 Z&#x3D;0 的平面，坐标原点默认为图片的中心，可以通过更改透视原点进行更改。</li>
+</ul>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ul>
 <li>该属性指定了观察者与 z&#x3D;0 平面的距离，使具有三维位置变换的元素产生透视效果。</li>
-<li>不能被子元素继承</li>
-<li>效果作用于子元素,不作用于自身</li>
 <li>perspective：视距，表示视点距离屏幕的长短。视点，用于模拟透视效果时人眼的位置。</li>
 <li>perspectiveOrigin: 个人理解为视点的 xy 坐标，perspective 则是 z 坐标，三者可以再三维中确定视点的唯一位置。</li>
-<li>使用语法:</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">class</span> &#123;</span><br><span class="line">	<span class="attr">perspective</span>: 200px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 单独定义的perspective只在初次渲染时，投影在屏幕上</span></span><br><span class="line">.<span class="property">class</span> &#123;</span><br><span class="line">	<span class="attr">transform</span>: <span class="title function_">perspective</span>(200px);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 会根据transform动画的变化来进行重新渲染</span></span><br></pre></td></tr></table></figure>
+<h3 id="使用语法-2"><a href="#使用语法-2" class="headerlink" title="使用语法"></a>使用语法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">class</span> &#123;</span><br><span class="line">  <span class="attr">perspective</span>: 200px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 单独定义的perspective只在初次渲染时，投影在屏幕上</span></span><br><span class="line">.<span class="property">class</span> &#123;</span><br><span class="line">  <span class="attr">transform</span>: <span class="title function_">perspective</span>(200px);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 会根据transform动画的变化来进行重新渲染</span></span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>注意事项：<ul>
+<h3 id="注意点-1"><a href="#注意点-1" class="headerlink" title="注意点"></a>注意点</h3><ul>
+<li>不能被子元素继承</li>
+<li>效果作用于子元素,不作用于自身</li>
 <li>要在其它 3d 变换之前定义，否则无效</li>
 <li>呈现 3d 效果的父元素要添加 transform-style：preserver-3d 属性</li>
 <li>backface-visibility：用来定义元素不是正面朝向视点时的可视情况</li>
-</ul>
-</li>
 </ul>
 
 </article>
@@ -689,7 +691,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="总结"><a rel="nofollow" class="trm-toc-link" href="#总结"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">总结</span></a></li><li class="trm-toc-item trm-toc-level-2" title="transform-style"><a rel="nofollow" class="trm-toc-link" href="#transform-style"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">transform-style</span></a></li><li class="trm-toc-item trm-toc-level-2" title="transform:translateZ()"><a rel="nofollow" class="trm-toc-link" href="#transform-translateZ"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">transform:translateZ()</span></a></li><li class="trm-toc-item trm-toc-level-2" title="透视 perspective"><a rel="nofollow" class="trm-toc-link" href="#透视-perspective"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">透视 perspective</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="总结"><a rel="nofollow" class="trm-toc-link" href="#总结"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">总结</span></a></li><li class="trm-toc-item trm-toc-level-2" title="transform-style"><a rel="nofollow" class="trm-toc-link" href="#transform-style"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">transform-style</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="属性值"><a rel="nofollow" class="trm-toc-link" href="#属性值"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">属性值</span></a></li><li class="trm-toc-item trm-toc-level-3" title="注意点"><a rel="nofollow" class="trm-toc-link" href="#注意点"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">注意点</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用语法"><a rel="nofollow" class="trm-toc-link" href="#使用语法"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">使用语法</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="transform:translateZ()"><a rel="nofollow" class="trm-toc-link" href="#transform-translateZ"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">transform:translateZ()</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="理解Z轴："><a rel="nofollow" class="trm-toc-link" href="#理解Z轴："><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">理解Z轴：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="注意点："><a rel="nofollow" class="trm-toc-link" href="#注意点："><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">注意点：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用语法:"><a rel="nofollow" class="trm-toc-link" href="#使用语法-1"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">使用语法:</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="透视 perspective"><a rel="nofollow" class="trm-toc-link" href="#透视-perspective"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">透视 perspective</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="原理：近大远小"><a rel="nofollow" class="trm-toc-link" href="#原理：近大远小"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">原理：近大远小</span></a></li><li class="trm-toc-item trm-toc-level-3" title="理解浏览器的坐标系："><a rel="nofollow" class="trm-toc-link" href="#理解浏览器的坐标系："><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">理解浏览器的坐标系：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="作用"><a rel="nofollow" class="trm-toc-link" href="#作用"><span class="trm-toc-number">4.3.</span> <span class="trm-toc-text">作用</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用语法"><a rel="nofollow" class="trm-toc-link" href="#使用语法-2"><span class="trm-toc-number">4.4.</span> <span class="trm-toc-text">使用语法</span></a></li><li class="trm-toc-item trm-toc-level-3" title="注意点"><a rel="nofollow" class="trm-toc-link" href="#注意点-1"><span class="trm-toc-number">4.5.</span> <span class="trm-toc-text">注意点</span></a></li></ol></li></ol>
       </div>
     </div>
 

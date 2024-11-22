@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="实战演练 解决合并分支的问题 直接拉取远程的其它分支 当主干分支有改变，但当前分支拉取的时候主干没变的情况   前提 当前公司业务是用 rebase 合并代码，则需要修改 git 拉取的默认配置   全局修改 pull 的默认配置 rebase：git config --global --add pull.rebase true 查看修改成功与否：git config --global -l,找到">
+<meta name="description" content=".en {         color: green;         font-weight: 600;     }   前提 当前公司业务是用 rebase 合并代码，则需要修改 git 拉取的默认配置   全局修改 pull 的默认配置 rebase：git config –global –add pull.rebase true 查看修改成功与否：git config –glob">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git在项目中遇到的问题">
+<meta property="og:title" content="Git在项目中遇到的问题(实战)">
 <meta property="og:url" content="http://example.com/2024/10/30/Engineering/Git%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="实战演练 解决合并分支的问题 直接拉取远程的其它分支 当主干分支有改变，但当前分支拉取的时候主干没变的情况   前提 当前公司业务是用 rebase 合并代码，则需要修改 git 拉取的默认配置   全局修改 pull 的默认配置 rebase：git config --global --add pull.rebase true 查看修改成功与否：git config --global -l,找到">
+<meta property="og:description" content=".en {         color: green;         font-weight: 600;     }   前提 当前公司业务是用 rebase 合并代码，则需要修改 git 拉取的默认配置   全局修改 pull 的默认配置 rebase：git config –global –add pull.rebase true 查看修改成功与否：git config –glob">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-10-30T06:28:55.994Z">
-<meta property="article:modified_time" content="2024-11-11T02:31:06.965Z">
+<meta property="article:modified_time" content="2024-11-19T09:42:33.872Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <meta name="keywords" content="Git操作,合并分支,命令行, 时间线乱序恢复,rebase">
 
 
-<title >Git在项目中遇到的问题</title>
+<title >Git在项目中遇到的问题(实战)</title>
 
 <!-- Favicon -->
 
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-11 10:31:06"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-19 17:42:33"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -221,7 +221,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/CSS&HTML/" target="">
+                        <a  href="/categories/CSS-HTML/" target="">
                             CSS&HTML
                         </a>
                     </li>
@@ -379,7 +379,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            Git在项目中遇到的问题
+                            Git在项目中遇到的问题(实战)
                         </h1>
 
                         
@@ -526,96 +526,95 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <h2 id="实战演练"><a href="#实战演练" class="headerlink" title="实战演练"></a>实战演练</h2><ul>
-<li><a href="#column6">解决合并分支的问题</a></li>
-<li><a href="#column7">直接拉取远程的其它分支</a></li>
-<li><a href="#column8">当主干分支有改变，但当前分支拉取的时候主干没变的情况</a></li>
-</ul>
-<hr>
+    <style>
+    .en {
+        color: green;
+        font-weight: 600;
+    }
+</style>
+
 <h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><blockquote>
 <p>当前公司业务是用 rebase 合并代码，则需要修改 git 拉取的默认配置</p>
 </blockquote>
 <ul>
-<li>全局修改 pull 的默认配置 rebase：<code>git config --global --add pull.rebase true</code></li>
-<li>查看修改成功与否：<code>git config --global -l</code>,找到 <code>pull.rebase=true</code> 则为成功</li>
+<li>全局修改 pull 的默认配置 rebase：<span class="en">git config –global –add pull.rebase true</span></li>
+<li>查看修改成功与否：<span class="en">git config –global -l</span>,找到 <span class="en">pull.rebase&#x3D;true</span> 则为成功</li>
 </ul>
-<hr>
-<h3 id="分析-studydemo-文件夹的树状图"><a href="#分析-studydemo-文件夹的树状图" class="headerlink" title="分析 studydemo 文件夹的树状图"></a><p>分析 studydemo 文件夹的树状图</p></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- .<span class="property">git</span></span><br><span class="line">- wxproject		 --- commit master</span><br><span class="line">- pachong			 --- commit feature4</span><br><span class="line">- maindian	   --- commit feature5</span><br><span class="line">- h5project		 --- commit feature5</span><br><span class="line">- first-demo	 --- commit feature2</span><br><span class="line">- <span class="title class_">FAProject</span>		 --- commit feature1</span><br><span class="line">- background-<span class="number">1</span> --- commit feature5</span><br><span class="line">- .<span class="property">hintrc</span></span><br><span class="line">- <span class="variable constant_">README</span>.<span class="property">md</span></span><br><span class="line">- 备注.<span class="property">txt</span></span><br></pre></td></tr></table></figure>
+<h2 id="分析-studydemo-文件夹的树状图"><a href="#分析-studydemo-文件夹的树状图" class="headerlink" title="分析 studydemo 文件夹的树状图"></a>分析 studydemo 文件夹的树状图</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- .<span class="property">git</span></span><br><span class="line">- wxproject		 --- commit master</span><br><span class="line">- pachong			 --- commit feature4</span><br><span class="line">- maindian	   --- commit feature5</span><br><span class="line">- h5project		 --- commit feature5</span><br><span class="line">- first-demo	 --- commit feature2</span><br><span class="line">- <span class="title class_">FAProject</span>		 --- commit feature1</span><br><span class="line">- background-<span class="number">1</span> --- commit feature5</span><br><span class="line">- .<span class="property">hintrc</span></span><br><span class="line">- <span class="variable constant_">README</span>.<span class="property">md</span></span><br><span class="line">- 备注.<span class="property">txt</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="解决合并分支的问题-—-feature5-合并-feature4"><a href="#解决合并分支的问题-—-feature5-合并-feature4" class="headerlink" title="解决合并分支的问题 — feature5 合并 feature4"></a><p id="column6">解决合并分支的问题 — feature5 合并 feature4</p></h3><ul>
-<li><h3 id="时间线乱序"><a href="#时间线乱序" class="headerlink" title="时间线乱序"></a>时间线乱序</h3><ul>
+<h2 id="解决合并分支的问题-—-feature5-合并-feature4"><a href="#解决合并分支的问题-—-feature5-合并-feature4" class="headerlink" title="解决合并分支的问题 — feature5 合并 feature4"></a>解决合并分支的问题 — feature5 合并 feature4</h2><h3 id="时间线乱序"><a href="#时间线乱序" class="headerlink" title="时间线乱序"></a>时间线乱序</h3><ul>
 <li>方法一(命令行操作)：<ol>
-<li>先撤回已提交记录：<code>git reset HEAD^</code> &#x2F;&#x2F; 这个只能撤回一条记录</li>
-<li>贮藏未提交的记录：<code>git stash</code></li>
-<li>拉取当前分支的最新记录：<code>git pull</code></li>
-<li>弹出贮藏：<code>git pop stash</code></li>
-<li>重新提交: <code>git commit -m &quot;msg&quot;</code></li>
-<li>推送到远程： <code>git push -f</code></li>
+<li>先撤回已提交记录：<span class="en">git reset HEAD^</span> &#x2F;&#x2F; 这个只能撤回一条记录</li>
+<li>贮藏未提交的记录：<span class="en">git stash</span></li>
+<li>拉取当前分支的最新记录：<span class="en">git pull</span></li>
+<li>弹出贮藏：<span class="en">git pop stash</span></li>
+<li>重新提交: <span class="en">git commit -m “msg”</span></li>
+<li>推送到远程：<span class="en">git push -f</span></li>
 </ol>
 </li>
 <li>方法二(命令行+tortoiseGit)：<ol>
-<li>撤回已提交记录: <code>git reset HEAD^</code></li>
+<li>撤回已提交记录: <span class="en">git reset HEAD^</span></li>
 <li>重新提交合并上一次提交，推送强制覆盖已知</li>
 </ol>
 </li>
 <li>方法三：<ul>
 <li>如果没有什么删除分支之类的，合完，合并记录</li>
-<li>获取需要合并记录的 commit id：<code>git log</code></li>
-<li>进入交互式的 rebase 模式: <code>git rebase -i &lt;commit ID&gt;</code></li>
+<li>获取需要合并记录的 commit id：<span class="en">git log</span></li>
+<li>进入交互式的 rebase 模式: <span class="en"><code>git rebase -i &lt;commit ID&gt;</code></span></li>
 <li>输入 i 进入可编辑模式</li>
-<li>将需要合并的提交记录<code>从pick改为squash或者fixup</code><ul>
+<li>将需要合并的提交记录<span class="en">从pick改为squash或者fixup</span><ul>
 <li>squash：将当前提交记录与上一提交记录合并，同时将提交信息合并为一个</li>
 <li>fixup：将当前提交记录与上一提交记录合并，但不保留当前提交记录</li>
 </ul>
 </li>
 <li>按 esc 输入:wq 退出</li>
-<li>修改合并后的 commit message: <code>git commit --amend</code></li>
-<li>强制推送修改后的记录: <code>git push --force</code></li>
+<li>修改合并后的 commit message: <span class="en">git commit –amend</span></li>
+<li>强制推送修改后的记录: <span class="en">git push –force</span></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><h3 id="切分支一直提示：The-following-untracked-working-tree-files-would-be-overwritten-by-checkout…"><a href="#切分支一直提示：The-following-untracked-working-tree-files-would-be-overwritten-by-checkout…" class="headerlink" title="切分支一直提示：The following untracked working tree files would be overwritten by checkout…"></a>切分支一直提示：The following untracked working tree files would be overwritten by checkout…</h3><ul>
+<h3 id="切分支一直提示：The-following-untracked-working-tree-files-would-be-overwritten-by-checkout…"><a href="#切分支一直提示：The-following-untracked-working-tree-files-would-be-overwritten-by-checkout…" class="headerlink" title="切分支一直提示：The following untracked working tree files would be overwritten by checkout…"></a>切分支一直提示：The following untracked working tree files would be overwritten by checkout…</h3><ul>
 <li>方法一： 保留未追踪的文件<ul>
-<li>git add .</li>
-<li>git stash</li>
+<li><span class="en">git add .</span></li>
+<li><span class="en">git stash</span></li>
 <li>执行本来想执行的命令</li>
 </ul>
 </li>
 <li>方法二：不想要这些文件，直接覆盖<ul>
-<li>git checkout -f 目标分支</li>
+<li><span class="en">git checkout -f 目标分支</span></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><h3 id="遇到-index-lock-文件直接去当前目录的-git-下删除-index-lock"><a href="#遇到-index-lock-文件直接去当前目录的-git-下删除-index-lock" class="headerlink" title="遇到 index.lock 文件直接去当前目录的.git 下删除 index.lock"></a>遇到 index.lock 文件直接去当前目录的.git 下删除 index.lock</h3></li>
-</ul>
-<h3 id="直接拉取远程的其它分支-—-feature5-拉取-feature1"><a href="#直接拉取远程的其它分支-—-feature5-拉取-feature1" class="headerlink" title="直接拉取远程的其它分支 — feature5 拉取 feature1"></a><p id="column7">直接拉取远程的其它分支 — feature5 拉取 feature1</p></h3><ul>
-<li>提示 （no branch, rebasing feature1)</li>
+<h3 id="遇到-index-lock-文件直接去当前目录的-git-下删除-index-lock"><a href="#遇到-index-lock-文件直接去当前目录的-git-下删除-index-lock" class="headerlink" title="遇到 index.lock 文件直接去当前目录的.git 下删除 index.lock"></a>遇到 index.lock 文件直接去当前目录的.git 下删除 index.lock</h3><h2 id="直接拉取远程的其它分支-—-feature5拉取feature1"><a href="#直接拉取远程的其它分支-—-feature5拉取feature1" class="headerlink" title="直接拉取远程的其它分支 — feature5拉取feature1"></a>直接拉取远程的其它分支 — feature5拉取feature1</h2><ul>
+<li>提示 (no branch, rebasing feature1)</li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/lanxing_huangyao/article/details/120242089">解决方案，点击跳转</a></li>
 </ul>
-<h3 id="当主干分支有改变，但当前分支拉取的时候主干没变的情况"><a href="#当主干分支有改变，但当前分支拉取的时候主干没变的情况" class="headerlink" title="当主干分支有改变，但当前分支拉取的时候主干没变的情况"></a><p id="column8">当主干分支有改变，但当前分支拉取的时候主干没变的情况</p></h3><blockquote>
+<h2 id="当主干分支有改变，但当前分支拉取的时候主干没变的情况"><a href="#当主干分支有改变，但当前分支拉取的时候主干没变的情况" class="headerlink" title="当主干分支有改变，但当前分支拉取的时候主干没变的情况"></a>当主干分支有改变，但当前分支拉取的时候主干没变的情况</h2><blockquote>
 <p>这里用 merge 时间先会乱所以用 rebase，本质就是合并主干代码到分支</p>
 </blockquote>
 <ul>
-<li>贮藏一下当前分支未提交的代码：<code>git stash</code></li>
-<li>确认当前所在分支: <code>git branch</code></li>
-<li>切换分支到主干: <code>git checkout master</code></li>
-<li>拉取远程的主干: <code>git pull origin master</code></li>
-<li>切换到要合并的分支: <code>git checkout 分支名</code></li>
-<li>开始变基：<code>git rebase master</code>(当前分支变基主干，变基后的内容在当前分支中更新)</li>
-<li>如果变基有冲突，看提示那个文件，或者看 vscode 那个文件标红了，解决标红后 git add .,然后 git rebase –continue</li>
-<li>查看日志: <code>git log --pretty=oneline --graph</code>(确认是否变基成功)</li>
-<li>尝试推送到远程分支，发现果然不行：<code>git push -u origin 远程分支名</code>(rebase 变基后，本地和远程的记录不同，所以推送不成功)</li>
-<li>强推到远程分支：<code>git push -f origin 远程分支名</code></li>
-<li>弹出贮藏：<code>git pop</code></li>
+<li>贮藏一下当前分支未提交的代码：<span class="en">git stash</span></li>
+<li>确认当前所在分支: <span class="en">git branch</span></li>
+<li>切换分支到主干: <span class="en">git checkout master</span></li>
+<li>拉取远程的主干: <span class="en">git pull origin master</span></li>
+<li>切换到要合并的分支: <span class="en">git checkout 分支名</span></li>
+<li>开始变基：<span class="en">git rebase master</span>(当前分支变基主干，变基后的内容在当前分支中更新)</li>
+<li>如果变基有冲突，看提示那个文件，或者看 vscode 那个文件标红了，<ul>
+<li>解决标红后 <span class="en">git add .</span></li>
+<li>然后 <span class="en">git rebase –continue</span></li>
+</ul>
+</li>
+<li>查看日志: <span class="en">git log –pretty&#x3D;oneline –graph</span>(确认是否变基成功)</li>
+<li>尝试推送到远程分支，发现果然不行：<span class="en">git push -u origin 远程分支名</span>(rebase 变基后，本地和远程的记录不同，所以推送不成功)</li>
+<li>强推到远程分支：<span class="en">git push -f origin 远程分支名</span></li>
+<li>弹出贮藏：<span class="en">git pop</span></li>
 </ul>
 <h3 id="各个分支已经推送到远程后，把分支合并到-master"><a href="#各个分支已经推送到远程后，把分支合并到-master" class="headerlink" title="各个分支已经推送到远程后，把分支合并到 master"></a>各个分支已经推送到远程后，把分支合并到 master</h3><ul>
-<li>切换到 master 分支：<code>git checkout master</code></li>
-<li>确保 master 分支，是最新记录：<code>git pull origin master</code></li>
-<li>合并分支：<code>git merge 要合并到master的分支</code></li>
-<li>查看日志: <code>git log --pretty=oneline --graph</code>(确认是否合并成功)</li>
-<li>推送分支到 master：<code>git push origin master</code></li>
+<li>切换到 master 分支：<span class="en">git checkout master</span></li>
+<li>确保 master 分支，是最新记录：<span class="en">git pull origin master</span></li>
+<li>合并分支：<span class="en">git merge 要合并到master的分支</span></li>
+<li>查看日志: <span class="en">git log –pretty&#x3D;oneline –graph</span>(确认是否合并成功)</li>
+<li>推送分支到 master：<span class="en">git push origin master</span></li>
 </ul>
 
 </article>
@@ -733,7 +732,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="实战演练"><a rel="nofollow" class="trm-toc-link" href="#实战演练"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">实战演练</span></a></li><li class="trm-toc-item trm-toc-level-2" title="前提"><a rel="nofollow" class="trm-toc-link" href="#前提"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">前提</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="分析 studydemo 文件夹的树状图"><a rel="nofollow" class="trm-toc-link" href="#分析-studydemo-文件夹的树状图"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">分析 studydemo 文件夹的树状图</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决合并分支的问题 — feature5 合并 feature4"><a rel="nofollow" class="trm-toc-link" href="#解决合并分支的问题-—-feature5-合并-feature4"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">解决合并分支的问题 — feature5 合并 feature4</span></a></li><li class="trm-toc-item trm-toc-level-3" title="时间线乱序"><a rel="nofollow" class="trm-toc-link" href="#时间线乱序"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">时间线乱序</span></a></li><li class="trm-toc-item trm-toc-level-3" title="切分支一直提示：The following untracked working tree files would be overwritten by checkout…"><a rel="nofollow" class="trm-toc-link" href="#切分支一直提示：The-following-untracked-working-tree-files-would-be-overwritten-by-checkout…"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">切分支一直提示：The following untracked working tree files would be overwritten by checkout…</span></a></li><li class="trm-toc-item trm-toc-level-3" title="遇到 index.lock 文件直接去当前目录的.git 下删除 index.lock"><a rel="nofollow" class="trm-toc-link" href="#遇到-index-lock-文件直接去当前目录的-git-下删除-index-lock"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">遇到 index.lock 文件直接去当前目录的.git 下删除 index.lock</span></a></li><li class="trm-toc-item trm-toc-level-3" title="直接拉取远程的其它分支 — feature5 拉取 feature1"><a rel="nofollow" class="trm-toc-link" href="#直接拉取远程的其它分支-—-feature5-拉取-feature1"><span class="trm-toc-number">2.6.</span> <span class="trm-toc-text">直接拉取远程的其它分支 — feature5 拉取 feature1</span></a></li><li class="trm-toc-item trm-toc-level-3" title="当主干分支有改变，但当前分支拉取的时候主干没变的情况"><a rel="nofollow" class="trm-toc-link" href="#当主干分支有改变，但当前分支拉取的时候主干没变的情况"><span class="trm-toc-number">2.7.</span> <span class="trm-toc-text">当主干分支有改变，但当前分支拉取的时候主干没变的情况</span></a></li><li class="trm-toc-item trm-toc-level-3" title="各个分支已经推送到远程后，把分支合并到 master"><a rel="nofollow" class="trm-toc-link" href="#各个分支已经推送到远程后，把分支合并到-master"><span class="trm-toc-number">2.8.</span> <span class="trm-toc-text">各个分支已经推送到远程后，把分支合并到 master</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="前提"><a rel="nofollow" class="trm-toc-link" href="#前提"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">前提</span></a></li><li class="trm-toc-item trm-toc-level-2" title="分析 studydemo 文件夹的树状图"><a rel="nofollow" class="trm-toc-link" href="#分析-studydemo-文件夹的树状图"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">分析 studydemo 文件夹的树状图</span></a></li><li class="trm-toc-item trm-toc-level-2" title="解决合并分支的问题 — feature5 合并 feature4"><a rel="nofollow" class="trm-toc-link" href="#解决合并分支的问题-—-feature5-合并-feature4"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">解决合并分支的问题 — feature5 合并 feature4</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="时间线乱序"><a rel="nofollow" class="trm-toc-link" href="#时间线乱序"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">时间线乱序</span></a></li><li class="trm-toc-item trm-toc-level-3" title="切分支一直提示：The following untracked working tree files would be overwritten by checkout…"><a rel="nofollow" class="trm-toc-link" href="#切分支一直提示：The-following-untracked-working-tree-files-would-be-overwritten-by-checkout…"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">切分支一直提示：The following untracked working tree files would be overwritten by checkout…</span></a></li><li class="trm-toc-item trm-toc-level-3" title="遇到 index.lock 文件直接去当前目录的.git 下删除 index.lock"><a rel="nofollow" class="trm-toc-link" href="#遇到-index-lock-文件直接去当前目录的-git-下删除-index-lock"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">遇到 index.lock 文件直接去当前目录的.git 下删除 index.lock</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="直接拉取远程的其它分支 — feature5拉取feature1"><a rel="nofollow" class="trm-toc-link" href="#直接拉取远程的其它分支-—-feature5拉取feature1"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">直接拉取远程的其它分支 — feature5拉取feature1</span></a></li><li class="trm-toc-item trm-toc-level-2" title="当主干分支有改变，但当前分支拉取的时候主干没变的情况"><a rel="nofollow" class="trm-toc-link" href="#当主干分支有改变，但当前分支拉取的时候主干没变的情况"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">当主干分支有改变，但当前分支拉取的时候主干没变的情况</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="各个分支已经推送到远程后，把分支合并到 master"><a rel="nofollow" class="trm-toc-link" href="#各个分支已经推送到远程后，把分支合并到-master"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">各个分支已经推送到远程后，把分支合并到 master</span></a></li></ol></li></ol>
       </div>
     </div>
 
