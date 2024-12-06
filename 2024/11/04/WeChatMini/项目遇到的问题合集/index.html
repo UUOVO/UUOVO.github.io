@@ -551,7 +551,7 @@
 <li>在typings&#x2F;index上添加<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// &lt;reference path=&quot;../node_modules/miniprogram-api-typings/index.d.ts&quot; /&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="解决tsconfig-json报错【找不到“sass”的类型定义文件。程序包含该文件是因为-隐式类型库-“sass”-的入口点】"><a href="#解决tsconfig-json报错【找不到“sass”的类型定义文件。程序包含该文件是因为-隐式类型库-“sass”-的入口点】" class="headerlink" title="解决tsconfig.json报错【找不到“sass”的类型定义文件。程序包含该文件是因为:隐式类型库 “sass” 的入口点】"></a>解决tsconfig.json报错【找不到“sass”的类型定义文件。程序包含该文件是因为:隐式类型库 “sass” 的入口点】</h3><ul>
-<li>1.安装<span class="en">npm install –save-dev @types&#x2F;<a href="mailto:&#115;&#97;&#x73;&#x73;&#64;&#49;&#x2e;&#52;&#51;&#46;&#x31;">&#115;&#97;&#x73;&#x73;&#64;&#49;&#x2e;&#52;&#51;&#46;&#x31;</a></span></li>
+<li>1.安装<span class="en">npm install –save-dev @types&#x2F;<a href="mailto:&#x73;&#97;&#x73;&#x73;&#x40;&#x31;&#46;&#52;&#51;&#46;&#49;">&#x73;&#97;&#x73;&#x73;&#x40;&#x31;&#46;&#52;&#51;&#46;&#49;</a></span></li>
 <li>2.然后重启vscode</li>
 <li>3.如果还飘红，则在tsconfig.json中添加以下配置项<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;types&quot;</span>: [<span class="string">&quot;sass&quot;</span>] </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
