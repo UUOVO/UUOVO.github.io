@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="zh-Hans,en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content=".en {   color: #3D82AC;   font-weight:600; }    外盘的样式、位置、刻度 startAngle 和 endAngle: 控制外盘的形状 center 和 radius: 控制位置 min 和 max: 控制刻度的数值 splitNumber: 控制了刻度间隔，而不是每过splitNumber展示数值，用来调整数值的展示 axisLine: 控制表盘最">
+<meta property="og:type" content="article">
+<meta property="og:title" content="仪表盘">
+<meta property="og:url" content="http://example.com/en/2025/03/03/%E5%8F%AF%E8%A7%86%E5%8C%96/%E4%BB%AA%E8%A1%A8%E7%9B%98/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content=".en {   color: #3D82AC;   font-weight:600; }    外盘的样式、位置、刻度 startAngle 和 endAngle: 控制外盘的形状 center 和 radius: 控制位置 min 和 max: 控制刻度的数值 splitNumber: 控制了刻度间隔，而不是每过splitNumber展示数值，用来调整数值的展示 axisLine: 控制表盘最">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/404.jpg">
+<meta property="article:published_time" content="2025-03-03T07:41:35.711Z">
+<meta property="article:modified_time" content="2025-03-05T09:27:19.641Z">
+<meta property="article:author" content="UUOVO">
+<meta property="article:tag" content="可视化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/404.jpg">
+
+    <meta name="keywords" content="echarts">
+
+
+<title >仪表盘</title>
+
+<!-- Favicon -->
+
+    <link href='/img/sitelogo16.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/sitelogo32.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/apple-touch-icon.png?v=2.2.3' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-03-05 17:27:19"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/sitelogo32.svg">
+    
+    
+        <div class="trm-logo-text">
+            UU<span>OVO</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/tags/" target="">
+                            标签
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" target="">
+                            微信小程序
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%B7%A5%E5%85%B7/" target="">
+                            前端工程化工具
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/React/" target="">
+                            React
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/VUE/" target="">
+                            VUE
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/TypeScript/" target="">
+                            TypeScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JavaScript/" target="">
+                            JavaScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/CSS-HTML/" target="">
+                            CSS&HTML
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="">
+                            网络与数据结构
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/uniapp/" target="">
+                            uniapp
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ThreeJS/" target="">
+                            ThreeJS
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/Node/" target="">
+                            Node
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JQuery/" target="">
+                            JQuery
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ES6/" target="">
+                            ES6
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/AJAX/" target="">
+                            AJAX
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/" target="">
+                            可视化
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/gallery/" target="">
+                    相册
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/gallery/wallpaper/" target="">
+                            相册详情页
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/about/" target="">
+                    关于
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/links/" target="">
+                            友链
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+    
+    <div id="trm-search-btn" class="trm-search-btn">
+        <i class="iconfont fas fa-search"></i>
+    </div>
+     
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            仪表盘
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        en
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar1.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/UUOVO" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/ovouu" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                City:
+            </div>
+            <div class="trm-label trm-label-light">
+                City
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                Age:
+            </div>
+            <div class="trm-label trm-label-light">
+                Age
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:1370203877@qq.com" class="trm-btn">
+            Contact Me
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            03/03
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            15:41
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            UUOVO
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <style>
+.en {
+  color: #3D82AC;
+  font-weight:600;
+}
+</style>
+
+<p><img src="/../../img/echart/driverPlate.png" alt="仪表盘示例"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<h3 id="外盘的样式、位置、刻度"><a href="#外盘的样式、位置、刻度" class="headerlink" title="外盘的样式、位置、刻度"></a>外盘的样式、位置、刻度</h3><ul>
+<li><span class="en">startAngle 和 endAngle</span>: 控制外盘的形状</li>
+<li><span class="en">center 和 radius</span>: 控制位置</li>
+<li><span class="en">min 和 max</span>: 控制刻度的数值</li>
+<li><span class="en">splitNumber</span>: 控制了刻度间隔，而不是每过splitNumber展示数值，用来调整数值的展示</li>
+<li><span class="en">axisLine</span>: 控制表盘最外面的弧线的样式</li>
+<li><span class="en">axisLabel</span>: 刻度文字的样式</li>
+<li><span class="en">axisTick</span>: 小刻度线的样式</li>
+<li><span class="en">splitLine</span>: 大刻度线的样式</li>
+<li><span class="en">progress</span>: 指针的样式，默认就可以忽略</li>
+<li><span class="en">detail</span>: 指针下方的文本，detail中的formatter回调中可以获取data的value</li>
+<li><span class="en">data</span>: 指针所在位置，可以动态改变</li>
+</ul>
+<h3 id="配置项"><a href="#配置项" class="headerlink" title="配置项"></a>配置项</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">type</span>:<span class="string">&#x27;gauge&#x27;</span>,</span><br><span class="line"><span class="attr">startAngle</span>: <span class="number">230</span>,</span><br><span class="line"><span class="attr">endAngle</span>: -<span class="number">50</span>,</span><br><span class="line"><span class="attr">center</span>: [<span class="string">&#x27;50%&#x27;</span>, <span class="string">&#x27;55%&#x27;</span>],</span><br><span class="line"><span class="attr">radius</span>: <span class="string">&#x27;90%&#x27;</span>,</span><br><span class="line"><span class="attr">min</span>: <span class="number">0</span>,</span><br><span class="line"><span class="attr">max</span>: <span class="number">220</span>,</span><br><span class="line"><span class="attr">splitNumber</span>: <span class="number">11</span>, <span class="comment">// 刻度间隔</span></span><br><span class="line"><span class="attr">axisLine</span>: &#123;</span><br><span class="line">  <span class="attr">lineStyle</span>: &#123;</span><br><span class="line">    <span class="attr">width</span>: <span class="number">6</span>,</span><br><span class="line">    <span class="attr">color</span>: [ <span class="comment">// 只能用小数点来控制颜色的百分比</span></span><br><span class="line">      [<span class="number">0.10</span>, <span class="string">&#x27;#7CFFB2&#x27;</span>],</span><br><span class="line">      [<span class="number">0.80</span>, <span class="string">&#x27;#58D9F9&#x27;</span>],</span><br><span class="line">      [<span class="number">1</span>, <span class="string">&#x27;#FF6E76&#x27;</span>]</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">shadowBlur</span>: <span class="number">10</span>,</span><br><span class="line">    <span class="attr">shadowColor</span>: <span class="string">&#x27;rgba(255,255,255,0.5)&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="attr">axisLabel</span>: &#123;</span><br><span class="line">  <span class="attr">color</span>: <span class="string">&#x27;white&#x27;</span>,</span><br><span class="line">  <span class="attr">distance</span>: <span class="number">15</span>,</span><br><span class="line">  <span class="attr">fontSize</span>: <span class="number">12</span>,</span><br><span class="line">  <span class="attr">fontWeight</span>: <span class="string">&#x27;bold&#x27;</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="attr">axisTick</span>: &#123; <span class="comment">// 小刻度</span></span><br><span class="line">  <span class="attr">length</span>: <span class="number">12</span>,</span><br><span class="line">  <span class="attr">lineStyle</span>: &#123;</span><br><span class="line">    <span class="attr">color</span>: <span class="string">&#x27;auto&#x27;</span>,</span><br><span class="line">    <span class="attr">width</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">shadowBlur</span>: <span class="number">10</span>,</span><br><span class="line">    <span class="attr">shadowColor</span>: <span class="string">&#x27;rgba(255,255,255,0.5)&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="attr">splitLine</span>: &#123; <span class="comment">// 大刻度</span></span><br><span class="line">  <span class="attr">length</span>: <span class="number">20</span>,</span><br><span class="line">  <span class="attr">lineStyle</span>: &#123;</span><br><span class="line">    <span class="attr">color</span>: <span class="string">&#x27;rgba(255,255,255,1)&#x27;</span>,</span><br><span class="line">    <span class="attr">width</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="attr">shadowBlur</span>: <span class="number">10</span>,</span><br><span class="line">    <span class="attr">shadowColor</span>: <span class="string">&#x27;rgba(255,255,255,0.5)&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;,</span><br><span class="line"><span class="attr">detail</span>: &#123; <span class="comment">// 展示</span></span><br><span class="line">  <span class="attr">fontSize</span>: <span class="number">20</span>,</span><br><span class="line">  <span class="attr">offsetCenter</span>: [<span class="number">0</span>, <span class="string">&#x27;40%&#x27;</span>],</span><br><span class="line">  <span class="attr">valueAnimation</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">formatter</span>: <span class="keyword">function</span> (<span class="params">value</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`km/h\n<span class="subst">$&#123;value.toFixed(<span class="number">2</span>)&#125;</span>`</span> <span class="comment">// 数值保留两位小数</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">color</span>: <span class="string">&#x27;rgba(255,255,255)&#x27;</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="attr">data</span>: [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    <span class="attr">value</span>: <span class="number">0</span>,</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/2025/03/03/%E5%8F%AF%E8%A7%86%E5%8C%96/%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E7%AD%94/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">echart 问题与解答</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>25/03/03</li>
+                <li>15:59</li>
+                <li>可视化</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/2025/03/03/%E5%8F%AF%E8%A7%86%E5%8C%96/%E6%B0%B4%E7%90%83%E5%9B%BE/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">水球图</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>25/03/03</li>
+                <li>15:15</li>
+                <li>可视化</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2025</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+    
+        <div class="trm-footer-item blog-run-long"></div>
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-3" title="外盘的样式、位置、刻度"><a rel="nofollow" class="trm-toc-link" href="#外盘的样式、位置、刻度"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">外盘的样式、位置、刻度</span></a></li><li class="trm-toc-item trm-toc-level-3" title="配置项"><a rel="nofollow" class="trm-toc-link" href="#配置项"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">配置项</span></a></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn hidden-md" data-title="Toggle between single-column and double-column" onclick="asyncFun.switchSingleColumn()">
+            <i class="iconfont fas fa-arrows-alt-h"></i>
+        </div>
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+    <div class="trm-search-popup">
+        <div class="trm-search-wrapper">
+            <div class="form trm-search-form">
+                <div class="trm-search-input-icon">
+                    <i class="iconfont fas fa-search"></i>
+                </div>
+                <input class="trm-search-input" type="text" placeholder="Searching...">
+                <div class="trm-search-btn-close">
+                    <i class="iconfont fas fa-times"></i>
+                </div>
+            </div>
+            <div class="trm-search-result-container">
+                <div class="trm-search-empty">
+                    Please enter keywords to search
+                </div>
+            </div>
+            <div class="trm-search-footer">
+                <div class="trm-search-stats"></div>
+                <ul class="trm-search-commands">
+                    <li>
+                        <kbd class="command-palette-commands-key">
+                            <svg width="15" height="15" aria-label="Escape key" role="img">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.2">
+                                    <path
+                                        d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956">
+                                    </path>
+                                </g>
+                            </svg>
+                        </kbd>
+                        <span class="command-palette-Label">to close</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+        
+<script src="https://unpkg.com/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+
+        <script src="/js/plugins/local_search.js?v=2.2.3"></script>
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+			<script src="/js/plugins/danmu.js?v=2.2.3"></script>
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>
