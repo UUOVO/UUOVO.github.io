@@ -15,7 +15,7 @@
 <meta property="og:description" content=".en {         color: green;         font-weight: 600;     }    ⭐ Promise的三个状态: pending(进行时),fulfilled(已成功),rejected(已失败)  Promise 对象的状态改变，只有两种可能： 从 pending 变为 fulfilled 和从 pending 变为 rejected。 只要">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-10-31T07:54:04.602Z">
-<meta property="article:modified_time" content="2024-11-21T08:51:52.019Z">
+<meta property="article:modified_time" content="2025-03-18T07:43:04.175Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="ES6">
 <meta property="article:tag" content="Promise 和 async&#x2F;await">
@@ -69,7 +69,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-21 16:51:52"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-03-18 15:43:04"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -558,18 +558,18 @@
 </li>
 <li><p><b>.catch()</b>：发生错误时的回调函数</p>
 </li>
-<li><p><b>.finally()</b>：不管 Promise 对象最后状态如何，都会执行的操作(then方法的特例)</p>
+<li><p><b>.finally()</b>：不管 Promise 对象最后状态如何，都会执行的操作(then方法的特例),不接受任何参数</p>
 </li>
 <li><p><b>.all()</b>：用于将多个 Promise 实例，包装成一个新的 Promise 实例</p>
 <ul>
 <li>const p &#x3D; Promise.all([p1, p2, p3]);</li>
 </ul>
 <ol>
-<li>只有p1、p2、p3的状态<span class="en">都变成fulfilled，<code>p</code></span>的状态才会变成<span class="en"><code>fulfilled</code></span>，此时p1、p2、p3的返回值组成一个数组，传递给p的回调函数。</li>
-<li>只要p1、p2、p3之中<span class="en">有一个rejected，p</span>的状态就变成<span class="en"><code>rejected</code></span>，此时第一个被reject的实例的返回值，会传递给p的回调函数。</li>
+<li>只有p1、p2、p3的状态<span class="en">都变成fulfilled，p</span>的状态才会变成<span class="en">fulfilled</span>，此时p1、p2、p3的返回值组成一个数组，传递给p的回调函数。</li>
+<li>只要p1、p2、p3之中<span class="en">有一个rejected，p</span>的状态就变成<span class="en">rejected</span>，此时第一个被reject的实例的返回值，会传递给p的回调函数。</li>
 </ol>
 </li>
-<li><p><b>.allSettled()</b>：确定一组异步操作是否都结束了（不管成功或失败），才会执行下一步</p>
+<li><p><b>.allSettled()</b>：确定一组异步操作是否<span class="en">都结束</span>了（不管成功或失败），才会执行下一步</p>
 </li>
 <li><p><b>.any()</b>：等到所有参数 Promise 变成rejected状态才会结束。</p>
 </li>

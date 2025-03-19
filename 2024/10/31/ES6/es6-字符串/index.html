@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="字符的 Unicode 表示法 采用\uxxxx形式表示一个字符(\u0000~\uFFFF)  超范围的字符，必须用两个双字节的形式表示。  “\u20BB7”         &#x2F;&#x2F; “7”  “\uD842\uDFB7”    &#x2F;&#x2F; “𠮷”  “\u{20BB7}”       &#x2F;&#x2F; “𠮷”   js六种方法表字符 ‘\z’ &amp;#">
+<meta name="description" content=".en {     color: green;     font-weight: 600;   }     .key {   color: #483D8B;   font-weight: 700; }   字符的 Unicode 表示法 采用\uxxxx形式表示一个字符(\u0000~\uFFFF)  超范围的字符，必须用两个双字节的形式表示。  “\u20BB7”         &amp;#x2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6-字符串">
 <meta property="og:url" content="http://example.com/2024/10/31/ES6/es6-%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="字符的 Unicode 表示法 采用\uxxxx形式表示一个字符(\u0000~\uFFFF)  超范围的字符，必须用两个双字节的形式表示。  “\u20BB7”         &#x2F;&#x2F; “7”  “\uD842\uDFB7”    &#x2F;&#x2F; “𠮷”  “\u{20BB7}”       &#x2F;&#x2F; “𠮷”   js六种方法表字符 ‘\z’ &amp;#">
+<meta property="og:description" content=".en {     color: green;     font-weight: 600;   }     .key {   color: #483D8B;   font-weight: 700; }   字符的 Unicode 表示法 采用\uxxxx形式表示一个字符(\u0000~\uFFFF)  超范围的字符，必须用两个双字节的形式表示。  “\u20BB7”         &amp;#x2">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-10-31T07:54:04.664Z">
-<meta property="article:modified_time" content="2024-11-21T09:13:09.759Z">
+<meta property="article:modified_time" content="2025-03-18T07:43:04.174Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="ES6">
 <meta property="article:tag" content="字符串">
@@ -69,7 +69,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-21 17:13:09"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-03-18 15:43:04"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -533,7 +533,18 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <h2 id="字符的-Unicode-表示法"><a href="#字符的-Unicode-表示法" class="headerlink" title="字符的 Unicode 表示法"></a>字符的 Unicode 表示法</h2><ul>
+    <style>
+  .en {
+    color: green;
+    font-weight: 600;
+  }
+    .key {
+  color: #483D8B;
+  font-weight: 700;
+}
+</style>
+
+<h2 id="字符的-Unicode-表示法"><a href="#字符的-Unicode-表示法" class="headerlink" title="字符的 Unicode 表示法"></a>字符的 Unicode 表示法</h2><ul>
 <li><p>采用\uxxxx形式表示一个字符(\u0000~\uFFFF)</p>
 </li>
 <li><p>超范围的字符，必须用两个双字节的形式表示。</p>
@@ -578,44 +589,92 @@
 <h3 id="codePointAt"><a href="#codePointAt" class="headerlink" title="codePointAt()"></a>codePointAt()</h3><ul>
 <li>处理4 个字节储存的字符，返回一个字符的码点。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s = <span class="string">&#x27;𠮷a&#x27;</span>;   <span class="comment">// 0x20BB7</span></span><br><span class="line">s.<span class="title function_">codePointAt</span>(<span class="number">0</span>) <span class="comment">// 20  134071</span></span><br><span class="line">s.<span class="title function_">codePointAt</span>(<span class="number">1</span>) <span class="comment">// BB 57271</span></span><br><span class="line">s.<span class="title function_">codePointAt</span>(<span class="number">2</span>) <span class="comment">// 7 97  </span></span><br><span class="line"></span><br><span class="line">解决字符串参数位置识别不对：</span><br><span class="line"><span class="number">1</span>、<span class="keyword">for</span>...<span class="keyword">of</span>循环</span><br><span class="line"><span class="keyword">let</span> s = <span class="string">&#x27;𠮷a&#x27;</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> ch <span class="keyword">of</span> s) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(ch.<span class="title function_">codePointAt</span>(<span class="number">0</span>).<span class="title function_">toString</span>(<span class="number">16</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>、扩展运算符（...）</span><br><span class="line"><span class="keyword">let</span> arr = [...<span class="string">&#x27;𠮷a&#x27;</span>]; <span class="comment">// arr.length === 2</span></span><br><span class="line">arr.<span class="title function_">forEach</span>(</span><br><span class="line">	<span class="function"><span class="params">ch</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(ch.<span class="title function_">codePointAt</span>(<span class="number">0</span>).<span class="title function_">toString</span>(<span class="number">16</span>))</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试是否是四个字节</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">is32Bit</span>(<span class="params">c</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> c.<span class="title function_">codePointAt</span>(<span class="number">0</span>) &gt; <span class="number">0xFFFF</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">is32Bit</span>(<span class="string">&quot;𠮷&quot;</span>) <span class="comment">// true</span></span><br><span class="line"><span class="title function_">is32Bit</span>(<span class="string">&quot;a&quot;</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="String-raw"><a href="#String-raw" class="headerlink" title="String.raw()"></a>String.<code>raw()</code></h3><ul>
-<li>原有多少斜杠，<code>实际返回原来斜杠的两倍</code>，但肉眼看不出来</li>
-<li>String.raw<code>Hi\n$&#123;2+3&#125;!</code>  &#x2F;&#x2F; 实际返回 “Hi\n5!”，显示的是转义后的结果 “Hi\n5!”</li>
-<li>String.raw<code>Hi\\n</code> &#x3D;&#x3D;&#x3D; “Hi\\n” &#x2F;&#x2F; true</li>
+<h3 id="String-raw"><a href="#String-raw" class="headerlink" title="String.raw()"></a>String.raw()</h3><ul>
+<li>原有多少斜杠，<span class="key">实际返回原来斜杠的两倍</span>，但肉眼看不出来</li>
+<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">String</span>.<span class="property">raw</span><span class="string">`Hi\n<span class="subst">$&#123;<span class="number">2</span>+<span class="number">3</span>&#125;</span>!`</span>  <span class="comment">// 实际返回 &quot;Hi\\n5!&quot;，显示的是转义后的结果 &quot;Hi\n5!&quot;</span></span><br><span class="line"><span class="title class_">String</span>.<span class="property">raw</span><span class="string">`Hi\\n`</span> === <span class="string">&quot;Hi\\\\n&quot;</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="normalize"><a href="#normalize" class="headerlink" title="normalize()"></a>normalize()</h3><ul>
-<li>将字符的不同表示方法统一为同样的形式，这称为 Unicode 正规化。</li>
+<li>将字符的不同表示方法统一为同样的形式，这称为 Unicode 正规化</li>
 </ul>
-<h3 id="includes"><a href="#includes" class="headerlink" title="includes()"></a>includes()</h3><ul>
-<li>返回布尔值，表示是否找到了参数字符串。</li>
+<h3 id="includes-—-ES7"><a href="#includes-—-ES7" class="headerlink" title="includes() — ES7"></a>includes() — ES7</h3><ul>
+<li>   含义：判断一个数组或字符串中是否包含一个指定的值</li>
+<li>语法：<span class="en">str.includes(searchString, position)</span></li>
+<li>参数：<ul>
+<li><span class="en">searchString</span>：要查找的字符串</li>
+<li><span class="en">position</span>：字符串开始搜索sezrchString的起始位置，默认为0</li>
+</ul>
+</li>
+<li>返回：布尔值，true表示存在</li>
 </ul>
 <h3 id="startsWith"><a href="#startsWith" class="headerlink" title="startsWith()"></a>startsWith()</h3><ul>
-<li>返回布尔值，表示参数字符串是否在原字符串的头部。</li>
+<li>含义: 参数字符串是否在原字符串的头部</li>
+<li>返回: 布尔值</li>
 </ul>
 <h3 id="endsWith"><a href="#endsWith" class="headerlink" title="endsWith()"></a>endsWith()</h3><ul>
-<li>返回布尔值，表示参数字符串是否在原字符串的尾部。</li>
+<li>含义：参数字符串是否在原字符串的尾部</li>
+<li>返回: 布尔值</li>
 </ul>
 <h3 id="repeat"><a href="#repeat" class="headerlink" title="repeat()"></a>repeat()</h3><ul>
-<li>返回一个新字符串，表示将原字符串重复n次。</li>
-<li>‘hello’.repeat(2) &#x2F;&#x2F; “hellohello”</li>
-<li>如果参数是小数会向上取整，负数或无穷会报错，0到-1和NaN等于0，字符串会转数字</li>
+<li>含义：将原字符串重复n次</li>
+<li>返回：一个新字符串</li>
+<li>示例：’hello’.repeat(2) &#x2F;&#x2F; “hellohello”</li>
+<li>注意：<span class="key">如果参数是小数会向上取整，负数或无穷会报错，0到-1和NaN等于0，字符串会转数字</span></li>
 </ul>
-<h3 id="padStart-用于头部补全长度，padEnd-用于尾部补全长度。"><a href="#padStart-用于头部补全长度，padEnd-用于尾部补全长度。" class="headerlink" title="padStart()用于头部补全长度，padEnd()用于尾部补全长度。"></a>padStart()用于头部补全长度，padEnd()用于尾部补全长度。</h3><ul>
-<li>注：补全长度要大于原长度</li>
-<li>两个参数，第一个参数是字符串补全生效的最大长度，第二个参数是用来补全的字符串（省略默认空格）过了最大长度，则会截去超出位数的补全字符串。</li>
-<li>补全的字符串+原字符串长度之和超</li>
+<h3 id="padStart-用于头部补全长度-—-ES8"><a href="#padStart-用于头部补全长度-—-ES8" class="headerlink" title="padStart()用于头部补全长度 — ES8"></a>padStart()用于头部补全长度 — ES8</h3><ul>
+<li>含义：用另一个字符串填充当前字符串</li>
+<li>语法：<span class="en">str.padStart(targetLength, padString)</span></li>
+<li>参数：<ul>
+<li><span class="en">targetLength</span>：当前字符串需要填充到的目标长度。如果这个数值小于当前字符串的长度，则返回当前字符串本身</li>
+<li><span class="en">padString</span>（可选）：填充字符串。如果字符串太长，使填充后的字符串长度超过了目标长度，则只保留最左侧的部分，其他部分会被截断。此参数的默认值为 “ “。</li>
 </ul>
-<h3 id="trimStart-消除字符串头部的空格，trimEnd-消除尾部的空格。返回的是新字符串"><a href="#trimStart-消除字符串头部的空格，trimEnd-消除尾部的空格。返回的是新字符串" class="headerlink" title="trimStart()消除字符串头部的空格，trimEnd()消除尾部的空格。返回的是新字符串"></a>trimStart()消除字符串头部的空格，trimEnd()消除尾部的空格。返回的是新字符串</h3><h3 id="matchAll-返回一个正则表达式在当前字符串的所有匹配，以数组的形式"><a href="#matchAll-返回一个正则表达式在当前字符串的所有匹配，以数组的形式" class="headerlink" title="matchAll()返回一个正则表达式在当前字符串的所有匹配，以数组的形式"></a>matchAll()返回一个正则表达式在当前字符串的所有匹配，以数组的形式</h3><h3 id="replaceAll-替换前，替换后-方法，全部替换。返回新字符串"><a href="#replaceAll-替换前，替换后-方法，全部替换。返回新字符串" class="headerlink" title="replaceAll(替换前，替换后)方法，全部替换。返回新字符串"></a>replaceAll(替换前，替换后)方法，全部替换。返回新字符串</h3><ul>
-<li>第一个参数：字符串&#x2F;带g的正则表达式</li>
-<li>第二个参数：函数&#x2F;字符串，可以带有特殊字符</li>
-<li>$&amp;：匹配的字符串。</li>
-<li>$&#96; ：匹配结果前面的文本。</li>
-<li>$’：匹配结果后面的文本。</li>
-<li>$n：匹配成功的第n组内容，n是从1开始的自然数。这个参数生效的前提是，第一个参数必须是正则表达式。</li>
-<li>$$：指代美元符号$。</li>
+</li>
+<li>返回值：在原字符串<sapn class="en">开头</span>填充指定的填充字符串直到目标长度所形成的新字符串。</li>
+</ul>
+<h3 id="padEnd-用于尾部补全长度-—-ES8"><a href="#padEnd-用于尾部补全长度-—-ES8" class="headerlink" title="padEnd()用于尾部补全长度 — ES8"></a>padEnd()用于尾部补全长度 — ES8</h3><ul>
+<li>含义：用另一个字符串填充当前字符串</li>
+<li>语法：<span class="en">str.padEnd(targetLength, padString)</span></li>
+<li>参数：<ul>
+<li><span class="en">targetLength</span>：当前字符串需要填充到的目标长度。如果这个数值小于当前字符串的长度，则返回当前字符串本身</li>
+<li><span class="en">padString</span>（可选）：填充字符串。如果字符串太长，使填充后的字符串长度超过了目标长度，则只保留最左侧的部分，其他部分会被截断。此参数的默认值为 “ “。</li>
+</ul>
+</li>
+<li>返回值：在原字符串<sapn class="en">末尾</span>填充指定的填充字符串直到目标长度所形成的新字符串。</li>
+<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;abc&#x27;</span>.<span class="title function_">padStart</span>(<span class="number">10</span>);         <span class="comment">// &quot;       abc&quot;</span></span><br><span class="line"><span class="string">&#x27;abc&#x27;</span>.<span class="title function_">padStart</span>(<span class="number">10</span>, <span class="string">&quot;foo&quot;</span>);  <span class="comment">// &quot;foofoofabc&quot;</span></span><br><span class="line"><span class="string">&#x27;abc&#x27;</span>.<span class="title function_">padStart</span>(<span class="number">6</span>,<span class="string">&quot;123465&quot;</span>); <span class="comment">// &quot;123abc&quot;</span></span><br><span class="line"><span class="string">&#x27;abc&#x27;</span>.<span class="title function_">padStart</span>(<span class="number">8</span>, <span class="string">&quot;0&quot;</span>);     <span class="comment">// &quot;00000abc&quot;</span></span><br><span class="line"><span class="string">&#x27;abc&#x27;</span>.<span class="title function_">padStart</span>(<span class="number">1</span>);          <span class="comment">// &quot;abc&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;abc&#x27;</span>.<span class="title function_">padEnd</span>(<span class="number">10</span>);          <span class="comment">// &quot;abc       &quot;</span></span><br><span class="line"><span class="string">&#x27;abc&#x27;</span>.<span class="title function_">padEnd</span>(<span class="number">10</span>, <span class="string">&quot;foo&quot;</span>);   <span class="comment">// &quot;abcfoofoof&quot;</span></span><br><span class="line"><span class="string">&#x27;abc&#x27;</span>.<span class="title function_">padEnd</span>(<span class="number">6</span>, <span class="string">&quot;123456&quot;</span>); <span class="comment">// &quot;abc123&quot;</span></span><br><span class="line"><span class="string">&#x27;abc&#x27;</span>.<span class="title function_">padEnd</span>(<span class="number">1</span>);           <span class="comment">// &quot;abc&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="trimStart-—-ES10"><a href="#trimStart-—-ES10" class="headerlink" title="trimStart() — ES10"></a>trimStart() — ES10</h3><ul>
+<li>含义：删除字符串开头的空白字符</li>
+<li>别名：<span class="en">trimeLeft()</span></li>
+<li>语法：<span class="en">str.trimStart()</span></li>
+<li>返回：一个新字符串</li>
+</ul>
+<h3 id="trimEnd-—-ES10"><a href="#trimEnd-—-ES10" class="headerlink" title="trimEnd() — ES10"></a>trimEnd() — ES10</h3><ul>
+<li>含义: 删除字符串尾部的空白字符</li>
+<li>别名：<span class="en">trimRight()</span></li>
+<li>语法：<span class="en">str.trimEnd()</span></li>
+<li>返回：新字符串</li>
+<li>示例:<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;    a b cd  &#x27;</span>;</span><br><span class="line">str.<span class="title function_">trimStart</span>();   <span class="comment">// &#x27;a b cd  &#x27;</span></span><br><span class="line">str.<span class="title function_">trimLeft</span>();    <span class="comment">// &#x27;a b cd  &#x27;</span></span><br><span class="line"></span><br><span class="line">str.<span class="title function_">trimEnd</span>()</span><br><span class="line">str.<span class="title function_">trimRight</span>()</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="matchAll"><a href="#matchAll" class="headerlink" title="matchAll()"></a>matchAll()</h3><ul>
+<li>返回: 一个正则表达式在当前字符串的所有匹配，以数组的形式</li>
+<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> regexp = <span class="regexp">/t(e)(st(\d?))/g</span>;</span><br><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;test1test2&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> array = [...str.<span class="title function_">matchAll</span>(regexp)];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(array[<span class="number">0</span>]);  <span class="comment">// [&quot;test1&quot;, &quot;e&quot;, &quot;st1&quot;, &quot;1&quot;]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(array[<span class="number">1</span>]); <span class="comment">// [&quot;test2&quot;, &quot;e&quot;, &quot;st2&quot;, &quot;2&quot;]</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="replaceAll-pattern-replacement"><a href="#replaceAll-pattern-replacement" class="headerlink" title="replaceAll(pattern, replacement)"></a>replaceAll(pattern, replacement)</h3><ul>
+<li>含义：所有匹配的pattern的部分都会被替换为replacement</li>
+<li>返回：新字符串</li>
+<li>参数：<ul>
+<li><span class="en">pattern</span>：字符串 或者 带g的正则表达式</li>
+<li><span class="en">replacement</span>：函数&#x2F;字符串，可以带有特殊字符</li>
+</ul>
+</li>
+<li><span class="en">$&amp;</span>：匹配的字符串</li>
+<li><span class="en">$&#96;</span>：匹配结果前面的文本</li>
+<li><span class="en">$’</span>：匹配结果后面的文本</li>
+<li><span class="en">$n</span>：匹配成功的第n组内容，n是从1开始的自然数。这个参数生效的前提是，第一个参数必须是正则表达式</li>
+<li><span class="en">$$</span>：指代美元符号$</li>
+<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;aabbcc&#x27;</span>.<span class="title function_">replaceAll</span>(<span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;.&#x27;</span>);  <span class="comment">// &#x27;aa..cc&#x27;</span></span><br><span class="line"><span class="string">&#x27;aabbcc&#x27;</span>.<span class="title function_">replaceAll</span>(<span class="regexp">/b/g</span>, <span class="string">&#x27;.&#x27;</span>);  <span class="comment">// &quot;aa..cc&quot;</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="at"><a href="#at" class="headerlink" title="at()"></a>at()</h3><ul>
-<li>接受一个整数作为参数，返回参数指定位置的字符，支持负索引（即倒数的位置）。</li>
+<li>接受一个整数作为参数，返回参数指定位置的字符，支持负索引（即倒数的位置）</li>
 </ul>
 
 </article>
@@ -733,7 +792,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="字符的 Unicode 表示法"><a rel="nofollow" class="trm-toc-link" href="#字符的-Unicode-表示法"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">字符的 Unicode 表示法</span></a></li><li class="trm-toc-item trm-toc-level-2" title="js六种方法表字符"><a rel="nofollow" class="trm-toc-link" href="#js六种方法表字符"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">js六种方法表字符</span></a></li><li class="trm-toc-item trm-toc-level-2" title="for…of循环遍历"><a rel="nofollow" class="trm-toc-link" href="#for…of循环遍历"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">for…of循环遍历</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Js 规定有5个字符，不能在字符串里面直接使用，只能使用转义形式。"><a rel="nofollow" class="trm-toc-link" href="#Js-规定有5个字符，不能在字符串里面直接使用，只能使用转义形式。"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">Js 规定有5个字符，不能在字符串里面直接使用，只能使用转义形式。</span></a></li><li class="trm-toc-item trm-toc-level-2" title="JSON.stringify() 的改造"><a rel="nofollow" class="trm-toc-link" href="#JSON-stringify-的改造"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">JSON.stringify() 的改造</span></a></li><li class="trm-toc-item trm-toc-level-2" title="模板字符串（反引号&#96;标识）"><a rel="nofollow" class="trm-toc-link" href="#模板字符串（反引号-标识）"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">模板字符串（反引号&#96;标识）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="标签模板"><a rel="nofollow" class="trm-toc-link" href="#标签模板"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">标签模板</span></a></li><li class="trm-toc-item trm-toc-level-2" title="拓展"><a rel="nofollow" class="trm-toc-link" href="#拓展"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">拓展</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="String.fromCodePoint()"><a rel="nofollow" class="trm-toc-link" href="#String-fromCodePoint"><span class="trm-toc-number">8.1.</span> <span class="trm-toc-text">String.fromCodePoint()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="codePointAt()"><a rel="nofollow" class="trm-toc-link" href="#codePointAt"><span class="trm-toc-number">8.2.</span> <span class="trm-toc-text">codePointAt()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="String.raw()"><a rel="nofollow" class="trm-toc-link" href="#String-raw"><span class="trm-toc-number">8.3.</span> <span class="trm-toc-text">String.raw()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="normalize()"><a rel="nofollow" class="trm-toc-link" href="#normalize"><span class="trm-toc-number">8.4.</span> <span class="trm-toc-text">normalize()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="includes()"><a rel="nofollow" class="trm-toc-link" href="#includes"><span class="trm-toc-number">8.5.</span> <span class="trm-toc-text">includes()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="startsWith()"><a rel="nofollow" class="trm-toc-link" href="#startsWith"><span class="trm-toc-number">8.6.</span> <span class="trm-toc-text">startsWith()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="endsWith()"><a rel="nofollow" class="trm-toc-link" href="#endsWith"><span class="trm-toc-number">8.7.</span> <span class="trm-toc-text">endsWith()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="repeat()"><a rel="nofollow" class="trm-toc-link" href="#repeat"><span class="trm-toc-number">8.8.</span> <span class="trm-toc-text">repeat()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="padStart()用于头部补全长度，padEnd()用于尾部补全长度。"><a rel="nofollow" class="trm-toc-link" href="#padStart-用于头部补全长度，padEnd-用于尾部补全长度。"><span class="trm-toc-number">8.9.</span> <span class="trm-toc-text">padStart()用于头部补全长度，padEnd()用于尾部补全长度。</span></a></li><li class="trm-toc-item trm-toc-level-3" title="trimStart()消除字符串头部的空格，trimEnd()消除尾部的空格。返回的是新字符串"><a rel="nofollow" class="trm-toc-link" href="#trimStart-消除字符串头部的空格，trimEnd-消除尾部的空格。返回的是新字符串"><span class="trm-toc-number">8.10.</span> <span class="trm-toc-text">trimStart()消除字符串头部的空格，trimEnd()消除尾部的空格。返回的是新字符串</span></a></li><li class="trm-toc-item trm-toc-level-3" title="matchAll()返回一个正则表达式在当前字符串的所有匹配，以数组的形式"><a rel="nofollow" class="trm-toc-link" href="#matchAll-返回一个正则表达式在当前字符串的所有匹配，以数组的形式"><span class="trm-toc-number">8.11.</span> <span class="trm-toc-text">matchAll()返回一个正则表达式在当前字符串的所有匹配，以数组的形式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="replaceAll(替换前，替换后)方法，全部替换。返回新字符串"><a rel="nofollow" class="trm-toc-link" href="#replaceAll-替换前，替换后-方法，全部替换。返回新字符串"><span class="trm-toc-number">8.12.</span> <span class="trm-toc-text">replaceAll(替换前，替换后)方法，全部替换。返回新字符串</span></a></li><li class="trm-toc-item trm-toc-level-3" title="at()"><a rel="nofollow" class="trm-toc-link" href="#at"><span class="trm-toc-number">8.13.</span> <span class="trm-toc-text">at()</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="字符的 Unicode 表示法"><a rel="nofollow" class="trm-toc-link" href="#字符的-Unicode-表示法"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">字符的 Unicode 表示法</span></a></li><li class="trm-toc-item trm-toc-level-2" title="js六种方法表字符"><a rel="nofollow" class="trm-toc-link" href="#js六种方法表字符"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">js六种方法表字符</span></a></li><li class="trm-toc-item trm-toc-level-2" title="for…of循环遍历"><a rel="nofollow" class="trm-toc-link" href="#for…of循环遍历"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">for…of循环遍历</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Js 规定有5个字符，不能在字符串里面直接使用，只能使用转义形式。"><a rel="nofollow" class="trm-toc-link" href="#Js-规定有5个字符，不能在字符串里面直接使用，只能使用转义形式。"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">Js 规定有5个字符，不能在字符串里面直接使用，只能使用转义形式。</span></a></li><li class="trm-toc-item trm-toc-level-2" title="JSON.stringify() 的改造"><a rel="nofollow" class="trm-toc-link" href="#JSON-stringify-的改造"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">JSON.stringify() 的改造</span></a></li><li class="trm-toc-item trm-toc-level-2" title="模板字符串（反引号&#96;标识）"><a rel="nofollow" class="trm-toc-link" href="#模板字符串（反引号-标识）"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">模板字符串（反引号&#96;标识）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="标签模板"><a rel="nofollow" class="trm-toc-link" href="#标签模板"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">标签模板</span></a></li><li class="trm-toc-item trm-toc-level-2" title="拓展"><a rel="nofollow" class="trm-toc-link" href="#拓展"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">拓展</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="String.fromCodePoint()"><a rel="nofollow" class="trm-toc-link" href="#String-fromCodePoint"><span class="trm-toc-number">8.1.</span> <span class="trm-toc-text">String.fromCodePoint()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="codePointAt()"><a rel="nofollow" class="trm-toc-link" href="#codePointAt"><span class="trm-toc-number">8.2.</span> <span class="trm-toc-text">codePointAt()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="String.raw()"><a rel="nofollow" class="trm-toc-link" href="#String-raw"><span class="trm-toc-number">8.3.</span> <span class="trm-toc-text">String.raw()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="normalize()"><a rel="nofollow" class="trm-toc-link" href="#normalize"><span class="trm-toc-number">8.4.</span> <span class="trm-toc-text">normalize()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="includes() — ES7"><a rel="nofollow" class="trm-toc-link" href="#includes-—-ES7"><span class="trm-toc-number">8.5.</span> <span class="trm-toc-text">includes() — ES7</span></a></li><li class="trm-toc-item trm-toc-level-3" title="startsWith()"><a rel="nofollow" class="trm-toc-link" href="#startsWith"><span class="trm-toc-number">8.6.</span> <span class="trm-toc-text">startsWith()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="endsWith()"><a rel="nofollow" class="trm-toc-link" href="#endsWith"><span class="trm-toc-number">8.7.</span> <span class="trm-toc-text">endsWith()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="repeat()"><a rel="nofollow" class="trm-toc-link" href="#repeat"><span class="trm-toc-number">8.8.</span> <span class="trm-toc-text">repeat()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="padStart()用于头部补全长度 — ES8"><a rel="nofollow" class="trm-toc-link" href="#padStart-用于头部补全长度-—-ES8"><span class="trm-toc-number">8.9.</span> <span class="trm-toc-text">padStart()用于头部补全长度 — ES8</span></a></li><li class="trm-toc-item trm-toc-level-3" title="padEnd()用于尾部补全长度 — ES8"><a rel="nofollow" class="trm-toc-link" href="#padEnd-用于尾部补全长度-—-ES8"><span class="trm-toc-number">8.10.</span> <span class="trm-toc-text">padEnd()用于尾部补全长度 — ES8</span></a></li><li class="trm-toc-item trm-toc-level-3" title="trimStart() — ES10"><a rel="nofollow" class="trm-toc-link" href="#trimStart-—-ES10"><span class="trm-toc-number">8.11.</span> <span class="trm-toc-text">trimStart() — ES10</span></a></li><li class="trm-toc-item trm-toc-level-3" title="trimEnd() — ES10"><a rel="nofollow" class="trm-toc-link" href="#trimEnd-—-ES10"><span class="trm-toc-number">8.12.</span> <span class="trm-toc-text">trimEnd() — ES10</span></a></li><li class="trm-toc-item trm-toc-level-3" title="matchAll()"><a rel="nofollow" class="trm-toc-link" href="#matchAll"><span class="trm-toc-number">8.13.</span> <span class="trm-toc-text">matchAll()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="replaceAll(pattern, replacement)"><a rel="nofollow" class="trm-toc-link" href="#replaceAll-pattern-replacement"><span class="trm-toc-number">8.14.</span> <span class="trm-toc-text">replaceAll(pattern, replacement)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="at()"><a rel="nofollow" class="trm-toc-link" href="#at"><span class="trm-toc-number">8.15.</span> <span class="trm-toc-text">at()</span></a></li></ol></li></ol>
       </div>
     </div>
 

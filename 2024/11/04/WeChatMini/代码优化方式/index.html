@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="三目运算场景 场景一 leftData ? leftData : rightData 简化：leftData || rightData 适合场景：isClick ? ‘’ : ‘hidden’   场景二 leftData ? rightData : leftData 简化：leftData &amp;&amp; rightData   场景三: (只要leftData不为undefined或nu">
+<meta name="description" content=".en {   color: #3D82AC;   font-weight:600; } .key {   color: #483D8B;   font-weight: 700; }   三目运算场景(||、&amp;&amp;、??) — ES11逻辑或操作符 ||: 含义：判断问号左边是否有值，即会使用Boolean将左边进行转化，若为true，返回左值，若为false，返回右值 原语句：l">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信小程序-代码优化方式">
 <meta property="og:url" content="http://example.com/2024/11/04/WeChatMini/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96%E6%96%B9%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="三目运算场景 场景一 leftData ? leftData : rightData 简化：leftData || rightData 适合场景：isClick ? ‘’ : ‘hidden’   场景二 leftData ? rightData : leftData 简化：leftData &amp;&amp; rightData   场景三: (只要leftData不为undefined或nu">
+<meta property="og:description" content=".en {   color: #3D82AC;   font-weight:600; } .key {   color: #483D8B;   font-weight: 700; }   三目运算场景(||、&amp;&amp;、??) — ES11逻辑或操作符 ||: 含义：判断问号左边是否有值，即会使用Boolean将左边进行转化，若为true，返回左值，若为false，返回右值 原语句：l">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-11-04T01:57:32.016Z">
-<meta property="article:modified_time" content="2024-11-08T01:44:49.221Z">
+<meta property="article:modified_time" content="2025-03-18T06:54:24.317Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="js">
 <meta name="twitter:card" content="summary">
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-08 09:44:49"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-03-18 14:54:24"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -532,46 +532,63 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <h2 id="三目运算场景"><a href="#三目运算场景" class="headerlink" title="三目运算场景"></a>三目运算场景</h2><ul>
-<li><h3 id="场景一"><a href="#场景一" class="headerlink" title="场景一"></a>场景一</h3><ul>
-<li>leftData ? leftData : rightData</li>
-<li>简化：leftData || rightData</li>
+    <style>
+.en {
+  color: #3D82AC;
+  font-weight:600;
+}
+.key {
+  color: #483D8B;
+  font-weight: 700;
+}
+</style>
+
+<h2 id="三目运算场景-、-、-—-ES11"><a href="#三目运算场景-、-、-—-ES11" class="headerlink" title="三目运算场景(||、&amp;&amp;、??) — ES11"></a>三目运算场景(||、&amp;&amp;、??) — ES11</h2><h3 id="逻辑或操作符"><a href="#逻辑或操作符" class="headerlink" title="逻辑或操作符 ||:"></a>逻辑或操作符 ||:</h3><ul>
+<li>含义：判断问号左边是否有值，即会使用Boolean将左边进行转化，<span class="key">若为true，返回左值，若为false，返回右值</span></li>
+<li>原语句：leftData ? leftData : rightData</li>
+<li>简化：<span class="en">leftData || rightData</span></li>
 <li>适合场景：isClick ? ‘’ : ‘hidden’</li>
 </ul>
+<h3 id="空值合并运算符"><a href="#空值合并运算符" class="headerlink" title="空值合并运算符 &amp;&amp;:"></a>空值合并运算符 &amp;&amp;:</h3><ul>
+<li>含义：判断问号左边是否有值，即会使用Boolean将左边进行转化，<span class="key">若为false，返回左值，若为true，返回右值</span></li>
+<li>原语句：leftData ? rightData : leftData</li>
+<li>简化：<span class="en">leftData &amp;&amp; rightData</span></li>
+</ul>
+<h3 id="空值合并操作符"><a href="#空值合并操作符" class="headerlink" title="空值合并操作符 ??:"></a>空值合并操作符 ??:</h3><ul>
+<li>含义：ES2020 新增，当左侧的操作数为 null 或者 undefined时，返回其右侧操作数，否则返回左侧操作数</li>
+<li>关键：<span class="key">只要leftData不为undefined或null 就返回leftData</span></li>
+<li>原语句：leftData !&#x3D;&#x3D; null &amp;&amp; leftData !&#x3D;&#x3D; undefined ? leftData : rightData</li>
+<li>简化：<span class="en">leftData ?? rightData</span></li>
+</ul>
+<h2 id="逻辑运算符和赋值表达式-，-，-—-ES12"><a href="#逻辑运算符和赋值表达式-，-，-—-ES12" class="headerlink" title="逻辑运算符和赋值表达式(&amp;&amp;&#x3D;，||&#x3D;，??&#x3D;) — ES12"></a>逻辑运算符和赋值表达式(&amp;&amp;&#x3D;，||&#x3D;，??&#x3D;) — ES12</h2><h3 id=""><a href="#" class="headerlink" title="&amp;&amp;&#x3D;"></a>&amp;&amp;&#x3D;</h3><ul>
+<li>含义：x &amp;&amp;&#x3D; y 等价于 x &amp;&amp;(x&#x3D;y): 意思是<span class="key">当 x 为 true 时，x &#x3D; y</span></li>
+<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">a &amp;&amp;= <span class="number">2</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line">b &amp;&amp;= <span class="number">2</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b);  <span class="comment">// 0</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="-1"><a href="#-1" class="headerlink" title="||&#x3D;"></a>||&#x3D;</h3><ul>
+<li><p>含义： x ||&#x3D; y 等价于 x || (x &#x3D; y)：意思是<span class="key">当 x 为 false 的时，x &#x3D; y</span></p>
 </li>
-<li><h3 id="场景二"><a href="#场景二" class="headerlink" title="场景二"></a>场景二</h3><ul>
-<li>leftData ? rightData : leftData</li>
-<li>简化：leftData &amp;&amp; rightData</li>
+<li><p>示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = &#123; <span class="attr">duration</span>: <span class="number">50</span>, <span class="attr">title</span>: <span class="string">&#x27;&#x27;</span> &#125;;</span><br><span class="line"></span><br><span class="line">a.<span class="property">duration</span> ||= <span class="number">10</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="property">duration</span>);  <span class="comment">// 50</span></span><br><span class="line"></span><br><span class="line">a.<span class="property">title</span> ||= <span class="string">&#x27;title is empty.&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="property">title</span>);  <span class="comment">// &quot;title is empty&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="-2"><a href="#-2" class="headerlink" title="??&#x3D;"></a>??&#x3D;</h3><ul>
+<li>含义：x ??&#x3D; y 等价于 x ?? (x &#x3D; y)：意思是<span class="key">当 x 为 null 或 undefined 的时，x &#x3D; y</span></li>
+<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = &#123; <span class="attr">duration</span>: <span class="number">50</span> &#125;;</span><br><span class="line"></span><br><span class="line">a.<span class="property">duration</span> ??= <span class="number">10</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="property">duration</span>);  <span class="comment">// 50</span></span><br><span class="line"></span><br><span class="line">a.<span class="property">speed</span> ??= <span class="number">25</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="property">speed</span>);  <span class="comment">// 25</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><h3 id="场景三-只要leftData不为undefined或null-就返回leftData"><a href="#场景三-只要leftData不为undefined或null-就返回leftData" class="headerlink" title="场景三: (只要leftData不为undefined或null 就返回leftData)"></a>场景三: (只要leftData不为undefined或null 就返回leftData)</h3><ul>
-<li>leftData !&#x3D;&#x3D; null &amp;&amp; leftData !&#x3D;&#x3D; undefined ? leftData : rightData</li>
-<li>简化：leftData ?? rightData</li>
-</ul>
-</li>
-</ul>
-<h3 id="运算符释义"><a href="#运算符释义" class="headerlink" title="运算符释义"></a>运算符释义</h3><ul>
-<li><code>||</code>,会判断问号左边是否有值，即会使用Boolean将左边进行转化，若为true，返回左边的值，若为false，返回右边的值</li>
-<li><code>&amp;&amp;</code>,会判断问号左边是否有值，即会使用Boolean将左边进行转化，若为false，返回左边的值，若为true，返回右边的值</li>
-<li><code>??</code>,ES2020 新增，当左侧的操作数为 null 或者 undefined时，返回其右侧操作数，否则返回左侧操作数</li>
 </ul>
 <h2 id="代码优化方式"><a href="#代码优化方式" class="headerlink" title="代码优化方式"></a>代码优化方式</h2><h3 id="场景一：页面使用复杂的表达式，可以在函数中返回结果，直接调用函数"><a href="#场景一：页面使用复杂的表达式，可以在函数中返回结果，直接调用函数" class="headerlink" title="场景一：页面使用复杂的表达式，可以在函数中返回结果，直接调用函数"></a>场景一：页面使用复杂的表达式，可以在函数中返回结果，直接调用函数</h3><ul>
-<li>示例： disabled: !a &amp;&amp; b &amp;&amp; c &amp;&amp; d</li>
-<li>解决： <ul>
-<li>disabled: isDisabled</li>
-<li>const isDisabled &#x3D; () &#x3D;&gt; {return !a &amp;&amp; b &amp;&amp; c &amp;&amp; d}</li>
-</ul>
-</li>
+<li>示例：disabled: !a &amp;&amp; b &amp;&amp; c &amp;&amp; d</li>
+<li>解决： <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">disabled</span>: isDisabled</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">isDisabled</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">return</span> !a &amp;&amp; b &amp;&amp; c &amp;&amp; d</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="场景二：页面存在重复节点，一般存在表单页面"><a href="#场景二：页面存在重复节点，一般存在表单页面" class="headerlink" title="场景二：页面存在重复节点，一般存在表单页面"></a>场景二：页面存在重复节点，一般存在表单页面</h3><ul>
-<li>解决： 将数据存在数组中，遍历出来</li>
+<li>解决：将数据存在数组中，遍历出来</li>
 </ul>
 <h3 id="场景三：if-else-switch-要校验，表单"><a href="#场景三：if-else-switch-要校验，表单" class="headerlink" title="场景三：if else switch + 要校验，表单"></a>场景三：if else switch + 要校验，表单</h3><ul>
 <li>将提示信息，校验的key值，和是否必填(可以通过ts的类型校验忽略或排除)写成一个数组对象</li>
-<li>通过判断这个key对应的value的布尔类型时候为undefined，是就提示并返回。</li>
+<li>通过判断这个key对应的value的布尔类型时候为undefined，是就提示并返回</li>
 <li>注意点： <ul>
-<li>有两个数组，数组一是存放key和value的数组对象，数组二是存放要检验的key和提示信息。</li>
-<li>这个校验方式是按顺序的，所以数组的顺序要和页面的表单顺序一致</li>
+<li><span class="key">有两个数组，数组一是存放key和value的数组对象，数组二是存放要检验的key和提示信息</span></li>
+<li><span class="key">这个校验方式是按顺序的，所以数组的顺序要和页面的表单顺序一致</span></li>
 </ul>
 </li>
 </ul>
@@ -579,16 +596,18 @@
 <li>示例：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> params = &#123;&#125;</span><br><span class="line">params.<span class="property">id</span> = <span class="variable language_">this</span>.<span class="property">formItem</span>.<span class="property">id</span></span><br><span class="line">params.<span class="property">time</span> = <span class="variable language_">this</span>.<span class="property">formItem</span>.<span class="property">time</span>.<span class="title function_">format</span>(<span class="string">&#x27;YYYY-MM-DD&#x27;</span>)</span><br><span class="line">...次数省略多个重复代码</span><br></pre></td></tr></table></figure></li>
 <li>解决：使用解构，不处理的直接存，处理的拎出来处理<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123;time,...params&#125; = <span class="variable language_">this</span>.<span class="property">formItem</span>   <span class="comment">// 这里输出params就可以得到params对象</span></span><br><span class="line">params.<span class="property">time</span> = <span class="variable language_">this</span>.<span class="property">formItem</span>.<span class="property">time</span>.<span class="title function_">format</span>(<span class="string">&#x27;YYYY-MM-DD&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="场景四：常量使用枚举保存好"><a href="#场景四：常量使用枚举保存好" class="headerlink" title="场景四：常量使用枚举保存好"></a>场景四：常量使用枚举保存好</h3><h3 id="场景五：css用BEM命名法"><a href="#场景五：css用BEM命名法" class="headerlink" title="场景五：css用BEM命名法"></a>场景五：css用BEM命名法</h3><p> <a target="_blank" rel="noopener" href="https://www.infoq.cn/article/vfnfwdle0zmga9psvbug">BEM命名法</a></p>
-<h3 id="场景六：switch-比-if-else在-执行效率高"><a href="#场景六：switch-比-if-else在-执行效率高" class="headerlink" title="场景六：switch 比 if&#x2F;else在 执行效率高"></a>场景六：switch 比 if&#x2F;else在 执行效率高</h3><h3 id="场景七：-优化switch"><a href="#场景七：-优化switch" class="headerlink" title="场景七： 优化switch"></a>场景七： 优化switch</h3><blockquote>
-<p>策略模式： 简单理解一个函数对应一个方法</p>
+<h3 id="场景四：常量使用枚举保存好"><a href="#场景四：常量使用枚举保存好" class="headerlink" title="场景四：常量使用枚举保存好"></a>场景四：常量使用枚举保存好</h3><h3 id="场景五：css用BEM命名法"><a href="#场景五：css用BEM命名法" class="headerlink" title="场景五：css用BEM命名法"></a>场景五：css用BEM命名法</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/vfnfwdle0zmga9psvbug">BEM命名法</a></li>
+</ul>
+<h3 id="场景六：switch-比-if-else在-执行效率高"><a href="#场景六：switch-比-if-else在-执行效率高" class="headerlink" title="场景六：switch 比 if&#x2F;else在 执行效率高"></a>场景六：switch 比 if&#x2F;else在 执行效率高</h3><h3 id="场景七：优化switch"><a href="#场景七：优化switch" class="headerlink" title="场景七：优化switch"></a>场景七：优化switch</h3><blockquote>
+<p>策略模式：简单理解一个函数对应一个方法</p>
 </blockquote>
 <ul>
 <li>解决：使用对象存储，然后在函数中返回</li>
 <li>本质：在工厂函数中使用策略模式</li>
 <li>示例：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">weekFun</span> = (<span class="params">opt: number</span>) =&gt; &#123;</span><br><span class="line">	<span class="comment">// 使用对象字面量</span></span><br><span class="line">	<span class="keyword">const</span> <span class="attr">status</span>: <span class="title class_">Record</span>&lt;number, string&gt; = &#123;</span><br><span class="line">		<span class="number">0</span>: <span class="string">&#x27;周日&#x27;</span>,  <span class="comment">// value可以是函数</span></span><br><span class="line">		<span class="number">1</span>: <span class="string">&#x27;周一&#x27;</span>,</span><br><span class="line">		<span class="number">2</span>: <span class="string">&#x27;周二&#x27;</span>,</span><br><span class="line">		<span class="number">3</span>: <span class="string">&#x27;周三&#x27;</span>,</span><br><span class="line">		<span class="number">4</span>: <span class="string">&#x27;周四&#x27;</span>,</span><br><span class="line">		<span class="number">5</span>: <span class="string">&#x27;周五&#x27;</span>,</span><br><span class="line">		<span class="number">6</span>: <span class="string">&#x27;周六&#x27;</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> status[opt] ?? <span class="string">&#x27;weekFun is not get useful num&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="场景八：-优化if-else代码块"><a href="#场景八：-优化if-else代码块" class="headerlink" title="场景八： 优化if&#x2F;else代码块"></a>场景八： 优化if&#x2F;else代码块</h3><ul>
+<h3 id="场景八：优化if-else代码块"><a href="#场景八：优化if-else代码块" class="headerlink" title="场景八：优化if&#x2F;else代码块"></a>场景八：优化if&#x2F;else代码块</h3><ul>
 <li>Map写法<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> opt = &#123;</span><br><span class="line">	<span class="number">0</span>: <span class="string">&quot;add&quot;</span>,</span><br><span class="line">	<span class="number">1</span>: <span class="string">&quot;even&quot;</span>,</span><br><span class="line">	<span class="number">2</span>: <span class="string">&quot;divided&quot;</span>,</span><br><span class="line">	<span class="number">3</span>: <span class="string">&quot;multi&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> actions = <span class="keyword">new</span> <span class="title class_">Map</span>([</span><br><span class="line"> [<span class="string">&quot;add&quot;</span>, <span class="string">&quot;成功,444444444444&quot;</span>],</span><br><span class="line"> [<span class="string">&quot;even&quot;</span>, <span class="string">&quot;失败,44444444&quot;</span>],</span><br><span class="line"> [<span class="string">&quot;divided&quot;</span>, <span class="string">&quot;进行中,11111111&quot;</span>],</span><br><span class="line"> [<span class="string">&quot;multi&quot;</span>, <span class="string">&quot;未开始&quot;</span>]</span><br><span class="line">])</span><br><span class="line"><span class="comment">// 调用</span></span><br><span class="line">actions.<span class="title function_">get</span>(opt[<span class="number">0</span>])</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(actions.<span class="title function_">get</span>(opt[<span class="number">0</span>])) <span class="comment">// &quot;成功,444444444444&quot; </span></span><br></pre></td></tr></table></figure></li>
 </ul>
 
@@ -707,7 +726,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="三目运算场景"><a rel="nofollow" class="trm-toc-link" href="#三目运算场景"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">三目运算场景</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="场景一"><a rel="nofollow" class="trm-toc-link" href="#场景一"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">场景一</span></a></li><li class="trm-toc-item trm-toc-level-3" title="场景二"><a rel="nofollow" class="trm-toc-link" href="#场景二"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">场景二</span></a></li><li class="trm-toc-item trm-toc-level-3" title="场景三: (只要leftData不为undefined或null 就返回leftData)"><a rel="nofollow" class="trm-toc-link" href="#场景三-只要leftData不为undefined或null-就返回leftData"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">场景三: (只要leftData不为undefined或null 就返回leftData)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="运算符释义"><a rel="nofollow" class="trm-toc-link" href="#运算符释义"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">运算符释义</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="代码优化方式"><a rel="nofollow" class="trm-toc-link" href="#代码优化方式"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">代码优化方式</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="场景一：页面使用复杂的表达式，可以在函数中返回结果，直接调用函数"><a rel="nofollow" class="trm-toc-link" href="#场景一：页面使用复杂的表达式，可以在函数中返回结果，直接调用函数"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">场景一：页面使用复杂的表达式，可以在函数中返回结果，直接调用函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="场景二：页面存在重复节点，一般存在表单页面"><a rel="nofollow" class="trm-toc-link" href="#场景二：页面存在重复节点，一般存在表单页面"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">场景二：页面存在重复节点，一般存在表单页面</span></a></li><li class="trm-toc-item trm-toc-level-3" title="场景三：if else switch + 要校验，表单"><a rel="nofollow" class="trm-toc-link" href="#场景三：if-else-switch-要校验，表单"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">场景三：if else switch + 要校验，表单</span></a></li><li class="trm-toc-item trm-toc-level-3" title="场景三：从后端获取参数存进对象中，但有几个数据要单独处理"><a rel="nofollow" class="trm-toc-link" href="#场景三：从后端获取参数存进对象中，但有几个数据要单独处理"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">场景三：从后端获取参数存进对象中，但有几个数据要单独处理</span></a></li><li class="trm-toc-item trm-toc-level-3" title="场景四：常量使用枚举保存好"><a rel="nofollow" class="trm-toc-link" href="#场景四：常量使用枚举保存好"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">场景四：常量使用枚举保存好</span></a></li><li class="trm-toc-item trm-toc-level-3" title="场景五：css用BEM命名法"><a rel="nofollow" class="trm-toc-link" href="#场景五：css用BEM命名法"><span class="trm-toc-number">2.6.</span> <span class="trm-toc-text">场景五：css用BEM命名法</span></a></li><li class="trm-toc-item trm-toc-level-3" title="场景六：switch 比 if&#x2F;else在 执行效率高"><a rel="nofollow" class="trm-toc-link" href="#场景六：switch-比-if-else在-执行效率高"><span class="trm-toc-number">2.7.</span> <span class="trm-toc-text">场景六：switch 比 if&#x2F;else在 执行效率高</span></a></li><li class="trm-toc-item trm-toc-level-3" title="场景七： 优化switch"><a rel="nofollow" class="trm-toc-link" href="#场景七：-优化switch"><span class="trm-toc-number">2.8.</span> <span class="trm-toc-text">场景七： 优化switch</span></a></li><li class="trm-toc-item trm-toc-level-3" title="场景八： 优化if&#x2F;else代码块"><a rel="nofollow" class="trm-toc-link" href="#场景八：-优化if-else代码块"><span class="trm-toc-number">2.9.</span> <span class="trm-toc-text">场景八： 优化if&#x2F;else代码块</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="三目运算场景(||、&amp;&amp;、??) — ES11"><a rel="nofollow" class="trm-toc-link" href="#三目运算场景-、-、-—-ES11"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">三目运算场景(||、&amp;&amp;、??) — ES11</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="逻辑或操作符 ||:"><a rel="nofollow" class="trm-toc-link" href="#逻辑或操作符"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">逻辑或操作符 ||:</span></a></li><li class="trm-toc-item trm-toc-level-3" title="空值合并运算符 &amp;&amp;:"><a rel="nofollow" class="trm-toc-link" href="#空值合并运算符"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">空值合并运算符 &amp;&amp;:</span></a></li><li class="trm-toc-item trm-toc-level-3" title="空值合并操作符 ??:"><a rel="nofollow" class="trm-toc-link" href="#空值合并操作符"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">空值合并操作符 ??:</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="逻辑运算符和赋值表达式(&amp;&amp;&#x3D;，||&#x3D;，??&#x3D;) — ES12"><a rel="nofollow" class="trm-toc-link" href="#逻辑运算符和赋值表达式-，-，-—-ES12"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">逻辑运算符和赋值表达式(&amp;&amp;&#x3D;，||&#x3D;，??&#x3D;) — ES12</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="&amp;&amp;&#x3D;"><a class="trm-toc-link"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">&amp;&amp;&#x3D;</span></a></li><li class="trm-toc-item trm-toc-level-3" title="||&#x3D;"><a rel="nofollow" class="trm-toc-link" href="#-1"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">||&#x3D;</span></a></li><li class="trm-toc-item trm-toc-level-3" title="??&#x3D;"><a rel="nofollow" class="trm-toc-link" href="#-2"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">??&#x3D;</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="代码优化方式"><a rel="nofollow" class="trm-toc-link" href="#代码优化方式"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">代码优化方式</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="场景一：页面使用复杂的表达式，可以在函数中返回结果，直接调用函数"><a rel="nofollow" class="trm-toc-link" href="#场景一：页面使用复杂的表达式，可以在函数中返回结果，直接调用函数"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">场景一：页面使用复杂的表达式，可以在函数中返回结果，直接调用函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="场景二：页面存在重复节点，一般存在表单页面"><a rel="nofollow" class="trm-toc-link" href="#场景二：页面存在重复节点，一般存在表单页面"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">场景二：页面存在重复节点，一般存在表单页面</span></a></li><li class="trm-toc-item trm-toc-level-3" title="场景三：if else switch + 要校验，表单"><a rel="nofollow" class="trm-toc-link" href="#场景三：if-else-switch-要校验，表单"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">场景三：if else switch + 要校验，表单</span></a></li><li class="trm-toc-item trm-toc-level-3" title="场景三：从后端获取参数存进对象中，但有几个数据要单独处理"><a rel="nofollow" class="trm-toc-link" href="#场景三：从后端获取参数存进对象中，但有几个数据要单独处理"><span class="trm-toc-number">3.4.</span> <span class="trm-toc-text">场景三：从后端获取参数存进对象中，但有几个数据要单独处理</span></a></li><li class="trm-toc-item trm-toc-level-3" title="场景四：常量使用枚举保存好"><a rel="nofollow" class="trm-toc-link" href="#场景四：常量使用枚举保存好"><span class="trm-toc-number">3.5.</span> <span class="trm-toc-text">场景四：常量使用枚举保存好</span></a></li><li class="trm-toc-item trm-toc-level-3" title="场景五：css用BEM命名法"><a rel="nofollow" class="trm-toc-link" href="#场景五：css用BEM命名法"><span class="trm-toc-number">3.6.</span> <span class="trm-toc-text">场景五：css用BEM命名法</span></a></li><li class="trm-toc-item trm-toc-level-3" title="场景六：switch 比 if&#x2F;else在 执行效率高"><a rel="nofollow" class="trm-toc-link" href="#场景六：switch-比-if-else在-执行效率高"><span class="trm-toc-number">3.7.</span> <span class="trm-toc-text">场景六：switch 比 if&#x2F;else在 执行效率高</span></a></li><li class="trm-toc-item trm-toc-level-3" title="场景七：优化switch"><a rel="nofollow" class="trm-toc-link" href="#场景七：优化switch"><span class="trm-toc-number">3.8.</span> <span class="trm-toc-text">场景七：优化switch</span></a></li><li class="trm-toc-item trm-toc-level-3" title="场景八：优化if&#x2F;else代码块"><a rel="nofollow" class="trm-toc-link" href="#场景八：优化if-else代码块"><span class="trm-toc-number">3.9.</span> <span class="trm-toc-text">场景八：优化if&#x2F;else代码块</span></a></li></ol></li></ol>
       </div>
     </div>
 
