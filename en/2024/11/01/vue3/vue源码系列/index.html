@@ -7,16 +7,16 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content=".en {         color: #3D82AC;         font-weight: 600;     }     .desc {         color: #CD853F;         font-weight: 600;         font-size:14px;     }   vue 最大的特点就是数据驱动视图 公式：UI &#x3D; render(s">
+<meta name="description" content=".en {         color: green;         font-weight: 600;     }     .desc {         color: #CD853F;         font-weight: 600;         font-size:14px;     }   vue 最大的特点就是数据驱动视图 公式：UI &#x3D; render(sta">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VUE3-源码系列">
 <meta property="og:url" content="http://example.com/en/2024/11/01/vue3/vue%E6%BA%90%E7%A0%81%E7%B3%BB%E5%88%97/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content=".en {         color: #3D82AC;         font-weight: 600;     }     .desc {         color: #CD853F;         font-weight: 600;         font-size:14px;     }   vue 最大的特点就是数据驱动视图 公式：UI &#x3D; render(s">
+<meta property="og:description" content=".en {         color: green;         font-weight: 600;     }     .desc {         color: #CD853F;         font-weight: 600;         font-size:14px;     }   vue 最大的特点就是数据驱动视图 公式：UI &#x3D; render(sta">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/404.jpg">
 <meta property="article:published_time" content="2024-11-01T06:39:25.154Z">
-<meta property="article:modified_time" content="2024-11-22T04:05:14.022Z">
+<meta property="article:modified_time" content="2025-06-30T07:26:00.085Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="知识">
 <meta property="article:tag" content="vue3">
@@ -71,7 +71,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-22 12:05:14"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-06-30 15:26:00"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -537,7 +537,7 @@
     <article id="article-container" class="trm-publication">
     <style>
     .en {
-        color: #3D82AC;
+        color: green;
         font-weight: 600;
     }
     .desc {
@@ -960,15 +960,24 @@
 <li><span class="en">unbind</span>：只调用一次，指令与元素解绑时调用</li>
 </ul>
 <h2 id="keep-alive"><a href="#keep-alive" class="headerlink" title="keep-alive"></a>keep-alive</h2><ul>
-<li><span class="en"><code>&lt;keep-alive include=&quot;字符串|正则表达式&quot; exclude=&quot;字符串|正则表达式&quot; max=&quot;Number&quot;/&gt;</code></span></li>
+<li><a target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/built-ins/keep-alive">官网介绍</a></li>
+<li>作用：实现组件缓存，保存组件状态，避免反复渲染影响性能。适合频繁切换，但不需要改变切换前的状态的组件。</li>
+<li>场景：tabs标签页，后台导航，vue性能优化</li>
+<li>语法：<code>&lt;keep-alive include=&quot;字符串|正则表达式&quot; exclude=&quot;字符串|正则表达式&quot; max=&quot;Number&quot;/&gt;</code></li>
+<li>属性：<ul>
 <li>include：只有名称匹配的组件会被缓存</li>
 <li>exclude：任何名称匹配的组件都不会被缓存</li>
-<li>max：最多可以缓存多少组件实例.一旦这个数字达到了，在新实例被创建之前，<span class="en">已缓存组件中最久没有被访问的实例会被销毁掉</span>。</li>
+<li>max：最多可以缓存多少组件实例。一旦这个数字达到了，在新实例被创建之前，<span class="en">已缓存组件中最久没有被访问的实例会被销毁掉</span>。</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 逗号分隔字符串 </span></span><br><span class="line">&lt;keep-alive include=<span class="string">&quot;a,b&quot;</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">component</span> <span class="attr">:is</span>=<span class="string">&quot;view&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></span></span><br><span class="line">&lt;/keep-alive&gt;</span><br><span class="line"><span class="comment">// 正则表达式 (使用 `v-bind`)</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">keep-alive</span> <span class="attr">:include</span>=<span class="string">&quot;/a|b/&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">component</span> <span class="attr">:is</span>=<span class="string">&quot;view&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">keep-alive</span>&gt;</span></span></span><br><span class="line"><span class="comment">// 数组 (使用 `v-bind`) </span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">keep-alive</span> <span class="attr">:include</span>=<span class="string">&quot;[&#x27;a&#x27;, &#x27;b&#x27;]&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">component</span> <span class="attr">:is</span>=<span class="string">&quot;view&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">keep-alive</span>&gt;</span></span></span><br><span class="line"><span class="comment">// 匹配时首先检查组件自身的name选项，如果name不可用，则匹配它的局部注册名称(父组件components选项的键值)。匿名组件不能被匹配</span></span><br></pre></td></tr></table></figure>
-<ul>
+</li>
+<li>注意：<ul>
+<li>include 和 exclude的值可以是『逗号分割字符串』、『一个正则表达式』、『字符串数组』的形式</li>
+<li>数组和正则需要使用:include(v-bind形式),字符串直接include</li>
+</ul>
+</li>
+<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 正则表达式 (使用 `v-bind`)</span></span><br><span class="line">&lt;keep-alive :include=<span class="string">&quot;/a|b/&quot;</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">component</span> <span class="attr">:is</span>=<span class="string">&quot;view&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></span></span><br><span class="line">&lt;/keep-alive&gt;</span><br><span class="line"><span class="comment">// 数组 (使用 `v-bind`) </span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">keep-alive</span> <span class="attr">:include</span>=<span class="string">&quot;[&#x27;a&#x27;, &#x27;b&#x27;]&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">component</span> <span class="attr">:is</span>=<span class="string">&quot;view&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">keep-alive</span>&gt;</span></span></span><br><span class="line"><span class="comment">// 匹配时首先检查组件自身的name选项，如果name不可用，则匹配它的局部注册名称(父组件components选项的键值)。匿名组件不能被匹配</span></span><br></pre></td></tr></table></figure></li>
 <li>组件一旦被<code>&lt;keep-alive&gt;</code>缓存，那么再次渲染的时候就不会执行created、mounted等钩子</li>
-<li>如果希望能再次渲染时使用<span class="en"><code>activated</code>和<code>deactivated</code></span>两个钩子，它的执行时机是<code>&lt;keep-alive&gt;</code> 包裹的组件激活时调用和停用时调用</li>
+<li>如果希望能再次渲染时使用<span class="en">activated和deactivated</span>，它的执行时机是<code>&lt;keep-alive&gt;</code> 包裹的组件激活时调用和停用时调用</li>
 </ul>
 
 </article>
