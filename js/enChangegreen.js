@@ -5,14 +5,13 @@ document.addEventListener('DOMContentLoaded', function (event) {
 			// 编辑器不渲染
 			if (node.nodeType === Node.TEXT_NODE) {
 				const text = node.textContent
-				console.log(text, '*************')
 				// 将英文单词和中文分割并以数组的形式存储
-				const parts = text.split(/([a-zA-Z]+)/)
+				const parts = text.split(/([@$a-zA-Z\-]+)/)
 				const parent = node.parentElement
 				const wrapper = document.createElement('span')
 				parts.forEach((part) => {
-					// 遍历时只要是英文单词就把颜色设置为绿色
-					if (/^[a-zA-Z]+$/.test(part)) {
+					// 遍历时只要是英文单词,@,-,$就把颜色设置为绿色
+					if (/^[a-zA-Z@$\-]+$/.test(part)) {
 						const span = document.createElement('span')
 						span.style.color = 'green'
 						span.textContent = part

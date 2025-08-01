@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content=".en {         color: green;         font-weight:600;     }     .desc {         color: #CD853F;         font-weight: 600;         font-size:14px;     }   优点： 直观的、 基于页面的路由系统（并支持动态路由） 预渲染。支持在页面级的静态生">
+<meta name="description" content="优点： 直观的、『基于页面』的路由系统（并支持动态路由） 『预渲染』。支持在页面级的静态生成(SSG) 和服务器端渲染(SSR) 自动代码拆分，提升页面加载速度 具有经过优化的预取功能的『客户端路由』 内置 CSS 和 Sass 的支持，并支持任何CSS-in-JS库 开发环境支持快速刷新 利用 Serverless Functions 及 API 路由 构建 API 功能 完全可扩展  安">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Next --- React 开发框架">
 <meta property="og:url" content="http://example.com/2024/11/01/Engineering/Next/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content=".en {         color: green;         font-weight:600;     }     .desc {         color: #CD853F;         font-weight: 600;         font-size:14px;     }   优点： 直观的、 基于页面的路由系统（并支持动态路由） 预渲染。支持在页面级的静态生">
+<meta property="og:description" content="优点： 直观的、『基于页面』的路由系统（并支持动态路由） 『预渲染』。支持在页面级的静态生成(SSG) 和服务器端渲染(SSR) 自动代码拆分，提升页面加载速度 具有经过优化的预取功能的『客户端路由』 内置 CSS 和 Sass 的支持，并支持任何CSS-in-JS库 开发环境支持快速刷新 利用 Serverless Functions 及 API 路由 构建 API 功能 完全可扩展  安">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-11-01T08:52:16.693Z">
-<meta property="article:modified_time" content="2025-06-30T07:19:17.240Z">
+<meta property="article:modified_time" content="2025-07-25T07:22:33.521Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="Next">
 <meta name="twitter:card" content="summary">
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-06-30 15:19:17"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-25 15:22:33"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -532,88 +532,82 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <style>
-    .en {
-        color: green;
-        font-weight:600;
-    }
-    .desc {
-        color: #CD853F;
-        font-weight: 600;
-        font-size:14px;
-    }
-</style>
+    <script src="/js/enChangegreen.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/global.css">
 
 <h2 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h2><ul>
-<li>直观的、 <span class="en">基于页面</span>的路由系统（并支持<span class="en">动态路由</span>）</li>
-<li><span class="en">预渲染</span>。支持在页面级的<span class="en">静态生成</span> (SSG) 和<span class="en">服务器端渲染</span> (SSR)</li>
+<li>直观的、<span class="key_words">『基于页面』</span>的路由系统（<span class="desc">并支持动态路由</span>）</li>
+<li><span class="key_words">『预渲染』</span>。支持在页面级的静态生成(SSG) 和服务器端渲染(SSR)</li>
 <li>自动代码拆分，提升页面加载速度</li>
-<li>具有经过优化的预取功能的<span class="en">客户端路由</span></li>
-<li>内置 CSS 和 Sass 的支持，并支持任何<span class="en">CSS-in-JS</span>库</li>
-<li>开发环境支持<span class="en">快速刷新</span></li>
-<li>利用 Serverless Functions 及 <span class="en">API 路由</span>构建 API 功能</li>
+<li>具有经过优化的预取功能的<span class="key_words">『客户端路由』</span></li>
+<li>内置 CSS 和 Sass 的支持，并支持任何CSS-in-JS库</li>
+<li>开发环境支持快速刷新</li>
+<li>利用 Serverless Functions 及 API 路由 构建 API 功能</li>
 <li>完全可扩展</li>
 </ul>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
 <li>前提：node 版本需要12.22.0 及更高</li>
-<li>创建：<span class="en">npx create-next-app@latest –typescript</span></li>
-<li>运行：<span class="en">npm run dev</span>启动服务器，访问<code>http://localhost:3000</code></li>
-<li>安装：<span class="en">npm install next react react-dom</span></li>
-<li>配置：在package.json文件添加<code>scripts</code>配置<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;dev&quot;</span>: <span class="string">&quot;next dev&quot;</span>, <span class="comment">// 开发模式启动</span></span><br><span class="line">  <span class="string">&quot;build&quot;</span>: <span class="string">&quot;next build&quot;</span>, <span class="comment">// 构建生产环境</span></span><br><span class="line">  <span class="string">&quot;start&quot;</span>: <span class="string">&quot;next start&quot;</span>, <span class="comment">// 启动生产环境服务器</span></span><br><span class="line">  <span class="string">&quot;lint&quot;</span>: <span class="string">&quot;next lint&quot;</span> <span class="comment">// 设置内置ESLint配置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>创建：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx create-next-app@latest --typescript</span><br></pre></td></tr></table></figure></li>
+<li>运行：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev&lt;/span&gt;</span><br></pre></td></tr></table></figure></li>
+<li>启动服务器，访问<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:3000</span><br></pre></td></tr></table></figure></li>
+<li>安装：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install next react react-dom</span><br></pre></td></tr></table></figure></li>
+<li>配置：在package.json文件添加scripts配置<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;dev&quot;</span>: <span class="string">&quot;next dev&quot;</span>, <span class="comment">// 开发模式启动</span></span><br><span class="line">  <span class="string">&quot;build&quot;</span>: <span class="string">&quot;next build&quot;</span>, <span class="comment">// 构建生产环境</span></span><br><span class="line">  <span class="string">&quot;start&quot;</span>: <span class="string">&quot;next start&quot;</span>, <span class="comment">// 启动生产环境服务器</span></span><br><span class="line">  <span class="string">&quot;lint&quot;</span>: <span class="string">&quot;next lint&quot;</span> <span class="comment">// 设置内置ESLint配置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="页面-Pages"><a href="#页面-Pages" class="headerlink" title="页面(Pages)"></a>页面(Pages)</h2><ul>
-<li>在next.js中，page就是React组件，文件存放在<code>pages</code>目录下，每个page都使用其文件名作为路由，通过<span class="en">&#x2F;文件名</span>访问<ul>
-<li>支持有<span class="en">动态路由的pages</span>，如<span class="desc">文件名为<code>pages/posts/[id].js</code>,通过<code>posts/1</code>访问</span></li>
+<li>在next.js中，page就是React组件，文件存放在pages目录下，每个page都使用其文件名作为路由，通过<span class="key_words">『&#x2F;文件名』</span>访问<ul>
+<li>支持有<span class="key_words">『动态路由的pages』</span>，如<span class="desc">文件名为pages&#x2F;posts&#x2F;[id].js,通过posts&#x2F;1访问</span></li>
 </ul>
 </li>
-<li><h3 id="预渲染"><a href="#预渲染" class="headerlink" title="预渲染"></a>预渲染</h3></li>
+</ul>
+<h3 id="预渲染"><a href="#预渲染" class="headerlink" title="预渲染"></a>预渲染</h3><ul>
 <li>默认情况下将预渲染每个page，即预先为每个page生成HTML文件</li>
-<li><b>水合</b>：当浏览器加载一个page时，其Javascript代码将运行并使页面完全具有交互性的过程。</li>
+<li><span class="key_words">『水合』</span>：<ul>
+<li>当浏览器加载一个page时，其Javascript代码将运行并使页面完全具有交互性的过程。</li>
+</ul>
+</li>
 <li>两种形式的预渲染：<ul>
-<li><b>静态生成</b>(推荐)：HTML在<span class="en">构建时</span>生成，并在每次页面请求时重用</li>
-<li><b>服务端渲染</b>：在<span class="en">每次页面请求时</span>重新生成HTML</li>
+<li><span class="key_words">『静态生成』</span>(推荐)：HTML在<span class="key_words">『构建时』</span>生成，并在每次页面请求时重用</li>
+<li><span class="key_words">『服务端渲染』</span>：在<span class="key_words">『每次页面请求时』</span>重新生成HTML</li>
 </ul>
 </li>
 <li>允许每个页面选择渲染方式，CDN可以在没有额外配置的情况下缓存静态生成的页面提高性能</li>
-<li><h3 id="静态生成-—-生成带有或不带有数据的页面"><a href="#静态生成-—-生成带有或不带有数据的页面" class="headerlink" title="静态生成 — 生成带有或不带有数据的页面"></a>静态生成 — 生成带有或不带有数据的页面</h3><ul>
-<li><span class="en">生成不带有数据的静态页面</span>：不涉及获取外部数据，只需构建时为页面生成HTML文件</li>
-<li><span class="en">生成带有数据的页面</span>:<ul>
-<li>页面<span class="en">内容</span>取决于外部数据: 使用<span class="en">getStaticProps</span></li>
-<li>页面<span class="en">paths</span>取决于外部数据：使用<span class="en">getStaticPaths + getStaticProps</span></li>
+</ul>
+<h3 id="静态生成-—-生成带有或不带有数据的页面"><a href="#静态生成-—-生成带有或不带有数据的页面" class="headerlink" title="静态生成 — 生成带有或不带有数据的页面"></a>静态生成 — 生成带有或不带有数据的页面</h3><ul>
+<li><span class="key_words">『生成不带有数据的静态页面』</span>：不涉及获取外部数据，只需构建时为页面生成HTML文件</li>
+<li><span class="key_words">『生成带有数据的页面』</span>:<ul>
+<li>页面<span class="key_words">『内容』</span>取决于外部数据: 使用getStaticProps</li>
+<li>页面『paths』取决于外部数据：使用getStaticPaths + getStaticProps</li>
 </ul>
 </li>
 <li>尽可能使用静态生成如：营销页面，博客文章、简历、产品列表、帮助文档</li>
-<li>静态生成不满足使用的解决方案：静态生成+<span class="en">客户端渲染</span>，<span class="en">服务端渲染</span></li>
+<li>静态生成不满足使用的解决方案：静态生成+客户端渲染，服务端渲染</li>
 </ul>
-</li>
-<li><h3 id="服务端渲染-—-也被称为SSR或动态渲染"><a href="#服务端渲染-—-也被称为SSR或动态渲染" class="headerlink" title="服务端渲染 — 也被称为SSR或动态渲染"></a>服务端渲染 — 也被称为SSR或动态渲染</h3><ul>
-<li>使用：<span class="en">getServerSideProps</span></li>
-</ul>
-</li>
+<h3 id="服务端渲染-—-也被称为SSR或动态渲染"><a href="#服务端渲染-—-也被称为SSR或动态渲染" class="headerlink" title="服务端渲染 — 也被称为SSR或动态渲染"></a>服务端渲染 — 也被称为SSR或动态渲染</h3><ul>
+<li>使用：getServerSideProps</li>
 </ul>
 <h2 id="数据获取"><a href="#数据获取" class="headerlink" title="数据获取"></a>数据获取</h2><ul>
-<li><span class="en">getStaticProps</span>（静态生成）：仅在<code>构建时</code>获取数据。</li>
-<li><span class="en">getStaticPaths</span>（静态生成）：根据数据指定预渲染页面的动态路由。</li>
-<li><span class="en">getServerSideProps</span>（服务器端渲染）：获取每个请求的数据。</li>
-<li><h3 id="getStaticProps"><a href="#getStaticProps" class="headerlink" title="getStaticProps"></a>getStaticProps</h3><ul>
+<li>getStaticProps（静态生成）：仅在<span class="key_words">『构建时』</span>获取数据。</li>
+<li>getStaticPaths（静态生成）：根据数据指定预渲染页面的动态路由。</li>
+<li>getServerSideProps（服务器端渲染）：获取每个请求的数据。</li>
+</ul>
+<h3 id="getStaticProps"><a href="#getStaticProps" class="headerlink" title="getStaticProps"></a>getStaticProps</h3><ul>
 <li>返回一个对象</li>
-<li><b>context</b>包含:<ul>
+<li>context 包含:<ul>
 <li>params: 使用动态路由页面的路由参数     </li>
 <li>preview：是否处于预览模式。true&#x2F;undefined     </li>
 <li>previewData：setPreviewData设置的预览数据集</li>
-<li>locale：活动区域设置(前提：启用国际路由)</li>
-<li>locales：所有支持的区域设置(前提：启用国际路由)</li>
-<li>defaultLocale：配置的默认区域设置(前提：启用国际路由)</li>
+<li>locale：活动区域设置(<span class="desc">前提：启用国际路由</span>)</li>
+<li>locales：所有支持的区域设置(<span class="desc">前提：启用国际路由</span>)</li>
+<li>defaultLocale：配置的默认区域设置(<span class="desc">前提：启用国际路由</span>)</li>
 </ul>
 </li>
-<li><b>props</b>：可选对象，包含页面组件将接受的props</li>
-<li><b>revalidate</b>：可选的次数，单位秒，默认false，具体看<a href="#ref1">增量静态生成</a></li>
-<li><b>notFound</b>：可选的布尔值，允许页面返回404和页面</li>
-<li><b>redirect</b>：可选的重定向值，允许重定向到内部和外部资源，构建时不允许重定向<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">getStaticProps</span>(<span class="params">context</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">props</span>: &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">GetStaticProps</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;next&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="attr">getStaticProps</span>: <span class="title class_">GetStaticProps</span> = <span class="title function_">async</span> (context) =&gt; &#123;&#125;</span><br></pre></td></tr></table></figure></li>
+<li>props：可选对象，包含页面组件将接受的props</li>
+<li>revalidate：可选的次数，单位秒，默认false，具体看<a href="#ref1">增量静态生成</a></li>
+<li>notFound：可选的布尔值，允许页面返回404和页面</li>
+<li>redirect：可选的重定向值，允许重定向到内部和外部资源，构建时不允许重定向<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">getStaticProps</span>(<span class="params">context</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">props</span>: &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">GetStaticProps</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;next&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="attr">getStaticProps</span>: <span class="title class_">GetStaticProps</span> = <span class="title function_">async</span> (context) =&gt; &#123;&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-<li><h3 id="增量静态再生-ISR-–-基于每个页面使用静态生成，而无需重新构建整个站点。"><a href="#增量静态再生-ISR-–-基于每个页面使用静态生成，而无需重新构建整个站点。" class="headerlink" title="增量静态再生(ISR) – 基于每个页面使用静态生成，而无需重新构建整个站点。"></a><p id="ref1">增量静态再生(ISR)</p> – <span class="desc">基于每个页面使用静态生成，而无需重新构建整个站点。</span></h3><ul>
-<li>使用<span class="en">revalidate：number</span>启用，当对在生成时预呈现的页面发出请求时，它最初将显示缓存的页面。过程如下：<ul>
+<h3 id="增量静态再生-ISR-基于每个页面使用静态生成，而无需重新构建整个站点。"><a href="#增量静态再生-ISR-基于每个页面使用静态生成，而无需重新构建整个站点。" class="headerlink" title="增量静态再生(ISR)(基于每个页面使用静态生成，而无需重新构建整个站点。)"></a><p id="ref1">增量静态再生(ISR)</p>(<span class="desc">基于每个页面使用静态生成，而无需重新构建整个站点。</span>)</h3><ul>
+<li>使用revalidate：number启用，当对在生成时预呈现的页面发出请求时，它最初将显示缓存的页面。过程如下：<ul>
 <li>初始请求之后和10秒之前对页面的任何请求也会被缓存并即时缓存</li>
 <li>number秒窗口之后，下一个请求仍将显示缓存(过时)页面</li>
 <li>next会在后台触发页面重新生成</li>
@@ -621,34 +615,40 @@
 </ul>
 </li>
 </ul>
-</li>
-<li><h3 id="读取文件：process-cwd"><a href="#读取文件：process-cwd" class="headerlink" title="读取文件：process.cwd()"></a>读取文件：<span class="en">process.cwd()</span></h3><ul>
-<li>文件可以直接从<span class="en">getStaticProps</span>中的文件系统中读取。即必须获取文件的完整路径</li>
+<h3 id="读取文件：process-cwd"><a href="#读取文件：process-cwd" class="headerlink" title="读取文件：process.cwd()"></a>读取文件：process.cwd()</h3><ul>
+<li>文件可以直接从getStaticProps中的文件系统中读取。即必须获取文件的完整路径</li>
 <li>next将代码编译到一个单独的目录中<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">&#x27;path&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">getStaticProps</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> postsDirectory = path.<span class="title function_">join</span>(process.<span class="title function_">cwd</span>(),<span class="string">&#x27;posts&#x27;</span>) </span><br><span class="line">  <span class="comment">// 使用 fs.readdir(postsDirectory)来读取这个目录</span></span><br><span class="line">  <span class="keyword">const</span> filenames = <span class="keyword">await</span> fs.<span class="title function_">readdir</span>(postsDirectory)</span><br><span class="line">  <span class="keyword">const</span> posts = filenames.<span class="title function_">map</span>(<span class="title function_">async</span> (filename) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> filePath = path.<span class="title function_">join</span>(postsDirectory, filename)</span><br><span class="line">    <span class="keyword">const</span> fileContents = <span class="keyword">await</span> fs.<span class="title function_">readFile</span>(filePath, <span class="string">&#x27;utf8&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      filename,</span><br><span class="line">      <span class="attr">content</span>: fileContents,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">props</span>: &#123;</span><br><span class="line">      <span class="attr">posts</span>: <span class="keyword">await</span> <span class="title class_">Promise</span>.<span class="title function_">all</span>(posts),</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-<li><h3 id="getStaticPaths"><a href="#getStaticPaths" class="headerlink" title="getStaticPaths"></a>getStaticPaths</h3><ul>
+<h3 id="getStaticPaths"><a href="#getStaticPaths" class="headerlink" title="getStaticPaths"></a>getStaticPaths</h3><ul>
 <li>静态预呈现使用动态路由的页面时使用</li>
-<li><b>paths键(必选)</b><ul>
-<li>如果页面使用可选的捕获所有路由，使用null、[]、undefined或 false来呈现最根路径，如果在<code>page/[[...slug]]</code>,使用slug:false,则静态生成页面”&#x2F;“</li>
+<li>paths键(必选)<ul>
+<li>如果页面使用可选的捕获所有路由，使用null、[]、undefined或 false来呈现最根路径，如果在page&#x2F;[[…slug]],使用slug:false,则静态生成页面”&#x2F;“</li>
 </ul>
 </li>
-<li><b>fallback键(必选)</b><ul>
-<li><span class="en">fallback：false</span>:则任何<span class="en">未返回的路径都将导致404</span>，不经常添加新页面可用</li>
-<li><span class="en">fallback: true</span>:返回的路径将在构建时由<span class="en">getStaticProps</span>呈现为HTML，在生成时<span class="en">未生成的路径不会生成404</span>,提供<a href="#ref2">回退版本</a>,从用户角度看，页面将从回退页面交换到整个页面。有大量依赖于数据的静态页面可用。</li>
-<li><span class="en">fallback:blocking</span>:阻塞原因，每条路径只发生一次。构建时尚未生成的路径不会导致404。相反Next将对第一个请求进行SSR，并返回生成的HTML。完成后，浏览器将接收生成路径的 HTML。Next将此路径添加到预呈现页面的列表中。</li>
+<li>fallback键(必选)<ul>
+<li>fallback：false: <ul>
+<li>则任何<span class="key_words">『未返回的路径都将导致404』</span>，不经常添加新页面可用</li>
 </ul>
 </li>
-<li><b> <p id="ref2">回退页面</p></b><ul>
+<li>fallback: true: <ul>
+<li>返回的路径将在构建时由getStaticProps呈现为HTML，在生成时<span class="key_words">『未生成的路径不会生成404』</span>,提供<a href="#ref2">回退版本</a>,从用户角度看，页面将从回退页面交换到整个页面。有大量依赖于数据的静态页面可用。</li>
+</ul>
+</li>
+<li>fallback:blocking: <ul>
+<li>阻塞原因，每条路径只发生一次。构建时尚未生成的路径不会导致404。相反Next将对第一个请求进行SSR，并返回生成的HTML。完成后，浏览器将接收生成路径的 HTML。Next将此路径添加到预呈现页面的列表中。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span id="ref2">回退页面</span><ul>
 <li>页面的props将为空。使用router.isFallback可以检测是否正在渲染回退，如果只为true的话<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">getStaticPaths</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">paths</span>: [</span><br><span class="line">      &#123; <span class="attr">params</span>: &#123; ... &#125;&#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">fallback</span>: <span class="literal">true</span>,<span class="literal">false</span>,or <span class="string">&#x27;blocking&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">GetStaticPaths</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;next&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="attr">getStaticPaths</span>: <span class="title class_">GetStaticPaths</span> = <span class="title function_">async</span> () =&gt; &#123;&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><h3 id="getServerSideProps"><a href="#getServerSideProps" class="headerlink" title="getServerSideProps"></a>getServerSideProps</h3><ul>
+<h3 id="getServerSideProps"><a href="#getServerSideProps" class="headerlink" title="getServerSideProps"></a>getServerSideProps</h3><ul>
 <li>仅当需要预呈现其数据必须在请求时提取的页面时，才应使用。getStaticProps到第一个字节的时间（TTFB）将比慢，因为服务器必须计算每个请求的结果，并且如果没有额外的配置，CDN就无法缓存结果。</li>
 <li>返回一个对象</li>
-<li><b>context</b>包含:<ul>
+<li>context包含:<ul>
 <li>params: 使用动态路由页面的路由参数</li>
 <li>req: http 传入信息对象，以及其它内置的解析助手</li>
 <li>res: http返回对象</li>
@@ -661,66 +661,54 @@
 <li>defaultLocale：配置的默认区域设置(前提：启用国际路由)</li>
 </ul>
 </li>
-<li><b>props</b>：可选对象，包含页面组件将接受的props</li>
-<li><b>notFound</b>：可选的布尔值，允许页面返回404和页面</li>
-<li><b>redirect</b>：可选的重定向值，允许重定向到内部和外部资源，构建时不允许重定向</li>
-<li>在getServerSideProps中提供req中间件:req<ul>
+<li>props：可选对象，包含页面组件将接受的props</li>
+<li>notFound：可选的布尔值，允许页面返回404和页面</li>
+<li>redirect：可选的重定向值，允许重定向到内部和外部资源，构建时不允许重定向</li>
+<li>在getServerSideProps中提供req中间件: req<ul>
 <li>req.cookies: 一个包含请求发送的cookie的对象。默认为｛｝<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">getServerSideProps</span>(<span class="params">context</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">props</span>: &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">GetServerSideProps</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;next&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="attr">getServerSideProps</span>: <span class="title class_">GetServerSideProps</span> = <span class="title function_">async</span> (context) =&gt; &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><h3 id="在客户端获取数据"><a href="#在客户端获取数据" class="headerlink" title="在客户端获取数据"></a>在客户端获取数据</h3><ul>
+<h3 id="在客户端获取数据"><a href="#在客户端获取数据" class="headerlink" title="在客户端获取数据"></a>在客户端获取数据</h3><ul>
 <li>使用场景：如果页面包含频繁更新的数据，并且不需要预呈现数据。用户面板页面。</li>
 <li>首先，立即显示没有数据的页面。页面的部分内容可以使用静态生成进行预渲染。您可以显示丢失数据的加载状态。然后，在客户端获取数据，并在准备好后显示。</li>
 </ul>
-</li>
-<li><h3 id="SWR"><a href="#SWR" class="headerlink" title="SWR"></a>SWR</h3><ul>
+<h3 id="SWR"><a href="#SWR" class="headerlink" title="SWR"></a>SWR</h3><ul>
 <li>next团队创建的React数据获取挂钩</li>
 <li>处理缓存、重新验证、焦点跟踪、间隔重新蚀刻等<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> useSWR <span class="keyword">from</span> <span class="string">&#x27;swr&#x27;</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">fetcher</span> = (<span class="params">url</span>) =&gt; <span class="title function_">fetch</span>(url).<span class="title function_">then</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> res.<span class="title function_">json</span>())</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Profile</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; data, error &#125; = <span class="title function_">useSWR</span>(<span class="string">&#x27;/api/user&#x27;</span>, fetcher)</span><br><span class="line">  <span class="keyword">if</span> (error) <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>failed to load<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  <span class="keyword">if</span> (!data) <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>loading...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>hello &#123;data.name&#125;!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-</ul>
 <h2 id="内置对-CSS-的支持"><a href="#内置对-CSS-的支持" class="headerlink" title="内置对 CSS 的支持"></a>内置对 CSS 的支持</h2><ul>
 <li>允许在js文件import css文件</li>
-<li><h3 id="添加全局样式表"><a href="#添加全局样式表" class="headerlink" title="添加全局样式表"></a>添加全局样式表</h3><ul>
-<li>创建一个<code>pages/_app.js</code>文件，然后<code>import</code> css文件</li>
 </ul>
-</li>
-<li><h3 id="从node-modules目录import样式"><a href="#从node-modules目录import样式" class="headerlink" title="从node_modules目录import样式"></a>从<code>node_modules</code>目录import样式</h3><ul>
+<h3 id="添加全局样式表"><a href="#添加全局样式表" class="headerlink" title="添加全局样式表"></a>添加全局样式表</h3><ul>
+<li>创建一个pages&#x2F;_app.js文件，然后import css文件</li>
+</ul>
+<h3 id="从node-modules目录import样式"><a href="#从node-modules目录import样式" class="headerlink" title="从node_modules目录import样式"></a>从node_modules目录import样式</h3><ul>
 <li>可以在应用程序的任何位置导入</li>
-<li>全局样式表还是要在<code>pages/_app.js</code>导入</li>
+<li>全局样式表还是要在pages&#x2F;_app.js导入</li>
 <li>其它的对应组件页面导入</li>
 </ul>
-</li>
-<li><h3 id="添加组件级CSS"><a href="#添加组件级CSS" class="headerlink" title="添加组件级CSS"></a>添加组件级CSS</h3><ul>
-<li>CSS模块支持的文件命名格式：<code>[name].module.css</code></li>
-<li>CSS模块时一项可选功能，仅对带有<code>.module.css</code>扩展名的文件启用</li>
+<h3 id="添加组件级CSS"><a href="#添加组件级CSS" class="headerlink" title="添加组件级CSS"></a>添加组件级CSS</h3><ul>
+<li>CSS模块支持的文件命名格式：[name].module.css</li>
+<li>CSS模块时一项可选功能，仅对带有.module.css扩展名的文件启用</li>
 </ul>
-</li>
-<li><h3 id="对Sass的支持"><a href="#对Sass的支持" class="headerlink" title="对Sass的支持"></a>对Sass的支持</h3><ul>
-<li>文件后缀必须为：<code>.module.scss</code>或<code>.module.sass</code></li>
-<li>记得安装sass：<span class="en">npm i sass</span></li>
-<li>自定义Sass参数：使用<code>next.config.js</code>文件中的<code>sassOptions</code>属性进行配置</li>
+<h3 id="对Sass的支持"><a href="#对Sass的支持" class="headerlink" title="对Sass的支持"></a>对Sass的支持</h3><ul>
+<li>文件后缀必须为：.module.scss或.module.sass</li>
+<li>记得安装sass：npm i sass</li>
+<li>自定义Sass参数：使用next.config.js文件中的sassOptions属性进行配置</li>
 <li>Sass变量<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// xxx.module.scss</span></span><br><span class="line">$primary-<span class="attr">color</span>: #64FF00</span><br><span class="line">:<span class="keyword">export</span> &#123;</span><br><span class="line">  <span class="attr">primaryColor</span>: $primary-color</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// pages/_app.js</span></span><br><span class="line"><span class="keyword">import</span> variables <span class="keyword">from</span> <span class="string">&quot;../xxx.module.scss&quot;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">MyApp</span>(<span class="params">&#123;Component, pageProps&#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Layout</span> <span class="attr">color</span>=<span class="string">&#123;variables.primaryColor&#125;</span>&gt;</span> </span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Component</span> &#123;<span class="attr">...pageProps</span>&#125; /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Layout</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
 <li>CSS-in-JS<ul>
-<li>内联样式：<code>&lt;p style=&#123;&#123; color: 'red' &#125;&#125;&gt;内联&lt;/p&gt;</code></li>
+<li>内联样式：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p style=&#123;&#123; color: &#x27;red&#x27; &#125;&#125;&gt;内联&lt;/p&gt;</span><br></pre></td></tr></table></figure></li>
 <li>引入<a target="_blank" rel="noopener" href="https://github.com/vercel/styled-jsx">styled-jsx</a>以支持作用于隔离的css，支持类似于Web组件的shadow css单不支持服务端渲染且仅支持js</li>
 </ul>
 </li>
 </ul>
-<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><ul>
-<li><h3 id="自定义单个共享布局：自己封装想要的布局组件然后应用在全局中"><a href="#自定义单个共享布局：自己封装想要的布局组件然后应用在全局中" class="headerlink" title="自定义单个共享布局：自己封装想要的布局组件然后应用在全局中"></a>自定义单个共享布局：自己封装想要的布局组件然后应用在全局中</h3></li>
-<li><h3 id="多个布局-嵌套布局：自己定义多个布局组件，然后使用getLayout实现，"><a href="#多个布局-嵌套布局：自己定义多个布局组件，然后使用getLayout实现，" class="headerlink" title="多个布局 | 嵌套布局：自己定义多个布局组件，然后使用getLayout实现，"></a>多个布局 | 嵌套布局：自己定义多个布局组件，然后使用getLayout实现，</h3><ul>
-<li>这种布局支持状态持久性，因为React组件书在页面转换之间保持，这个过程叫<span class="en">协调</span>。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// pages/index.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Layout</span> <span class="keyword">from</span> <span class="string">&#x27;../component/layout&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">NestedLayout</span> <span class="keyword">from</span> <span class="string">&#x27;../component/nested-layout&#x27;</span></span><br><span class="line"><span class="comment">// ts引入import type &#123; ReactElement &#125; from &#x27;react&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Page</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;<span class="comment">/*...*/</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ts模式给page添加类型ReactElement </span></span><br><span class="line"><span class="title class_">Page</span>.<span class="property">getLayout</span> = <span class="keyword">function</span> <span class="title function_">getLayout</span>(<span class="params">page</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="language-xml"><span class="tag">&lt;<span class="name">Layout</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">NestedLayout</span>&gt;</span>&#123;page&#125;<span class="tag">&lt;/<span class="name">NestedLayout</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">Layout</span>&gt;</span></span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// page/_app.js</span></span><br><span class="line"><span class="comment">// ts模式下需要定义布局类型</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">MyApp</span>(<span class="params">&#123;Component, pageProps&#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> getLayout = <span class="title class_">Component</span>.<span class="property">getLayout</span> || (<span class="function"><span class="params">page</span> =&gt;</span> page)</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">getLayout</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">Component</span> &#123;<span class="attr">...pageProps</span>&#125; /&gt;</span></span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
+<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><h3 id="自定义单个共享布局：自己封装想要的布局组件然后应用在全局中"><a href="#自定义单个共享布局：自己封装想要的布局组件然后应用在全局中" class="headerlink" title="自定义单个共享布局：自己封装想要的布局组件然后应用在全局中"></a>自定义单个共享布局：自己封装想要的布局组件然后应用在全局中</h3><h3 id="多个布局-嵌套布局："><a href="#多个布局-嵌套布局：" class="headerlink" title="多个布局 | 嵌套布局："></a>多个布局 | 嵌套布局：</h3><ul>
+<li>自己定义多个布局组件，然后使用getLayout实现,这种布局支持状态持久性，因为React组件书在页面转换之间保持，这个过程叫<span class="key_words">『协调』</span><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// pages/index.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Layout</span> <span class="keyword">from</span> <span class="string">&#x27;../component/layout&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">NestedLayout</span> <span class="keyword">from</span> <span class="string">&#x27;../component/nested-layout&#x27;</span></span><br><span class="line"><span class="comment">// ts引入import type &#123; ReactElement &#125; from &#x27;react&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Page</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;<span class="comment">/*...*/</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ts模式给page添加类型ReactElement </span></span><br><span class="line"><span class="title class_">Page</span>.<span class="property">getLayout</span> = <span class="keyword">function</span> <span class="title function_">getLayout</span>(<span class="params">page</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="language-xml"><span class="tag">&lt;<span class="name">Layout</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">NestedLayout</span>&gt;</span>&#123;page&#125;<span class="tag">&lt;/<span class="name">NestedLayout</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">Layout</span>&gt;</span></span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// page/_app.js</span></span><br><span class="line"><span class="comment">// ts模式下需要定义布局类型</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">MyApp</span>(<span class="params">&#123;Component, pageProps&#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> getLayout = <span class="title class_">Component</span>.<span class="property">getLayout</span> || (<span class="function"><span class="params">page</span> =&gt;</span> page)</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">getLayout</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">Component</span> &#123;<span class="attr">...pageProps</span>&#125; /&gt;</span></span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="图片优化"><a href="#图片优化" class="headerlink" title="图片优化"></a>图片优化</h2><ul>
-<li>Image组件<code>next/image</code>是HTML元素<code>&lt;img/&gt;</code>的扩展</li>
-<li>使用图像组件：import Image from ‘next&#x2F;image’， <code>&lt;Image src=&#123;&#125; /&gt;</code></li>
+<li>Image组件next&#x2F;image是HTML元素img标签的扩展</li>
+<li>使用图像组件：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Image</span> <span class="keyword">from</span> <span class="string">&#x27;next/image&#x27;</span></span><br><span class="line">&lt;<span class="title class_">Image</span> src=&#123;&#125; /&gt;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="本地图像"><a href="#本地图像" class="headerlink" title="本地图像"></a>本地图像</h3><ul>
 <li>要先引入，使用import，next将根据导入的文件自动确定图像的width和height</li>
@@ -733,60 +721,57 @@
 </ul>
 <h3 id="图像大小调整"><a href="#图像大小调整" class="headerlink" title="图像大小调整"></a>图像大小调整</h3><ul>
 <li>自动： 使用静态导入</li>
-<li>显式地：通过包含<code>height</code>和<code>width</code></li>
-<li>隐式地：通过使用<span class="en">layout&#x3D;”fill”</span>,使图像展开填充父元素</li>
+<li>显式地：通过包含height和width</li>
+<li>隐式地：通过使用 layout&#x3D;”fill”,使图像展开填充父元素</li>
 <li><h3 id="不知道图像大小的情况下调整"><a href="#不知道图像大小的情况下调整" class="headerlink" title="不知道图像大小的情况下调整"></a>不知道图像大小的情况下调整</h3><ul>
-<li>使用<code>layout=&quot;fill&quot;</code>,使用fill、contain或cover的objectFit属性以及objectPosition属性来定义</li>
+<li>使用 layout&#x3D;”fill” ,使用fill、contain或cover的objectFit属性以及objectPosition属性来定义</li>
 <li>规范化图像：自己做的图，自己规范图像大小</li>
 <li>修改API调用</li>
-<li>如果以上都不适用，则将按照<code>&lt;img /&gt;</code>元素的标准在页面上运行</li>
+<li>如果以上都不适用，则将按照 img标签 的标准在页面上运行</li>
 </ul>
 </li>
 </ul>
 <h3 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h3><ul>
-<li>建议对内部<code>&lt;img&gt;</code>设置样式的方法是将Image组件上的className设置为导入的CSS模块的值。className的值将自动应用于基础的<code>&lt;img&gt;</code>元素。</li>
-<li>当使用<span class="en">layout&#x3D;’fill’</span>&gt;时，父元素必须具有<span class="en">position:relative</span>(必要的)</li>
-<li>当使用<span class="en">layout&#x3D;’responsive’</span>时，父元素必须具有<span class="en">display:block</span>(div的默认值，应另行指定)</li>
+<li>建议对内部 img标签 设置样式的方法是将Image组件上的className设置为导入的CSS模块的值。className的值将自动应用于基础的 img标签。</li>
+<li>当使用 layout&#x3D;’fill’ 时，父元素必须具有 position:relative(必要的)</li>
+<li>当使用 layout&#x3D;’responsive’ 时，父元素必须具有 display:block(div的默认值，应另行指定)</li>
 </ul>
 <h2 id="字体优化"><a href="#字体优化" class="headerlink" title="字体优化"></a>字体优化</h2><ul>
 <li>第一内容绘制（FCP）和最大内容绘制（LCP）</li>
-<li>使用：<span class="en">import Head from ‘next&#x2F;head’</span></li>
-<li>要添加web字体，使用<code>&lt;Head&gt;&lt;/Head&gt;</code>包裹</li>
-<li>如果不想要优化，在next.config.js中设置<code>optimizeFonts: false</code></li>
+<li>使用：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Head</span> <span class="keyword">from</span> <span class="string">&#x27;next/head&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li>要添加web字体，使用 Head标签 包裹</li>
+<li>如果不想要优化，在next.config.js中设置 optimizeFonts: false</li>
 </ul>
 <h2 id="脚本组件"><a href="#脚本组件" class="headerlink" title="脚本组件"></a>脚本组件</h2><ul>
-<li>脚本组件<code>next/script</code>是HTML元素<code>&lt;script&gt;</code>的扩展</li>
-<li>使用：<span class="en">import Script from ‘next&#x2F;script’</span>， <code>&lt;Script src=&quot;第三方路径&quot; strategy=&quot;策略属性&quot; /&gt;</code></li>
+<li>脚本组件 next&#x2F;script 是HTML元素 script标签 的扩展</li>
+<li>使用：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Script</span> <span class="keyword">from</span> <span class="string">&#x27;next/script&#x27;</span></span><br><span class="line">&lt;<span class="title class_">Script</span> src=<span class="string">&quot;第三方路径&quot;</span> strategy=<span class="string">&quot;策略属性&quot;</span> /&gt;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="strategy：决定何时加载第三方脚本"><a href="#strategy：决定何时加载第三方脚本" class="headerlink" title="strategy：决定何时加载第三方脚本"></a>strategy：决定何时加载第三方脚本</h3><ul>
-<li>beforeInteractive:在页面交互之前加载</li>
-<li>afterInteractive：（默认）：在页面变成交互式后立即加载</li>
-<li>lazyOnload:在空闲时间加载</li>
-<li><h3 id="beforeInteractive"><a href="#beforeInteractive" class="headerlink" title="beforeInteractive"></a>beforeInteractive</h3><ul>
+<li>beforeInteractive: 在页面交互之前加载<ul>
 <li>从服务器注入到初始HTML中，并在执行自绑定JavaScript之前运行。</li>
-<li>此策略应用于在<span class="en">页面交互之前需要获取和执行的任何关键脚本</spna></li>
+<li>此策略应用于在<span class="key_words">『页面交互之前需要获取和执行的任何关键脚本』</spna></li>
 </ul>
 </li>
-<li><h3 id="afterInteractive"><a href="#afterInteractive" class="headerlink" title="afterInteractive"></a>afterInteractive</h3><ul>
+<li>afterInteractive（默认）：在页面变成交互式后立即加载<ul>
 <li>被注入客户端，并将在Next.js对页面进行水合后运行。</li>
-<li>这种策略应该用于<span class="en">不需要尽快加载的脚本，并且可以在页面交互后立即获取和执行</span>。</li>
-<li><h3 id="lazyOnload"><a href="#lazyOnload" class="headerlink" title="lazyOnload"></a>lazyOnload</h3><ul>
-<li>在获取所有资源后以及空闲时间内加载较晚。</li>
-<li>此策略应用于<span class="en">后台或低优先级脚本</span>，这些脚本不需要在页面交互之前或之后立即加载。</li>
+<li>这种策略应该用于<span class="key_words">『不需要尽快加载的脚本，并且可以在页面交互后立即获取和执行』</span>。</li>
 </ul>
 </li>
+<li>lazyOnload: 在空闲时间加载<ul>
+<li>在获取所有资源后以及空闲时间内加载较晚。</li>
+<li>此策略应用于<span class="key_words">『后台或低优先级脚本』</span>，这些脚本不需要在页面交互之前或之后立即加载。</li>
 </ul>
 </li>
 </ul>
 <h3 id="内联脚本"><a href="#内联脚本" class="headerlink" title="内联脚本"></a>内联脚本</h3><ul>
-<li>使用：将javascript放在{}中编写 或者在标签上使用<code>dangerouslySetInnerHTML</code>属性，但必须定义id属性</li>
-<li>只能策略属性<span class="en">不为beforeInteractive</span>时才能使用</li>
+<li>使用：将javascript放在{}中编写 或者在标签上使用dangerouslySetInnerHTML属性，但必须定义id属性</li>
+<li>只能策略属性<span class="key_words">『不为beforeInteractive』</span>时才能使用</li>
 </ul>
 <h3 id="加载后执行代码-onLoad"><a href="#加载后执行代码-onLoad" class="headerlink" title="加载后执行代码(onLoad)"></a>加载后执行代码(onLoad)</h3><ul>
-<li>策略属性<span class="en">不为lazyOnload</span>,都可以在加载后在标签上使用onLoad属性来执行代码</li>
+<li>策略属性<span class="key_words">『不为lazyOnload』</span>,都可以在加载后在标签上使用onLoad属性来执行代码</li>
 </ul>
 <h2 id="基本特性"><a href="#基本特性" class="headerlink" title="基本特性"></a>基本特性</h2><h3 id="静态文件服务"><a href="#静态文件服务" class="headerlink" title="静态文件服务"></a>静态文件服务</h3><ul>
-<li>将静态文件存放到根目录下的<code>public</code>目录中，并对外提供访问。public目录下的存放的静态文件对外访问路径yi<code>/</code>为起始路径，如”&#x2F;xxx.png”</li>
+<li>将静态文件存放到根目录下的public目录中，并对外提供访问。public目录下的存放的静态文件对外访问路径以<span class="key_words">『&#x2F;为起始路径』</span>，如”&#x2F;xxx.png”</li>
 <li>要确保pages&#x2F;下的文件于静态文件无重名</li>
 </ul>
 <h3 id="快速刷新"><a href="#快速刷新" class="headerlink" title="快速刷新"></a>快速刷新</h3><ul>
@@ -795,41 +780,44 @@
 <li>即使是空依赖项数组的useEffect，在快速刷新期间仍会重新运行一次。</li>
 </ul>
 <h3 id="ESLint"><a href="#ESLint" class="headerlink" title="ESLint"></a>ESLint</h3><ul>
-<li>安装：<span class="en">npm run lint</span></li>
+<li>安装：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run lint</span><br></pre></td></tr></table></figure></li>
 <li>然后配置</li>
 </ul>
 <h2 id="路由-next-version-13"><a href="#路由-next-version-13" class="headerlink" title="路由  next version 13+"></a>路由  next version 13+</h2><h3 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a>基础篇</h3><ul>
-<li><b>App 路由</b> <ul>
+<li>App 路由<ul>
 <li>app目录和pages目录一起工作，也兼容pages页面的路由，但主要在app页面的路由</li>
-<li><span class="en">App Router的优先级高于Pages Router。</span></li>
+<li><span class="key_words">『App Router的优先级高于Pages Router。』</span></li>
 <li>默认情况下， app内的组件是<a href="#ref4">React服务器组件</a>。性能优化之一</li>
 </ul>
 </li>
-<li><b>路由片段</b> <ul>
-<li>路径的<span class="en">每个文件夹代表一个路由片段</span>。每个路线段都映射到网址路径中相应的片段。</li>
+<li>路由片段<ul>
+<li>路径的<span class="key_words">『每个文件夹代表一个路由片段』</span>。每个路线段都映射到网址路径中相应的片段。</li>
 </ul>
 </li>
-<li><b>嵌套路由: 就是文件夹相互嵌套</b> </li>
-<li><b>主机托管</b> <ul>
+<li>嵌套路由: <ul>
+<li>就是文件夹相互嵌套</li>
+</ul>
+</li>
+<li>主机托管<ul>
 <li>app目录中可以放自己的文件和特殊文件等，因为只有page.js或route.js返回的内容是可公开寻址的</li>
 <li>特殊文件：.js、.jsx、.tsx文件扩展名可用于特殊文件</li>
 <li>私有文件：文件夹名：_folderName，表示该目录下的文件退出路由</li>
 </ul>
 </li>
-<li><b>高级路由模式</b> <ul>
+<li>高级路由模式<ul>
 <li><a href="#ref5">并行路由</a>：允许在同一视图中显示两个会多个可以独立导航的页面</li>
 <li><a href="#ref6">拦截路由</a>：允许拦截一条路线并将其显示在另一条路线的上下文中。</li>
 <li>布局更React差不多，template.js文件用来定义模板，layout.js用来定义布局， 嵌套要使用到children</li>
 </ul>
 </li>
-<li><b>修改<code>&lt;head&gt;</code></b> <ul>
+<li>修改 head标签<ul>
 <li>通过到处layout.js或page.js文件中的metadata对象或generateMetadata功能来定义元数据</li>
 </ul>
 </li>
 </ul>
 <h3 id="链接和导航"><a href="#链接和导航" class="headerlink" title="链接和导航"></a>链接和导航</h3><ul>
-<li><b>导航的两种方式：</b> <ul>
-<li>使用<code>&lt;Link href=&quot;&quot;&gt;</code>组件, Link来自<code>&quot;next/link&quot;</code>， 动态可以使用模板字符串语法<ul>
+<li>导航的两种方式:<ul>
+<li>使用 Link 组件, Link来自”next&#x2F;link”， 动态可以使用模板字符串语法<ul>
 <li>相当于vue的声明式导航</li>
 <li><a target="_blank" rel="noopener" href="https://next.nodejs.cn/docs/app/api-reference/functions/use-pathname/">usePathname</a>:检查链接是否处于活动状态，用于className判断</li>
 <li>滚动到id：在url链接添加#id</li>
@@ -842,17 +830,26 @@
 </li>
 </ul>
 </li>
-<li><b>工作原理</b> <ul>
-<li><b>预请求</b>: 用户访问路由之前在后台预加载路由的方法<ul>
-<li><code>&lt;Link&gt;</code>组件：自动预取。静态<span class="en">prefetch默认为true，动态</span>prefetch默认自动，<span class="en">只有共享布局向下直到为<code>30s</code>，预取并缓存第一个loading.js文件</span>。可以显示即时加载状态。</li>
-<li><code>router.prefetch()</code>: <code>useRouter</code>钩子编程式预取路由</li>
+<li>工作原理<ul>
+<li>预请求: 用户访问路由之前在后台预加载路由的方法<ul>
+<li>Link组件：自动预取。静态<span class="key_words">『prefetch默认为true，动态』</span>prefetch默认自动，<span class="key_words">『只有共享布局向下直到为30s，预取并缓存第一个loading.js文件』</span>。可以显示即时加载状态。</li>
+<li>router.prefetch(): useRouter钩子编程式预取路由</li>
 <li>预取在开发中不启用，仅在生产中启用</li>
 </ul>
 </li>
-<li><b>缓存</b>：Next有一个内存中客户端缓存，称为<span class="en">路由缓存</span>。 当用户在app中导航时，prefetched路线段和访问过的路线的React Server组件有效负载将存储在缓存中。</li>
-<li><b>部分渲染</b>：仅在客户端上重新渲染导航时发生变化的路线段，并且保留所有共享段。<span class="desc">就是在同一文件夹下的不同文件不同路径，切换只渲染对应文件而不影响整体的文件</span></li>
-<li><b>软导航</b>：仅渲染已更改的片段，同时保留 React 和浏览器状态，并且不会重新加载整个页面。<span class="desc">默认，浏览器执行硬导航</span></li>
-<li><b>后退和前进导航</b> <ul>
+<li>缓存：<ul>
+<li>Next有一个内存中客户端缓存，称为<span class="key_words">『路由缓存』</span>。当用户在app中导航时，prefetched路线段和访问过的路线的React Server组件有效负载将存储在缓存中。</li>
+</ul>
+</li>
+<li>部分渲染：<ul>
+<li>仅在客户端上重新渲染导航时发生变化的路线段，并且保留所有共享段。<span class="desc">就是在同一文件夹下的不同文件不同路径，切换只渲染对应文件而不影响整体的文件</span></li>
+</ul>
+</li>
+<li>软导航：<ul>
+<li>仅渲染已更改的片段，同时保留 React 和浏览器状态，并且不会重新加载整个页面。<span class="desc">默认，浏览器执行硬导航</span></li>
+</ul>
+</li>
+<li>后退和前进导航<ul>
 <li>默认，将保持向后和向前导航的滚动位置，并重用路由缓存中的路线段。</li>
 </ul>
 </li>
@@ -862,45 +859,45 @@
 <h3 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h3><ul>
 <li>在文件名称括上方括号（[folderName]）</li>
 <li>动态端作为params属性将传递给layout、page、route和generateMetadata函数</li>
-<li><b>生成静态参数</b><ul>
+<li>生成静态参数<ul>
 <li>generateStaticParams在构建时预动态路线段至静态生成路由结合起来</li>
 <li>优点：智能检索数据</li>
 </ul>
 </li>
-<li><b> 捕获所有片段</b>: 通过在方括号使用[…folderName]</li>
-<li><b> 可选的包罗万象的段</b>：[[…folderName]],<ul>
+<li>捕获所有片段: 通过在方括号使用[…folderName]</li>
+<li>可选的包罗万象的段：[[…folderName]],<ul>
 <li>与捕获所有片段的区别：如果带可选参数，则不带参数的路由也会被匹配</li>
 </ul>
 </li>
 </ul>
 <h3 id="加载-UI-和流式传输"><a href="#加载-UI-和流式传输" class="headerlink" title="加载 UI 和流式传输"></a>加载 UI 和流式传输</h3><ul>
-<li><b> 即时加载状态(后备UI)</b><ul>
+<li>即时加载状态(后备UI)<ul>
 <li>在导航时立即显示</li>
-<li>在文件加中创建loading.js，并嵌套在统一文件夹中的layout.js内。会自动将page.js文件和下面的所有子文件封装在<code>&lt;Suspense&gt;</code>边界中。</li>
+<li>在文件加中创建loading.js，并嵌套在统一文件夹中的layout.js内。会自动将page.js文件和下面的所有子文件封装在 Suspense组件 边界中。</li>
 <li>即使使用 以服务器为中心的路由，导航也是即时的。</li>
 </ul>
 </li>
-<li><b> 使用 Suspense 的流式</b>: 自己看文档</li>
+<li>使用 Suspense 的流式: 自己看文档</li>
 </ul>
 <h3 id="错误处理error-js-文件"><a href="#错误处理error-js-文件" class="headerlink" title="错误处理error.js 文件"></a>错误处理error.js 文件</h3><ul>
 <li>自动创建 React 误差边界、wraps 嵌套子段或 page.js 组件。</li>
 <li>从 error.js 文件导出的 React 组件用作 fallback 组件。</li>
 <li>如果在错误边界内抛出错误，则错误为 contained，回退组件为 rendered。</li>
 <li>当回退错误组件处于活动状态时，布局 above 错误边界 maintain 其状态和 remain 交互，并且错误组件可以显示从错误中恢复的功能。</li>
-<li><b> 从错误中恢复</b><ul>
+<li>从错误中恢复<ul>
 <li>重试</li>
 <li>使用reset()函数</li>
 </ul>
 </li>
-<li><b> 处理布局中的错误</b><ul>
-<li>error.js边界<span class="en">不捕获同一段</span>的layout.js或template.js组件中抛出的错误</li>
+<li>处理布局中的错误<ul>
+<li>error.js边界<span class="key_words">『不捕获同一段』</span>的layout.js或template.js组件中抛出的错误</li>
 <li>处理特定布局或模板的错误：将error.js文件放置在布局的父段</li>
 <li>处理根布局或模板的错误：使用global-error.js</li>
 </ul>
 </li>
-<li><b> 处理根布局中的错误</b><ul>
+<li>处理根布局中的错误<ul>
 <li>根app&#x2F;error.js边界不捕获根app&#x2F;layout.js或app&#x2F;template.js组件中抛出的错误</li>
-<li>处理： 使用文娱根app目录中的global-error.js</li>
+<li>处理：使用文娱根app目录中的global-error.js</li>
 <li>global-error.js错误边界封装entire应用，并且其后被组件在活动时替换根布局</li>
 <li>即使定义了global-error.js，仍建议定义一个根error.js其后背组件将渲染within根布局</li>
 </ul>
@@ -910,12 +907,12 @@
 <li>允许同时或有条件地在同一布局中渲染一个或多个页面。允许根据条件渲染插槽</li>
 <li>插槽：使用slots创建并行路由，按照@folder约定定义的，并作为props传递到同一级别的布局</li>
 <li>children属性是一个隐式插槽，不需要映射到文件夹。<span class="desc">即app&#x2F;page.js &#x3D;&#x3D;&#x3D; app&#x2F;@children&#x2F;page.js</span></li>
-<li><b>未匹配的路由 default.js</b><ul>
+<li>未匹配的路由 default.js<ul>
 <li>默认情况下槽内渲染的内容将于当前URL匹配</li>
 <li>在插槽文件夹下在新建default.js作为后备渲染</li>
 </ul>
 </li>
-<li><b>useSelectedLayoutSegment(s)</b><ul>
+<li>useSelectedLayoutSegment(s)<ul>
 <li>都接收 parallelRoutesKey，它允许你读取该槽内的活动航路段。</li>
 <li>当用户导航到 URL 栏中的 @auth&#x2F;login 或 &#x2F;login 时，loginSegments 将等于字符串 “login”</li>
 </ul>
@@ -923,20 +920,20 @@
 </ul>
 <h3 id="拦截路由"><a href="#拦截路由" class="headerlink" title="拦截路由"></a><p id="ref6">拦截路由</p></h3><ul>
 <li>允许从当前布局内应用的其他部分加载路由。</li>
-<li>使用<code>(...)</code>来定义,在文件夹的名称哪里添加，类似于相对路径..&#x2F;,约定基于路由段<ul>
-<li><code>(.)</code>: 匹配<span class="en">同一水平</span>上的段</li>
-<li><code>(..)</code>: 匹配<span class="en">高一级</span>的段</li>
-<li><code>(..)(..)</code>: 匹配<span class="en">上面两级</span>的段</li>
-<li><code>(...)</code>: 匹配root app目录中的段</li>
+<li>使用(…)来定义,在文件夹的名称哪里添加，类似于相对路径..&#x2F;,约定基于路由段<ul>
+<li>(.): 匹配<span class="key_words">『同一水平』</span>上的段</li>
+<li>(..): 匹配<span class="key_words">『高一级』</span>的段</li>
+<li>(..)(..): 匹配<span class="key_words">『上面两级』</span>的段</li>
+<li>(…): 匹配root app目录中的段</li>
 </ul>
 </li>
 </ul>
 <h3 id="路由处理程序"><a href="#路由处理程序" class="headerlink" title="路由处理程序"></a>路由处理程序</h3><ul>
 <li>使用 Web 请求 和 响应 API 为给定路由创建自定义请求处理程序</li>
-<li>仅在 app 目录中可用,相当于 pages 目录中的 API 路由，<br> 在app目录内的<code>route.js|ts</code>文件中定义<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> dynamic = <span class="string">&quot;force-dynamic&quot;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">GET</span>(<span class="params">request: Request</span>)&#123;&#125;</span><br></pre></td></tr></table></figure></li>
+<li>仅在 app 目录中可用,相当于 pages 目录中的 API 路由，<br> 在app目录内的route.js|ts文件中定义<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> dynamic = <span class="string">&quot;force-dynamic&quot;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">GET</span>(<span class="params">request: Request</span>)&#123;&#125;</span><br></pre></td></tr></table></figure></li>
 <li>支持的HTTP方法：GET、POST、PUT、PATCH、DELETE、HEAD 和 OPTIONS</li>
-<li>扩展API：<code>NextRequest</code> 和 <code>NextResponse</code></li>
-<li><b>行为</b><ul>
+<li>扩展API：NextRequest 和 NextResponse</li>
+<li>行为<ul>
 <li>缓存<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">GET</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123;searchParams&#125; = <span class="keyword">new</span> <span class="title function_">URL</span>(request.<span class="property">url</span>)<span class="comment">// 将Request对象与GET方法一起使用时存在</span></span><br><span class="line">  <span class="keyword">const</span> id = searchParams.<span class="title function_">get</span>(<span class="string">&#x27;id&#x27;</span>) <span class="comment">// 将Request对象与GET方法一起使用时存在</span></span><br><span class="line">  <span class="keyword">const</span> res = <span class="keyword">await</span> <span class="title function_">fetch</span>(<span class="string">`https://data.mogodb.api.com/product/<span class="subst">$&#123;id&#125;</span>`</span> &#123;</span><br><span class="line">    <span class="attr">methods</span>: <span class="string">&#x27;POST&#x27;</span> <span class="comment">// post方法的情况存在</span></span><br><span class="line">    <span class="attr">headers</span>: &#123;</span><br><span class="line">      <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span>,</span><br><span class="line">      <span class="string">&#x27;API-Key&#x27;</span>: process.<span class="property">env</span>.<span class="property">DATA_API_KEY</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">body</span>: <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123; <span class="attr">time</span>: <span class="keyword">new</span> <span class="title class_">Data</span>().<span class="title function_">toISOString</span>() &#125;) <span class="comment">// post方法的情况存在</span></span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">const</span> data = <span class="keyword">await</span> res.<span class="title function_">json</span>(</span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">Response</span>.<span class="title function_">json</span>(&#123;data&#125;)</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
@@ -944,7 +941,7 @@
 <li>将Request对象与GET方法一起使用</li>
 <li>使用任何其它HTTP方法</li>
 <li>像使用cookies和headers一样使用动态函数</li>
-<li><code>片段配置选项</code>手动指定动态模式</li>
+<li>片段配置选项手动指定动态模式</li>
 </ul>
 </li>
 </ul>
@@ -952,7 +949,7 @@
 <li>在缓存内容和路由匹配之前运行</li>
 <li>使用项目根目录中的文件middleware.ts|js来定义中间件</li>
 </ul>
-<h2 id="数据获取-1"><a href="#数据获取-1" class="headerlink" title="数据获取"></a>数据获取</h2><h3 id="数据获取、缓存和重新验证"><a href="#数据获取、缓存和重新验证" class="headerlink" title="数据获取、缓存和重新验证"></a>数据获取、缓存和重新验证</h3><ul>
+<h2 id="数据获取-1"><a href="#数据获取-1" class="headerlink" title="数据获取"></a>数据获取</h2><h3 id="数据获取-2"><a href="#数据获取-2" class="headerlink" title="数据获取"></a>数据获取</h3><ul>
 <li>四种方式获取数据<ul>
 <li>在服务器上，使用fetch</li>
 <li>在服务器上，带有第三方库</li>
@@ -960,41 +957,37 @@
 <li>在客户端，使用第三方库</li>
 </ul>
 </li>
-<li><b>在服务器上，使用fetch</b><ul>
+<li>在服务器上，使用fetch<ul>
 <li>可以在服务器组件、路由处理程序 和 服务器操作 中将 fetch 与 async&#x2F;await 一起使用</li>
 <li>在路由处理程序中，fetch 请求不会被记忆，因为路由处理程序不是 React 组件树的一部分。</li>
 </ul>
 </li>
-<li><b>缓存数据</b><ul>
+</ul>
+<h3 id="缓存数据"><a href="#缓存数据" class="headerlink" title="缓存数据"></a>缓存数据</h3><ul>
 <li>默认情况下， 会自动将fetch的返回值缓存到服务器上的数据缓存</li>
 <li>数据缓存是持久的HTTP缓存。根据你的平台，缓存可以自动扩展并达到跨多个区域共享</li>
 </ul>
-</li>
-<li><b>重新验证数据</b><ul>
+<h3 id="重新验证数据"><a href="#重新验证数据" class="headerlink" title="重新验证数据"></a>重新验证数据</h3><ul>
 <li>是清除数据缓存并重新获取最新数据的过程。当数据变化时要确保显示最新数据时非常有用</li>
-<li>两种方式：<ul>
-<li><span class="en">基于时间的重新验证</span>：定时更新。用于不经常更改且不重要的数据<ul>
-<li>使用fetch的<span class="en">next.revalidate</span>选项来设置资源的缓存生命周期</li>
-<li><code>fetch(&quot;heeps://...&quot;,&#123; next: &#123; revalidate: 3600&#125;&#125;)</code></li>
+<li>方式一:<span class="key_words">『基于时间的重新验证』</span><ul>
+<li>定时更新。用于不经常更改且不重要的数据</li>
+<li>使用fetch的 next.revalidate 选项来设置资源的缓存生命周期<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">fetch</span>(<span class="string">&quot;heeps://...&quot;</span>,&#123; <span class="attr">next</span>: &#123; <span class="attr">revalidate</span>: <span class="number">3600</span>&#125;&#125;)</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><span class="en">按需重新验证</span>：根据时间手动重新验证数据。</li>
-</ul>
-</li>
-<li>数据可以通过路径(revalidatePath)或通过<span class="en">服务器动作或路由处理程序</span>内的缓存标签 (revalidateTag)按需重新验证</li>
+<li>方式二:<span class="key_words">『按需重新验证』</span><ul>
+<li>根据时间手动重新验证数据。</li>
+<li>数据可以通过路径(revalidatePath)或通过<span class="key_words">『服务器动作或路由处理程序』</span>内的缓存标签 (revalidateTag)按需重新验证</li>
 <li>next 有一个缓存标记系统，用于使跨路由的fetch请求无效<ul>
-<li>使用fetch时，可以选择使用一个或多个标签来标记缓存条目<ul>
-<li>fetch(‘https:&#x2F;&#x2F;…’, {next: {tags: [‘collection’]}})</li>
+<li>使用fetch时，可以选择使用一个或多个标签来标记缓存条目<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">fetch</span>(<span class="string">&#x27;https://...&#x27;</span>, &#123;<span class="attr">next</span>: &#123;<span class="attr">tags</span>: [<span class="string">&#x27;collection&#x27;</span>]&#125;&#125;)      </span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li>然后，调用revalidateTag来重新验证与改标签关联的条目<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; revalidateTag &#125; <span class="keyword">from</span> <span class="string">&#x27;next/cache&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">action</span>(<span class="params"></span>) &#123; <span class="title function_">revalidateTag</span>(<span class="string">&#x27;collection&#x27;</span>)&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><b>选择退出数据缓存</b><ul>
+<h3 id="选择退出数据缓存"><a href="#选择退出数据缓存" class="headerlink" title="选择退出数据缓存"></a>选择退出数据缓存</h3><ul>
 <li>满足以下条件，则 fetch 请求将被缓存 not</li>
-<li>cache: ‘no-store’ 添加到 fetch 请求中。个人</li>
+<li>cache: ‘no-store’ 添加到 fetch 请求中。</li>
 <li>revalidate: 0 选项添加到各个 fetch 请求中。</li>
 <li>fetch 请求位于使用 POST 方法的路由处理程序内部。</li>
 <li>fetch 请求在使用 headers 或 cookies 之后出现。</li>
@@ -1002,19 +995,17 @@
 <li>fetchCache 路由段选项默认配置为跳过缓存。</li>
 <li>fetch 请求使用 Authorization 或 Cookie 标头，并且组件树中其上方有一个未缓存的请求。</li>
 </ul>
-</li>
-</ul>
 <h3 id="数据获取模式"><a href="#数据获取模式" class="headerlink" title="数据获取模式"></a>数据获取模式</h3><ol>
 <li>在服务器上获取数据</li>
 <li>在需要的地方获取数据： 在在数据组件使用fetch或react cache。因为fetch会自动记忆</li>
-<li>流式(Streaming)和 悬念(Suspense) ：逐步渲染UI并将其增量流式传输到客户端</li>
+<li>流式(Streaming)和 悬念(Suspense)：逐步渲染UI并将其增量流式传输到客户端</li>
 <li>并行和顺序数据获取<ul>
-<li>使用<span class="en">顺序数据获取</span>，路由中的请求相互依赖，因此会创建瀑布。当因为一次提取取决于另一次提取的结果，或者希望在下一次提取之前满足某个条件以节省资源的情况使用。类似于react从布局中单独拎其中一个布局渲染完在回到原布局。</li>
-<li>使用<span class="en">并行数据获取</span>，路由中的请求会立即发起，同时加载数据。就是两个函数同时请求完然后布局在调用</li>
+<li>使用<span class="key_words">『顺序数据获取』</span>: 路由中的请求相互依赖，因此会创建瀑布。当因为一次提取取决于另一次提取的结果，或者希望在下一次提取之前满足某个条件以节省资源的情况使用。类似于react从布局中单独拎其中一个布局渲染完在回到原布局。</li>
+<li>使用<span class="key_words">『并行数据获取』</span>: 路由中的请求会立即发起，同时加载数据。就是两个函数同时请求完然后布局在调用</li>
 </ul>
 </li>
 <li>预加载数据<ul>
-<li>创建<code>preload</code>函数。不必将Promise作为props传递下去。preload函数是一种模式，名字可自定义<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">preload</span>= (<span class="params">id: string</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">void</span> <span class="title function_">getItem</span>(id) <span class="comment">// 预加载的函数API </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>创建preload函数。不必将Promise作为props传递下去。preload函数是一种模式，名字可自定义<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">preload</span>= (<span class="params">id: string</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">void</span> <span class="title function_">getItem</span>(id) <span class="comment">// 预加载的函数API </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>然后在正常请求这个API(getItem)，最后页面函数直接调用preload即可</li>
 </ul>
 </li>
@@ -1024,55 +1015,46 @@
 </li>
 </ol>
 <h3 id="形式和突变"><a href="#形式和突变" class="headerlink" title="形式和突变"></a>形式和突变</h3><ul>
-<li><b>仅服务器表单</b><ul>
+<li>仅服务器表单<ul>
 <li>在函数顶部使用”use server”</li>
 </ul>
 </li>
-<li><b>重新验证数据</b><ul>
-<li>使用<span class="en">revalidatePath(‘&#x2F;‘)</span>使整个路线段失效或使用<span class="en">revalidateTag()</span>使带有缓存标记的特定数据失效</li>
+<li>重新验证数据<ul>
+<li>使用revalidatePath(‘&#x2F;‘)使整个路线段失效或使用revalidateTag()使带有缓存标记的特定数据失效</li>
 </ul>
 </li>
-<li><b>重定向</b><ul>
-<li>使用<span class="en">redirect(url)</span></li>
+<li>重定向<ul>
+<li>使用redirect(url)</li>
 </ul>
 </li>
-<li><b>表单验证</b><ul>
+<li>表单验证<ul>
 <li>使用required和type&#x3D;”email”等HTML验证进行基本表单验证</li>
 </ul>
 </li>
-<li><b>显示加载状态</b><ul>
-<li>当表单在服务器上提交时，使用<span class="en">useFormStatus()</span>显示加载状态，只能用作服务器操作的form元素的子元素</li>
+<li>显示加载状态<ul>
+<li>当表单在服务器上提交时，使用useFormStatus()显示加载状态，只能用作服务器操作的form元素的子元素</li>
 </ul>
 </li>
-<li><b>错误处理</b><ul>
+<li>错误处理<ul>
 <li>请求时一起返回</li>
 </ul>
 </li>
-<li><b>乐观的更新</b><ul>
-<li>使用<span class="en">useOptimistic(messages,(state,newMessage) &#x3D;&gt; […state, {message:newMessage}])</span>在服务器操作完成之前乐观地更新 UI</li>
+<li>乐观的更新<ul>
+<li>使用后在服务器操作完成之前乐观地更新 UI<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useOptimistic</span>(messages,</span><br><span class="line">  <span class="function">(<span class="params">state,newMessage</span>) =&gt;</span> [...state, &#123;<span class="attr">message</span>:newMessage&#125;]</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><b>设置cookie</b><ul>
-<li>cookies().set(key,val)</li>
-</ul>
-</li>
-<li><b>读取cookie</b><ul>
-<li>cookies().get(key)?.value</li>
-</ul>
-</li>
-<li><b>删除cookie</b><ul>
-<li>cookies().delete(key)</li>
-</ul>
-</li>
+<li>设置cookie<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cookies().set(key,val)</span><br></pre></td></tr></table></figure></li>
+<li>读取cookie<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cookies().get(key)?.value</span><br></pre></td></tr></table></figure></li>
+<li>删除cookie<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cookies().delete(key)</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a>渲染</h2><h3 id="服务器组件"><a href="#服务器组件" class="headerlink" title="服务器组件"></a><p id="ref4">服务器组件</p></h3><ul>
-<li><b>三种不同的服务器渲染策略</b><ul>
+<li>三种不同的服务器渲染策略<ul>
 <li>静态渲染</li>
 <li>动态渲染</li>
 <li>流式</li>
 </ul>
 </li>
-<li><b>优点</b><ul>
+<li>优点<ul>
 <li>数据获取：减少渲染所用时间及客户端发出的请求量 </li>
 <li>安全</li>
 <li>缓存：可以重用</li>
@@ -1084,8 +1066,8 @@
 </li>
 </ul>
 <h3 id="服务器组件是如何渲染的？"><a href="#服务器组件是如何渲染的？" class="headerlink" title="服务器组件是如何渲染的？"></a>服务器组件是如何渲染的？</h3><ul>
-<li>渲染工作被分成几个块：<span class="en">按个别路线段</span>和<span class="en">悬念边界</span>，每个块都分两步渲染：</li>
-<li>React将服务器组件渲染为一种称为<span class="en">React服务器组件有效负载(RSC 有效负载)</span>的特殊数据格式。</li>
+<li>渲染工作被分成几个块：<span class="key_words">『按个别路线段和悬念边界』</span>，每个块都分两步渲染：</li>
+<li>React将服务器组件渲染为一种称为<span class="key_words">『React服务器组件有效负载』</span>(RSC 有效负载)的特殊数据格式。</li>
 <li>Next.js 使用 RSC 有效负载和客户端组件 JavaScript 指令在服务器上呈现 HTML。</li>
 <li>然后，在客户端：<ul>
 <li>HTML用于立即显示路线的快速非交互式预览</li>
@@ -1093,12 +1075,12 @@
 <li>JavaScript指令用于hydrate客户端组件并使应用具有交互性</li>
 </ul>
 </li>
-<li><b>静态渲染(默认)</b><ul>
+<li>静态渲染(默认)<ul>
 <li>路线在构建时间渲染或在数据重新验证之后在后台验证。结果被缓存并可以推送到内容分发网络CDN</li>
 <li>适用：已知内容</li>
 </ul>
 </li>
-<li><b>动态渲染</b><ul>
+<li>动态渲染<ul>
 <li>在请求时间处为每个用户渲染路线</li>
 <li>适用：个性化数据和仅在请求时才能直到的信息</li>
 </ul>
@@ -1111,8 +1093,8 @@
 <li>浏览器API：客户端组件可以访问浏览器API</li>
 </ul>
 </li>
-<li>使用： 在文件顶部添加<code>&quot;use client&quot;</code>,声明服务器和客户端组件模块之间的boundary</li>
-<li><b>客户端组件时如何渲染的？</b><ul>
+<li>使用： 在文件顶部添加”use client”,声明服务器和客户端组件模块之间的boundary</li>
+<li>客户端组件时如何渲染的？<ul>
 <li>整页加载<ul>
 <li>在服务器上：<ol>
 <li>React 将服务器组件渲染为一种称为 React 服务器组件有效负载（RSC 有效负载） 的特殊数据格式，其中包括对客户端组件的引用。</li>
@@ -1136,18 +1118,18 @@
 <li>这意味着客户端组件 JavaScript 包已下载并解析。 一旦包准备好，React 将使用 RSC Payload 来协调客户端和服务器组件树，并更新 DOM。</li>
 </ul>
 <h3 id="服务器和客户端组合模式"><a href="#服务器和客户端组合模式" class="headerlink" title="服务器和客户端组合模式"></a>服务器和客户端组合模式</h3><ul>
-<li><b>服务器组件模式</b><ul>
+<li>服务器组件模式<ul>
 <li>组件之间共享数据</li>
 <li>将仅服务器代码排除在客户端环境之外</li>
 <li>使用第三方软件包和提供商</li>
 </ul>
 </li>
-<li><b>客户端组件</b><ul>
+<li>客户端组件<ul>
 <li>将客户端组件移至树下</li>
 <li>将属性从服务器传递到客户端组件（序列化）</li>
 </ul>
 </li>
-<li><b>交错服务器和客户端组件</b><ul>
+<li>交错服务器和客户端组件<ul>
 <li>不支持的模式：将服务器组件导入客户端组件</li>
 <li>支持的模式：将服务器组件作为 Props 传递给客户端组件<ul>
 <li>使用 React children 属性在客户端组件中创建 “slot”。</li>
@@ -1276,7 +1258,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="优点："><a rel="nofollow" class="trm-toc-link" href="#优点："><span class="trm-toc-number">1.</span> <span class="trm-toc-text">优点：</span></a></li><li class="trm-toc-item trm-toc-level-2" title="安装"><a rel="nofollow" class="trm-toc-link" href="#安装"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">安装</span></a></li><li class="trm-toc-item trm-toc-level-2" title="页面(Pages)"><a rel="nofollow" class="trm-toc-link" href="#页面-Pages"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">页面(Pages)</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="预渲染"><a rel="nofollow" class="trm-toc-link" href="#预渲染"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">预渲染</span></a></li><li class="trm-toc-item trm-toc-level-3" title="静态生成 — 生成带有或不带有数据的页面"><a rel="nofollow" class="trm-toc-link" href="#静态生成-—-生成带有或不带有数据的页面"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">静态生成 — 生成带有或不带有数据的页面</span></a></li><li class="trm-toc-item trm-toc-level-3" title="服务端渲染 — 也被称为SSR或动态渲染"><a rel="nofollow" class="trm-toc-link" href="#服务端渲染-—-也被称为SSR或动态渲染"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">服务端渲染 — 也被称为SSR或动态渲染</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="数据获取"><a rel="nofollow" class="trm-toc-link" href="#数据获取"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">数据获取</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="getStaticProps"><a rel="nofollow" class="trm-toc-link" href="#getStaticProps"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">getStaticProps</span></a></li><li class="trm-toc-item trm-toc-level-3" title="增量静态再生(ISR) – 基于每个页面使用静态生成，而无需重新构建整个站点。"><a rel="nofollow" class="trm-toc-link" href="#增量静态再生-ISR-–-基于每个页面使用静态生成，而无需重新构建整个站点。"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">增量静态再生(ISR) – 基于每个页面使用静态生成，而无需重新构建整个站点。</span></a></li><li class="trm-toc-item trm-toc-level-3" title="读取文件：process.cwd()"><a rel="nofollow" class="trm-toc-link" href="#读取文件：process-cwd"><span class="trm-toc-number">4.3.</span> <span class="trm-toc-text">读取文件：process.cwd()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="getStaticPaths"><a rel="nofollow" class="trm-toc-link" href="#getStaticPaths"><span class="trm-toc-number">4.4.</span> <span class="trm-toc-text">getStaticPaths</span></a></li><li class="trm-toc-item trm-toc-level-3" title="getServerSideProps"><a rel="nofollow" class="trm-toc-link" href="#getServerSideProps"><span class="trm-toc-number">4.5.</span> <span class="trm-toc-text">getServerSideProps</span></a></li><li class="trm-toc-item trm-toc-level-3" title="在客户端获取数据"><a rel="nofollow" class="trm-toc-link" href="#在客户端获取数据"><span class="trm-toc-number">4.6.</span> <span class="trm-toc-text">在客户端获取数据</span></a></li><li class="trm-toc-item trm-toc-level-3" title="SWR"><a rel="nofollow" class="trm-toc-link" href="#SWR"><span class="trm-toc-number">4.7.</span> <span class="trm-toc-text">SWR</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="内置对 CSS 的支持"><a rel="nofollow" class="trm-toc-link" href="#内置对-CSS-的支持"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">内置对 CSS 的支持</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="添加全局样式表"><a rel="nofollow" class="trm-toc-link" href="#添加全局样式表"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">添加全局样式表</span></a></li><li class="trm-toc-item trm-toc-level-3" title="从node_modules目录import样式"><a rel="nofollow" class="trm-toc-link" href="#从node-modules目录import样式"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">从node_modules目录import样式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="添加组件级CSS"><a rel="nofollow" class="trm-toc-link" href="#添加组件级CSS"><span class="trm-toc-number">5.3.</span> <span class="trm-toc-text">添加组件级CSS</span></a></li><li class="trm-toc-item trm-toc-level-3" title="对Sass的支持"><a rel="nofollow" class="trm-toc-link" href="#对Sass的支持"><span class="trm-toc-number">5.4.</span> <span class="trm-toc-text">对Sass的支持</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="布局"><a rel="nofollow" class="trm-toc-link" href="#布局"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">布局</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="自定义单个共享布局：自己封装想要的布局组件然后应用在全局中"><a rel="nofollow" class="trm-toc-link" href="#自定义单个共享布局：自己封装想要的布局组件然后应用在全局中"><span class="trm-toc-number">6.1.</span> <span class="trm-toc-text">自定义单个共享布局：自己封装想要的布局组件然后应用在全局中</span></a></li><li class="trm-toc-item trm-toc-level-3" title="多个布局 | 嵌套布局：自己定义多个布局组件，然后使用getLayout实现，"><a rel="nofollow" class="trm-toc-link" href="#多个布局-嵌套布局：自己定义多个布局组件，然后使用getLayout实现，"><span class="trm-toc-number">6.2.</span> <span class="trm-toc-text">多个布局 | 嵌套布局：自己定义多个布局组件，然后使用getLayout实现，</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="图片优化"><a rel="nofollow" class="trm-toc-link" href="#图片优化"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">图片优化</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="本地图像"><a rel="nofollow" class="trm-toc-link" href="#本地图像"><span class="trm-toc-number">7.1.</span> <span class="trm-toc-text">本地图像</span></a></li><li class="trm-toc-item trm-toc-level-3" title="远程映像：需要提供src、width、height、alt"><a rel="nofollow" class="trm-toc-link" href="#远程映像：需要提供src、width、height、alt"><span class="trm-toc-number">7.2.</span> <span class="trm-toc-text">远程映像：需要提供src、width、height、alt</span></a></li><li class="trm-toc-item trm-toc-level-3" title="域名："><a rel="nofollow" class="trm-toc-link" href="#域名："><span class="trm-toc-number">7.3.</span> <span class="trm-toc-text">域名：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="优先权：’priority’添加到图像中，成为每个页面的最大内容绘制(LCP)元素"><a rel="nofollow" class="trm-toc-link" href="#优先权：’priority’添加到图像中，成为每个页面的最大内容绘制-LCP-元素"><span class="trm-toc-number">7.4.</span> <span class="trm-toc-text">优先权：’priority’添加到图像中，成为每个页面的最大内容绘制(LCP)元素</span></a></li><li class="trm-toc-item trm-toc-level-3" title="图像大小调整"><a rel="nofollow" class="trm-toc-link" href="#图像大小调整"><span class="trm-toc-number">7.5.</span> <span class="trm-toc-text">图像大小调整</span></a></li><li class="trm-toc-item trm-toc-level-3" title="不知道图像大小的情况下调整"><a rel="nofollow" class="trm-toc-link" href="#不知道图像大小的情况下调整"><span class="trm-toc-number">7.6.</span> <span class="trm-toc-text">不知道图像大小的情况下调整</span></a></li><li class="trm-toc-item trm-toc-level-3" title="样式"><a rel="nofollow" class="trm-toc-link" href="#样式"><span class="trm-toc-number">7.7.</span> <span class="trm-toc-text">样式</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="字体优化"><a rel="nofollow" class="trm-toc-link" href="#字体优化"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">字体优化</span></a></li><li class="trm-toc-item trm-toc-level-2" title="脚本组件"><a rel="nofollow" class="trm-toc-link" href="#脚本组件"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">脚本组件</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="strategy：决定何时加载第三方脚本"><a rel="nofollow" class="trm-toc-link" href="#strategy：决定何时加载第三方脚本"><span class="trm-toc-number">9.1.</span> <span class="trm-toc-text">strategy：决定何时加载第三方脚本</span></a></li><li class="trm-toc-item trm-toc-level-3" title="beforeInteractive"><a rel="nofollow" class="trm-toc-link" href="#beforeInteractive"><span class="trm-toc-number">9.2.</span> <span class="trm-toc-text">beforeInteractive</span></a></li><li class="trm-toc-item trm-toc-level-3" title="afterInteractive"><a rel="nofollow" class="trm-toc-link" href="#afterInteractive"><span class="trm-toc-number">9.3.</span> <span class="trm-toc-text">afterInteractive</span></a></li><li class="trm-toc-item trm-toc-level-3" title="lazyOnload"><a rel="nofollow" class="trm-toc-link" href="#lazyOnload"><span class="trm-toc-number">9.4.</span> <span class="trm-toc-text">lazyOnload</span></a></li><li class="trm-toc-item trm-toc-level-3" title="内联脚本"><a rel="nofollow" class="trm-toc-link" href="#内联脚本"><span class="trm-toc-number">9.5.</span> <span class="trm-toc-text">内联脚本</span></a></li><li class="trm-toc-item trm-toc-level-3" title="加载后执行代码(onLoad)"><a rel="nofollow" class="trm-toc-link" href="#加载后执行代码-onLoad"><span class="trm-toc-number">9.6.</span> <span class="trm-toc-text">加载后执行代码(onLoad)</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="基本特性"><a rel="nofollow" class="trm-toc-link" href="#基本特性"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">基本特性</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="静态文件服务"><a rel="nofollow" class="trm-toc-link" href="#静态文件服务"><span class="trm-toc-number">10.1.</span> <span class="trm-toc-text">静态文件服务</span></a></li><li class="trm-toc-item trm-toc-level-3" title="快速刷新"><a rel="nofollow" class="trm-toc-link" href="#快速刷新"><span class="trm-toc-number">10.2.</span> <span class="trm-toc-text">快速刷新</span></a></li><li class="trm-toc-item trm-toc-level-3" title="ESLint"><a rel="nofollow" class="trm-toc-link" href="#ESLint"><span class="trm-toc-number">10.3.</span> <span class="trm-toc-text">ESLint</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="路由  next version 13+"><a rel="nofollow" class="trm-toc-link" href="#路由-next-version-13"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">路由  next version 13+</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="基础篇"><a rel="nofollow" class="trm-toc-link" href="#基础篇"><span class="trm-toc-number">11.1.</span> <span class="trm-toc-text">基础篇</span></a></li><li class="trm-toc-item trm-toc-level-3" title="链接和导航"><a rel="nofollow" class="trm-toc-link" href="#链接和导航"><span class="trm-toc-number">11.2.</span> <span class="trm-toc-text">链接和导航</span></a></li><li class="trm-toc-item trm-toc-level-3" title="动态路由"><a rel="nofollow" class="trm-toc-link" href="#动态路由"><span class="trm-toc-number">11.3.</span> <span class="trm-toc-text">动态路由</span></a></li><li class="trm-toc-item trm-toc-level-3" title="加载 UI 和流式传输"><a rel="nofollow" class="trm-toc-link" href="#加载-UI-和流式传输"><span class="trm-toc-number">11.4.</span> <span class="trm-toc-text">加载 UI 和流式传输</span></a></li><li class="trm-toc-item trm-toc-level-3" title="错误处理error.js 文件"><a rel="nofollow" class="trm-toc-link" href="#错误处理error-js-文件"><span class="trm-toc-number">11.5.</span> <span class="trm-toc-text">错误处理error.js 文件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="并行路由"><a rel="nofollow" class="trm-toc-link" href="#并行路由"><span class="trm-toc-number">11.6.</span> <span class="trm-toc-text">并行路由</span></a></li><li class="trm-toc-item trm-toc-level-3" title="拦截路由"><a rel="nofollow" class="trm-toc-link" href="#拦截路由"><span class="trm-toc-number">11.7.</span> <span class="trm-toc-text">拦截路由</span></a></li><li class="trm-toc-item trm-toc-level-3" title="路由处理程序"><a rel="nofollow" class="trm-toc-link" href="#路由处理程序"><span class="trm-toc-number">11.8.</span> <span class="trm-toc-text">路由处理程序</span></a></li><li class="trm-toc-item trm-toc-level-3" title="中间件"><a rel="nofollow" class="trm-toc-link" href="#中间件"><span class="trm-toc-number">11.9.</span> <span class="trm-toc-text">中间件</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="数据获取"><a rel="nofollow" class="trm-toc-link" href="#数据获取-1"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">数据获取</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="数据获取、缓存和重新验证"><a rel="nofollow" class="trm-toc-link" href="#数据获取、缓存和重新验证"><span class="trm-toc-number">12.1.</span> <span class="trm-toc-text">数据获取、缓存和重新验证</span></a></li><li class="trm-toc-item trm-toc-level-3" title="数据获取模式"><a rel="nofollow" class="trm-toc-link" href="#数据获取模式"><span class="trm-toc-number">12.2.</span> <span class="trm-toc-text">数据获取模式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="形式和突变"><a rel="nofollow" class="trm-toc-link" href="#形式和突变"><span class="trm-toc-number">12.3.</span> <span class="trm-toc-text">形式和突变</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="渲染"><a rel="nofollow" class="trm-toc-link" href="#渲染"><span class="trm-toc-number">13.</span> <span class="trm-toc-text">渲染</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="服务器组件"><a rel="nofollow" class="trm-toc-link" href="#服务器组件"><span class="trm-toc-number">13.1.</span> <span class="trm-toc-text">服务器组件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="服务器组件是如何渲染的？"><a rel="nofollow" class="trm-toc-link" href="#服务器组件是如何渲染的？"><span class="trm-toc-number">13.2.</span> <span class="trm-toc-text">服务器组件是如何渲染的？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="客户端组件"><a rel="nofollow" class="trm-toc-link" href="#客户端组件"><span class="trm-toc-number">13.3.</span> <span class="trm-toc-text">客户端组件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="服务器和客户端组合模式"><a rel="nofollow" class="trm-toc-link" href="#服务器和客户端组合模式"><span class="trm-toc-number">13.4.</span> <span class="trm-toc-text">服务器和客户端组合模式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Edge 和 Node.js 运行时"><a rel="nofollow" class="trm-toc-link" href="#Edge-和-Node-js-运行时"><span class="trm-toc-number">13.5.</span> <span class="trm-toc-text">Edge 和 Node.js 运行时</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="优点："><a rel="nofollow" class="trm-toc-link" href="#优点："><span class="trm-toc-number">1.</span> <span class="trm-toc-text">优点：</span></a></li><li class="trm-toc-item trm-toc-level-2" title="安装"><a rel="nofollow" class="trm-toc-link" href="#安装"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">安装</span></a></li><li class="trm-toc-item trm-toc-level-2" title="页面(Pages)"><a rel="nofollow" class="trm-toc-link" href="#页面-Pages"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">页面(Pages)</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="预渲染"><a rel="nofollow" class="trm-toc-link" href="#预渲染"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">预渲染</span></a></li><li class="trm-toc-item trm-toc-level-3" title="静态生成 — 生成带有或不带有数据的页面"><a rel="nofollow" class="trm-toc-link" href="#静态生成-—-生成带有或不带有数据的页面"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">静态生成 — 生成带有或不带有数据的页面</span></a></li><li class="trm-toc-item trm-toc-level-3" title="服务端渲染 — 也被称为SSR或动态渲染"><a rel="nofollow" class="trm-toc-link" href="#服务端渲染-—-也被称为SSR或动态渲染"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">服务端渲染 — 也被称为SSR或动态渲染</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="数据获取"><a rel="nofollow" class="trm-toc-link" href="#数据获取"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">数据获取</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="getStaticProps"><a rel="nofollow" class="trm-toc-link" href="#getStaticProps"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">getStaticProps</span></a></li><li class="trm-toc-item trm-toc-level-3" title="增量静态再生(ISR)(基于每个页面使用静态生成，而无需重新构建整个站点。)"><a rel="nofollow" class="trm-toc-link" href="#增量静态再生-ISR-基于每个页面使用静态生成，而无需重新构建整个站点。"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">增量静态再生(ISR)(基于每个页面使用静态生成，而无需重新构建整个站点。)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="读取文件：process.cwd()"><a rel="nofollow" class="trm-toc-link" href="#读取文件：process-cwd"><span class="trm-toc-number">4.3.</span> <span class="trm-toc-text">读取文件：process.cwd()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="getStaticPaths"><a rel="nofollow" class="trm-toc-link" href="#getStaticPaths"><span class="trm-toc-number">4.4.</span> <span class="trm-toc-text">getStaticPaths</span></a></li><li class="trm-toc-item trm-toc-level-3" title="getServerSideProps"><a rel="nofollow" class="trm-toc-link" href="#getServerSideProps"><span class="trm-toc-number">4.5.</span> <span class="trm-toc-text">getServerSideProps</span></a></li><li class="trm-toc-item trm-toc-level-3" title="在客户端获取数据"><a rel="nofollow" class="trm-toc-link" href="#在客户端获取数据"><span class="trm-toc-number">4.6.</span> <span class="trm-toc-text">在客户端获取数据</span></a></li><li class="trm-toc-item trm-toc-level-3" title="SWR"><a rel="nofollow" class="trm-toc-link" href="#SWR"><span class="trm-toc-number">4.7.</span> <span class="trm-toc-text">SWR</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="内置对 CSS 的支持"><a rel="nofollow" class="trm-toc-link" href="#内置对-CSS-的支持"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">内置对 CSS 的支持</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="添加全局样式表"><a rel="nofollow" class="trm-toc-link" href="#添加全局样式表"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">添加全局样式表</span></a></li><li class="trm-toc-item trm-toc-level-3" title="从node_modules目录import样式"><a rel="nofollow" class="trm-toc-link" href="#从node-modules目录import样式"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">从node_modules目录import样式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="添加组件级CSS"><a rel="nofollow" class="trm-toc-link" href="#添加组件级CSS"><span class="trm-toc-number">5.3.</span> <span class="trm-toc-text">添加组件级CSS</span></a></li><li class="trm-toc-item trm-toc-level-3" title="对Sass的支持"><a rel="nofollow" class="trm-toc-link" href="#对Sass的支持"><span class="trm-toc-number">5.4.</span> <span class="trm-toc-text">对Sass的支持</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="布局"><a rel="nofollow" class="trm-toc-link" href="#布局"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">布局</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="自定义单个共享布局：自己封装想要的布局组件然后应用在全局中"><a rel="nofollow" class="trm-toc-link" href="#自定义单个共享布局：自己封装想要的布局组件然后应用在全局中"><span class="trm-toc-number">6.1.</span> <span class="trm-toc-text">自定义单个共享布局：自己封装想要的布局组件然后应用在全局中</span></a></li><li class="trm-toc-item trm-toc-level-3" title="多个布局 | 嵌套布局："><a rel="nofollow" class="trm-toc-link" href="#多个布局-嵌套布局："><span class="trm-toc-number">6.2.</span> <span class="trm-toc-text">多个布局 | 嵌套布局：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="图片优化"><a rel="nofollow" class="trm-toc-link" href="#图片优化"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">图片优化</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="本地图像"><a rel="nofollow" class="trm-toc-link" href="#本地图像"><span class="trm-toc-number">7.1.</span> <span class="trm-toc-text">本地图像</span></a></li><li class="trm-toc-item trm-toc-level-3" title="远程映像：需要提供src、width、height、alt"><a rel="nofollow" class="trm-toc-link" href="#远程映像：需要提供src、width、height、alt"><span class="trm-toc-number">7.2.</span> <span class="trm-toc-text">远程映像：需要提供src、width、height、alt</span></a></li><li class="trm-toc-item trm-toc-level-3" title="域名："><a rel="nofollow" class="trm-toc-link" href="#域名："><span class="trm-toc-number">7.3.</span> <span class="trm-toc-text">域名：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="优先权：’priority’添加到图像中，成为每个页面的最大内容绘制(LCP)元素"><a rel="nofollow" class="trm-toc-link" href="#优先权：’priority’添加到图像中，成为每个页面的最大内容绘制-LCP-元素"><span class="trm-toc-number">7.4.</span> <span class="trm-toc-text">优先权：’priority’添加到图像中，成为每个页面的最大内容绘制(LCP)元素</span></a></li><li class="trm-toc-item trm-toc-level-3" title="图像大小调整"><a rel="nofollow" class="trm-toc-link" href="#图像大小调整"><span class="trm-toc-number">7.5.</span> <span class="trm-toc-text">图像大小调整</span></a></li><li class="trm-toc-item trm-toc-level-3" title="不知道图像大小的情况下调整"><a rel="nofollow" class="trm-toc-link" href="#不知道图像大小的情况下调整"><span class="trm-toc-number">7.6.</span> <span class="trm-toc-text">不知道图像大小的情况下调整</span></a></li><li class="trm-toc-item trm-toc-level-3" title="样式"><a rel="nofollow" class="trm-toc-link" href="#样式"><span class="trm-toc-number">7.7.</span> <span class="trm-toc-text">样式</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="字体优化"><a rel="nofollow" class="trm-toc-link" href="#字体优化"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">字体优化</span></a></li><li class="trm-toc-item trm-toc-level-2" title="脚本组件"><a rel="nofollow" class="trm-toc-link" href="#脚本组件"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">脚本组件</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="strategy：决定何时加载第三方脚本"><a rel="nofollow" class="trm-toc-link" href="#strategy：决定何时加载第三方脚本"><span class="trm-toc-number">9.1.</span> <span class="trm-toc-text">strategy：决定何时加载第三方脚本</span></a></li><li class="trm-toc-item trm-toc-level-3" title="内联脚本"><a rel="nofollow" class="trm-toc-link" href="#内联脚本"><span class="trm-toc-number">9.2.</span> <span class="trm-toc-text">内联脚本</span></a></li><li class="trm-toc-item trm-toc-level-3" title="加载后执行代码(onLoad)"><a rel="nofollow" class="trm-toc-link" href="#加载后执行代码-onLoad"><span class="trm-toc-number">9.3.</span> <span class="trm-toc-text">加载后执行代码(onLoad)</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="基本特性"><a rel="nofollow" class="trm-toc-link" href="#基本特性"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">基本特性</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="静态文件服务"><a rel="nofollow" class="trm-toc-link" href="#静态文件服务"><span class="trm-toc-number">10.1.</span> <span class="trm-toc-text">静态文件服务</span></a></li><li class="trm-toc-item trm-toc-level-3" title="快速刷新"><a rel="nofollow" class="trm-toc-link" href="#快速刷新"><span class="trm-toc-number">10.2.</span> <span class="trm-toc-text">快速刷新</span></a></li><li class="trm-toc-item trm-toc-level-3" title="ESLint"><a rel="nofollow" class="trm-toc-link" href="#ESLint"><span class="trm-toc-number">10.3.</span> <span class="trm-toc-text">ESLint</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="路由  next version 13+"><a rel="nofollow" class="trm-toc-link" href="#路由-next-version-13"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">路由  next version 13+</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="基础篇"><a rel="nofollow" class="trm-toc-link" href="#基础篇"><span class="trm-toc-number">11.1.</span> <span class="trm-toc-text">基础篇</span></a></li><li class="trm-toc-item trm-toc-level-3" title="链接和导航"><a rel="nofollow" class="trm-toc-link" href="#链接和导航"><span class="trm-toc-number">11.2.</span> <span class="trm-toc-text">链接和导航</span></a></li><li class="trm-toc-item trm-toc-level-3" title="动态路由"><a rel="nofollow" class="trm-toc-link" href="#动态路由"><span class="trm-toc-number">11.3.</span> <span class="trm-toc-text">动态路由</span></a></li><li class="trm-toc-item trm-toc-level-3" title="加载 UI 和流式传输"><a rel="nofollow" class="trm-toc-link" href="#加载-UI-和流式传输"><span class="trm-toc-number">11.4.</span> <span class="trm-toc-text">加载 UI 和流式传输</span></a></li><li class="trm-toc-item trm-toc-level-3" title="错误处理error.js 文件"><a rel="nofollow" class="trm-toc-link" href="#错误处理error-js-文件"><span class="trm-toc-number">11.5.</span> <span class="trm-toc-text">错误处理error.js 文件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="并行路由"><a rel="nofollow" class="trm-toc-link" href="#并行路由"><span class="trm-toc-number">11.6.</span> <span class="trm-toc-text">并行路由</span></a></li><li class="trm-toc-item trm-toc-level-3" title="拦截路由"><a rel="nofollow" class="trm-toc-link" href="#拦截路由"><span class="trm-toc-number">11.7.</span> <span class="trm-toc-text">拦截路由</span></a></li><li class="trm-toc-item trm-toc-level-3" title="路由处理程序"><a rel="nofollow" class="trm-toc-link" href="#路由处理程序"><span class="trm-toc-number">11.8.</span> <span class="trm-toc-text">路由处理程序</span></a></li><li class="trm-toc-item trm-toc-level-3" title="中间件"><a rel="nofollow" class="trm-toc-link" href="#中间件"><span class="trm-toc-number">11.9.</span> <span class="trm-toc-text">中间件</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="数据获取"><a rel="nofollow" class="trm-toc-link" href="#数据获取-1"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">数据获取</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="数据获取"><a rel="nofollow" class="trm-toc-link" href="#数据获取-2"><span class="trm-toc-number">12.1.</span> <span class="trm-toc-text">数据获取</span></a></li><li class="trm-toc-item trm-toc-level-3" title="缓存数据"><a rel="nofollow" class="trm-toc-link" href="#缓存数据"><span class="trm-toc-number">12.2.</span> <span class="trm-toc-text">缓存数据</span></a></li><li class="trm-toc-item trm-toc-level-3" title="重新验证数据"><a rel="nofollow" class="trm-toc-link" href="#重新验证数据"><span class="trm-toc-number">12.3.</span> <span class="trm-toc-text">重新验证数据</span></a></li><li class="trm-toc-item trm-toc-level-3" title="选择退出数据缓存"><a rel="nofollow" class="trm-toc-link" href="#选择退出数据缓存"><span class="trm-toc-number">12.4.</span> <span class="trm-toc-text">选择退出数据缓存</span></a></li><li class="trm-toc-item trm-toc-level-3" title="数据获取模式"><a rel="nofollow" class="trm-toc-link" href="#数据获取模式"><span class="trm-toc-number">12.5.</span> <span class="trm-toc-text">数据获取模式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="形式和突变"><a rel="nofollow" class="trm-toc-link" href="#形式和突变"><span class="trm-toc-number">12.6.</span> <span class="trm-toc-text">形式和突变</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="渲染"><a rel="nofollow" class="trm-toc-link" href="#渲染"><span class="trm-toc-number">13.</span> <span class="trm-toc-text">渲染</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="服务器组件"><a rel="nofollow" class="trm-toc-link" href="#服务器组件"><span class="trm-toc-number">13.1.</span> <span class="trm-toc-text">服务器组件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="服务器组件是如何渲染的？"><a rel="nofollow" class="trm-toc-link" href="#服务器组件是如何渲染的？"><span class="trm-toc-number">13.2.</span> <span class="trm-toc-text">服务器组件是如何渲染的？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="客户端组件"><a rel="nofollow" class="trm-toc-link" href="#客户端组件"><span class="trm-toc-number">13.3.</span> <span class="trm-toc-text">客户端组件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="服务器和客户端组合模式"><a rel="nofollow" class="trm-toc-link" href="#服务器和客户端组合模式"><span class="trm-toc-number">13.4.</span> <span class="trm-toc-text">服务器和客户端组合模式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Edge 和 Node.js 运行时"><a rel="nofollow" class="trm-toc-link" href="#Edge-和-Node-js-运行时"><span class="trm-toc-number">13.5.</span> <span class="trm-toc-text">Edge 和 Node.js 运行时</span></a></li></ol></li></ol>
       </div>
     </div>
 

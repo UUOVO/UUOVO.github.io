@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content=".en {     color: green;         font-weight:600;   }   Iterator 的遍历过程: 创建一个指针对象，指向当前数据结构的起始位置。 var it &#x3D; makeIterator([‘a’, ‘b’]);   第一次调用指针对象的next方法，可以将指针指向数据结构的第一个成员。 it.next() &#x2F;&#x2F; {">
+<meta name="description" content="Iterator 的遍历过程: 创建一个指针对象，指向当前数据结构的起始位置。1var it &#x3D; makeIterator([&#x27;a&#x27;, &#x27;b&#x27;]); 第一次调用指针对象的next方法，可以将指针指向数据结构的第一个成员。1it.next() &#x2F;&#x2F; &#123; value: &quot;a&quot;, done: false &#125;  返回">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6-Generator和 Iterators">
 <meta property="og:url" content="http://example.com/en/2024/10/31/ES6/es6-Generator/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content=".en {     color: green;         font-weight:600;   }   Iterator 的遍历过程: 创建一个指针对象，指向当前数据结构的起始位置。 var it &#x3D; makeIterator([‘a’, ‘b’]);   第一次调用指针对象的next方法，可以将指针指向数据结构的第一个成员。 it.next() &#x2F;&#x2F; {">
+<meta property="og:description" content="Iterator 的遍历过程: 创建一个指针对象，指向当前数据结构的起始位置。1var it &#x3D; makeIterator([&#x27;a&#x27;, &#x27;b&#x27;]); 第一次调用指针对象的next方法，可以将指针指向数据结构的第一个成员。1it.next() &#x2F;&#x2F; &#123; value: &quot;a&quot;, done: false &#125;  返回">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-31T07:54:04.579Z">
-<meta property="article:modified_time" content="2025-06-30T07:19:17.168Z">
+<meta property="article:modified_time" content="2025-07-28T09:38:36.465Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="ES6">
 <meta property="article:tag" content="生成器">
@@ -69,7 +69,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-06-30 15:19:17"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-28 17:38:36"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -533,41 +533,31 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <style>
-  .en {
-    color: green;
-        font-weight:600;
-  }
-</style>
-
+    <script src="/js/enChangegreen.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/global.css">
+  
 <h2 id="Iterator-的遍历过程"><a href="#Iterator-的遍历过程" class="headerlink" title="Iterator 的遍历过程:"></a>Iterator 的遍历过程:</h2><ol>
-<li>创建一个指针对象，指向当前数据结构的起始位置。<ul>
-<li>var it &#x3D; makeIterator([‘a’, ‘b’]);</li>
-</ul>
-</li>
-<li>第一次调用指针对象的next方法，可以将指针指向数据结构的第一个成员。<ul>
-<li>it.next() &#x2F;&#x2F; { value: “a”, done: false }</li>
+<li>创建一个指针对象，指向当前数据结构的起始位置。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> it = <span class="title function_">makeIterator</span>([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>]);</span><br></pre></td></tr></table></figure></li>
+<li>第一次调用指针对象的next方法，可以将指针指向数据结构的第一个成员。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">it.<span class="title function_">next</span>() <span class="comment">// &#123; value: &quot;a&quot;, done: false &#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
 <li>返回两个值，value：当前成员的值，done：是否遍历结束，返回布尔值</li>
 </ul>
 </li>
-<li>第二次调用指针对象的next方法，指针就指向数据结构的第二个成员。<ul>
-<li>it.next() &#x2F;&#x2F; { value: “b”, done: false }</li>
-</ul>
-</li>
-<li>不断调用指针对象的next方法，直到它指向数据结构的结束位置。<ul>
-<li>it.next() &#x2F;&#x2F; { value: undefined, done: true }</li>
-</ul>
-</li>
+<li>第二次调用指针对象的next方法，指针就指向数据结构的第二个成员。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">it.<span class="title function_">next</span>() <span class="comment">// &#123; value: &quot;b&quot;, done: false &#125;</span></span><br></pre></td></tr></table></figure></li>
+<li>不断调用指针对象的next方法，直到它指向数据结构的结束位置。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">it.<span class="title function_">next</span>() <span class="comment">// &#123; value: undefined, done: true &#125;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="Generator-function"><a href="#Generator-function" class="headerlink" title="Generator (function*)"></a>Generator (function*)</h2><blockquote>
 <p>Generator 是一种特殊的函数类型，可以在函数执行过程中暂停和恢复执行。它通过使用 yield 表达式来实现中断和恢复执行的功能。</p>
 </blockquote>
 <ul>
 <li>函数体内部使用yield表达式，定义不同的内部状态</li>
-<li>当 Generator 函数被调用时，它并不会立即执行，而是返回一个迭代器对象。每次调用迭代器对象的 <span class="en">next()</span> 方法时，Generator 函数会<span class="en">从上一次执行的位置继续执行</span>，直到<span class="en">遇到下一个 yield 表达式或函数结束</span>。此时，Generator 函数将返回一个包含当前值和执行状态的对象，其中 <span class="en">value</span> 属性表示<span class="en">yield 表达式的结果，done</span> 属性表示<span class="en">是否执行完毕</span>。</li>
+<li>当 Generator 函数被调用时，它并不会立即执行，而是返回一个迭代器对象。每次调用迭代器对象的 next() 方法时，Generator 函数会<span class="key_words">『从上一次执行的位置继续执行，直到遇到下一个 yield 表达式或函数结束』</span>。<ul>
+<li>Generator 函数将返回一个包含当前值和执行状态的对象，其中 value: yield 表达式的结果，done: 是否执行完毕。</li>
 </ul>
-<h2 id="yield-后面跟的是一个可遍历的结构，它会调用该结构的遍历器接口"><a href="#yield-后面跟的是一个可遍历的结构，它会调用该结构的遍历器接口" class="headerlink" title="yield* 后面跟的是一个可遍历的结构，它会调用该结构的遍历器接口"></a>yield* 后面跟的是一个可遍历的结构，它会调用该结构的遍历器接口</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">yield</span> 用在表达式中要加一个圆括号</span><br><span class="line"><span class="keyword">let</span> generator = <span class="keyword">function</span>* () &#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">yield</span>* [<span class="number">2</span>,<span class="number">4</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> iterator = <span class="title function_">generator</span>();</span><br><span class="line">iterator.<span class="title function_">next</span>() <span class="comment">// &#123; value: 1, done: false &#125;</span></span><br><span class="line">iterator.<span class="title function_">next</span>() <span class="comment">// &#123; value: 2, done: false &#125;</span></span><br><span class="line">iterator.<span class="title function_">next</span>() <span class="comment">// &#123; value: 4, done: false &#125;</span></span><br><span class="line">iterator.<span class="title function_">next</span>() <span class="comment">// &#123; value: undefined, done: true &#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="作为对象属性的-Generator-函数"><a href="#作为对象属性的-Generator-函数" class="headerlink" title="作为对象属性的 Generator 函数"></a>作为对象属性的 Generator 函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  * <span class="title function_">myGeneratorMethod</span>(<span class="params"></span>) &#123;</span><br><span class="line">    ···</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="yield-后面跟的是一个可遍历的结构，它会调用该结构的遍历器接口"><a href="#yield-后面跟的是一个可遍历的结构，它会调用该结构的遍历器接口" class="headerlink" title="yield* 后面跟的是一个可遍历的结构，它会调用该结构的遍历器接口"></a>yield* 后面跟的是一个可遍历的结构，它会调用该结构的遍历器接口</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">yield</span> 用在表达式中要加一个圆括号</span><br><span class="line"><span class="keyword">let</span> generator = <span class="keyword">function</span>* () &#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">yield</span>* [<span class="number">2</span>,<span class="number">4</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> iterator = <span class="title function_">generator</span>();</span><br><span class="line">iterator.<span class="title function_">next</span>() <span class="comment">// &#123; value: 1, done: false &#125;</span></span><br><span class="line">iterator.<span class="title function_">next</span>() <span class="comment">// &#123; value: 2, done: false &#125;</span></span><br><span class="line">iterator.<span class="title function_">next</span>() <span class="comment">// &#123; value: 4, done: false &#125;</span></span><br><span class="line">iterator.<span class="title function_">next</span>() <span class="comment">// &#123; value: undefined, done: true &#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="作为对象属性的-Generator-函数"><a href="#作为对象属性的-Generator-函数" class="headerlink" title="作为对象属性的 Generator 函数"></a>作为对象属性的 Generator 函数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  * <span class="title function_">myGeneratorMethod</span>(<span class="params"></span>) &#123;</span><br><span class="line">    ···</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="可迭代性"><a href="#可迭代性" class="headerlink" title="可迭代性"></a>可迭代性</h2><h3 id="for…of-会遍历可迭代对象"><a href="#for…of-会遍历可迭代对象" class="headerlink" title="for…of 会遍历可迭代对象"></a>for…of 会遍历可迭代对象</h3><ul>
 <li>调用Symbol.iterator</li>

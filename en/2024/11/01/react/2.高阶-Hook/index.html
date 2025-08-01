@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="在不写class的情况下使用state以及生命周期等其它特性 定义一个数组里面有一个参数和修改参数的方法 &#x3D; useState(),而这个参数相当于state 优点：没有破坏性改动—完全可选,100%向后兼容 动机：便于复用状态逻辑和理解  State Hook: 声明多个state变量: 可以在一个组件中多次使用State Hook  Effect Hook: “副作用”: 在 Re">
+<meta name="description" content="在不写class的情况下使用state以及生命周期等其它特性 使用useState()定义一个数组里面有一个参数和修改参数的方法,这个参数相当于state 优点：没有破坏性改动—完全可选,100%向后兼容 动机：便于复用状态逻辑和理解  State Hook: 声明多个state变量: 可以在一个组件中多次使用State Hook  Effect Hook: “副作用”: 在 React">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React-高阶HOOK">
 <meta property="og:url" content="http://example.com/en/2024/11/01/react/2.%E9%AB%98%E9%98%B6-Hook/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="在不写class的情况下使用state以及生命周期等其它特性 定义一个数组里面有一个参数和修改参数的方法 &#x3D; useState(),而这个参数相当于state 优点：没有破坏性改动—完全可选,100%向后兼容 动机：便于复用状态逻辑和理解  State Hook: 声明多个state变量: 可以在一个组件中多次使用State Hook  Effect Hook: “副作用”: 在 Re">
+<meta property="og:description" content="在不写class的情况下使用state以及生命周期等其它特性 使用useState()定义一个数组里面有一个参数和修改参数的方法,这个参数相当于state 优点：没有破坏性改动—完全可选,100%向后兼容 动机：便于复用状态逻辑和理解  State Hook: 声明多个state变量: 可以在一个组件中多次使用State Hook  Effect Hook: “副作用”: 在 React">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-11-01T01:41:47.787Z">
-<meta property="article:modified_time" content="2024-11-20T06:45:30.545Z">
+<meta property="article:modified_time" content="2025-07-07T06:50:00.753Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="React">
 <meta property="article:tag" content="Hook">
@@ -69,7 +69,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-20 14:45:30"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-07 14:50:00"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -533,10 +533,14 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <ul>
+    <script src="/js/enChangegreen.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/global.css">
+
+
+<ul>
 <li>在不写class的情况下使用state以及生命周期等其它特性</li>
-<li>定义一个数组里面有一个参数和修改参数的方法 &#x3D; useState(),而这个参数相当于state</li>
-<li>优点：没有破坏性改动—完全可选,100%向后兼容</li>
+<li>使用useState()定义一个数组里面有一个参数和修改参数的方法,这个参数相当于state</li>
+<li>优点：没有破坏性改动—<span class="desc">完全可选,100%向后兼容</span></li>
 <li>动机：便于复用状态逻辑和理解</li>
 </ul>
 <h3 id="State-Hook"><a href="#State-Hook" class="headerlink" title="State Hook:"></a>State Hook:</h3><ul>
@@ -545,8 +549,8 @@
 <h3 id="Effect-Hook"><a href="#Effect-Hook" class="headerlink" title="Effect Hook:"></a>Effect Hook:</h3><ul>
 <li>“副作用”: 在 React 组件中执行过数据获取、订阅或者手动修改过 DOM</li>
 <li>useEffect 就是一个 Effect Hook，给函数组件增加了操作副作用的能力&#x3D;挂载+更新+卸载的用途</li>
-<li>通过返回一个函数来指定如何“清除”副作用<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;<span class="comment">// 每次渲染都调用</span></span><br><span class="line">	<span class="title class_">ChatAPI</span>.<span class="title function_">subscribeToFriendStatus</span>(props.<span class="property">friend</span>.<span class="property">id</span>,handleStatusChange);<span class="comment">//挂载+更新</span></span><br><span class="line">		<span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="title class_">ChatAPI</span>.<span class="title function_">unsubscribeFromFriendStatus</span>(props.<span class="property">friend</span>.<span class="property">id</span>,handleStatusChange);<span class="comment">//卸载</span></span><br><span class="line">	&#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
 <li>同一组件可以多次使用</li>
+<li>通过返回一个函数来指定如何“清除”副作用<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;<span class="comment">// 每次渲染都调用</span></span><br><span class="line">	<span class="title class_">ChatAPI</span>.<span class="title function_">subscribeToFriendStatus</span>(props.<span class="property">friend</span>.<span class="property">id</span>,handleStatusChange) <span class="comment">//挂载+更新</span></span><br><span class="line">	<span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="title class_">ChatAPI</span>.<span class="title function_">unsubscribeFromFriendStatus</span>(props.<span class="property">friend</span>.<span class="property">id</span>,handleStatusChange) <span class="comment">//卸载</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="使用规则"><a href="#使用规则" class="headerlink" title="使用规则"></a>使用规则</h3><ul>
 <li>只能在函数最外层调用 Hook</li>
@@ -557,28 +561,27 @@
 <li>其它组件可以调用它来使用这个方法,每一个组件使用hook的state都是独立</li>
 </ul>
 <h3 id="其它Hook"><a href="#其它Hook" class="headerlink" title="其它Hook"></a>其它Hook</h3><ul>
-<li>useContent()不使用组件嵌套就可以订阅React的Content</li>
-<li>useRenduser()可以通过reducer来管理组件本地的复杂state</li>
+<li>useContent(): 不使用组件嵌套就可以订阅React的Content</li>
+<li>useRenduser(): 可以通过reducer来管理组件本地的复杂state</li>
 </ul>
 <h3 id="使用State-Hook"><a href="#使用State-Hook" class="headerlink" title="使用State Hook"></a>使用State Hook</h3><ul>
 <li>Hook在class内部时不起作用的</li>
-<li>例：const [count, setCount] &#x3D; useState(0) &#x2F;&#x2F;说明count的初始值为0</li>
 <li>存储几个state变量就要调用几次useState</li>
-<li>在函数中使用,可以直接用count:<code>&lt;p&gt;&#123;count&#125;&lt;/p&gt;</code></li>
-<li>更新：onClick &#x3D; {() &#x3D;&gt; setCount(count+1)},在函数直接setCount()和this.setState()</li>
+<li>在页面中使用: 用大括号把state变量括起来就可以使用</li>
+<li>在事件函数中调用state变量的修改方法去更新state变量<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>) <span class="comment">//说明count的初始值为0</span></span><br><span class="line">onClick = &#123;<span class="function">() =&gt;</span> <span class="title function_">setCount</span>(count+<span class="number">1</span>)&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="使用Effect-Hook"><a href="#使用Effect-Hook" class="headerlink" title="使用Effect Hook"></a>使用Effect Hook</h3><ul>
-<li><b>不需要清除的effect</b>:<ul>
+<li><span class="key_words">不需要清除的effect</span>:<ul>
 <li>在 React 更新 DOM 之后运行一些额外的代码</li>
 <li>传递给 useEffect 的函数在每次渲染中都会有所不同,防止过期</li>
 </ul>
 </li>
-<li><b>需要清除的effect</b>:<ul>
+<li><span class="key_words">需要清除的effect</span>:<ul>
 <li>订阅外部数据源,防止内存泄露</li>
-<li>在订阅的时候return() &#x3D;&gt; { 模块.un方法(参数,方法)}</li>
+<li>在订阅的时候返回一个要取消订阅的方法<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span><span class="function">() =&gt;</span> &#123; 模块.<span class="property">un</span>方法(参数,方法)&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><b>使用多个Effect实现关注点分离</b><ul>
+<li><span class="key_words">使用多个Effect实现关注点分离</span><ul>
 <li>挂载和更新内容不同,挂载和卸载内容不同</li>
 <li>使用多个useEffect把相同的内容放在一起</li>
 </ul>
@@ -586,7 +589,7 @@
 <li>每次更新的时候都要运行Effect：防止显示的还是没更新前的状态</li>
 <li>订阅和清除顺序按顺序执行</li>
 <li>通过跳过 Effect 进行性能优化</li>
-<li>如果某些特定值在两次重渲染之间没有发生变化，跳过对 effect 的调用，只要传递数组作为useEffect 的第二个可选参数即可：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">	<span class="variable language_">document</span>.<span class="property">title</span> = <span class="string">`You clicked <span class="subst">$&#123;count&#125;</span> times`</span>;</span><br><span class="line">&#125;, [count]); <span class="comment">// 仅在 count 更改时更新</span></span><br></pre></td></tr></table></figure></li>
+<li>如果某些特定值在两次重渲染之间没有发生变化，跳过对 effect 的调用，只要传递数组作为useEffect 的第二个可选参数即可：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">	<span class="variable language_">document</span>.<span class="property">title</span> = <span class="string">`You clicked <span class="subst">$&#123;count&#125;</span> times`</span></span><br><span class="line">&#125;, [count]) <span class="comment">// 仅在 count 更改时更新</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="Hook规则"><a href="#Hook规则" class="headerlink" title="Hook规则"></a>Hook规则</h3><ul>
 <li>只在最顶层使用 Hook：不要在循环，条件或嵌套函数中调用 Hook</li>
@@ -595,17 +598,16 @@
 <h3 id="自定义组件"><a href="#自定义组件" class="headerlink" title="自定义组件"></a>自定义组件</h3><ul>
 <li>在 React 中有两种流行的方式来共享组件之间的状态逻辑: render props 和高阶组件，自定义 Hook</li>
 </ul>
-<h3 id="useDeferredValue"><a href="#useDeferredValue" class="headerlink" title="useDeferredValue"></a>useDeferredValue</h3><blockquote>
-<p>在新内容加载期间显示旧内容，延迟更新 UI 的某些部分</p>
-</blockquote>
+<h3 id="useDeferredValue"><a href="#useDeferredValue" class="headerlink" title="useDeferredValue"></a>useDeferredValue</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> deferredValue = <span class="title function_">useDeferredValue</span>(value)</span><br></pre></td></tr></table></figure>
 <ul>
-<li><code>const deferredValue = useDeferredValue(value)</code></li>
+<li>作用: 在新内容加载期间显示旧内容，延迟更新 UI 的某些部分</li>
 <li>如在input中流程先输入 -&gt; 开始渲染 -&gt; 渲染完成前输入 -&gt; 渲染中断 -&gt; 执行新的渲染，在渲染完前这期间可以随时中断渲染</li>
 <li>这个value可以使用useState的变量</li>
 </ul>
-<h3 id="useOptimistic"><a href="#useOptimistic" class="headerlink" title="useOptimistic"></a>useOptimistic</h3><ul>
-<li><code>const [optimisticState, addOptimistic] = useOptimistic(state, updateFn);</code></li>
-<li>接受一个状态state，以及加工函数updateFn，其中updateFn在state更新时返回你想要的乐观结果,updateFn &#x3D; (currentState, optimisticValue) &#x3D;&gt; {}</li>
+<h3 id="useOptimistic"><a href="#useOptimistic" class="headerlink" title="useOptimistic"></a>useOptimistic</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [optimisticState, addOptimistic] = <span class="title function_">useOptimistic</span>(state, updateFn);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>接受一个状态state，以及加工函数updateFn，其中updateFn在state更新时返回你想要的乐观结果,</li>
+<li>updateFn &#x3D; (currentState, optimisticValue) &#x3D;&gt; {}</li>
 </ul>
 
 </article>

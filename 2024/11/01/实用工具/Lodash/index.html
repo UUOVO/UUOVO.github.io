@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="只有存在node_modules，并且引入了lodash的内置插件包，才可以使用   uniqueId(‘prefix’) 返回的是一个带前缀的自增id   ⭐ toPath(‘[6],4, [f[45[5]]],f,2’) 把字符串里的属性返回成数组 ，适合两个深层数组合并，对象不行   times(n, type | fn ) 默认返回一个调用了n次的index类型的数组   ⭐ times">
+<meta name="description" content="只有存在node_modules，并且引入了lodash的内置插件包，才可以使用  uniqueId(‘prefix’) 返回的是一个带前缀的自增id  ⭐ toPath(‘[6],4, [f[45[5]]],f,2’) 把字符串里的属性返回成数组 ，适合两个深层数组合并，『对象不行』  times(n, type | fn ) 默认返回一个调用了n次的index类型的数组  ⭐ time">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lodash">
 <meta property="og:url" content="http://example.com/2024/11/01/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/Lodash/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="只有存在node_modules，并且引入了lodash的内置插件包，才可以使用   uniqueId(‘prefix’) 返回的是一个带前缀的自增id   ⭐ toPath(‘[6],4, [f[45[5]]],f,2’) 把字符串里的属性返回成数组 ，适合两个深层数组合并，对象不行   times(n, type | fn ) 默认返回一个调用了n次的index类型的数组   ⭐ times">
+<meta property="og:description" content="只有存在node_modules，并且引入了lodash的内置插件包，才可以使用  uniqueId(‘prefix’) 返回的是一个带前缀的自增id  ⭐ toPath(‘[6],4, [f[45[5]]],f,2’) 把字符串里的属性返回成数组 ，适合两个深层数组合并，『对象不行』  times(n, type | fn ) 默认返回一个调用了n次的index类型的数组  ⭐ time">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-11-01T09:45:24.092Z">
-<meta property="article:modified_time" content="2025-06-18T06:39:21.827Z">
+<meta property="article:modified_time" content="2025-07-28T08:05:18.710Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="Lodash">
 <meta name="twitter:card" content="summary">
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-06-18 14:39:21"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-28 16:05:18"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -532,125 +532,87 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <blockquote>
+    <script src="/js/enChangegreen.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/global.css">
+
+<blockquote>
 <p>只有存在node_modules，并且引入了lodash的内置插件包，才可以使用</p>
 </blockquote>
-<ul>
-<li><h3 id="uniqueId-‘prefix’"><a href="#uniqueId-‘prefix’" class="headerlink" title="uniqueId(‘prefix’)"></a>uniqueId(‘prefix’)</h3><ul>
+<h3 id="uniqueId-‘prefix’"><a href="#uniqueId-‘prefix’" class="headerlink" title="uniqueId(‘prefix’)"></a>uniqueId(‘prefix’)</h3><ul>
 <li>返回的是一个带前缀的自增id</li>
 </ul>
-</li>
-<li><h3 id="⭐-toPath-‘-6-4-f-45-5-f-2’"><a href="#⭐-toPath-‘-6-4-f-45-5-f-2’" class="headerlink" title="⭐ toPath(‘[6],4, [f[45[5]]],f,2’)"></a>⭐ toPath(‘[6],4, [f[45[5]]],f,2’)</h3><ul>
-<li>把字符串里的属性返回成数组 ，适合两个深层数组合并，<code>对象不行</code></li>
+<h3 id="⭐-toPath-‘-6-4-f-45-5-f-2’"><a href="#⭐-toPath-‘-6-4-f-45-5-f-2’" class="headerlink" title="⭐ toPath(‘[6],4, [f[45[5]]],f,2’)"></a>⭐ toPath(‘[6],4, [f[45[5]]],f,2’)</h3><ul>
+<li>把字符串里的属性返回成数组 ，适合两个深层数组合并，<span class="key_words">『对象不行』</span></li>
 </ul>
-</li>
-<li><h3 id="times-n-type-fn"><a href="#times-n-type-fn" class="headerlink" title="times(n, type | fn )"></a>times(n, type | fn )</h3><ul>
+<h3 id="times-n-type-fn"><a href="#times-n-type-fn" class="headerlink" title="times(n, type | fn )"></a>times(n, type | fn )</h3><ul>
 <li>默认返回一个调用了n次的index类型的数组</li>
 </ul>
-</li>
-<li><h3 id="⭐-times-3-stubString"><a href="#⭐-times-3-stubString" class="headerlink" title="⭐ times(3, stubString)"></a>⭐ times(3, stubString)</h3><ul>
+<h3 id="⭐-times-3-stubString"><a href="#⭐-times-3-stubString" class="headerlink" title="⭐ times(3, stubString)"></a>⭐ times(3, stubString)</h3><ul>
 <li>结合times创建一个有长度且初始值为空的数组</li>
 </ul>
-</li>
-<li><h3 id="rangeRight-start默认0-end-间隔"><a href="#rangeRight-start默认0-end-间隔" class="headerlink" title="rangeRight(start默认0, end, 间隔)"></a>rangeRight(start默认0, end, 间隔)</h3><ul>
-<li>返回一个不包括end值的start到end值的范围内的新数字数组，且是<code>降序</code></li>
+<h3 id="rangeRight-start默认0-end-间隔"><a href="#rangeRight-start默认0-end-间隔" class="headerlink" title="rangeRight(start默认0, end, 间隔)"></a>rangeRight(start默认0, end, 间隔)</h3><ul>
+<li>返回一个不包括end值的start到end值的范围内的新数字数组，且是<span class="key_words">『降序』</span></li>
 </ul>
-</li>
-<li><h3 id="range"><a href="#range" class="headerlink" title="range()"></a>range()</h3><ul>
-<li>返回一个不包括end值的start到end值的范围内的新数字数组<code>升序</code>。</li>
+<h3 id="range"><a href="#range" class="headerlink" title="range()"></a>range()</h3><ul>
+<li>返回一个不包括end值的start到end值的范围内的新数字数组<span class="key_words">『升序』</span></li>
 </ul>
-</li>
-<li><h3 id="const-func-overSome-返回结果-func-1-21-5"><a href="#const-func-overSome-返回结果-func-1-21-5" class="headerlink" title="const func &#x3D; overSome([返回结果]);func([1,21,5])"></a>const func &#x3D; overSome([返回结果]);func([1,21,5])</h3><ul>
+<h3 id="const-func-overSome-返回结果-func-1-21-5"><a href="#const-func-overSome-返回结果-func-1-21-5" class="headerlink" title="const func &#x3D; overSome([返回结果]);func([1,21,5])"></a>const func &#x3D; overSome([返回结果]);func([1,21,5])</h3><ul>
 <li>返回的是带有返回条件的新函数</li>
 </ul>
-</li>
-<li><h3 id="map-‘a-2-’-‘c-0-’-methodOf-object"><a href="#map-‘a-2-’-‘c-0-’-methodOf-object" class="headerlink" title="map([‘a[2]’, ‘c[0]’], methodOf(object))"></a>map([‘a[2]’, ‘c[0]’], methodOf(object))</h3><ul>
+<h3 id="map-‘a-2-’-‘c-0-’-methodOf-object"><a href="#map-‘a-2-’-‘c-0-’-methodOf-object" class="headerlink" title="map([‘a[2]’, ‘c[0]’], methodOf(object))"></a>map([‘a[2]’, ‘c[0]’], methodOf(object))</h3><ul>
 <li>通过map来调用methods上对象的方法，返回新的结果</li>
 </ul>
-</li>
-<li><h3 id="constant-value"><a href="#constant-value" class="headerlink" title="constant(value)"></a>constant(value)</h3><ul>
-<li>创建一个值，返回新的<code>常量函数</code></li>
+<h3 id="constant-value"><a href="#constant-value" class="headerlink" title="constant(value)"></a>constant(value)</h3><ul>
+<li>创建一个值，返回新的<span class="key_words">『常量函数』</span></li>
 </ul>
-</li>
-<li><h3 id="defaultTo-value-defaultValue"><a href="#defaultTo-value-defaultValue" class="headerlink" title="defaultTo(value, defaultValue)"></a>defaultTo(value, defaultValue)</h3><ul>
-<li>如果value为NaN, null, 或者 undefined，那么返回defaultValue<code>默认值</code>。</li>
+<h3 id="defaultTo-value-defaultValue"><a href="#defaultTo-value-defaultValue" class="headerlink" title="defaultTo(value, defaultValue)"></a>defaultTo(value, defaultValue)</h3><ul>
+<li>如果value为NaN, null, 或者 undefined，那么返回defaultValue</li>
 </ul>
-</li>
-<li><h3 id="pad-要填充的字符串-填充长度-填充的字符"><a href="#pad-要填充的字符串-填充长度-填充的字符" class="headerlink" title="pad(要填充的字符串, 填充长度, 填充的字符)"></a>pad(要<code>填充</code>的字符串, 填充长度, 填充的字符)</h3><ul>
+<h3 id="pad-要填充的字符串-填充长度-填充的字符"><a href="#pad-要填充的字符串-填充长度-填充的字符" class="headerlink" title="pad(要填充的字符串, 填充长度, 填充的字符)"></a>pad(要填充的字符串, 填充长度, 填充的字符)</h3><ul>
 <li>字符串长度小于填充长度左右平均填充，不平均截断超出的</li>
 </ul>
-</li>
-<li><h3 id="chain-value"><a href="#chain-value" class="headerlink" title="chain(value)"></a><code>chain(value)</code></h3><ul>
-<li><code>启用</code>显示链模式，<code>解除</code>用<code>value()</code></li>
+<h3 id="chain-value"><a href="#chain-value" class="headerlink" title="chain(value)"></a>chain(value)</h3><ul>
+<li>启用显示链模式，解除用value()</li>
 </ul>
-</li>
-<li><h3 id="assign-object-source"><a href="#assign-object-source" class="headerlink" title="assign(object, [source])"></a>assign(object, [source])</h3><ul>
-<li>有四个， 把<code>对象分配到目标</code>对象上</li>
+<h3 id="assign-object-source"><a href="#assign-object-source" class="headerlink" title="assign(object, [source])"></a>assign(object, [source])</h3><ul>
+<li>有四个， 把对象分配到目标对象上</li>
 </ul>
-</li>
-<li><h3 id="findKey-object-fn"><a href="#findKey-object-fn" class="headerlink" title="findKey(object ,fn)"></a>findKey(object ,fn)</h3><ul>
+<h3 id="findKey-object-fn"><a href="#findKey-object-fn" class="headerlink" title="findKey(object ,fn)"></a>findKey(object ,fn)</h3><ul>
 <li>在object上返回一个符合条件的的key（返回找到的第一个）</li>
 </ul>
-</li>
-<li><h3 id="findLastKey-object-fn"><a href="#findLastKey-object-fn" class="headerlink" title="findLastKey(object ,fn)"></a>findLastKey(object ,fn)</h3><ul>
+<h3 id="findLastKey-object-fn"><a href="#findLastKey-object-fn" class="headerlink" title="findLastKey(object ,fn)"></a>findLastKey(object ,fn)</h3><ul>
 <li>在object上返回一个符合条件的的key（返回反方向找到的第一个）</li>
 </ul>
-</li>
-<li><h3 id="for开头的遍历对象无法保证遍历顺序，-加In的标识遍历到原型上"><a href="#for开头的遍历对象无法保证遍历顺序，-加In的标识遍历到原型上" class="headerlink" title="for开头的遍历对象无法保证遍历顺序， 加In的标识遍历到原型上"></a>for开头的遍历对象无法保证遍历顺序， 加In的标识遍历到原型上</h3></li>
-<li><h3 id="invert-object"><a href="#invert-object" class="headerlink" title="invert(object)"></a>invert(object)</h3><ul>
+<h3 id="for开头的遍历对象无法保证遍历顺序，-加In的标识遍历到原型上"><a href="#for开头的遍历对象无法保证遍历顺序，-加In的标识遍历到原型上" class="headerlink" title="for开头的遍历对象无法保证遍历顺序， 加In的标识遍历到原型上"></a>for开头的遍历对象无法保证遍历顺序， 加In的标识遍历到原型上</h3><h3 id="invert-object"><a href="#invert-object" class="headerlink" title="invert(object)"></a>invert(object)</h3><ul>
 <li>返回一个键值倒置后的对象，如果有重复的值，后面的值会覆盖前面的值</li>
 </ul>
-</li>
-<li><h3 id="castArray-value"><a href="#castArray-value" class="headerlink" title="castArray(value)"></a>castArray(value)</h3><ul>
+<h3 id="castArray-value"><a href="#castArray-value" class="headerlink" title="castArray(value)"></a>castArray(value)</h3><ul>
 <li>强制转为数组，返回转换后的数组</li>
 </ul>
-</li>
-<li><h3 id="⭐-isEqual-value-other"><a href="#⭐-isEqual-value-other" class="headerlink" title="⭐ isEqual(value,other)"></a>⭐ isEqual(value,other)</h3><ul>
+<h3 id="⭐-isEqual-value-other"><a href="#⭐-isEqual-value-other" class="headerlink" title="⭐ isEqual(value,other)"></a>⭐ isEqual(value,other)</h3><ul>
 <li>执行深比较确定两者的值是否相等，不管是对象还是数组都可以比较，适用于判断是否编辑过</li>
 </ul>
-</li>
-<li><h3 id="⭐-throttle-要节流的函数-wait-节流的毫秒，默认为0-options-节流"><a href="#⭐-throttle-要节流的函数-wait-节流的毫秒，默认为0-options-节流" class="headerlink" title="⭐ throttle(要节流的函数, [wait&#x3D;节流的毫秒，默认为0], [options&#x3D;]) 节流"></a>⭐ throttle(要节流的函数, [wait&#x3D;节流的毫秒，默认为0], [options&#x3D;]) 节流</h3><ul>
+<h3 id="⭐-throttle-要节流的函数-wait-节流的毫秒，默认为0-options-节流"><a href="#⭐-throttle-要节流的函数-wait-节流的毫秒，默认为0-options-节流" class="headerlink" title="⭐ throttle(要节流的函数, [wait&#x3D;节流的毫秒，默认为0], [options&#x3D;]) 节流"></a>⭐ throttle(要节流的函数, [wait&#x3D;节流的毫秒，默认为0], [options&#x3D;]) 节流</h3><ul>
 <li>options.leading &#x3D; true : 指定调用在节流开始前</li>
 <li>options.trailing &#x3D; true : 指定调用在节流结束后</li>
 </ul>
-</li>
-<li><h3 id="zip"><a href="#zip" class="headerlink" title="zip([],[],[])"></a>zip([],[],[])</h3><ul>
+<h3 id="zip"><a href="#zip" class="headerlink" title="zip([],[],[])"></a>zip([],[],[])</h3><ul>
 <li>将各个数组的相同的index提取出来组成一个新数组并返回</li>
 </ul>
-</li>
-<li><h3 id="upzip"><a href="#upzip" class="headerlink" title="upzip()"></a>upzip()</h3><ul>
+<h3 id="upzip"><a href="#upzip" class="headerlink" title="upzip()"></a>upzip()</h3><ul>
 <li>还原，把zip后的数组还原回zip前的数组</li>
 </ul>
-</li>
-<li><h3 id="zipWith-array-fn-unzipWith-array-fn"><a href="#zipWith-array-fn-unzipWith-array-fn" class="headerlink" title="zipWith(array, fn)&#x2F;unzipWith(array, fn)"></a>zipWith(array, fn)&#x2F;unzipWith(array, fn)</h3></li>
-<li><h3 id="without-要检查的数组，要剔除的值"><a href="#without-要检查的数组，要剔除的值" class="headerlink" title="without(要检查的数组，要剔除的值)"></a>without(要检查的数组，要剔除的值)</h3><ul>
+<h3 id="zipWith-array-fn-unzipWith-array-fn"><a href="#zipWith-array-fn-unzipWith-array-fn" class="headerlink" title="zipWith(array, fn)&#x2F;unzipWith(array, fn)"></a>zipWith(array, fn)&#x2F;unzipWith(array, fn)</h3><h3 id="without-要检查的数组，要剔除的值"><a href="#without-要检查的数组，要剔除的值" class="headerlink" title="without(要检查的数组，要剔除的值)"></a>without(要检查的数组，要剔除的值)</h3><ul>
 <li>返回过滤后的新数组</li>
 </ul>
-</li>
-<li><h3 id="uniq-array"><a href="#uniq-array" class="headerlink" title="uniq(array)"></a>uniq(array)</h3><ul>
+<h3 id="uniq-array"><a href="#uniq-array" class="headerlink" title="uniq(array)"></a>uniq(array)</h3><ul>
 <li>返回一个去重后的新数组</li>
 </ul>
-</li>
-<li><h3 id="用at方法读取尾元素-任意位置"><a href="#用at方法读取尾元素-任意位置" class="headerlink" title="用at方法读取尾元素&#x2F;任意位置"></a>用at方法读取尾元素&#x2F;任意位置</h3><ul>
-<li>const array &#x3D; [ 1, 2, 3, 4, 5 ]</li>
-<li>const lastEle &#x3D; array.at(-1) &#x2F;&#x2F; 5</li>
-<li>const ele1 &#x3D; array.at(0) &#x2F;&#x2F; 1</li>
+<h3 id="用at方法读取尾元素-任意位置"><a href="#用at方法读取尾元素-任意位置" class="headerlink" title="用at方法读取尾元素&#x2F;任意位置"></a>用at方法读取尾元素&#x2F;任意位置</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> array = [ <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span> ]</span><br><span class="line"><span class="keyword">const</span> lastEle = array.<span class="title function_">at</span>(-<span class="number">1</span>) <span class="comment">// 5</span></span><br><span class="line"><span class="keyword">const</span> ele1 = array.<span class="title function_">at</span>(<span class="number">0</span>) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<h3 id="pick-object-props"><a href="#pick-object-props" class="headerlink" title="pick(object, [props])"></a>pick(object, [props])</h3><ul>
+<li>创建一个从object中选中的属性的对象<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> object = &#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">2</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">3</span>&#125;</span><br><span class="line">_.<span class="title function_">pick</span>(object,[<span class="string">&#x27;a&#x27;</span>,c<span class="string">&#x27;&#x27;</span>]) ==&gt; &#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-<li><h3 id="pick-object-props"><a href="#pick-object-props" class="headerlink" title="pick(object, [props])"></a>pick(object, [props])</h3><ul>
-<li>创建一个从object中选中的属性的对象<ul>
-<li>const object &#x3D; {‘a’:1,’b’:2,’c’:3}</li>
-<li>_.pick(object,[‘a’,c’’]) &#x3D;&#x3D;&gt; {‘a’:1,’c’:3}</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><h3 id="omit-object-props-反向版-pick"><a href="#omit-object-props-反向版-pick" class="headerlink" title="omit(object,[props]):反向版_.pick"></a>omit(object,[props]):反向版_.pick</h3><ul>
-<li>_.omit(object,[‘a’,’c’]) &#x3D;&#x3D;&gt; {‘b’:’2’}</li>
-</ul>
-</li>
-</ul>
-
+<h3 id="omit-object-props-反向版-pick"><a href="#omit-object-props-反向版-pick" class="headerlink" title="omit(object,[props]):反向版_.pick"></a>omit(object,[props]):反向版_.pick</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_.<span class="title function_">omit</span>(object,[<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;c&#x27;</span>]) ==&gt; &#123;<span class="string">&#x27;b&#x27;</span>:<span class="string">&#x27;2&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
 </article>
     
     

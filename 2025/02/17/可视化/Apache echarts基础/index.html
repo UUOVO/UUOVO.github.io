@@ -7,16 +7,16 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content=".en {   color: green;   font-weight:600; }   安装 当前echarts版本5.6.0 全局安装：npm install echarts 局部安装： 定制图表 下载后把文件包放置在应用echart文件的根目录 如：应用echart的文件位于statistics文件夹下，那下载下来的echarts文件放置到该目录下    引用 定制的：import * a">
+<meta name="description" content="安装 当前echarts版本5.6.0 全局安装：1npm install echarts 局部安装：定制图表 下载后把文件包放置在应用echart文件的根目录 如：应用echart的文件位于statistics文件夹下，那下载下来的echarts文件放置到该目录下    引用 定制的：1import * as echarts from &quot;.&#x2F;echarts&#x2F;echarts.min">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Apache echarts基础">
 <meta property="og:url" content="http://example.com/2025/02/17/%E5%8F%AF%E8%A7%86%E5%8C%96/Apache%20echarts%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content=".en {   color: green;   font-weight:600; }   安装 当前echarts版本5.6.0 全局安装：npm install echarts 局部安装： 定制图表 下载后把文件包放置在应用echart文件的根目录 如：应用echart的文件位于statistics文件夹下，那下载下来的echarts文件放置到该目录下    引用 定制的：import * a">
+<meta property="og:description" content="安装 当前echarts版本5.6.0 全局安装：1npm install echarts 局部安装：定制图表 下载后把文件包放置在应用echart文件的根目录 如：应用echart的文件位于statistics文件夹下，那下载下来的echarts文件放置到该目录下    引用 定制的：1import * as echarts from &quot;.&#x2F;echarts&#x2F;echarts.min">
 <meta property="og:locale">
 <meta property="og:image" content="http://example.com/img/404.jpg">
 <meta property="article:published_time" content="2025-02-17T03:49:27.220Z">
-<meta property="article:modified_time" content="2025-06-30T07:27:39.092Z">
+<meta property="article:modified_time" content="2025-07-28T09:07:03.193Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="可视化">
 <meta name="twitter:card" content="summary">
@@ -70,7 +70,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-06-30 15:27:39"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-28 17:07:03"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -534,37 +534,33 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <style>
-.en {
-  color: green;
-  font-weight:600;
-}
-</style>
+    <script src="/js/enChangegreen.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/global.css">
 
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
 <li>当前echarts版本5.6.0</li>
-<li>全局安装：<span class="en">npm install echarts</span></li>
-<li>局部安装： <a target="_blank" rel="noopener" href="https://echarts.apache.org/en/builder.html">定制图表</a><ul>
+<li>全局安装：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install echarts</span><br></pre></td></tr></table></figure></li>
+<li>局部安装：<a target="_blank" rel="noopener" href="https://echarts.apache.org/en/builder.html">定制图表</a><ul>
 <li>下载后把文件包放置在应用echart文件的根目录</li>
 <li>如：应用echart的文件位于statistics文件夹下，那下载下来的echarts文件放置到该目录下<br><img src="/../../img/echart/echarts%E5%AE%9A%E5%88%B6%E6%96%87%E4%BB%B6.png" alt="定制文件放置位置"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
 </ul>
 </li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li>定制的：<span class="en">import * as echarts from “.&#x2F;echarts&#x2F;echarts.min.js”</span></li>
-<li>全局安装：<span class="en">import * as echarts from “echarts”</span></li>
+<li>定制的：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> echarts <span class="keyword">from</span> <span class="string">&quot;./echarts/echarts.min.js&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li>全局安装：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> echarts <span class="keyword">from</span> <span class="string">&quot;echarts&quot;</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="初始化echart（react）"><a href="#初始化echart（react）" class="headerlink" title="初始化echart（react）"></a>初始化echart（react）</h2><ol>
-<li>定义ref：<span class="en">const mychartRef &#x3D; useRef(null)</span></li>
-<li>获取元素的dom: <span class="en"><code>&lt;div ref=&#123;mychartRef&#125;&gt;&lt;/div&gt;</code></span></li>
+<li>定义ref：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mychartRef = <span class="title function_">useRef</span>(<span class="literal">null</span>)</span><br></pre></td></tr></table></figure></li>
+<li>获取元素的dom: <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div ref=&#123;mychartRef&#125;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure></li>
 <li>在useEffect钩子中去初始化获取echart的宽高大小： <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">chart = echarts.<span class="title function_">init</span>(mychartRef.<span class="property">current</span> <span class="keyword">as</span> unknown <span class="keyword">as</span> <span class="title class_">HTMLDivElement</span>,<span class="literal">undefined</span>, &#123;</span><br><span class="line">  <span class="attr">width</span>: width,<span class="number">1</span></span><br><span class="line">  <span class="attr">height</span>: <span class="number">300</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
 <li>定义一个option对象，查看<a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#title">配置项手册</a></li>
-<li>将option设置到echart中：<span class="en">chart.setOption(option)</span></li>
+<li>将option设置到echart中：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chart.<span class="title function_">setOption</span>(option)</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="调整图像的位置和大小"><a href="#调整图像的位置和大小" class="headerlink" title="调整图像的位置和大小"></a>调整图像的位置和大小</h2><ul>
-<li>柱状图和折线图: 通过调整<span class="en">grid</span>的值</li>
-<li>饼状图: 直接在series里面，通过改变<span class="en">radius和center</span>的值</li>
-<li>雷达图: 在<span class="en">radar的radius</span>的位置</li>
+<li>柱状图和折线图: 通过调整grid的值</li>
+<li>饼状图: 直接在series里面，通过改变radius和center的值</li>
+<li>雷达图: 在radar的radius的位置</li>
 </ul>
 <h2 id="如何给echarts添加动态背景图"><a href="#如何给echarts添加动态背景图" class="headerlink" title="如何给echarts添加动态背景图"></a>如何给echarts添加动态背景图</h2><ul>
 <li>不能直接给echarts添加，echart只能使用静态的</li>
@@ -587,18 +583,18 @@
 <li>当data中的数据有name属性</li>
 </ul>
 <h3 id="控制legend的位置"><a href="#控制legend的位置" class="headerlink" title="控制legend的位置"></a>控制legend的位置</h3><ul>
-<li><span class="en">top 和 left</span>: 决定图例位于图标的那个位置</li>
-<li><span class="en">orient：’vertical’| ‘horizontal’</span>: 决定图例是垂直或水平排列</li>
+<li>top 和 left: 决定图例位于图标的那个位置</li>
+<li>orient：’vertical’| ‘horizontal’: 决定图例是垂直或水平排列</li>
 </ul>
 <h3 id="修改item的间隔和样式"><a href="#修改item的间隔和样式" class="headerlink" title="修改item的间隔和样式"></a>修改item的间隔和样式</h3><ul>
-<li><span class="en">itemGap</span>: 控制图例每项的间隔</li>
-<li><span class="en">itemWidth 和 itemHeight</span>: 控制图例图形大小</li>
-<li><span class="en">itemStyle</span>: 控制图形的样式</li>
+<li>itemGap: 控制图例每项的间隔</li>
+<li>itemWidth 和 itemHeight: 控制图例图形大小</li>
+<li>itemStyle: 控制图形的样式</li>
 </ul>
 <h3 id="图例的关闭"><a href="#图例的关闭" class="headerlink" title="图例的关闭"></a>图例的关闭</h3><ul>
-<li><span class="en">selectedMode</span>：控制是否可点击图例，也可以设置为’single’ 或 ‘multiple’的选择模式</li>
-<li><span class="en">inactiveColor</span>：关闭图例的颜色</li>
-<li>图例关闭动态影响其他的事件：<span class="en">chart.on(‘legendselectchanged’,()&#x3D;&gt;{})</span></li>
+<li>selectedMode：控制是否可点击图例，也可以设置为’single’ 或 ‘multiple’的选择模式</li>
+<li>inactiveColor：关闭图例的颜色</li>
+<li>图例关闭动态影响其他的事件：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chart.<span class="title function_">on</span>(<span class="string">&#x27;legendselectchanged&#x27;</span>,<span class="function">()=&gt;</span>&#123;&#125;)</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="graphic"><a href="#graphic" class="headerlink" title="graphic"></a>graphic</h2><h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><ul>
 <li>适用于自定义一个轮播条或其他自定义线段图形</li>
@@ -618,63 +614,60 @@
 <li>arc</li>
 <li>主要通过x，y来控制位置</li>
 </ul>
-<h2 id="柱状图"><a href="#柱状图" class="headerlink" title="柱状图"></a>柱状图</h2><ul>
-<li>type: ‘bar’</li>
-</ul>
+<h2 id="柱状图"><a href="#柱状图" class="headerlink" title="柱状图"></a>柱状图</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type: &#x27;bar&#x27;</span><br></pre></td></tr></table></figure>
 <h3 id="option必须要有的属性"><a href="#option必须要有的属性" class="headerlink" title="option必须要有的属性"></a>option必须要有的属性</h3><ul>
 <li>xAxis，yAxis，grid，series, 前面三个可以空着但一定要有</li>
 </ul>
 <h3 id="如何设置label的字体和背景与柱体颜色一致"><a href="#如何设置label的字体和背景与柱体颜色一致" class="headerlink" title="如何设置label的字体和背景与柱体颜色一致"></a>如何设置label的字体和背景与柱体颜色一致</h3><ul>
 <li>首先在series.itemStyle中去控制颜色</li>
-<li>字体：<span class="en">series.label.color: ‘inherit’</span></li>
-<li>文本框：<span class="en">series.label.borderColor: ‘inherit’</span></li>
-<li>文本的背景：<span class="en">series.label.backgroundColor: ‘inherit’</span></li>
+<li>字体：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">series.<span class="property">label</span>.<span class="property">color</span>: <span class="string">&#x27;inherit&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li>文本框：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">series.<span class="property">label</span>.<span class="property">borderColor</span>: <span class="string">&#x27;inherit&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li>文本的背景：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">series.<span class="property">label</span>.<span class="property">backgroundColor</span>: <span class="string">&#x27;inherit&#x27;</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="label格式和位置"><a href="#label格式和位置" class="headerlink" title="label格式和位置"></a>label格式和位置</h3><ul>
-<li><span class="en">distance + position</span>: 控制标签的位置和距离柱体的距离</li>
-<li><span class="en">formatter</span>: 设置label展示的文本格式，字符串模板或回调函数<ul>
-<li>字符串模板：<span class="en">formatter: ‘{b}: {c}’</span><ul>
+<li>distance + position: 控制标签的位置和距离柱体的距离</li>
+<li>formatter: 设置label展示的文本格式，字符串模板或回调函数<ul>
+<li>字符串模板：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">formatter</span>: <span class="string">&#x27;&#123;b&#125;: &#123;c&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+<ul>
 <li>{a}：系列名(seriesName) </li>
 <li>{b}：数据名(name) </li>
 <li>{c}：数据值(value)</li>
 </ul>
 </li>
-<li>回调函数：<span class="en">(params: Object|Array) &#x3D;&gt; string</span></li>
+<li>回调函数：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="attr">params</span>: <span class="title class_">Object</span>|<span class="title class_">Array</span>) =&gt; string</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
 <h3 id="让柱体根据数值动态排序"><a href="#让柱体根据数值动态排序" class="headerlink" title="让柱体根据数值动态排序"></a>让柱体根据数值动态排序</h3><ul>
-<li>开启该系列的动态排序效果: <span class="en">series.realtimeSort: true</span></li>
-<li>实时改变标签: <span class="en">series.label.valueAnimation: true</span></li>
+<li>开启该系列的动态排序效果: <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">series.<span class="property">realtimeSort</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure></li>
+<li>实时改变标签: <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">series.<span class="property">label</span>.<span class="property">valueAnimation</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure></li>
 <li>在label中设置动画效果：animationFrom(进场) + animationTo（退场）</li>
 </ul>
 <h3 id="提示框tooltip"><a href="#提示框tooltip" class="headerlink" title="提示框tooltip"></a>提示框tooltip</h3><ul>
-<li><span class="en">tirgger</span>：触发类型，根据图形选择，坐标轴类的选择’axis’</li>
-<li><span class="en">axisPointer</span>：指示器，可以用来做高亮时（选中时）的背景颜色<ul>
-<li>在<span class="en">axisPointer.type &#x3D; ‘shadow’</span></li>
-<li>设置背景颜色<span class="en">axisPointer.shadowStyle.color&#x3D; “rgba(74, 211, 164, 0.15)”</span></li>
-<li>如果不想有附带的虚线<span class="en">axisPointer.lineStyle.color&#x3D;”transparent”</span></li>
+<li>tirgger：触发类型，根据图形选择，坐标轴类的选择’axis’</li>
+<li>axisPointer：指示器，可以用来做高亮时（选中时）的背景颜色<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axisPointer.<span class="property">type</span> = <span class="string">&#x27;shadow&#x27;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>设置背景颜色<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axisPointer.<span class="property">shadowStyle</span>.<span class="property">color</span>= <span class="string">&quot;rgba(74, 211, 164, 0.15)&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li>如果不想有附带的虚线<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axisPointer.<span class="property">lineStyle</span>.<span class="property">color</span>=<span class="string">&quot;transparent&quot;</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li>文本格式与label一样</li>
-<li>动态时需要设置延迟为0：<span class="en">tooltip.showDelay:0</span></li>
-<li>自定义完成后，想让tooltip定时移动展示，使用<span class="en">dispatchAction</span>事件交互<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">updateCurrentTip</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> len = option.<span class="property">series</span>[<span class="number">0</span>].<span class="property">data</span>.<span class="property">length</span></span><br><span class="line">  chart.<span class="title function_">dispatchAction</span>(&#123; <span class="comment">// 取消之前的高亮</span></span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;downplay&#x27;</span>,</span><br><span class="line">    <span class="attr">seriesIndex</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">dataIndex</span>: currentIndex.<span class="property">current</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  currentIndex.<span class="property">current</span> = (currentIndex.<span class="property">current</span> +<span class="number">1</span>) % len</span><br><span class="line"></span><br><span class="line">  chart.<span class="title function_">dispatchAction</span>(&#123; <span class="comment">// 高亮当前</span></span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;hightlight&#x27;</span>,</span><br><span class="line">    <span class="attr">seriesIndex</span>:<span class="number">0</span>,</span><br><span class="line">    <span class="attr">dataIndex</span>: currentIndex.<span class="property">current</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 高亮时展示提示框</span></span><br><span class="line">  chart.<span class="title function_">dispatchAction</span>(&#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;showTip&#x27;</span>,</span><br><span class="line">    <span class="attr">seriesIndex</span>:<span class="number">0</span>,</span><br><span class="line">    <span class="attr">dataIndex</span>: currentIndex.<span class="property">current</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> timer = <span class="built_in">setInterval</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">updateCurrentTip</span>()</span><br><span class="line">&#125;, <span class="number">3000</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">clearInterval</span>(timer)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>动态时需要设置延迟为0：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tooltip.<span class="property">showDelay</span>:<span class="number">0</span></span><br></pre></td></tr></table></figure></li>
+<li>自定义完成后，想让tooltip定时移动展示，使用dispatchAction事件交互<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">updateCurrentTip</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> len = option.<span class="property">series</span>[<span class="number">0</span>].<span class="property">data</span>.<span class="property">length</span></span><br><span class="line">  chart.<span class="title function_">dispatchAction</span>(&#123; <span class="comment">// 取消之前的高亮</span></span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;downplay&#x27;</span>,</span><br><span class="line">    <span class="attr">seriesIndex</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">dataIndex</span>: currentIndex.<span class="property">current</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  currentIndex.<span class="property">current</span> = (currentIndex.<span class="property">current</span> +<span class="number">1</span>) % len</span><br><span class="line"></span><br><span class="line">  chart.<span class="title function_">dispatchAction</span>(&#123; <span class="comment">// 高亮当前</span></span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;hightlight&#x27;</span>,</span><br><span class="line">    <span class="attr">seriesIndex</span>:<span class="number">0</span>,</span><br><span class="line">    <span class="attr">dataIndex</span>: currentIndex.<span class="property">current</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 高亮时展示提示框</span></span><br><span class="line">  chart.<span class="title function_">dispatchAction</span>(&#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;showTip&#x27;</span>,</span><br><span class="line">    <span class="attr">seriesIndex</span>:<span class="number">0</span>,</span><br><span class="line">    <span class="attr">dataIndex</span>: currentIndex.<span class="property">current</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> timer = <span class="built_in">setInterval</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">updateCurrentTip</span>()</span><br><span class="line">&#125;, <span class="number">3000</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">clearInterval</span>(timer)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="堆叠series-stack"><a href="#堆叠series-stack" class="headerlink" title="堆叠series.stack"></a>堆叠series.stack</h3><ul>
 <li>可以用于做正负双轴，</li>
-<li>在想要堆叠的对象上添加<span class="en">stack: ‘名字任意’</span></li>
-<li>在下一个要堆叠的对象上也添加<span class="en">stack:’名字要保持一致’</span></li>
-<li>堆叠的对象可以用<span class="en">barGap</span>来控制重叠的距离，完全重叠设置’-100%’</li>
+<li>在想要堆叠的对象上添加<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">stack</span>: <span class="string">&#x27;名字任意&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li>在下一个要堆叠的对象上也添加<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">stack</span>:<span class="string">&#x27;名字要保持一致&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li>堆叠的对象可以用barGap来控制重叠的距离，完全重叠设置’-100%’</li>
 <li>堆叠的柱体要隐藏，则把itemStyle的 color 设置成透明<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">series</span>: [&#123;</span><br><span class="line">  <span class="attr">type</span>:<span class="string">&#x27;bar&#x27;</span>,</span><br><span class="line">  <span class="attr">stack</span>: <span class="string">&#x27;a&#x27;</span></span><br><span class="line">&#125;,&#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;bar&#x27;</span>,</span><br><span class="line">  <span class="attr">stack</span>: <span class="string">&#x27;a&#x27;</span></span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="柱状图-环形"><a href="#柱状图-环形" class="headerlink" title="柱状图-&gt;环形"></a>柱状图-&gt;环形</h3><ul>
-<li>如果配置<span class="en">angleAxis（角度轴）、radiusAxis（半径轴）和polar（极坐标）</span></li>
+<li>如果配置angleAxis（角度轴）、radiusAxis（半径轴）和polar（极坐标）</li>
 <li>但是data中的数据需要一个个遍历成一个对象存放在series中</li>
 <li>注意，如果实现的圆环，要一半有背景色一半没有，可以使用渐变但效果不好，建议还是使用type：’pie’类型实现</li>
 </ul>
-<h2 id="折线图"><a href="#折线图" class="headerlink" title="折线图"></a>折线图</h2><ul>
-<li>type: ‘line’</li>
-</ul>
+<h2 id="折线图"><a href="#折线图" class="headerlink" title="折线图"></a>折线图</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type: &#x27;line&#x27;</span><br></pre></td></tr></table></figure>
 <h3 id="一定要有的对象"><a href="#一定要有的对象" class="headerlink" title="一定要有的对象"></a>一定要有的对象</h3><ul>
 <li>xAxis</li>
 <li>yAxis</li>
@@ -682,74 +675,60 @@
 <li>series</li>
 </ul>
 <h3 id="两种类型的折线"><a href="#两种类型的折线" class="headerlink" title="两种类型的折线"></a>两种类型的折线</h3><ul>
-<li>平滑折线：<span class="en">smooth: true</span></li>
+<li>平滑折线：smooth: true</li>
 <li>曲直折线：默认</li>
 </ul>
 <h3 id="关于xAxis刻度的间隔"><a href="#关于xAxis刻度的间隔" class="headerlink" title="关于xAxis刻度的间隔"></a>关于xAxis刻度的间隔</h3><ul>
-<li>通过<span class="en">interval</span>的回调函数返回的true OR false，让刻度、标签每隔n个展示<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">axisLabel</span>: &#123;  <span class="comment">// 刻度的间隔</span></span><br><span class="line">  <span class="attr">interval</span>:<span class="function">(<span class="params">index:number,value: string</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 数组长度大于6移除一个，最终只展示6个标签，对于这种情况，标签和数据最好分开成两个数组</span></span><br><span class="line">    <span class="keyword">if</span>(monthList.<span class="property">length</span> &gt; <span class="number">6</span>) monthList.<span class="title function_">shift</span>() </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span> <span class="comment">// 返回true表示展示</span></span><br><span class="line">  &#125;,  </span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
+<li>通过interval的回调函数返回的true OR false，让刻度、标签每隔n个展示<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">axisLabel</span>: &#123;  <span class="comment">// 刻度的间隔</span></span><br><span class="line">  <span class="attr">interval</span>:<span class="function">(<span class="params">index:number,value: string</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 数组长度大于6移除一个，最终只展示6个标签，对于这种情况，标签和数据最好分开成两个数组</span></span><br><span class="line">    <span class="keyword">if</span>(monthList.<span class="property">length</span> &gt; <span class="number">6</span>) monthList.<span class="title function_">shift</span>() </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span> <span class="comment">// 返回true表示展示</span></span><br><span class="line">  &#125;,  </span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="折线图上的点"><a href="#折线图上的点" class="headerlink" title="折线图上的点"></a>折线图上的点</h3><ul>
-<li>data中的value在x轴和y轴相交的点</li>
-<li><span class="en">symbol：’none’</span></li>
+<li>data中的value在x轴和y轴相交的点<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">symbol：<span class="string">&#x27;none&#x27;</span></span><br></pre></td></tr></table></figure></li>
 <li>内置类型：circle, rect, roundRect, triangle, diamond, pin, arrow, none</li>
 <li>自定义<ul>
-<li>图片形式：<span class="en">‘image:&#x2F;&#x2F; 图片链接|dataURI’</span></li>
-<li>svg路径：<span class="en">‘path:&#x2F;&#x2F;….’</span><ul>
-<li>如：’path:&#x2F;&#x2F;d&#x3D;”M1022.165868 1.17248h2447.020998c65.425217 …”‘</li>
+<li>图片形式：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;image:// 图片链接|dataURI&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li>svg路径：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;path://....&#x27;</span></span><br><span class="line">如：<span class="string">&#x27;path://d=&quot;M1022.165868 1.17248h2447.020998c65.425217 ...&quot;&#x27;</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-<h2 id="环形（饼图）"><a href="#环形（饼图）" class="headerlink" title="环形（饼图）"></a>环形（饼图）</h2><ul>
-<li>type: ‘pie’</li>
-</ul>
-<h3 id="调整圆环的弧度和大小"><a href="#调整圆环的弧度和大小" class="headerlink" title="调整圆环的弧度和大小"></a>调整圆环的弧度和大小</h3><ul>
-<li><span class="en">radius：[‘53%’, ‘53%’]</span>：控制圆的大小和是否变成圆环，参数：[圆环宽度, 圆大小]</li>
-<li><span class="en">center: [‘50%’,’50%’]</span>：圆的位置</li>
-<li><span class="en">startAngle: 275</span>：弧度的起始位置</li>
-<li><span class="en">endAngle: 30</span>：弧度的结束位置</li>
-</ul>
+<h2 id="环形（饼图）"><a href="#环形（饼图）" class="headerlink" title="环形（饼图）"></a>环形（饼图）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type: &#x27;pie&#x27;</span><br></pre></td></tr></table></figure>
+<h3 id="调整圆环的弧度和大小"><a href="#调整圆环的弧度和大小" class="headerlink" title="调整圆环的弧度和大小"></a>调整圆环的弧度和大小</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">radius：[<span class="string">&#x27;53%&#x27;</span>, <span class="string">&#x27;53%&#x27;</span>]：控制圆的大小和是否变成圆环，参数：[圆环宽度, 圆大小]</span><br><span class="line"><span class="attr">center</span>: [<span class="string">&#x27;50%&#x27;</span>,<span class="string">&#x27;50%&#x27;</span>]：圆的位置</span><br><span class="line"><span class="attr">startAngle</span>: <span class="number">275</span>：弧度的起始位置</span><br><span class="line"><span class="attr">endAngle</span>: <span class="number">30</span>：弧度的结束位置</span><br></pre></td></tr></table></figure>
+
 <h3 id="多个圆环"><a href="#多个圆环" class="headerlink" title="多个圆环"></a>多个圆环</h3><ul>
 <li>建立多个对象，并使用stack堆叠</li>
 <li>多个堆叠，center要一样</li>
 <li>每个data一定要用数组的形式</li>
 </ul>
 <h3 id="没有数据是否展示圆"><a href="#没有数据是否展示圆" class="headerlink" title="没有数据是否展示圆"></a>没有数据是否展示圆</h3><ul>
-<li><span class="en">showEmptyCircle: true</span></li>
-<li><span class="en">emptyCircleStyle</span>对象：控制没有数据时圆的样式</li>
+<li>showEmptyCircle: true</li>
+<li>emptyCircleStyle对象：控制没有数据时圆的样式</li>
 </ul>
 <h3 id="饼图类型"><a href="#饼图类型" class="headerlink" title="饼图类型"></a>饼图类型</h3><ul>
 <li>当数据都在一个对象上，形成饼图，默认按照数据大小，平分饼图的扇形</li>
-<li><span class="en">roseType</span>：南丁格尔玫瑰样式(按照数据，高低呈现)</li>
+<li>roseType：南丁格尔玫瑰样式(按照数据，高低呈现)</li>
 </ul>
-<h2 id="关系图"><a href="#关系图" class="headerlink" title="关系图"></a>关系图</h2><ul>
-<li>type: ‘graph’</li>
-</ul>
+<h2 id="关系图"><a href="#关系图" class="headerlink" title="关系图"></a>关系图</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type: &#x27;graph&#x27;</span><br></pre></td></tr></table></figure>
 <h3 id="场景-1"><a href="#场景-1" class="headerlink" title="场景"></a>场景</h3><ul>
 <li>展示节点与节点的关系</li>
 </ul>
 <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ul>
-<li>布局: <span class="en">layout: ‘none’</span></li>
-<li>data: 以<span class="en">Array&lt;{name:’’, x,100,y:100，value}&gt;</span>形式存在，</li>
+<li>布局: layout: ‘none’</li>
+<li>data: 格式<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Array</span>&lt;&#123;<span class="attr">name</span>:<span class="string">&#x27;&#x27;</span>, x,<span class="number">100</span>,<span class="attr">y</span>:<span class="number">100</span>，value&#125;&gt;</span><br></pre></td></tr></table></figure></li>
 <li>links配置节点<ul>
 <li>每一个线段都能设定起始位置和结束位置并且设置线段的弧度<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">source</span>: <span class="number">7</span> <span class="comment">// 源节点（data的索引）</span></span><br><span class="line"><span class="attr">target</span>: <span class="number">0</span> <span class="comment">// 目标节点（data的索引）  7 -&gt; 0</span></span><br><span class="line"><span class="attr">lineStyle</span>:&#123;</span><br><span class="line">  <span class="attr">curveness</span>: <span class="number">0.5</span> <span class="comment">// 线段的曲度（正负控制方向）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li>设置线段两端的样式: <span class="en">edgeSymbol: [‘circle’, ‘arrow’]</span></li>
-<li>线段两端的图形的大小: <span class="en">edgeSymbolSize：10</span></li>
-<li>节点(数据)大小: <span class="en">symbolSize： data</span>，文本溢出之后再去label设置宽高去限制</li>
+<li>设置线段两端的样式: <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">edgeSymbol</span>: [<span class="string">&#x27;circle&#x27;</span>, <span class="string">&#x27;arrow&#x27;</span>]</span><br></pre></td></tr></table></figure></li>
+<li>线段两端的图形的大小: <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">edgeSymbolSize：<span class="number">10</span></span><br></pre></td></tr></table></figure></li>
+<li>节点(数据)大小: 文本溢出之后再去label设置宽高去限制<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">symbolSize： data</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="雷达图"><a href="#雷达图" class="headerlink" title="雷达图"></a>雷达图</h2><ul>
-<li>type&#x3D;’radar’</li>
-</ul>
+<h2 id="雷达图"><a href="#雷达图" class="headerlink" title="雷达图"></a>雷达图</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type=&#x27;radar&#x27;</span><br></pre></td></tr></table></figure>
 <h3 id="radar"><a href="#radar" class="headerlink" title="radar"></a>radar</h3><ul>
-<li>标签数组：<span class="en">indicator</span>中设置，以<span class="en">{name： ‘’,max:0,color: ‘’}</span>格式</li>
-<li>背景颜色：<span class="en">splitArea:{areaStyle.color: ‘transparent’}</span></li>
+<li>标签数组：indicator中设置，格式<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;name： <span class="string">&#x27;&#x27;</span>,<span class="attr">max</span>:<span class="number">0</span>,<span class="attr">color</span>: <span class="string">&#x27;&#x27;</span>&#125;</span><br></pre></td></tr></table></figure></li>
+<li>背景颜色：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">splitArea</span>:&#123;areaStyle.<span class="property">color</span>: <span class="string">&#x27;transparent&#x27;</span>&#125;</span><br></pre></td></tr></table></figure></li>
 <li>也可以处理线段样式等</li>
 </ul>
 <h3 id="series"><a href="#series" class="headerlink" title="series"></a>series</h3><ul>
-<li>data：与indicator基本一致，数据多一个value，表示具体数值。如果需要对单个颜色不一致，通过areaStyle:{color: ‘’}</li>
+<li>data：与indicator基本一致，数据多一个value，表示具体数值。如果需要对单个颜色不一致，通过<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">areaStyle</span>:&#123;<span class="attr">color</span>: <span class="string">&#x27;&#x27;</span>&#125;</span><br></pre></td></tr></table></figure></li>
 <li>如果数据存在min，和max则alignTicks要为false</li>
 <li>areaStyle的颜色也可以设置为渐变的<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">areaStyle</span>: &#123;</span><br><span class="line">  <span class="attr">color</span>: <span class="keyword">new</span> echarts.<span class="property">graphic</span>.<span class="title class_">RadialGradient</span>(<span class="number">0.1</span>, <span class="number">0.6</span>, <span class="number">1</span>, [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">color</span>: <span class="string">&#x27;rgba(255, 145, 124, 0.1)&#x27;</span>,</span><br><span class="line">      <span class="attr">offset</span>: <span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">color</span>: <span class="string">&#x27;rgba(255, 145, 124, 0.9)&#x27;</span>,</span><br><span class="line">      <span class="attr">offset</span>: <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  ])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
@@ -759,8 +738,7 @@
 </ul>
 <h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><ul>
 <li>一般联动图会定时动态改变数据，在定时器中实时改变图的数据</li>
-<li>一般联动图会有一个滚动条显示，可以使用dataZoom或者使用graphic自定义一个组件，然后动画和事件在图形上调用</li>
-<li>chart.on(‘click’, function(params) {})</li>
+<li>一般联动图会有一个滚动条显示，可以使用dataZoom或者使用graphic自定义一个组件，然后动画和事件在图形上调用<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chart.<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span>(<span class="params">params</span>) &#123;&#125;)</span><br></pre></td></tr></table></figure></li>
 </ul>
 
 </article>

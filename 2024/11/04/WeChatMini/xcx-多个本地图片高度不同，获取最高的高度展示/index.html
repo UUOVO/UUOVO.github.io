@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content=".en{   color: green;   font-weight:600; }   获取最高的高度展示 1.先使用swiper组件将图片的框架搭建好(使用&lt;image&#x2F;&gt;标签最好加个mode &#x3D;&quot;widthFix&quot;) 如果图片是动态生成的的，按以下步骤走 2.由于高度不一致，需通过wx.createSelectorQuery()获取每一张图片的属性（重点是高度">
+<meta name="description" content="获取最高的高度展示 使用swiper组件将图片的框架搭建好(使用image标签最好加个『mode &#x3D;”widthFix”』)  如果图片是动态生成的的，按以下步骤走 由于高度不一致，通过『wx.createSelectorQuery()』获取每一张图片的属性（重点是高度） 因为框架初始要渲染，所以代码要写在onReady钩子里 定义一个存放图片节点的空数组，因为要全局使用，需放在p">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信小程序-动态展示图片，高度不一致">
 <meta property="og:url" content="http://example.com/2024/11/04/WeChatMini/xcx-%E5%A4%9A%E4%B8%AA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E9%AB%98%E5%BA%A6%E4%B8%8D%E5%90%8C%EF%BC%8C%E8%8E%B7%E5%8F%96%E6%9C%80%E9%AB%98%E7%9A%84%E9%AB%98%E5%BA%A6%E5%B1%95%E7%A4%BA/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content=".en{   color: green;   font-weight:600; }   获取最高的高度展示 1.先使用swiper组件将图片的框架搭建好(使用&lt;image&#x2F;&gt;标签最好加个mode &#x3D;&quot;widthFix&quot;) 如果图片是动态生成的的，按以下步骤走 2.由于高度不一致，需通过wx.createSelectorQuery()获取每一张图片的属性（重点是高度">
+<meta property="og:description" content="获取最高的高度展示 使用swiper组件将图片的框架搭建好(使用image标签最好加个『mode &#x3D;”widthFix”』)  如果图片是动态生成的的，按以下步骤走 由于高度不一致，通过『wx.createSelectorQuery()』获取每一张图片的属性（重点是高度） 因为框架初始要渲染，所以代码要写在onReady钩子里 定义一个存放图片节点的空数组，因为要全局使用，需放在p">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-11-04T01:57:31.917Z">
-<meta property="article:modified_time" content="2025-06-30T07:27:39.133Z">
+<meta property="article:modified_time" content="2025-07-21T09:28:38.259Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="image">
 <meta name="twitter:card" content="summary">
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-06-30 15:27:39"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-21 17:28:38"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -532,32 +532,26 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <style>
-.en{
-  color: green;
-  font-weight:600;
-}
-</style>
+    <script src="/js/enChangegreen.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/global.css">
 
 <h2 id="获取最高的高度展示"><a href="#获取最高的高度展示" class="headerlink" title="获取最高的高度展示"></a>获取最高的高度展示</h2><ul>
-<li>1.先使用swiper组件将图片的框架搭建好(使用<code>&lt;image/&gt;</code>标签最好加个<span class="en"><code>mode =&quot;widthFix&quot;</code></span>)</li>
-<li><h3 id="如果图片是动态生成的的，按以下步骤走"><a href="#如果图片是动态生成的的，按以下步骤走" class="headerlink" title="如果图片是动态生成的的，按以下步骤走"></a>如果图片是动态生成的的，按以下步骤走</h3><ul>
-<li>2.由于高度不一致，需通过<span class="en"><code>wx.createSelectorQuery()</code></span>获取每一张图片的属性（重点是高度）</li>
-<li>3.因为框架初始要渲染，所以将代码写在<code>onReady</code>钩子里面</li>
-<li>4.定义一个存放图片节点的空数组，因为要全局使用，需放在<code>page</code>上方</li>
-<li>5.要获取图片存储的选择器，获取图片的属性(id 选择器是一对一，类选择器是选全部)</li>
-<li>6.<code>swiper</code>本身有一个<code>current</code>属性，需在<code>data</code>中初始化</li>
-<li>7.定义一个数组，将获取到的图片节点信息<code>res[0]</code>存放在里面，为防止报错最好 <span class="en">|| 初始值（数组[],对象 null）</span></li>
-<li>8.<code>current</code> 要动态获取</li>
-<li>9.判断是否有图片，有的话就将定义的数组赋值给图片节点存放的数组</li>
-<li>10.获取到图片的高度，首先要在<code>data</code>初始化，然后然后动态传递给初始化变量</li>
-<li>11.查看显示的长度是否异常（从执行的函数开始往下找）</li>
-<li>12.异步，使用延时器加载</li>
+<li>使用swiper组件将图片的框架搭建好(使用image标签最好加个<span class="key_words">『mode &#x3D;”widthFix”』</span>)</li>
 </ul>
-</li>
-<li><h3 id="图片非动态的直接使用css样式和mode来控制"><a href="#图片非动态的直接使用css样式和mode来控制" class="headerlink" title="图片非动态的直接使用css样式和mode来控制"></a>图片非动态的直接使用css样式和mode来控制</h3></li>
-</ul>
-
+<h3 id="如果图片是动态生成的的，按以下步骤走"><a href="#如果图片是动态生成的的，按以下步骤走" class="headerlink" title="如果图片是动态生成的的，按以下步骤走"></a>如果图片是动态生成的的，按以下步骤走</h3><ol>
+<li>由于高度不一致，通过<span class="key_words">『wx.createSelectorQuery()』</span>获取每一张图片的属性（<span class="desc">重点是高度</span>）</li>
+<li>因为框架初始要渲染，所以代码要写在onReady钩子里</li>
+<li>定义一个存放图片节点的空数组，因为要全局使用，需放在page上方</li>
+<li>要获取图片存储的选择器，获取图片的属性(<span class="key_words">id 选择器是一对一，类选择器是选全部</span>)</li>
+<li>swiper本身有一个current属性，需在data中初始化</li>
+<li>定义一个数组，将获取到的图片节点信息res[0]存放在里面，为防止报错最好 <span class="key_words">『或一个初始值（数组[],对象 null）』</span></li>
+<li>current 要动态获取</li>
+<li>判断是否有图片，有的话就将定义的数组赋值给图片节点存放的数组</li>
+<li>获取到图片的高度，首先要在data初始化，然后然后动态传递给初始化变量</li>
+<li>查看显示的长度是否异常（<span class="desc">从执行的函数开始往下找</span>）</li>
+<li>异步，使用延时器加载</li>
+</ol>
+<h3 id="图片非动态的直接使用css样式和mode来控制"><a href="#图片非动态的直接使用css样式和mode来控制" class="headerlink" title="图片非动态的直接使用css样式和mode来控制"></a>图片非动态的直接使用css样式和mode来控制</h3>
 </article>
     
     

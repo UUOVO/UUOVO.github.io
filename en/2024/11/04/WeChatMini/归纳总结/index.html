@@ -7,16 +7,16 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content=".key {   color: #483D8B;   font-weight: 600; }   当前页面对某个选项进行切换，同步更新全局更新 该问题使用的技术栈是 React + Taro搭建的微信小程序   分析： 既然是全局更新就要在全局store中设置好存储的变量，方便统一管理 在首页将页面要获取的共同内容存到对应变量中 在对应的页面拿取这个变量的内容 然后就处理事件即可   遇到的问题">
+<meta name="description" content="当前页面对某个选项进行切换，同步更新全局更新 该问题使用的技术栈是 React + Taro搭建的微信小程序  分析： 既然是全局更新就要在全局store中设置好存储的变量，方便统一管理 在首页将页面要获取的共同内容存到对应变量中 在对应的页面拿取这个变量的内容 然后就处理事件即可  遇到的问题： 代码写完后，页面没有变化，通过打印发现变量有更新，但是没有重新调用请求  解决方案 存在分页?">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信小程序-归纳总结">
 <meta property="og:url" content="http://example.com/en/2024/11/04/WeChatMini/%E5%BD%92%E7%BA%B3%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content=".key {   color: #483D8B;   font-weight: 600; }   当前页面对某个选项进行切换，同步更新全局更新 该问题使用的技术栈是 React + Taro搭建的微信小程序   分析： 既然是全局更新就要在全局store中设置好存储的变量，方便统一管理 在首页将页面要获取的共同内容存到对应变量中 在对应的页面拿取这个变量的内容 然后就处理事件即可   遇到的问题">
+<meta property="og:description" content="当前页面对某个选项进行切换，同步更新全局更新 该问题使用的技术栈是 React + Taro搭建的微信小程序  分析： 既然是全局更新就要在全局store中设置好存储的变量，方便统一管理 在首页将页面要获取的共同内容存到对应变量中 在对应的页面拿取这个变量的内容 然后就处理事件即可  遇到的问题： 代码写完后，页面没有变化，通过打印发现变量有更新，但是没有重新调用请求  解决方案 存在分页?">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/404.jpg">
 <meta property="article:published_time" content="2024-11-04T01:57:32.066Z">
-<meta property="article:modified_time" content="2024-12-10T08:31:58.855Z">
+<meta property="article:modified_time" content="2025-07-24T02:23:39.965Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="问题与方案">
 <meta name="twitter:card" content="summary">
@@ -70,7 +70,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-12-10 16:31:58"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-24 10:23:39"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -534,124 +534,103 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <style>
-.key {
-  color: #483D8B;
-  font-weight: 600;
-}
-</style>
+    <script src="/js/enChangegreen.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/global.css">
 
 <h2 id="当前页面对某个选项进行切换，同步更新全局更新"><a href="#当前页面对某个选项进行切换，同步更新全局更新" class="headerlink" title="当前页面对某个选项进行切换，同步更新全局更新"></a>当前页面对某个选项进行切换，同步更新全局更新</h2><blockquote>
 <p>该问题使用的技术栈是 React + Taro搭建的微信小程序</p>
 </blockquote>
-<ul>
-<li><h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><ul>
+<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><ul>
 <li>既然是全局更新就要在全局store中设置好存储的变量，方便统一管理</li>
 <li>在首页将页面要获取的共同内容存到对应变量中</li>
 <li>在对应的页面拿取这个变量的内容</li>
 <li>然后就处理事件即可</li>
 </ul>
-</li>
-<li><h3 id="遇到的问题："><a href="#遇到的问题：" class="headerlink" title="遇到的问题："></a>遇到的问题：</h3><ul>
-<li>写完代码后，查看页面没有变化，通过打印发现变量有更新，但是没有重新调用请求</li>
+<h3 id="遇到的问题："><a href="#遇到的问题：" class="headerlink" title="遇到的问题："></a>遇到的问题：</h3><ul>
+<li>代码写完后，页面没有变化，通过打印发现变量有更新，但是没有重新调用请求</li>
+</ul>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
+<li>存在分页? 检查<span class="key_words">『数据顺序』</span></li>
+<li>查看要调用的<span class="key_words">『请求依赖的变量对象是否更新』</span></li>
+<li>编辑和查看接口使用useQuery来获取，且通过选项切换接口发现只有一个有问题，查看这个接口useQuery的enabled<ul>
+<li><span class="key_words">『enabled:false, 数据不会重新更新』</span>，即enabled:true，或去掉enabled都行</li>
 </ul>
 </li>
-<li><h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
-<li>如果存在分页，检查数据<span class="key">顺序</span>是否有问题</li>
-<li>查看要调用的<span class="key">请求依赖哪些变量对象</span>，查看这个对象中的变量或变量<span class="key">是否更新</span>，是否每次更新时都更新该对象，如果没有，就要想办法赋值使该对象更新</li>
-<li>如果是查看或者创建数据的时候用到<code>useQuery</code>来获取接口数据的话，且通过切换选项看到其他接口可以随着切换重新请求数据，而其中一个不行，问题极有可能是这个接口的<code>useQuery</code>的使用了<span class="key"><code>enabled:false</code>,导致数据不会重新更新</span>，所以此时设置<span class="key"><code>enabled:true</code>，或<code>去掉enabled</code></span>都可解决</li>
-<li>承接方法3，如果是<span class="key">创建和编辑在同一个页面</span>在一起的话，初始数据和处理方式是有些不同的，这个时候，编辑页面需要<code>传参</code>表明它是编辑页面，<span class="key">编辑页面不需要切换</span>，且要带着已经编辑过的数据，既<code>useQuery</code>中要<span class="key"><code>enabled:false</code></span>，记录数据，不轻易更新，所以解决方法是<span class="key"><code>enabled: type !== &#39;edit&#39;</code></span>，其中type时用来标记当前页面时编辑状态还是创建状态</li>
+<li>创建和编辑在同一个页面，编辑页不需要切换，且要带着已经编辑过的数据<ul>
+<li>编辑页用enabled:false，记录数据，不轻易更新，查看页用true</li>
+<li>传参判断页面类型，enabled: type !&#x3D;&#x3D; ‘edit’，其中type是当前页面状态</li>
 </ul>
 </li>
 </ul>
 <h2 id="缓存问题"><a href="#缓存问题" class="headerlink" title="缓存问题"></a>缓存问题</h2><blockquote>
 <p>该问题使用的技术栈是 React + Taro搭建的微信小程序</p>
 </blockquote>
-<ul>
-<li><h3 id="业务需求"><a href="#业务需求" class="headerlink" title="业务需求"></a>业务需求</h3><ul>
-<li>判断用户是否第一次进入小程序，如果是第一次进入小程序，或者卸载了小程序后再次进入小程序，需要弹起一个窗来让用户选择和填写昵称和头像，而这时候已静默登录了</li>
+<h3 id="业务需求"><a href="#业务需求" class="headerlink" title="业务需求"></a>业务需求</h3><ul>
+<li>在静默登录时判断用户是否第一次进入小程序，如果是第一次进入小程序，或者卸载了小程序后再次进入小程序，需要弹窗来让用户填写昵称和头像</li>
 </ul>
-</li>
-<li><h3 id="分析和解决方案"><a href="#分析和解决方案" class="headerlink" title="分析和解决方案"></a>分析和解决方案</h3><ul>
-<li>翻阅小程序文档可了解到<span class="key"><code>setStorageSync</code>，<code>getStorageSync</code></span>这个操作</li>
+<h3 id="分析和解决方案"><a href="#分析和解决方案" class="headerlink" title="分析和解决方案"></a>分析和解决方案</h3><ul>
+<li>翻阅小程序文档可了解到setStorageSync，getStorageSync这个操作</li>
 <li>理清好业务逻辑</li>
-<li>首先第一次进入时虽然静默登录了，但是<code>storage</code>并没有存储，所以可以在<code>useEffect</code>中先调用<code>wx.getStorageSync()</code>来获取我们要存储的<code>key</code>，由于只需要获取第一次的情况，所以<code>useEffect(()=&gt; &#123;&#125;, [])</code>，这时候<code>useEffect</code>不需要依赖,只调用一次就清除副作用</li>
-<li><span class="key">判断如果没有获取到对应的key就弹窗，有就不弹窗</span></li>
-<li>在弹窗的取消、确认按钮和直接关闭弹窗的逻辑中调用<code>wx.setStorageSync(&#39;key&#39;, value)</code>这个方法存储，即可</li>
+<li>首先第一次进入时虽然静默登录了，但是storage并没有存储，所以可以在useEffect中先调用wx.getStorageSync()来获取我们要存储的key，由于只需要获取第一次的情况，所以useEffect(()&#x3D;&gt; {}, []),不需要依赖</li>
+<li>没有获取到对应的key就弹窗，有就不弹窗</li>
+<li>在弹窗的取消、确认按钮和直接关闭弹窗的逻辑中调用<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wx.<span class="title function_">setStorageSync</span>(<span class="string">&#x27;key&#x27;</span>, value)</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-<li><h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
-<li><span class="key">缓存只能存储字符串</span>，所以如果要存储的值不是字符串类型的话，请用<span class="key"><code>JSON.stringify</code></span>将值序列化一下</li>
-<li>最好设置<code>storage</code>时放在<code>try&#123;&#125;catch(e)&#123;&#125;</code>中方便捕获错误</li>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li><span class="key_words">『缓存只能存储字符串』</span>，所以如果要存储的值不是字符串类型的话，请用JSON.stringify将值序列化一下</li>
+<li>最好设置storage时放在try{}catch(e){}中方便捕获错误</li>
 <li>按项目要求，点跳过拿的数据最好是直接拿到静默登录时服务器给的数据的信息，点确认则是要判断是否两个都有获取新数据，没有就禁用，有就存储。</li>
-<li>不管拿到的数据是什么都要注意是否要更新该项目中的用户信息接口和store<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">wx.<span class="title function_">setStorageSync</span>(<span class="string">&#x27;userInfo&#x27;</span>, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(e.<span class="property">detail</span>.<span class="property">userInfo</span>))</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  wx.<span class="title function_">setStorageSync</span>(<span class="string">&#x27;headImg&#x27;</span>,value)</span><br><span class="line">  wx.<span class="title function_">setStorageSync</span>(<span class="string">&#x27;nickname&#x27;</span>,value)</span><br><span class="line">&#125; <span class="keyword">catch</span>(e) &#123;&#125;</span><br><span class="line"><span class="keyword">const</span> headImgValue = wx.<span class="title function_">getStorageSync</span>(<span class="string">&#x27;headImg&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> nicknameValue = wx.<span class="title function_">getStorageSync</span>(<span class="string">&#x27;nickname&#x27;</span>)</span><br><span class="line"><span class="keyword">if</span> (headImagValue &amp;&amp; nicknameValue) &#123;</span><br><span class="line">  <span class="comment">// 不弹窗</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// 弹窗</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
+<li>不管拿到的数据是什么都要注意是否要更新该项目中的用户信息接口和store<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">wx.<span class="title function_">setStorageSync</span>(<span class="string">&#x27;userInfo&#x27;</span>, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(e.<span class="property">detail</span>.<span class="property">userInfo</span>))</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  wx.<span class="title function_">setStorageSync</span>(<span class="string">&#x27;headImg&#x27;</span>,value)</span><br><span class="line">  wx.<span class="title function_">setStorageSync</span>(<span class="string">&#x27;nickname&#x27;</span>,value)</span><br><span class="line">&#125; <span class="keyword">catch</span>(e) &#123;&#125;</span><br><span class="line"><span class="keyword">const</span> headImgValue = wx.<span class="title function_">getStorageSync</span>(<span class="string">&#x27;headImg&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> nicknameValue = wx.<span class="title function_">getStorageSync</span>(<span class="string">&#x27;nickname&#x27;</span>)</span><br><span class="line"><span class="keyword">if</span> (headImagValue &amp;&amp; nicknameValue) &#123;</span><br><span class="line">  <span class="comment">// 不弹窗</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// 弹窗</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="Taro-的消息机制-–-全局消息中心-evenCenter"><a href="#Taro-的消息机制-–-全局消息中心-evenCenter" class="headerlink" title="Taro 的消息机制 – 全局消息中心 evenCenter"></a>Taro 的消息机制 – 全局消息中心 evenCenter</h2><blockquote>
 <p>eventCenter的使用场景一般用作于事件的传递，例如跨页面、跨组件做一些操作。</p>
 </blockquote>
-<ul>
-<li><h3 id="普通使用"><a href="#普通使用" class="headerlink" title="普通使用"></a>普通使用</h3><ul>
-<li>使用<span class="key"><code>evenCenter.trigger(key)</code>来触发</span>事件</li>
-<li>使用<span class="key"><code>evenCenter.on(key,() =&gt; &#123;&#125;)</code>来监听</span>事件</li>
-<li>在<code>useUnLoad</code>中要<span class="key"><code>evenCenter.off(key)</code>卸载</span>事件</li>
+<h3 id="普通使用"><a href="#普通使用" class="headerlink" title="普通使用"></a>普通使用</h3><ul>
+<li>使用evenCenter.trigger(key)来触发事件</li>
+<li>使用evenCenter.on(key,() &#x3D;&gt; {})来监听事件</li>
+<li>在useUnLoad中要evenCenter.off(key)卸载事件</li>
 </ul>
-</li>
-<li><h3 id="需要获取触发事件页面的数据给监听事件这边"><a href="#需要获取触发事件页面的数据给监听事件这边" class="headerlink" title="需要获取触发事件页面的数据给监听事件这边"></a>需要<span class="key">获取触发事件页面的数据</span>给监听事件这边</h3><ul>
-<li>使用<span class="key"><code>evenCenter.trigger(key, arg)</code></span>来触发事件</li>
-<li>使用<span class="key"><code>evenCenter.on(key,() =&gt; &#123;setArg(arg)&#125;)</code></span>来监听事件和触发当页的实时刷新</li>
-<li>在<code>useUnLoad</code>中要<span class="key"><code>evenCenter.off(key)</code></span>卸载事件</li>
+<h3 id="需要获取触发事件页面的数据给监听事件这边"><a href="#需要获取触发事件页面的数据给监听事件这边" class="headerlink" title="需要获取触发事件页面的数据给监听事件这边"></a>需要获取触发事件页面的数据给监听事件这边</h3><ul>
+<li>使用evenCenter.trigger(key, arg)来触发事件</li>
+<li>使用evenCenter.on(key,() &#x3D;&gt; {setArg(arg)})来监听事件和触发当页的实时刷新</li>
+<li>在useUnLoad中要evenCenter.off(key)卸载事件</li>
 </ul>
-</li>
-<li><h3 id="发送数据给页面"><a href="#发送数据给页面" class="headerlink" title="发送数据给页面"></a>发送数据给页面</h3><ul>
-<li>使用<span class="key"><code>evenCenter.on(key,() =&gt; &#123;fn(arg)&#125;)</code></span>来发送数据</li>
-<li>使用<span class="key"><code>evenCenter.trigger(key, fn(arg))</code></span>来接收数据</li>
+<h3 id="发送数据给页面"><a href="#发送数据给页面" class="headerlink" title="发送数据给页面"></a>发送数据给页面</h3><ul>
+<li>使用evenCenter.on(key,() &#x3D;&gt; {fn(arg)})来发送数据</li>
+<li>使用evenCenter.trigger(key, fn(arg))来接收数据</li>
 </ul>
-</li>
-<li><h3 id="切换参数，然后返回"><a href="#切换参数，然后返回" class="headerlink" title="切换参数，然后返回"></a>切换参数，然后返回</h3><ul>
-<li>在<code>useUnload</code>中<span class="key">卸载的时候触发事件和传参</span></li>
-<li>或<span class="key">在受影响的页面中</span>从store中拿到全局变量xxx并且<span class="key">实时监听全局变量</span>xxx的改变</li>
+<h3 id="切换参数，然后返回"><a href="#切换参数，然后返回" class="headerlink" title="切换参数，然后返回"></a>切换参数，然后返回</h3><ul>
+<li>在useUnload中<span class="key_words">『卸载的时候触发事件和传参』</span></li>
+<li>或<span class="key_words">『在受影响的页面中』</span>从store中拿到全局变量xxx并且<span class="key_words">『实时监听全局变量』</span>xxx的改变</li>
 </ul>
-</li>
-</ul>
-<h2 id="Taro-页面跳转的消息机制-–-eventChannel"><a href="#Taro-页面跳转的消息机制-–-eventChannel" class="headerlink" title="Taro 页面跳转的消息机制 – eventChannel"></a>Taro 页面跳转的消息机制 – eventChannel</h2><ul>
-<li><h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><ul>
-<li>A页面使用navigateTo等跳转方法直接触发事件<span class="key">res.eventChannel.emit(key,data)</span></li>
-<li>B页面首先需要获取当前页面的实例，然后调用<span class="key">getOpenerEventChannel()</span>获取eventChannel对象</li>
-<li>B页面使用<span class="key">eventChannel.on(key,callbackFn)</span></li>
+<h2 id="Taro-页面跳转的消息机制-–-eventChannel"><a href="#Taro-页面跳转的消息机制-–-eventChannel" class="headerlink" title="Taro 页面跳转的消息机制 – eventChannel"></a>Taro 页面跳转的消息机制 – eventChannel</h2><h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><ul>
+<li>A页面使用navigateTo等跳转方法直接触发事件res.eventChannel.emit(key,data)</li>
+<li>B页面首先需要获取当前页面的实例，然后调用getOpenerEventChannel()获取eventChannel对象</li>
+<li>B页面使用eventChannel.on(key,callbackFn)</li>
 <li>A页面也可以通过跳转时的events中的创建的事件来获取B页面传输过来的数据</li>
-<li>B页面通过<span class="key">eventChannel.emit(events中的事件名,data)</span>来触发事件</li>
+<li>B页面通过eventChannel.emit(events中的事件名,data)来触发事件</li>
 </ul>
-</li>
-<li><h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><ul>
-<li>A页面<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Taro</span>.<span class="title function_">navigateTo</span>(&#123;</span><br><span class="line">	<span class="attr">url</span>: <span class="string">&quot;/pages/test/index&quot;</span>, <span class="comment">// 跳到页面B</span></span><br><span class="line">	events： &#123;</span><br><span class="line">		<span class="attr">acceptB</span>: (data) &#123;&#125; <span class="comment">// 获取B页面传送到当前页面的数据</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">success</span>: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">// 向sendB发送数据</span></span><br><span class="line">		res.<span class="property">eventChannel</span>.<span class="title function_">emit</span>(<span class="string">&quot;sendB&quot;</span>, &#123;<span class="attr">data</span>: 要传递的数据&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-<li>B页面<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> pages = <span class="title class_">Taro</span>.<span class="title function_">getCurrentPages</span>()</span><br><span class="line"><span class="keyword">const</span> current = pages[pages.<span class="property">length</span> - <span class="number">1</span>]</span><br><span class="line"><span class="keyword">const</span> eventChannel = current.<span class="title function_">getOpenerEventChannel</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 触发A页面events的事件</span></span><br><span class="line">eventChannel.<span class="title function_">emit</span>(<span class="string">&#x27;acceptB&#x27;</span>, &#123;要传给A的数据&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 接受A页面对应事件传递的数据</span></span><br><span class="line">eventChannel.<span class="title function_">on</span>(<span class="string">&quot;sendB&quot;</span>, <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;<span class="variable language_">console</span>.<span class="title function_">log</span>(res)&#125;)</span><br></pre></td></tr></table></figure></li>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><ul>
+<li>A页面<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Taro</span>.<span class="title function_">navigateTo</span>(&#123;</span><br><span class="line">	<span class="attr">url</span>: <span class="string">&quot;/pages/test/index&quot;</span>, <span class="comment">// 跳到页面B</span></span><br><span class="line">	events： &#123;</span><br><span class="line">		<span class="attr">acceptB</span>: (data) &#123;&#125; <span class="comment">// 获取B页面传送到当前页面的数据</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">success</span>: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">// 向sendB发送数据</span></span><br><span class="line">		res.<span class="property">eventChannel</span>.<span class="title function_">emit</span>(<span class="string">&quot;sendB&quot;</span>, &#123;<span class="attr">data</span>: 要传递的数据&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>B页面<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> pages = <span class="title class_">Taro</span>.<span class="title function_">getCurrentPages</span>()</span><br><span class="line"><span class="keyword">const</span> current = pages[pages.<span class="property">length</span> - <span class="number">1</span>]</span><br><span class="line"><span class="keyword">const</span> eventChannel = current.<span class="title function_">getOpenerEventChannel</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 触发A页面events的事件</span></span><br><span class="line">eventChannel.<span class="title function_">emit</span>(<span class="string">&#x27;acceptB&#x27;</span>, &#123;要传给A的数据&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 接受A页面对应事件传递的数据</span></span><br><span class="line">eventChannel.<span class="title function_">on</span>(<span class="string">&quot;sendB&quot;</span>, <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;<span class="variable language_">console</span>.<span class="title function_">log</span>(res)&#125;)</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-<li><h3 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h3><ul>
+<h3 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h3><ul>
 <li><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/route/EventChannel.html">API-EventChannel</a></li>
 <li><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateTo.html">API-wx.navigateTo</a></li>
 <li><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html#%E9%A1%B5%E9%9D%A2%E9%97%B4%E9%80%9A%E4%BF%A1">官方示例</a></li>
 </ul>
-</li>
-</ul>
 <h2 id="在-input-标签中使用-useState-和-useRef-的影响"><a href="#在-input-标签中使用-useState-和-useRef-的影响" class="headerlink" title="在 input 标签中使用 useState 和 useRef 的影响"></a>在 input 标签中使用 useState 和 useRef 的影响</h2><blockquote>
 <p>该问题使用的技术栈是 React + Taro搭建的微信小程序</p>
 </blockquote>
-<ul>
-<li><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ul>
-<li>问题1：使用<code>&lt;Input value=&quot;&quot;/&gt;</code> 标签，需要动态获取输入框中输入的<code>value</code>的值来更新数据时，存在使用<code>useState</code>来获取<code>value</code>时，当value<code>已有值</code>，要<code>完全删除</code>旧值，输入新值时，<code>删到旧值的最后一个字符</code>时输入框会一直<code>循环重复</code>旧值，删不掉</li>
-<li>问题2：当使用<code>useRef</code>获取的数据作为其他数据的<code>依赖</code>时，对应的数据不会随着<code>useRef</code>获取新数据的更新而更新</li>
-</ul>
-</li>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ul>
+<li>Q1：使用input 标签，需要动态获取输入框中输入的value的值来更新数据时，存在使用useState来获取value时，当value已有值，要完全删除旧值，输入新值时，<span class="key_words">『删到旧值的最后一个字符时输入框会一直循环重复』</span>旧值，删不掉</li>
+<li>Q2：当使用useRef获取的数据作为其他数据的依赖时，对应的数据不会随着useRef获取新数据的更新而更新</li>
 <li><h3 id="分析存在的原因"><a href="#分析存在的原因" class="headerlink" title="分析存在的原因"></a>分析存在的原因</h3><ul>
-<li><span class="key"><code>useRef</code>直接操作<code>dom</code></span>，返回的ref对象在组件的整个生命周期内保持不变，当<span class="key">更新时不会触发组件的重新渲染</span>，而<span class="key">useState</span>会存放组件中包含的各种数据(状态)，并且当<span class="key">组件更新state&#96;时会触发组件的重新渲染</span></li>
+<li><span class="key_words">『useRef直接操作dom』</span>，返回的ref对象在组件的整个生命周期内保持不变，当<span class="key_words">『更新时不会触发组件的重新渲染』</span>，而useState会存放组件中包含的各种数据(状态)，并且当<span class="key_words">『组件更新state时会触发组件的重新渲染』</span></li>
 </ul>
 </li>
 <li><h3 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
-<li>问题1：将变量的存储和获取方式从<code>useState</code>换成<code>useRef</code></li>
-<li>问题2：通过设置一个用<code>useState</code>存储的常量，当<code>useRef</code>更新时，让常量更新，常量存储更新后的<code>useRef</code>的数据，并作为其他数据的依赖，保证了<code>useRef</code>的数据更新时其他数据也能随着更新。</li>
+<li>A1：将变量的存储和获取方式从useState换成useRef</li>
+<li>A2：通过设置一个用useState存储的常量，当useRef更新时，让常量更新，常量存储更新后的useRef的数据，并作为其他数据的依赖，保证了useRef的数据更新时其他数据也能随着更新。</li>
 </ul>
 </li>
 </ul>
@@ -659,89 +638,66 @@
 <p>该问题适用于任何使用小程序 scroll-view 组件或直接使用或二次封装等</p>
 </blockquote>
 <ul>
-<li>根据小程序官方文档，<code>show-scrollbar</code>默认为<code>true</code>即显示滚动条。</li>
-<li><h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h3><ul>
-<li>当想要<span class="key">隐藏滚动条</span>时，需要enhanced&#x3D;”true”和show-scrollbar&#x3D;”false”,但是实践会发现滚动条依然存在</li>
+<li>根据小程序官方文档，show-scrollbar默认为true即显示滚动条。</li>
 </ul>
-</li>
-<li><h3 id="存在的原因"><a href="#存在的原因" class="headerlink" title="存在的原因"></a>存在的原因</h3><ul>
+<h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h3><ul>
+<li>当想要<span class="key_words">『隐藏滚动条』</span>时，需要enhanced&#x3D;”true”和show-scrollbar&#x3D;”false”,但是实践会发现滚动条依然存在</li>
+</ul>
+<h3 id="存在的原因"><a href="#存在的原因" class="headerlink" title="存在的原因"></a>存在的原因</h3><ul>
 <li>show-scrollbar&#x3D;””,直接赋值时，因为字符串里面有值就是true</li>
 </ul>
-</li>
-<li><h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ul>
-<li>根据不同框架，给<code>show-scrollbar</code>赋值为<code>false</code>时，添加<code>&#123;&#125;</code>，和<code>enhanced</code><ul>
-<li><span class="key"><code>react</code> 使用 <code>&#123;false&#125;</code></span></li>
-<li><span class="key">原生微信小程序 使用 <code>&quot;&#123;&#123;false&#125;&#125;&quot;</code></span></li>
-</ul>
-</li>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ul>
+<li>根据不同框架，给show-scrollbar赋值为false时，添加{}，和enhanced<ul>
+<li>react 使用 {false}</li>
+<li>原生微信小程序 使用 “false“</li>
 </ul>
 </li>
 </ul>
 <h2 id="解决滚动禁止穿透页面"><a href="#解决滚动禁止穿透页面" class="headerlink" title="解决滚动禁止穿透页面"></a>解决滚动禁止穿透页面</h2><blockquote>
 <p>该问题适用于微信小程序</p>
 </blockquote>
-<ul>
-<li><h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><ul>
-<li>弹窗界面滚动(存不存在scroll-view无所谓，只要能滚动)带动下层的页面跟着滚动</li>
+<h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><ul>
+<li>弹窗界面滚动(<span class="desc">存不存在scroll-view无所谓，只要能滚动</span>)带动下层的页面跟着滚动</li>
 </ul>
-</li>
-<li><h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><ul>
-<li>1.在弹窗组件的插槽中用一个view包裹住该弹窗要展示的内容，然后给这个view添加catch:touchmove&#x3D;”noop”</li>
-<li>2.然后在ts&#x2F;js文件中直接添加noop(){return}即可</li>
-</ul>
-</li>
-</ul>
+<h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><ol>
+<li>在弹窗组件的插槽中用一个view包裹住该弹窗要展示的内容，然后给这个view添加catch:touchmove&#x3D;”noop”</li>
+<li>然后在ts&#x2F;js文件中直接添加<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">noop</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
 <h2 id="复制大段文本，文本丢失问题"><a href="#复制大段文本，文本丢失问题" class="headerlink" title="复制大段文本，文本丢失问题"></a>复制大段文本，文本丢失问题</h2><blockquote>
 <p>微信小程序的原生组件 textarea</p>
 </blockquote>
-<ul>
-<li><h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3></li>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><ul>
 <li>小程序的textare组件默认了maxlength &#x3D; 140</li>
-<li><h3 id="解决方案-2"><a href="#解决方案-2" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
-<li>设置maxlength &#x3D; -1</li>
 </ul>
-</li>
+<h3 id="解决方案-2"><a href="#解决方案-2" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
+<li>设置maxlength &#x3D; -1</li>
 </ul>
 <h2 id="单选框radio除了可以传value可以传其他的值"><a href="#单选框radio除了可以传value可以传其他的值" class="headerlink" title="单选框radio除了可以传value可以传其他的值"></a>单选框radio除了可以传value可以传其他的值</h2><blockquote>
 <p>微信小程序的 radio-group 组件和 radio 组件，该问题收集于微信开放社区</p>
 </blockquote>
 <p><img src="/../../img/WeChatMini/question-radio.png" alt="单选框radio除了可以传value可以传其他的值"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
-<ul>
-<li><h3 id="问题-2"><a href="#问题-2" class="headerlink" title="问题"></a>问题</h3><ul>
+<h3 id="问题-2"><a href="#问题-2" class="headerlink" title="问题"></a>问题</h3><ul>
 <li>data-传值在bindChange事件里接收不到，只能获取到value的值 &#x3D;&#x3D;&#x3D; 向value传其他的值</li>
 </ul>
-</li>
-<li><h3 id="解决方法-1"><a href="#解决方法-1" class="headerlink" title="解决方法"></a>解决方法</h3><ul>
-<li>使用wxs处理<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*wxml*/</span></span><br><span class="line">&lt;wxs <span class="variable language_">module</span>=<span class="string">&quot;JSON&quot;</span>&gt;</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  stringify : <span class="keyword">function</span>(<span class="params">item</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(item)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/wxs&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">radio-group</span> <span class="attr">...</span> &gt;</span></span></span><br><span class="line"><span class="language-xml">....</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">radio</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123;JSON.stringify(item)&#125;&#125;&quot;</span> <span class="attr">checked</span>=<span class="string">&quot;&#123;&#123;item.checked&#125;&#125;&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">radio-group</span>&gt;</span></span></span><br><span class="line"><span class="comment">/*ts*/</span></span><br><span class="line"><span class="attr">radioChange</span>: <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> d = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(e.<span class="property">detail</span>.<span class="property">value</span>)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;radio发生change事件，携带value值为：&#x27;</span>, d)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<h3 id="解决方法-1"><a href="#解决方法-1" class="headerlink" title="解决方法"></a>解决方法</h3><ul>
+<li>使用wxs处理<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*wxml*/</span></span><br><span class="line">&lt;wxs <span class="variable language_">module</span>=<span class="string">&quot;JSON&quot;</span>&gt;</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  stringify : <span class="keyword">function</span>(<span class="params">item</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(item)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/wxs&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">radio-group</span> <span class="attr">...</span> &gt;</span></span></span><br><span class="line"><span class="language-xml">....</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">radio</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123;JSON.stringify(item)&#125;&#125;&quot;</span> <span class="attr">checked</span>=<span class="string">&quot;&#123;&#123;item.checked&#125;&#125;&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">radio-group</span>&gt;</span></span></span><br><span class="line"><span class="comment">/*ts*/</span></span><br><span class="line"><span class="attr">radioChange</span>: <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> d = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(e.<span class="property">detail</span>.<span class="property">value</span>)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;radio发生change事件，携带value值为：&#x27;</span>, d)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-</ul>
-<h2 id="关于微信昵称中Emoji表情乱码问题"><a href="#关于微信昵称中Emoji表情乱码问题" class="headerlink" title="关于微信昵称中Emoji表情乱码问题"></a>关于微信昵称中Emoji表情乱码问题</h2><ul>
-<li><h3 id="问题-3"><a href="#问题-3" class="headerlink" title="问题"></a>问题</h3><ul>
+<h2 id="关于微信昵称中Emoji表情乱码问题"><a href="#关于微信昵称中Emoji表情乱码问题" class="headerlink" title="关于微信昵称中Emoji表情乱码问题"></a>关于微信昵称中Emoji表情乱码问题</h2><h3 id="问题-3"><a href="#问题-3" class="headerlink" title="问题"></a>问题</h3><ul>
 <li>昵称带Emoji表情，保存到数据库里，页面显示就乱码</li>
 </ul>
-</li>
-<li><h3 id="解决方法-2"><a href="#解决方法-2" class="headerlink" title="解决方法"></a>解决方法</h3><ul>
-<li>将包含该Emoji表情的信息<span class="key">encodeURIComponent</span>编码，在使用的地方，在<span class="key">decodeURIComponent</span>解码<ul>
-<li>在数据库连接的时候采用<span class="key">utf8mb4</span>，数据库编码和表格编码以及对应的存储字段都采用utf8mb4编码</li>
-</ul>
-</li>
-</ul>
-</li>
+<h3 id="解决方法-2"><a href="#解决方法-2" class="headerlink" title="解决方法"></a>解决方法</h3><ul>
+<li>将包含该Emoji表情的信息encodeURIComponent编码，在使用的地方，在decodeURIComponent解码</li>
+<li>在数据库连接的时候采用utf8mb4，数据库编码和表格编码以及对应的存储字段都采用utf8mb4编码</li>
 </ul>
 <h2 id="小程序分享"><a href="#小程序分享" class="headerlink" title="小程序分享"></a>小程序分享</h2><blockquote>
 <p>该方法使用的时vue3 + taro</p>
 </blockquote>
-<ul>
-<li><h3 id="用法示例"><a href="#用法示例" class="headerlink" title="用法示例"></a>用法示例</h3></li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">  <span class="keyword">import</span> &#123; useShareAppMessage &#125; <span class="keyword">from</span> <span class="string">&#x27;@tarojs/taro&#x27;</span></span><br><span class="line"></span><br><span class="line">  <span class="title function_">useShareAppMessage</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (res.<span class="property">from</span> === <span class="string">&#x27;button&#x27;</span>) &#123;</span><br><span class="line">      <span class="comment">// 来自页面内转发按钮</span></span><br><span class="line">			<span class="comment">// 弹出分享图片的菜单，包括图片和发送等</span></span><br><span class="line">			wx.<span class="title function_">showShareImageMenu</span>(&#123;</span><br><span class="line">				<span class="attr">path</span>: res.<span class="property">tempFilePath</span></span><br><span class="line">			&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">		<span class="comment">// 小程序菜单分享</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&#x27;自定义转发标题&#x27;</span>,</span><br><span class="line">      <span class="attr">path</span>: <span class="string">&#x27;/page/user?id=123&#x27;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="用法示例"><a href="#用法示例" class="headerlink" title="用法示例"></a>用法示例</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">  <span class="keyword">import</span> &#123; useShareAppMessage &#125; <span class="keyword">from</span> <span class="string">&#x27;@tarojs/taro&#x27;</span></span><br><span class="line"></span><br><span class="line">  <span class="title function_">useShareAppMessage</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (res.<span class="property">from</span> === <span class="string">&#x27;button&#x27;</span>) &#123;</span><br><span class="line">      <span class="comment">// 来自页面内转发按钮</span></span><br><span class="line">			<span class="comment">// 弹出分享图片的菜单，包括图片和发送等</span></span><br><span class="line">			wx.<span class="title function_">showShareImageMenu</span>(&#123;</span><br><span class="line">				<span class="attr">path</span>: res.<span class="property">tempFilePath</span></span><br><span class="line">			&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">		<span class="comment">// 小程序菜单分享</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&#x27;自定义转发标题&#x27;</span>,</span><br><span class="line">      <span class="attr">path</span>: <span class="string">&#x27;/page/user?id=123&#x27;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
 <h2 id="点击查看更多，展示更多数据"><a href="#点击查看更多，展示更多数据" class="headerlink" title="点击查看更多，展示更多数据"></a>点击查看更多，展示更多数据</h2><blockquote>
 <p>该方法使用微信小程序</p>
 </blockquote>
-<ul>
-<li><h3 id="分析和解决方案-1"><a href="#分析和解决方案-1" class="headerlink" title="分析和解决方案"></a>分析和解决方案</h3></li>
+<h3 id="分析和解决方案-1"><a href="#分析和解决方案-1" class="headerlink" title="分析和解决方案"></a>分析和解决方案</h3><ul>
 <li>先把框架写好</li>
 <li>然后通过数据判断，是否超过一定数量total，和是否点击checked来判断展示更所数据的展示</li>
 <li>然后通过服务端给的数据来展示<ul>
@@ -760,26 +716,21 @@
 </li>
 <li><h3 id="解决方法：-1"><a href="#解决方法：-1" class="headerlink" title="解决方法："></a>解决方法：</h3><ul>
 <li>直接用text标签</li>
-<li>text标签添加属性<span class="key">decode&#x3D;”true“</span>时可以识别<code>&amp;nbsp;</code> ,<code>&amp;gt;</code>等特殊字符</li>
+<li>text标签添加属性decode&#x3D;”true“时可以识别<code>&amp;nbsp;</code> ,<code>&amp;gt;</code>等特殊字符</li>
 </ul>
 </li>
 </ul>
-<h2 id="vant-checkbox-group-注意点"><a href="#vant-checkbox-group-注意点" class="headerlink" title="vant-checkbox-group 注意点"></a>vant-checkbox-group 注意点</h2><ul>
-<li><h3 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h3><ul>
+<h2 id="vant-checkbox-group-注意点"><a href="#vant-checkbox-group-注意点" class="headerlink" title="vant-checkbox-group 注意点"></a>vant-checkbox-group 注意点</h2><h3 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h3><ul>
 <li>为什么点击没有勾选</li>
 </ul>
-</li>
-<li><h3 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h3><ul>
+<h3 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h3><ul>
 <li>checkbox组下面的checkbox都要有name属性</li>
 <li>使用checkbox组的方法，onChange，直接给checkbox组的value属性赋值，类型为字符串数组，值为：event.detail</li>
 </ul>
-</li>
-</ul>
 <h2 id="switch用法"><a href="#switch用法" class="headerlink" title="switch用法"></a>switch用法</h2><ul>
 <li>优化: 当有多个键指向的内容一致时</li>
-<li><h3 id="用法示例："><a href="#用法示例：" class="headerlink" title="用法示例："></a>用法示例：</h3></li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(key)&#123;</span><br><span class="line">	<span class="keyword">case</span> key === <span class="number">1</span>:</span><br><span class="line">	<span class="keyword">case</span> key === <span class="number">2</span>:</span><br><span class="line">	<span class="keyword">case</span> key === <span class="number">3</span>:</span><br><span class="line">	  <span class="variable language_">console</span>.<span class="title function_">log</span>(key === <span class="number">1</span> | <span class="number">2</span> | <span class="number">3</span>, content is same)</span><br><span class="line">    <span class="keyword">break</span></span><br><span class="line"> <span class="keyword">default</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="用法示例："><a href="#用法示例：" class="headerlink" title="用法示例："></a>用法示例：</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(key)&#123;</span><br><span class="line">	<span class="keyword">case</span> key === <span class="number">1</span>:</span><br><span class="line">	<span class="keyword">case</span> key === <span class="number">2</span>:</span><br><span class="line">	<span class="keyword">case</span> key === <span class="number">3</span>:</span><br><span class="line">	  <span class="variable language_">console</span>.<span class="title function_">log</span>(key === <span class="number">1</span> | <span class="number">2</span> | <span class="number">3</span>, content is same)</span><br><span class="line">    <span class="keyword">break</span></span><br><span class="line"> <span class="keyword">default</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="Array-filter-Boolean"><a href="#Array-filter-Boolean" class="headerlink" title="Array.filter(Boolean)"></a>Array.filter(Boolean)</h2><blockquote>
 <p>本质上是将元素强制转换为布尔型并判断是否为false，以此来进行校验，适用于需要检验多个表单信息</p>
@@ -791,127 +742,84 @@
 <h2 id="编辑与查看为同一页时，处理方式（无缓存）"><a href="#编辑与查看为同一页时，处理方式（无缓存）" class="headerlink" title="编辑与查看为同一页时，处理方式（无缓存）"></a>编辑与查看为同一页时，处理方式（无缓存）</h2><blockquote>
 <p>本次项目实战使用微信小程序 + ts</p>
 </blockquote>
-<ul>
-<li><h3 id="问题的描述："><a href="#问题的描述：" class="headerlink" title="问题的描述："></a>问题的描述：</h3><ul>
+<h3 id="问题的描述："><a href="#问题的描述：" class="headerlink" title="问题的描述："></a>问题的描述：</h3><ul>
 <li>第一次进入页面是编辑状态，保存了数据后，不管是否清除缓存，都展示最新的数据（只读）</li>
 <li>只有在只读页面中点击对应的按钮，才能进入编辑状态页，并且编辑页只要没有按下保存按钮，则刷新后仍然回到点击前的只读页面，即接口返回的最新数据</li>
 <li>只有当保存后，才会重新进入新的只读页</li>
 </ul>
-</li>
-<li><h3 id="问题的解决："><a href="#问题的解决：" class="headerlink" title="问题的解决："></a>问题的解决：</h3><ul>
+<h3 id="问题的解决："><a href="#问题的解决：" class="headerlink" title="问题的解决："></a>问题的解决：</h3><ul>
 <li>首先需要将要编辑的数据及相关变量保存在同一个初始化函数中</li>
 <li>之后通过接口返回的数据，如果失败，则为第一次进入预约页面的状态，标识编辑，然后初始化函数并且，设置变量来标识为编辑页</li>
 <li>当内容编辑完成后，点击保存，进行校验，保存成功后，将变量标识为只读状态，并且调用接口获取最新的数据和状态，并存到初始化函数中的变量中，保持数据的统一性</li>
 <li>当点击页面的按钮，调用初始化函数，并将变量设置为编辑状态，即可回到编辑页，</li>
 <li>此时只有当在这个页面保存数据，才会产生新的页面，不然不管清缓存还是重新进入该页面，都应回到点击前的只读页面。</li>
 </ul>
-</li>
-<li><h3 id="问题的总结："><a href="#问题的总结：" class="headerlink" title="问题的总结："></a>问题的总结：</h3><ul>
+<h3 id="问题的总结："><a href="#问题的总结：" class="headerlink" title="问题的总结："></a>问题的总结：</h3><ul>
 <li>此次遇到编辑和查看页面为同一页面时，要通过接口的数据返回，来判断并设置对应的标识以区分当前页是编辑还是查看状态</li>
-</ul>
-</li>
 </ul>
 <h2 id="单个表单数据要存入一个对象"><a href="#单个表单数据要存入一个对象" class="headerlink" title="单个表单数据要存入一个对象"></a>单个表单数据要存入一个对象</h2><blockquote>
 <p>该问题使用微信小程序 + ts</p>
 </blockquote>
-<ul>
-<li><h3 id="问题的描述"><a href="#问题的描述" class="headerlink" title="问题的描述"></a>问题的描述</h3><ul>
+<h3 id="问题的描述"><a href="#问题的描述" class="headerlink" title="问题的描述"></a>问题的描述</h3><ul>
 <li>当页面存在多个input标签，并需要保存提交</li>
 <li>一般都会存储在同一个对象中，方便校验</li>
 <li>校验使用上面的Array.filter(Boolean)里面有示例</li>
 </ul>
-</li>
-<li><h3 id="问题的解决"><a href="#问题的解决" class="headerlink" title="问题的解决"></a>问题的解决</h3><ul>
+<h3 id="问题的解决"><a href="#问题的解决" class="headerlink" title="问题的解决"></a>问题的解决</h3><ul>
 <li>多个input标签功能一致，则可以使用同一个函数来操作</li>
 <li>至于具体存进那个key，则可以通过在wxml页面给每一个input添加mark:key&#x3D;”定义的键”</li>
 <li>然后每次调用函数时，可以获取key并存进对应的key中，或清除</li>
 </ul>
-</li>
-<li><h3 id="问题的总结"><a href="#问题的总结" class="headerlink" title="问题的总结"></a>问题的总结</h3><ul>
+<h3 id="问题的总结"><a href="#问题的总结" class="headerlink" title="问题的总结"></a>问题的总结</h3><ul>
 <li>当存在多个标签一致时，观察功能&#x2F;样式是否相同，然后通过给一个区分的标签来实现调用同一个函数实现不同的功能，以减少代码量</li>
-</ul>
-</li>
 </ul>
 <h2 id="setData第二参数"><a href="#setData第二参数" class="headerlink" title="setData第二参数"></a>setData第二参数</h2><blockquote>
 <p>微信小程序中setData方法用于设置数据，更改数据</p>
 </blockquote>
-<ul>
-<li><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
 <li>第一个参数：Object data， 必传， 代表这次要改变的数据</li>
 <li>第二个参数：Function callback， 选填， 代表setData引起的界面更新渲染完毕后的回调函数</li>
 </ul>
-</li>
-<li><h3 id="浅薄理解："><a href="#浅薄理解：" class="headerlink" title="浅薄理解："></a>浅薄理解：</h3><ul>
+<h3 id="浅薄理解："><a href="#浅薄理解：" class="headerlink" title="浅薄理解："></a>浅薄理解：</h3><ul>
 <li>参数一就是主要用来更新数据，设置数据，参数二则是延时器的作用，渲染完在调用回调函数</li>
 </ul>
-</li>
-<li><h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><ul>
-<li>第一个参数：this.setData({val,b:a})</li>
-<li>第二个参数：this.setData({val}, () &#x3D;&gt; { this.setData(value)})</li>
-</ul>
-</li>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><ul>
+<li>第一个参数：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="title function_">setData</span>(&#123; val, <span class="attr">b</span>:a &#125;)</span><br></pre></td></tr></table></figure></li>
+<li>第二个参数：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="title function_">setData</span>(</span><br><span class="line">  &#123;val&#125;, </span><br><span class="line">  <span class="function">() =&gt;</span> &#123; </span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">setData</span>(value)</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="picker-view的value赋值问题"><a href="#picker-view的value赋值问题" class="headerlink" title="picker-view的value赋值问题"></a>picker-view的value赋值问题</h2><blockquote>
 <p>picker-view时微信小程序的原生组件，用于自定义picker</p>
 </blockquote>
 <ul>
 <li>已知picker-view的value属性值为每一个picker-view-column默认选中的索引数组，存在有多少个picker-view-column，数组长度就为多少</li>
-<li><h3 id="问题：-1"><a href="#问题：-1" class="headerlink" title="问题："></a>问题：</h3><ul>
+</ul>
+<h3 id="问题：-1"><a href="#问题：-1" class="headerlink" title="问题："></a>问题：</h3><ul>
 <li>给value赋值时，不管是不是第一项没成功赋值，定位到对应的索引，还是其他项，都显示为在索引0的位置和索引0的值，与所求相异</li>
 </ul>
-</li>
-<li><h3 id="原因：-1"><a href="#原因：-1" class="headerlink" title="原因："></a>原因：</h3><ul>
+<h3 id="原因：-1"><a href="#原因：-1" class="headerlink" title="原因："></a>原因：</h3><ul>
 <li>初始化函数时没有成功赋值进去，存在延时</li>
 </ul>
-</li>
-<li><h3 id="解决："><a href="#解决：" class="headerlink" title="解决："></a>解决：</h3><ul>
-<li>建议用setData的第二参数赋值，this.setData({val}, () &#x3D;&gt; { this.setData(value)})</li>
-</ul>
-</li>
+<h3 id="解决："><a href="#解决：" class="headerlink" title="解决："></a>解决：</h3><ul>
+<li>建议用setData的第二参数赋值，<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="title function_">setData</span>(</span><br><span class="line">  &#123;val&#125;, </span><br><span class="line">  <span class="function">() =&gt;</span> &#123; <span class="variable language_">this</span>.<span class="title function_">setData</span>(value)</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="多行文本溢出省略号"><a href="#多行文本溢出省略号" class="headerlink" title="多行文本溢出省略号"></a>多行文本溢出省略号</h2><ul>
-<li>核心代码<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">overflow</span>: hidden;</span><br><span class="line">text-<span class="attr">overflow</span>: ellipsis;</span><br><span class="line">-webkit-line-<span class="attr">clamp</span>: <span class="number">6</span>;</span><br><span class="line">word-<span class="attr">break</span>: <span class="keyword">break</span>-all;</span><br><span class="line"><span class="attr">display</span>: -webkit-box;</span><br><span class="line">-webkit-box-<span class="attr">orient</span>: vertical;</span><br></pre></td></tr></table></figure></li>
+<li>核心代码<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">overflow</span>: hidden;</span><br><span class="line"><span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">-webkit-<span class="selector-tag">line</span>-clamp: <span class="number">6</span>;</span><br><span class="line"><span class="attribute">word-break</span>: break-all;</span><br><span class="line"><span class="attribute">display</span>: -webkit-box;</span><br><span class="line">-webkit-box-orient: vertical;</span><br></pre></td></tr></table></figure></li>
 <li>注意：如果无效可以限制宽高</li>
 <li>单行文本溢出省略：只要前两行</li>
 </ul>
 <h2 id="跳转返回上一页面并传递参数"><a href="#跳转返回上一页面并传递参数" class="headerlink" title="跳转返回上一页面并传递参数"></a>跳转返回上一页面并传递参数</h2><blockquote>
 <p>微信小程序</p>
 </blockquote>
-<ul>
-<li><h3 id="方法一：-使用wx-navigateBack"><a href="#方法一：-使用wx-navigateBack" class="headerlink" title="方法一： 使用wx.navigateBack"></a>方法一： 使用<code>wx.navigateBack</code></h3><ul>
-<li>1.在子页面中首先获取上一页面<ul>
-<li>const pages &#x3D; getCurrentPages()</li>
-<li>const prePages &#x3D; pages[pages.length -2] &#x2F;&#x2F;上一级页面</li>
-</ul>
-</li>
-<li>2.调用上一页面的setData方法，将数据存到上一页面，存储的变量要现在上一页面的data中声明<ul>
-<li>prePages.setData({存储的变量：这个页面要存储的值})</li>
-</ul>
-</li>
-<li>3.返回上一页面<ul>
-<li>wx.navigateBack({ delta: 1 })</li>
-</ul>
-</li>
-<li>4.上一页面接收子页面的参数可在onLoad或onShow中执行，onShow每次页面加载都会执行，并保存<ul>
-<li>const pages &#x3D; getCurrentPages()</li>
-<li>const currentPages &#x3D; pages[pages.length-1]</li>
-<li>this.setData({存储的变量：这个页面要存储的值})</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><h3 id="方法二：使用wx-navigateTo"><a href="#方法二：使用wx-navigateTo" class="headerlink" title="方法二：使用wx.navigateTo"></a>方法二：使用<code>wx.navigateTo</code></h3><ul>
-<li>1.子页面通过路径传递参数<ul>
-<li>wx.navigateTo({ url: <code>/xxx/xxx/xxx?params=$&#123;params&#125;&amp;params1=$&#123;params&#125;</code>})</li>
-</ul>
-</li>
-<li>2.父页面通过onLoad(options)方法获取参数<ul>
-<li>onLoad(options){ const params &#x3D; options.params }</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<h3 id="方法一：使用wx-navigateBack"><a href="#方法一：使用wx-navigateBack" class="headerlink" title="方法一：使用wx.navigateBack"></a>方法一：使用wx.navigateBack</h3><ol>
+<li>在子页面中首先获取上一页面<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> pages = <span class="title function_">getCurrentPages</span>()</span><br><span class="line"><span class="keyword">const</span> prePages = pages[pages.<span class="property">length</span> -<span class="number">2</span>] <span class="comment">//上一级页面</span></span><br></pre></td></tr></table></figure></li>
+<li>调用上一页面的setData方法，将数据存到上一页面，存储的变量要现在上一页面的data中声明<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prePages.<span class="title function_">setData</span>(&#123;存储的变量：这个页面要存储的值&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>返回上一页面<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wx.<span class="title function_">navigateBack</span>(&#123; <span class="attr">delta</span>: <span class="number">1</span> &#125;)</span><br></pre></td></tr></table></figure></li>
+<li>上一页面接收子页面的参数可在onLoad或onShow中执行，onShow每次页面加载都会执行，并保存<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> pages = <span class="title function_">getCurrentPages</span>()</span><br><span class="line"><span class="keyword">const</span> currentPages = pages[pages.<span class="property">length</span>-<span class="number">1</span>]</span><br><span class="line"><span class="variable language_">this</span>.<span class="title function_">setData</span>(&#123;存储的变量：这个页面要存储的值&#125;)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="方法二：使用wx-navigateTo"><a href="#方法二：使用wx-navigateTo" class="headerlink" title="方法二：使用wx.navigateTo"></a>方法二：使用wx.navigateTo</h3><ol>
+<li>子页面通过路径传递参数<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wx.<span class="title function_">navigateTo</span>(&#123; <span class="attr">url</span>: <span class="string">`/xxx/xxx/xxx?params=<span class="subst">$&#123;params&#125;</span>&amp;params1=<span class="subst">$&#123;params&#125;</span>`</span>&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>父页面通过onLoad(options)方法获取参数<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">onLoad</span>(<span class="params">options</span>)&#123; </span><br><span class="line">  <span class="keyword">const</span> params = options.<span class="property">params</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
 <h2 id="如何避免输入中文拼音时触发input事件"><a href="#如何避免输入中文拼音时触发input事件" class="headerlink" title="如何避免输入中文拼音时触发input事件"></a>如何避免输入中文拼音时触发input事件</h2><blockquote>
 <p>原生html+js</p>
 </blockquote>
@@ -930,7 +838,7 @@
 <ol>
 <li>事件冒泡:<ul>
 <li>bindtap会将事件传递给父节点进行处理，而catchtap会阻止事件继续冒泡到父节点。</li>
-<li>即<code>当一个元素上的bindtap事件被触发，如果该元素的父节点又有bindtap事件，则父节点的事件也会执行；而catchtap则只会触发当前元素的事件处理函数</code></li>
+<li>即<span class="key_words">『当一个元素上的bindtap事件被触发，如果该元素的父节点又有bindtap事件，则父节点的事件也会执行；而catchtap则只会触发当前元素的事件处理函数』</span></li>
 </ul>
 </li>
 <li>绑定顺序:<ul>
@@ -947,7 +855,7 @@
 <h2 id="小红点单数圆形，双数圆矩形"><a href="#小红点单数圆形，双数圆矩形" class="headerlink" title="小红点单数圆形，双数圆矩形"></a>小红点单数圆形，双数圆矩形</h2><blockquote>
 <p>参考vant-icon</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">dot</span> &#123;</span><br><span class="line">	font-<span class="attr">size</span>: 20rpx</span><br><span class="line">  <span class="attr">background</span>: red;</span><br><span class="line">  border-<span class="attr">radius</span>: 16rpx;</span><br><span class="line">  <span class="attr">padding</span>:4rpx 8rpx;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">dot</span> &#123;</span><br><span class="line">	font-<span class="attr">size</span>: 20rpx</span><br><span class="line">  <span class="attr">background</span>: red;</span><br><span class="line">  border-<span class="attr">radius</span>: 16rpx;</span><br><span class="line">  <span class="attr">padding</span>:4rpx 8rpx;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="微信小程序中使用font-weight来加粗字体的，"><a href="#微信小程序中使用font-weight来加粗字体的，" class="headerlink" title="微信小程序中使用font-weight来加粗字体的，"></a>微信小程序中使用font-weight来加粗字体的，</h2><ul>
 <li>部分机型使用数字如600，手机上不显示加粗效果。</li>
@@ -1069,7 +977,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="当前页面对某个选项进行切换，同步更新全局更新"><a rel="nofollow" class="trm-toc-link" href="#当前页面对某个选项进行切换，同步更新全局更新"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">当前页面对某个选项进行切换，同步更新全局更新</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="分析："><a rel="nofollow" class="trm-toc-link" href="#分析："><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">分析：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="遇到的问题："><a rel="nofollow" class="trm-toc-link" href="#遇到的问题："><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">遇到的问题：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决方案"><a rel="nofollow" class="trm-toc-link" href="#解决方案"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">解决方案</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="缓存问题"><a rel="nofollow" class="trm-toc-link" href="#缓存问题"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">缓存问题</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="业务需求"><a rel="nofollow" class="trm-toc-link" href="#业务需求"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">业务需求</span></a></li><li class="trm-toc-item trm-toc-level-3" title="分析和解决方案"><a rel="nofollow" class="trm-toc-link" href="#分析和解决方案"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">分析和解决方案</span></a></li><li class="trm-toc-item trm-toc-level-3" title="注意事项"><a rel="nofollow" class="trm-toc-link" href="#注意事项"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">注意事项</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="Taro 的消息机制 – 全局消息中心 evenCenter"><a rel="nofollow" class="trm-toc-link" href="#Taro-的消息机制-–-全局消息中心-evenCenter"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">Taro 的消息机制 – 全局消息中心 evenCenter</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="普通使用"><a rel="nofollow" class="trm-toc-link" href="#普通使用"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">普通使用</span></a></li><li class="trm-toc-item trm-toc-level-3" title="需要获取触发事件页面的数据给监听事件这边"><a rel="nofollow" class="trm-toc-link" href="#需要获取触发事件页面的数据给监听事件这边"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">需要获取触发事件页面的数据给监听事件这边</span></a></li><li class="trm-toc-item trm-toc-level-3" title="发送数据给页面"><a rel="nofollow" class="trm-toc-link" href="#发送数据给页面"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">发送数据给页面</span></a></li><li class="trm-toc-item trm-toc-level-3" title="切换参数，然后返回"><a rel="nofollow" class="trm-toc-link" href="#切换参数，然后返回"><span class="trm-toc-number">3.4.</span> <span class="trm-toc-text">切换参数，然后返回</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="Taro 页面跳转的消息机制 – eventChannel"><a rel="nofollow" class="trm-toc-link" href="#Taro-页面跳转的消息机制-–-eventChannel"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">Taro 页面跳转的消息机制 – eventChannel</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="使用方法"><a rel="nofollow" class="trm-toc-link" href="#使用方法"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">使用方法</span></a></li><li class="trm-toc-item trm-toc-level-3" title="示例"><a rel="nofollow" class="trm-toc-link" href="#示例"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">示例</span></a></li><li class="trm-toc-item trm-toc-level-3" title="相关文档"><a rel="nofollow" class="trm-toc-link" href="#相关文档"><span class="trm-toc-number">4.3.</span> <span class="trm-toc-text">相关文档</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="在 input 标签中使用 useState 和 useRef 的影响"><a rel="nofollow" class="trm-toc-link" href="#在-input-标签中使用-useState-和-useRef-的影响"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">在 input 标签中使用 useState 和 useRef 的影响</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="问题"><a rel="nofollow" class="trm-toc-link" href="#问题"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">问题</span></a></li><li class="trm-toc-item trm-toc-level-3" title="分析存在的原因"><a rel="nofollow" class="trm-toc-link" href="#分析存在的原因"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">分析存在的原因</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决方案"><a rel="nofollow" class="trm-toc-link" href="#解决方案-1"><span class="trm-toc-number">5.3.</span> <span class="trm-toc-text">解决方案</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="scroll-view 隐藏滚动条问题"><a rel="nofollow" class="trm-toc-link" href="#scroll-view-隐藏滚动条问题"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">scroll-view 隐藏滚动条问题</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="问题"><a rel="nofollow" class="trm-toc-link" href="#问题-1"><span class="trm-toc-number">6.1.</span> <span class="trm-toc-text">问题</span></a></li><li class="trm-toc-item trm-toc-level-3" title="存在的原因"><a rel="nofollow" class="trm-toc-link" href="#存在的原因"><span class="trm-toc-number">6.2.</span> <span class="trm-toc-text">存在的原因</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决方法"><a rel="nofollow" class="trm-toc-link" href="#解决方法"><span class="trm-toc-number">6.3.</span> <span class="trm-toc-text">解决方法</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="解决滚动禁止穿透页面"><a rel="nofollow" class="trm-toc-link" href="#解决滚动禁止穿透页面"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">解决滚动禁止穿透页面</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="问题描述："><a rel="nofollow" class="trm-toc-link" href="#问题描述："><span class="trm-toc-number">7.1.</span> <span class="trm-toc-text">问题描述：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决方法："><a rel="nofollow" class="trm-toc-link" href="#解决方法："><span class="trm-toc-number">7.2.</span> <span class="trm-toc-text">解决方法：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="复制大段文本，文本丢失问题"><a rel="nofollow" class="trm-toc-link" href="#复制大段文本，文本丢失问题"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">复制大段文本，文本丢失问题</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="原因"><a rel="nofollow" class="trm-toc-link" href="#原因"><span class="trm-toc-number">8.1.</span> <span class="trm-toc-text">原因</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决方案"><a rel="nofollow" class="trm-toc-link" href="#解决方案-2"><span class="trm-toc-number">8.2.</span> <span class="trm-toc-text">解决方案</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="单选框radio除了可以传value可以传其他的值"><a rel="nofollow" class="trm-toc-link" href="#单选框radio除了可以传value可以传其他的值"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">单选框radio除了可以传value可以传其他的值</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="问题"><a rel="nofollow" class="trm-toc-link" href="#问题-2"><span class="trm-toc-number">9.1.</span> <span class="trm-toc-text">问题</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决方法"><a rel="nofollow" class="trm-toc-link" href="#解决方法-1"><span class="trm-toc-number">9.2.</span> <span class="trm-toc-text">解决方法</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="关于微信昵称中Emoji表情乱码问题"><a rel="nofollow" class="trm-toc-link" href="#关于微信昵称中Emoji表情乱码问题"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">关于微信昵称中Emoji表情乱码问题</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="问题"><a rel="nofollow" class="trm-toc-link" href="#问题-3"><span class="trm-toc-number">10.1.</span> <span class="trm-toc-text">问题</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决方法"><a rel="nofollow" class="trm-toc-link" href="#解决方法-2"><span class="trm-toc-number">10.2.</span> <span class="trm-toc-text">解决方法</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="小程序分享"><a rel="nofollow" class="trm-toc-link" href="#小程序分享"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">小程序分享</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="用法示例"><a rel="nofollow" class="trm-toc-link" href="#用法示例"><span class="trm-toc-number">11.1.</span> <span class="trm-toc-text">用法示例</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="点击查看更多，展示更多数据"><a rel="nofollow" class="trm-toc-link" href="#点击查看更多，展示更多数据"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">点击查看更多，展示更多数据</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="分析和解决方案"><a rel="nofollow" class="trm-toc-link" href="#分析和解决方案-1"><span class="trm-toc-number">12.1.</span> <span class="trm-toc-text">分析和解决方案</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="服务端给的文本有回车换行 或者 空格等特殊字符"><a rel="nofollow" class="trm-toc-link" href="#服务端给的文本有回车换行-或者-空格等特殊字符"><span class="trm-toc-number">13.</span> <span class="trm-toc-text">服务端给的文本有回车换行 或者 空格等特殊字符</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="原因："><a rel="nofollow" class="trm-toc-link" href="#原因："><span class="trm-toc-number">13.1.</span> <span class="trm-toc-text">原因：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决方法："><a rel="nofollow" class="trm-toc-link" href="#解决方法：-1"><span class="trm-toc-number">13.2.</span> <span class="trm-toc-text">解决方法：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="vant-checkbox-group 注意点"><a rel="nofollow" class="trm-toc-link" href="#vant-checkbox-group-注意点"><span class="trm-toc-number">14.</span> <span class="trm-toc-text">vant-checkbox-group 注意点</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="问题："><a rel="nofollow" class="trm-toc-link" href="#问题："><span class="trm-toc-number">14.1.</span> <span class="trm-toc-text">问题：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决方案："><a rel="nofollow" class="trm-toc-link" href="#解决方案："><span class="trm-toc-number">14.2.</span> <span class="trm-toc-text">解决方案：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="switch用法"><a rel="nofollow" class="trm-toc-link" href="#switch用法"><span class="trm-toc-number">15.</span> <span class="trm-toc-text">switch用法</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="用法示例："><a rel="nofollow" class="trm-toc-link" href="#用法示例："><span class="trm-toc-number">15.1.</span> <span class="trm-toc-text">用法示例：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="Array.filter(Boolean)"><a rel="nofollow" class="trm-toc-link" href="#Array-filter-Boolean"><span class="trm-toc-number">16.</span> <span class="trm-toc-text">Array.filter(Boolean)</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="移除数组中所有的”false”类型元素(false,null,undefined,0,NaN,空字符串)"><a rel="nofollow" class="trm-toc-link" href="#移除数组中所有的”false”类型元素-false-null-undefined-0-NaN-空字符串"><span class="trm-toc-number">16.1.</span> <span class="trm-toc-text">移除数组中所有的”false”类型元素(false,null,undefined,0,NaN,空字符串)</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="编辑与查看为同一页时，处理方式（无缓存）"><a rel="nofollow" class="trm-toc-link" href="#编辑与查看为同一页时，处理方式（无缓存）"><span class="trm-toc-number">17.</span> <span class="trm-toc-text">编辑与查看为同一页时，处理方式（无缓存）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="问题的描述："><a rel="nofollow" class="trm-toc-link" href="#问题的描述："><span class="trm-toc-number">17.1.</span> <span class="trm-toc-text">问题的描述：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="问题的解决："><a rel="nofollow" class="trm-toc-link" href="#问题的解决："><span class="trm-toc-number">17.2.</span> <span class="trm-toc-text">问题的解决：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="问题的总结："><a rel="nofollow" class="trm-toc-link" href="#问题的总结："><span class="trm-toc-number">17.3.</span> <span class="trm-toc-text">问题的总结：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="单个表单数据要存入一个对象"><a rel="nofollow" class="trm-toc-link" href="#单个表单数据要存入一个对象"><span class="trm-toc-number">18.</span> <span class="trm-toc-text">单个表单数据要存入一个对象</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="问题的描述"><a rel="nofollow" class="trm-toc-link" href="#问题的描述"><span class="trm-toc-number">18.1.</span> <span class="trm-toc-text">问题的描述</span></a></li><li class="trm-toc-item trm-toc-level-3" title="问题的解决"><a rel="nofollow" class="trm-toc-link" href="#问题的解决"><span class="trm-toc-number">18.2.</span> <span class="trm-toc-text">问题的解决</span></a></li><li class="trm-toc-item trm-toc-level-3" title="问题的总结"><a rel="nofollow" class="trm-toc-link" href="#问题的总结"><span class="trm-toc-number">18.3.</span> <span class="trm-toc-text">问题的总结</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="setData第二参数"><a rel="nofollow" class="trm-toc-link" href="#setData第二参数"><span class="trm-toc-number">19.</span> <span class="trm-toc-text">setData第二参数</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="参数"><a rel="nofollow" class="trm-toc-link" href="#参数"><span class="trm-toc-number">19.1.</span> <span class="trm-toc-text">参数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="浅薄理解："><a rel="nofollow" class="trm-toc-link" href="#浅薄理解："><span class="trm-toc-number">19.2.</span> <span class="trm-toc-text">浅薄理解：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="示例："><a rel="nofollow" class="trm-toc-link" href="#示例："><span class="trm-toc-number">19.3.</span> <span class="trm-toc-text">示例：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="picker-view的value赋值问题"><a rel="nofollow" class="trm-toc-link" href="#picker-view的value赋值问题"><span class="trm-toc-number">20.</span> <span class="trm-toc-text">picker-view的value赋值问题</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="问题："><a rel="nofollow" class="trm-toc-link" href="#问题：-1"><span class="trm-toc-number">20.1.</span> <span class="trm-toc-text">问题：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="原因："><a rel="nofollow" class="trm-toc-link" href="#原因：-1"><span class="trm-toc-number">20.2.</span> <span class="trm-toc-text">原因：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决："><a rel="nofollow" class="trm-toc-link" href="#解决："><span class="trm-toc-number">20.3.</span> <span class="trm-toc-text">解决：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="多行文本溢出省略号"><a rel="nofollow" class="trm-toc-link" href="#多行文本溢出省略号"><span class="trm-toc-number">21.</span> <span class="trm-toc-text">多行文本溢出省略号</span></a></li><li class="trm-toc-item trm-toc-level-2" title="跳转返回上一页面并传递参数"><a rel="nofollow" class="trm-toc-link" href="#跳转返回上一页面并传递参数"><span class="trm-toc-number">22.</span> <span class="trm-toc-text">跳转返回上一页面并传递参数</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="方法一： 使用wx.navigateBack"><a rel="nofollow" class="trm-toc-link" href="#方法一：-使用wx-navigateBack"><span class="trm-toc-number">22.1.</span> <span class="trm-toc-text">方法一： 使用wx.navigateBack</span></a></li><li class="trm-toc-item trm-toc-level-3" title="方法二：使用wx.navigateTo"><a rel="nofollow" class="trm-toc-link" href="#方法二：使用wx-navigateTo"><span class="trm-toc-number">22.2.</span> <span class="trm-toc-text">方法二：使用wx.navigateTo</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="如何避免输入中文拼音时触发input事件"><a rel="nofollow" class="trm-toc-link" href="#如何避免输入中文拼音时触发input事件"><span class="trm-toc-number">23.</span> <span class="trm-toc-text">如何避免输入中文拼音时触发input事件</span></a></li><li class="trm-toc-item trm-toc-level-2" title="实现防纂改的水印"><a rel="nofollow" class="trm-toc-link" href="#实现防纂改的水印"><span class="trm-toc-number">24.</span> <span class="trm-toc-text">实现防纂改的水印</span></a></li><li class="trm-toc-item trm-toc-level-2" title="一个布局存在多个点击事件，先后触发问题"><a rel="nofollow" class="trm-toc-link" href="#一个布局存在多个点击事件，先后触发问题"><span class="trm-toc-number">25.</span> <span class="trm-toc-text">一个布局存在多个点击事件，先后触发问题</span></a></li><li class="trm-toc-item trm-toc-level-2" title="小红点单数圆形，双数圆矩形"><a rel="nofollow" class="trm-toc-link" href="#小红点单数圆形，双数圆矩形"><span class="trm-toc-number">26.</span> <span class="trm-toc-text">小红点单数圆形，双数圆矩形</span></a></li><li class="trm-toc-item trm-toc-level-2" title="微信小程序中使用font-weight来加粗字体的，"><a rel="nofollow" class="trm-toc-link" href="#微信小程序中使用font-weight来加粗字体的，"><span class="trm-toc-number">27.</span> <span class="trm-toc-text">微信小程序中使用font-weight来加粗字体的，</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="当前页面对某个选项进行切换，同步更新全局更新"><a rel="nofollow" class="trm-toc-link" href="#当前页面对某个选项进行切换，同步更新全局更新"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">当前页面对某个选项进行切换，同步更新全局更新</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="分析："><a rel="nofollow" class="trm-toc-link" href="#分析："><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">分析：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="遇到的问题："><a rel="nofollow" class="trm-toc-link" href="#遇到的问题："><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">遇到的问题：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决方案"><a rel="nofollow" class="trm-toc-link" href="#解决方案"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">解决方案</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="缓存问题"><a rel="nofollow" class="trm-toc-link" href="#缓存问题"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">缓存问题</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="业务需求"><a rel="nofollow" class="trm-toc-link" href="#业务需求"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">业务需求</span></a></li><li class="trm-toc-item trm-toc-level-3" title="分析和解决方案"><a rel="nofollow" class="trm-toc-link" href="#分析和解决方案"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">分析和解决方案</span></a></li><li class="trm-toc-item trm-toc-level-3" title="注意事项"><a rel="nofollow" class="trm-toc-link" href="#注意事项"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">注意事项</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="Taro 的消息机制 – 全局消息中心 evenCenter"><a rel="nofollow" class="trm-toc-link" href="#Taro-的消息机制-–-全局消息中心-evenCenter"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">Taro 的消息机制 – 全局消息中心 evenCenter</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="普通使用"><a rel="nofollow" class="trm-toc-link" href="#普通使用"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">普通使用</span></a></li><li class="trm-toc-item trm-toc-level-3" title="需要获取触发事件页面的数据给监听事件这边"><a rel="nofollow" class="trm-toc-link" href="#需要获取触发事件页面的数据给监听事件这边"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">需要获取触发事件页面的数据给监听事件这边</span></a></li><li class="trm-toc-item trm-toc-level-3" title="发送数据给页面"><a rel="nofollow" class="trm-toc-link" href="#发送数据给页面"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">发送数据给页面</span></a></li><li class="trm-toc-item trm-toc-level-3" title="切换参数，然后返回"><a rel="nofollow" class="trm-toc-link" href="#切换参数，然后返回"><span class="trm-toc-number">3.4.</span> <span class="trm-toc-text">切换参数，然后返回</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="Taro 页面跳转的消息机制 – eventChannel"><a rel="nofollow" class="trm-toc-link" href="#Taro-页面跳转的消息机制-–-eventChannel"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">Taro 页面跳转的消息机制 – eventChannel</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="使用方法"><a rel="nofollow" class="trm-toc-link" href="#使用方法"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">使用方法</span></a></li><li class="trm-toc-item trm-toc-level-3" title="示例"><a rel="nofollow" class="trm-toc-link" href="#示例"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">示例</span></a></li><li class="trm-toc-item trm-toc-level-3" title="相关文档"><a rel="nofollow" class="trm-toc-link" href="#相关文档"><span class="trm-toc-number">4.3.</span> <span class="trm-toc-text">相关文档</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="在 input 标签中使用 useState 和 useRef 的影响"><a rel="nofollow" class="trm-toc-link" href="#在-input-标签中使用-useState-和-useRef-的影响"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">在 input 标签中使用 useState 和 useRef 的影响</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="问题"><a rel="nofollow" class="trm-toc-link" href="#问题"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">问题</span></a></li><li class="trm-toc-item trm-toc-level-3" title="分析存在的原因"><a rel="nofollow" class="trm-toc-link" href="#分析存在的原因"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">分析存在的原因</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决方案"><a rel="nofollow" class="trm-toc-link" href="#解决方案-1"><span class="trm-toc-number">5.3.</span> <span class="trm-toc-text">解决方案</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="scroll-view 隐藏滚动条问题"><a rel="nofollow" class="trm-toc-link" href="#scroll-view-隐藏滚动条问题"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">scroll-view 隐藏滚动条问题</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="问题"><a rel="nofollow" class="trm-toc-link" href="#问题-1"><span class="trm-toc-number">6.1.</span> <span class="trm-toc-text">问题</span></a></li><li class="trm-toc-item trm-toc-level-3" title="存在的原因"><a rel="nofollow" class="trm-toc-link" href="#存在的原因"><span class="trm-toc-number">6.2.</span> <span class="trm-toc-text">存在的原因</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决方法"><a rel="nofollow" class="trm-toc-link" href="#解决方法"><span class="trm-toc-number">6.3.</span> <span class="trm-toc-text">解决方法</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="解决滚动禁止穿透页面"><a rel="nofollow" class="trm-toc-link" href="#解决滚动禁止穿透页面"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">解决滚动禁止穿透页面</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="问题描述："><a rel="nofollow" class="trm-toc-link" href="#问题描述："><span class="trm-toc-number">7.1.</span> <span class="trm-toc-text">问题描述：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决方法："><a rel="nofollow" class="trm-toc-link" href="#解决方法："><span class="trm-toc-number">7.2.</span> <span class="trm-toc-text">解决方法：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="复制大段文本，文本丢失问题"><a rel="nofollow" class="trm-toc-link" href="#复制大段文本，文本丢失问题"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">复制大段文本，文本丢失问题</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="原因"><a rel="nofollow" class="trm-toc-link" href="#原因"><span class="trm-toc-number">8.1.</span> <span class="trm-toc-text">原因</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决方案"><a rel="nofollow" class="trm-toc-link" href="#解决方案-2"><span class="trm-toc-number">8.2.</span> <span class="trm-toc-text">解决方案</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="单选框radio除了可以传value可以传其他的值"><a rel="nofollow" class="trm-toc-link" href="#单选框radio除了可以传value可以传其他的值"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">单选框radio除了可以传value可以传其他的值</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="问题"><a rel="nofollow" class="trm-toc-link" href="#问题-2"><span class="trm-toc-number">9.1.</span> <span class="trm-toc-text">问题</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决方法"><a rel="nofollow" class="trm-toc-link" href="#解决方法-1"><span class="trm-toc-number">9.2.</span> <span class="trm-toc-text">解决方法</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="关于微信昵称中Emoji表情乱码问题"><a rel="nofollow" class="trm-toc-link" href="#关于微信昵称中Emoji表情乱码问题"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">关于微信昵称中Emoji表情乱码问题</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="问题"><a rel="nofollow" class="trm-toc-link" href="#问题-3"><span class="trm-toc-number">10.1.</span> <span class="trm-toc-text">问题</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决方法"><a rel="nofollow" class="trm-toc-link" href="#解决方法-2"><span class="trm-toc-number">10.2.</span> <span class="trm-toc-text">解决方法</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="小程序分享"><a rel="nofollow" class="trm-toc-link" href="#小程序分享"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">小程序分享</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="用法示例"><a rel="nofollow" class="trm-toc-link" href="#用法示例"><span class="trm-toc-number">11.1.</span> <span class="trm-toc-text">用法示例</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="点击查看更多，展示更多数据"><a rel="nofollow" class="trm-toc-link" href="#点击查看更多，展示更多数据"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">点击查看更多，展示更多数据</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="分析和解决方案"><a rel="nofollow" class="trm-toc-link" href="#分析和解决方案-1"><span class="trm-toc-number">12.1.</span> <span class="trm-toc-text">分析和解决方案</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="服务端给的文本有回车换行 或者 空格等特殊字符"><a rel="nofollow" class="trm-toc-link" href="#服务端给的文本有回车换行-或者-空格等特殊字符"><span class="trm-toc-number">13.</span> <span class="trm-toc-text">服务端给的文本有回车换行 或者 空格等特殊字符</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="原因："><a rel="nofollow" class="trm-toc-link" href="#原因："><span class="trm-toc-number">13.1.</span> <span class="trm-toc-text">原因：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决方法："><a rel="nofollow" class="trm-toc-link" href="#解决方法：-1"><span class="trm-toc-number">13.2.</span> <span class="trm-toc-text">解决方法：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="vant-checkbox-group 注意点"><a rel="nofollow" class="trm-toc-link" href="#vant-checkbox-group-注意点"><span class="trm-toc-number">14.</span> <span class="trm-toc-text">vant-checkbox-group 注意点</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="问题："><a rel="nofollow" class="trm-toc-link" href="#问题："><span class="trm-toc-number">14.1.</span> <span class="trm-toc-text">问题：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决方案："><a rel="nofollow" class="trm-toc-link" href="#解决方案："><span class="trm-toc-number">14.2.</span> <span class="trm-toc-text">解决方案：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="switch用法"><a rel="nofollow" class="trm-toc-link" href="#switch用法"><span class="trm-toc-number">15.</span> <span class="trm-toc-text">switch用法</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="用法示例："><a rel="nofollow" class="trm-toc-link" href="#用法示例："><span class="trm-toc-number">15.1.</span> <span class="trm-toc-text">用法示例：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="Array.filter(Boolean)"><a rel="nofollow" class="trm-toc-link" href="#Array-filter-Boolean"><span class="trm-toc-number">16.</span> <span class="trm-toc-text">Array.filter(Boolean)</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="移除数组中所有的”false”类型元素(false,null,undefined,0,NaN,空字符串)"><a rel="nofollow" class="trm-toc-link" href="#移除数组中所有的”false”类型元素-false-null-undefined-0-NaN-空字符串"><span class="trm-toc-number">16.1.</span> <span class="trm-toc-text">移除数组中所有的”false”类型元素(false,null,undefined,0,NaN,空字符串)</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="编辑与查看为同一页时，处理方式（无缓存）"><a rel="nofollow" class="trm-toc-link" href="#编辑与查看为同一页时，处理方式（无缓存）"><span class="trm-toc-number">17.</span> <span class="trm-toc-text">编辑与查看为同一页时，处理方式（无缓存）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="问题的描述："><a rel="nofollow" class="trm-toc-link" href="#问题的描述："><span class="trm-toc-number">17.1.</span> <span class="trm-toc-text">问题的描述：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="问题的解决："><a rel="nofollow" class="trm-toc-link" href="#问题的解决："><span class="trm-toc-number">17.2.</span> <span class="trm-toc-text">问题的解决：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="问题的总结："><a rel="nofollow" class="trm-toc-link" href="#问题的总结："><span class="trm-toc-number">17.3.</span> <span class="trm-toc-text">问题的总结：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="单个表单数据要存入一个对象"><a rel="nofollow" class="trm-toc-link" href="#单个表单数据要存入一个对象"><span class="trm-toc-number">18.</span> <span class="trm-toc-text">单个表单数据要存入一个对象</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="问题的描述"><a rel="nofollow" class="trm-toc-link" href="#问题的描述"><span class="trm-toc-number">18.1.</span> <span class="trm-toc-text">问题的描述</span></a></li><li class="trm-toc-item trm-toc-level-3" title="问题的解决"><a rel="nofollow" class="trm-toc-link" href="#问题的解决"><span class="trm-toc-number">18.2.</span> <span class="trm-toc-text">问题的解决</span></a></li><li class="trm-toc-item trm-toc-level-3" title="问题的总结"><a rel="nofollow" class="trm-toc-link" href="#问题的总结"><span class="trm-toc-number">18.3.</span> <span class="trm-toc-text">问题的总结</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="setData第二参数"><a rel="nofollow" class="trm-toc-link" href="#setData第二参数"><span class="trm-toc-number">19.</span> <span class="trm-toc-text">setData第二参数</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="参数"><a rel="nofollow" class="trm-toc-link" href="#参数"><span class="trm-toc-number">19.1.</span> <span class="trm-toc-text">参数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="浅薄理解："><a rel="nofollow" class="trm-toc-link" href="#浅薄理解："><span class="trm-toc-number">19.2.</span> <span class="trm-toc-text">浅薄理解：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="示例："><a rel="nofollow" class="trm-toc-link" href="#示例："><span class="trm-toc-number">19.3.</span> <span class="trm-toc-text">示例：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="picker-view的value赋值问题"><a rel="nofollow" class="trm-toc-link" href="#picker-view的value赋值问题"><span class="trm-toc-number">20.</span> <span class="trm-toc-text">picker-view的value赋值问题</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="问题："><a rel="nofollow" class="trm-toc-link" href="#问题：-1"><span class="trm-toc-number">20.1.</span> <span class="trm-toc-text">问题：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="原因："><a rel="nofollow" class="trm-toc-link" href="#原因：-1"><span class="trm-toc-number">20.2.</span> <span class="trm-toc-text">原因：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决："><a rel="nofollow" class="trm-toc-link" href="#解决："><span class="trm-toc-number">20.3.</span> <span class="trm-toc-text">解决：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="多行文本溢出省略号"><a rel="nofollow" class="trm-toc-link" href="#多行文本溢出省略号"><span class="trm-toc-number">21.</span> <span class="trm-toc-text">多行文本溢出省略号</span></a></li><li class="trm-toc-item trm-toc-level-2" title="跳转返回上一页面并传递参数"><a rel="nofollow" class="trm-toc-link" href="#跳转返回上一页面并传递参数"><span class="trm-toc-number">22.</span> <span class="trm-toc-text">跳转返回上一页面并传递参数</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="方法一：使用wx.navigateBack"><a rel="nofollow" class="trm-toc-link" href="#方法一：使用wx-navigateBack"><span class="trm-toc-number">22.1.</span> <span class="trm-toc-text">方法一：使用wx.navigateBack</span></a></li><li class="trm-toc-item trm-toc-level-3" title="方法二：使用wx.navigateTo"><a rel="nofollow" class="trm-toc-link" href="#方法二：使用wx-navigateTo"><span class="trm-toc-number">22.2.</span> <span class="trm-toc-text">方法二：使用wx.navigateTo</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="如何避免输入中文拼音时触发input事件"><a rel="nofollow" class="trm-toc-link" href="#如何避免输入中文拼音时触发input事件"><span class="trm-toc-number">23.</span> <span class="trm-toc-text">如何避免输入中文拼音时触发input事件</span></a></li><li class="trm-toc-item trm-toc-level-2" title="实现防纂改的水印"><a rel="nofollow" class="trm-toc-link" href="#实现防纂改的水印"><span class="trm-toc-number">24.</span> <span class="trm-toc-text">实现防纂改的水印</span></a></li><li class="trm-toc-item trm-toc-level-2" title="一个布局存在多个点击事件，先后触发问题"><a rel="nofollow" class="trm-toc-link" href="#一个布局存在多个点击事件，先后触发问题"><span class="trm-toc-number">25.</span> <span class="trm-toc-text">一个布局存在多个点击事件，先后触发问题</span></a></li><li class="trm-toc-item trm-toc-level-2" title="小红点单数圆形，双数圆矩形"><a rel="nofollow" class="trm-toc-link" href="#小红点单数圆形，双数圆矩形"><span class="trm-toc-number">26.</span> <span class="trm-toc-text">小红点单数圆形，双数圆矩形</span></a></li><li class="trm-toc-item trm-toc-level-2" title="微信小程序中使用font-weight来加粗字体的，"><a rel="nofollow" class="trm-toc-link" href="#微信小程序中使用font-weight来加粗字体的，"><span class="trm-toc-number">27.</span> <span class="trm-toc-text">微信小程序中使用font-weight来加粗字体的，</span></a></li></ol>
       </div>
     </div>
 

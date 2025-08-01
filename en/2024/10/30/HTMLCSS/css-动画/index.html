@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content=".en1 {         color: #3D82AC;         font-weight: 600;     }     .en {     color: green;         font-weight:600;   }   过渡（transition） 通过过渡可以指定一个属性发生变化时的切换方式 必须外力推动，过渡效果是一次性，只能从边界开始或结束  简写语法 tr">
+<meta name="description" content="过渡（transition） 通过过渡可以指定一个属性发生变化时的切换方式 必须外力推动，过渡效果是一次性，只能从边界开始或结束  简写语法1transition: property duration timing-function delay; 属性 transition-property: 指定要执行过渡的属性，多个属性间使用,隔开 如果所有属性都需要过渡，则使用 all 关键字 注意：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS-动画篇">
 <meta property="og:url" content="http://example.com/en/2024/10/30/HTMLCSS/css-%E5%8A%A8%E7%94%BB/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content=".en1 {         color: #3D82AC;         font-weight: 600;     }     .en {     color: green;         font-weight:600;   }   过渡（transition） 通过过渡可以指定一个属性发生变化时的切换方式 必须外力推动，过渡效果是一次性，只能从边界开始或结束  简写语法 tr">
+<meta property="og:description" content="过渡（transition） 通过过渡可以指定一个属性发生变化时的切换方式 必须外力推动，过渡效果是一次性，只能从边界开始或结束  简写语法1transition: property duration timing-function delay; 属性 transition-property: 指定要执行过渡的属性，多个属性间使用,隔开 如果所有属性都需要过渡，则使用 all 关键字 注意：">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-30T07:29:10.526Z">
-<meta property="article:modified_time" content="2025-06-30T07:19:17.167Z">
+<meta property="article:modified_time" content="2025-07-29T06:07:57.404Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="CSS">
 <meta property="article:tag" content="动画">
@@ -69,7 +69,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-06-30 15:19:17"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-29 14:07:57"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -533,36 +533,26 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <style>
-    .en1 {
-        color: #3D82AC;
-        font-weight: 600;
-    }
-    .en {
-    color: green;
-        font-weight:600;
-  }
-</style>
+    <script src="/js/enChangegreen.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/global.css">
 
 <h2 id="过渡（transition）"><a href="#过渡（transition）" class="headerlink" title="过渡（transition）"></a>过渡（transition）</h2><ul>
 <li>通过过渡可以指定一个属性发生变化时的切换方式</li>
 <li>必须外力推动，过渡效果是一次性，只能从边界开始或结束</li>
 </ul>
-<h3 id="简写语法"><a href="#简写语法" class="headerlink" title="简写语法"></a>简写语法</h3><ul>
-<li><span class="en">transition: property duration timing-function delay;</span></li>
-</ul>
+<h3 id="简写语法"><a href="#简写语法" class="headerlink" title="简写语法"></a>简写语法</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">transition</span>: property duration timing-function delay;</span><br></pre></td></tr></table></figure>
 <h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><ul>
-<li><span class="en">transition-property</span>: 指定要执行过渡的属性，多个属性间使用,隔开<ul>
+<li>transition-property: 指定要执行过渡的属性，多个属性间使用,隔开<ul>
 <li>如果所有属性都需要过渡，则使用 all 关键字</li>
 <li>注意：过渡时必须是从一个有效数值向另外一个有效数值进行过渡</li>
-<li>示例：transition-property: height, width;</li>
+<li>示例：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">transition-property</span>: height, width;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><span class="en">transition-duration</span>: 指定过渡效果的持续时间<ul>
+<li>transition-duration: 指定过渡效果的持续时间<ul>
 <li>时间单位：s 和 ms 1s &#x3D; 1000ms</li>
 </ul>
 </li>
-<li><span class="en">transition-timing-function</span>: 过渡的时序函数，指定过渡的执行的方式<ul>
+<li>transition-timing-function: 过渡的时序函数，指定过渡的执行的方式<ul>
 <li>可选值：<ul>
 <li>ease 默认值，慢速开始，先加速，再减速</li>
 <li>linear 匀速运动</li>
@@ -575,12 +565,12 @@
 </li>
 </ul>
 </li>
-<li>示例：transition-timing-function: cubic-bezier(.24,.95,.82,-0.88);</li>
+<li>示例：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">transition-timing-function</span>: <span class="built_in">cubic-bezier</span>(.<span class="number">24</span>,.<span class="number">95</span>,.<span class="number">82</span>,-<span class="number">0.88</span>);</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><span class="en">transition-delay</span>: 过渡效果的延迟，等待一段时间后在执行过渡<ul>
+<li>transition-delay: 过渡效果的延迟，等待一段时间后在执行过渡<ul>
 <li>时间单位：s 和 ms</li>
-<li>示例：transition-delay: 2s;</li>
+<li>示例：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">transition-delay</span>: <span class="number">2s</span>;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
@@ -589,22 +579,21 @@
 <li>设置动画效果，必须先要设置一个关键帧，关键帧设置了动画执行每一个步骤</li>
 </ul>
 <h3 id="关键帧"><a href="#关键帧" class="headerlink" title="关键帧"></a>关键帧</h3><ul>
-<li><span class="en">@keyframes 动画名称 {0%{}100%{}}</span>：从 0%开始到 100%结束</li>
-<li><span class="en">@keyframes 动画名称 {from{}to{}}</span>：从 from 开始到 to 结束</li>
+<li>从 0%开始到 100%结束<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> 动画名称 &#123;</span><br><span class="line">  <span class="number">0%</span>&#123;&#125;</span><br><span class="line">  <span class="number">100%</span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>从 from 开始到 to 结束<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> 动画名称 &#123;</span><br><span class="line">  <span class="selector-tag">from</span>&#123;&#125;</span><br><span class="line">  <span class="selector-tag">to</span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="简写语法-1"><a href="#简写语法-1" class="headerlink" title="简写语法"></a>简写语法</h3><ul>
-<li><span class="en">animation: name duration timing-function delay iteration-count direction fill-mode play-state;</span></li>
-</ul>
+<h3 id="简写语法-1"><a href="#简写语法-1" class="headerlink" title="简写语法"></a>简写语法</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">animation</span>: name duration timing-function delay iteration-count direction fill-mode play-state;</span><br></pre></td></tr></table></figure>
+
 <h3 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h3><ul>
-<li><span class="en">animation-name</span>: 要对当前元素生效的关键帧的名字</li>
-<li><span class="en">animation-duration</span>: 动画的执行时间</li>
-<li><span class="en">animation-delay</span>：动画延时多久在执行</li>
-<li><span class="en">animation-timing-function</span>: 指定动画以什么方式执行</li>
-<li><span class="en">animation-iteration-count</span>：动画循环的次数<ul>
+<li>animation-name: 要对当前元素生效的关键帧的名字</li>
+<li>animation-duration: 动画的执行时间</li>
+<li>animation-delay：动画延时多久在执行</li>
+<li>animation-timing-function: 指定动画以什么方式执行</li>
+<li>animation-iteration-count：动画循环的次数<ul>
 <li>可选值：number 次数 | infinite 无限执行</li>
 </ul>
 </li>
-<li><span class="en">animation-direction</span>：指定动画运行的方向<ul>
+<li>animation-direction：指定动画运行的方向<ul>
 <li>可选值：<ul>
 <li>normal：默认值，从 from 向 to 运行 每次都是这样</li>
 <li>reverse：从 to 向 from 运行 每次都是这样</li>
@@ -614,7 +603,7 @@
 </li>
 </ul>
 </li>
-<li><span class="en">animation-play-state</span>: 设置动画的执行状态<ul>
+<li>animation-play-state: 设置动画的执行状态<ul>
 <li>可选值：<ul>
 <li>running：默认值 动画执行</li>
 <li>paused：动画暂停</li>
@@ -622,7 +611,7 @@
 </li>
 </ul>
 </li>
-<li><span class="en">animation-fill-mode</span>: 动画的填充模式<ul>
+<li>animation-fill-mode: 动画的填充模式<ul>
 <li>可选值：<ul>
 <li>none：默认值，动画执行完毕元素回到原来位置</li>
 <li>forwards：动画执行完毕元素会停止在动画结束的位置</li>
@@ -638,45 +627,45 @@
 <li>变形不会影响到页面的布局</li>
 </ul>
 <h3 id="平移-translate"><a href="#平移-translate" class="headerlink" title="平移(translate)"></a>平移(translate)</h3><ul>
-<li><span class="en">translateX(x)</span>：沿着 x 轴方向平移</li>
-<li><span class="en">translateY(y)</span>：沿着 y 轴方向平移</li>
-<li><span class="en">translateZ(z)</span>：沿着 z 轴方向平移</li>
-<li><span class="en">translate(x,y)</span>：定义 2D 转换</li>
-<li><span class="en">translate3d(x,y,z)</span>：定义 3D 转换</li>
+<li>translateX(x)：沿着 x 轴方向平移</li>
+<li>translateY(y)：沿着 y 轴方向平移</li>
+<li>translateZ(z)：沿着 z 轴方向平移</li>
+<li>translate(x,y)：定义 2D 转换</li>
+<li>translate3d(x,y,z)：定义 3D 转换</li>
 <li>平移元素，百分比是相对于自身计算的</li>
 <li>z 轴平移，调整元素在 z 轴的位置，正常情况就是调整元素和人眼之间的距离，距离越大，元素离人越近</li>
 <li>z 轴平移属于立体效果（近大远小），默认情况下网页是不支持透视，如果需要看见效果，必须要设置网页的视距</li>
-<li>示例：transform: translateY(-100px);</li>
+<li>示例：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">transform</span>: <span class="built_in">translateY</span>(-<span class="number">100px</span>);</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="旋转-rotate"><a href="#旋转-rotate" class="headerlink" title="旋转(rotate)"></a>旋转(rotate)</h3><ul>
-<li><span class="en">rotateX(angle)</span>：使元素沿着 x 轴的 2D 旋转指定的角度</li>
-<li><span class="en">rotateY(angle)</span>：使元素沿着 y 轴的 2D 旋转指定的角度</li>
-<li><span class="en">rotateZ(angle)</span>：使元素沿着 z 轴的 3D 旋转指定的角度</li>
-<li><span class="en">rotate(angle)</span>：定义 2D 旋转，在参数中规定角度</li>
-<li><span class="en">rotate3d(x,y,z,angle)</span>：定义 3D 旋转</li>
-<li><span class="en">backface-visibility: hidden;</span><ul>
+<li>rotateX(angle)：使元素沿着 x 轴的 2D 旋转指定的角度</li>
+<li>rotateY(angle)：使元素沿着 y 轴的 2D 旋转指定的角度</li>
+<li>rotateZ(angle)：使元素沿着 z 轴的 3D 旋转指定的角度</li>
+<li>rotate(angle)：定义 2D 旋转，在参数中规定角度</li>
+<li>rotate3d(x,y,z,angle)：定义 3D 旋转</li>
+<li>backface-visibility: hidden;<ul>
 <li>是否显示元素的背面</li>
 <li>与旋转配合使用，当旋转到后面时元素消失</li>
 </ul>
 </li>
 </ul>
 <h3 id="缩放-scale"><a href="#缩放-scale" class="headerlink" title="缩放(scale)"></a>缩放(scale)</h3><ul>
-<li><span class="en">scaleX(x)</span>：水平方向缩放</li>
-<li><span class="en">scaleY(y)</span>：垂直方向缩放</li>
-<li><span class="en">scaleZ(z)</span>：通过设置 Z 轴的值来定义 3D 缩放转换</li>
-<li><span class="en">scale(x,y)</span>：定义 2D 缩放转换</li>
-<li><span class="en">scale3d(x,y,z)</span>：定义 3D 缩放转换</li>
+<li>scaleX(x)：水平方向缩放</li>
+<li>scaleY(y)：垂直方向缩放</li>
+<li>scaleZ(z)：通过设置 Z 轴的值来定义 3D 缩放转换</li>
+<li>scale(x,y)：定义 2D 缩放转换</li>
+<li>scale3d(x,y,z)：定义 3D 缩放转换</li>
 </ul>
 <h3 id="倾斜-skew"><a href="#倾斜-skew" class="headerlink" title="倾斜(skew)"></a>倾斜(skew)</h3><ul>
-<li><span class="en">skew(x-angle,y-angle)</span>：定义沿着 X 和 Y 轴的 2D 倾斜转换。</li>
-<li><span class="en">skewY(angle)</span>：定义沿着 Y 轴的 2D 倾斜转换。</li>
+<li>skew(x-angle,y-angle)：定义沿着 X 和 Y 轴的 2D 倾斜转换。</li>
+<li>skewY(angle)：定义沿着 Y 轴的 2D 倾斜转换。</li>
 </ul>
 <h3 id="变换矩阵-matrix"><a href="#变换矩阵-matrix" class="headerlink" title="变换矩阵(matrix)"></a>变换矩阵(matrix)</h3><ul>
-<li><span class="en">matrix(n,n,n,n,n,n)</span>：定义 2D 转换，使用六个值的矩阵。</li>
-<li><span class="en">matrix3d(n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n)</span>：定义 3D 转换，使用 16 个值的 4x4 矩阵。</li>
+<li>matrix(n,n,n,n,n,n)：定义 2D 转换，使用六个值的矩阵。</li>
+<li>matrix3d(n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n)：定义 3D 转换，使用 16 个值的 4x4 矩阵。</li>
 </ul>
 <h3 id="transform-origin"><a href="#transform-origin" class="headerlink" title="transform-origin"></a>transform-origin</h3><ul>
-<li>语法：<span class="en">transform-origin: x-axis y-axis z-axis;</span></li>
+<li>语法：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">transform-origin</span>: x-axis y-axis z-axis;</span><br></pre></td></tr></table></figure></li>
 <li>更换元素的位置</li>
 <li>x-axis: 定义视图被置于 X 轴的何处<ul>
 <li>left</li>
@@ -701,24 +690,23 @@
 <li>skewX(angle)：定义沿着 X 轴的 2D 倾斜转换。</li>
 </ul>
 <h3 id="transform-style"><a href="#transform-style" class="headerlink" title="transform-style"></a>transform-style</h3><ul>
-<li>语法：<span class="en">transform-style:</span> flat(表示所有子元素在 2D 平面呈现)|<span class="en">preserve-3d</span>(表示所有子元素在 3D 空间中呈现);</li>
+<li>语法：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">transform-style</span>: <span class="built_in">flat</span>(表示所有子元素在 <span class="number">2</span>D 平面呈现) | <span class="built_in">preserve-3d</span>(表示所有子元素在 <span class="number">3</span>D 空间中呈现);</span><br></pre></td></tr></table></figure></li>
 <li>让转换的子元素保留 3D 转换</li>
 </ul>
 <h3 id="perspective"><a href="#perspective" class="headerlink" title="perspective"></a>perspective</h3><ul>
-<li>语法：<span class="en">perspective: number|none;</span><ul>
-<li>number： 元素距离视图的距离，单位像素</li>
+<li>语法：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">perspective</span>: number|none;</span><br></pre></td></tr></table></figure></li>
+<li>number： 元素距离视图的距离，单位像素<ul>
 <li>none：默认值，不设置透视</li>
 </ul>
 </li>
-<li><span class="en1">设置从何处查看一个元素的角度</span></li>
+<li><span class="key_words">『设置从何处查看一个元素的角度』</span></li>
 <li>只影响 3D 转换元素</li>
 </ul>
 <h3 id="perspective-origin"><a href="#perspective-origin" class="headerlink" title="perspective-origin"></a>perspective-origin</h3><ul>
-<li>语法：<span class="en">perspective-origin: x-axis y-axis;</span></li>
-<li>定义 3D 元素所基于的 X 轴和 Y 轴。<span class="en1">设置以底部为基准，人从x轴或y轴看的角度</span></li>
-<li>示例：</li>
+<li>语法：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">perspective-origin</span>: x-axis y-axis;</span><br></pre></td></tr></table></figure></li>
+<li>定义 3D 元素所基于的 X 轴和 Y 轴。<span class="key_words">『设置以底部为基准，人从x轴或y轴看的角度』</span></li>
+<li>示例：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attribute">perspective</span>:<span class="number">150</span>;</span><br><span class="line">  <span class="attribute">perspective-origin</span>: <span class="number">10%</span> <span class="number">10%</span>;</span><br><span class="line">  -webkit-<span class="attribute">perspective</span>:<span class="number">150</span>; <span class="comment">/* Safari and Chrome */</span></span><br><span class="line">  -webkit-<span class="attribute">perspective-origin</span>: <span class="number">10%</span> <span class="number">10%</span>; <span class="comment">/* Safari and Chrome */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">perspective</span>:<span class="number">150</span>;</span><br><span class="line">  perspective-<span class="attr">origin</span>: <span class="number">10</span>% <span class="number">10</span>%;</span><br><span class="line">  -webkit-<span class="attr">perspective</span>:<span class="number">150</span>; <span class="comment">/* Safari and Chrome */</span></span><br><span class="line">  -webkit-perspective-<span class="attr">origin</span>: <span class="number">10</span>% <span class="number">10</span>%; <span class="comment">/* Safari and Chrome */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </article>
     

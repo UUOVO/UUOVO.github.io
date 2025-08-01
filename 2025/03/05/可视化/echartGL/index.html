@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content=".en {   color: green;   font-weight:600; }    安装 pnpm install echarts-gl  文档 GL配置  使用场景 bar3D，line3D: 三维直角坐标系 globe: 地球仪 map3D: 地图 scatter3D: 散点图、气泡图 lines3D: 飞线图 surface: 曲面图金属零件 polygons3D: 建筑群 gra">
+<meta name="description" content="安装1pnpm install echarts-gl  文档 GL配置  使用场景 bar3D，line3D: 三维直角坐标系 globe: 地球仪 map3D: 地图 scatter3D: 散点图、气泡图 lines3D: 飞线图 surface: 曲面图金属零件 polygons3D: 建筑群 graphGL: 关系图 flowGL: 风场气象等量子场  三维直角坐标系要素 grid3D">
 <meta property="og:type" content="article">
 <meta property="og:title" content="echartGL">
 <meta property="og:url" content="http://example.com/2025/03/05/%E5%8F%AF%E8%A7%86%E5%8C%96/echartGL/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content=".en {   color: green;   font-weight:600; }    安装 pnpm install echarts-gl  文档 GL配置  使用场景 bar3D，line3D: 三维直角坐标系 globe: 地球仪 map3D: 地图 scatter3D: 散点图、气泡图 lines3D: 飞线图 surface: 曲面图金属零件 polygons3D: 建筑群 gra">
+<meta property="og:description" content="安装1pnpm install echarts-gl  文档 GL配置  使用场景 bar3D，line3D: 三维直角坐标系 globe: 地球仪 map3D: 地图 scatter3D: 散点图、气泡图 lines3D: 飞线图 surface: 曲面图金属零件 polygons3D: 建筑群 graphGL: 关系图 flowGL: 风场气象等量子场  三维直角坐标系要素 grid3D">
 <meta property="og:locale">
 <meta property="article:published_time" content="2025-03-05T06:05:27.077Z">
-<meta property="article:modified_time" content="2025-06-30T07:27:39.037Z">
+<meta property="article:modified_time" content="2025-07-28T08:47:01.058Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="可视化">
 <meta name="twitter:card" content="summary">
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-06-30 15:27:39"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-28 16:47:01"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -532,58 +532,52 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <style>
-.en {
-  color: green;
-  font-weight:600;
-}
-</style>
+    <script src="/js/enChangegreen.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/global.css">
 
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm install echarts-gl</span><br></pre></td></tr></table></figure>
 
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
-<li><span class="en">pnpm install echarts-gl</span></li>
-</ul>
 <h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option-gl.html#globe">GL配置</a></li>
 </ul>
 <h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ul>
-<li><span class="en">bar3D，line3D</span>: 三维直角坐标系</li>
-<li><span class="en">globe</span>: 地球仪</li>
-<li><span class="en">map3D</span>: 地图</li>
-<li><span class="en">scatter3D</span>: 散点图、气泡图</li>
-<li><span class="en">lines3D</span>: 飞线图</li>
-<li><span class="en">surface</span>: 曲面图金属零件</li>
-<li><span class="en">polygons3D</span>: 建筑群</li>
-<li><span class="en">graphGL</span>: 关系图</li>
-<li><span class="en">flowGL</span>: 风场气象等量子场</li>
+<li>bar3D，line3D: 三维直角坐标系</li>
+<li>globe: 地球仪</li>
+<li>map3D: 地图</li>
+<li>scatter3D: 散点图、气泡图</li>
+<li>lines3D: 飞线图</li>
+<li>surface: 曲面图金属零件</li>
+<li>polygons3D: 建筑群</li>
+<li>graphGL: 关系图</li>
+<li>flowGL: 风场气象等量子场</li>
 </ul>
 <h3 id="三维直角坐标系要素"><a href="#三维直角坐标系要素" class="headerlink" title="三维直角坐标系要素"></a>三维直角坐标系要素</h3><ul>
-<li><span class="en">grid3D</span>：控制图形的位置</li>
-<li><span class="en">xAxisD</span>：控制x轴坐标</li>
-<li><span class="en">yAxis3D</span>：控制y轴坐标</li>
-<li><span class="en">zAxis3D</span>：控制z轴坐标</li>
+<li>grid3D：控制图形的位置</li>
+<li>xAxisD：控制x轴坐标</li>
+<li>yAxis3D：控制y轴坐标</li>
+<li>zAxis3D：控制z轴坐标</li>
 </ul>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
-<li><span class="en">mapbox3D</span>：基于 mapbox-gl-js 的地理组件，地图上绘制三维的散点图、飞线图、柱状图、地图</li>
-<li><span class="en">geo3D</span>：三维的地理坐标系组件，地图上绘制三维的散点图、气泡图、柱状图、飞线图</li>
-<li><span class="en">globe</span>：地球组件。展示三维的散点图、气泡图、柱状图、飞线图</li>
+<li>mapbox3D：基于 mapbox-gl-js 的地理组件，地图上绘制三维的散点图、飞线图、柱状图、地图</li>
+<li>geo3D：三维的地理坐标系组件，地图上绘制三维的散点图、气泡图、柱状图、飞线图</li>
+<li>globe：地球组件。展示三维的散点图、气泡图、柱状图、飞线图</li>
 </ul>
 <h2 id="灯光"><a href="#灯光" class="headerlink" title="灯光"></a>灯光</h2><ul>
 <li>在三维图形中，灯光必不可少</li>
-<li>通过设置<span class="en">light</span>决定图形的影子与物体的距离</li>
-<li>另外series中的对象也需要设置着色效果<span class="en">shading</span></li>
+<li>通过设置light决定图形的影子与物体的距离</li>
+<li>另外series中的对象也需要设置着色效果shading</li>
 </ul>
 <h2 id="如何隐藏网格线和视觉坐标辅助线"><a href="#如何隐藏网格线和视觉坐标辅助线" class="headerlink" title="如何隐藏网格线和视觉坐标辅助线"></a>如何隐藏网格线和视觉坐标辅助线</h2><ul>
-<li>在grid3D中<span class="en">show: false</span>,解决视觉坐标线条</li>
-<li><span class="en">axisTick，axisLabel，splitLine，splitArea</span>解决网格线，坐标轴线，标签等显隐</li>
+<li>在grid3D中show: false,解决视觉坐标线条</li>
+<li>axisTick，axisLabel，splitLine，splitArea解决网格线，坐标轴线，标签等显隐</li>
 </ul>
 <h2 id="如何不让物体随鼠标左右滑动而移动，也不受滑轮影响"><a href="#如何不让物体随鼠标左右滑动而移动，也不受滑轮影响" class="headerlink" title="如何不让物体随鼠标左右滑动而移动，也不受滑轮影响"></a>如何不让物体随鼠标左右滑动而移动，也不受滑轮影响</h2><ul>
-<li>通过grid中的<span class="en">viewControl</span><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">projection</span>: <span class="string">&#x27;orthographic&#x27;</span>, <span class="comment">// 投影方式</span></span><br><span class="line"><span class="attr">orthographicSize</span>: <span class="number">110</span>, <span class="comment">//控制地图大小</span></span><br><span class="line"><span class="attr">maxOrthographicSize</span>: <span class="number">110</span>, <span class="comment">// 投影最大值</span></span><br><span class="line"><span class="attr">minOrthographicSize</span>: <span class="number">110</span>, <span class="comment">// 投影最小值</span></span><br><span class="line"><span class="attr">alpha</span>:<span class="number">60</span>, <span class="comment">// 确定视线角度</span></span><br><span class="line"><span class="attr">beta</span>:<span class="number">10</span>,</span><br><span class="line"><span class="attr">autoRotate</span>:<span class="literal">false</span>, <span class="comment">// 是否开启自动旋转</span></span><br><span class="line"><span class="attr">rotateSensitivity</span>: <span class="number">0</span>, <span class="comment">// 设置为0 无法旋转</span></span><br></pre></td></tr></table></figure></li>
+<li>通过grid中的viewControl<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">projection</span>: <span class="string">&#x27;orthographic&#x27;</span>, <span class="comment">// 投影方式</span></span><br><span class="line"><span class="attr">orthographicSize</span>: <span class="number">110</span>, <span class="comment">//控制地图大小</span></span><br><span class="line"><span class="attr">maxOrthographicSize</span>: <span class="number">110</span>, <span class="comment">// 投影最大值</span></span><br><span class="line"><span class="attr">minOrthographicSize</span>: <span class="number">110</span>, <span class="comment">// 投影最小值</span></span><br><span class="line"><span class="attr">alpha</span>:<span class="number">60</span>, <span class="comment">// 确定视线角度</span></span><br><span class="line"><span class="attr">beta</span>:<span class="number">10</span>,</span><br><span class="line"><span class="attr">autoRotate</span>:<span class="literal">false</span>, <span class="comment">// 是否开启自动旋转</span></span><br><span class="line"><span class="attr">rotateSensitivity</span>: <span class="number">0</span>, <span class="comment">// 设置为0 无法旋转</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="scatter3D"><a href="#scatter3D" class="headerlink" title="scatter3D"></a>scatter3D</h2><ul>
-<li><span class="en">symbol</span>: 决定物体的形状，可以添加svg路径</li>
-<li><span class="en">symbolSize</span>: 设置物体的宽高[宽,高]</li>
-<li><span class="en">data</span>：要以[{value：[x, y, z]}]的形式</li>
+<li>symbol: 决定物体的形状，可以添加svg路径</li>
+<li>symbolSize: 设置物体的宽高[宽,高]</li>
+<li>data：要以[{value：[x, y, z]}]的形式</li>
 <li>像是做一些自定义的图案，比如3D金字塔比较方便</li>
 </ul>
 

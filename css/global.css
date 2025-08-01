@@ -1,0 +1,24 @@
+.key_words {
+	color: #483d8b;
+	font-weight: 700;
+}
+
+.desc {
+	color: #cd853f;
+	font-weight: 600;
+	font-size: 14px;
+}
+.children {
+	background-color: green;
+	color: #ffffff;
+}
+
+.parent {
+	background-color: #479AC7;
+	color: #ffffff;
+}
+
+.grandparent{
+	background-color: #8080C0;
+	color: #ffffff;
+}

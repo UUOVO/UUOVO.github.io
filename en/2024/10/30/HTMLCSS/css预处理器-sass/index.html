@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content=".en {     color: green;     font-weight:600;   }   SCSS 和 SASS scss 与 sass 的区别：sass 没有大括号和分号，每当一行结束都算作一个分号结束  声明 通用 变量声明：$变量名:表达式 流量控制规则：如@if 和@each @error、@warn 和@debug 规则   CSS 语句 样式规则：如 h1{&amp;#x2F">
+<meta name="description" content="SCSS 和 SASS scss 与 sass 的区别：sass 没有大括号和分号，每当一行结束都算作一个分号结束  声明通用 变量声明：1$变量名:表达式 流量控制规则：如 @if 和 @each @error、@warn 和 @debug 规则  CSS 语句 样式规则：如 h1{&#x2F;…&#x2F;} css at 规则：如 @media Minxin 规则：使用 @includ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS预处理器-sass语法">
 <meta property="og:url" content="http://example.com/en/2024/10/30/HTMLCSS/css%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8-sass/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content=".en {     color: green;     font-weight:600;   }   SCSS 和 SASS scss 与 sass 的区别：sass 没有大括号和分号，每当一行结束都算作一个分号结束  声明 通用 变量声明：$变量名:表达式 流量控制规则：如@if 和@each @error、@warn 和@debug 规则   CSS 语句 样式规则：如 h1{&amp;#x2F">
+<meta property="og:description" content="SCSS 和 SASS scss 与 sass 的区别：sass 没有大括号和分号，每当一行结束都算作一个分号结束  声明通用 变量声明：1$变量名:表达式 流量控制规则：如 @if 和 @each @error、@warn 和 @debug 规则  CSS 语句 样式规则：如 h1{&#x2F;…&#x2F;} css at 规则：如 @media Minxin 规则：使用 @includ">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-30T07:29:10.990Z">
-<meta property="article:modified_time" content="2024-11-22T03:45:55.431Z">
+<meta property="article:modified_time" content="2025-07-29T08:44:18.340Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="css预处理器">
 <meta property="article:tag" content="sass">
@@ -70,7 +70,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-22 11:45:55"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-29 16:44:18"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -534,176 +534,137 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <style>
-  .en {
-    color: green;
-    font-weight:600;
-  }
-</style>
+    <script src="/js/enChangegreen.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/global.css">
 
 <h1 id="SCSS-和-SASS"><a href="#SCSS-和-SASS" class="headerlink" title="SCSS 和 SASS"></a>SCSS 和 SASS</h1><blockquote>
 <p>scss 与 sass 的区别：sass 没有大括号和分号，每当一行结束都算作一个分号结束</p>
 </blockquote>
-<h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><ul>
-<li><h3 id="通用"><a href="#通用" class="headerlink" title="通用"></a>通用</h3><ul>
-<li>变量声明：<span class="en"><code>$变量名:表达式</code></span></li>
-<li>流量控制规则：如@if 和@each</li>
-<li>@error、@warn 和@debug 规则</li>
+<h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><h3 id="通用"><a href="#通用" class="headerlink" title="通用"></a>通用</h3><ul>
+<li>变量声明：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$变量名:表达式</span><br></pre></td></tr></table></figure></li>
+<li>流量控制规则：如 @if 和 @each</li>
+<li>@error、@warn 和 @debug 规则</li>
 </ul>
-</li>
-<li><h3 id="CSS-语句"><a href="#CSS-语句" class="headerlink" title="CSS 语句"></a>CSS 语句</h3><ul>
+<h3 id="CSS-语句"><a href="#CSS-语句" class="headerlink" title="CSS 语句"></a>CSS 语句</h3><ul>
 <li>样式规则：如 h1{&#x2F;<em>…</em>&#x2F;}</li>
 <li>css at 规则：如 @media</li>
 <li>Minxin 规则：使用 @include</li>
 <li>@at-root 规则</li>
 <li>@extend 规则只能在样式规则中使用</li>
 </ul>
-</li>
-<li><h3 id="样式规则的属性声明"><a href="#样式规则的属性声明" class="headerlink" title="样式规则的属性声明"></a>样式规则的属性声明</h3><ul>
-<li>插值#{}：<span class="en"><code>#&#123;$var&#125;:$var</code></span></li>
+<h3 id="样式规则的属性声明"><a href="#样式规则的属性声明" class="headerlink" title="样式规则的属性声明"></a>样式规则的属性声明</h3><ul>
+<li>插值#{}：<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#123;<span class="variable">$var</span>&#125;:<span class="variable">$var</span></span><br></pre></td></tr></table></figure></li>
 <li>隐藏声明：声明的值为 null 或空不带引号的字符串，sass 不会编译为 css</li>
-<li>前缀相同相当于命名空间，示例</li>
+<li>前缀相同相当于命名空间，示例<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.enlarge</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">14px</span></span><br><span class="line">  transition: &#123;</span><br><span class="line">    property: font-size; <span class="comment">// 相当于transition-property</span></span><br><span class="line">    duration:<span class="number">4s</span>; <span class="comment">// 相当于transition-duration</span></span><br><span class="line">    delay:<span class="number">2s</span>; <span class="comment">// 相当于transition-delay</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">enlarge</span> &#123;</span><br><span class="line">	font-<span class="attr">size</span>: 14px</span><br><span class="line">	<span class="attr">transition</span>: &#123;</span><br><span class="line">		<span class="attr">property</span>: font-size;    <span class="comment">// 相当于transition-property</span></span><br><span class="line">		<span class="attr">duration</span>:4s <span class="comment">// 相当于transition-duration</span></span><br><span class="line">		<span class="attr">delay</span>:2s <span class="comment">// 相当于transition-delay</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><h3 id="占位符选择器"><a href="#占位符选择器" class="headerlink" title="占位符选择器%"></a>占位符选择器%</h3><ul>
+<h3 id="占位符选择器"><a href="#占位符选择器" class="headerlink" title="占位符选择器%"></a>占位符选择器%</h3><ul>
 <li>用来扩展,写完公共样式后,其它选择器用@extend 来使用，都会应用这个样式</li>
 </ul>
-</li>
-<li><h3 id="高层声明：只能顶层使用"><a href="#高层声明：只能顶层使用" class="headerlink" title="高层声明：只能顶层使用"></a>高层声明：只能顶层使用</h3><ul>
-<li><span class="en">模块负载</span>：使用@use</li>
-<li><span class="en">导入</span>：使用@import</li>
-<li><span class="en">混合定义</span>：使用@mixin</li>
-<li><span class="en">函数定义</span>：使用@function</li>
+<h3 id="高层声明：只能顶层使用"><a href="#高层声明：只能顶层使用" class="headerlink" title="高层声明：只能顶层使用"></a>高层声明：只能顶层使用</h3><ul>
+<li>模块负载：使用 @use</li>
+<li>导入：使用 @import</li>
+<li>混合定义：使用 @mixin</li>
+<li>函数定义：使用 @function</li>
 </ul>
-</li>
-</ul>
-<h2 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h2><ul>
-<li><h3 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h3><ul>
+<h2 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h2><h3 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h3><ul>
 <li>值列表：可以用空格或逗号分隔，并且可以用[]括起来,或者根本不加</li>
 <li>映射：定义一组数据,通过变量与键来映射出具体值</li>
 </ul>
-</li>
-<li><h3 id="其它表达方式"><a href="#其它表达方式" class="headerlink" title="其它表达方式"></a>其它表达方式</h3><ul>
-<li>变量：<span class="en">$var</span></li>
-<li>函数调用：<span class="en">nth($list,1) or var(–main-bg-color)</span></li>
-<li>特殊函数：<span class="en">calc(1px+100%)<code>or</code>url(路径)</span></li>
-<li>父选择器：<span class="en">&amp;</span></li>
+<h3 id="其它表达方式"><a href="#其它表达方式" class="headerlink" title="其它表达方式"></a>其它表达方式</h3><ul>
+<li>变量：$var</li>
+<li>函数调用：<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">nth</span>($list,<span class="number">1</span>) or <span class="selector-tag">var</span>(--main-bg-color)</span><br></pre></td></tr></table></figure></li>
+<li>特殊函数：<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">calc</span>(<span class="number">1px</span>+<span class="number">100%</span>) </span><br><span class="line">or <span class="built_in">url</span>(路径)</span><br></pre></td></tr></table></figure></li>
+<li>父选择器：&amp;</li>
 <li>值!important：被解析为不带引号的字符串</li>
 </ul>
-</li>
-<li><h3 id="父选择器"><a href="#父选择器" class="headerlink" title="父选择器&amp;"></a>父选择器&amp;</h3><ul>
-<li>注意：由于父选择器可以被类型选择器(如 h1)替换，因此<span class="en">仅允许在复合选择器的开头使用</span></li>
-<li>添加后缀:&amp;__copy or &amp;–copy</li>
+<h3 id="父选择器"><a href="#父选择器" class="headerlink" title="父选择器&amp;"></a>父选择器&amp;</h3><ul>
+<li>注意：由于父选择器可以被类型选择器(如 h1)替换，因此<span class="key_words">『仅允许在复合选择器的开头使用』</span></li>
+<li>添加后缀:<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&amp;__copy </span><br><span class="line">or &amp;<span class="attr">--copy</span></span><br></pre></td></tr></table></figure></li>
 <li>使用场景:伪类或在父级前添加选择器:not(&amp;)</li>
-<li>在样式规则外使用返回 null,可做判断如：#{if(&amp;, ‘&amp;.styleName’, ‘.styleName’)}</li>
-<li>高级嵌套：匹配外部选择器和元素选择器，示例</li>
+<li>在样式规则外使用返回 null,可做判断如：<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#123;<span class="built_in">if</span>(&amp;, &#x27;&amp;.styleName&#x27;, &#x27;.styleName&#x27;)&#125;</span><br></pre></td></tr></table></figure></li>
+<li>高级嵌套：匹配外部选择器和元素选择器，示例<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// scss</span></span><br><span class="line"><span class="variable">@use</span> <span class="string">&quot;sass:selector&quot;</span></span><br><span class="line"><span class="variable">@mixin</span> <span class="built_in">unify-parent</span>($child)</span><br><span class="line">  <span class="variable">@at-root</span> #&#123;<span class="selector-tag">selector</span><span class="selector-class">.unify</span>(&amp;, $child)&#125;</span><br><span class="line">    @<span class="selector-tag">content</span></span><br><span class="line"><span class="selector-class">.wrapper</span> <span class="selector-class">.field</span></span><br><span class="line">  @<span class="selector-tag">include</span> <span class="selector-tag">unify-parent</span>(<span class="string">&quot;input&quot;</span>)</span><br><span class="line">    ...</span><br><span class="line">  @<span class="selector-tag">include</span> <span class="selector-tag">unify-parent</span>(<span class="string">&quot;select&quot;</span>)</span><br><span class="line">    ...</span><br><span class="line"><span class="comment">// css</span></span><br><span class="line"><span class="selector-class">.wrapper</span> <span class="selector-tag">input</span><span class="selector-class">.field</span> &#123;...&#125;</span><br><span class="line">.wrapper select.field &#123;...&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><h3 id="在-scss-中"><a href="#在-scss-中" class="headerlink" title="在 scss 中"></a>在 scss 中</h3><ul>
+<li><span class="key_words">『&#x2F;&#x2F;』</span>：单行注释，也叫<span class="key_words">『无声注释』</span>，不生成 css</li>
+<li><span class="key_words">『&#x2F;**&#x2F;』</span>：多行注释，也被叫做<span class="key_words">『大声注释』</span>，压缩模式下多行注释会被删除，但是以<span class="key_words">『&#x2F;*！开头则不会被删除』</span></li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// scss</span></span><br><span class="line">@use <span class="string">&quot;sass:selector&quot;</span></span><br><span class="line">@mixin unify-<span class="title function_">parent</span>($child)</span><br><span class="line">  @at-root #&#123;selector.<span class="title function_">unify</span>(&amp;, $child)&#125;</span><br><span class="line">    @content</span><br><span class="line">.<span class="property">wrapper</span> .<span class="property">field</span></span><br><span class="line">  @include unify-<span class="title function_">parent</span>(<span class="string">&quot;input&quot;</span>)</span><br><span class="line">    ...</span><br><span class="line">  @include unify-<span class="title function_">parent</span>(<span class="string">&quot;select&quot;</span>)</span><br><span class="line">    ...</span><br><span class="line"><span class="comment">// css</span></span><br><span class="line">.<span class="property">wrapper</span> input.<span class="property">field</span> &#123;...&#125;</span><br><span class="line">.<span class="property">wrapper</span> select.<span class="property">field</span> &#123;...&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><ul>
-<li><h3 id="在-scss-中"><a href="#在-scss-中" class="headerlink" title="在 scss 中"></a>在 scss 中</h3><ul>
-<li><code>//</code>： 单行注释，也叫<code>无声注释</code>，不生成 css</li>
-<li><code>/**/</code>： 多行注释，也被叫做<code>大声注释</code>，<code>压缩模式</code>下多行注释会被删除，但是以<code>/*！</code>开头则不会</li>
+<h3 id="在-scss-中-1"><a href="#在-scss-中-1" class="headerlink" title="在 scss 中"></a>在 scss 中</h3><ul>
+<li><span class="key_words">『&#x2F;&#x2F;』</span>：&#x2F;&#x2F;下一行的内容<span class="key_words">『缩进』</span>也会被注释</li>
 </ul>
-</li>
-<li><h3 id="在-scss-中-1"><a href="#在-scss-中-1" class="headerlink" title="在 scss 中"></a>在 scss 中</h3><ul>
-<li><code>//</code>：&#x2F;&#x2F;下一行的内容<code>缩进</code>也会被注释</li>
-</ul>
-</li>
-<li><h3 id="文档注释-无声注释"><a href="#文档注释-无声注释" class="headerlink" title="文档注释(无声注释)"></a>文档注释(无声注释)</h3><ul>
-<li><code>///</code>：会解析成 markdown</li>
-</ul>
-</li>
+<h3 id="文档注释-无声注释"><a href="#文档注释-无声注释" class="headerlink" title="文档注释(无声注释)"></a>文档注释(无声注释)</h3><ul>
+<li><span class="key_words">『&#x2F;&#x2F;&#x2F;』</span>：会解析成 markdown</li>
 </ul>
 <h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><ul>
-<li>默认值：<span class="en"><code>!default</code></span>, 仅当该变量未定义或其值为 null 时，才会为该变量赋值</li>
+<li>默认值：<span class="key_words">『!default』</span>, 仅当该变量未定义或其值为 null 时，才会为该变量赋值</li>
 <li>内置变量：无法修改</li>
 <li>存在块作用域</li>
-<li>全局标识：<span class="en"><code>!global</code></span> 只能用于设置已在文件顶层声明的变量。它不能用于声明新变量。</li>
+<li>全局标识：<span class="key_words">『!global』</span> 只能用于设置已在文件顶层声明的变量。它不能用于声明新变量。</li>
 <li>成为全局变量：在顶层书写，或者在块作用域内使用!global</li>
 <li>流程控制范围：使用@if，作用域内的变量可以分配给外部变量但在分配前该变量已经声明</li>
 </ul>
 <h2 id="规则"><a href="#规则" class="headerlink" title="@规则"></a>@规则</h2><ul>
-<li><span class="en"><code>@mixin和@include</code></span>:可以轻松重用样式块。<ul>
+<li>@mixin和@include: 可以轻松重用样式块。<ul>
 <li><a target="_blank" rel="noopener" href="https://sass.nodejs.cn/documentation/at-rules/mixin/">@mixin 参数</a></li>
 </ul>
 </li>
-<li><span class="en"><code>@function</code></span>:定义了可在 SassScript 表达式中使用的自定义函数。</li>
-<li><span class="en"><code>@extend</code></span>:允许选择器相互继承样式。</li>
-<li><span class="en"><code>@at-root</code></span>:将样式放在 CSS 文档的根目录下。:将外部选择器添加为内部选择器</li>
-<li><span class="en"><code>@error</code></span>:会导致编译失败并显示错误消息。</li>
-<li><span class="en"><code>@warn</code></span>:在不完全停止编译的情况下打印警告。</li>
-<li><span class="en"><code>@debug</code></span>:打印一条消息以进行调试。</li>
+<li>@function: 定义了可在 SassScript 表达式中使用的自定义函数。</li>
+<li>@extend: 允许选择器相互继承样式。</li>
+<li>@at-root: 将样式放在 CSS 文档的根目录下。:将外部选择器添加为内部选择器</li>
+<li>@error: 会导致编译失败并显示错误消息。</li>
+<li>@warn: 在不完全停止编译的情况下打印警告。</li>
+<li>@debug: 打印一条消息以进行调试。</li>
 </ul>
 <h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><ul>
-<li><span class="en"><code>@if,@else，@else if</code></span>：true 和 false 返回执行的部分</li>
-<li><span class="en"><code>@each</code></span>：遍历列表的每一项，格式如<code>@each $i in $items</code></li>
-<li><span class="en"><code>@for</code></span>：使用 to，则排除最终数字，使用 through，则包含在内，格式如<code>@for $i from 0 through 2</code></li>
-<li><span class="en"><code>@while</code></span>：表达式为真，一直执行，格式如：<code>@while $var &gt; $var2</code></li>
+<li>@if,@else，@else if：true 和 false 返回执行的部分</li>
+<li>@each：遍历列表的每一项，格式<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@each</span> <span class="variable">$i</span> in <span class="variable">$items</span></span><br></pre></td></tr></table></figure></li>
+<li>@for：使用 to，则排除最终数字，使用 through，则包含在内，格式<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@for</span> <span class="variable">$i</span> from <span class="number">0</span> through <span class="number">2</span></span><br></pre></td></tr></table></figure></li>
+<li>@while：表达式为真，一直执行，格式<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@while</span> <span class="variable">$var</span> &gt; <span class="variable">$var2</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="来自-CSS"><a href="#来自-CSS" class="headerlink" title="来自 CSS"></a>来自 CSS</h2><ul>
-<li><span class="en"><code>@media</code></span>：作媒体查询，也可作特性查询，如<code>@media(hover:hover) or @media(max-width:1200px)</code></li>
-<li><span class="en"><code>@supports</code></span>：声明多个同样属性样式</li>
-<li><span class="en"><code>@keyframes</code></span>：子规则必须是关键帧规则(from 或 to，20%)</li>
+<li>@media：作媒体查询，也可作特性查询<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span>(<span class="attribute">hover</span>:<span class="attribute">hover</span>) <span class="keyword">or</span> <span class="keyword">@media</span>(<span class="attribute">max-width</span>:<span class="number">1200px</span>)</span><br></pre></td></tr></table></figure></li>
+<li>@supports：声明多个同样属性样式</li>
+<li>@keyframes：子规则必须是关键帧规则(from 或 to，20%)</li>
 </ul>
-<h2 id="值"><a href="#值" class="headerlink" title="值"></a>值</h2><ul>
-<li><h3 id="数字"><a href="#数字" class="headerlink" title="数字:"></a>数字:</h3><ul>
+<h2 id="值"><a href="#值" class="headerlink" title="值"></a>值</h2><h3 id="数字"><a href="#数字" class="headerlink" title="数字:"></a>数字:</h3><ul>
 <li>不区分整数和小数，也可以有单位</li>
 <li>相乘时单位相乘,相除时,从第一个数字获取分子单位,第二个获取分母单位</li>
 </ul>
-</li>
-<li><h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串:"></a>字符串:</h3><ul>
-<li><span class="en"><code>string.unquote()</code></span>: 将带引号的字符串转为不带引号的字符串</li>
-<li><span class="en"><code>string.quote()</code></span>: 将不带引号的字符串转为带引号的字符串</li>
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串:"></a>字符串:</h3><ul>
+<li>string.unquote(): 将带引号的字符串转为不带引号的字符串</li>
+<li>string.quote(): 将不带引号的字符串转为带引号的字符串</li>
 <li>转义：在字符前添加\</li>
 <li>不带引号的转义返回字符串，没有转义</li>
 <li>带引号的字符串转义：unicode 中代表什么就等于什么</li>
-<li><span class="en"><code>string.index(&quot;原字符串&quot;,&quot;要索引的字符&quot;)</code></span>: 返回索引的位置(从 1 开始算)</li>
-<li><span class="en"><code>string.slice(&quot;原字符串&quot;,切割的长度)</code></span></li>
+<li>string.index(“原字符串”,”要索引的字符”): 返回索引的位置(从 1 开始算)</li>
+<li>string.slice(“原字符串”,切割的长度)</li>
 </ul>
-</li>
-<li><h3 id="列表"><a href="#列表" class="headerlink" title="列表:"></a>列表:</h3><ul>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表:"></a>列表:</h3><ul>
 <li>索引：从 1 开始，负数索引为倒数</li>
-<li>访问元素：****<code>list.nth($list, $n)</code></span>获取列表中给定索引的元素</li>
-<li>遍历元素：<span class="en"><code>@each $i in $lists</code></span></li>
-<li>添加到列表：<span class="en"><code>list.append($list,$val)</code></span>添加元素在末尾不会破坏原来列表.</li>
-<li>在列表中查找元素：<span class="en"><code>list.index($list,$value)</code></span>，不存在返回 null，可与@if 一起检查</li>
+<li>访问元素：获取列表中给定索引的元素<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list<span class="selector-class">.nth</span>($list, $n)</span><br></pre></td></tr></table></figure></li>
+<li>遍历元素：<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@each</span> <span class="variable">$i</span> in <span class="variable">$lists</span></span><br></pre></td></tr></table></figure></li>
+<li>添加到列表：添加元素在末尾不会破坏原来列表.<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list<span class="selector-class">.append</span>($list,$val)</span><br></pre></td></tr></table></figure></li>
+<li>在列表中查找元素：不存在返回 null，可与@if 一起检查<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list<span class="selector-class">.index</span>($list,$value)</span><br></pre></td></tr></table></figure></li>
 <li>列表的不可变性：返回新列表，不会修改原列表</li>
-<li>任意参数 的 mixin 或函数时和 meta.keywords() 函数</li>
+<li>任意参数 的 mixin 或函数时和 meta.keywords() 函数<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// sass</span></span><br><span class="line"><span class="keyword">@use</span> <span class="string">&quot;sass:meta&quot;</span>;</span><br><span class="line"><span class="keyword">@mixin</span> syntax-colors(<span class="variable">$args</span>...) &#123;</span><br><span class="line">  <span class="keyword">@debug</span> meta.keywords(<span class="variable">$args</span>);</span><br><span class="line">  <span class="comment">// (string: #080, comment: #800, variable: #60b)</span></span><br><span class="line">  <span class="keyword">@each</span> <span class="variable">$name</span>, <span class="variable">$color</span> in meta.keywords(<span class="variable">$args</span>) &#123;</span><br><span class="line">    pre <span class="selector-tag">span</span><span class="selector-class">.stx-</span>#&#123;<span class="variable">$name</span>&#125; &#123;</span><br><span class="line">      <span class="attribute">color</span>: <span class="variable">$color</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@include</span> syntax-colors(</span><br><span class="line">  <span class="variable">$string</span>: <span class="number">#080</span>,</span><br><span class="line">  <span class="variable">$comment</span>: <span class="number">#800</span>,</span><br><span class="line">  <span class="variable">$variable</span>: <span class="number">#60b</span>,</span><br><span class="line">)</span><br><span class="line">// css</span><br><span class="line">pre span.stx-string &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#080</span>;</span><br><span class="line">&#125;</span><br><span class="line">pre <span class="selector-tag">span</span><span class="selector-class">.stx-comment</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#800</span>;</span><br><span class="line">&#125;</span><br><span class="line">pre <span class="selector-tag">span</span><span class="selector-class">.stx-variable</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#60b</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
+<h3 id="映射-map"><a href="#映射-map" class="headerlink" title="映射 map:"></a>映射 map:</h3><ul>
+<li>添加映射：<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map<span class="selector-class">.set</span>($map,$key,$value)</span><br></pre></td></tr></table></figure></li>
+<li>合并两个现有映射：<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map<span class="selector-class">.merge</span>()</span><br></pre></td></tr></table></figure></li>
+<li>查找一个值：<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map<span class="selector-class">.get</span>($map, $key)</span><br></pre></td></tr></table></figure></li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// sass</span></span><br><span class="line">@use <span class="string">&quot;sass:meta&quot;</span>;</span><br><span class="line">@mixin syntax-<span class="title function_">colors</span>(<span class="params">$args...</span>) &#123;</span><br><span class="line">  @debug meta.<span class="title function_">keywords</span>($args);</span><br><span class="line">  <span class="comment">// (string: #080, comment: #800, variable: #60b)</span></span><br><span class="line">  @each $name, $color <span class="keyword">in</span> meta.<span class="title function_">keywords</span>(<span class="params">$args</span>) &#123;</span><br><span class="line">    pre span.<span class="property">stx</span>-#&#123;$name&#125; &#123;</span><br><span class="line">      <span class="attr">color</span>: $color;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@include syntax-<span class="title function_">colors</span>(</span><br><span class="line">  <span class="attr">$string</span>: #<span class="number">080</span>,</span><br><span class="line">  <span class="attr">$comment</span>: #<span class="number">800</span>,</span><br><span class="line">  <span class="attr">$variable</span>: #60b,</span><br><span class="line">)</span><br><span class="line"><span class="comment">// css</span></span><br><span class="line">pre span.<span class="property">stx</span>-string &#123;</span><br><span class="line">  <span class="attr">color</span>: #<span class="number">080</span>;</span><br><span class="line">&#125;</span><br><span class="line">pre span.<span class="property">stx</span>-comment &#123;</span><br><span class="line">  <span class="attr">color</span>: #<span class="number">800</span>;</span><br><span class="line">&#125;</span><br><span class="line">pre span.<span class="property">stx</span>-variable &#123;</span><br><span class="line">  <span class="attr">color</span>: #60b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><h3 id="映射-map"><a href="#映射-map" class="headerlink" title="映射 map:"></a>映射 map:</h3><ul>
-<li>添加映射：<span class="en"><code>map.set($map,$key,$value)</code></span></li>
-<li>合并两个现有映射：<span class="en"><code>map.merge()</code></span></li>
-<li>查找一个值：<span class="en"><code>map.get($map, $key)</code></span></li>
-</ul>
-</li>
-<li><h3 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean:"></a>Boolean:</h3><ul>
+<h3 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean:"></a>Boolean:</h3><ul>
 <li>@if $var {…}：结果为 true 返回</li>
 <li>if(true,10px,20px)：true 返回第二个参数,false,返回第三个参数</li>
 <li>false 和 null 为 false</li>
 </ul>
-</li>
-<li><h3 id="null"><a href="#null" class="headerlink" title="null:"></a>null:</h3><ul>
+<h3 id="null"><a href="#null" class="headerlink" title="null:"></a>null:</h3><ul>
 <li>包含 null,省略</li>
 </ul>
-</li>
-<li><h3 id="function"><a href="#function" class="headerlink" title="function"></a>function</h3><ul>
-<li>meta.get-function()将函数名称作为值获取</li>
+<h3 id="function"><a href="#function" class="headerlink" title="function"></a>function</h3><ul>
+<li>meta.get-function(): 将函数名称作为值获取</li>
 <li>meta.call()：调用该函数</li>
 </ul>
-</li>
-<li><h3 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h3><ul>
+<h3 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h3><ul>
 <li>计算：calc()</li>
 <li>比较功能：min()、max()、clamp()</li>
 <li>阶梯值函数：round()、mod()、rem()</li>
@@ -711,11 +672,8 @@
 <li>指数函数：pow()、sqrt()、hypot()、log()、exp()</li>
 <li>符号相关函数：abs()、sign()</li>
 </ul>
-</li>
-<li><h3 id="内置模块"><a href="#内置模块" class="headerlink" title="内置模块"></a>内置模块</h3><ul>
+<h3 id="内置模块"><a href="#内置模块" class="headerlink" title="内置模块"></a>内置模块</h3><ul>
 <li><a target="_blank" rel="noopener" href="https://sass.nodejs.cn/documentation/modules/">内置模块</a></li>
-</ul>
-</li>
 </ul>
 
 </article>

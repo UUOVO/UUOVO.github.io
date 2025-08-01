@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="前情提要： 只写了关键代码 示例布局： html&#x2F;GTA5 封面.html  划分行列 grid-template-columns 划分列数  划几个就写几个值，每个值代表该列的宽   grid-template-rows 划分行数  划几个就写几个值，每个值代表该行的高   重复设置(repeat())  参数一： 重复的数量 参数二： 重复的值,这个值可以有多个，用空格连接 示例：">
+<meta name="description" content="前情提要： 只写了关键代码 示例布局： html&#x2F;GTA5 封面.html  划分行列 grid-template-columns 划分列数  划几个就写几个值，每个值代表该列的宽   grid-template-rows 划分行数  划几个就写几个值，每个值代表该行的高   repeat() 重复设置  参数一：重复的数量 参数二：重复的值,这个值可以有多个，用空格连接 示例：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Html-格子布局(Grid)">
 <meta property="og:url" content="http://example.com/en/2024/10/30/HTMLCSS/html-Grid/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="前情提要： 只写了关键代码 示例布局： html&#x2F;GTA5 封面.html  划分行列 grid-template-columns 划分列数  划几个就写几个值，每个值代表该列的宽   grid-template-rows 划分行数  划几个就写几个值，每个值代表该行的高   重复设置(repeat())  参数一： 重复的数量 参数二： 重复的值,这个值可以有多个，用空格连接 示例：">
+<meta property="og:description" content="前情提要： 只写了关键代码 示例布局： html&#x2F;GTA5 封面.html  划分行列 grid-template-columns 划分列数  划几个就写几个值，每个值代表该列的宽   grid-template-rows 划分行数  划几个就写几个值，每个值代表该行的高   repeat() 重复设置  参数一：重复的数量 参数二：重复的值,这个值可以有多个，用空格连接 示例：">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-30T07:29:11.143Z">
-<meta property="article:modified_time" content="2024-11-22T03:29:08.504Z">
+<meta property="article:modified_time" content="2025-07-29T08:58:27.601Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="Html">
 <meta property="article:tag" content="布局">
@@ -69,7 +69,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-22 11:29:08"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-29 16:58:27"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -533,34 +533,37 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <ul>
+    <script src="/js/enChangegreen.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/global.css">
+
+<ul>
 <li>前情提要： 只写了关键代码</li>
 <li>示例布局： <a target="_blank" rel="noopener" href="https://gitee.com/ovouu/study-notes/blob/master/html5%20&%20css/html/GTA5%E5%B0%81%E9%9D%A2.html">html&#x2F;GTA5 封面.html</a></li>
 </ul>
 <h3 id="划分行列"><a href="#划分行列" class="headerlink" title="划分行列"></a>划分行列</h3><ol>
-<li><p><code>grid-template-columns</code> 划分列数</p>
+<li><p>grid-template-columns 划分列数</p>
 <ul>
 <li>划几个就写几个值，每个值代表该列的宽</li>
 </ul>
 </li>
-<li><p><code>grid-template-rows</code> 划分行数</p>
+<li><p>grid-template-rows 划分行数</p>
 <ul>
 <li>划几个就写几个值，每个值代表该行的高</li>
 </ul>
 </li>
-<li><p>重复设置(<code>repeat()</code>)</p>
+<li><p>repeat() 重复设置</p>
 <ul>
-<li>参数一： 重复的数量</li>
-<li>参数二： 重复的值,这个值可以有多个，用空格连接<ul>
-<li>示例： <code>grid-template-columns:repeat(2, 100px 50px)</code></li>
+<li>参数一：重复的数量</li>
+<li>参数二：重复的值,这个值可以有多个，用空格连接<ul>
+<li>示例：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">grid-template-columns</span>:<span class="built_in">repeat</span>(<span class="number">2</span>, <span class="number">100px</span> <span class="number">50px</span>)</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>自动填充<code>auto-fit</code></p>
+<li><p>自动填充 auto-fit</p>
 <ul>
 <li>根据容器尺寸，自动设置元素尺寸</li>
-<li>示例： <code>grid-template-columns: repeat(auto-fit,100px)</code></li>
+<li>示例：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(auto-fit,<span class="number">100px</span>)</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>比例划分</p>
@@ -575,57 +578,45 @@
 </li>
 </ul>
 </li>
-<li><p>自动空间 <code>auto</code></p>
-</li>
-</ol>
+<li><p>自动空间 auto</p>
 <ul>
 <li>在值中使用 auto，则将获取剩余空间</li>
 </ul>
-<ol start="7">
+</li>
 <li><p>组合定义</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">grid-template</span>: grid-template-rows / grid-template-columns</span><br><span class="line">eg：grid-template: <span class="number">50px</span> <span class="number">100px</span> <span class="number">50px</span> / <span class="number">150px</span> <span class="number">150px</span></span><br><span class="line">grid-template: grid-template-areas</span><br></pre></td></tr></table></figure>
 <ul>
-<li><code>grid-template: grid-template-rows / grid-template-columns</code><ul>
-<li>示例： <code>grid-template: 50px 100px 50px / 150px 150px</code></li>
+<li>示例：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*点代表占位符*/</span></span><br><span class="line"><span class="attribute">grid-template</span>:</span><br><span class="line">  <span class="string">&#x27;header header .&#x27;</span><span class="number">100px</span></span><br><span class="line">  <span class="string">&#x27;. main main&#x27;</span><span class="number">200px</span></span><br><span class="line">  <span class="string">&#x27;footer . .&#x27;</span> <span class="number">300px</span>;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:nth-child</span>(<span class="number">1</span>) &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: header</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:nth-child</span>(<span class="number">2</span>) &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: main</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:nth-child</span>(<span class="number">3</span>) &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: footer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><code>grid-template: grid-template-areas</code><ul>
-<li>示例：</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*点代表占位符*/</span></span><br><span class="line">grid-<span class="attr">template</span>:</span><br><span class="line">  <span class="string">&#x27;header header .&#x27;</span>100px</span><br><span class="line">  <span class="string">&#x27;. main main&#x27;</span>200px</span><br><span class="line">  <span class="string">&#x27;footer . .&#x27;</span> 300px;</span><br><span class="line"></span><br><span class="line"><span class="attr">div</span>:nth-<span class="title function_">child</span>(<span class="params"><span class="number">1</span></span>) &#123;</span><br><span class="line">  grid-<span class="attr">area</span>: header</span><br><span class="line">&#125;</span><br><span class="line"><span class="attr">div</span>:nth-<span class="title function_">child</span>(<span class="params"><span class="number">2</span></span>) &#123;</span><br><span class="line">  grid-<span class="attr">area</span>: main</span><br><span class="line">&#125;</span><br><span class="line"><span class="attr">div</span>:nth-<span class="title function_">child</span>(<span class="params"><span class="number">3</span></span>) &#123;</span><br><span class="line">  grid-<span class="attr">area</span>: footer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="8">
-<li><p>最大最下值 <code>minmax()</code></p>
+<li><p>最大最下值 minmax()</p>
 <ul>
 <li>取值范围在最小到最大之间取值，左边最小，右边最大</li>
-<li>示例：<code>grid-template-columns: repeat(2,minmax(100px, 1fr))</code></li>
+<li>示例: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(<span class="number">2</span>,<span class="built_in">minmax</span>(<span class="number">100px</span>, <span class="number">1</span>fr))</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ol>
 <h3 id="间距定义"><a href="#间距定义" class="headerlink" title="间距定义"></a>间距定义</h3><ol>
-<li>行间距：<code>row-gap</code></li>
-<li>列间距：<code>column-gap</code></li>
-<li>组合定义：<code>gap</code><ul>
+<li>行间距：row-gap</li>
+<li>列间距：column-gap</li>
+<li>组合定义：gap<ul>
 <li>一个值：行列统一</li>
 <li>两个值：行 列</li>
 </ul>
 </li>
 </ol>
 <h3 id="元素定位"><a href="#元素定位" class="headerlink" title="元素定位"></a>元素定位</h3><ol>
-<li><code>grid-row-start</code>: 行开始网格线，起到命名的作用</li>
-<li><code>grid-row-end</code>: 行结束网格线</li>
-<li><code>grid-column-start</code>：列开始网格线</li>
-<li><code>grid-column-end</code>：列结束网格线</li>
+<li>grid-row-start: 行开始网格线，起到命名的作用</li>
+<li>grid-row-end: 行结束网格线</li>
+<li>grid-column-start：列开始网格线</li>
+<li>grid-column-end：列结束网格线</li>
 </ol>
 <ul>
 <li>以上共有属性：<ul>
-<li><code>Line</code>: 网格络</li>
-<li><code>span数值</code>： 网格包含的网格数量</li>
-<li><code>span</code> 区域名称： 网格包含到指定的区域名称</li>
-<li><code>auto</code>： 自动设置，默认为一个网格宽高</li>
+<li>Line: 网格络</li>
+<li>span数值： 网格包含的网格数量</li>
+<li>span 区域名称： 网格包含到指定的区域名称</li>
+<li>auto： 自动设置，默认为一个网格宽高</li>
 </ul>
 </li>
 </ul>
@@ -635,45 +626,39 @@
 <li>通过设置具体的第几条网格线来设置区域位置，设置的数值可以是正数和负数</li>
 </ul>
 </li>
-<li><p>根据偏移量 <code>span</code></p>
+<li><p>根据偏移量 span</p>
 <ul>
 <li>使用 span 可以设置包含网格的数量或包含到的区域名称。</li>
-<li>示例：<code>grid-row-start: span 2;</code></li>
+<li>示例：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">grid-row-start</span>: span <span class="number">2</span>;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>根据网格命名：看下面的网格命名小节</p>
 </li>
 <li><p>简写模式</p>
 <ul>
-<li>使用<code>grid-row</code>设置行开始网格线</li>
-<li>使用设置<code>grid-column</code>列结束网格线</li>
+<li>使用 grid-row 设置行开始网格线</li>
+<li>使用设置 grid-column 列结束网格线</li>
 </ul>
 </li>
-<li><p>更简洁的组合写法： grid-area: <code>grid-row/start/grid-column-start/grid-row-end/grid-column-end</code></p>
-</li>
+<li><p>更简洁的组合写法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">grid-area</span>: grid-row/start/grid-column-start/grid-row-end/grid-column-end</span><br></pre></td></tr></table></figure></li>
 <li><p>实现类似于 bootstrap 的布局</p>
 </li>
 </ol>
 <h3 id="网格命名"><a href="#网格命名" class="headerlink" title="网格命名"></a>网格命名</h3><ul>
-<li>独立命名</li>
+<li><p>独立命名</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*2. 然后在定义行列宽时也添加进去*/</span></span><br><span class="line"><span class="selector-class">.outer</span> &#123;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: [c1-start] <span class="number">100px</span> [c1-end c2-start] <span class="number">100px</span> [c3-end];</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: [r1-start] <span class="number">100px</span> [r1-end r2-start] <span class="number">100px</span> [r3-end];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*1.给一个网格中的每个线单独命名*/</span></span><br><span class="line"><span class="selector-class">.div1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-row-start</span>: r2-start;</span><br><span class="line">  <span class="attribute">grid-row-end</span>: r2-end;</span><br><span class="line">  <span class="attribute">grid-column-start</span>: c3-start;</span><br><span class="line">  <span class="attribute">grid-column-end</span>: c3-end;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自动命名</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*2. 然后在定义行列宽时也添加进去*/</span></span><br><span class="line"><span class="selector-class">.outer</span> &#123;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(<span class="number">3</span>,[c-start] <span class="number">100px</span> [c-end]);</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: <span class="built_in">repeat</span>(<span class="number">3</span>,[r-start] <span class="number">100px</span> [r-end]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*1.给一个网格中的每个线单独命名*/</span></span><br><span class="line"><span class="selector-class">.div1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-row-start</span>: r-start <span class="number">2</span>;</span><br><span class="line">  <span class="attribute">grid-row-end</span>: r-end <span class="number">2</span>;</span><br><span class="line">  <span class="attribute">grid-column-start</span>: c-start <span class="number">2</span>;</span><br><span class="line">  <span class="attribute">grid-column-end</span>: c-end <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*2. 然后在定义行列宽时也添加进去*/</span></span><br><span class="line">.<span class="property">outer</span> &#123;</span><br><span class="line">  grid-template-<span class="attr">columns</span>: [c1-start] 100px [c1-end c2-start] 100px [c3-end];</span><br><span class="line">  grid-template-<span class="attr">rows</span>: [r1-start] 100px [r1-end r2-start] 100px [r3-end];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*1.给一个网格中的每个线单独命名*/</span></span><br><span class="line">.<span class="property">div1</span> &#123;</span><br><span class="line">  grid-row-<span class="attr">start</span>: r2-start;</span><br><span class="line">  grid-row-<span class="attr">end</span>: r2-end;</span><br><span class="line">  grid-column-<span class="attr">start</span>: c3-start;</span><br><span class="line">  grid-column-<span class="attr">end</span>: c3-end;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>自动命名</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*2. 然后在定义行列宽时也添加进去*/</span></span><br><span class="line">.<span class="property">outer</span> &#123;</span><br><span class="line">  grid-template-<span class="attr">columns</span>: <span class="title function_">repeat</span>(<span class="number">3</span>,[c-start] 100px [c-end]);</span><br><span class="line">  grid-template-<span class="attr">rows</span>: <span class="title function_">repeat</span>(<span class="number">3</span>,[r-start] 100px [r-end]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*1.给一个网格中的每个线单独命名*/</span></span><br><span class="line">.<span class="property">div1</span> &#123;</span><br><span class="line">  grid-row-<span class="attr">start</span>: r-start <span class="number">2</span>;</span><br><span class="line">  grid-row-<span class="attr">end</span>: r-end <span class="number">2</span>;</span><br><span class="line">  grid-column-<span class="attr">start</span>: c-start <span class="number">2</span>;</span><br><span class="line">  grid-column-<span class="attr">end</span>: c-end <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="区域换位"><a href="#区域换位" class="headerlink" title="区域换位"></a>区域换位</h3><ol>
-<li>编号定位</li>
+<li><p>编号定位</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*2. 然后在定义行列宽时也添加进去*/</span></span><br><span class="line"><span class="selector-class">.outer</span> &#123;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(<span class="number">3</span>, <span class="number">100px</span>);</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: <span class="built_in">repeat</span>(<span class="number">3</span>, <span class="number">100px</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*1.给一个网格中的每个线单独命名*/</span></span><br><span class="line"><span class="selector-class">.div1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>:<span class="number">2</span>/<span class="number">2</span>/<span class="number">3</span>/<span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>命名定位</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*2. 然后在定义行列宽时也添加进去*/</span></span><br><span class="line"><span class="selector-class">.outer</span> &#123;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(auto-fill, [c] <span class="number">100px</span>);</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: <span class="built_in">repeat</span>(auto-fill, [r] <span class="number">100px</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*1.给一个网格中的每个线单独命名*/</span></span><br><span class="line"><span class="selector-class">.div1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>:r <span class="number">2</span> / c <span class="number">2</span> / r <span class="number">3</span> / c <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*2. 然后在定义行列宽时也添加进去*/</span></span><br><span class="line">.<span class="property">outer</span> &#123;</span><br><span class="line">  grid-template-<span class="attr">columns</span>: <span class="title function_">repeat</span>(<span class="number">3</span>, 100px);</span><br><span class="line">  grid-template-<span class="attr">rows</span>: <span class="title function_">repeat</span>(<span class="number">3</span>, 100px);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*1.给一个网格中的每个线单独命名*/</span></span><br><span class="line">.<span class="property">div1</span> &#123;</span><br><span class="line">  grid-<span class="attr">area</span>:<span class="number">2</span>/<span class="number">2</span>/<span class="number">3</span>/<span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>命名定位</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*2. 然后在定义行列宽时也添加进去*/</span></span><br><span class="line">.<span class="property">outer</span> &#123;</span><br><span class="line">  grid-template-<span class="attr">columns</span>: <span class="title function_">repeat</span>(auto-fill, [c] 100px);</span><br><span class="line">  grid-template-<span class="attr">rows</span>: <span class="title function_">repeat</span>(auto-fill, [r] 100px);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*1.给一个网格中的每个线单独命名*/</span></span><br><span class="line">.<span class="property">div1</span> &#123;</span><br><span class="line">  grid-<span class="attr">area</span>:r <span class="number">2</span> / c <span class="number">2</span> / r <span class="number">3</span> / c <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="区域声明"><a href="#区域声明" class="headerlink" title="区域声明"></a>区域声明</h3><ul>
 <li>以布局移动端页面结构为列</li>
 </ul>
@@ -681,27 +666,19 @@
 <li><p>区域布局</p>
 <ul>
 <li>每个子元素添加对应的 grid-area： 子元素的命名;</li>
-<li>在父元素中使用</li>
+<li>在父元素中使用<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  <span class="attribute">grid-template-rows</span>: <span class="number">80px</span> <span class="number">1</span>fr <span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">100px</span> <span class="number">1</span>fr <span class="number">50px</span> <span class="number">60px</span>;</span><br><span class="line">  <span class="attribute">grid-template-areas</span>:</span><br><span class="line">      <span class="string">&quot;ddd ddd ddd ddd&quot;</span></span><br><span class="line">      <span class="string">&quot;aaa bbb bbb ccc&quot;</span></span><br><span class="line">      <span class="string">&quot;eee eee eee eee&quot;</span>;</span><br><span class="line">其中每个aaa，bbb,ccc,ddd,eee,代表了子元素的命名，命名放在哪里就代表子元素占用的位置</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  grid-template-<span class="attr">rows</span>: 80px 1fr 50px;</span><br><span class="line">  grid-template-<span class="attr">columns</span>: 100px 1fr 50px 60px;</span><br><span class="line">  grid-template-<span class="attr">areas</span>:</span><br><span class="line">      <span class="string">&quot;ddd ddd ddd ddd&quot;</span></span><br><span class="line">      <span class="string">&quot;aaa bbb bbb ccc&quot;</span></span><br><span class="line">      <span class="string">&quot;eee eee eee eee&quot;</span>;</span><br><span class="line">其中每个aaa，bbb,ccc,ddd,eee,代表了子元素的命名，命名放在哪里就代表子元素占用的位置</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
 <li><p>简写形式</p>
 <ul>
 <li>每个子元素添加对应的 grid-area： 栅格名称;</li>
-<li>在父元素中使用</li>
+<li>在父元素中使用<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">grid-template</span>:</span><br><span class="line">  <span class="string">&#x27;栅格名称 栅格名称 栅格名称 栅格名称&#x27;</span> 行高</span><br><span class="line">  <span class="string">&#x27;栅格名称 栅格名称 栅格名称 栅格名称&#x27;</span> 行高</span><br><span class="line">  <span class="string">&#x27;栅格名称 栅格名称 栅格名称 栅格名称&#x27;</span> 行高/列宽 列宽 列宽 列宽;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">grid-<span class="attr">template</span>:</span><br><span class="line">  <span class="string">&#x27;栅格名称 栅格名称 栅格名称 栅格名称&#x27;</span> 行高</span><br><span class="line">  <span class="string">&#x27;栅格名称 栅格名称 栅格名称 栅格名称&#x27;</span> 行高</span><br><span class="line">  <span class="string">&#x27;栅格名称 栅格名称 栅格名称 栅格名称&#x27;</span> 行高/列宽 列宽 列宽 列宽;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
 <li><p>区域命名(系统自动命名)</p>
 <ul>
 <li>只要子元素命名了网格线的区域，栅格名字自定生成<ul>
-<li>示例:<code>grid-area: header1-start/header1-start/main-end/mian-end</code></li>
+<li>示例:<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">grid-area</span>: header1-start/header1-start/main-end/mian-end</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
@@ -713,32 +690,31 @@
 </li>
 </ol>
 <h3 id="网格流动"><a href="#网格流动" class="headerlink" title="网格流动"></a>网格流动</h3><ol>
-<li><p><code>grid-auto-flow</code> 改变单元格排列方式</p>
+<li><p>grid-auto-flow 改变单元格排列方式</p>
 <ul>
-<li><code>column</code>： 按列排序</li>
-<li><code>row</code>： 按行排序</li>
-<li><code>dense</code>： 元素使用前面空余栅格(想当与 margin)</li>
+<li>column： 按列排序</li>
+<li>row： 按行排序</li>
+<li>dense： 元素使用前面空余栅格(想当与 margin)</li>
 </ul>
 </li>
 <li><p>在父元素使用</p>
 </li>
 <li><p>强制填充</p>
 <ul>
-<li>当元素在栅格中放不下时，将会发生换行产生留白，使用<code>grid-auto-flow: row dense;</code><br/>可以执行填充空白区域操作</li>
+<li>当元素在栅格中放不下时，将会发生换行产生留白，使用grid-auto-flow: row dense;可以执行填充空白区域操作</li>
 </ul>
 </li>
 </ol>
 <h3 id="对齐管理"><a href="#对齐管理" class="headerlink" title="对齐管理"></a>对齐管理</h3><ul>
-<li><code>justify-content</code>: <code>所有栅格在容器</code>中的<code>水平对齐</code>方式，容器有额外空间时</li>
-<li><code>align-content</code>：<code>所有栅格在容器</code>中的<code>垂直对齐</code>方式，容器有额外空间时</li>
-<li><code>align-items</code>: <code>栅格内所有元素</code>的<code>垂直排列方</code>式</li>
-<li><code>justify-items</code>: <code>栅格内所有元素</code>的<code>横向排列</code>方式</li>
-<li><code>align-self</code>: <code>元素</code>在栅格中<code>垂直</code>对齐方式</li>
-<li><code>justify-self</code>: <code>元素</code>在栅格中<code>水平</code>对齐方式</li>
+<li>justify-content: <span class="key_words">『所有栅格在容器中的水平对齐』</span>方式，容器有额外空间时</li>
+<li>align-content：<span class="key_words">『所有栅格在容器中的垂直对齐』</span>方式，容器有额外空间时</li>
+<li>align-items: <span class="key_words">『栅格内所有元素的垂直排列方』</span>式</li>
+<li>justify-items: <span class="key_words">『栅格内所有元素的横向排列』</span>方式</li>
+<li>align-self: <span class="key_words">『元素在栅格中垂直』</span>对齐方式</li>
+<li>justify-self: <span class="key_words">『元素在栅格中水平』</span>对齐方式</li>
 </ul>
 <ol>
-<li><p>网格对齐</p>
-<ul>
+<li>网格对齐<ul>
 <li>justify-content 属性的值如下</li>
 </ul>
 </li>
@@ -815,8 +791,7 @@
 </tr>
 </tbody></table>
 <ol start="2">
-<li><p>元素对齐</p>
-<ul>
+<li>元素对齐<ul>
 <li>justify-items 用于控制元素的水平对齐方式，可用的属性值如下</li>
 </ul>
 </li>
@@ -872,20 +847,15 @@
 <td>垂直撑满栅格</td>
 </tr>
 </tbody></table>
-<ol>
-<li>简写</li>
+<ol start="3">
+<li>简写<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">place-<span class="attribute">content</span>: &lt;align-content&gt; &lt;justify-content&gt;</span><br><span class="line">place-items: &lt;align-items&gt; &lt;justify-items&gt;</span><br><span class="line">place-self: &lt;align-self&gt; &lt;justify-self&gt;</span><br></pre></td></tr></table></figure></li>
 </ol>
-<ul>
-<li><code>place-content:  &lt;align-content&gt; &lt;justify-content&gt;</code></li>
-<li><code>place-items: &lt;align-items&gt; &lt;justify-items&gt;</code></li>
-<li><code>place-self: &lt;align-self&gt; &lt;justify-self&gt;</code></li>
+<h3 id="自动排列"><a href="#自动排列" class="headerlink" title="自动排列"></a>自动排列</h3><ul>
+<li>属性说明<ul>
+<li>grid-auto-rows: 控制自动增加的栅格行的尺寸，grid-auto-flow:row; 为默认</li>
+<li>grid-auto-columns: 控制自动增加的栅格列的尺寸，grid-auto-flow: column;</li>
 </ul>
-<h3 id="自动排列"><a href="#自动排列" class="headerlink" title="自动排列"></a>自动排列</h3><ol>
-<li>属性说明</li>
-</ol>
-<ul>
-<li><code>grid-auto-rows</code>: 控制自动增加的栅格行的尺寸，grid-auto-flow:row; 为默认</li>
-<li><code>grid-auto-columns</code>: 控制自动增加的栅格列的尺寸，grid-auto-flow: column;</li>
+</li>
 </ul>
 
 </article>

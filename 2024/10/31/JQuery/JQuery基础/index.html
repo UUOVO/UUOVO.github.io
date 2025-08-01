@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content=".en1 {         color: #3D82AC;         font-weight: 600;     }     .en {     color: green;         font-weight:600;   }   基本了解 定义：一个JS函数库，封装简化DOM操作(CRUD) | Ajax 优势： 强大选择器: 方便快速查找DOM元素 隐式遍历(迭代): 一">
+<meta name="description" content="基本了解 定义：一个JS函数库，封装简化DOM操作(CRUD) | Ajax  优势： 强大选择器: 方便快速查找DOM元素 隐式遍历(迭代): 一次操作多个元素 读写合一: 读数据 | 写数据用的是一个函数 链式调用: 可以通过.不断调用jQuery对象的方法 事件处理 DOM操作(CUD) 样式操作 动画 浏览器兼容  使用： 引入jQuery库 本地引入与CDN远程引入 测试版与生产版">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JQuery基础">
 <meta property="og:url" content="http://example.com/2024/10/31/JQuery/JQuery%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content=".en1 {         color: #3D82AC;         font-weight: 600;     }     .en {     color: green;         font-weight:600;   }   基本了解 定义：一个JS函数库，封装简化DOM操作(CRUD) | Ajax 优势： 强大选择器: 方便快速查找DOM元素 隐式遍历(迭代): 一">
+<meta property="og:description" content="基本了解 定义：一个JS函数库，封装简化DOM操作(CRUD) | Ajax  优势： 强大选择器: 方便快速查找DOM元素 隐式遍历(迭代): 一次操作多个元素 读写合一: 读数据 | 写数据用的是一个函数 链式调用: 可以通过.不断调用jQuery对象的方法 事件处理 DOM操作(CUD) 样式操作 动画 浏览器兼容  使用： 引入jQuery库 本地引入与CDN远程引入 测试版与生产版">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-10-31T07:42:38.183Z">
-<meta property="article:modified_time" content="2025-06-30T07:22:50.695Z">
+<meta property="article:modified_time" content="2025-07-30T08:54:44.875Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="JQuery">
 <meta name="twitter:card" content="summary">
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-06-30 15:22:50"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-30 16:54:44"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -532,20 +532,13 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <style>
-    .en1 {
-        color: #3D82AC;
-        font-weight: 600;
-    }
-    .en {
-    color: green;
-        font-weight:600;
-  }
-</style>
+    <script src="/js/enChangegreen.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/global.css">
 
 <h2 id="基本了解"><a href="#基本了解" class="headerlink" title="基本了解"></a>基本了解</h2><ul>
 <li>定义：一个JS函数库，封装简化DOM操作(CRUD) | Ajax</li>
-<li>优势：<ul>
+</ul>
+<h3 id="优势："><a href="#优势：" class="headerlink" title="优势："></a>优势：</h3><ul>
 <li>强大选择器: 方便快速查找DOM元素</li>
 <li>隐式遍历(迭代): 一次操作多个元素</li>
 <li>读写合一: 读数据 | 写数据用的是一个函数</li>
@@ -556,39 +549,28 @@
 <li>动画</li>
 <li>浏览器兼容</li>
 </ul>
-</li>
-<li>使用：<ul>
-<li>引入jQuery库<ul>
+<h3 id="使用："><a href="#使用：" class="headerlink" title="使用："></a>使用：</h3><ul>
+<li>引入jQuery库</li>
 <li>本地引入与CDN远程引入</li>
 <li>测试版与生产版(压缩版)</li>
-</ul>
-</li>
-<li>使用jQuery<ul>
+<li>使用jQuery</li>
 <li>使用jQuery函数: $ &#x2F; jQuery</li>
-<li>使用jQuery对象: <span class="en"><code>$xxx(执行$()得到的)</code></span></li>
+<li>使用jQuery对象: <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$xxx(执行$()得到的)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="JQuery的2把利器"><a href="#JQuery的2把利器" class="headerlink" title="JQuery的2把利器"></a>JQuery的2把利器</h2><h3 id="JQuery函数-jQuery"><a href="#JQuery函数-jQuery" class="headerlink" title="JQuery函数: $ &#x2F; jQuery"></a>JQuery函数: $ &#x2F; jQuery</h3><ul>
+<li>jQuery向外暴露的就是jQuery函数, 可以直接使用</li>
+<li>当函数使用: 『$(param)』<ul>
+<li>param是<span class="key_words">『function』</span>: 相当于window.onload &#x3D; function(DOM加载完成后，执行此回调函数)</li>
+<li>param是<span class="key_words">『选择器字符串』</span>: 查找所有匹配的DOM元素, 返回包含所有DOM元素的jQuery对象</li>
+<li>param是<span class="key_words">『DOM对象』</span>: 将DOM元素对象包装为jQuery对象返回</li>
+<li>param是<span class="key_words">『html标签字符串』</span>: 创建标签DOM元素对象并封装为jQuery对象返回</li>
 </ul>
 </li>
+<li>当对象使用: 『$.xxx()』</li>
 </ul>
-</li>
-</ul>
-<h2 id="JQuery的2把利器"><a href="#JQuery的2把利器" class="headerlink" title="JQuery的2把利器"></a>JQuery的2把利器</h2><h3 id="JQuery函数-jQuery"><a href="#JQuery函数-jQuery" class="headerlink" title="JQuery函数: $ &#x2F; jQuery"></a>JQuery函数: $ &#x2F; jQuery</h3><blockquote>
-<p>jQuery向外暴露的就是jQuery函数, 可以直接使用</p>
-</blockquote>
-<ul>
-<li><span class="en"><code>当函数使用: $(param)</code></span><ul>
-<li>param是<span class="en1"><code>function</code></span>: 相当于window.onload &#x3D; function(DOM加载完成后，执行此回调函数)</li>
-<li>param是<span class="en1"><code>选择器字符串</code></span>: 查找所有匹配的DOM元素, 返回包含所有DOM元素的jQuery对象</li>
-<li>param是<span class="en1"><code>DOM对象</code></span>: 将DOM元素对象包装为jQuery对象返回</li>
-<li>param是<span class="en1"><code>html标签字符串</code></span>: 创建标签DOM元素对象并封装为jQuery对象返回</li>
-</ul>
-</li>
-<li><span class="en"><code>当对象使用: $.xxx()</code></span></li>
-</ul>
-<h3 id="jQuery对象"><a href="#jQuery对象" class="headerlink" title="jQuery对象: $()"></a>jQuery对象: <code>$()</code></h3><blockquote>
-<p>包含所有匹配的n个DOM元素的伪数组对象,执行$()返回的就是jQuery对象</p>
-</blockquote>
-<ul>
-<li>如：$(‘p’),找到所有p标签的元素以数组的形式返回</li>
+<h3 id="jQuery对象"><a href="#jQuery对象" class="headerlink" title="jQuery对象: $()"></a>jQuery对象: $()</h3><ul>
+<li>包含所有匹配的n个DOM元素的伪数组对象,执行$()返回的就是jQuery对象</li>
+<li><span class="desc">如：$(‘p’),找到所有p标签的元素以数组的形式返回</span></li>
 </ul>
 <h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/jquery/jquery_ref_selectors.asp">选择器</a><blockquote>
@@ -598,140 +580,108 @@
 <li>用法：查找某个&#x2F;些DOM元素: $(selector)</li>
 </ul>
 <h3 id="基本选择器"><a href="#基本选择器" class="headerlink" title="基本选择器"></a>基本选择器</h3><ul>
-<li><code>#id</code>：id选择器</li>
-<li><code>tagName</code>：元素选择器</li>
-<li><code>.class</code>：属性选择器</li>
-<li><code>*</code>：任意标签</li>
-<li><code>s1,s2,s3</code>：多个选择器的并集(组合选择器)</li>
-<li><code>s1s2s3</code>：多个选择器的交集(相交选择器)</li>
+<li>#id：id选择器</li>
+<li>tagName：元素选择器</li>
+<li>.class：属性选择器</li>
+<li>*：任意标签</li>
+<li>s1,s2,s3：多个选择器的并集(组合选择器)</li>
+<li>s1s2s3：多个选择器的交集(相交选择器)</li>
 </ul>
 <h3 id="层次选择器"><a href="#层次选择器" class="headerlink" title="层次选择器"></a>层次选择器</h3><ul>
 <li>查找子元素, 后代元素, 兄弟元素的选择器</li>
-<li><code>parent &gt; child</code>：在给定的父元素下匹配所有的子元素</li>
-<li><code>ancestor descendant</code>：在给定的祖先元素下匹配所有的后代元素</li>
-<li><code>prev + next</code>：匹配所有紧接在 prev 元素后的 next 元素</li>
-<li><code>prev ~ siblings</code>：匹配 prev 元素之后的所有 siblings 元素</li>
+<li>parent &gt; child：在给定的父元素下匹配所有的子元素</li>
+<li>ancestor descendant：在给定的祖先元素下匹配所有的后代元素</li>
+<li>prev + next：匹配所有紧接在 prev 元素后的 next 元素</li>
+<li>prev ~ siblings：匹配 prev 元素之后的所有 siblings 元素</li>
 </ul>
 <h3 id="选择器的过滤修饰符"><a href="#选择器的过滤修饰符" class="headerlink" title="选择器的过滤修饰符"></a>选择器的过滤修饰符</h3><ul>
-<li><code>:first</code>：选择第一个元素</li>
-<li><code>:last</code>：选择最后一个元素</li>
-<li><code>:eq(index)</code>：选择第index个元素，index从0开始</li>
-<li><code>:lt(index)</code>：选择前index个元素</li>
-<li><code>:gt(index)</code>：选择前index个之后的所有元素</li>
-<li><code>:odd</code>：选择所有奇数的元素</li>
-<li><code>:even</code>：选择所有偶数的元素</li>
-<li><code>:not(selector)</code>：选择所有不为selector的元素</li>
-<li><code>:hidden</code>：选择隐藏的属性</li>
-<li><code>:visible</code>：所有可见的元素</li>
-<li><code>[attrName]</code>：选择有attrName属性的元素</li>
-<li><code>[attrName=value]</code>：选择所有attrName&#x3D;value的元素</li>
-<li><code>:contains(content)</code>：选择内容为content的元素</li>
-<li><code>:header</code>：所有标题元素 h1 - h6</li>
-<li><code>:animated</code>：所有动画元素</li>
+<li>:first：选择第一个元素</li>
+<li>:last：选择最后一个元素</li>
+<li>:eq(index)：选择第index个元素，index从0开始</li>
+<li>:lt(index)：选择前index个元素</li>
+<li>:gt(index)：选择前index个之后的所有元素</li>
+<li>:odd：选择所有奇数的元素</li>
+<li>:even：选择所有偶数的元素</li>
+<li>:not(selector)：选择所有不为selector的元素</li>
+<li>:hidden：选择隐藏的属性</li>
+<li>:visible：所有可见的元素</li>
+<li>[attrName]：选择有attrName属性的元素</li>
+<li>[attrName&#x3D;value]：选择所有attrName&#x3D;value的元素</li>
+<li>:contains(content)：选择内容为content的元素</li>
+<li>:header：所有标题元素 h1 - h6</li>
+<li>:animated：所有动画元素</li>
 </ul>
 <h3 id="表单选择器的修饰符"><a href="#表单选择器的修饰符" class="headerlink" title="表单选择器的修饰符"></a>表单选择器的修饰符</h3><ul>
-<li><code>:input</code>：所有input元素</li>
-<li><code>:text</code>：所有 type&#x3D;”text” 的 input 元素</li>
-<li><code>:checkbox</code>：所有 type&#x3D;”checkbox” 的 input 元素<ul>
-<li>eg：点击’全选’按钮实现<span class="en1">全选&#x2F;全不选</span>(按钮的点击事件里面应用)<ul>
-<li>$(‘:checkbox’).prop(‘checked’, true)</li>
-<li>$(‘:checkbox’).prop(‘checked’, false)</li>
+<li>:input：所有input元素</li>
+<li>:text：所有 type&#x3D;”text” 的 input 元素</li>
+<li>:checkbox：所有 type&#x3D;”checkbox” 的 input 元素<ul>
+<li>eg：点击’全选’按钮实现全选&#x2F;全不选(按钮的点击事件里面应用)<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;:checkbox&#x27;</span>).<span class="title function_">prop</span>(<span class="string">&#x27;checked&#x27;</span>, <span class="literal">true</span>)</span><br><span class="line">$(<span class="string">&#x27;:checkbox&#x27;</span>).<span class="title function_">prop</span>(<span class="string">&#x27;checked&#x27;</span>, <span class="literal">false</span>)</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><code>:submit</code>、<code>:reset</code>、<code>:button</code>、<code>:image</code>、<code>:file</code>、<code>:password</code>、<code>:radio</code>：所有 type&#x3D;”xxx” 的 input 元素</li>
-<li><code>:checked</code>：所有被选中的 input 元素</li>
-<li><code>:enabled</code>：所有激活的 input 元素</li>
-<li><code>:disabled</code>：所有禁用的 input 元素</li>
-<li><code>:selected</code>：所有禁用的 input 元素</li>
+<li>:submit、:reset、:button、:image、:file、:password、:radio：所有 type&#x3D;”xxx” 的 input 元素</li>
+<li>:checked：所有被选中的 input 元素</li>
+<li>:enabled：所有激活的 input 元素</li>
+<li>:disabled：所有禁用的 input 元素</li>
+<li>:selected：所有禁用的 input 元素</li>
 </ul>
 <h2 id="文档操作"><a href="#文档操作" class="headerlink" title="文档操作"></a>文档操作</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/jquery/jquery_ref_prop.asp">文档操作</a></li>
 <li>操作标签的属性, 标签体文本</li>
 </ul>
 <h3 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h3><ul>
-<li><code>attr(name) | attr(name, value)</code>: 设置或返回匹配元素的属性和值<ul>
-<li>eg：读取<span class="en1">第一个</span>div的<span class="en1">title属性</span><ul>
-<li><code>$(&#39;div:first&#39;).attr(&#39;title&#39;)</code></li>
+<li>attr(name) | attr(name, value): 设置或返回匹配元素的属性和值<ul>
+<li>eg：<span class="desc">读取第一个div的title属性</span><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;div:first&#x27;</span>).<span class="title function_">attr</span>(<span class="string">&#x27;title&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+<li>eg：给<span class="desc">所有的div设置name属性值为222</span><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;div&#x27;</span>).<span class="title function_">attr</span>(<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;222&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li>eg：给<span class="en1">所有</span>的div<span class="en1">设置name属性值</span>为222<ul>
-<li>$(‘div’).attr(‘name’,’222’)</li>
+<li>val() | val(value): 读写标签的value<ul>
+<li>eg: <span class="desc">得到输入框中的value值 </span><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;:text&#x27;</span>).<span class="title function_">val</span>()</span><br></pre></td></tr></table></figure></li>
+<li>eg: <span class="desc">将输入框的值设置为aaaaaa </span><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;:text&#x27;</span>).<span class="title function_">val</span>(<span class="string">&#x27;aaaaaa&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
+<li>html() | html(htmlString): 读写标签体文本<ul>
+<li>eg: <span class="desc">得到最后一个li的标签体文本</span><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;li:last&#x27;</span>).<span class="title function_">html</span>()</span><br></pre></td></tr></table></figure></li>
+<li>eg: <span class="desc">设置第一个li的标签体为<code>&lt;h1&gt;mmmmmmmmm&lt;/h1&gt;</code></span><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;li:first&#x27;</span>).<span class="title function_">html</span>(<span class="string">&#x27;&lt;h1&gt;mmmmmmmmm&lt;/h1&gt;&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><code>val() | val(value)</code>: 读写标签的value<ul>
-<li>eg: 得到输入框中的value值 <ul>
-<li>$(‘:text’).val()</li>
-</ul>
-</li>
-<li>eg: 将输入框的值<span class="en1">设置</span>为aaaaaa <ul>
-<li>$(‘:text’).val(‘aaaaaa’)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>html() | html(htmlString)</code>: 读写标签体文本<ul>
-<li>eg: 得到<span class="en1">最后一个</span>li的标签体文本<ul>
-<li><code>$(&#39;li:last&#39;).html()</code></li>
-</ul>
-</li>
-<li>eg: <span class="en1">设置第一个</span>li的标签体为”<code>&lt;h1&gt;mmmmmmmmm&lt;/h1&gt;&quot;</code><ul>
-<li><code>$(&#39;li:first&#39;).html(&#39;&lt;h1&gt;mmmmmmmmm&lt;/h1&gt;&#39;)</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>text()</code>: 设置或返回匹配元素的内容</li>
-<li><code>insertAfter()</code>: 把匹配的元素插入到另一个指定的元素集合的后面。</li>
+<li>text(): 设置或返回匹配元素的内容</li>
+<li>insertAfter(): 把匹配的元素插入到另一个指定的元素集合的后面。</li>
 </ul>
 <h3 id="增加"><a href="#增加" class="headerlink" title="增加"></a>增加</h3><ul>
-<li><code>append() | appendTo()</code>: 元素插入末尾</li>
-<li><code>prepend() | prependTo()</code>: 元素插入开头</li>
-<li><code>before()</code>: 在每个匹配的元素之前插入内容</li>
-<li><code>after()</code>: 在匹配的元素之后插入内容</li>
-<li><code>addClass(classValue)</code>: 添加class</li>
-<li><code>insertBefore()</code>: 把匹配的元素插入到另一个指定的元素集合的前面。</li>
+<li>append() | appendTo(): 元素插入末尾</li>
+<li>prepend() | prependTo(): 元素插入开头</li>
+<li>before(): 在每个匹配的元素之前插入内容</li>
+<li>after(): 在匹配的元素之后插入内容</li>
+<li>addClass(classValue): 添加class</li>
+<li>insertBefore(): 把匹配的元素插入到另一个指定的元素集合的前面。</li>
 </ul>
 <h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><ul>
-<li><code>remove()</code>: 删除所有匹配元素的子元素</li>
-<li><code>empty()</code>: 除自己外删除所有匹配元素的子元素</li>
-<li><code>removeAttr(name)</code>: 删除属性<ul>
-<li>eg: 移除<span class="en1">所有</span>div的<span class="en1">title属性</span><ul>
-<li>$(‘div’).removeAttr(‘title’)</li>
+<li>remove(): 删除所有匹配元素的子元素</li>
+<li>empty(): 除自己外删除所有匹配元素的子元素</li>
+<li>removeAttr(name): 删除属性<ul>
+<li>eg: <span class="desc">移除所有div的title属性</span><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;div&#x27;</span>).<span class="title function_">removeAttr</span>(<span class="string">&#x27;title&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><code>removeClass(classValue)</code>: 移除指定class</li>
-<li><code>toggleClass()</code>: 从匹配的元素中添加或删除一个类</li>
+<li>removeClass(classValue): 移除指定class</li>
+<li>toggleClass(): 从匹配的元素中添加或删除一个类</li>
 </ul>
 <h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><ul>
-<li><code>replaceWith() | replaceAll()</code>: 用新内容替换匹配的元素</li>
+<li>replaceWith() | replaceAll(): 用新内容替换匹配的元素</li>
 </ul>
 <h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/jquery/jquery_ref_prop.asp">事件</a></li>
 </ul>
 <h3 id="绑定事件"><a href="#绑定事件" class="headerlink" title="绑定事件"></a>绑定事件</h3><ul>
-<li><code>eventName(function()&#123;&#125;)</code>：绑定对应事件名的监听<ul>
-<li>eg: $(‘#div’).click(function(){});</li>
-</ul>
-</li>
-<li><code>on(&#39;eventName&#39;, function()&#123;&#125;)</code>：通用的绑定事件监听<ul>
-<li>eg: $(‘#div’).on(‘click’, function(){})</li>
-</ul>
-</li>
+<li>eventName(function(){})：绑定对应事件名的监听<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;#div&#x27;</span>).<span class="title function_">click</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>on(‘eventName’, function(){})：通用的绑定事件监听<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;#div&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>)&#123;&#125;) </span><br></pre></td></tr></table></figure></li>
 <li>优缺点：<ul>
 <li>eventName: 编码方便, 但只能加一个监听, 且有的事件监听不支持</li>
 <li>on: 编码不方便, 可以添加多个监听, 且更通用</li>
 </ul>
 </li>
 </ul>
-<h3 id="解绑事件"><a href="#解绑事件" class="headerlink" title="解绑事件"></a>解绑事件</h3><ul>
-<li><code>off(&#39;eventName&#39;)</code></li>
-</ul>
+<h3 id="解绑事件"><a href="#解绑事件" class="headerlink" title="解绑事件"></a>解绑事件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">off</span>(<span class="string">&#x27;eventName&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
 <h3 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h3><ul>
 <li>理解: 将子元素的事件委托给父辈元素处理<ul>
 <li>事件监听绑定在父元素上, 但事件发生在子元素上</li>
@@ -740,66 +690,66 @@
 </ul>
 </li>
 <li>好处<ul>
-<li><code>新增的元素没有事件监听</code></li>
+<li><span class="key_words">『新增的元素没有事件监听』</span></li>
 <li>减少监听的数量(n&#x3D;&#x3D;&gt;1)</li>
 </ul>
 </li>
 <li>事件<ul>
-<li><code>$(parentSelector).delegate(childselector, eventName, callback)</code>：给对应选择器添加事件委托</li>
-<li><code>$(parentSelector).undelegate(eventName)</code>：给该元素移除事件委托</li>
+<li>给对应选择器添加事件委托<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(parentSelector).<span class="title function_">delegate</span>(childselector, eventName, callback)</span><br></pre></td></tr></table></figure></li>
+<li>给该元素移除事件委托<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(parentSelector).<span class="title function_">undelegate</span>(eventName)</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
 <h3 id="事件坐标"><a href="#事件坐标" class="headerlink" title="事件坐标"></a>事件坐标</h3><ul>
-<li><code>event.offsetX, event.offsetY</code>: 相对于事件元素左上角</li>
-<li><code>event.clientX, event.clientY</code>: 相对于视口的左上角</li>
-<li><code>event.pageX, event.pageY</code>: 相对于页面的左上角</li>
+<li>event.offsetX, event.offsetY: 相对于事件元素左上角</li>
+<li>event.clientX, event.clientY: 相对于视口的左上角</li>
+<li>event.pageX, event.pageY: 相对于页面的左上角</li>
 </ul>
 <h3 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h3><ul>
-<li>   <code>keydown()</code>：键盘按下时触发</li>
-<li>   <code>keyup()</code>：键盘松开时触发</li>
+<li>   keydown()：键盘按下时触发</li>
+<li>   keyup()：键盘松开时触发</li>
 </ul>
 <h3 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h3><ul>
-<li>   <code>mousedown()</code>： 鼠标点击按下触发</li>
-<li>   <code>mouseenter()</code>：鼠标移动到当前元素时触发</li>
-<li>   <code>mouseleave()</code>：鼠标离开该元素触发</li>
-<li>   <code>mousemove()</code>：鼠标在该元素内移动触发</li>
-<li>   <code>mouseout()</code>：鼠标移动到该元素或其子元素之外时触发</li>
-<li>   <code>mouseover()</code>：鼠标移入该元素的子元素也会触发</li>
-<li>   <code>mouseup()</code>：鼠标松开点击按钮的时候触发</li>
-<li><code>hover(function()&#123;&#125;, function()&#123;&#125;)</code>：参数一相当于mouseenter(),参数二相当于mouseleave()</li>
+<li>   mousedown()： 鼠标点击按下触发</li>
+<li>   mouseenter()：鼠标移动到当前元素时触发</li>
+<li>   mouseleave()：鼠标离开该元素触发</li>
+<li>   mousemove()：鼠标在该元素内移动触发</li>
+<li>   mouseout()：鼠标移动到该元素或其子元素之外时触发</li>
+<li>   mouseover()：鼠标移入该元素的子元素也会触发</li>
+<li>   mouseup()：鼠标松开点击按钮的时候触发</li>
+<li>hover(function(){}, function(){})：参数一相当于mouseenter(),参数二相当于mouseleave()</li>
 </ul>
 <h3 id="点击-触发"><a href="#点击-触发" class="headerlink" title="点击&#x2F;触发"></a>点击&#x2F;触发</h3><ul>
-<li>   <code>load()</code>：进入页面时触发</li>
-<li><code>unload()</code>：卸载&#x2F;离开页面时触发</li>
-<li><code>change()</code>：事件改变就触发</li>
-<li><code>click()</code>：单机事件</li>
-<li><code>dblclick()</code>：双击事件</li>
-<li><code>toggle()</code>：绑定两个或多个事件处理器函数，当发生轮流的 click 事件时执行。</li>
+<li>   load()：进入页面时触发</li>
+<li>unload()：卸载&#x2F;离开页面时触发</li>
+<li>change()：事件改变就触发</li>
+<li>click()：单机事件</li>
+<li>dblclick()：双击事件</li>
+<li>toggle()：绑定两个或多个事件处理器函数，当发生轮流的 click 事件时执行。</li>
 </ul>
 <h3 id="滚动"><a href="#滚动" class="headerlink" title="滚动"></a>滚动</h3><ul>
-<li><code>scroll()</code>：滚动事件</li>
-<li><code>scrollTop() | scrollLeft()</code>: 读&#x2F;写元素&#x2F;页面的滚动条位置</li>
-<li><code>$(document.body).scrollTop()+$(document.documentElement).scrollTop()</code>: 读取页面滚动条的Y坐标(兼容chrome和IE)</li>
-<li><code>$(&#39;body,html&#39;).scrollTop(60)</code>: 页面滚动条滚动到指定位置(兼容chrome和IE)</li>
+<li>scroll()：滚动事件</li>
+<li>scrollTop() | scrollLeft(): 读&#x2F;写元素&#x2F;页面的滚动条位置</li>
+<li>读取页面滚动条的Y坐标(兼容chrome和IE):<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="variable language_">document</span>.<span class="property">body</span>).<span class="title function_">scrollTop</span>()+$(<span class="variable language_">document</span>.<span class="property">documentElement</span>).<span class="title function_">scrollTop</span>()</span><br></pre></td></tr></table></figure></li>
+<li>页面滚动条滚动到指定位置(兼容chrome和IE)<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;body,html&#x27;</span>).<span class="title function_">scrollTop</span>(<span class="number">60</span>)</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h3><ul>
-<li><code>blur()</code>：失去焦点的时候触发</li>
-<li><code>select()</code>：选中时触发</li>
-<li><code>submit()</code>：点击提交时触发</li>
-<li><code>focus()</code>：聚焦触发</li>
-<li>阻止事件的默认行为: <code>event.preventDefault()</code></li>
-<li>   <code>trigger()</code>：所有匹配元素的指定事件</li>
-<li><code>triggerHandler()</code>：第一个被匹配元素的指定事件</li>
+<li>blur()：失去焦点的时候触发</li>
+<li>select()：选中时触发</li>
+<li>submit()：点击提交时触发</li>
+<li>focus()：聚焦触发</li>
+<li>阻止事件的默认行为: event.preventDefault()</li>
+<li>   trigger()：所有匹配元素的指定事件</li>
+<li>triggerHandler()：第一个被匹配元素的指定事件</li>
 </ul>
 <h2 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h2><h3 id="style样式"><a href="#style样式" class="headerlink" title="style样式"></a>style样式</h3><ul>
-<li><code>css(styleName)</code>: 根据样式名得到对应的值</li>
-<li><code>css(styleName, value)</code>: 设置一个样式</li>
-<li><code>css(&#123;多个样式以键值对的形式存在&#125;)</code>: 设置多个样式</li>
+<li>css(styleName): 根据样式名得到对应的值</li>
+<li>css(styleName, value): 设置一个样式</li>
+<li>css({多个样式以键值对的形式存在}): 设置多个样式</li>
 </ul>
 <h3 id="位置坐标"><a href="#位置坐标" class="headerlink" title="位置坐标"></a>位置坐标</h3><ul>
-<li><code>offset()</code>: 读&#x2F;写当前元素坐标(原点是页面左上角)</li>
-<li><code>position()</code>: 读当前元素坐标(原点是父元素左上角)</li>
+<li>offset(): 读&#x2F;写当前元素坐标(原点是页面左上角)</li>
+<li>position(): 读当前元素坐标(原点是父元素左上角)</li>
 </ul>
 <h3 id="尺寸"><a href="#尺寸" class="headerlink" title="尺寸"></a>尺寸</h3><ul>
 <li>width() | height(): width | height</li>
@@ -807,36 +757,26 @@
 <li>outerWidth() | outerHeight(): width + padding + border</li>
 </ul>
 <h2 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h2><h3 id="基本遍历"><a href="#基本遍历" class="headerlink" title="基本遍历"></a>基本遍历</h3><ul>
-<li><code>map()</code>: 会返回一个新数组</li>
-<li><code>each()</code></li>
+<li>map(): 会返回一个新数组</li>
+<li>each()</li>
 </ul>
 <h3 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h3><blockquote>
 <p>在jQuery对象内部的元素中找出部分匹配的元素, 并封装成新的jQuery对象返回</p>
 </blockquote>
 <ul>
-<li><code>first()</code>：选中第一个元素</li>
-<li><code>last()</code>：选中最后一个元素</li>
-<li><code>eq(index)</code>: 选中第index个元素</li>
-<li><code>filter(selector)</code>: 对当前元素提要求<ul>
-<li>eg: ul下li标签中title属性为hello的<ul>
-<li>const $lis&#x3D; $(‘ul &gt; li’)</li>
-<li>$lis.filter(‘[title&#x3D;hello]’)</li>
+<li>first()：选中第一个元素</li>
+<li>last()：选中最后一个元素</li>
+<li>eq(index): 选中第index个元素</li>
+<li>filter(selector): 对当前元素提要求<ul>
+<li>eg: <span class="desc">ul下li标签中title属性为hello的</span><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> $lis= $(<span class="string">&#x27;ul &gt; li&#x27;</span>)</span><br><span class="line">$lis.<span class="title function_">filter</span>(<span class="string">&#x27;[title=hello]&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
+<li>not(selector): 对当前元素提要求, 并取反<ul>
+<li>eg: <span class="desc">ul下li标签中title属性不为hello的</span><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$lis.<span class="title function_">not</span>(<span class="string">&#x27;[title=hello]&#x27;</span>) </span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><code>not(selector)</code>: 对当前元素提要求, 并取反<ul>
-<li>eg: ul下li标签中title属性不为hello的<ul>
-<li>$lis.not(‘[title&#x3D;hello]’)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>has(selector)</code>: 对子孙元素提要求<ul>
-<li>eg: ul下li标签中有span子标签<ul>
-<li>$lis.has(‘span’)</li>
-</ul>
-</li>
+<li>has(selector): 对子孙元素提要求<ul>
+<li>eg: <span class="desc">ul下li标签中有span子标签</span><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$lis.<span class="title function_">has</span>(<span class="string">&#x27;span&#x27;</span>) </span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
@@ -844,57 +784,60 @@
 <p>查找jQuery对象内部的元素的子孙&#x2F;兄弟&#x2F;父母元素, 并封装成新的jQuery对象返回</p>
 </blockquote>
 <ul>
-<li><code>parent()</code>: 父元素</li>
-<li><code>children(selector)</code>: 子元素中找</li>
-<li><code>find(selector)</code>: 后代元素中找</li>
-<li><code>prevAll(selector)</code>: 前面所有的兄弟标签<ul>
+<li>parent(): 父元素</li>
+<li>children(selector): 子元素中找</li>
+<li>find(selector): 后代元素中找</li>
+<li>prevAll(selector): 前面所有的兄弟标签<ul>
 <li>可以跟children()一起用，用链式连接</li>
 </ul>
 </li>
-<li><code>nextAll()</code> : 后面所有的兄弟标签<ul>
+<li>nextAll(): 后面所有的兄弟标签<ul>
 <li>可以跟children()一起用，用链式连接</li>
 </ul>
 </li>
-<li><code>siblings(selector)</code>: 所有兄弟<ul>
+<li>siblings(selector): 所有兄弟<ul>
 <li>可以跟children()一起用，用链式连接</li>
 </ul>
 </li>
 </ul>
 <h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><ul>
 <li>在一定的时间内, 不断改变元素样式</li>
-<li><code>slideDown()/slideUp()/slideToggle()</code>： 滑动，按顺序使用</li>
-<li><code>fadeOut()/fadeIn()/fadeToggle()</code>：淡入淡出，按顺序使用</li>
-<li><code>show()/hide()/toggle()</code>：显隐</li>
-<li><code>animate(&#123;结束时的样式&#125;, time)</code>：自定义动画</li>
-<li><code>stop()</code>：停止动画</li>
+<li>slideDown()&#x2F;slideUp()&#x2F;slideToggle()： 滑动，按顺序使用</li>
+<li>fadeOut()&#x2F;fadeIn()&#x2F;fadeToggle()：淡入淡出，按顺序使用</li>
+<li>show()&#x2F;hide()&#x2F;toggle()：显隐</li>
+<li>animate({结束时的样式}, time)：自定义动画</li>
+<li>stop()：停止动画</li>
 </ul>
 <h2 id="工具函数"><a href="#工具函数" class="headerlink" title="工具函数:"></a>工具函数:</h2><ul>
-<li><code>length/size()</code>: 得到dom元素的个数</li>
-<li><code>[index]/get(index)</code>: 得到指定下标对应的dom元素</li>
-<li><code>index()</code>: 得到当前dom元素在所有兄弟中的下标<br>  - eg：$(‘当前的选择器’)index() </li>
-<li><code>type(obj)</code>：得到数据的类型</li>
-<li><code>isArray(obj)</code>: 判断是否是数组</li>
-<li><code>isFunction(obj)</code>: 判断是否是函数</li>
-<li><code>parseJSON(json)</code>: 解析json字符串转换为js对象&#x2F;数组<ul>
+<li>length&#x2F;size(): 得到dom元素的个数</li>
+<li>[index]&#x2F;get(index): 得到指定下标对应的dom元素</li>
+<li>index(): 得到当前dom元素在所有兄弟中的下标<ul>
+<li>eg：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;当前的选择器&#x27;</span>)<span class="title function_">index</span>() </span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>type(obj)：得到数据的类型</li>
+<li>isArray(obj): 判断是否是数组</li>
+<li>isFunction(obj): 判断是否是函数</li>
+<li>parseJSON(json): 解析json字符串转换为js对象&#x2F;数组<ul>
 <li>json对象: {key1:value1 , key2:value2}</li>
 <li>json数组: [value1, value2]</li>
 </ul>
 </li>
-<li><code>hasClass()</code>: 检查匹配的元素是否拥有指定的类</li>
+<li>hasClass(): 检查匹配的元素是否拥有指定的类</li>
 </ul>
 <h2 id="插件机制"><a href="#插件机制" class="headerlink" title="插件机制"></a>插件机制</h2><ul>
 <li>扩展jQuery函数对象的方法<ul>
-<li>定义：<code>$.extend(&#123; xxx: fuction()&#123;&#125; //this是$ &#125;)</code></li>
+<li>定义：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$.<span class="title function_">extend</span>(&#123; </span><br><span class="line">	<span class="attr">xxx</span>: <span class="title function_">fuction</span>(<span class="params"></span>)&#123;&#125; <span class="comment">//this是$ </span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
 <li>使用：$.xxx()</li>
 </ul>
 </li>
 <li>扩展jQuery对象的方法<ul>
-<li>定义：<code>$.fn.extend(&#123; xxx: function()&#123;&#125; //this是jQuery对象 &#125;)</code></li>
+<li>定义：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$.fn.<span class="title function_">extend</span>(&#123; </span><br><span class="line">	<span class="attr">xxx</span>: <span class="keyword">function</span>(<span class="params"></span>)&#123;&#125; <span class="comment">//this是jQuery对象 </span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
 <li>使用：$obj.xxx()</li>
 </ul>
 </li>
 <li>多库共存<ul>
-<li><code>jQuery.noConflict()</code>：jQuery库释放$的使用权, 让另一个库正常使用, 此时jQuery库只能使用jQuery了</li>
+<li>jQuery.noConflict()：jQuery库释放$的使用权, 让另一个库正常使用, 此时jQuery库只能使用jQuery了</li>
 </ul>
 </li>
 </ul>
@@ -904,7 +847,7 @@
 <li>只能有一个监听回调</li>
 </ul>
 </li>
-<li><code>$(document).ready()</code><ul>
+<li>$(document).ready()<ul>
 <li>等同于: $(function(){})</li>
 <li>页面加载完就回调(早)</li>
 <li>可以有多个监听回调</li>
@@ -1027,7 +970,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="基本了解"><a rel="nofollow" class="trm-toc-link" href="#基本了解"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">基本了解</span></a></li><li class="trm-toc-item trm-toc-level-2" title="JQuery的2把利器"><a rel="nofollow" class="trm-toc-link" href="#JQuery的2把利器"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">JQuery的2把利器</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="JQuery函数: $ &#x2F; jQuery"><a rel="nofollow" class="trm-toc-link" href="#JQuery函数-jQuery"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">JQuery函数: $ &#x2F; jQuery</span></a></li><li class="trm-toc-item trm-toc-level-3" title="jQuery对象: $()"><a rel="nofollow" class="trm-toc-link" href="#jQuery对象"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">jQuery对象: $()</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="选择器"><a rel="nofollow" class="trm-toc-link" href="#选择器"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">选择器</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="基本选择器"><a rel="nofollow" class="trm-toc-link" href="#基本选择器"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">基本选择器</span></a></li><li class="trm-toc-item trm-toc-level-3" title="层次选择器"><a rel="nofollow" class="trm-toc-link" href="#层次选择器"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">层次选择器</span></a></li><li class="trm-toc-item trm-toc-level-3" title="选择器的过滤修饰符"><a rel="nofollow" class="trm-toc-link" href="#选择器的过滤修饰符"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">选择器的过滤修饰符</span></a></li><li class="trm-toc-item trm-toc-level-3" title="表单选择器的修饰符"><a rel="nofollow" class="trm-toc-link" href="#表单选择器的修饰符"><span class="trm-toc-number">3.4.</span> <span class="trm-toc-text">表单选择器的修饰符</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="文档操作"><a rel="nofollow" class="trm-toc-link" href="#文档操作"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">文档操作</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="修改"><a rel="nofollow" class="trm-toc-link" href="#修改"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">修改</span></a></li><li class="trm-toc-item trm-toc-level-3" title="增加"><a rel="nofollow" class="trm-toc-link" href="#增加"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">增加</span></a></li><li class="trm-toc-item trm-toc-level-3" title="删除"><a rel="nofollow" class="trm-toc-link" href="#删除"><span class="trm-toc-number">4.3.</span> <span class="trm-toc-text">删除</span></a></li><li class="trm-toc-item trm-toc-level-3" title="更新"><a rel="nofollow" class="trm-toc-link" href="#更新"><span class="trm-toc-number">4.4.</span> <span class="trm-toc-text">更新</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="事件"><a rel="nofollow" class="trm-toc-link" href="#事件"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">事件</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="绑定事件"><a rel="nofollow" class="trm-toc-link" href="#绑定事件"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">绑定事件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解绑事件"><a rel="nofollow" class="trm-toc-link" href="#解绑事件"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">解绑事件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="事件委托"><a rel="nofollow" class="trm-toc-link" href="#事件委托"><span class="trm-toc-number">5.3.</span> <span class="trm-toc-text">事件委托</span></a></li><li class="trm-toc-item trm-toc-level-3" title="事件坐标"><a rel="nofollow" class="trm-toc-link" href="#事件坐标"><span class="trm-toc-number">5.4.</span> <span class="trm-toc-text">事件坐标</span></a></li><li class="trm-toc-item trm-toc-level-3" title="键盘事件"><a rel="nofollow" class="trm-toc-link" href="#键盘事件"><span class="trm-toc-number">5.5.</span> <span class="trm-toc-text">键盘事件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="鼠标事件"><a rel="nofollow" class="trm-toc-link" href="#鼠标事件"><span class="trm-toc-number">5.6.</span> <span class="trm-toc-text">鼠标事件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="点击&#x2F;触发"><a rel="nofollow" class="trm-toc-link" href="#点击-触发"><span class="trm-toc-number">5.7.</span> <span class="trm-toc-text">点击&#x2F;触发</span></a></li><li class="trm-toc-item trm-toc-level-3" title="滚动"><a rel="nofollow" class="trm-toc-link" href="#滚动"><span class="trm-toc-number">5.8.</span> <span class="trm-toc-text">滚动</span></a></li><li class="trm-toc-item trm-toc-level-3" title="表单"><a rel="nofollow" class="trm-toc-link" href="#表单"><span class="trm-toc-number">5.9.</span> <span class="trm-toc-text">表单</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="样式"><a rel="nofollow" class="trm-toc-link" href="#样式"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">样式</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="style样式"><a rel="nofollow" class="trm-toc-link" href="#style样式"><span class="trm-toc-number">6.1.</span> <span class="trm-toc-text">style样式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="位置坐标"><a rel="nofollow" class="trm-toc-link" href="#位置坐标"><span class="trm-toc-number">6.2.</span> <span class="trm-toc-text">位置坐标</span></a></li><li class="trm-toc-item trm-toc-level-3" title="尺寸"><a rel="nofollow" class="trm-toc-link" href="#尺寸"><span class="trm-toc-number">6.3.</span> <span class="trm-toc-text">尺寸</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="遍历"><a rel="nofollow" class="trm-toc-link" href="#遍历"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">遍历</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="基本遍历"><a rel="nofollow" class="trm-toc-link" href="#基本遍历"><span class="trm-toc-number">7.1.</span> <span class="trm-toc-text">基本遍历</span></a></li><li class="trm-toc-item trm-toc-level-3" title="过滤"><a rel="nofollow" class="trm-toc-link" href="#过滤"><span class="trm-toc-number">7.2.</span> <span class="trm-toc-text">过滤</span></a></li><li class="trm-toc-item trm-toc-level-3" title="查找"><a rel="nofollow" class="trm-toc-link" href="#查找"><span class="trm-toc-number">7.3.</span> <span class="trm-toc-text">查找</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="效果"><a rel="nofollow" class="trm-toc-link" href="#效果"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">效果</span></a></li><li class="trm-toc-item trm-toc-level-2" title="工具函数:"><a rel="nofollow" class="trm-toc-link" href="#工具函数"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">工具函数:</span></a></li><li class="trm-toc-item trm-toc-level-2" title="插件机制"><a rel="nofollow" class="trm-toc-link" href="#插件机制"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">插件机制</span></a></li><li class="trm-toc-item trm-toc-level-2" title="window.onload与 $(document).ready()"><a rel="nofollow" class="trm-toc-link" href="#window-onload与-document-ready"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">window.onload与 $(document).ready()</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="基本了解"><a rel="nofollow" class="trm-toc-link" href="#基本了解"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">基本了解</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="优势："><a rel="nofollow" class="trm-toc-link" href="#优势："><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">优势：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用："><a rel="nofollow" class="trm-toc-link" href="#使用："><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">使用：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="JQuery的2把利器"><a rel="nofollow" class="trm-toc-link" href="#JQuery的2把利器"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">JQuery的2把利器</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="JQuery函数: $ &#x2F; jQuery"><a rel="nofollow" class="trm-toc-link" href="#JQuery函数-jQuery"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">JQuery函数: $ &#x2F; jQuery</span></a></li><li class="trm-toc-item trm-toc-level-3" title="jQuery对象: $()"><a rel="nofollow" class="trm-toc-link" href="#jQuery对象"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">jQuery对象: $()</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="选择器"><a rel="nofollow" class="trm-toc-link" href="#选择器"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">选择器</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="基本选择器"><a rel="nofollow" class="trm-toc-link" href="#基本选择器"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">基本选择器</span></a></li><li class="trm-toc-item trm-toc-level-3" title="层次选择器"><a rel="nofollow" class="trm-toc-link" href="#层次选择器"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">层次选择器</span></a></li><li class="trm-toc-item trm-toc-level-3" title="选择器的过滤修饰符"><a rel="nofollow" class="trm-toc-link" href="#选择器的过滤修饰符"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">选择器的过滤修饰符</span></a></li><li class="trm-toc-item trm-toc-level-3" title="表单选择器的修饰符"><a rel="nofollow" class="trm-toc-link" href="#表单选择器的修饰符"><span class="trm-toc-number">3.4.</span> <span class="trm-toc-text">表单选择器的修饰符</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="文档操作"><a rel="nofollow" class="trm-toc-link" href="#文档操作"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">文档操作</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="修改"><a rel="nofollow" class="trm-toc-link" href="#修改"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">修改</span></a></li><li class="trm-toc-item trm-toc-level-3" title="增加"><a rel="nofollow" class="trm-toc-link" href="#增加"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">增加</span></a></li><li class="trm-toc-item trm-toc-level-3" title="删除"><a rel="nofollow" class="trm-toc-link" href="#删除"><span class="trm-toc-number">4.3.</span> <span class="trm-toc-text">删除</span></a></li><li class="trm-toc-item trm-toc-level-3" title="更新"><a rel="nofollow" class="trm-toc-link" href="#更新"><span class="trm-toc-number">4.4.</span> <span class="trm-toc-text">更新</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="事件"><a rel="nofollow" class="trm-toc-link" href="#事件"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">事件</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="绑定事件"><a rel="nofollow" class="trm-toc-link" href="#绑定事件"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">绑定事件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解绑事件"><a rel="nofollow" class="trm-toc-link" href="#解绑事件"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">解绑事件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="事件委托"><a rel="nofollow" class="trm-toc-link" href="#事件委托"><span class="trm-toc-number">5.3.</span> <span class="trm-toc-text">事件委托</span></a></li><li class="trm-toc-item trm-toc-level-3" title="事件坐标"><a rel="nofollow" class="trm-toc-link" href="#事件坐标"><span class="trm-toc-number">5.4.</span> <span class="trm-toc-text">事件坐标</span></a></li><li class="trm-toc-item trm-toc-level-3" title="键盘事件"><a rel="nofollow" class="trm-toc-link" href="#键盘事件"><span class="trm-toc-number">5.5.</span> <span class="trm-toc-text">键盘事件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="鼠标事件"><a rel="nofollow" class="trm-toc-link" href="#鼠标事件"><span class="trm-toc-number">5.6.</span> <span class="trm-toc-text">鼠标事件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="点击&#x2F;触发"><a rel="nofollow" class="trm-toc-link" href="#点击-触发"><span class="trm-toc-number">5.7.</span> <span class="trm-toc-text">点击&#x2F;触发</span></a></li><li class="trm-toc-item trm-toc-level-3" title="滚动"><a rel="nofollow" class="trm-toc-link" href="#滚动"><span class="trm-toc-number">5.8.</span> <span class="trm-toc-text">滚动</span></a></li><li class="trm-toc-item trm-toc-level-3" title="表单"><a rel="nofollow" class="trm-toc-link" href="#表单"><span class="trm-toc-number">5.9.</span> <span class="trm-toc-text">表单</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="样式"><a rel="nofollow" class="trm-toc-link" href="#样式"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">样式</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="style样式"><a rel="nofollow" class="trm-toc-link" href="#style样式"><span class="trm-toc-number">6.1.</span> <span class="trm-toc-text">style样式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="位置坐标"><a rel="nofollow" class="trm-toc-link" href="#位置坐标"><span class="trm-toc-number">6.2.</span> <span class="trm-toc-text">位置坐标</span></a></li><li class="trm-toc-item trm-toc-level-3" title="尺寸"><a rel="nofollow" class="trm-toc-link" href="#尺寸"><span class="trm-toc-number">6.3.</span> <span class="trm-toc-text">尺寸</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="遍历"><a rel="nofollow" class="trm-toc-link" href="#遍历"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">遍历</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="基本遍历"><a rel="nofollow" class="trm-toc-link" href="#基本遍历"><span class="trm-toc-number">7.1.</span> <span class="trm-toc-text">基本遍历</span></a></li><li class="trm-toc-item trm-toc-level-3" title="过滤"><a rel="nofollow" class="trm-toc-link" href="#过滤"><span class="trm-toc-number">7.2.</span> <span class="trm-toc-text">过滤</span></a></li><li class="trm-toc-item trm-toc-level-3" title="查找"><a rel="nofollow" class="trm-toc-link" href="#查找"><span class="trm-toc-number">7.3.</span> <span class="trm-toc-text">查找</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="效果"><a rel="nofollow" class="trm-toc-link" href="#效果"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">效果</span></a></li><li class="trm-toc-item trm-toc-level-2" title="工具函数:"><a rel="nofollow" class="trm-toc-link" href="#工具函数"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">工具函数:</span></a></li><li class="trm-toc-item trm-toc-level-2" title="插件机制"><a rel="nofollow" class="trm-toc-link" href="#插件机制"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">插件机制</span></a></li><li class="trm-toc-item trm-toc-level-2" title="window.onload与 $(document).ready()"><a rel="nofollow" class="trm-toc-link" href="#window-onload与-document-ready"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">window.onload与 $(document).ready()</span></a></li></ol>
       </div>
     </div>
 

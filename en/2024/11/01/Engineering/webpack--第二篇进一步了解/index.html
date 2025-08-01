@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content=".en {         color: green;         font-weight:600;     }     .desc {         color: #CD853F;         font-weight: 600;         font-size:14px;     }   模块解析 resolver 是一个帮助寻找模块绝对路径的库。一个模块可以作为另一个模">
+<meta name="description" content="模块解析 resolver 是一个帮助寻找模块绝对路径的库。一个模块可以作为另一个模块的依赖模块，然后被后者引用。resolver 帮助 webpack 从每个 require&#x2F;import 语句中，找到需要引入到 bundle 中的模块代码。    当打包模块时，webpack 使用 enhanced-resolve 来解析文件路径。  webpack 中的解析规则 使用 enh">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack --- 第二篇">
 <meta property="og:url" content="http://example.com/en/2024/11/01/Engineering/webpack--%E7%AC%AC%E4%BA%8C%E7%AF%87%E8%BF%9B%E4%B8%80%E6%AD%A5%E4%BA%86%E8%A7%A3/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content=".en {         color: green;         font-weight:600;     }     .desc {         color: #CD853F;         font-weight: 600;         font-size:14px;     }   模块解析 resolver 是一个帮助寻找模块绝对路径的库。一个模块可以作为另一个模">
+<meta property="og:description" content="模块解析 resolver 是一个帮助寻找模块绝对路径的库。一个模块可以作为另一个模块的依赖模块，然后被后者引用。resolver 帮助 webpack 从每个 require&#x2F;import 语句中，找到需要引入到 bundle 中的模块代码。    当打包模块时，webpack 使用 enhanced-resolve 来解析文件路径。  webpack 中的解析规则 使用 enh">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-11-01T08:52:16.710Z">
-<meta property="article:modified_time" content="2025-06-30T07:19:17.239Z">
+<meta property="article:modified_time" content="2025-07-28T06:24:07.351Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="webpack">
 <meta name="twitter:card" content="summary">
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-06-30 15:19:17"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-28 14:24:07"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -532,23 +532,14 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <style>
-    .en {
-        color: green;
-        font-weight:600;
-    }
-    .desc {
-        color: #CD853F;
-        font-weight: 600;
-        font-size:14px;
-    }
-</style>
+    <script src="/js/enChangegreen.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/global.css">
 
 <h2 id="模块解析"><a href="#模块解析" class="headerlink" title="模块解析"></a>模块解析</h2><blockquote>
 <p>resolver 是一个帮助寻找模块绝对路径的库。一个模块可以作为另一个模块的依赖模块，然后被后者引用。<br>resolver 帮助 webpack 从每个 require&#x2F;import 语句中，找到需要引入到 bundle 中的模块代码。 </p>
 </blockquote>
 <ul>
-<li>当打包模块时，webpack 使用 <span class="en">enhanced-resolve</span> 来解析文件路径。</li>
+<li>当打包模块时，webpack 使用 enhanced-resolve 来解析文件路径。</li>
 </ul>
 <h3 id="webpack-中的解析规则"><a href="#webpack-中的解析规则" class="headerlink" title="webpack 中的解析规则"></a>webpack 中的解析规则</h3><ul>
 <li>使用 enhanced-resolve，webpack 能解析三种文件路径：<ul>
@@ -559,12 +550,12 @@
 </li>
 <li>在 resolve.modules 中指定的所有目录中检索模块。可以通过配置别名的方式来替换初始模块路径。</li>
 <li>如果 package 中包含 package.json 文件，那么在 resolve.exportsFields 配置选项中指定的字段会被依次查找，package.json 中的第一个字段会根据 package 导出指南确定 package 中可用的 export。<ul>
-<li>如果路径指向<span class="en">文件</span>：<ul>
+<li>如果路径指向<span class="key_words">『文件』</span>：<ul>
 <li>如果文件具有扩展名，则直接将文件打包。</li>
 <li>否则，将使用 resolve.extensions 选项作为文件扩展名来解析。</li>
 </ul>
 </li>
-<li>如果路径指向<span class="en">文件夹</span>，则寻找具有正确扩展名的文件：<ul>
+<li>如果路径指向<span class="key_words">『文件夹』</span>，则寻找具有正确扩展名的文件：<ul>
 <li>如果文件夹中包含 package.json 文件，则会根据 resolve.mainFields 配置中的字段顺序查找，并根据 package.json 中的符合配置要求的第一个字段来确定文件路径。</li>
 <li>如果不存在 package.json 文件或 resolve.mainFields 没有返回有效路径，则会根据 resolve.mainFiles 配置选项中指定的文件名顺序查找，看是否能在 import&#x2F;require 的目录下匹配到一个存在的文件名。</li>
 <li>然后使用 resolve.extensions 选项，以类似的方式解析文件扩展名。</li>
@@ -586,17 +577,17 @@
 <li>基于webpack的远程容器特性，允许将一个应用程序的某些模块打包为一个独立的、可远程加载的bundle，并在运行时动态加载这些模块。</li>
 </ul>
 <h3 id="主要优势"><a href="#主要优势" class="headerlink" title="主要优势"></a>主要优势</h3><ul>
-<li>多个应用程序之间可以共享代码和模块，从而<span class="en">减少重复代码量</span></li>
-<li>应用程序可以更加灵活地划分为更小的子应用程序，从而<span class="en">降低应用程序的复杂度</span></li>
-<li>可以避免在应用程序之间传递大量数据，从而<span class="en">提高应用程序的性能和效率</span></li>
-<li>可以支持应用程序的动态加载和升级，从而实现<span class="en">更好的版本管理和迭代</span></li>
+<li>多个应用程序之间可以共享代码和模块，从而减少重复代码量</li>
+<li>应用程序可以更加灵活地划分为更小的子应用程序，从而降低应用程序的复杂度</li>
+<li>可以避免在应用程序之间传递大量数据，从而提高应用程序的性能和效率</li>
+<li>可以支持应用程序的动态加载和升级，从而实现更好的版本管理和迭代</li>
 </ul>
 <h3 id="底层概念"><a href="#底层概念" class="headerlink" title="底层概念"></a>底层概念</h3><ul>
 <li>区分本地模块和远程模块。</li>
-<li><span class="en">本地模块即为普通模块</span>，是当前构建的一部分。</li>
-<li><span class="en">远程模块</span>不属于当前构建，并<span class="en">在运行时从所谓的容器加载</span>。</li>
-<li><span class="en">加载远程模块被认为是异步操作</span>。当使用远程模块时，这些异步操作将被放置在远程模块和入口之间的下一个 chunk的加载操作中。<span class="desc">如果没有 chunk 加载操作，就不能使用远程模块</span> 。</li>
-<li>chunk 的加载操作通常是通过调用 import() 实现的，但也支持像 require.ensure 或 require([…]) 之类的旧语法。</li>
+<li><span class="key_words">『本地模块即为普通模块』</span>，是当前构建的一部分。</li>
+<li><span class="key_words">『远程模块』</span>不属于当前构建，并<span class="key_words">『在运行时从所谓的容器加载』</span>。</li>
+<li><span class="key_words">『加载远程模块被认为是异步操作』</span>。当使用远程模块时，这些异步操作将被放置在远程模块和入口之间的下一个 chunk的加载操作中。(<span class="desc">如果没有 chunk 加载操作，就不能使用远程模块</span>)</li>
+<li>chunk 的加载操作通常是通过调用 import() 实现的，但也支持像以下的旧语法.<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>.<span class="property">ensure</span> </span><br><span class="line">或 <span class="built_in">require</span>([...])</span><br></pre></td></tr></table></figure></li>
 <li>容器是由容器入口创建的，该入口暴露了对特定模块的异步访问。</li>
 <li>容器可以嵌套使用</li>
 <li>容器可以使用来自其他容器的模块。</li>
@@ -609,31 +600,31 @@
 </ul>
 <h3 id="高级概念"><a href="#高级概念" class="headerlink" title="高级概念"></a>高级概念</h3><ul>
 <li>每个构建都充当一个容器，也可将其他构建作为容器。</li>
-<li><span class="desc">共享模块</span>是指既可重写的又可作为向嵌套容器提供重写的模块。它们通常指向每个构建中的相同模块。</li>
+<li><span class="key_words">『共享模块』</span>是指既可重写的又可作为向嵌套容器提供重写的模块。它们通常指向每个构建中的相同模块。</li>
 <li>packageName 选项允许通过设置包名来查找所需的版本。默认情况下，它会自动推断模块请求，当想禁用自动推断时，请将 requiredVersion 设置为 false 。</li>
 </ul>
 <h3 id="构建块"><a href="#构建块" class="headerlink" title="构建块"></a>构建块</h3><ul>
-<li><strong>ContainerPlugin</strong>：使用指定的公开模块来创建一个额外的容器入口。</li>
-<li><strong>ContainerReferencePlugin</strong>：将特定的引用添加到作为外部资源（externals）的容器中，并允许从这些容器中导入远程模块。它还会调用这些容器的 override API 来为它们提供重载。本地的重载（<span class="desc">当构建也是一个容器时，通过 <strong>webpack_override</strong> 或 override API</span>）和指定的重载被提供给所有引用的容器。</li>
-<li><strong>ModuleFederationPlugin</strong>：组合了ContainerPlugin和ContainerReferencePlugin</li>
+<li>ContainerPlugin：使用指定的公开模块来创建一个额外的容器入口。</li>
+<li>ContainerReferencePlugin：将特定的引用添加到作为外部资源（externals）的容器中，并允许从这些容器中导入远程模块。它还会调用这些容器的 override API 来为它们提供重载。本地的重载（<span class="desc">当构建也是一个容器时，通过 <code>__webpack_override__</code> 或 override API</span>）和指定的重载被提供给所有引用的容器。</li>
+<li>ModuleFederationPlugin：组合了ContainerPlugin和ContainerReferencePlugin</li>
 </ul>
 <h3 id="概念目标"><a href="#概念目标" class="headerlink" title="概念目标"></a>概念目标</h3><ul>
 <li>既可以暴露，又可以使用 webpack 支持的任何模块类型</li>
 <li>代码块加载应该并行加载所需的所有内容(web:到服务器的单次往返)</li>
-<li><strong>从使用者到容器的控制</strong><ul>
+<li>从使用者到容器的控制<ul>
 <li>重写模块是一种单向操作</li>
 <li>同级容器不能重写彼此的模块。</li>
 </ul>
 </li>
 <li>概念适用于独立于环境</li>
-<li><strong>共享中的相对和绝对请求</strong><ul>
+<li>共享中的相对和绝对请求<ul>
 <li>会一直提供，即使不使用</li>
 <li>会将相对路径解析到 config.context</li>
 <li>默认不会使用 requiredVersion</li>
 </ul>
 </li>
 <li>共享中尾部带有 &#x2F;  的模块请求将匹配所有具有这个前缀的模块请求</li>
-<li><strong>共享中的模块请求</strong><ul>
+<li>共享中的模块请求<ul>
 <li>只在使用时提供，并且提供所有匹配模块</li>
 <li>会匹配构建中所有使用的相等模块请求</li>
 <li>将从图中这个位置的 package.json 提取 requiredVersion</li>
@@ -642,7 +633,7 @@
 </li>
 </ul>
 <h3 id="用例"><a href="#用例" class="headerlink" title="用例"></a>用例</h3><ul>
-<li><strong>每个页面单独构建</strong><ul>
+<li>每个页面单独构建<ul>
 <li>可以单独部署每个页面。</li>
 <li>在更新路由或添加新路由时部署主体应用程序。</li>
 <li>单页应用的每个页面都是在单独的构建中从容器暴露出来的。</li>
@@ -650,7 +641,7 @@
 <li>主体应用程序(application shell)也是独立构建，会将所有页面作为远程模块来引用。</li>
 </ul>
 </li>
-<li><strong>将组件库作为容器</strong><ul>
+<li>将组件库作为容器<ul>
 <li>可以单独部署对组件库的更改。</li>
 <li>应用程序自动使用组件库的最新版本。</li>
 <li>每个应用程序使用来自组件库容器的组件。</li>
@@ -678,23 +669,23 @@
 <li>从脚本推断公共路径并在运行时使用 <code>__webpack_public_path__module</code> 变量对其进行设置。</li>
 </ul>
 <h3 id="故障排除"><a href="#故障排除" class="headerlink" title="故障排除"></a>故障排除</h3><ul>
-<li><strong>Uncaught Error: Shared module is not available for eager consumption</strong><ul>
-<li>问题：应用程序正急切地执行一个作为全局主机运行的应用程序</li>
-<li>解决：在模块联邦的高级 API 中将依赖设置为即时依赖</li>
+<li>Q1：应用程序正急切地执行一个作为全局主机运行的应用程序时提示<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Uncaught</span> <span class="title class_">Error</span>: <span class="title class_">Shared</span> <span class="variable language_">module</span> is not available <span class="keyword">for</span> eager consumption</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A1：在模块联邦的高级 API 中将依赖设置为即时依赖</li>
 </ul>
 </li>
-<li><strong>Uncaught Error: Module “.&#x2F;Button” does not exist in container.</strong><ul>
-<li>问题：将 webpack beta.16 升级到 webpack beta.17 中</li>
-<li>解决：在 ModuleFederationPlugin 里，更改 exposes，在Button加上.&#x2F;‘.&#x2F;Button’:’.&#x2F;src&#x2F;Button’</li>
+<li>Q2: 将 webpack beta.16 升级到 webpack beta.17 中提示<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Uncaught</span> <span class="title class_">Error</span>: <span class="title class_">Module</span> <span class="string">&quot;./Button&quot;</span> does not exist <span class="keyword">in</span> container.</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A2：在 ModuleFederationPlugin 里，更改 exposes，在Button加上.&#x2F;‘.&#x2F;Button’:’.&#x2F;src&#x2F;Button’</li>
 </ul>
 </li>
-<li><strong>Uncaught TypeError: fn is not a function</strong><ul>
-<li>问题：丢失了远程容器，或加载了容器</li>
-<li>解决：使用前添加容器，或需将主机容器的远程容器文件也添加到 HTML 中</li>
+<li>Q3: 丢失了远程容器，或加载了容器提示<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Uncaught</span> <span class="title class_">TypeError</span>: fn is not a <span class="keyword">function</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>A3：使用前添加容器，或需将主机容器的远程容器文件也添加到 HTML 中</li>
 </ul>
 </li>
-<li><strong>来自多个 remote 的模块之间的冲突</strong><ul>
-<li>解决：加载多个模块，建议为你的远程构建设置output.uniqueName</li>
+<li>Q4: 来自多个 remote 的模块之间的冲突<ul>
+<li>A4：加载多个模块，建议为你的远程构建设置output.uniqueName</li>
 </ul>
 </li>
 </ul>
@@ -724,7 +715,7 @@
 <li>在源代码中 CSS&#x2F;JS 产生修改时，会立刻在浏览器中进行更新，这几乎相当于在浏览器 devtools 直接更改样式。</li>
 </ul>
 <h3 id="工作原理："><a href="#工作原理：" class="headerlink" title="工作原理："></a>工作原理：</h3><ul>
-<li><strong>在应用程序中</strong><ul>
+<li>在应用程序中<ul>
 <li>应用程序要求 HMR runtime 检查更新。</li>
 <li>HMR runtime 异步地下载更新，然后通知应用程序。</li>
 <li>应用程序要求 HMR runtime 应用更新。</li>
@@ -732,7 +723,7 @@
 <li>设置 HMR，使此进程自动触发更新，或者选择要求在用户交互时进行更新</li>
 </ul>
 </li>
-<li><strong>在 compiler 中</strong><ul>
+<li>在 compiler 中<ul>
 <li>除了普通资源，compiler 需要发出 “update”，将之前的版本更新到新的版本。”update” 由两部分组成：<ol>
 <li>更新后的 manifest (JSON)</li>
 <li>一个或多个 updated chunk (JavaScript)</li>
@@ -740,21 +731,27 @@
 </li>
 </ul>
 </li>
-<li><strong>在模块中</strong><ul>
+<li>在模块中<ul>
 <li>HMR 是可选功能，只会影响包含 HMR 代码的模块。</li>
 <li>如果一个模块没有 HMR 处理函数，更新就会冒泡。这意味着某个单独处理函数能够更新整个模块树。</li>
 <li>如果在模块树的一个单独模块被更新，那么整组依赖模块都会被重新加载。</li>
 </ul>
 </li>
-<li><strong>在runtime中</strong><ul>
+<li>在runtime中<ul>
 <li>对于模块系统运行时，会发出额外代码，来跟踪模块parents和children关系。在管理方面，runtime 支持两个方法 check 和 apply。<ul>
-<li><strong>check</strong>：<span class="en">发送一个 HTTP 请求来更新 manifest。</span>如果请求失败，说明没有可用更新。如果请求成功，会将 updated chunk 列表与当前的 loaded chunk 列表进行比较。每个 loaded chunk 都会下载相应的 updated chunk。当所有更新 chunk 完成下载，runtime 就会切换到 ready 状态。</li>
-<li><strong>apply</strong>：<span class="en">将所有 updated module 标记为无效。</span>对于每个无效 module，都需要在模块中有一个 update handler，或者在此模块的父级模块中有 update handler。否则，会进行无效标记冒泡，并且父级也会被标记为无效。继续每个冒泡，直到到达应用程序入口起点，或者到达带有 update handler 的 module。如果它从入口起点开始冒泡，则此过程失败。所有无效 module 都会被处理和解除加载。然后更新当前 hash，并且调用所有 accept handler。runtime 切换回 idle 状态，一切照常继续。</li>
+<li>check：<ul>
+<li><span class="key_words">『发送一个 HTTP 请求来更新 manifest。』</span>如果请求失败，说明没有可用更新。如果请求成功，会将 updated chunk 列表与当前的 loaded chunk 列表进行比较。每个 loaded chunk 都会下载相应的 updated chunk。当所有更新 chunk 完成下载，runtime 就会切换到 ready 状态。</li>
+</ul>
+</li>
+<li>apply：<ul>
+<li><span class="key_words">『将所有 updated module 标记为无效。』</span>对于每个无效 module，都需要在模块中有一个 update handler，或者在此模块的父级模块中有 update handler。否则，会进行无效标记冒泡，并且父级也会被标记为无效。继续每个冒泡，直到到达应用程序入口起点，或者到达带有 update handler 的 module。如果它从入口起点开始冒泡，则此过程失败。所有无效 module 都会被处理和解除加载。然后更新当前 hash，并且调用所有 accept handler。runtime 切换回 idle 状态，一切照常继续。</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><strong>在开发环境中</strong><ul>
+</ul>
+</li>
+<li>在开发环境中<ul>
 <li>可以将 HMR 作为 LiveReload 的替代。webpack-dev-server 支持 hot 模式，在试图重新加载整个页面之前，hot 模式会尝试使用 HMR 来更新。</li>
 </ul>
 </li>

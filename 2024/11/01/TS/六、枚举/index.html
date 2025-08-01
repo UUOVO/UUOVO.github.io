@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content=".en {         color: green;         font-weight: 600;     }    定义一些带名字的常量  反向映射 枚举是一个相互映射（赋值）的，比如数字枚举中up&#x3D;1，调用时可以看到up&#x3D;1，1也等于up  数字枚举 默认从0开始增加，定义了初始值，从初始值开始增加 使用：通过枚举的属性来访问枚举成员，和枚举的名字来访问枚">
+<meta name="description" content="定义一些带名字的常量  反向映射 枚举是一个相互映射（赋值）的，比如数字枚举中up&#x3D;1，调用时可以看到up&#x3D;1，1也等于up  数字枚举 默认从0开始增加，定义了初始值，从初始值开始增加 使用：通过枚举的属性来访问枚举成员，和枚举的名字来访问枚举类型  123456enum Direction&#123;	up &#x3D; 1, &#x2F;&#x2F;Direction.up的值为 1	left">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TS-枚举">
 <meta property="og:url" content="http://example.com/2024/11/01/TS/%E5%85%AD%E3%80%81%E6%9E%9A%E4%B8%BE/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content=".en {         color: green;         font-weight: 600;     }    定义一些带名字的常量  反向映射 枚举是一个相互映射（赋值）的，比如数字枚举中up&#x3D;1，调用时可以看到up&#x3D;1，1也等于up  数字枚举 默认从0开始增加，定义了初始值，从初始值开始增加 使用：通过枚举的属性来访问枚举成员，和枚举的名字来访问枚">
+<meta property="og:description" content="定义一些带名字的常量  反向映射 枚举是一个相互映射（赋值）的，比如数字枚举中up&#x3D;1，调用时可以看到up&#x3D;1，1也等于up  数字枚举 默认从0开始增加，定义了初始值，从初始值开始增加 使用：通过枚举的属性来访问枚举成员，和枚举的名字来访问枚举类型  123456enum Direction&#123;	up &#x3D; 1, &#x2F;&#x2F;Direction.up的值为 1	left">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-11-01T03:40:57.290Z">
-<meta property="article:modified_time" content="2025-06-30T07:26:00.636Z">
+<meta property="article:modified_time" content="2025-07-18T08:52:27.768Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="TypeScript">
 <meta name="twitter:card" content="summary">
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-06-30 15:26:00"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-18 16:52:27"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -532,12 +532,8 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <style>
-    .en {
-        color: green;
-        font-weight: 600;
-    }
-</style>
+    <script src="/js/enChangegreen.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/global.css">
 
 <blockquote>
 <p>定义一些带名字的常量</p>
@@ -556,7 +552,7 @@
 <h3 id="异构枚举：既有数字枚举又有字符串枚举"><a href="#异构枚举：既有数字枚举又有字符串枚举" class="headerlink" title="异构枚举：既有数字枚举又有字符串枚举"></a>异构枚举：既有数字枚举又有字符串枚举</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="variable constant_">YIGOU</span> &#123;</span><br><span class="line">	<span class="title class_">No</span> = <span class="number">0</span>,</span><br><span class="line">	<span class="title class_">Yes</span> = <span class="string">&quot;YES&quot;</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="联合枚举与枚举成员的类型"><a href="#联合枚举与枚举成员的类型" class="headerlink" title="联合枚举与枚举成员的类型"></a>联合枚举与枚举成员的类型</h3><ul>
-<li><span class="en">数字、应用一元-符号的数字(如： -1)或字符串</span>的字面量都是number,string的子集</li>
+<li><span class="key_words">数字、应用一元-符号的数字(如： -1)或字符串</span>的字面量都是number,string的子集</li>
 <li>比如字符串字面量枚举&#x3D;String，但String !&#x3D;&#x3D; 字符串字面量</li>
 </ul>
 <h3 id="运行时的枚举：可以在函数中运行，不单单去定义一个常量"><a href="#运行时的枚举：可以在函数中运行，不单单去定义一个常量" class="headerlink" title="运行时的枚举：可以在函数中运行，不单单去定义一个常量"></a>运行时的枚举：可以在函数中运行，不单单去定义一个常量</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> E &#123;</span><br><span class="line">  x,y,z <span class="comment">//定义一个枚举，里面有x,y,z，默认值为0，1，2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params"><span class="attr">obj</span>: &#123;x:<span class="built_in">number</span>&#125;</span>)&#123; <span class="comment">//传一个对象，类型为number</span></span><br><span class="line">  <span class="keyword">return</span> obj.<span class="property">x</span>  <span class="comment">//返回x的值</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">f</span>(E) <span class="comment">//传枚举E到函数中</span></span><br></pre></td></tr></table></figure>

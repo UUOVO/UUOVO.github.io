@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content=".en {         color: green;         font-weight: 600;     }     Hook 本质上就是一个函数，它简洁了组件，有自己的状态管理，生命周期管理，状态共享。  Hook 解决了： 组件之间状态复用 在函数组件中可以使用生命周期 不区分组件时间使用场景  React 内置的 Hook 💚useState — 状态管理 💚useE">
+<meta name="description" content="Hook 本质上就是一个函数，它简洁了组件，有自己的状态管理，生命周期管理，状态共享。Hook API 索引  Hook 解决了： 组件之间状态复用 在函数组件中可以使用生命周期 不区分组件时间使用场景  React 内置的 Hook💚useState(状态管理) 作用：为组件添加state，并通过setState来更新state，避免重复创建initialState1const [st">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React-常用的HOOK">
 <meta property="og:url" content="http://example.com/en/2024/11/01/react/3.%E5%B8%B8%E7%94%A8%E7%9A%84hook/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content=".en {         color: green;         font-weight: 600;     }     Hook 本质上就是一个函数，它简洁了组件，有自己的状态管理，生命周期管理，状态共享。  Hook 解决了： 组件之间状态复用 在函数组件中可以使用生命周期 不区分组件时间使用场景  React 内置的 Hook 💚useState — 状态管理 💚useE">
+<meta property="og:description" content="Hook 本质上就是一个函数，它简洁了组件，有自己的状态管理，生命周期管理，状态共享。Hook API 索引  Hook 解决了： 组件之间状态复用 在函数组件中可以使用生命周期 不区分组件时间使用场景  React 内置的 Hook💚useState(状态管理) 作用：为组件添加state，并通过setState来更新state，避免重复创建initialState1const [st">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-11-01T01:41:47.797Z">
-<meta property="article:modified_time" content="2025-06-25T03:51:40.436Z">
+<meta property="article:modified_time" content="2025-07-07T08:31:57.355Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="React">
 <meta property="article:tag" content="Hook">
@@ -69,7 +69,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-06-25 11:51:40"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-07 16:31:57"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -533,130 +533,109 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <style>
-    .en {
-        color: green;
-        font-weight: 600;
-    }
-
-</style>
+    <script src="/js/enChangegreen.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/global.css">
 
 <blockquote>
-<p><span class="en">Hook 本质上就是一个函数</span>，它简洁了组件，有自己的状态管理，生命周期管理，状态共享。</p>
+<p>Hook 本质上就是一个函数，它简洁了组件，有自己的状态管理，生命周期管理，状态共享。<br><a target="_blank" rel="noopener" href="https://zh-hans.react.dev/reference/react/hooks">Hook API 索引</a></p>
 </blockquote>
 <h2 id="Hook-解决了："><a href="#Hook-解决了：" class="headerlink" title="Hook 解决了："></a>Hook 解决了：</h2><ul>
 <li>组件之间状态复用</li>
 <li>在函数组件中可以使用生命周期</li>
 <li>不区分组件时间使用场景</li>
 </ul>
-<h2 id="React-内置的-Hook"><a href="#React-内置的-Hook" class="headerlink" title="React 内置的 Hook"></a>React 内置的 Hook</h2><ul>
-<li>💚useState — 状态管理</li>
-<li>💚useEffect — 生命周期管理</li>
-<li>💚useMemo — 缓存值</li>
-<li>💚useRef — 获取 Dom 操作</li>
-<li>💚useCallback — 缓存函数</li>
-<li>useReducer — redux 相似</li>
-<li>useImperativeHandle — 子组件暴露值&#x2F;方法</li>
-<li>useLayoutEffect — 副作用会在 DOM 更新之后同步执行，会阻塞浏览器绘制<ul>
-<li>与useEffect区别：useEffect是会在整个页面渲染完才会调用</li>
-</ul>
-</li>
-</ul>
-<h2 id="react-redux-的-Hook"><a href="#react-redux-的-Hook" class="headerlink" title="react-redux 的 Hook"></a>react-redux 的 Hook</h2><ul>
-<li>useSelector() — 从redux的store队形中提取数据(state)</li>
-<li>useDispatch() — 返回Redux store中对dispatch函数的引用</li>
-<li>useStore() — 返回redux <code>&lt;Provider&gt;</code>组件的store对象的引用</li>
-</ul>
-<h3 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h3><ul>
-<li>作用：为组件添加state，并通过setState来更新state，避免重复创建initialState</li>
-<li>用法：const [state, setState] &#x3D; useState(initialState)<ul>
+<h2 id="React-内置的-Hook"><a href="#React-内置的-Hook" class="headerlink" title="React 内置的 Hook"></a>React 内置的 Hook</h2><h3 id="💚useState-状态管理"><a href="#💚useState-状态管理" class="headerlink" title="💚useState(状态管理)"></a>💚useState<span class="desc">(状态管理)</span></h3><ul>
+<li>作用：为组件添加state，并通过setState来更新state，避免重复创建initialState<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, setState] = <span class="title function_">useState</span>(initialState)</span><br></pre></td></tr></table></figure>
+<ul>
 <li>setState(设置变量)</li>
 <li>useState(初始化变量)</li>
 </ul>
 </li>
-<li>注意：<span class="en">setState()在React中大部分是异步情况，但也存在同步情况</span><ul>
-<li><span class="en">在setTimeout 回调函数中调用会同步修改</span></li>
-<li><span class="en">在原生DOM事件的回调函数中调用会同步修改</span></li>
+<li>注意：setState()在React中<span class="key_words">『大部分是异步』</span>，但也存在同步<ul>
+<li>在setTimeout 回调函数中调用会<span class="key_words">『同步』</span>修改</li>
+<li>在原生DOM事件的回调函数中调用会<span class="key_words">『同步』</span>修改</li>
 </ul>
 </li>
 </ul>
-<h3 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h3><ul>
-<li>作用：处理副作用(包括网络请求、直接操作DOM，使用计时器函数等)，相当于compoentDidmount和compoentDidUpdate</li>
-<li>用法：useEffect(callback, [dependenices])</li>
-<li>示例：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">	<span class="comment">// 依赖项变化时执行的语句</span></span><br><span class="line">	<span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">//（可选）清除useEffect,相当于compoentDidUnmount</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;, [依赖项 || <span class="string">&#x27;为空则只执行一次&#x27;</span>])</span><br></pre></td></tr></table></figure></li>
+<h3 id="💚useEffect-生命周期管理"><a href="#💚useEffect-生命周期管理" class="headerlink" title="💚useEffect(生命周期管理)"></a>💚useEffect<span class="desc">(生命周期管理)</span></h3><ul>
+<li>作用：处理副作用(包括网络请求、直接操作DOM，使用计时器函数等)，相当于compoentDidmount和compoentDidUpdate<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">	<span class="comment">// 依赖项变化时执行的语句</span></span><br><span class="line">	<span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">//（可选）清除useEffect,相当于compoentDidUnmount</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;, [依赖项 || <span class="string">&#x27;为空则只执行一次&#x27;</span>])</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="useRef"><a href="#useRef" class="headerlink" title="useRef"></a>useRef</h3><ul>
-<li>注意点: <ul>
-<li><span class="en">改变 ref.current 属性时，React 不会重新渲染组件</span>，而useState会触发页面的重新渲染</li>
-<li>更新useRef是副作用，所以一般写在useEffect或event handler里</li>
-<li>使用useRef来保存不影响组件视图输出信息 — 清除定时器</li>
+<h3 id="useLayoutEffect"><a href="#useLayoutEffect" class="headerlink" title="useLayoutEffect"></a>useLayoutEffect</h3><ul>
+<li>作用: 副作用会在 DOM 更新之后同步执行，会阻塞浏览器绘制</li>
+<li>语法: 与useEffect一样</li>
+<li>与useEffect区别：<ul>
+<li>useEffect 是<span class="key_words">『异步』</span>执行，而useLayoutEffect是<span class="key_words">『同步』</span>执行</li>
+<li>useEffect是会在整个页面<span class="key_words">『渲染完』</span>才会调用, 而 useLayoutEffect 是在浏览器重新<span class="key_words">『绘制屏幕之前』</span>触发</li>
 </ul>
 </li>
-<li>作用：通过ref操作DOM，避免重复创建 ref 的内容.</li>
-<li>用法：const ref &#x3D; useRef(initialValue)</li>
+</ul>
+<h3 id="💚useRef-获取-Dom-操作"><a href="#💚useRef-获取-Dom-操作" class="headerlink" title="💚useRef(获取 Dom 操作)"></a>💚useRef<span class="desc">(获取 Dom 操作)</span></h3><ul>
+<li>作用：通过ref操作DOM，避免重复创建 ref 的内容<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ref = <span class="title function_">useRef</span>(initialValue)</span><br></pre></td></tr></table></figure></li>
 <li>使用：ref.current &#x3D; 子组件的实例</li>
-<li>解决什么问题？答：用来获取上一次的值<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">usePrevious</span> = (<span class="params">value: string | number</span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">const</span> ref = <span class="title function_">useRef</span>()</span><br><span class="line">	<span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">			ref.<span class="property">current</span> = value</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">return</span> ref.<span class="property">current</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>注意点: <ul>
+<li><span class="key_words">『改变 ref.current 属性时，React 不会重新渲染组件』</span>，而useState会触发页面的重新渲染</li>
+<li>更新useRef是副作用，所以一般写在useEffect或事件处理函数里</li>
+<li>使用useRef来保存不影响组件视图输出信息 — <span class="desc">清除定时器</span></li>
 </ul>
-<h3 id="useImperativeHandle"><a href="#useImperativeHandle" class="headerlink" title="useImperativeHandle"></a>useImperativeHandle</h3><ul>
-<li>作用：向父组件暴露一个自定义的 ref(穿透ref)，应当与forwardRef一起使用（包在forwardRef里面）</li>
-<li>用法：useImperativeHandle(ref,createHandle,dependencies)<ul>
+</li>
+<li>使用场景: 用来获取上一次的值<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">usePrevious</span> = (<span class="params">value: string | number</span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">const</span> ref = <span class="title function_">useRef</span>()</span><br><span class="line">	<span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">			ref.<span class="property">current</span> = value</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">return</span> ref.<span class="property">current</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="useImperativeHandle-组件暴露值-方法"><a href="#useImperativeHandle-组件暴露值-方法" class="headerlink" title="useImperativeHandle(组件暴露值&#x2F;方法)"></a>useImperativeHandle<span class="desc">(组件暴露值&#x2F;方法)</span></h3><ul>
+<li>作用：向父组件暴露一个自定义的 ref(穿透ref)，应当与forwardRef一起使用（包在forwardRef里面）<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useImperativeHandle</span>(ref,createHandle,dependencies)</span><br></pre></td></tr></table></figure>
+<ul>
 <li>ref：子组件向父组件暴露的实例</li>
 <li>createHandle：函数，传递的父组件可操作的实例和方法</li>
 <li>dependencies：监听状态，更新状态</li>
 </ul>
 </li>
 </ul>
-<h3 id="useMemo"><a href="#useMemo" class="headerlink" title="useMemo"></a>useMemo</h3><ul>
-<li>作用：跳过不必要的计算和渲染实现性能的优化，缓存每次重新渲染都需要计算的结果</li>
-<li>用法：const newValue &#x3D; useMemo(callback,[dependencies])<ul>
-<li>只有依赖改变，才会重新执行<ul>
-<li>返回值：初次渲染，返回不带参数调用的计算的结果，依赖不变，返回上次缓存的值，改变则返回新值</li>
+<h3 id="💚useMemo-缓存值"><a href="#💚useMemo-缓存值" class="headerlink" title="💚useMemo(缓存值)"></a>💚useMemo<span class="desc">(缓存值)</span></h3><ul>
+<li>作用：跳过不必要的计算和渲染性能的优化，缓存每次重新渲染都需要计算的结果<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> newValue = <span class="title function_">useMemo</span>(callback,[dependencies])</span><br></pre></td></tr></table></figure>
+<ul>
+<li>只有依赖改变，才会重新执行</li>
+<li>返回值：初次渲染，返回不带参数调用的计算的结果，依赖不变，返回上次缓存的值，依赖变则返回新值</li>
+</ul>
+</li>
+</ul>
+<h3 id="💚useCallback-缓存函数"><a href="#💚useCallback-缓存函数" class="headerlink" title="💚useCallback(缓存函数)"></a>💚useCallback<span class="desc">(缓存函数)</span></h3><ul>
+<li>概念：useMemo的语法糖，缓存的是一个函数，返回的也是一个函数<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useCallback</span>(fn,[dependencies])</span><br></pre></td></tr></table></figure></li>
+<li>与useMemo的区别：<ul>
+<li>useCallback不会执行第一个参数函数，而是将<span class="key_words">『函数返回』</span></li>
+<li>useMemo会执行第一个函数并且将<span class="key_words">『结果返回』</span></li>
+</ul>
+</li>
+</ul>
+<h3 id="useReducer-redux-相似"><a href="#useReducer-redux-相似" class="headerlink" title="useReducer(redux 相似)"></a>useReducer<span class="desc">(redux 相似)</span></h3><ul>
+<li>作用：向组件添加一个管理状态的reducer，实现reducer函数，避免重新创建初始值<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, dispatch] = <span class="title function_">useReducer</span>(reducer, initialArg, init?)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>reducer：更新state的纯函数。参数为 state 和 action，返回值是更新后的state</li>
+<li>initialArg：初始化state的任意值</li>
+<li>init：计算初始值的函数。如果存在，使用init(initialArg)的执行结果作为初始值，否则使用initialArg</li>
+<li>dispatch：更新 state 并触发组件的重新渲染<ul>
+<li>用法：dispatch(newVar)</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<h3 id="useCallback"><a href="#useCallback" class="headerlink" title="useCallback"></a>useCallback</h3><ul>
-<li>概念：useMemo的语法糖，缓存的是一个函数，返回的也是一个函数</li>
-<li>用法：useCallback(fn,[dependencies])</li>
-<li>与useMemo的区别：useCallback不会执行第一个参数函数，而是将『函数返回』，而useMemo会执行第一个函数并且将『结果返回』</li>
-</ul>
-<h3 id="useReducer"><a href="#useReducer" class="headerlink" title="useReducer"></a>useReducer</h3><ul>
-<li>作用：向组件添加一个管理状态的reducer，实现reducer函数，避免重新创建初始值</li>
-<li>用法：const [state, dispatch] &#x3D; useReducer(reducer, initialArg, init?)<ul>
-<li>reducer：用于更新state的纯函数。参数为<code>state</code>和<code>action</code>，返回值是更新后的state</li>
-<li>initialArg：用于初始化state的任意值</li>
-<li>init：用于计算初始值的函数。如果存在，使用<code>init(initialArg)</code>的执行结果作为初始值，否则使用<code>initialArg</code></li>
-<li>dispatch：用于更新 state 并触发组件的重新渲染<ul>
-<li>用法：dispatch(newVAr)</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="下面的Hook主要是用于请求api，并处理数据"><a href="#下面的Hook主要是用于请求api，并处理数据" class="headerlink" title="下面的Hook主要是用于请求api，并处理数据"></a>下面的Hook主要是用于请求api，并处理数据</h2><h3 id="参考-TanStack-Query-中文文档"><a href="#参考-TanStack-Query-中文文档" class="headerlink" title="参考 TanStack Query 中文文档"></a>参考 <a target="_blank" rel="noopener" href="https://cangsdarm.github.io/react-query-web-i18n/react">TanStack Query 中文文档</a></h3><h3 id="useInfiniteQuery"><a href="#useInfiniteQuery" class="headerlink" title="useInfiniteQuery"></a>useInfiniteQuery</h3><ul>
-<li>作用：无限滚动翻页</li>
-<li>用法：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; </span><br><span class="line">	data, <span class="comment">// 包含无限查询数据的对象，data.pages数组包含已获取的分页页面，data.pageParams数组包含用于获取分页页面的参数</span></span><br><span class="line">	hasNextPage, <span class="comment">// 含义：存在下一页 值:布尔值，如果getNextPageParam返回的不是undefined的，则为true</span></span><br><span class="line">	hasPreviousPage, <span class="comment">// 含义：存在上一页 值:布尔值，如果getPreviousPageParam返回的不是undefined的，则为true</span></span><br><span class="line">	isFetchingNextPage, <span class="comment">// 值:布尔值，区分后台刷新状态和加载更多状态</span></span><br><span class="line">	isFetchingPreviousPage, <span class="comment">// 值:布尔值，区分后台刷新状态和加载更多状态</span></span><br><span class="line">	refetch  </span><br><span class="line">&#125; = <span class="title function_">useInfiniteQuery</span>(&#123;</span><br><span class="line">	<span class="attr">queryKey</span>: [<span class="string">&quot;projects&quot;</span>], <span class="comment">// 这里的key相当于useEffect的依赖，但是为了避免多个key都是同样的，最好在加个字符串，使queryKey唯一</span></span><br><span class="line">	<span class="attr">queryFn</span>: fetchProjects, <span class="comment">// async/await请求api的函数</span></span><br><span class="line">	 <span class="comment">// 以下两个方法都是用于确定是否有更多数据要加载和或用来获取它所需的信息</span></span><br><span class="line">	<span class="attr">getNextPageParam</span>: <span class="function">(<span class="params">lastPage, pages</span>) =&gt;</span> lastPage.<span class="property">nextCursor</span>,</span><br><span class="line">	<span class="attr">getPreviousPageParam</span>: <span class="function">(<span class="params">firstPage, pages</span>) =&gt;</span> firstPage.<span class="property">prevCursor</span>, </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<h2 id="用于请求api，并处理数据的HOOK"><a href="#用于请求api，并处理数据的HOOK" class="headerlink" title="用于请求api，并处理数据的HOOK"></a>用于请求api，并处理数据的HOOK</h2><h3 id="参考-TanStack-Query-中文文档"><a href="#参考-TanStack-Query-中文文档" class="headerlink" title="参考 TanStack Query 中文文档"></a>参考 <a target="_blank" rel="noopener" href="https://cangsdarm.github.io/react-query-web-i18n/react">TanStack Query 中文文档</a></h3><h3 id="useInfiniteQuery"><a href="#useInfiniteQuery" class="headerlink" title="useInfiniteQuery"></a>useInfiniteQuery</h3><ul>
+<li>作用：无限滚动翻页<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; </span><br><span class="line">	data, <span class="comment">// 包含无限查询数据的对象，data.pages数组包含已获取的分页页面，data.pageParams数组包含用于获取分页页面的参数</span></span><br><span class="line">	hasNextPage, <span class="comment">// 含义：存在下一页 值:布尔值，如果getNextPageParam返回的不是undefined的，则为true</span></span><br><span class="line">	hasPreviousPage, <span class="comment">// 含义：存在上一页 值:布尔值，如果getPreviousPageParam返回的不是undefined的，则为true</span></span><br><span class="line">	isFetchingNextPage, <span class="comment">// 值:布尔值，区分后台刷新状态和加载更多状态</span></span><br><span class="line">	isFetchingPreviousPage, <span class="comment">// 值:布尔值，区分后台刷新状态和加载更多状态</span></span><br><span class="line">	refetch  </span><br><span class="line">&#125; = <span class="title function_">useInfiniteQuery</span>(&#123;</span><br><span class="line">	<span class="attr">queryKey</span>: [<span class="string">&quot;projects&quot;</span>], <span class="comment">// 这里的key相当于useEffect的依赖，但是为了避免多个key都是同样的，最好在加个字符串，使queryKey唯一</span></span><br><span class="line">	<span class="attr">queryFn</span>: fetchProjects, <span class="comment">// async/await请求api的函数</span></span><br><span class="line">	 <span class="comment">// 以下两个方法都是用于确定是否有更多数据要加载和或用来获取它所需的信息</span></span><br><span class="line">	<span class="attr">getNextPageParam</span>: <span class="function">(<span class="params">lastPage, pages</span>) =&gt;</span> lastPage.<span class="property">nextCursor</span>,</span><br><span class="line">	<span class="attr">getPreviousPageParam</span>: <span class="function">(<span class="params">firstPage, pages</span>) =&gt;</span> firstPage.<span class="property">prevCursor</span>, </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="useQuery-useQueries"><a href="#useQuery-useQueries" class="headerlink" title="useQuery&#x2F;useQueries"></a>useQuery&#x2F;useQueries</h3><ul>
-<li>作用：获取请求接口的数据（并行请求）</li>
-<li>用法：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; data &#125; = <span class="title function_">useQuery</span>(&#123;</span><br><span class="line">	<span class="attr">queryKey</span>: [<span class="string">&#x27;issues&#x27;</span>],</span><br><span class="line">	<span class="attr">queryFn</span>: 接口的函数,</span><br><span class="line">	<span class="attr">suspense</span>: <span class="literal">true</span>, <span class="comment">// 不需要处理加载或错误的状态</span></span><br><span class="line">	<span class="attr">enabled</span>: <span class="literal">false</span> <span class="comment">// 存在才会执行</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="title function_">useQueries</span>([&#123;<span class="attr">queryKey</span>:[],<span class="attr">queryFn</span>:<span class="title class_">Fn</span>&#125;,&#123;<span class="attr">queryKey</span>:[],<span class="attr">queryFn</span>:<span class="title class_">Fn</span>&#125;]) </span><br></pre></td></tr></table></figure></li>
+<li>作用：获取请求接口的数据（并行请求）<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; data &#125; = <span class="title function_">useQuery</span>(&#123;</span><br><span class="line">	<span class="attr">queryKey</span>: [<span class="string">&#x27;issues&#x27;</span>],</span><br><span class="line">	<span class="attr">queryFn</span>: 接口的函数,</span><br><span class="line">	<span class="attr">suspense</span>: <span class="literal">true</span>, <span class="comment">// 不需要处理加载或错误的状态</span></span><br><span class="line">	<span class="attr">enabled</span>: <span class="literal">false</span> <span class="comment">// 存在才会执行</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="title function_">useQueries</span>([&#123;<span class="attr">queryKey</span>:[],<span class="attr">queryFn</span>:<span class="title class_">Fn</span>&#125;,&#123;<span class="attr">queryKey</span>:[],<span class="attr">queryFn</span>:<span class="title class_">Fn</span>&#125;]) </span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="react-redux-的-hooks"><a href="#react-redux-的-hooks" class="headerlink" title="react-redux 的 hooks"></a>react-redux 的 hooks</h2><ul>
 <li>引入 import { hook } from ‘react-redux’</li>
 </ul>
-<h3 id="useSelector-—-从redux的store队形中提取数据-state"><a href="#useSelector-—-从redux的store队形中提取数据-state" class="headerlink" title="useSelector() — 从redux的store队形中提取数据(state)"></a>useSelector() — 从redux的store队形中提取数据(state)</h3><ul>
-<li>示例： const counter &#x3D; useSelector( state &#x3D;&gt; state.counter)</li>
+<h3 id="useSelector"><a href="#useSelector" class="headerlink" title="useSelector()"></a>useSelector()</h3><ul>
+<li>从redux的store队形中提取数据(state)<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> counter = <span class="title function_">useSelector</span>( <span class="function"><span class="params">state</span> =&gt;</span> state.<span class="property">counter</span>)</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="useDispatch-—-返回Redux-store中对dispatch函数的引用"><a href="#useDispatch-—-返回Redux-store中对dispatch函数的引用" class="headerlink" title="useDispatch() — 返回Redux store中对dispatch函数的引用"></a>useDispatch() — 返回Redux store中对dispatch函数的引用</h3><ul>
-<li>简单理解就是把dispatch方法暴露出来使用</li>
-<li>示例： <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dispatch = <span class="title function_">useDispatch</span>()</span><br><span class="line">&lt;button onClick=&#123;<span class="function">() =&gt;</span> <span class="title function_">dispatch</span>(&#123; <span class="attr">type</span>: <span class="string">&#x27;increment-counter&#x27;</span>&#125;)&#125;&gt;julie&lt;/button&gt;</span><br></pre></td></tr></table></figure></li>
-<li>将dispatch传递给子组件，使用useCallback</li>
-<li>示例： <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> incrementCounter = <span class="title function_">useCallback</span>(<span class="function">()=&gt;</span> </span><br><span class="line">	<span class="title function_">dispatch</span>(&#123;<span class="attr">type</span>: <span class="string">&#x27;increment-counter&#x27;</span>&#125;</span><br><span class="line">), [dispatch])</span><br><span class="line">&lt;<span class="title class_">MyIncrementButton</span> onIncrement=&#123;incrementCounter&#125; /&gt;</span><br></pre></td></tr></table></figure></li>
-<li>然后暴露该组件给其它组件使用</li>
+<h3 id="useDispatch"><a href="#useDispatch" class="headerlink" title="useDispatch()"></a>useDispatch()</h3><ul>
+<li>返回Redux store中对dispatch函数的引用, 即把dispatch方法暴露出来使用<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dispatch = <span class="title function_">useDispatch</span>()</span><br><span class="line">&lt;button onClick=&#123;<span class="function">() =&gt;</span> <span class="title function_">dispatch</span>(&#123; <span class="attr">type</span>: <span class="string">&#x27;increment-counter&#x27;</span>&#125;)&#125;&gt;</span><br><span class="line">	julie</span><br><span class="line">&lt;/button&gt;</span><br></pre></td></tr></table></figure></li>
+<li>将dispatch传递给子组件，使用useCallback,然后暴露该组件给其它组件使用<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> incrementCounter = <span class="title function_">useCallback</span>(<span class="function">()=&gt;</span> </span><br><span class="line">	<span class="title function_">dispatch</span>(&#123;<span class="attr">type</span>: <span class="string">&#x27;increment-counter&#x27;</span>&#125;</span><br><span class="line">), [dispatch])</span><br><span class="line">&lt;<span class="title class_">MyIncrementButton</span> onIncrement=&#123;incrementCounter&#125; /&gt;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="useStore-—-返回redux组件的store对象的引用"><a href="#useStore-—-返回redux组件的store对象的引用" class="headerlink" title="useStore() — 返回redux&lt;Provider&gt;组件的store对象的引用"></a>useStore() — 返回redux<code>&lt;Provider&gt;</code>组件的store对象的引用</h3><ul>
-<li>示例： <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = useStore</span><br><span class="line">&lt;div&gt;&#123;store.<span class="property">getStore</span>&#125;&lt;<span class="regexp">/div&gt; /</span>/ 但store中的state更新，这里不会自动跟新，所以适合存放不变的数据</span><br></pre></td></tr></table></figure></li>
+<h3 id="useStore"><a href="#useStore" class="headerlink" title="useStore()"></a>useStore()</h3><ul>
+<li>返回redux Provider组件的store对象的引用<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = useStore</span><br><span class="line">&lt;div&gt;&#123;store.<span class="property">getStore</span>&#125;&lt;/div&gt; </span><br><span class="line"><span class="comment">// 但store中的state更新，这里不会自动跟新，所以适合存放不变的数据</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 
 </article>
@@ -677,11 +656,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/01/react/6.%E5%88%9B%E5%BB%BA%E8%B7%AF%E7%94%B1%E7%BB%9F%E4%B8%80%E7%AE%A1%E7%90%86%E9%85%8D%E7%BD%AE/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/react/5.%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">React-创建路由统一管理配置</h6>
+                <h6 class="trm-op-title">React-创建一个项目</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -774,7 +753,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="Hook 解决了："><a rel="nofollow" class="trm-toc-link" href="#Hook-解决了："><span class="trm-toc-number">1.</span> <span class="trm-toc-text">Hook 解决了：</span></a></li><li class="trm-toc-item trm-toc-level-2" title="React 内置的 Hook"><a rel="nofollow" class="trm-toc-link" href="#React-内置的-Hook"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">React 内置的 Hook</span></a></li><li class="trm-toc-item trm-toc-level-2" title="react-redux 的 Hook"><a rel="nofollow" class="trm-toc-link" href="#react-redux-的-Hook"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">react-redux 的 Hook</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="useState"><a rel="nofollow" class="trm-toc-link" href="#useState"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">useState</span></a></li><li class="trm-toc-item trm-toc-level-3" title="useEffect"><a rel="nofollow" class="trm-toc-link" href="#useEffect"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">useEffect</span></a></li><li class="trm-toc-item trm-toc-level-3" title="useRef"><a rel="nofollow" class="trm-toc-link" href="#useRef"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">useRef</span></a></li><li class="trm-toc-item trm-toc-level-3" title="useImperativeHandle"><a rel="nofollow" class="trm-toc-link" href="#useImperativeHandle"><span class="trm-toc-number">3.4.</span> <span class="trm-toc-text">useImperativeHandle</span></a></li><li class="trm-toc-item trm-toc-level-3" title="useMemo"><a rel="nofollow" class="trm-toc-link" href="#useMemo"><span class="trm-toc-number">3.5.</span> <span class="trm-toc-text">useMemo</span></a></li><li class="trm-toc-item trm-toc-level-3" title="useCallback"><a rel="nofollow" class="trm-toc-link" href="#useCallback"><span class="trm-toc-number">3.6.</span> <span class="trm-toc-text">useCallback</span></a></li><li class="trm-toc-item trm-toc-level-3" title="useReducer"><a rel="nofollow" class="trm-toc-link" href="#useReducer"><span class="trm-toc-number">3.7.</span> <span class="trm-toc-text">useReducer</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="下面的Hook主要是用于请求api，并处理数据"><a rel="nofollow" class="trm-toc-link" href="#下面的Hook主要是用于请求api，并处理数据"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">下面的Hook主要是用于请求api，并处理数据</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="参考 TanStack Query 中文文档"><a rel="nofollow" class="trm-toc-link" href="#参考-TanStack-Query-中文文档"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">参考 TanStack Query 中文文档</span></a></li><li class="trm-toc-item trm-toc-level-3" title="useInfiniteQuery"><a rel="nofollow" class="trm-toc-link" href="#useInfiniteQuery"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">useInfiniteQuery</span></a></li><li class="trm-toc-item trm-toc-level-3" title="useQuery&#x2F;useQueries"><a rel="nofollow" class="trm-toc-link" href="#useQuery-useQueries"><span class="trm-toc-number">4.3.</span> <span class="trm-toc-text">useQuery&#x2F;useQueries</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="react-redux 的 hooks"><a rel="nofollow" class="trm-toc-link" href="#react-redux-的-hooks"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">react-redux 的 hooks</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="useSelector() — 从redux的store队形中提取数据(state)"><a rel="nofollow" class="trm-toc-link" href="#useSelector-—-从redux的store队形中提取数据-state"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">useSelector() — 从redux的store队形中提取数据(state)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="useDispatch() — 返回Redux store中对dispatch函数的引用"><a rel="nofollow" class="trm-toc-link" href="#useDispatch-—-返回Redux-store中对dispatch函数的引用"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">useDispatch() — 返回Redux store中对dispatch函数的引用</span></a></li><li class="trm-toc-item trm-toc-level-3" title="useStore() — 返回redux&lt;Provider&gt;组件的store对象的引用"><a rel="nofollow" class="trm-toc-link" href="#useStore-—-返回redux组件的store对象的引用"><span class="trm-toc-number">5.3.</span> <span class="trm-toc-text">useStore() — 返回redux&lt;Provider&gt;组件的store对象的引用</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="Hook 解决了："><a rel="nofollow" class="trm-toc-link" href="#Hook-解决了："><span class="trm-toc-number">1.</span> <span class="trm-toc-text">Hook 解决了：</span></a></li><li class="trm-toc-item trm-toc-level-2" title="React 内置的 Hook"><a rel="nofollow" class="trm-toc-link" href="#React-内置的-Hook"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">React 内置的 Hook</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="💚useState(状态管理)"><a rel="nofollow" class="trm-toc-link" href="#💚useState-状态管理"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">💚useState(状态管理)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="💚useEffect(生命周期管理)"><a rel="nofollow" class="trm-toc-link" href="#💚useEffect-生命周期管理"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">💚useEffect(生命周期管理)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="useLayoutEffect"><a rel="nofollow" class="trm-toc-link" href="#useLayoutEffect"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">useLayoutEffect</span></a></li><li class="trm-toc-item trm-toc-level-3" title="💚useRef(获取 Dom 操作)"><a rel="nofollow" class="trm-toc-link" href="#💚useRef-获取-Dom-操作"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">💚useRef(获取 Dom 操作)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="useImperativeHandle(组件暴露值&#x2F;方法)"><a rel="nofollow" class="trm-toc-link" href="#useImperativeHandle-组件暴露值-方法"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">useImperativeHandle(组件暴露值&#x2F;方法)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="💚useMemo(缓存值)"><a rel="nofollow" class="trm-toc-link" href="#💚useMemo-缓存值"><span class="trm-toc-number">2.6.</span> <span class="trm-toc-text">💚useMemo(缓存值)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="💚useCallback(缓存函数)"><a rel="nofollow" class="trm-toc-link" href="#💚useCallback-缓存函数"><span class="trm-toc-number">2.7.</span> <span class="trm-toc-text">💚useCallback(缓存函数)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="useReducer(redux 相似)"><a rel="nofollow" class="trm-toc-link" href="#useReducer-redux-相似"><span class="trm-toc-number">2.8.</span> <span class="trm-toc-text">useReducer(redux 相似)</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="用于请求api，并处理数据的HOOK"><a rel="nofollow" class="trm-toc-link" href="#用于请求api，并处理数据的HOOK"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">用于请求api，并处理数据的HOOK</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="参考 TanStack Query 中文文档"><a rel="nofollow" class="trm-toc-link" href="#参考-TanStack-Query-中文文档"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">参考 TanStack Query 中文文档</span></a></li><li class="trm-toc-item trm-toc-level-3" title="useInfiniteQuery"><a rel="nofollow" class="trm-toc-link" href="#useInfiniteQuery"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">useInfiniteQuery</span></a></li><li class="trm-toc-item trm-toc-level-3" title="useQuery&#x2F;useQueries"><a rel="nofollow" class="trm-toc-link" href="#useQuery-useQueries"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">useQuery&#x2F;useQueries</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="react-redux 的 hooks"><a rel="nofollow" class="trm-toc-link" href="#react-redux-的-hooks"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">react-redux 的 hooks</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="useSelector()"><a rel="nofollow" class="trm-toc-link" href="#useSelector"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">useSelector()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="useDispatch()"><a rel="nofollow" class="trm-toc-link" href="#useDispatch"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">useDispatch()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="useStore()"><a rel="nofollow" class="trm-toc-link" href="#useStore"><span class="trm-toc-number">4.3.</span> <span class="trm-toc-text">useStore()</span></a></li></ol></li></ol>
       </div>
     </div>
 

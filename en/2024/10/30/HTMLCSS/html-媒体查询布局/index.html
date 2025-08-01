@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="基础 通过@media 媒体查询，给不同屏幕的大小编写不同的样式来实现响应式的布局 缺点：工作量大，效率低，代码累赘，以及加载事件过长 语法：@media mediatype and not only (media feature) &#123; css-code &#125; 用法： head 标签中引入(限定对应宽度使用对应 css 文件)：1&lt;link rel&#x3D;&quot;styles">
+<meta name="description" content="基础 通过@media 媒体查询，给不同屏幕的大小编写不同的样式来实现响应式的布局 缺点：工作量大，效率低，代码累赘，以及加载事件过长 语法：1@media mediatype and not only (media feature) &#123; css-code &#125; 用法： head 标签中引入(限定对应宽度使用对应 css 文件)：1&lt;link rel&#x3D;&quot;st">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Html-媒体查询布局">
 <meta property="og:url" content="http://example.com/en/2024/10/30/HTMLCSS/html-%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2%E5%B8%83%E5%B1%80/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="基础 通过@media 媒体查询，给不同屏幕的大小编写不同的样式来实现响应式的布局 缺点：工作量大，效率低，代码累赘，以及加载事件过长 语法：@media mediatype and not only (media feature) &#123; css-code &#125; 用法： head 标签中引入(限定对应宽度使用对应 css 文件)：1&lt;link rel&#x3D;&quot;styles">
+<meta property="og:description" content="基础 通过@media 媒体查询，给不同屏幕的大小编写不同的样式来实现响应式的布局 缺点：工作量大，效率低，代码累赘，以及加载事件过长 语法：1@media mediatype and not only (media feature) &#123; css-code &#125; 用法： head 标签中引入(限定对应宽度使用对应 css 文件)：1&lt;link rel&#x3D;&quot;st">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-30T07:29:11.163Z">
-<meta property="article:modified_time" content="2024-11-22T02:04:00.288Z">
+<meta property="article:modified_time" content="2025-07-29T09:58:52.789Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="Html">
 <meta property="article:tag" content="布局">
@@ -69,7 +69,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-22 10:04:00"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-29 17:58:52"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -533,21 +533,24 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><ul>
+    <script src="/js/enChangegreen.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/global.css">
+
+<h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><ul>
 <li>通过@media 媒体查询，给不同屏幕的大小编写不同的样式来实现响应式的布局</li>
 <li>缺点：工作量大，效率低，代码累赘，以及加载事件过长</li>
-<li>语法：<code>@media mediatype and not only (media feature) &#123; css-code &#125;</code></li>
+<li>语法：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> mediatype <span class="keyword">and</span> <span class="keyword">not</span> <span class="keyword">only</span> (media feature) &#123; css-<span class="selector-tag">code</span> &#125;</span><br></pre></td></tr></table></figure></li>
 <li>用法：<ul>
-<li>head 标签中引入(限定对应宽度使用对应 css 文件)：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=<span class="string">&quot;stylesheet&quot;</span> media=<span class="string">&quot;screen and (min-width: 481px) and (max-width: 600px)&quot;</span> href=<span class="string">&quot;small.css&quot;</span> /&gt;</span><br></pre></td></tr></table></figure></li>
-<li>css 中引入：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@media screen <span class="title function_">and</span> (min-<span class="attr">width</span>:1200px) &#123; body &#123; <span class="attr">background</span>: red; &#125; &#125;</span><br></pre></td></tr></table></figure></li>
+<li>head 标签中引入(限定对应宽度使用对应 css 文件)：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">media</span>=<span class="string">&quot;screen and (min-width: 481px) and (max-width: 600px)&quot;</span> <span class="attr">href</span>=<span class="string">&quot;small.css&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>css 中引入：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>:<span class="number">1200px</span>) &#123; <span class="selector-tag">body</span> &#123; <span class="attribute">background</span>: red; &#125; &#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
 <h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul>
-<li><code>width | height</code>: 视口的宽高</li>
-<li><code>min-width</code> 视口的最小宽度（视口大于指定宽度时生效）</li>
-<li><code>max-width</code> 视口的最大宽度（视口小于指定宽度时生效）</li>
-<li><code>@media</code> 是关键字</li>
+<li>width | height: 视口的宽高</li>
+<li>min-width: 视口的最小宽度（视口大于指定宽度时生效）</li>
+<li>max-width: 视口的最大宽度（视口小于指定宽度时生效）</li>
+<li>@media: 是关键字</li>
 </ul>
 <h3 id="断点"><a href="#断点" class="headerlink" title="断点"></a>断点</h3><ul>
 <li>样式切换的分界点，我们称其为断点，也就是网页的样式会在这个点时发生变化</li>
@@ -616,8 +619,8 @@
 </tr>
 </tbody></table>
 <h3 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h3><ul>
-<li>not: @media not screen and (width:888px){} — 对除了 screen 类型之外的所有设备类型生效。</li>
-<li>only: @media only screen and (width:888px){} — 只对 screen 类型有效</li>
+<li>not: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> <span class="keyword">not</span> screen <span class="keyword">and</span> (<span class="attribute">width</span>:<span class="number">888px</span>)&#123;&#125; // 对除了 screen 类型之外的所有设备类型生效。</span><br></pre></td></tr></table></figure></li>
+<li>only: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">width</span>:<span class="number">888px</span>)&#123;&#125; // 只对 screen 类型有效</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="可查询属性（media-feature）"><a href="#可查询属性（media-feature）" class="headerlink" title="可查询属性（media feature）"></a>可查询属性（media feature）</h3><table>
 <thead>

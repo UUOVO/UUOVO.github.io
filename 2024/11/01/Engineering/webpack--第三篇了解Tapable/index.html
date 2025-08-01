@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content=".en {         color: green;         font-weight:600;     }     .desc {         color: #CD853F;         font-weight: 600;         font-size:14px;     }    了解webpack Plugin之前应该掌握Tapable在 Webpack 的编">
+<meta name="description" content="了解webpack Plugin之前应该掌握Tapable在 Webpack 的编译过程中，本质上通过 Tapable 实现了在编译过程中的一种『发布订阅者模式』的插件 Plugin 机制。  Tapable提供了一系列事件的发布订阅者API，通过Tapable使用者可以注册事件，从而在不同实际去触发注册的事件进行执行 官方提供的九种钩子 SyncHook SyncBailHook Syn">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack --- 第三篇Tapable">
 <meta property="og:url" content="http://example.com/2024/11/01/Engineering/webpack--%E7%AC%AC%E4%B8%89%E7%AF%87%E4%BA%86%E8%A7%A3Tapable/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content=".en {         color: green;         font-weight:600;     }     .desc {         color: #CD853F;         font-weight: 600;         font-size:14px;     }    了解webpack Plugin之前应该掌握Tapable在 Webpack 的编">
+<meta property="og:description" content="了解webpack Plugin之前应该掌握Tapable在 Webpack 的编译过程中，本质上通过 Tapable 实现了在编译过程中的一种『发布订阅者模式』的插件 Plugin 机制。  Tapable提供了一系列事件的发布订阅者API，通过Tapable使用者可以注册事件，从而在不同实际去触发注册的事件进行执行 官方提供的九种钩子 SyncHook SyncBailHook Syn">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-11-01T08:52:16.721Z">
-<meta property="article:modified_time" content="2025-06-30T07:19:17.224Z">
+<meta property="article:modified_time" content="2025-07-28T06:55:13.142Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="webpack">
 <meta name="twitter:card" content="summary">
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-06-30 15:19:17"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-28 14:55:13"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -532,24 +532,13 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <style>
-    .en {
-        color: green;
-        font-weight:600;
-    }
-    .desc {
-        color: #CD853F;
-        font-weight: 600;
-        font-size:14px;
-    }
-</style>
+    <script src="/js/enChangegreen.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/global.css">
 
 <blockquote>
-<p>了解webpack Plugin之前应该掌握Tapable<br>在 Webpack 的编译过程中，本质上通过 Tapable 实现了在编译过程中的一种<span class="en">发布订阅者模式</span>的插件 Plugin 机制。</p>
+<p>了解webpack Plugin之前应该掌握Tapable<br>在 Webpack 的编译过程中，本质上通过 Tapable 实现了在编译过程中的一种<span class="key_words">『发布订阅者模式』</span>的插件 Plugin 机制。</p>
 </blockquote>
-<ul>
-<li>Tapable提供了一系列事件的发布订阅者API，通过Tapable使用者可以注册事件，从而在不同实际去触发注册的事件进行执行</li>
-</ul>
+<p>Tapable提供了一系列事件的发布订阅者API，通过Tapable使用者可以注册事件，从而在不同实际去触发注册的事件进行执行</p>
 <h3 id="官方提供的九种钩子"><a href="#官方提供的九种钩子" class="headerlink" title="官方提供的九种钩子"></a>官方提供的九种钩子</h3><ul>
 <li>SyncHook</li>
 <li>SyncBailHook</li>
@@ -562,34 +551,38 @@
 <li>AsyncSeriesWaterfallHook</li>
 </ul>
 <h3 id="Tapable中所有注册的事件可以分为同步、异步两种执行方式"><a href="#Tapable中所有注册的事件可以分为同步、异步两种执行方式" class="headerlink" title="Tapable中所有注册的事件可以分为同步、异步两种执行方式"></a>Tapable中所有注册的事件可以分为同步、异步两种执行方式</h3><ul>
-<li><strong>同步</strong>: 表示注册的事件函数会同步进行执行(Sync前缀)</li>
-<li><strong>异步</strong>: 表示注册的事件函数会异步进行执行(Async前缀)</li>
-<li><strong>异步串行钩子(AsyncSeries)</strong>：可以被串联（连续按照顺序调用）执行的异步钩子函数</li>
-<li><strong>异步并行钩子(AsyncParalle)</strong>：可以被并联（并发调用）执行的异步钩子函数</li>
-<li><span class="en">同步钩子</span>唯一的注册事件的方法是<span class="en">tap</span>，通过<span class="en">call</span>方法调用执行</li>
-<li><span class="en">异步钩子</span>可以通过<span class="en">tap、tapAsync、tapPromise</span>三种方式来注册，通过对应的<span class="en">call、callAsync、promise</span>三种方式来触发注册的函数</li>
+<li>同步(Sync前缀): 表示注册的事件函数会同步进行执行</li>
+<li>异步(Async前缀): 表示注册的事件函数会异步进行执行</li>
+<li>异步串行钩子(AsyncSeries)：可以被串联(<span class="desc">连续按照顺序调用</span>)执行的异步钩子函数</li>
+<li>异步并行钩子(AsyncParalle)：可以被并联(<span class="desc">并发调用</span>)执行的异步钩子函数</li>
+<li><span class="key_words">『同步钩子』</span>唯一的注册事件方法:『tap』，执行调用『call』方法</li>
+<li><span class="key_words">『异步钩子』</span><ul>
+<li>注册方法:『tap、tapAsync、tapPromise』</li>
+<li>触发注册的方法:『call、callAsync、promise』<span class="desc">一一对应</span></li>
+</ul>
+</li>
 </ul>
 <h3 id="Tapable-按照执行机制分类"><a href="#Tapable-按照执行机制分类" class="headerlink" title="Tapable 按照执行机制分类"></a>Tapable 按照执行机制分类</h3><ul>
-<li><strong>Basic Hook</strong>：基本类型钩子，仅执行钩子注册的事件，不关心被调用事件的返回值</li>
-<li><strong>Waterfall</strong>：瀑布类型的钩子，会在注册事件执行时将事件函数执行非undefined的返回值传递给接下来的事件函数作为参数，其他的与基本类型钩子类似</li>
-<li><strong>Bail</strong>：保险类型钩子，在基础类型钩子上增加一个保险机制，如果<span class="en">任意一个注册函数</span>执行<span class="en">返回非undefined</span>&gt;的值，那么<span class="en">整个钩子执行过程会立即中断</span>，之后的注册事件就不会调用</li>
-<li><strong>Loop</strong>: 循环类型钩子，通过 call 调用时，如果<span class="en">任意一个注册的事件</span>函数<span class="en">返回值非 undefeind</span>,那么会<span class="en">立即重头开始重新执行</span>所有的注册事件函数，<span class="en">直到所有</span>被注册的事件函数都<span class="en">返回 undefined</span>。</li>
-<li>示例<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123;<span class="title class_">SyncHook</span>, <span class="title class_">SyncBailHook</span>, <span class="title class_">SyncWaterfallHook</span>,<span class="title class_">SyncWaterfallHook</span> &#125; = <span class="built_in">require</span>(<span class="string">&#x27;tapable&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> hook = <span class="keyword">new</span> <span class="title class_">SyncHook</span>([<span class="string">&#x27;arg1&#x27;</span>,<span class="string">&#x27;arg2&#x27;</span>,<span class="string">&#x27;arg3&#x27;</span>]) <span class="comment">// 这个就换钩子名，其他一样</span></span><br><span class="line"># <span class="title class_">SyncHook</span></span><br><span class="line"><span class="comment">// 初始化同步钩子</span></span><br><span class="line">重点：数组中对应的字符串个数</span><br><span class="line"><span class="comment">// 注册事件</span></span><br><span class="line">▫️▪ 通过tap函数监听对应的事件，注册事件时接受两个参数：</span><br><span class="line">▫️▪ ️第一个参数是 <span class="string">`字符串 | 对象`</span>，<span class="string">`仅作标识`</span></span><br><span class="line">▫️▪ 第二个参数表示<span class="string">`本次注册的函数`</span>，在调用时会执行这个函数</span><br><span class="line">hook.<span class="title function_">tap</span>(<span class="string">&#x27;flag1&#x27;</span>,<span class="function">(<span class="params">arg1,arg2,arg3</span>) =&gt;</span> &#123;&#125;)</span><br><span class="line"><span class="comment">// 调用事件并传递执行参数</span></span><br><span class="line">▫️▪ 通过call方法传入对应的参数，调用注册在hook内部的事件函数执行，同时将call方法<span class="string">`传入的参数传递`</span>给<span class="string">`每一个`</span>注册的<span class="string">`事件`</span>函数作为<span class="string">`实参`</span>进行调用</span><br><span class="line">hook.<span class="title function_">call</span>(<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;3&#x27;</span>)</span><br><span class="line"># <span class="title class_">SyncBailHook</span></span><br><span class="line"><span class="comment">// 注册事件</span></span><br><span class="line">hook.<span class="title function_">tap</span>(<span class="string">&#x27;flag1&#x27;</span>,<span class="function">(<span class="params">arg1,arg2,arg3</span>) =&gt;</span>&#123;</span><br><span class="line">	<span class="comment">// 存在返回值，阻断后面注册事件的调用</span></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//调用事件</span></span><br><span class="line">hook.<span class="title function_">call</span>(<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;3&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
-<li>参考<br>  <a target="_blank" rel="noopener" href="https://juejin.cn/post/7040982789650382855">Tapable讲解</a></li>
+<li>Basic Hook：基本类型钩子，仅执行钩子注册的事件，不关心被调用事件的返回值</li>
+<li>Waterfall：瀑布类型的钩子，会在注册事件执行时将事件函数执行非undefined的返回值传递给接下来的事件函数作为参数，其他的与基本类型钩子类似</li>
+<li>Bail：保险类型钩子，在基础类型钩子上增加一个保险机制，<span class="key_words">『任意一个注册函数执行返回非undefined的值，整个钩子执行过程会立即中断』</span>，之后的注册事件就不会调用</li>
+<li>Loop: 循环类型钩子，通过 call 调用时，<span class="key_words">『任意一个注册的事件返回值非 undefeind则立即重头开始重新执行所有的注册事件，直到所有被注册的事件函数都返回 undefined』</span>。</li>
+<li>注册事件: 通过tap函数监听对应的事件，接受两个参数：参数一仅作标识, 参数二在调用时会执行<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hook.tap(String|Object, 本次注册的函数)</span><br></pre></td></tr></table></figure></li>
+<li>调用事件: 通过call方法传入对应的参数，调用注册在hook内部的事件函数执行，同时将call方法传入的参数传递给每一个注册的事件函数作为<span class="key_words">『实参』</span></li>
+<li>示例<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123;<span class="title class_">SyncHook</span>, <span class="title class_">SyncBailHook</span>, <span class="title class_">SyncWaterfallHook</span>,<span class="title class_">SyncWaterfallHook</span> &#125; = <span class="built_in">require</span>(<span class="string">&#x27;tapable&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> hook = <span class="keyword">new</span> <span class="title class_">SyncHook</span>([<span class="string">&#x27;arg1&#x27;</span>,<span class="string">&#x27;arg2&#x27;</span>,<span class="string">&#x27;arg3&#x27;</span>]) <span class="comment">// 这个就换钩子名，其他一样</span></span><br><span class="line"><span class="comment">// SyncHook注册与调用事件</span></span><br><span class="line"><span class="comment">// 初始化同步钩子</span></span><br><span class="line">重点：数组中对应的字符串个数</span><br><span class="line">hook.<span class="title function_">tap</span>(<span class="string">&#x27;flag1&#x27;</span>,<span class="function">(<span class="params">arg1,arg2,arg3</span>) =&gt;</span> &#123;&#125;)</span><br><span class="line">hook.<span class="title function_">call</span>(<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;3&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// SyncBailHook注册与调用事件</span></span><br><span class="line">hook.<span class="title function_">tap</span>(<span class="string">&#x27;flag1&#x27;</span>,<span class="function">(<span class="params">arg1,arg2,arg3</span>) =&gt;</span>&#123;</span><br><span class="line">	<span class="comment">// 存在返回值，阻断后面注册事件的调用</span></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;)</span><br><span class="line">hook.<span class="title function_">call</span>(<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;3&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7040982789650382855">参考:Tapable讲解</a></li>
 </ul>
 <h3 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h3><ul>
 <li>Tapable 提供的所有 Hook 都支持注入 Interception ，可以通过拦截器对整个Tapable发布&#x2F;订阅流程进行监听<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">hook.<span class="title function_">intercept</span>(&#123;</span><br><span class="line">  <span class="comment">// 每次通过 tap、tapAsync、tapPromise 方法注册事件函数时，会触发 register 拦截器。</span></span><br><span class="line">  <span class="comment">// 并且接受 tap 作为参数, 还可以对注册事件进行修改;</span></span><br><span class="line">  <span class="attr">register</span>: <span class="function">(<span class="params">tapInfo</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;tapInfo.name&#125;</span> is doing its job`</span>);</span><br><span class="line">    <span class="keyword">return</span> tapInfo</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 通过hook实例对象上的call方法时候触发拦截器，接受的参数为调用 Hook 时传入的参数。</span></span><br><span class="line">  <span class="attr">call</span>: <span class="function">(<span class="params">arg1, arg2, arg3</span>) =&gt;</span> &#123;&#125;,</span><br><span class="line">  <span class="comment">// 在调用被注册的每一个事件函数之前执行，接受参数为对应的 Tap 对象。</span></span><br><span class="line">  <span class="attr">tap</span>: <span class="function">(<span class="params">tap</span>) =&gt;</span> &#123;&#125;,</span><br><span class="line">  <span class="comment">// loop类型钩子中 每次重新开始 loop 之前会执行该拦截器，拦截器函数接受的参数为调用时传入的参数。</span></span><br><span class="line">  <span class="attr">loop</span>: <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;&#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><h4 id="Before-stage"><a href="#Before-stage" class="headerlink" title="Before &amp;&amp; stage"></a>Before &amp;&amp; stage</h4><ul>
-<li><span class="en">before</span> 属性的值为数组 | 字符串,值为注册事件对象时的名称，它可以让当前事件在对应标识事件<span class="en">前</span>执行。</li>
-<li><span class="en">stage</span> 属性的值为数字，<span class="en">数字越大</span>事件回调<span class="en">执行的越晚</span>，支持传入负数，不传默认为0 </li>
+<li>before 值类型为Array | String,值为注册事件对象时的名称，它可以<span class="key_words">让当前事件在对应标识事件前执行』</span></li>
+<li>stage 值类型为Number，<span class="key_words">『数字越大事件回调执行的越晚』</span>，支持传入负数，默认为0 </li>
 <li>使用：在注册事件函数，第一个参数为对象时，在这个对象添加stage和before来控制本次注册事件的执行时机</li>
 <li>如果同时使用 before 和 stage 时，会优先处理 before ，在满足 before 的条件之后才会进行 stage 的判断。<span class="desc">不建议同时使用</span><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hook.<span class="title function_">tap</span>(&#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="string">&#x27;flag1&#x27;</span></span><br><span class="line">&#125;,<span class="function">()=&gt;</span>&#123;&#125;)</span><br><span class="line">hook.<span class="title function_">tap</span>(&#123;</span><br><span class="line">	<span class="attr">name</span>:<span class="string">&#x27;flag2&#x27;</span>,</span><br><span class="line">	<span class="comment">// flag2 会在flag1前执行</span></span><br><span class="line">	<span class="attr">before</span>:<span class="string">&#x27;flag1&#x27;</span></span><br><span class="line">&#125;,<span class="function">()=&gt;</span> &#123;&#125;)</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h4 id="HookMap"><a href="#HookMap" class="headerlink" title="HookMap"></a>HookMap</h4><ul>
 <li>辅助类，管理Hook <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建HookMap实例</span></span><br><span class="line"><span class="keyword">const</span> keyedHook = <span class="keyword">new</span> <span class="title class_">HookMap</span>(<span class="function">(<span class="params">key</span>) =&gt;</span> <span class="keyword">new</span> <span class="title class_">SyncHook</span>([<span class="string">&#x27;arg&#x27;</span>]));</span><br><span class="line"><span class="comment">// 在keyedHook中创建一个name为key1的hook，同时为该hook通过tap注册事件 </span></span><br><span class="line">keyedHook.<span class="title function_">for</span>(<span class="string">&#x27;key1&#x27;</span>).<span class="title function_">tap</span>(<span class="string">&#x27;Plugin 1&#x27;</span>, <span class="function">(<span class="params">arg</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Plugin 1&#x27;</span>, arg);</span><br><span class="line">&#125;); </span><br><span class="line"><span class="comment">// 从HookMap中拿到name为key1的hook</span></span><br><span class="line"><span class="keyword">const</span> hook = keyedHook.<span class="title function_">get</span>(<span class="string">&#x27;key1&#x27;</span>);</span><br><span class="line"><span class="keyword">if</span> (hook) &#123;</span><br><span class="line">  <span class="comment">// 通过call方法触发Hook</span></span><br><span class="line">  hook.<span class="title function_">call</span>(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>MultiHook – 不常见</li>
-<li>Context – 即将废弃</li>
 </ul>
 
 </article>

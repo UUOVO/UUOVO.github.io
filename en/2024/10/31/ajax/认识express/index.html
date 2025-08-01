@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="前期知道的知识点：http请求-响应express的基本使用 安装：npm install express  引入express	  const { request, response } &#x3D; require(‘express’); const express &#x3D; require(‘express’);   创建应用对象  const app &#x3D; express();">
+<meta name="description" content="前期知道的知识点：http请求-响应express的基本使用 安装：1npm install express 引入express	12const &#123; request, response &#125; &#x3D; require(&#x27;express&#x27;);const express &#x3D; require(&#x27;express&#x27;); 创建应用对象1const ap">
 <meta property="og:type" content="article">
 <meta property="og:title" content="认识express">
 <meta property="og:url" content="http://example.com/en/2024/10/31/ajax/%E8%AE%A4%E8%AF%86express/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="前期知道的知识点：http请求-响应express的基本使用 安装：npm install express  引入express	  const { request, response } &#x3D; require(‘express’); const express &#x3D; require(‘express’);   创建应用对象  const app &#x3D; express();">
+<meta property="og:description" content="前期知道的知识点：http请求-响应express的基本使用 安装：1npm install express 引入express	12const &#123; request, response &#125; &#x3D; require(&#x27;express&#x27;);const express &#x3D; require(&#x27;express&#x27;); 创建应用对象1const ap">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-31T07:48:16.170Z">
-<meta property="article:modified_time" content="2024-11-05T06:38:18.783Z">
+<meta property="article:modified_time" content="2025-07-28T09:09:59.045Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="express">
 <meta name="twitter:card" content="summary">
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-05 14:38:18"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-28 17:09:59"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -532,39 +532,20 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <h3 id="前期知道的知识点："><a href="#前期知道的知识点：" class="headerlink" title="前期知道的知识点："></a>前期知道的知识点：<a href="/2024/10/31/network/http%E8%AF%B7%E6%B1%82-%E5%93%8D%E5%BA%94%E6%A8%A1%E5%BC%8F/" title="Http请求-响应模式">http请求-响应</a></h3><h3 id="express的基本使用"><a href="#express的基本使用" class="headerlink" title="express的基本使用"></a>express的基本使用</h3><ol>
-<li><p>安装：npm install express</p>
-</li>
-<li><p>引入express	</p>
-<ul>
-<li>const { request, response } &#x3D; require(‘express’);</li>
-<li>const express &#x3D; require(‘express’);</li>
-</ul>
-</li>
-<li><p>创建应用对象</p>
-<ul>
-<li>const app &#x3D; express();</li>
-</ul>
-</li>
-<li><p>创建路由规则</p>
-<ul>
-<li>reuqest：是对请求报文的封装</li>
-<li>response：是对响应报文的封装</li>
-<li>app.get(‘&#x2F;路径’,(request,response)&#x3D;&gt;{});</li>
-<li>app.post(‘&#x2F;路径’,(request,response)&#x3D;&gt;{});</li>
-<li>可接受任意类型的请求：app.all(‘&#x2F;路径’,(request,response)&#x3D;&gt;{});</li>
-</ul>
-</li>
-<li><p>监听端口启动服务</p>
-<ul>
-<li>app.listen(8000,()&#x3D;&gt;{})</li>
-</ul>
-</li>
+    <script src="/js/enChangegreen.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/global.css">
+
+<h3 id="前期知道的知识点："><a href="#前期知道的知识点：" class="headerlink" title="前期知道的知识点："></a>前期知道的知识点：<a href="/2024/10/31/network/http%E8%AF%B7%E6%B1%82-%E5%93%8D%E5%BA%94%E6%A8%A1%E5%BC%8F/" title="Http请求-响应模式">http请求-响应</a></h3><h3 id="express的基本使用"><a href="#express的基本使用" class="headerlink" title="express的基本使用"></a>express的基本使用</h3><ol>
+<li>安装：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install express</span><br></pre></td></tr></table></figure></li>
+<li>引入express	<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; request, response &#125; = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>创建应用对象<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br></pre></td></tr></table></figure></li>
+<li>创建路由规则<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">reuqest：是对请求报文的封装</span><br><span class="line">response：是对响应报文的封装</span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/路径&#x27;</span>,<span class="function">(<span class="params">request,response</span>)=&gt;</span>&#123;&#125;);</span><br><span class="line">app.<span class="title function_">post</span>(<span class="string">&#x27;/路径&#x27;</span>,<span class="function">(<span class="params">request,response</span>)=&gt;</span>&#123;&#125;);</span><br><span class="line">可接受任意类型的请求：app.<span class="title function_">all</span>(<span class="string">&#x27;/路径&#x27;</span>,<span class="function">(<span class="params">request,response</span>)=&gt;</span>&#123;&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>监听端口启动服务<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">listen</span>(<span class="number">8000</span>,<span class="function">()=&gt;</span>&#123;&#125;)</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="app-all-内部的一些设置"><a href="#app-all-内部的一些设置" class="headerlink" title="app.all 内部的一些设置"></a>app.all 内部的一些设置</h3><ul>
-<li>设置响应头，设置允许跨域：response.setHeader(‘Access-Control-Allow-Origin’, ‘*’);</li>
-<li>设置响应体：response.send(‘HELLO AJAX - 2’)</li>
-<li>设置响应头：response.setHeader(‘Access-Control-Allow-Headers’,’*’);</li>
+<li>设置响应头，设置允许跨域：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.<span class="title function_">setHeader</span>(<span class="string">&#x27;Access-Control-Allow-Origin&#x27;</span>, <span class="string">&#x27;*&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>设置响应体：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.<span class="title function_">send</span>(<span class="string">&#x27;HELLO AJAX - 2&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+<li>设置响应头：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.<span class="title function_">setHeader</span>(<span class="string">&#x27;Access-Control-Allow-Headers&#x27;</span>,<span class="string">&#x27;*&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
 <li>JSON 响应： 使用JSON.stringify()将对象转为字符串，然后通过response.send()设置到响应体</li>
 <li>延时响应：设置个延时器</li>
 </ul>
