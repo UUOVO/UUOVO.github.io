@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content=".en {         color: green;         font-weight: 600;     }     .desc {         color: #CD853F;         font-weight: 600;         font-size:14px;     }   开发规范 页面文件向导Vue单文件组件(SFC)规范 页面标签靠近小程序规范 AP">
+<meta name="description" content="开发规范 页面文件向导Vue单文件组件(SFC)规范 页面标签靠近小程序规范 API靠近微信小程序规范，但是wx需替换为uni 数据绑定及时间处理同Vue.js规范 为了兼容，建议使用flex布局  uniApp 在VScode中开发（因为uniapp的ts校验差） 安装ts类型校验 安装：1npm i -D @types&#x2F;wechat-miniprogram @uni-helper&#x2F;uni">
 <meta property="og:type" content="article">
 <meta property="og:title" content="uniApp + vue3组合式开发">
 <meta property="og:url" content="http://example.com/en/2024/10/31/uniApp/vue3%E7%BB%84%E5%90%88%E5%BC%8F%E5%AE%9E%E6%88%98%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content=".en {         color: green;         font-weight: 600;     }     .desc {         color: #CD853F;         font-weight: 600;         font-size:14px;     }   开发规范 页面文件向导Vue单文件组件(SFC)规范 页面标签靠近小程序规范 AP">
+<meta property="og:description" content="开发规范 页面文件向导Vue单文件组件(SFC)规范 页面标签靠近小程序规范 API靠近微信小程序规范，但是wx需替换为uni 数据绑定及时间处理同Vue.js规范 为了兼容，建议使用flex布局  uniApp 在VScode中开发（因为uniapp的ts校验差） 安装ts类型校验 安装：1npm i -D @types&#x2F;wechat-miniprogram @uni-helper&#x2F;uni">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-31T07:20:57.293Z">
-<meta property="article:modified_time" content="2025-06-30T07:26:00.334Z">
+<meta property="article:modified_time" content="2025-08-04T03:45:52.129Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="uniapp">
 <meta property="article:tag" content="vue3">
@@ -69,7 +69,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-06-30 15:26:00"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-08-04 11:45:52"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -533,17 +533,8 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <style>
-    .en {
-        color: green;
-        font-weight: 600;
-    }
-    .desc {
-        color: #CD853F;
-        font-weight: 600;
-        font-size:14px;
-    }
-</style>
+    <script src="/js/enChangegreen.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/global.css">
 
 <h2 id="开发规范"><a href="#开发规范" class="headerlink" title="开发规范"></a>开发规范</h2><ul>
 <li>页面文件向导Vue单文件组件(SFC)规范</li>
@@ -554,7 +545,7 @@
 </ul>
 <h2 id="uniApp-在VScode中开发（因为uniapp的ts校验差）"><a href="#uniApp-在VScode中开发（因为uniapp的ts校验差）" class="headerlink" title="uniApp 在VScode中开发（因为uniapp的ts校验差）"></a>uniApp 在VScode中开发（因为uniapp的ts校验差）</h2><ul>
 <li>安装ts类型校验<ul>
-<li>安装：<span class="en">npm i -D @types&#x2F;wechat-miniprogram @uni-helper&#x2F;uni-app-types</span></li>
+<li>安装：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -D @types/wechat-miniprogram @uni-helper/uni-app-types</span><br></pre></td></tr></table></figure></li>
 <li>配置tsconfig.json<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">	<span class="string">&quot;types&quot;</span>: [</span><br><span class="line">		<span class="string">&quot;@dcloudio/types&quot;</span>,</span><br><span class="line">		<span class="string">&quot;@types/wechat-miniprogram&quot;</span>,</span><br><span class="line">		<span class="string">&quot;@uni-helper/uni-app-types&quot;</span></span><br><span class="line">	]</span><br><span class="line">&#125;,</span><br><span class="line"><span class="string">&quot;vueCompilerOptions&quot;</span>: &#123;</span><br><span class="line">	<span class="string">&quot;experimentalRuntimeMode&quot;</span>: <span class="string">&quot;runtime-uni-app&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
@@ -566,39 +557,39 @@
 </li>
 </ul>
 <h2 id="uniApp生命周期"><a href="#uniApp生命周期" class="headerlink" title="uniApp生命周期"></a>uniApp生命周期</h2><ul>
-<li><strong>onLaunch</strong>:当<code>uni-app</code>初始化完成时触发(全局只触发一次)</li>
-<li><strong>onShow</strong>：当<code>uni-app</code>启动时，或从后台进入前台显示</li>
-<li><strong>onHide</strong>：当<code>uni-app</code>从前台进入后台</li>
-<li><strong>onError</strong>： 当<code>uni-app</code>报错时触发</li>
-<li><strong>onUniNViewMessage</strong>：当<code>nvue</code>页面发送数据进行监听，可参考<code>nvue</code>向<code>vue</code>通讯</li>
-<li><strong>onUnhandledRejection</strong>：对未处理的<code>Promise</code>拒绝事件监听函数</li>
-<li><strong>onPageNotFound</strong>：页面不存在监听函数</li>
-<li><strong>onThemeChange</strong>：监听系统主题变化</li>
+<li>onLaunch:当uni-app初始化完成时触发(全局只触发一次)</li>
+<li>onShow：当uni-app启动时，或从后台进入前台显示</li>
+<li>onHide：当uni-app从前台进入后台</li>
+<li>onError： 当uni-app报错时触发</li>
+<li>onUniNViewMessage：当 nvue 页面发送数据进行监听，可参考 nvue 向 vue 通讯</li>
+<li>onUnhandledRejection：对未处理的 Promise 拒绝事件监听函数</li>
+<li>onPageNotFound：页面不存在监听函数</li>
+<li>onThemeChange：监听系统主题变化</li>
 </ul>
 <h2 id="页面生命周期"><a href="#页面生命周期" class="headerlink" title="页面生命周期"></a>页面生命周期</h2><ul>
-<li><strong>onLoad</strong>：监听页面加载,其参数为上个页面传递的数据，参数类型为Object</li>
-<li><strong>onShow</strong>：监听页面显示。页面每次出现在屏幕上都触发，包括从下级页面点返回露出当前页面</li>
-<li><strong>onReady</strong>：监听页面初次渲染完成。注意如果渲染速度快，会在页面进入动画完成前触发</li>
-<li><strong>onHide</strong>：监听页面隐藏</li>
-<li><strong>onUnload</strong>： 监听页面卸载</li>
-<li><strong>onResize</strong>：监听窗口尺寸变化</li>
-<li><strong>onPullDownRefresh</strong>：监听用户下拉动作，一般用于下拉刷新</li>
-<li><strong>onREachBottom</strong>：页面滚动到底部的事件，常用于下拉下一页数据</li>
-<li><strong>onTabItemTap</strong>：点击tab时触发，参数为Object</li>
-<li><strong>onShareAppMessage</strong>：用户点击右上角分享</li>
-<li><strong>onPageScroll</strong>：监听页面滚动，参数为Object</li>
-<li><strong>onNavigationBarButtonTap</strong>：监听原生标题栏按钮点击事件，参数为Object</li>
-<li><strong>onBackPress</strong>：监听页面返回</li>
-<li><strong>onNavigationBarSearchInputChanged</strong>：监听原生标题栏搜索输入框输入内容变化事件</li>
-<li><strong>onNavigationBarSearchInputConfirmed</strong>：监听原生标题栏搜索输入框搜索事件，用户点击软键盘上的“搜索”按钮时触发</li>
-<li><strong>onNavigationBarSearchInputClicked</strong>：监听原生标题栏搜索输入框点击事件</li>
-<li><strong>onShareTimeline</strong>：监听用户点击右上角转发到朋友圈</li>
-<li><strong>onAddToFavorites</strong>：监听用户点击右上角收藏</li>
+<li>onLoad：监听页面加载,其参数为上个页面传递的数据，参数类型为Object</li>
+<li>onShow：监听页面显示。页面每次出现在屏幕上都触发，包括从下级页面点返回露出当前页面</li>
+<li>onReady：监听页面初次渲染完成。注意如果渲染速度快，会在页面进入动画完成前触发</li>
+<li>onHide：监听页面隐藏</li>
+<li>onUnload： 监听页面卸载</li>
+<li>onResize：监听窗口尺寸变化</li>
+<li>onPullDownRefresh：监听用户下拉动作，一般用于下拉刷新</li>
+<li>onREachBottom：页面滚动到底部的事件，常用于下拉下一页数据</li>
+<li>onTabItemTap：点击tab时触发，参数为Object</li>
+<li>onShareAppMessage：用户点击右上角分享</li>
+<li>onPageScroll：监听页面滚动，参数为Object</li>
+<li>onNavigationBarButtonTap：监听原生标题栏按钮点击事件，参数为Object</li>
+<li>onBackPress：监听页面返回</li>
+<li>onNavigationBarSearchInputChanged：监听原生标题栏搜索输入框输入内容变化事件</li>
+<li>onNavigationBarSearchInputConfirmed：监听原生标题栏搜索输入框搜索事件，用户点击软键盘上的“搜索”按钮时触发</li>
+<li>onNavigationBarSearchInputClicked：监听原生标题栏搜索输入框点击事件</li>
+<li>onShareTimeline：监听用户点击右上角转发到朋友圈</li>
+<li>onAddToFavorites：监听用户点击右上角收藏</li>
 </ul>
 <h2 id="路由跳转"><a href="#路由跳转" class="headerlink" title="路由跳转"></a>路由跳转</h2><ul>
 <li><p>方式一标签式导航：navigator 组件跳转</p>
 <ul>
-<li>示例：<code>&lt;navigator url=&quot;/pages/404/404&quot;&gt;404页面&lt;/navigator&gt;</code></li>
+<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;navigator url=<span class="string">&quot;/pages/404/404&quot;</span>&gt;<span class="number">404</span>页面&lt;/navigator&gt;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>方式二编程式导航：调用API跳转</p>
@@ -650,8 +641,8 @@
 </ul>
 <h2 id="路由传参与接收"><a href="#路由传参与接收" class="headerlink" title="路由传参与接收"></a>路由传参与接收</h2><ul>
 <li>页面生命周期的onLoad()监听页面加载，其参数为上个页面传递的数据</li>
-<li>如在上个页面通过url在路径中携带参数,?后为所携带参数，用&amp;连接多个参数，以键&#x3D;值的形式传递，pagePath为所要跳转的页面<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">uni.<span class="title function_">navigateTo</span>(&#123;</span><br><span class="line">	<span class="attr">url</span>:<span class="string">&quot;pagePath?name=lily&amp;age=18&quot;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-<li>可以在pagePath页面中使用onLoad获取参数<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">onLoad：<span class="keyword">function</span>(<span class="params">option</span>) &#123;</span><br><span class="line">	conosle.<span class="title function_">log</span>(option.<span class="property">name</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>如在上个页面通过url在路径中携带参数,?后为所携带参数，用&amp;连接多个参数，以键&#x3D;值的形式传递，pagePath为所要跳转的页面<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">uni.<span class="title function_">navigateTo</span>(&#123;</span><br><span class="line">	<span class="attr">url</span>:<span class="string">&quot;pagePath?name=lily&amp;age=18&quot;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>可以在pagePath页面中使用onLoad获取参数<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">onLoad：<span class="keyword">function</span>(<span class="params">option</span>) &#123;</span><br><span class="line">	conosle.<span class="title function_">log</span>(option.<span class="property">name</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>注意：<span class="desc">url有长度限制，所以对于复杂的参数建议使用encodeURI、decodeURI进行处理后传递</span></li>
 </ul>
 <h2 id="小程序路由分包配置"><a href="#小程序路由分包配置" class="headerlink" title="小程序路由分包配置"></a>小程序路由分包配置</h2><ul>
@@ -659,12 +650,7 @@
 </ul>
 <h2 id="自定义组件"><a href="#自定义组件" class="headerlink" title="自定义组件"></a>自定义组件</h2><ul>
 <li>使用的两种方式：全局注册 和 页面引入</li>
-<li>使用步骤：<ul>
-<li>导入 import xxx from “xxx”</li>
-<li>注册 Vue.use(‘xx’,xx) 或者在script中添加 components:{xxx}</li>
-<li>使用 <xx /></li>
-</ul>
-</li>
+<li>使用步骤：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导入 </span></span><br><span class="line"><span class="keyword">import</span> xxx <span class="keyword">from</span> <span class="string">&quot;xxx&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 注册 </span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="string">&#x27;xx&#x27;</span>,xx) 或者在script中添加 <span class="attr">components</span>:&#123;xxx&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 </span></span><br><span class="line">&lt;xx /&gt;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="全局事件定义与通信"><a href="#全局事件定义与通信" class="headerlink" title="全局事件定义与通信"></a>全局事件定义与通信</h3><ul>
 <li>1.在整个应用的任何地方均可以使用uni.$on创建一个全局事件<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">在任意页面使用</span><br><span class="line">uni.$on(<span class="string">&#x27;getInfo&#x27;</span>, <span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">anyvar</span> = value <span class="comment">// 可以定义一个变量然后改变时可以看见效果</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;我的全局事件被触发了&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
@@ -772,37 +758,38 @@
 </tr>
 </tbody></table>
 <h2 id="vue3中的使用方式"><a href="#vue3中的使用方式" class="headerlink" title="vue3中的使用方式"></a>vue3中的使用方式</h2><h3 id="template部分"><a href="#template部分" class="headerlink" title="template部分"></a>template部分</h3><ul>
-<li>循环：v-for&#x3D;”(item,index) in list” :key&#x3D;”index”</li>
-<li>判断：v-if&#x3D;”!item.isMe”</li>
-<li>事件：@click&#x3D;”sendMsg”</li>
-<li>组件上的属性需要动态的 :src&#x3D;”item.img”</li>
-<li>插入页面的文本：</li>
+<li>循环：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v-<span class="keyword">for</span>=<span class="string">&quot;(item,index) in list&quot;</span> :key=<span class="string">&quot;index&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li>判断：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v-<span class="keyword">if</span>=<span class="string">&quot;!item.isMe&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li>事件：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@click=<span class="string">&quot;sendMsg&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li>组件上的属性需要动态的 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:src=<span class="string">&quot;item.img&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li>插入页面的文本：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;item.<span class="property">content</span>&#125;&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="在-script-setup标签中"><a href="#在-script-setup标签中" class="headerlink" title="在 script setup标签中"></a>在 script setup标签中</h3><h4 id="生命周期按这种方式书写"><a href="#生命周期按这种方式书写" class="headerlink" title="生命周期按这种方式书写"></a>生命周期按这种方式书写</h4><pre><code>- 首先引入对应的生命周期： import &#123; onLoad &#125; from &quot;@dcloudio/uni-app&quot;;
-- 然后使用：onLoad(() =&gt; &#123;&#125;)
-</code></pre>
-<h4 id="定义一个变量和赋值："><a href="#定义一个变量和赋值：" class="headerlink" title="定义一个变量和赋值："></a>定义一个变量和赋值：</h4><pre><code>- reactive一般使用场景是数组和对象，ref一般是基本数据类型
-- 使用reactive响应的数据，最好是调用数据中的某一项，如果是添加push一整个数组使用ref比较好。不然不实时更新
-- 定义const name = ref(&#39;&#39;)，使用name.value =&#39;123&#39;
-- 定义const list = reactive([])，使用list.push()
-</code></pre>
-<h4 id="定义一个方法：-const-clickfn"><a href="#定义一个方法：-const-clickfn" class="headerlink" title="定义一个方法： const clickfn &#x3D; () &#x3D;&gt; {}"></a>定义一个方法： const clickfn &#x3D; () &#x3D;&gt; {}</h4><h4 id="props："><a href="#props：" class="headerlink" title="props："></a>props：</h4><ul>
-<li>引入 import { defineEmits,defineProps } from ‘vue’</li>
-<li>defineProps({<br>  msg: String<br>})</li>
+<h3 id="在-script-setup标签中"><a href="#在-script-setup标签中" class="headerlink" title="在 script setup标签中"></a>在 script setup标签中</h3><h4 id="生命周期按这种方式书写"><a href="#生命周期按这种方式书写" class="headerlink" title="生命周期按这种方式书写"></a>生命周期按这种方式书写</h4><ul>
+<li>首先引入对应的生命周期：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; onLoad &#125; <span class="keyword">from</span> <span class="string">&quot;@dcloudio/uni-app&quot;</span>;</span><br></pre></td></tr></table></figure></li>
+<li>使用：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">onLoad</span>(<span class="function">() =&gt;</span> &#123;&#125;)</span><br></pre></td></tr></table></figure></li>
 </ul>
+<h4 id="定义一个变量和赋值："><a href="#定义一个变量和赋值：" class="headerlink" title="定义一个变量和赋值："></a>定义一个变量和赋值：</h4><ul>
+<li>reactive一般使用场景是数组和对象，ref一般是基本数据类型</li>
+<li>使用reactive响应的数据，最好是调用数据中的某一项，如果是添加push一整个数组使用ref比较好。不然不实时更新</li>
+<li>定义ref 和使用<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="title function_">ref</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">name.<span class="property">value</span> =<span class="string">&#x27;123&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li>定义reactive 和使用<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> list = <span class="title function_">reactive</span>([])</span><br><span class="line">list.<span class="title function_">push</span>()</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="定义一个方法："><a href="#定义一个方法：" class="headerlink" title="定义一个方法："></a>定义一个方法：</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">clickfn</span> = (<span class="params"></span>) =&gt; &#123;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="props："><a href="#props：" class="headerlink" title="props："></a>props：</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineEmits,defineProps &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="title function_">defineProps</span>(&#123;</span><br><span class="line">	<span class="attr">msg</span>: <span class="title class_">String</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <h4 id="emit："><a href="#emit：" class="headerlink" title="emit："></a>emit：</h4><ul>
-<li>将事件定义好const emits &#x3D; defineEmits([‘childEvent’,’getInfo’])		</li>
-<li>调用：emits(‘childEvent’,’传递的参数’)</li>
+<li>将事件定义好<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> emits = <span class="title function_">defineEmits</span>([<span class="string">&#x27;childEvent&#x27;</span>,<span class="string">&#x27;getInfo&#x27;</span>])		</span><br></pre></td></tr></table></figure></li>
+<li>调用：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">emits</span>(<span class="string">&#x27;childEvent&#x27;</span>,<span class="string">&#x27;传递的参数&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h4 id="全局emit"><a href="#全局emit" class="headerlink" title="全局emit"></a>全局emit</h4><ul>
-<li>将事件定义好const emits &#x3D; defineEmits([‘childEvent’,’getInfo’])	</li>
-<li>使用：uni.$emit(‘getInfo’,’全局事件的传参’)</li>
-<li>调用：uni.$on(‘getInfo’, (value) &#x3D;&gt; {	name.value &#x3D; value })</li>
+<li>将事件定义好<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> emits = <span class="title function_">defineEmits</span>([<span class="string">&#x27;childEvent&#x27;</span>,<span class="string">&#x27;getInfo&#x27;</span>])	</span><br></pre></td></tr></table></figure></li>
+<li>使用：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uni.$emit(<span class="string">&#x27;getInfo&#x27;</span>,<span class="string">&#x27;全局事件的传参&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+<li>调用：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uni.$on(<span class="string">&#x27;getInfo&#x27;</span>, <span class="function">(<span class="params">value</span>) =&gt;</span> &#123;	name.<span class="property">value</span> = value &#125;)</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h4 id="实时滚动到页面底部"><a href="#实时滚动到页面底部" class="headerlink" title="实时滚动到页面底部"></a>实时滚动到页面底部</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">nextTick</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">	uni.<span class="title function_">pageScrollTo</span>(&#123;</span><br><span class="line">		<span class="attr">scrollTop</span>: <span class="number">999999</span>,</span><br><span class="line">		<span class="attr">duration</span>:<span class="number">0</span></span><br><span class="line">	&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="设置登录缓存后，退出清除缓存"><a href="#设置登录缓存后，退出清除缓存" class="headerlink" title="设置登录缓存后，退出清除缓存"></a>设置登录缓存后，退出清除缓存</h4><pre><code>- 使用uni.removeStorageSync(key),只清除这个key的缓存
-- 使用uni.clearStorageSync()，清除本地缓存，全部清除
-</code></pre>
+<h4 id="实时滚动到页面底部"><a href="#实时滚动到页面底部" class="headerlink" title="实时滚动到页面底部"></a>实时滚动到页面底部</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">nextTick</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">	uni.<span class="title function_">pageScrollTo</span>(&#123;</span><br><span class="line">		<span class="attr">scrollTop</span>: <span class="number">999999</span>,</span><br><span class="line">		<span class="attr">duration</span>:<span class="number">0</span></span><br><span class="line">	&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="设置登录缓存后，退出清除缓存"><a href="#设置登录缓存后，退出清除缓存" class="headerlink" title="设置登录缓存后，退出清除缓存"></a>设置登录缓存后，退出清除缓存</h4><ul>
+<li>使用uni.removeStorageSync(key),只清除这个key的缓存</li>
+<li>使用uni.clearStorageSync()，清除本地缓存，全部清除</li>
+</ul>
 
 </article>
     

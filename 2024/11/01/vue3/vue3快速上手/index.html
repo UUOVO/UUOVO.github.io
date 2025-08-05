@@ -7,16 +7,16 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content=".en {         color: green;         font-weight: 600;     }     .desc {         color: #CD853F;         font-weight: 600;         font-size:14px;     }   vue概念 用于构建用户界面的 JavaScript 框架–渐进式框架。 基于标准">
+<meta name="description" content="vue概念 用于构建用户界面的 JavaScript 框架–渐进式框架。 基于标准 HTML、CSS 和 JavaScript 构建，并提供了一套声明式的、组件化的编程模型。  vue核心功能 声明式渲染：拓展了模板语法，描述HTML跟js状态间的关系 响应性：自动跟踪js状态并在发生变化时响应式的更新DOM  渐进式框架 无需构建步骤，渐进式增强静态的 HTML 在任何页面中作为 Web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VUE3-快速上手">
 <meta property="og:url" content="http://example.com/2024/11/01/vue3/vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content=".en {         color: green;         font-weight: 600;     }     .desc {         color: #CD853F;         font-weight: 600;         font-size:14px;     }   vue概念 用于构建用户界面的 JavaScript 框架–渐进式框架。 基于标准">
+<meta property="og:description" content="vue概念 用于构建用户界面的 JavaScript 框架–渐进式框架。 基于标准 HTML、CSS 和 JavaScript 构建，并提供了一套声明式的、组件化的编程模型。  vue核心功能 声明式渲染：拓展了模板语法，描述HTML跟js状态间的关系 响应性：自动跟踪js状态并在发生变化时响应式的更新DOM  渐进式框架 无需构建步骤，渐进式增强静态的 HTML 在任何页面中作为 Web">
 <meta property="og:locale">
 <meta property="og:image" content="http://example.com/img/404.jpg">
 <meta property="article:published_time" content="2024-11-01T06:39:25.116Z">
-<meta property="article:modified_time" content="2025-06-30T07:26:00.203Z">
+<meta property="article:modified_time" content="2025-08-04T09:29:49.188Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="vue3">
 <meta name="twitter:card" content="summary">
@@ -70,7 +70,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-06-30 15:26:00"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-08-04 17:29:49"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -534,17 +534,8 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <style>
-    .en {
-        color: green;
-        font-weight: 600;
-    }
-    .desc {
-        color: #CD853F;
-        font-weight: 600;
-        font-size:14px;
-    }
-</style>
+    <script src="/js/enChangegreen.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/global.css">
 
 <h2 id="vue概念"><a href="#vue概念" class="headerlink" title="vue概念"></a>vue概念</h2><ul>
 <li>用于构建用户界面的 JavaScript 框架–渐进式框架。</li>
@@ -614,12 +605,12 @@
 <li><a href="E:/practice/study-notes/前端工程化笔记/vite.md">vite</a></li>
 <li>node版本要16以上</li>
 <li>使用<a target="_blank" rel="noopener" href="https://github.com/vuejs/create-vue">create-vue</a></li>
-<li>安装：<span class="en">npm create vue@latest</span></li>
+<li>安装：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm create vue@latest</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="模板语法"><a href="#模板语法" class="headerlink" title="模板语法"></a>模板语法</h2><ul>
-<li>文本插值：<span class="en"><code>&#123;&#123;&#125;&#125;</code></span></li>
-<li>原始html：<span class="en"><code>v-html=&quot;&quot;</code></span></li>
-<li>Attribute绑定：<span class="en"><code>(v-bind:xxx=&quot;&quot; 简写 :xxx=&quot;&quot;)</code></span><ul>
+<li>文本插值：<code>&#123;&#123;&#125;&#125;</code></li>
+<li>原始html：v-html&#x3D;””</li>
+<li>Attribute绑定：(v-bind:xxx&#x3D;”” 简写 :xxx&#x3D;””)<ul>
 <li>正常情况：值为null或undefined，attribute将会从渲染的元素上移除 </li>
 <li>布尔型：值为真值或一个空字符串，元素会包含这个attribute；为其他假值时忽略</li>
 <li>动态绑定多个值：对象包含多个属性。使用不带参的v-bind，绑定到单个元素上。<ul>
@@ -633,27 +624,23 @@
 <h2 id="指令-Directives"><a href="#指令-Directives" class="headerlink" title="指令(Directives)"></a>指令(Directives)</h2><ul>
 <li>期望值为一个javascript表达式，表达式的值变化时响应式更新DOM</li>
 <li>javascript表达式使用v-bind(:)，函数使用v-on(@)</li>
-<li>参数：<span class="en"><code>:xxx=&quot;&quot;</code></span></li>
-<li>动态参数：<span class="en"><code>:[字符串或null]=&quot;&quot;</code></span><ul>
+<li>参数：:xxx&#x3D;””</li>
+<li>动态参数：:[字符串或null]&#x3D;””<ul>
 <li>三限制：禁空格、禁引号、禁大写</li>
 </ul>
 </li>
-<li>修饰符.： 触发事件</li>
+<li>修饰符.：触发事件</li>
 </ul>
 <h2 id="响应式原理"><a href="#响应式原理" class="headerlink" title="响应式原理"></a>响应式原理</h2><ul>
 <li><a href="/2024/11/01/vue3/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/" title="VUE3-响应式原理">VUE3-响应式原理</a></li>
 </ul>
 <h2 id="常用-Composition-API"><a href="#常用-Composition-API" class="headerlink" title="常用 Composition API"></a>常用 Composition API</h2><h3 id="setup"><a href="#setup" class="headerlink" title="setup"></a>setup</h3><ul>
-<li>代表使用组合式API，<span class="en"><code>&lt;script setup&gt;</code></span>是setup函数的语法糖</li>
+<li>代表使用组合式API，<code>&lt;script setup&gt;</code>是setup函数的语法糖</li>
 <li><code>&lt;script setup&gt;</code>获取props，emit，context<ul>
-<li><strong>子组件引入</strong>：<span class="en">import { useContext, defineProps, defineEmit } from ‘vue’</span></li>
-<li><strong>emit</strong>：<ul>
-<li>定义：<span class="en"><code>const emit = defineEmit([&#39;父组件在子组件标签上传的事件名&#39;])</code></span></li>
-<li>在子组件的某个事件触发：<span class="en">emit(‘事件名’, 子组件传递的数据)</span>，父组件通过事件参数拿到</li>
-</ul>
-</li>
-<li><strong>ctx</strong>：<span class="en"><code>const ctx = useContext()</code></span></li>
-<li><strong>props</strong>：<span class="en"><code>const props = defineProps(&#123; 父组件在子组件标签上传的属性名: 该属性的类型 &#125;)</code></span></li>
+<li>子组件引入：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useContext, defineProps, defineEmit &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li>emit：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义</span></span><br><span class="line"><span class="keyword">const</span> emit = <span class="title function_">defineEmit</span>([<span class="string">&#x27;父组件在子组件标签上传的事件名&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在子组件的某个事件触发：</span></span><br><span class="line"><span class="title function_">emit</span>(<span class="string">&#x27;事件名&#x27;</span>, 子组件传递的数据) <span class="comment">// 父组件通过事件参数拿到</span></span><br></pre></td></tr></table></figure></li>
+<li>ctx：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = <span class="title function_">useContext</span>()</span><br></pre></td></tr></table></figure></li>
+<li>props：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> props = <span class="title function_">defineProps</span>(&#123; 父组件在子组件标签上传的属性名: 该属性的类型 &#125;)</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li>注意点：<ul>
@@ -664,9 +651,9 @@
 <li><span class="desc">setup的参数</span><ul>
 <li>props：值为对象，包含：组件外部传递过来，且组件内部声明接收了的属性</li>
 <li>context：上下文对象<ul>
-<li>attrs：值为对象，包含：组件外部传递过来，但没有在props配置中声明的属性, 相当于<code>this.$attrs</code></li>
-<li>slots：收到的插槽内容, 相当于 <code>this.$slots</code></li>
-<li>emit：分发自定义事件的函数, 相当于 <code>this.$emit</code></li>
+<li>attrs：值为对象，包含：组件外部传递过来，但没有在props配置中声明的属性, 相当于 this.$attrs</li>
+<li>slots：收到的插槽内容, 相当于 this.$slots</li>
+<li>emit：分发自定义事件的函数, 相当于 this.$emit</li>
 </ul>
 </li>
 </ul>
@@ -676,20 +663,21 @@
 </ul>
 <h3 id="ref函数"><a href="#ref函数" class="headerlink" title="ref函数"></a>ref函数</h3><ul>
 <li>作用: 声明一个响应式的状态</li>
-<li>使用：引入import { ref } from ‘vue’</li>
-<li>语法: <span class="en"><code>const xxx = ref(initValue)</code></span><ul>
-<li>JS中操作数据：<span class="en"><code>xxx.value</code></span></li>
-<li>模板中读取数据: 不需要.value，直接：<span class="en"><code>&lt;div&gt;&#123;&#123;xxx&#125;&#125;&lt;/div&gt;</code></span></li>
+<li>使用：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ref &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li>语法: <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> xxx = <span class="title function_">ref</span>(initValue)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>JS中操作数据：xxx.value</li>
+<li>模板中读取数据: 不需要.value，直接：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&#123;&#123;xxx&#125;&#125;&lt;/div&gt;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li>优点：<ul>
-<li><strong>深层响应性</strong><ul>
+<li>深层响应性<ul>
 <li>应用于任意值，即改变就会检测</li>
 <li>shallow ref 可放弃深层响应性</li>
 <li>非原始值将通过 reactive() 转换为响应式代理</li>
 </ul>
 </li>
-<li><strong>DOM更新时机</strong><ul>
+<li>DOM更新时机<ul>
 <li>更改响应式状态后，DOM会自动更新，但并不是同步</li>
 <li>等待一个状态改变后的DOM更新完成，使用nextTick()</li>
 </ul>
@@ -698,33 +686,33 @@
 </li>
 <li>备注：<ul>
 <li>接收的数据可以是：基本类型、也可以是对象类型。</li>
-<li><span class="en">基本类型</span>的数据：响应式依然是靠<span class="en"><code>Object.defineProperty()</code>的get与set</span>完成的。</li>
-<li><span class="en">对象类型</span>的数据：使用<span class="en">reactive</span>处理</li>
+<li><span class="key_words">『基本类型』</span>的数据：响应式依然是靠 Object.defineProperty()的get与set 完成的。</li>
+<li><span class="key_words">『对象类型』</span>的数据：使用 reactive 处理</li>
 </ul>
 </li>
 </ul>
 <h3 id="reactive函数"><a href="#reactive函数" class="headerlink" title="reactive函数"></a>reactive函数</h3><ul>
-<li>作用: 定义一个<span class="en">对象类型</span>的响应式数据，返回一个<span class="en">代理对象（Proxy的实例对象，简称proxy对象）</span></li>
-<li>语法：<span class="en">const 代理对象&#x3D; reactive(源对象)</span>接收一个对象（或数组）</li>
-<li>使用：<span class="en">代理对象</span></li>
+<li>作用: 定义一个<span class="key_words">『对象类型』</span>的响应式数据，返回一个<span class="key_words">『代理对象』</span>（Proxy的实例对象，简称proxy对象）</li>
+<li>语法：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> 代理对象= <span class="title function_">reactive</span>(源对象) <span class="comment">// 接收一个对象（或数组）</span></span><br></pre></td></tr></table></figure></li>
+<li>使用：<span class="key_words">『代理对象』</span></li>
 <li>局限性：只能用于对象类型(对象、数组和Map、Set这样的集合类型)，并且不能替换整个对象，解构不友好</li>
 <li>内部基于 ES6 的 Proxy 实现，通过代理对象操作源对象内部数据进行操作。</li>
 </ul>
 <h3 id="reactive-和-ref-区别"><a href="#reactive-和-ref-区别" class="headerlink" title="reactive 和 ref 区别"></a>reactive 和 ref 区别</h3><ul>
-<li><strong>从定义数据角度对比</strong>：<ul>
-<li>ref用来定义：<span class="en">基本类型数据</span></li>
-<li>reactive用来定义：<span class="en">对象(或数组)类型数据</span></li>
-<li>注：ref也可以定义<span class="en">对象(或数组)类型</span>数据, 它内部会自动通过<span class="en">reactive</span>转为代理对象</li>
+<li>从定义数据角度对比：<ul>
+<li>ref用来定义：<span class="key_words">『基本类型数据』</span></li>
+<li>reactive用来定义：<span class="key_words">『对象(或数组)类型数据』</span></li>
+<li>注：ref也可以定义<span class="key_words">『对象(或数组)类型』</span>数据, 它内部会自动通过 reactive 转为代理对象</li>
 </ul>
 </li>
-<li><strong>从原理角度对比</strong>：<ul>
-<li>ref通过<span class="en">Object.defineProperty()的get与set</span>来实现响应式(数据劫持)</li>
-<li>reactive通过使用<span class="en">Proxy</span>来实现响应式(数据劫持), 并通过<span class="en">Reflect操作源对象</span>内部的数据</li>
+<li>从原理角度对比：<ul>
+<li>ref通过 Object.defineProperty()的get与set 来实现响应式(数据劫持)</li>
+<li>reactive通过使用 Proxy 来实现响应式(数据劫持), 并通过<span class="key_words">『Reflect操作源对象』</span>内部的数据</li>
 </ul>
 </li>
-<li><strong>从使用角度对比</strong>：<ul>
-<li>ref定义的数据：操作数据<span class="en">需要.value</span>，读取数据时模板中直接读取<span class="en">不需要.value</span></li>
-<li>reactive定义的数据：操作数据与读取数据：<span class="en">均不需要.value</span></li>
+<li>从使用角度对比：<ul>
+<li>ref定义的数据：操作数据<span class="key_words">『需要.value』</span>，读取数据时模板中直接读取<span class="key_words">『不需要.value』</span></li>
+<li>reactive定义的数据：操作数据与读取数据：<span class="key_words">『均不需要.value』</span></li>
 </ul>
 </li>
 </ul>
@@ -732,179 +720,147 @@
 <li>与Vue2中computed配置功能一致☞<a href="/2024/11/01/vue2/%E5%9F%BA%E7%A1%80/" title="VUE2-基础（主了解）">VUE2-基础（主了解）</a></li>
 <li>计算属性值会基于其响应式依赖被缓存，只有依赖改变才会去重新计算</li>
 <li>写法：<ul>
-<li>引入钩子：<span class="en">import { computed } from ‘vue’</span></li>
-<li>使用：<span class="en">computed(()&#x3D;&gt; {})</span></li>
+<li>引入钩子：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; computed &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li>使用：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">computed</span>(<span class="function">()=&gt;</span> &#123;&#125;)</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
 <h3 id="侦听器-watch-—-在状态变化时执行一些“副作用”"><a href="#侦听器-watch-—-在状态变化时执行一些“副作用”" class="headerlink" title="侦听器 watch — 在状态变化时执行一些“副作用”"></a>侦听器 watch — <span class="desc">在状态变化时执行一些“副作用”</span></h3><ul>
-<li><p>与Vue2中watch配置功能一致☞<a href="/2024/11/01/vue2/%E5%9F%BA%E7%A1%80/" title="VUE2-基础（主了解）">VUE2-基础（主了解）</a></p>
-</li>
-<li><p>两个小“坑”：</p>
-<ul>
+<li>与Vue2中watch配置功能一致☞<a href="/2024/11/01/vue2/%E5%9F%BA%E7%A1%80/" title="VUE2-基础（主了解）">VUE2-基础（主了解）</a></li>
+<li>两个小“坑”：<ul>
 <li>监视reactive定义的响应式数据时：oldValue无法正确获取、强制开启了深度监视(deep配置失效)</li>
 <li>监视reactive定义的响应式数据中某个属性时：deep配置有效</li>
 </ul>
 </li>
-<li><p>写法：</p>
-<ul>
-<li>引入钩子：<span class="en">import { watch } from ‘vue’</span></li>
-<li>基本使用：<span class="en">watch(变量,(newValue,oldValue)&#x3D;&gt;{},{immediate:true})</span></li>
-<li><strong>监视多个ref定义的响应式数据</strong>：<ul>
-<li><span class="en">watch([变量1,变量2],(newValue,oldValue)&#x3D;&gt;{})</span></li>
-</ul>
-</li>
-<li><strong>监视reactive定义的响应式数据中的某个属性(监视的是对象中的某个属性，所以deep配置有效)</strong><ul>
-<li><span class="en">watch(()&#x3D;&gt;对象.属性,(newValue,oldValue)&#x3D;&gt;{},{immediate:true,deep:true})</span></li>
-</ul>
-</li>
-<li><strong>监视reactive定义的响应式数据中的多个属性</strong><ul>
-<li><span class="en">watch([()&#x3D;&gt;对象.属性,()&#x3D;&gt;对象.属性2],(newValue,oldValue)&#x3D;&gt;{},{immediate:true,deep:true})</span></li>
+<li>写法：<ul>
+<li>引入钩子：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; watch &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li>基本使用：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">watch</span>(变量,<span class="function">(<span class="params">newValue,oldValue</span>)=&gt;</span>&#123;&#125;,&#123;<span class="attr">immediate</span>:<span class="literal">true</span>&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>监视多个ref定义的响应式数据：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">watch</span>([变量<span class="number">1</span>,变量<span class="number">2</span>],<span class="function">(<span class="params">newValue,oldValue</span>)=&gt;</span>&#123;&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>监视reactive定义的响应式数据中的某个属性(监视的是对象中的某个属性，所以deep配置有效)<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">watch</span>(<span class="function">()=&gt;</span>对象.属性,<span class="function">(<span class="params">newValue,oldValue</span>)=&gt;</span>&#123;&#125;,&#123;<span class="attr">immediate</span>:<span class="literal">true</span>,<span class="attr">deep</span>:<span class="literal">true</span>&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>监视reactive定义的响应式数据中的多个属性<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">watch</span>([<span class="function">()=&gt;</span>对象.属性,<span class="function">()=&gt;</span>对象.属性<span class="number">2</span>],<span class="function">(<span class="params">newValue,oldValue</span>)=&gt;</span>&#123;&#125;,&#123;<span class="attr">immediate</span>:<span class="literal">true</span>,<span class="attr">deep</span>:<span class="literal">true</span>&#125;)</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><h3 id="深层侦听器"><a href="#深层侦听器" class="headerlink" title="深层侦听器"></a>深层侦听器</h3><ul>
-<li>使用 <span class="en">deep: true</span> 开启，开销很大，无必要不使用</li>
+<h4 id="深层侦听器"><a href="#深层侦听器" class="headerlink" title="深层侦听器"></a>深层侦听器</h4><ul>
+<li>使用 deep: true 开启，开销很大，无必要不使用</li>
 </ul>
-</li>
-<li><h3 id="即时回调的侦听器"><a href="#即时回调的侦听器" class="headerlink" title="即时回调的侦听器"></a>即时回调的侦听器</h3><ul>
-<li>使用 <span class="en">immediate: true</span> 开启</li>
+<h4 id="即时回调的侦听器"><a href="#即时回调的侦听器" class="headerlink" title="即时回调的侦听器"></a>即时回调的侦听器</h4><ul>
+<li>使用 immediate: true 开启</li>
 </ul>
-</li>
-<li><h3 id="watchEffect函数"><a href="#watchEffect函数" class="headerlink" title="watchEffect函数"></a>watchEffect函数</h3><ul>
+<h4 id="watchEffect函数"><a href="#watchEffect函数" class="headerlink" title="watchEffect函数"></a>watchEffect函数</h4><ul>
 <li>watch的套路是：既要指明监视的属性，也要指明监视的回调。</li>
-<li>watchEffect的套路是：<span class="en">不用指明监视哪个属性，监视的回调中用到哪个属性，那就监视哪个属性</span></li>
-<li>使用：<span class="en">watchEffect(()&#x3D;&gt;{})</span></li>
+<li>watchEffect的套路是：<span class="key_words">『不用指明监视哪个属性，监视的回调中用到哪个属性，那就监视哪个属性』</span></li>
+<li>使用：watchEffect(()&#x3D;&gt;{})</li>
 <li>注：<span class="desc">仅会在其同步执行期间，才追踪依赖。在使用异步回调时，只有在第一个 await 正常工作前访问到的属性才会被追踪。</span></li>
 </ul>
-</li>
-<li><h3 id="回调的触发时机"><a href="#回调的触发时机" class="headerlink" title="回调的触发时机"></a>回调的触发时机</h3><ul>
-<li>默认，用户创建的侦听器回调，都会在<span class="en">Vue 组件更新前被调用</span></li>
-<li>在侦听器回调中能访问被 <span class="en">Vue 更新之后的 DOM，指明 flush: ‘post’ 选项</span></li>
+<h4 id="回调的触发时机"><a href="#回调的触发时机" class="headerlink" title="回调的触发时机"></a>回调的触发时机</h4><ul>
+<li>默认，用户创建的侦听器回调，都会在<span class="key_words">『Vue 组件更新前被调用』</span></li>
+<li>在侦听器回调中能访问被 <span class="key_words">『Vue 更新之后的 DOM，指明 flush: ‘post’ 选项』</span></li>
 </ul>
-</li>
-<li><h3 id="停止侦听器"><a href="#停止侦听器" class="headerlink" title="停止侦听器"></a>停止侦听器</h3><ul>
+<h4 id="停止侦听器"><a href="#停止侦听器" class="headerlink" title="停止侦听器"></a>停止侦听器</h4><ul>
 <li>场景：用异步回调创建一个侦听器，它不会绑定到当前组件上，必须手动停止它，以防内存泄漏</li>
-<li>停止一个侦听器：调用 watch 或 watchEffect 返回的函数<ul>
-<li><span class="en">const unwatch &#x3D; watchEffect(() &#x3D;&gt; {})</span></li>
-<li><span class="en">unwatch()</span></li>
-</ul>
-</li>
-</ul>
-</li>
+<li>停止一个侦听器：调用 watch 或 watchEffect 返回的函数<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> unwatch = <span class="title function_">watchEffect</span>(<span class="function">() =&gt;</span> &#123;&#125;)</span><br><span class="line"><span class="title function_">unwatch</span>()</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="⭐-生命周期钩子"><a href="#⭐-生命周期钩子" class="headerlink" title="⭐ 生命周期钩子"></a>⭐ 生命周期钩子</h2><p><img src="/../../img/vue3/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90.png" alt="vue生命周期钩子"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
 <ul>
 <li>Vue3可继续使用Vue2的生命周期钩子，但有两个更名：<ul>
-<li><code>beforeDestroy</code> 改名为 <span class="en">beforeUnmount</span></li>
-<li><code>destroyed</code> 改名为 <span class="en">unmounted</span></li>
+<li>beforeDestroy 改名为 beforeUnmount</li>
+<li>destroyed 改名为 unmounted</li>
 </ul>
 </li>
 </ul>
 <h3 id="Vue3的Composition-API-形式的生命周期钩子，与Vue2中钩子对应关系如下：-vue3-vue2"><a href="#Vue3的Composition-API-形式的生命周期钩子，与Vue2中钩子对应关系如下：-vue3-vue2" class="headerlink" title="Vue3的Composition API 形式的生命周期钩子，与Vue2中钩子对应关系如下：(vue3:vue2)"></a>Vue3的Composition API 形式的生命周期钩子，与Vue2中钩子对应关系如下：(vue3:vue2)</h3><ul>
-<li><span class="en">beforeCreate</span> &#x3D;&#x3D;&gt;<span class="desc">setup()</span></li>
-<li><span class="en">created</span> &#x3D;&#x3D;&gt;<span class="desc">setup()</span></li>
-<li><span class="en">beforeMount</span> &#x3D;&#x3D;&gt;<span class="desc">onBeforeMount</span></li>
-<li><span class="en">mounted</span> &#x3D;&#x3D;&gt;<span class="desc">onMounted</span></li>
-<li><span class="en">beforeUpdate</span> &#x3D;&#x3D;&gt;<span class="desc">onBeforeUpdate</span></li>
-<li><span class="en">updated</span> &#x3D;&#x3D;&gt;<span class="desc">onUpdated</span></li>
-<li><span class="en">beforeUnmount</span> &#x3D;&#x3D;&gt;<span class="desc">onBeforeUnmount</span></li>
-<li><span class="en">unmounted</span> &#x3D;&#x3D;&gt;<span class="desc">onUnmounted</span></li>
+<li>beforeCreate &#x3D;&#x3D;&gt; setup()</li>
+<li>created &#x3D;&#x3D;&gt; setup()</li>
+<li>beforeMount &#x3D;&#x3D;&gt; onBeforeMount</li>
+<li>mounted &#x3D;&#x3D;&gt; onMounted</li>
+<li>beforeUpdate &#x3D;&#x3D;&gt; onBeforeUpdate</li>
+<li>updated &#x3D;&#x3D;&gt; onUpdated</li>
+<li>beforeUnmount &#x3D;&#x3D;&gt; onBeforeUnmount</li>
+<li>unmounted &#x3D;&#x3D;&gt; onUnmounted</li>
 </ul>
 <h3 id="vue3生命周期钩子的作用"><a href="#vue3生命周期钩子的作用" class="headerlink" title="vue3生命周期钩子的作用"></a>vue3生命周期钩子的作用</h3><ul>
-<li><h3 id="beforeCreate"><a href="#beforeCreate" class="headerlink" title="beforeCreate"></a>beforeCreate</h3><ul>
+<li>beforeCreate<ul>
 <li>在组件实例初始化完成后立即调用，data() 和 computed 等选项处理之前立即调用</li>
 </ul>
 </li>
-<li><h3 id="created"><a href="#created" class="headerlink" title="created"></a>created</h3><ul>
+<li>created<ul>
 <li>已完成响应式数据、计算属性、方法和侦听器。</li>
 <li>然而，此时挂载阶段还未开始，因此 $el 属性仍不可用</li>
 </ul>
 </li>
-<li><h3 id="beforeMount"><a href="#beforeMount" class="headerlink" title="beforeMount"></a>beforeMount</h3><ul>
+<li>beforeMount<ul>
 <li>在组件被挂载之前调用，还没创建DOM节点</li>
 </ul>
 </li>
-<li><h3 id="mounted"><a href="#mounted" class="headerlink" title="mounted"></a>mounted</h3><ul>
+<li>mounted<ul>
 <li>在组件挂载之后调用，所有同步子组件都已经被挂载。</li>
 <li>其自身的 DOM 树已经创建完成并插入了父容器中。</li>
 <li>处理副作用</li>
 </ul>
 </li>
-<li><h3 id="beforeUpdate"><a href="#beforeUpdate" class="headerlink" title="beforeUpdate"></a>beforeUpdate</h3><ul>
+<li>beforeUpdate<ul>
 <li>在组件即将因为一个响应式状态变更而更新其DOM树之前调用。</li>
 <li>在 Vue 更新 DOM 之前访问 DOM 状态</li>
 </ul>
 </li>
-<li><h3 id="update"><a href="#update" class="headerlink" title="update"></a>update</h3><ul>
+<li>update<ul>
 <li>在组件因为一个响应式状态变更而更新其 DOM 树之后调用。</li>
 <li>父组件的更新钩子将在其子组件的更新钩子之后调用。</li>
 <li>在组件的任意 DOM 更新后被调用</li>
 </ul>
 </li>
-<li><h3 id="beforeUnmount"><a href="#beforeUnmount" class="headerlink" title="beforeUnmount"></a>beforeUnmount</h3><ul>
+<li>beforeUnmount<ul>
 <li>在一个组件实例被卸载之前调用</li>
 <li>当这个钩子被调用时，组件实例依然还保有全部的功能</li>
 </ul>
 </li>
-<li><h3 id="unmounted"><a href="#unmounted" class="headerlink" title="unmounted"></a>unmounted</h3><ul>
+<li>unmounted<ul>
 <li>在一个组件实例被卸载之后调用，</li>
 <li>可以在这个钩子中手动清理一些副作用，例如计时器、DOM 事件监听器或者与服务器的连接。</li>
 </ul>
 </li>
-<li><h3 id="activated"><a href="#activated" class="headerlink" title="activated"></a>activated</h3><ul>
-<li>组件实例是 <code>&lt;KeepAlive&gt;</code> 缓存树的一部分，当组件被插入到 DOM 中时调用</li>
+<li>activated<ul>
+<li>组件实例是 KeepAlive标签 缓存树的一部分，当组件被插入到 DOM 中时调用</li>
 </ul>
 </li>
-<li><h3 id="deactivated"><a href="#deactivated" class="headerlink" title="deactivated"></a>deactivated</h3><ul>
-<li>组件实例是 <code>&lt;KeepAlive&gt;</code> 缓存树的一部分，当组件从 DOM 中被移除时调用</li>
+<li>deactivated<ul>
+<li>组件实例是 KeepAlive标签 缓存树的一部分，当组件从 DOM 中被移除时调用</li>
 </ul>
 </li>
 </ul>
-<h3 id="组件生命周期执行路线"><a href="#组件生命周期执行路线" class="headerlink" title="组件生命周期执行路线"></a>组件生命周期执行路线</h3><ul>
-<li><h3 id="生命周期（父子组件）："><a href="#生命周期（父子组件）：" class="headerlink" title="生命周期（父子组件）："></a>生命周期（父子组件）：</h3><ul>
+<h3 id="组件生命周期执行路线"><a href="#组件生命周期执行路线" class="headerlink" title="组件生命周期执行路线"></a>组件生命周期执行路线</h3><h4 id="生命周期（父子组件）："><a href="#生命周期（父子组件）：" class="headerlink" title="生命周期（父子组件）："></a>生命周期（父子组件）：</h4><ul>
 <li>父组件beforeCreate –&gt; 父组件created –&gt; 父组件beforeMount –&gt; 子组件beforeCreate –&gt; 子组件created –&gt; 子组件beforeMount –&gt; 子组件 mounted –&gt; 父组件mounted –&gt;父组件beforeUpdate –&gt;子组件beforeDestroy–&gt; 子组件destroyed –&gt; 父组件updated</li>
 </ul>
-</li>
-<li><h3 id="加载渲染过程"><a href="#加载渲染过程" class="headerlink" title="加载渲染过程"></a>加载渲染过程</h3><ul>
-<li>父beforeCreate-&gt;父created-&gt;父beforeMount-&gt;子beforeCreate-&gt;子created-&gt;子beforeMount-&gt;子mounted-&gt;父mounted</li>
+<h4 id="加载渲染过程"><a href="#加载渲染过程" class="headerlink" title="加载渲染过程"></a>加载渲染过程</h4><ul>
+<li>父beforeCreate –&gt; 父created –&gt; 父beforeMount –&gt; 子beforeCreate –&gt; 子created –&gt; 子beforeMount –&gt; 子mounted –&gt; 父mounted</li>
 </ul>
-</li>
-<li><h3 id="挂载阶段"><a href="#挂载阶段" class="headerlink" title="挂载阶段"></a>挂载阶段</h3><ul>
-<li>父created-&gt;子created-&gt;子mounted-&gt;父mounted</li>
+<h4 id="挂载阶段"><a href="#挂载阶段" class="headerlink" title="挂载阶段"></a>挂载阶段</h4><ul>
+<li>父created –&gt; 子created –&gt; 子mounted –&gt; 父mounted</li>
 </ul>
-</li>
-<li><h3 id="父组件更新阶段"><a href="#父组件更新阶段" class="headerlink" title="父组件更新阶段"></a>父组件更新阶段</h3><ul>
-<li>父beforeUpdate-&gt;父updated</li>
+<h4 id="父组件更新阶段"><a href="#父组件更新阶段" class="headerlink" title="父组件更新阶段"></a>父组件更新阶段</h4><ul>
+<li>父beforeUpdate –&gt; 父updated</li>
 </ul>
-</li>
-<li><h3 id="子组件更新阶段"><a href="#子组件更新阶段" class="headerlink" title="子组件更新阶段"></a>子组件更新阶段</h3><ul>
-<li>父beforeUpdate-&gt;子beforeUpdate-&gt;子updated-&gt;父updated</li>
+<h4 id="子组件更新阶段"><a href="#子组件更新阶段" class="headerlink" title="子组件更新阶段"></a>子组件更新阶段</h4><ul>
+<li>父beforeUpdate –&gt; 子beforeUpdate –&gt; 子updated –&gt; 父updated</li>
 </ul>
-</li>
-<li><h3 id="销毁阶段"><a href="#销毁阶段" class="headerlink" title="销毁阶段"></a>销毁阶段</h3><ul>
-<li>父beforeDestroy-&gt;子beforeDestroy-&gt;子destroyed-&gt;父destroyed</li>
-</ul>
-</li>
+<h4 id="销毁阶段"><a href="#销毁阶段" class="headerlink" title="销毁阶段"></a>销毁阶段</h4><ul>
+<li>父beforeDestroy –&gt; 子beforeDestroy –&gt; 子destroyed –&gt; 父destroyed</li>
 </ul>
 <h2 id="模板引用"><a href="#模板引用" class="headerlink" title="模板引用"></a>模板引用</h2><ul>
 <li>ref：直接访问底层DOM元素，DOM 元素或子组件实例被挂载后，可以直接引用</li>
 <li>使用：<ul>
-<li>引入：<span class="en">import { ref, onMounted } from ‘vue’</span></li>
-<li>使用：<span class="en"><code>&lt;view ref=&quot;&quot; /&gt;</code></span></li>
+<li>引入：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ref, onMounted &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li>使用：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;view ref=<span class="string">&quot;&quot;</span> /&gt;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><h3 id="v-for中的模板引用："><a href="#v-for中的模板引用：" class="headerlink" title="v-for中的模板引用："></a>v-for中的模板引用：</h3><ul>
 <li>ref的值是数组 </li>
-<li><span class="en">ref 数组并不保证与源数组相同的顺序</span></li>
+<li><span class="key_words">『ref 数组并不保证与源数组相同的顺序』</span></li>
 </ul>
 </li>
 <li><h3 id="函数模板引用："><a href="#函数模板引用：" class="headerlink" title="函数模板引用："></a>函数模板引用：</h3><ul>
-<li><span class="en"><code>:ref绑定为一个函数</code></span>，函数会收到元素引用作为其第一个参数<ul>
-<li><span class="en"><code>&lt;input :ref=&quot;(el) =&gt; &#123;&#125;&quot;/&gt;</code></span></li>
-</ul>
-</li>
+<li><span class="key_words">『:ref绑定为一个函数』</span>，函数会收到元素引用作为其第一个参数<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input :ref=<span class="string">&quot;(el) =&gt; &#123;&#125;&quot;</span>/&gt;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><h3 id="组件上的ref："><a href="#组件上的ref：" class="headerlink" title="组件上的ref："></a>组件上的ref：</h3><ul>
@@ -913,8 +869,8 @@
 </li>
 </ul>
 <h2 id="其它-Composition-API"><a href="#其它-Composition-API" class="headerlink" title="其它 Composition API"></a>其它 Composition API</h2><h3 id="shallowReactive-与-shallowRef"><a href="#shallowReactive-与-shallowRef" class="headerlink" title="shallowReactive 与 shallowRef"></a>shallowReactive 与 shallowRef</h3><ul>
-<li><strong>shallowReactive</strong>：只处理对象最外层属性的响应式（浅响应式）。</li>
-<li><strong>shallowRef</strong>：只处理基本数据类型的响应式, 不进行对象的响应式处理。</li>
+<li>shallowReactive：只处理对象最外层属性的响应式（浅响应式）。</li>
+<li>shallowRef：只处理基本数据类型的响应式, 不进行对象的响应式处理。</li>
 <li>使用场景：<ul>
 <li>如果有一个对象数据，结构比较深, 但变化时只是外层属性变化 &#x3D;&#x3D;&#x3D;&gt; <span class="desc">shallowReactive</span></li>
 <li>如果有一个对象数据，后续功能不会修改该对象中的属性，而是生新的对象来替换 &#x3D;&#x3D;&#x3D;&gt; <span class="desc">shallowRef</span></li>
@@ -922,17 +878,17 @@
 </li>
 </ul>
 <h3 id="readonly-与-shallowReadonly"><a href="#readonly-与-shallowReadonly" class="headerlink" title="readonly 与 shallowReadonly"></a>readonly 与 shallowReadonly</h3><ul>
-<li><strong>readonly</strong>: 让一个响应式数据变为只读的（深只读）</li>
-<li><strong>shallowReadonly</strong>：让一个响应式数据变为只读的（浅只读）</li>
+<li>readonly: 让一个响应式数据变为只读的（深只读）</li>
+<li>shallowReadonly：让一个响应式数据变为只读的（浅只读）</li>
 <li>应用场景: 不希望数据被修改时。</li>
 </ul>
 <h3 id="toRaw-与-markRaw"><a href="#toRaw-与-markRaw" class="headerlink" title="toRaw 与 markRaw"></a>toRaw 与 markRaw</h3><ul>
-<li><strong>toRaw</strong>：<ul>
-<li>作用：将一个由<span class="en"><code>reactive</code></span>生成的<span class="en">响应式对象转为普通对象</span></li>
+<li>toRaw：<ul>
+<li>作用：将一个由 reactive 生成的<span class="key_words">『响应式对象转为普通对象』</span></li>
 <li>使用场景：用于读取响应式对象对应的普通对象，对这个普通对象的所有操作，不会引起页面更新</li>
 </ul>
 </li>
-<li><strong>markRaw</strong>：<ul>
+<li>markRaw：<ul>
 <li>作用：标记一个对象，使其永远不会再成为响应式对象</li>
 <li>应用场景:<ul>
 <li>有些值不应被设置为响应式的，例如复杂的第三方类库等</li>
@@ -947,26 +903,26 @@
 <li>实现防抖效果：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	<span class="language-xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;keyword&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">	<span class="tag">&lt;<span class="name">h3</span>&gt;</span>&#123;&#123;keyword&#125;&#125;<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">import</span> &#123;ref,customRef&#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	<span class="attr">name</span>:<span class="string">&#x27;Demo&#x27;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	<span class="title function_">setup</span>(<span class="params"></span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">		<span class="comment">//自定义一个myRef</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">		<span class="keyword">function</span> <span class="title function_">myRef</span>(<span class="params">value,delay</span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">			<span class="keyword">let</span> timer</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">			<span class="comment">//通过customRef去实现自定义</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">			<span class="keyword">return</span> <span class="title function_">customRef</span>(<span class="function">(<span class="params">track,trigger</span>)=&gt;</span>&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">				<span class="keyword">return</span>&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">					<span class="title function_">get</span>(<span class="params"></span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">						<span class="title function_">track</span>() <span class="comment">//告诉Vue这个value值是需要被“追踪”的</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">						<span class="keyword">return</span> value</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">					&#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">					<span class="title function_">set</span>(<span class="params">newValue</span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">						<span class="built_in">clearTimeout</span>(timer)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">						timer = <span class="built_in">setTimeout</span>(<span class="function">()=&gt;</span>&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">							value = newValue</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">							<span class="title function_">trigger</span>() <span class="comment">//告诉Vue去更新界面</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">						&#125;,delay)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">					&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">				&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">			&#125;)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">		&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">		<span class="keyword">let</span> keyword = <span class="title function_">myRef</span>(<span class="string">&#x27;hello&#x27;</span>,<span class="number">500</span>) <span class="comment">//使用程序员自定义的ref</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">		<span class="keyword">return</span> &#123; keyword &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="provide-与-inject"><a href="#provide-与-inject" class="headerlink" title="provide 与 inject"></a>provide 与 inject</h3><ul>
-<li>作用：<span class="en">实现祖先与后代组件间通信</span></li>
-<li>套路：父组件有一个 <span class="en">provide</span> 选项来提供数据，后代组件有一个 <span class="en">inject</span> 选项来开始使用这些数据</li>
+<li>作用：<span class="key_words">『实现祖先与后代组件间通信』</span></li>
+<li>套路：父组件有一个 provide 选项来提供数据，后代组件有一个 inject 选项来开始使用这些数据</li>
 <li>具体写法：<ol>
-<li>祖组件中：使用<span class="en">provide(‘通信的别名’,要传递的变量)</span></li>
-<li>后代组件中：<span class="en">const 得到的变量 &#x3D; inject(‘通信的别名’)</span></li>
+<li>祖组件中：使用<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">provide</span>(<span class="string">&#x27;通信的别名&#x27;</span>,要传递的变量)</span><br></pre></td></tr></table></figure></li>
+<li>后代组件中：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> 得到的变量 = <span class="title function_">inject</span>(<span class="string">&#x27;通信的别名&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ul>
 <h3 id="响应式API：工具函数"><a href="#响应式API：工具函数" class="headerlink" title="响应式API：工具函数"></a>响应式API：工具函数</h3><ul>
-<li><strong>isRef()</strong>: 检查一个值是否为一个 ref 对象</li>
-<li><strong>unref()</strong>: 如果参数是 ref，则返回内部值，否则返回参数本身</li>
-<li><strong>isReactive()</strong>: 检查一个对象是否是由 <code>reactive</code> 创建的响应式代理</li>
-<li><strong>isReadonly()</strong>: 检查一个对象是否是由 <code>readonly</code> 创建的只读代理</li>
-<li><strong>isProxy()</strong>: 检查一个对象是否是由 <code>reactive</code> 或者 <code>readonly</code> 方法创建的代理</li>
-<li><strong>toRef()</strong>：创建一个 ref 对象，其value值指向另一个对象中的某个属性。<ul>
-<li>语法：<span class="en">const name &#x3D; toRef(person,’name’)</span></li>
+<li>isRef(): 检查一个值是否为一个 ref 对象</li>
+<li>unref(): 如果参数是 ref，则返回内部值，否则返回参数本身</li>
+<li>isReactive(): 检查一个对象是否是由 reactive 创建的响应式代理</li>
+<li>isReadonly(): 检查一个对象是否是由 readonly 创建的只读代理</li>
+<li>isProxy(): 检查一个对象是否是由 reactive 或者 readonly 方法创建的代理</li>
+<li>toRef()：创建一个 ref 对象，其value值指向另一个对象中的某个属性。<ul>
+<li>语法：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="title function_">toRef</span>(person,<span class="string">&#x27;name&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><strong>toRefs()</strong>: 与<code>toRef</code>功能一致，值指向一个对象<ul>
-<li>语法：<span class="en">toRefs(person)</span></li>
+<li>toRefs(): 与 toRef 功能一致，值指向一个对象<ul>
+<li>语法：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">toRefs</span>(person)</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
@@ -976,15 +932,16 @@
 <li>好处: 减少标签层级, 减小内存占用</li>
 </ul>
 <h3 id="Teleport"><a href="#Teleport" class="headerlink" title="Teleport"></a>Teleport</h3><ul>
-<li>定义: 将<span class="en">组件html结构</span>移动到指定位置的技术</li>
+<li>定义: 将<span class="key_words">『组件html结构』</span>移动到指定位置的技术</li>
 <li>使用：teleport标签包裹的内容是移动的内容，标签上指定to&#x3D;”移动位置”</li>
 </ul>
 <h3 id="Suspense"><a href="#Suspense" class="headerlink" title="Suspense"></a>Suspense</h3><ul>
 <li>等待异步组件时渲染一些额外内容</li>
 <li>使用步骤：<ul>
-<li>引入钩子：<span class="en">import {defineAsyncComponent} from ‘vue’</span></li>
-<li>异步引入组件：<span class="en">const 组件名 &#x3D; defineAsyncComponent(()&#x3D;&gt;import(‘组件路径’))</span><ul>
-<li>使用<code>Suspense</code>包裹组件，并配置好对应插槽的内容</li>
+<li>引入钩子：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;defineAsyncComponent&#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li>异步引入组件：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> 组件名 = <span class="title function_">defineAsyncComponent</span>(<span class="function">()=&gt;</span><span class="keyword">import</span>(<span class="string">&#x27;组件路径&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用 Suspense 包裹组件，并配置好对应插槽的内容</li>
 </ul>
 </li>
 </ul>
@@ -992,11 +949,11 @@
 </ul>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="全局API的转移"><a href="#全局API的转移" class="headerlink" title="全局API的转移"></a>全局API的转移</h3><ul>
 <li>Vue 2 有许多全局 API 和配置在vue3中调整。<ul>
-<li>将全局的API，即：<code>Vue.xxx</code>调整到应用实例（<code>app</code>）上<table>
+<li>将全局的API，即：Vue.xxx 调整到应用实例（app）上<table>
 <thead>
 <tr>
 <th>全局 API</th>
-<th>实例 API (<code>app</code>)</th>
+<th>实例 API (app)</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -1035,8 +992,8 @@
 <h3 id="其他改变"><a href="#其他改变" class="headerlink" title="其他改变"></a>其他改变</h3><ul>
 <li>data选项应始终被声明为一个函数。</li>
 <li>过度类名的更改：.v-enter-from,.v-leave-to(vue3写法)</li>
-<li>移除keyCode作为 v-on 的修饰符，同时也不再支持<code>config.keyCodes</code></li>
-<li>移除<code>v-on.native</code>修饰符</li>
+<li>移除keyCode作为 v-on 的修饰符，同时也不再支持 config.keyCodes</li>
+<li>移除 v-on.native修饰符</li>
 <li>移除过滤器（filter）</li>
 </ul>
 
@@ -1155,7 +1112,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="vue概念"><a rel="nofollow" class="trm-toc-link" href="#vue概念"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">vue概念</span></a></li><li class="trm-toc-item trm-toc-level-2" title="vue核心功能"><a rel="nofollow" class="trm-toc-link" href="#vue核心功能"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">vue核心功能</span></a></li><li class="trm-toc-item trm-toc-level-2" title="渐进式框架"><a rel="nofollow" class="trm-toc-link" href="#渐进式框架"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">渐进式框架</span></a></li><li class="trm-toc-item trm-toc-level-2" title="API风格"><a rel="nofollow" class="trm-toc-link" href="#API风格"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">API风格</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="选项式 — 不适用构建工具&#x2F;低复杂度"><a rel="nofollow" class="trm-toc-link" href="#选项式-—-不适用构建工具-低复杂度"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">选项式 — 不适用构建工具&#x2F;低复杂度</span></a></li><li class="trm-toc-item trm-toc-level-3" title="组合式API — 完整单页面应用"><a rel="nofollow" class="trm-toc-link" href="#组合式API-—-完整单页面应用"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">组合式API — 完整单页面应用</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="vue3优点"><a rel="nofollow" class="trm-toc-link" href="#vue3优点"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">vue3优点</span></a></li><li class="trm-toc-item trm-toc-level-2" title="创建项目 + vite"><a rel="nofollow" class="trm-toc-link" href="#创建项目-vite"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">创建项目 + vite</span></a></li><li class="trm-toc-item trm-toc-level-2" title="模板语法"><a rel="nofollow" class="trm-toc-link" href="#模板语法"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">模板语法</span></a></li><li class="trm-toc-item trm-toc-level-2" title="指令(Directives)"><a rel="nofollow" class="trm-toc-link" href="#指令-Directives"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">指令(Directives)</span></a></li><li class="trm-toc-item trm-toc-level-2" title="响应式原理"><a rel="nofollow" class="trm-toc-link" href="#响应式原理"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">响应式原理</span></a></li><li class="trm-toc-item trm-toc-level-2" title="常用 Composition API"><a rel="nofollow" class="trm-toc-link" href="#常用-Composition-API"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">常用 Composition API</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="setup"><a rel="nofollow" class="trm-toc-link" href="#setup"><span class="trm-toc-number">10.1.</span> <span class="trm-toc-text">setup</span></a></li><li class="trm-toc-item trm-toc-level-3" title="ref函数"><a rel="nofollow" class="trm-toc-link" href="#ref函数"><span class="trm-toc-number">10.2.</span> <span class="trm-toc-text">ref函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="reactive函数"><a rel="nofollow" class="trm-toc-link" href="#reactive函数"><span class="trm-toc-number">10.3.</span> <span class="trm-toc-text">reactive函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="reactive 和 ref 区别"><a rel="nofollow" class="trm-toc-link" href="#reactive-和-ref-区别"><span class="trm-toc-number">10.4.</span> <span class="trm-toc-text">reactive 和 ref 区别</span></a></li><li class="trm-toc-item trm-toc-level-3" title="⭐ 计算属性computed — 依赖响应式状态的复杂逻辑"><a rel="nofollow" class="trm-toc-link" href="#⭐-计算属性computed-—-依赖响应式状态的复杂逻辑"><span class="trm-toc-number">10.5.</span> <span class="trm-toc-text">⭐ 计算属性computed — 依赖响应式状态的复杂逻辑</span></a></li><li class="trm-toc-item trm-toc-level-3" title="侦听器 watch — 在状态变化时执行一些“副作用”"><a rel="nofollow" class="trm-toc-link" href="#侦听器-watch-—-在状态变化时执行一些“副作用”"><span class="trm-toc-number">10.6.</span> <span class="trm-toc-text">侦听器 watch — 在状态变化时执行一些“副作用”</span></a></li><li class="trm-toc-item trm-toc-level-3" title="深层侦听器"><a rel="nofollow" class="trm-toc-link" href="#深层侦听器"><span class="trm-toc-number">10.7.</span> <span class="trm-toc-text">深层侦听器</span></a></li><li class="trm-toc-item trm-toc-level-3" title="即时回调的侦听器"><a rel="nofollow" class="trm-toc-link" href="#即时回调的侦听器"><span class="trm-toc-number">10.8.</span> <span class="trm-toc-text">即时回调的侦听器</span></a></li><li class="trm-toc-item trm-toc-level-3" title="watchEffect函数"><a rel="nofollow" class="trm-toc-link" href="#watchEffect函数"><span class="trm-toc-number">10.9.</span> <span class="trm-toc-text">watchEffect函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="回调的触发时机"><a rel="nofollow" class="trm-toc-link" href="#回调的触发时机"><span class="trm-toc-number">10.10.</span> <span class="trm-toc-text">回调的触发时机</span></a></li><li class="trm-toc-item trm-toc-level-3" title="停止侦听器"><a rel="nofollow" class="trm-toc-link" href="#停止侦听器"><span class="trm-toc-number">10.11.</span> <span class="trm-toc-text">停止侦听器</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="⭐ 生命周期钩子"><a rel="nofollow" class="trm-toc-link" href="#⭐-生命周期钩子"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">⭐ 生命周期钩子</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="Vue3的Composition API 形式的生命周期钩子，与Vue2中钩子对应关系如下：(vue3:vue2)"><a rel="nofollow" class="trm-toc-link" href="#Vue3的Composition-API-形式的生命周期钩子，与Vue2中钩子对应关系如下：-vue3-vue2"><span class="trm-toc-number">11.1.</span> <span class="trm-toc-text">Vue3的Composition API 形式的生命周期钩子，与Vue2中钩子对应关系如下：(vue3:vue2)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="vue3生命周期钩子的作用"><a rel="nofollow" class="trm-toc-link" href="#vue3生命周期钩子的作用"><span class="trm-toc-number">11.2.</span> <span class="trm-toc-text">vue3生命周期钩子的作用</span></a></li><li class="trm-toc-item trm-toc-level-3" title="beforeCreate"><a rel="nofollow" class="trm-toc-link" href="#beforeCreate"><span class="trm-toc-number">11.3.</span> <span class="trm-toc-text">beforeCreate</span></a></li><li class="trm-toc-item trm-toc-level-3" title="created"><a rel="nofollow" class="trm-toc-link" href="#created"><span class="trm-toc-number">11.4.</span> <span class="trm-toc-text">created</span></a></li><li class="trm-toc-item trm-toc-level-3" title="beforeMount"><a rel="nofollow" class="trm-toc-link" href="#beforeMount"><span class="trm-toc-number">11.5.</span> <span class="trm-toc-text">beforeMount</span></a></li><li class="trm-toc-item trm-toc-level-3" title="mounted"><a rel="nofollow" class="trm-toc-link" href="#mounted"><span class="trm-toc-number">11.6.</span> <span class="trm-toc-text">mounted</span></a></li><li class="trm-toc-item trm-toc-level-3" title="beforeUpdate"><a rel="nofollow" class="trm-toc-link" href="#beforeUpdate"><span class="trm-toc-number">11.7.</span> <span class="trm-toc-text">beforeUpdate</span></a></li><li class="trm-toc-item trm-toc-level-3" title="update"><a rel="nofollow" class="trm-toc-link" href="#update"><span class="trm-toc-number">11.8.</span> <span class="trm-toc-text">update</span></a></li><li class="trm-toc-item trm-toc-level-3" title="beforeUnmount"><a rel="nofollow" class="trm-toc-link" href="#beforeUnmount"><span class="trm-toc-number">11.9.</span> <span class="trm-toc-text">beforeUnmount</span></a></li><li class="trm-toc-item trm-toc-level-3" title="unmounted"><a rel="nofollow" class="trm-toc-link" href="#unmounted"><span class="trm-toc-number">11.10.</span> <span class="trm-toc-text">unmounted</span></a></li><li class="trm-toc-item trm-toc-level-3" title="activated"><a rel="nofollow" class="trm-toc-link" href="#activated"><span class="trm-toc-number">11.11.</span> <span class="trm-toc-text">activated</span></a></li><li class="trm-toc-item trm-toc-level-3" title="deactivated"><a rel="nofollow" class="trm-toc-link" href="#deactivated"><span class="trm-toc-number">11.12.</span> <span class="trm-toc-text">deactivated</span></a></li><li class="trm-toc-item trm-toc-level-3" title="组件生命周期执行路线"><a rel="nofollow" class="trm-toc-link" href="#组件生命周期执行路线"><span class="trm-toc-number">11.13.</span> <span class="trm-toc-text">组件生命周期执行路线</span></a></li><li class="trm-toc-item trm-toc-level-3" title="生命周期（父子组件）："><a rel="nofollow" class="trm-toc-link" href="#生命周期（父子组件）："><span class="trm-toc-number">11.14.</span> <span class="trm-toc-text">生命周期（父子组件）：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="加载渲染过程"><a rel="nofollow" class="trm-toc-link" href="#加载渲染过程"><span class="trm-toc-number">11.15.</span> <span class="trm-toc-text">加载渲染过程</span></a></li><li class="trm-toc-item trm-toc-level-3" title="挂载阶段"><a rel="nofollow" class="trm-toc-link" href="#挂载阶段"><span class="trm-toc-number">11.16.</span> <span class="trm-toc-text">挂载阶段</span></a></li><li class="trm-toc-item trm-toc-level-3" title="父组件更新阶段"><a rel="nofollow" class="trm-toc-link" href="#父组件更新阶段"><span class="trm-toc-number">11.17.</span> <span class="trm-toc-text">父组件更新阶段</span></a></li><li class="trm-toc-item trm-toc-level-3" title="子组件更新阶段"><a rel="nofollow" class="trm-toc-link" href="#子组件更新阶段"><span class="trm-toc-number">11.18.</span> <span class="trm-toc-text">子组件更新阶段</span></a></li><li class="trm-toc-item trm-toc-level-3" title="销毁阶段"><a rel="nofollow" class="trm-toc-link" href="#销毁阶段"><span class="trm-toc-number">11.19.</span> <span class="trm-toc-text">销毁阶段</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="模板引用"><a rel="nofollow" class="trm-toc-link" href="#模板引用"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">模板引用</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="v-for中的模板引用："><a rel="nofollow" class="trm-toc-link" href="#v-for中的模板引用："><span class="trm-toc-number">12.1.</span> <span class="trm-toc-text">v-for中的模板引用：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="函数模板引用："><a rel="nofollow" class="trm-toc-link" href="#函数模板引用："><span class="trm-toc-number">12.2.</span> <span class="trm-toc-text">函数模板引用：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="组件上的ref："><a rel="nofollow" class="trm-toc-link" href="#组件上的ref："><span class="trm-toc-number">12.3.</span> <span class="trm-toc-text">组件上的ref：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="其它 Composition API"><a rel="nofollow" class="trm-toc-link" href="#其它-Composition-API"><span class="trm-toc-number">13.</span> <span class="trm-toc-text">其它 Composition API</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="shallowReactive 与 shallowRef"><a rel="nofollow" class="trm-toc-link" href="#shallowReactive-与-shallowRef"><span class="trm-toc-number">13.1.</span> <span class="trm-toc-text">shallowReactive 与 shallowRef</span></a></li><li class="trm-toc-item trm-toc-level-3" title="readonly 与 shallowReadonly"><a rel="nofollow" class="trm-toc-link" href="#readonly-与-shallowReadonly"><span class="trm-toc-number">13.2.</span> <span class="trm-toc-text">readonly 与 shallowReadonly</span></a></li><li class="trm-toc-item trm-toc-level-3" title="toRaw 与 markRaw"><a rel="nofollow" class="trm-toc-link" href="#toRaw-与-markRaw"><span class="trm-toc-number">13.3.</span> <span class="trm-toc-text">toRaw 与 markRaw</span></a></li><li class="trm-toc-item trm-toc-level-3" title="customRef"><a rel="nofollow" class="trm-toc-link" href="#customRef"><span class="trm-toc-number">13.4.</span> <span class="trm-toc-text">customRef</span></a></li><li class="trm-toc-item trm-toc-level-3" title="provide 与 inject"><a rel="nofollow" class="trm-toc-link" href="#provide-与-inject"><span class="trm-toc-number">13.5.</span> <span class="trm-toc-text">provide 与 inject</span></a></li><li class="trm-toc-item trm-toc-level-3" title="响应式API：工具函数"><a rel="nofollow" class="trm-toc-link" href="#响应式API：工具函数"><span class="trm-toc-number">13.6.</span> <span class="trm-toc-text">响应式API：工具函数</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="新的组件"><a rel="nofollow" class="trm-toc-link" href="#新的组件"><span class="trm-toc-number">14.</span> <span class="trm-toc-text">新的组件</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="Fragment"><a rel="nofollow" class="trm-toc-link" href="#Fragment"><span class="trm-toc-number">14.1.</span> <span class="trm-toc-text">Fragment</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Teleport"><a rel="nofollow" class="trm-toc-link" href="#Teleport"><span class="trm-toc-number">14.2.</span> <span class="trm-toc-text">Teleport</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Suspense"><a rel="nofollow" class="trm-toc-link" href="#Suspense"><span class="trm-toc-number">14.3.</span> <span class="trm-toc-text">Suspense</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="其他"><a rel="nofollow" class="trm-toc-link" href="#其他"><span class="trm-toc-number">15.</span> <span class="trm-toc-text">其他</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="全局API的转移"><a rel="nofollow" class="trm-toc-link" href="#全局API的转移"><span class="trm-toc-number">15.1.</span> <span class="trm-toc-text">全局API的转移</span></a></li><li class="trm-toc-item trm-toc-level-3" title="其他改变"><a rel="nofollow" class="trm-toc-link" href="#其他改变"><span class="trm-toc-number">15.2.</span> <span class="trm-toc-text">其他改变</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="vue概念"><a rel="nofollow" class="trm-toc-link" href="#vue概念"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">vue概念</span></a></li><li class="trm-toc-item trm-toc-level-2" title="vue核心功能"><a rel="nofollow" class="trm-toc-link" href="#vue核心功能"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">vue核心功能</span></a></li><li class="trm-toc-item trm-toc-level-2" title="渐进式框架"><a rel="nofollow" class="trm-toc-link" href="#渐进式框架"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">渐进式框架</span></a></li><li class="trm-toc-item trm-toc-level-2" title="API风格"><a rel="nofollow" class="trm-toc-link" href="#API风格"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">API风格</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="选项式 — 不适用构建工具&#x2F;低复杂度"><a rel="nofollow" class="trm-toc-link" href="#选项式-—-不适用构建工具-低复杂度"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">选项式 — 不适用构建工具&#x2F;低复杂度</span></a></li><li class="trm-toc-item trm-toc-level-3" title="组合式API — 完整单页面应用"><a rel="nofollow" class="trm-toc-link" href="#组合式API-—-完整单页面应用"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">组合式API — 完整单页面应用</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="vue3优点"><a rel="nofollow" class="trm-toc-link" href="#vue3优点"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">vue3优点</span></a></li><li class="trm-toc-item trm-toc-level-2" title="创建项目 + vite"><a rel="nofollow" class="trm-toc-link" href="#创建项目-vite"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">创建项目 + vite</span></a></li><li class="trm-toc-item trm-toc-level-2" title="模板语法"><a rel="nofollow" class="trm-toc-link" href="#模板语法"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">模板语法</span></a></li><li class="trm-toc-item trm-toc-level-2" title="指令(Directives)"><a rel="nofollow" class="trm-toc-link" href="#指令-Directives"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">指令(Directives)</span></a></li><li class="trm-toc-item trm-toc-level-2" title="响应式原理"><a rel="nofollow" class="trm-toc-link" href="#响应式原理"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">响应式原理</span></a></li><li class="trm-toc-item trm-toc-level-2" title="常用 Composition API"><a rel="nofollow" class="trm-toc-link" href="#常用-Composition-API"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">常用 Composition API</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="setup"><a rel="nofollow" class="trm-toc-link" href="#setup"><span class="trm-toc-number">10.1.</span> <span class="trm-toc-text">setup</span></a></li><li class="trm-toc-item trm-toc-level-3" title="ref函数"><a rel="nofollow" class="trm-toc-link" href="#ref函数"><span class="trm-toc-number">10.2.</span> <span class="trm-toc-text">ref函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="reactive函数"><a rel="nofollow" class="trm-toc-link" href="#reactive函数"><span class="trm-toc-number">10.3.</span> <span class="trm-toc-text">reactive函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="reactive 和 ref 区别"><a rel="nofollow" class="trm-toc-link" href="#reactive-和-ref-区别"><span class="trm-toc-number">10.4.</span> <span class="trm-toc-text">reactive 和 ref 区别</span></a></li><li class="trm-toc-item trm-toc-level-3" title="⭐ 计算属性computed — 依赖响应式状态的复杂逻辑"><a rel="nofollow" class="trm-toc-link" href="#⭐-计算属性computed-—-依赖响应式状态的复杂逻辑"><span class="trm-toc-number">10.5.</span> <span class="trm-toc-text">⭐ 计算属性computed — 依赖响应式状态的复杂逻辑</span></a></li><li class="trm-toc-item trm-toc-level-3" title="侦听器 watch — 在状态变化时执行一些“副作用”"><a rel="nofollow" class="trm-toc-link" href="#侦听器-watch-—-在状态变化时执行一些“副作用”"><span class="trm-toc-number">10.6.</span> <span class="trm-toc-text">侦听器 watch — 在状态变化时执行一些“副作用”</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="⭐ 生命周期钩子"><a rel="nofollow" class="trm-toc-link" href="#⭐-生命周期钩子"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">⭐ 生命周期钩子</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="Vue3的Composition API 形式的生命周期钩子，与Vue2中钩子对应关系如下：(vue3:vue2)"><a rel="nofollow" class="trm-toc-link" href="#Vue3的Composition-API-形式的生命周期钩子，与Vue2中钩子对应关系如下：-vue3-vue2"><span class="trm-toc-number">11.1.</span> <span class="trm-toc-text">Vue3的Composition API 形式的生命周期钩子，与Vue2中钩子对应关系如下：(vue3:vue2)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="vue3生命周期钩子的作用"><a rel="nofollow" class="trm-toc-link" href="#vue3生命周期钩子的作用"><span class="trm-toc-number">11.2.</span> <span class="trm-toc-text">vue3生命周期钩子的作用</span></a></li><li class="trm-toc-item trm-toc-level-3" title="组件生命周期执行路线"><a rel="nofollow" class="trm-toc-link" href="#组件生命周期执行路线"><span class="trm-toc-number">11.3.</span> <span class="trm-toc-text">组件生命周期执行路线</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="模板引用"><a rel="nofollow" class="trm-toc-link" href="#模板引用"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">模板引用</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="v-for中的模板引用："><a rel="nofollow" class="trm-toc-link" href="#v-for中的模板引用："><span class="trm-toc-number">12.1.</span> <span class="trm-toc-text">v-for中的模板引用：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="函数模板引用："><a rel="nofollow" class="trm-toc-link" href="#函数模板引用："><span class="trm-toc-number">12.2.</span> <span class="trm-toc-text">函数模板引用：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="组件上的ref："><a rel="nofollow" class="trm-toc-link" href="#组件上的ref："><span class="trm-toc-number">12.3.</span> <span class="trm-toc-text">组件上的ref：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="其它 Composition API"><a rel="nofollow" class="trm-toc-link" href="#其它-Composition-API"><span class="trm-toc-number">13.</span> <span class="trm-toc-text">其它 Composition API</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="shallowReactive 与 shallowRef"><a rel="nofollow" class="trm-toc-link" href="#shallowReactive-与-shallowRef"><span class="trm-toc-number">13.1.</span> <span class="trm-toc-text">shallowReactive 与 shallowRef</span></a></li><li class="trm-toc-item trm-toc-level-3" title="readonly 与 shallowReadonly"><a rel="nofollow" class="trm-toc-link" href="#readonly-与-shallowReadonly"><span class="trm-toc-number">13.2.</span> <span class="trm-toc-text">readonly 与 shallowReadonly</span></a></li><li class="trm-toc-item trm-toc-level-3" title="toRaw 与 markRaw"><a rel="nofollow" class="trm-toc-link" href="#toRaw-与-markRaw"><span class="trm-toc-number">13.3.</span> <span class="trm-toc-text">toRaw 与 markRaw</span></a></li><li class="trm-toc-item trm-toc-level-3" title="customRef"><a rel="nofollow" class="trm-toc-link" href="#customRef"><span class="trm-toc-number">13.4.</span> <span class="trm-toc-text">customRef</span></a></li><li class="trm-toc-item trm-toc-level-3" title="provide 与 inject"><a rel="nofollow" class="trm-toc-link" href="#provide-与-inject"><span class="trm-toc-number">13.5.</span> <span class="trm-toc-text">provide 与 inject</span></a></li><li class="trm-toc-item trm-toc-level-3" title="响应式API：工具函数"><a rel="nofollow" class="trm-toc-link" href="#响应式API：工具函数"><span class="trm-toc-number">13.6.</span> <span class="trm-toc-text">响应式API：工具函数</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="新的组件"><a rel="nofollow" class="trm-toc-link" href="#新的组件"><span class="trm-toc-number">14.</span> <span class="trm-toc-text">新的组件</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="Fragment"><a rel="nofollow" class="trm-toc-link" href="#Fragment"><span class="trm-toc-number">14.1.</span> <span class="trm-toc-text">Fragment</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Teleport"><a rel="nofollow" class="trm-toc-link" href="#Teleport"><span class="trm-toc-number">14.2.</span> <span class="trm-toc-text">Teleport</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Suspense"><a rel="nofollow" class="trm-toc-link" href="#Suspense"><span class="trm-toc-number">14.3.</span> <span class="trm-toc-text">Suspense</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="其他"><a rel="nofollow" class="trm-toc-link" href="#其他"><span class="trm-toc-number">15.</span> <span class="trm-toc-text">其他</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="全局API的转移"><a rel="nofollow" class="trm-toc-link" href="#全局API的转移"><span class="trm-toc-number">15.1.</span> <span class="trm-toc-text">全局API的转移</span></a></li><li class="trm-toc-item trm-toc-level-3" title="其他改变"><a rel="nofollow" class="trm-toc-link" href="#其他改变"><span class="trm-toc-number">15.2.</span> <span class="trm-toc-text">其他改变</span></a></li></ol></li></ol>
       </div>
     </div>
 

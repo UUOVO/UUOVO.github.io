@@ -15,7 +15,7 @@
 <meta property="og:description" content="多光标 ctrl + 鼠标左键   ctrl + 鼠标右键   ctrl + e  Ctrl+Shift+e   列选择 alt+鼠标拖选 或者用_ctrl+alt+↑或↓_  转到定义 alt + d  alt + 鼠标左键单击 ctrl + alt + 左键  alt+ left 或工具栏上的&lt;  输入_0_跳转到_首行_、输入_$跳转到_最后一行  文件、搜索 ctrl+p">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-10-31T07:20:57.305Z">
-<meta property="article:modified_time" content="2025-08-01T09:57:49.271Z">
+<meta property="article:modified_time" content="2025-08-04T06:05:49.242Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="uniapp">
 <meta name="twitter:card" content="summary">
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-08-01 17:57:49"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-08-04 14:05:49"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -593,14 +593,11 @@
 <li>按_Ctrl+&#x2F;_注释掉选区首尾行</li>
 </ul>
 <h3 id="HBuilderX-语言服务-代码提示，在函数、类前面放置"><a href="#HBuilderX-语言服务-代码提示，在函数、类前面放置" class="headerlink" title="HBuilderX 语言服务&#x2F;代码提示，在函数、类前面放置"></a>HBuilderX 语言服务&#x2F;代码提示，在函数、类前面放置</h3><ul>
-<li>支持扩展jsdoc+, <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@alias</span> aliasName   // 别名</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@constructor</span>  // 标识一个函数是构造函数</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@description</span> 描述内容</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@example</span> 示例内容</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@extends</span> &#123;<span class="type">Type</span>&#125; // 标识继承于某个类型</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@param</span> &#123;<span class="type">Type[,Type,...]</span>&#125; 参数名=[可选择值1|可选择值2|...]] 参数描述</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@property</span> &#123;<span class="type">Type[,Type,...]</span>&#125; 属性名 属性描述</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@return</span> &#123;<span class="type">Type[,Type,...]</span>&#125; // 描述一个对象的属性</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@type</span> &#123;<span class="type">Type[,Type,...]</span>&#125;  // 定义某个变量的类型</span></span><br><span class="line"><span class="comment">	*/</span></span><br></pre></td></tr></table></figure></li>
+<li>支持扩展jsdoc+, <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@alias</span> aliasName   // 别名</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@constructor</span>  // 标识一个函数是构造函数</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@description</span> 描述内容</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@example</span> 示例内容</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@extends</span> &#123;<span class="type">Type</span>&#125; // 标识继承于某个类型</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@param</span> &#123;<span class="type">Type[,Type,...]</span>&#125; 参数名=[可选择值1|可选择值2|...]] 参数描述</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@property</span> &#123;<span class="type">Type[,Type,...]</span>&#125; 属性名 属性描述</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@return</span> &#123;<span class="type">Type[,Type,...]</span>&#125; // 描述一个对象的属性</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@type</span> &#123;<span class="type">Type[,Type,...]</span>&#125;  // 定义某个变量的类型</span></span><br><span class="line"><span class="comment">	*/</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="vue-doc-–-vue组件说明，类jsdoc"><a href="#vue-doc-–-vue组件说明，类jsdoc" class="headerlink" title="vue doc – vue组件说明，类jsdoc"></a>vue doc – vue组件说明，类jsdoc</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	* 这里是一个组件描述，会在提示标签的时候显示</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@description</span> 这里也是一个组件描述</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@tutorial</span> 参考地址</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@property</span> &#123;<span class="type">String</span>&#125; type = [button|input|...值域] 这里是属性描述，&#123;&#125;中间的是类型</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@event</span> &#123;<span class="type">Function</span>&#125; tap 这是是事件描述，类型必须是Function</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@example</span> 这里是示例代码</span></span><br><span class="line"><span class="comment">	*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="vue-doc-–-vue组件说明，类jsdoc"><a href="#vue-doc-–-vue组件说明，类jsdoc" class="headerlink" title="vue doc – vue组件说明，类jsdoc"></a>vue doc – vue组件说明，类jsdoc</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	* 这里是一个组件描述，会在提示标签的时候显示</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@description</span> 这里也是一个组件描述</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@tutorial</span> 参考地址</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@property</span> &#123;<span class="type">String</span>&#125; type = [button|input|...值域] 这里是属性描述，&#123;&#125;中间的是类型</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@event</span> &#123;<span class="type">Function</span>&#125; tap 这是是事件描述，类型必须是Function</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@example</span> 这里是示例代码</span></span><br><span class="line"><span class="comment">	*/</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="常用代码块"><a href="#常用代码块" class="headerlink" title="常用代码块"></a>常用代码块</h3><ul>
-<li><h3 id="js-代码块"><a href="#js-代码块" class="headerlink" title="js 代码块"></a>js 代码块</h3></li>
-</ul>
-<table>
+<h3 id="常用代码块"><a href="#常用代码块" class="headerlink" title="常用代码块"></a>常用代码块</h3><h4 id="js-代码块"><a href="#js-代码块" class="headerlink" title="js 代码块"></a>js 代码块</h4><table>
 <thead>
 <tr>
 <th>敲的值</th>
@@ -644,10 +641,7 @@
 <td>打印变量命名和值</td>
 </tr>
 </tbody></table>
-<ul>
-<li><h3 id="dom-代码块"><a href="#dom-代码块" class="headerlink" title="dom 代码块"></a>dom 代码块</h3></li>
-</ul>
-<table>
+<h4 id="dom-代码块"><a href="#dom-代码块" class="headerlink" title="dom 代码块"></a>dom 代码块</h4><table>
 <thead>
 <tr>
 <th>敲的值</th>
@@ -663,58 +657,48 @@
 <td>$(“”)</td>
 </tr>
 </tbody></table>
-<ul>
-<li><h3 id="vue-代码块"><a href="#vue-代码块" class="headerlink" title="vue 代码块"></a>vue 代码块</h3><ul>
-<li>v ：各种vue代码块</li>
+<h4 id="vue-代码块"><a href="#vue-代码块" class="headerlink" title="vue 代码块"></a>vue 代码块</h4><ul>
+<li>v：各种vue代码块</li>
+</ul>
+<h4 id="uni-app-代码块"><a href="#uni-app-代码块" class="headerlink" title="uni-app 代码块"></a>uni-app 代码块</h4><ul>
+<li>u：各种uni-app代码块，还有ifios、ifandroid，这2个平台判断代码块</li>
+</ul>
+<h4 id="Emmet"><a href="#Emmet" class="headerlink" title="Emmet"></a>Emmet</h4><ul>
+<li><!-- 使用类似于CSS选择器的语法来描述元素在生成的树和元素属性中的位置 --> 缩写时不能空格</li>
+<li>嵌套运算符</li>
+<li><code>&gt;</code>：元素随着&gt;一层一层向里嵌套</li>
+<li>+：元素放置在同一水平上</li>
+<li>^：^后携带的元素，可以向&gt;嵌套的元素向上一层移动，一个^向上移动一层</li>
+<li>*：输出几次</li>
+<li>()：分组</li>
+<li>属性运算符<ul>
+<li>标签后带#: 生成id选择器</li>
+<li>标签后带.: 生成class选择器，可混合写和连写</li>
+<li>标签后带[]: 生成的语法，带有[]所写属性值</li>
+<li>项目编号$<ul>
+<li>li.item$*5: 单个从1开始编号</li>
+<li>li.item$$$*5: 多个用0来替代数字</li>
+<li>li.item$@-*5: 从大到1开始编号</li>
+<li>li.item$@3*5: 从3开始编号，生成五个</li>
+<li>li.item$@-3*5: 从大到3开始编号</li>
 </ul>
 </li>
-<li><h3 id="uni-app-代码块"><a href="#uni-app-代码块" class="headerlink" title="uni-app 代码块"></a>uni-app 代码块</h3><ul>
-<li>u ：各种uni-app代码块，还有ifios、ifandroid，这2个平台判断代码块</li>
-</ul>
-</li>
-<li><h3 id="Emmet"><a href="#Emmet" class="headerlink" title="Emmet"></a>Emmet</h3><ul>
-<li><!-- 使用类似于CSS选择器的语法来描述元素在生成的树和元素属性中的位置 --> 缩写时不能空格
-<ul>
-<li>嵌套运算符<ul>
-<li><code>&gt;</code> ： 元素随着&gt;一层一层向里嵌套</li>
-<li><code>+</code> ： 元素放置在同一水平上</li>
-<li><code>^</code> ： ^后携带的元素，可以向&gt;嵌套的元素向上一层移动，一个^向上移动一层</li>
-<li><code>*</code> ： 输出几次</li>
-<li><code>()</code> ： 分组</li>
-</ul>
-</li>
-<li>属性运算符</li>
-<li><code>标签后带#</code> : 生成id选择器</li>
-<li><code>标签后带.</code> : 生成class选择器，可混合写和连写</li>
-<li><code>标签后带[]</code> : 生成的语法，带有[]所写属性值</li>
-<li><code>项目编号$</code><ul>
-<li>li.item$*5  单个从1开始编号</li>
-<li>li.item$$$*5  多个用0来替代数字</li>
-<li>li.item$@-*5  从大到1开始编号</li>
-<li>li.item$@3*5  从3开始编号，生成五个</li>
-<li>li.item$@-3*5 从大到3开始编号</li>
-</ul>
-</li>
-<li><code>标签后带&#123;&#125;</code> ：像元素添加文本</li>
+<li>标签后带{}：像元素添加文本</li>
 </ul>
 </li>
 </ul>
-</li>
-<li><h3 id="json优化"><a href="#json优化" class="headerlink" title="json优化"></a>json优化</h3><ul>
+<h4 id="json优化"><a href="#json优化" class="headerlink" title="json优化"></a>json优化</h4><ul>
 <li>中文符号免干扰输入</li>
 <li>回车时自动补全行尾逗号</li>
 <li>保存时自动删除数组或键值对结尾的多余逗号</li>
 <li>keyValue代码块</li>
 <li>智能双击，快速选中数组或键值对</li>
-<li>快速重复插入<ul>
+<li>快速重复插入</li>
 <li>Ctrl+Insert或Ctrl+Shift+r</li>
-</ul>
-</li>
 <li>语法提示</li>
 <li>保存时自动校验语法</li>
 </ul>
-</li>
-<li><h3 id="markdown优化"><a href="#markdown优化" class="headerlink" title="markdown优化"></a>markdown优化</h3><ul>
+<h4 id="markdown优化"><a href="#markdown优化" class="headerlink" title="markdown优化"></a>markdown优化</h4><ul>
 <li>标题: 敲h2+Tab即可生成二级标题</li>
 <li>图片: img后敲Tab</li>
 <li>链接: a后敲Tab</li>
@@ -733,13 +717,13 @@
 <li>Ctrl+K可以自动整理表格格式</li>
 </ul>
 </li>
-<li>直观的文档结构图</li>
-<li>Alt+w<ul>
+<li>直观的文档结构图<ul>
+<li>Alt+w</li>
 <li>Ctrl+Shift+o</li>
 </ul>
 </li>
-<li>实用的任务列表</li>
-<li>任务列表-未完成任务 快捷键：Ctrl+Alt+[<ul>
+<li>实用的任务列表<ul>
+<li>任务列表-未完成任务 快捷键：Ctrl+Alt+[</li>
 <li>任务列表-已完成任务 快捷键：Ctrl+Alt+]</li>
 </ul>
 </li>
@@ -748,8 +732,6 @@
 <li>跨文件跳转标题</li>
 <li><a target="_blank" rel="noopener" href="https://mermaid.js.org/syntax/flowchart.html">Mermaid流程图</a><ul>
 <li>流程图布局方向</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -781,8 +763,9 @@
 <td>等同于 TB</td>
 </tr>
 </tbody></table>
-<pre><code>- 流程图对应图形标识
-</code></pre>
+<ul>
+<li>流程图对应图形标识</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -1014,7 +997,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-3" title="多光标"><a rel="nofollow" class="trm-toc-link" href="#多光标"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">多光标</span></a></li><li class="trm-toc-item trm-toc-level-3" title="列选择"><a rel="nofollow" class="trm-toc-link" href="#列选择"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">列选择</span></a></li><li class="trm-toc-item trm-toc-level-3" title="转到定义"><a rel="nofollow" class="trm-toc-link" href="#转到定义"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">转到定义</span></a></li><li class="trm-toc-item trm-toc-level-3" title="文件、搜索"><a rel="nofollow" class="trm-toc-link" href="#文件、搜索"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">文件、搜索</span></a></li><li class="trm-toc-item trm-toc-level-3" title="在选中区域外围添加标签"><a rel="nofollow" class="trm-toc-link" href="#在选中区域外围添加标签"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">在选中区域外围添加标签</span></a></li><li class="trm-toc-item trm-toc-level-3" title="反包围"><a rel="nofollow" class="trm-toc-link" href="#反包围"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">反包围</span></a></li><li class="trm-toc-item trm-toc-level-3" title="扩大选区"><a rel="nofollow" class="trm-toc-link" href="#扩大选区"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">扩大选区</span></a></li><li class="trm-toc-item trm-toc-level-3" title="交换选区内容"><a rel="nofollow" class="trm-toc-link" href="#交换选区内容"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">交换选区内容</span></a></li><li class="trm-toc-item trm-toc-level-3" title="撤销最后一个多选区或多光标"><a rel="nofollow" class="trm-toc-link" href="#撤销最后一个多选区或多光标"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">撤销最后一个多选区或多光标</span></a></li><li class="trm-toc-item trm-toc-level-3" title="批量合并行"><a rel="nofollow" class="trm-toc-link" href="#批量合并行"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">批量合并行</span></a></li><li class="trm-toc-item trm-toc-level-3" title="同时注释if段首尾"><a rel="nofollow" class="trm-toc-link" href="#同时注释if段首尾"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">同时注释if段首尾</span></a></li><li class="trm-toc-item trm-toc-level-3" title="HBuilderX 语言服务&#x2F;代码提示，在函数、类前面放置"><a rel="nofollow" class="trm-toc-link" href="#HBuilderX-语言服务-代码提示，在函数、类前面放置"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">HBuilderX 语言服务&#x2F;代码提示，在函数、类前面放置</span></a></li><li class="trm-toc-item trm-toc-level-3" title="vue doc – vue组件说明，类jsdoc"><a rel="nofollow" class="trm-toc-link" href="#vue-doc-–-vue组件说明，类jsdoc"><span class="trm-toc-number">13.</span> <span class="trm-toc-text">vue doc – vue组件说明，类jsdoc</span></a></li><li class="trm-toc-item trm-toc-level-3" title="常用代码块"><a rel="nofollow" class="trm-toc-link" href="#常用代码块"><span class="trm-toc-number">14.</span> <span class="trm-toc-text">常用代码块</span></a></li><li class="trm-toc-item trm-toc-level-3" title="js 代码块"><a rel="nofollow" class="trm-toc-link" href="#js-代码块"><span class="trm-toc-number">15.</span> <span class="trm-toc-text">js 代码块</span></a></li><li class="trm-toc-item trm-toc-level-3" title="dom 代码块"><a rel="nofollow" class="trm-toc-link" href="#dom-代码块"><span class="trm-toc-number">16.</span> <span class="trm-toc-text">dom 代码块</span></a></li><li class="trm-toc-item trm-toc-level-3" title="vue 代码块"><a rel="nofollow" class="trm-toc-link" href="#vue-代码块"><span class="trm-toc-number">17.</span> <span class="trm-toc-text">vue 代码块</span></a></li><li class="trm-toc-item trm-toc-level-3" title="uni-app 代码块"><a rel="nofollow" class="trm-toc-link" href="#uni-app-代码块"><span class="trm-toc-number">18.</span> <span class="trm-toc-text">uni-app 代码块</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Emmet"><a rel="nofollow" class="trm-toc-link" href="#Emmet"><span class="trm-toc-number">19.</span> <span class="trm-toc-text">Emmet</span></a></li><li class="trm-toc-item trm-toc-level-3" title="json优化"><a rel="nofollow" class="trm-toc-link" href="#json优化"><span class="trm-toc-number">20.</span> <span class="trm-toc-text">json优化</span></a></li><li class="trm-toc-item trm-toc-level-3" title="markdown优化"><a rel="nofollow" class="trm-toc-link" href="#markdown优化"><span class="trm-toc-number">21.</span> <span class="trm-toc-text">markdown优化</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-3" title="多光标"><a rel="nofollow" class="trm-toc-link" href="#多光标"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">多光标</span></a></li><li class="trm-toc-item trm-toc-level-3" title="列选择"><a rel="nofollow" class="trm-toc-link" href="#列选择"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">列选择</span></a></li><li class="trm-toc-item trm-toc-level-3" title="转到定义"><a rel="nofollow" class="trm-toc-link" href="#转到定义"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">转到定义</span></a></li><li class="trm-toc-item trm-toc-level-3" title="文件、搜索"><a rel="nofollow" class="trm-toc-link" href="#文件、搜索"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">文件、搜索</span></a></li><li class="trm-toc-item trm-toc-level-3" title="在选中区域外围添加标签"><a rel="nofollow" class="trm-toc-link" href="#在选中区域外围添加标签"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">在选中区域外围添加标签</span></a></li><li class="trm-toc-item trm-toc-level-3" title="反包围"><a rel="nofollow" class="trm-toc-link" href="#反包围"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">反包围</span></a></li><li class="trm-toc-item trm-toc-level-3" title="扩大选区"><a rel="nofollow" class="trm-toc-link" href="#扩大选区"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">扩大选区</span></a></li><li class="trm-toc-item trm-toc-level-3" title="交换选区内容"><a rel="nofollow" class="trm-toc-link" href="#交换选区内容"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">交换选区内容</span></a></li><li class="trm-toc-item trm-toc-level-3" title="撤销最后一个多选区或多光标"><a rel="nofollow" class="trm-toc-link" href="#撤销最后一个多选区或多光标"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">撤销最后一个多选区或多光标</span></a></li><li class="trm-toc-item trm-toc-level-3" title="批量合并行"><a rel="nofollow" class="trm-toc-link" href="#批量合并行"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">批量合并行</span></a></li><li class="trm-toc-item trm-toc-level-3" title="同时注释if段首尾"><a rel="nofollow" class="trm-toc-link" href="#同时注释if段首尾"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">同时注释if段首尾</span></a></li><li class="trm-toc-item trm-toc-level-3" title="HBuilderX 语言服务&#x2F;代码提示，在函数、类前面放置"><a rel="nofollow" class="trm-toc-link" href="#HBuilderX-语言服务-代码提示，在函数、类前面放置"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">HBuilderX 语言服务&#x2F;代码提示，在函数、类前面放置</span></a></li><li class="trm-toc-item trm-toc-level-3" title="vue doc – vue组件说明，类jsdoc"><a rel="nofollow" class="trm-toc-link" href="#vue-doc-–-vue组件说明，类jsdoc"><span class="trm-toc-number">13.</span> <span class="trm-toc-text">vue doc – vue组件说明，类jsdoc</span></a></li><li class="trm-toc-item trm-toc-level-3" title="常用代码块"><a rel="nofollow" class="trm-toc-link" href="#常用代码块"><span class="trm-toc-number">14.</span> <span class="trm-toc-text">常用代码块</span></a></li></ol>
       </div>
     </div>
 
