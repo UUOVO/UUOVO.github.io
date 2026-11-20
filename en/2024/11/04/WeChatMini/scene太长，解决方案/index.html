@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="问题：scene 太长(参数少但长)，生成不了小程序码原因： 使用getUnlimitedQRCode获取无限制的小程序码时，可接受页面参数scene的长度不能超过32位字符  使用 JSBI 插件 安装：1npm install jsbi --save 用法：JSBI.BigInt()  解决方案 先把scene的『每个参数用JSBI.BigInt()』包裹住，防止在转格式的时候丢失精度">
+<meta name="description" content="分析小程序码 scene 参数超长导致生成失败的问题，记录借助 BigInt 缩短参数的处理思路">
 <meta property="og:type" content="article">
-<meta property="og:title" content="微信小程序-生成二维码scene问题">
+<meta property="og:title" content="生成二维码scene问题">
 <meta property="og:url" content="http://example.com/en/2024/11/04/WeChatMini/scene%E5%A4%AA%E9%95%BF%EF%BC%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="问题：scene 太长(参数少但长)，生成不了小程序码原因： 使用getUnlimitedQRCode获取无限制的小程序码时，可接受页面参数scene的长度不能超过32位字符  使用 JSBI 插件 安装：1npm install jsbi --save 用法：JSBI.BigInt()  解决方案 先把scene的『每个参数用JSBI.BigInt()』包裹住，防止在转格式的时候丢失精度">
+<meta property="og:description" content="分析小程序码 scene 参数超长导致生成失败的问题，记录借助 BigInt 缩短参数的处理思路">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-11-04T01:57:31.884Z">
-<meta property="article:modified_time" content="2025-07-21T07:20:50.495Z">
+<meta property="article:published_time" content="2024-11-04T01:57:31.000Z">
+<meta property="article:modified_time" content="2026-11-17T02:11:34.987Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="二维码">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <meta name="keywords" content="微信小程序">
 
 
-<title >微信小程序-生成二维码scene问题</title>
+<title >生成二维码scene问题</title>
 
 <!-- Favicon -->
 
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-21 15:20:50"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-17 10:11:34"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -83,6 +83,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -197,13 +199,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -239,7 +241,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -257,13 +259,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -385,7 +387,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            微信小程序-生成二维码scene问题
+                            生成二维码scene问题
                         </h1>
 
                         
@@ -532,65 +534,73 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>这篇解决什么问题：调用 <code>getUnlimitedQRCode</code> 生成无限制小程序码时，<code>scene</code> 超过 32 个字符会直接失败。这里的处理思路是先把参数转成 36 进制并做 URL 编码来缩短长度，扫码端再按分隔符还原成十进制。</p>
+<span id="more"></span>
 
-<h2 id="问题：scene-太长-参数少但长-，生成不了小程序码"><a href="#问题：scene-太长-参数少但长-，生成不了小程序码" class="headerlink" title="问题：scene 太长(参数少但长)，生成不了小程序码"></a>问题：scene 太长(参数少但长)，生成不了小程序码</h2><h3 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h3><ul>
-<li>使用getUnlimitedQRCode获取无限制的小程序码时，可接受页面参数scene的长度不能超过32位字符</li>
+<h2 id="问题与场景"><a href="#问题与场景" class="headerlink" title="问题与场景"></a>问题与场景</h2><p>参数个数不多，但单个参数的值很长（例如长 ID），拼出来的 <code>scene</code> 超出了长度限制，导致小程序码生成不了。</p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>使用 <code>getUnlimitedQRCode</code> 获取无限制的小程序码时，可接受的页面参数 <code>scene</code> 长度不能超过 32 位字符。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="第-1-步：安装-JSBI-插件"><a href="#第-1-步：安装-JSBI-插件" class="headerlink" title="第 1 步：安装 JSBI 插件"></a>第 1 步：安装 JSBI 插件</h3><p><code>scene</code> 里的长整数在转换时容易丢精度，用 <a target="_blank" rel="noopener" href="https://github.com/GoogleChromeLabs/jsbi">JSBI</a> 处理大整数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install jsbi --save</span><br></pre></td></tr></table></figure>
+
+<p>用法是 <code>JSBI.BigInt()</code>。</p>
+<h3 id="第-2-步：用-JSBI-BigInt-包裹每个参数"><a href="#第-2-步：用-JSBI-BigInt-包裹每个参数" class="headerlink" title="第 2 步：用 JSBI.BigInt() 包裹每个参数"></a>第 2 步：用 JSBI.BigInt() 包裹每个参数</h3><p>先把 <code>scene</code> 里<span class="key_words">『每个参数用 JSBI.BigInt()』</span>包裹住，防止在转格式的时候丢失精度。</p>
+<h3 id="第-3-步：转成-36-进制"><a href="#第-3-步：转成-36-进制" class="headerlink" title="第 3 步：转成 36 进制"></a>第 3 步：转成 36 进制</h3><p>然后调用<span class="key_words">『.toString(36)』</span>转为 36 进制。因为 <code>scene</code> 为 32 位的十进制，所以先转为 36 进制，如果仍不满足长度要求，可以考虑其他进制。</p>
+<h3 id="第-4-步：编码后生成二维码"><a href="#第-4-步：编码后生成二维码" class="headerlink" title="第 4 步：编码后生成二维码"></a>第 4 步：编码后生成二维码</h3><p>再使用<span class="key_words">『encodeURIComponent()』</span>编码，然后调用接口生成二维码。</p>
+<p>下面是按上述步骤串联的示意代码，<code>a</code>、<code>b</code>、<code>c</code>、<code>d</code> 代表四个原始参数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 每个参数先用 JSBI.BigInt 包裹并转 36 进制，再按分隔符拼接</span></span><br><span class="line"><span class="keyword">const</span> scene = [a, b, c, d]</span><br><span class="line">  .<span class="title function_">map</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> <span class="variable constant_">JSBI</span>.<span class="title class_">BigInt</span>(item).<span class="title function_">toString</span>(<span class="number">36</span>))</span><br><span class="line">  .<span class="title function_">join</span>(<span class="string">&#x27;;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 生成小程序码前做一次 encode</span></span><br><span class="line"><span class="keyword">const</span> encodedScene = <span class="built_in">encodeURIComponent</span>(scene)</span><br></pre></td></tr></table></figure>
+
+<h3 id="第-5-步：解码并解构参数"><a href="#第-5-步：解码并解构参数" class="headerlink" title="第 5 步：解码并解构参数"></a>第 5 步：解码并解构参数</h3><p>按照分隔符解码和解构赋值得到参数（此时拿到的参数是 36 进制）：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">;[a, b, c, d] = <span class="built_in">decodeURIComponent</span>(params.<span class="property">scene</span>).<span class="title function_">split</span>(<span class="string">&#x27;;&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="第-6-步：转回十进制"><a href="#第-6-步：转回十进制" class="headerlink" title="第 6 步：转回十进制"></a>第 6 步：转回十进制</h3><p>把解构出来的每一段按对应的进制转回十进制，即可拿到原始参数。</p>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
+<li><code>scene</code> 的解码依赖分隔符 <code>;</code>，所以各参数的值本身不能包含 <code>;</code>，否则解构会错位。</li>
+<li><code>split(&#39;;&#39;)</code> 拿到的是字符串，转十进制时注意用 <code>parseInt(value, 36)</code> 之类的写法并保持参数顺序一致。</li>
+<li><code>JSBI.BigInt()</code> 的返回值不是原生 <code>BigInt</code>，参与运算和格式化都要用 JSBI 提供的方法。</li>
 </ul>
-<h3 id="使用-JSBI-插件"><a href="#使用-JSBI-插件" class="headerlink" title="使用 JSBI 插件"></a><a target="_blank" rel="noopener" href="https://github.com/GoogleChromeLabs/jsbi">使用 JSBI 插件</a></h3><ul>
-<li>安装：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install jsbi --save</span><br></pre></td></tr></table></figure></li>
-<li>用法：JSBI.BigInt()</li>
+<h2 id="补充：BigInt-基础"><a href="#补充：BigInt-基础" class="headerlink" title="补充：BigInt 基础"></a>补充：BigInt 基础</h2><h3 id="了解-BigInt"><a href="#了解-BigInt" class="headerlink" title="了解 BigInt"></a>了解 BigInt</h3><ul>
+<li>JS 中的 <code>Number</code> 类型只能安全地表示 <code>-(2^53-1)</code> 和 <code>(2^53-1)</code> 之间的整数。</li>
+<li>任何超过这个范围的整数值都会丢失精度（四舍五入）。</li>
+<li>而使用<span class="key_words">『BigInt 就不会丢失精度』</span>，可以运算大整数。</li>
 </ul>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ol>
-<li>先把scene的<span class="key_words">『每个参数用JSBI.BigInt()』</span>包裹住，防止在转格式的时候丢失精度</li>
-<li>然后调用<span class="key_words">『.toString(36)』</span>转为36进制<ul>
-<li>因为scene为32位的十进制，所以先转为36进制的,如果不满足可以考虑其他进制</li>
+<h3 id="定义一个-BigInt"><a href="#定义一个-BigInt" class="headerlink" title="定义一个 BigInt"></a>定义一个 BigInt</h3><ul>
+<li>在一个整数后面加 <code>n</code>，例如：<code>10n</code>。</li>
+<li>调用函数 <code>BigInt()</code> 并传递一个整数值或字符串值，例如：<code>BigInt(10)</code>。</li>
+</ul>
+<h3 id="BigInt-的特点"><a href="#BigInt-的特点" class="headerlink" title="BigInt 的特点"></a>BigInt 的特点</h3><ul>
+<li>不能用于 <code>Math</code> 对象中的方法。</li>
+<li>不能与任何 <code>Number</code> 实例混合运算，两者必须转换成同一种类型。但是需要注意，<span class="key_words">『BigInt 在转换成 Number 时可能会丢失精度』</span>。</li>
+<li>当使用 BigInt 时，带小数的运算会被向下取整。</li>
+<li>BigInt 和 Number 不是严格相等，但是宽松相等。</li>
+</ul>
+<p>下面的代码验证了 BigInt 与 Number 的比较规则、排序行为以及 Object 包装后的比较规则：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0n</span> === <span class="number">0</span> <span class="comment">// false</span></span><br><span class="line"><span class="number">0n</span> == <span class="number">0</span>  <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="number">2n</span> &gt; <span class="number">2</span>   <span class="comment">// false</span></span><br><span class="line"><span class="number">2n</span> &gt; <span class="number">1</span>   <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mixed = [<span class="number">4n</span>, <span class="number">6</span>, -<span class="number">12n</span>, <span class="number">10</span>, <span class="number">4</span>, <span class="number">0</span>, <span class="number">0n</span>];</span><br><span class="line">mixed.<span class="title function_">sort</span>();  <span class="comment">// [-12n, 0, 0n, 10, 4n, 4, 6]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 被 Object 包装的 BigInt, 使用 object 的比较规则进行比较，只用同一个对象比较时才相等</span></span><br><span class="line"><span class="number">0n</span> === <span class="title class_">Object</span>(<span class="number">0n</span>); <span class="comment">// false</span></span><br><span class="line"><span class="title class_">Object</span>(<span class="number">0n</span>) === <span class="title class_">Object</span>(<span class="number">0n</span>); <span class="comment">// false</span></span><br><span class="line"><span class="keyword">const</span> o = <span class="title class_">Object</span>(<span class="number">0n</span>);</span><br><span class="line">o === o <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="BigInt-的方法"><a href="#BigInt-的方法" class="headerlink" title="BigInt 的方法"></a>BigInt 的方法</h3><ul>
+<li><code>BigInt.asIntN()</code><ul>
+<li>将 BigInt 值转换为一个 <code>-2^(width-1)</code> 与 <code>2^(width-1) - 1</code> 之间的有符号整数。</li>
 </ul>
 </li>
-<li>然后使用<span class="key_words">『encodeURIComponent()』</span>,生成二维码</li>
-<li>按照分隔符解码和解构赋值得到参数(此时拿到的参数是36进制)：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[a,b,c,d] = <span class="built_in">decodeURIComponent</span>(params.<span class="property">scene</span>).<span class="title function_">split</span>(<span class="string">&#x27;;&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
-<li>转为十进制即可</li>
-</ol>
-<h3 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h3><ul>
+<li><code>BigInt.asUintN()</code><ul>
+<li>将一个 BigInt 值转换为 <code>0</code> 与 <code>2^(width) - 1</code> 之间的无符号整数。</li>
+</ul>
+</li>
+<li><code>BigInt.prototype.toLocaleString()</code><ul>
+<li>返回此数字的 language-sensitive 形式的字符串。覆盖 <code>Object.prototype.toLocaleString()</code> 方法。</li>
+</ul>
+</li>
+<li><code>BigInt.prototype.toString()</code><ul>
+<li>返回以指定基数 (base) 表示指定数字的字符串。覆盖 <code>Object.prototype.toString()</code> 方法。</li>
+</ul>
+</li>
+<li><code>BigInt.prototype.valueOf()</code><ul>
+<li>返回指定对象的基元值。覆盖 <code>Object.prototype.valueOf()</code> 方法。</li>
+</ul>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/qrcode-link/qr-code/getUnlimitedQRCode.html">获取不限制的小程序码</a></li>
-</ul>
-<h2 id="BigInt"><a href="#BigInt" class="headerlink" title="BigInt"></a>BigInt</h2><h3 id="了解BigInt"><a href="#了解BigInt" class="headerlink" title="了解BigInt"></a>了解BigInt</h3><ul>
-<li>JS 中的 NUmber 类型只能安全地表示-(2^53-1)和(2^53-1)之间的整数</li>
-<li>任何超过这个范围的整数值都会丢失精度（四舍五入）</li>
-<li>而使用<span class="key_words">『BigInt就不会丢失精度』</span>，可以运算大整数</li>
-</ul>
-<h3 id="定义一个BigInt"><a href="#定义一个BigInt" class="headerlink" title="定义一个BigInt"></a>定义一个BigInt</h3><ul>
-<li>在一个整数后面加n，例如: 10n</li>
-<li>调用函数BigInt()并传递一个整数值或字符串值，例如: BigInt(10)</li>
-</ul>
-<h3 id="BigInt特点"><a href="#BigInt特点" class="headerlink" title="BigInt特点"></a>BigInt特点</h3><ul>
-<li>不能用于 Math 对象中的方法</li>
-<li>不能与任何 Number 实例混合运算，两者必须转换成同一种类型。但是需要注意，<span class="key_words">『BigInt 在转换成 Number 时可能会丢失精度』</span></li>
-<li>当使用 BigInt 时，带小数的运算会被向下取整</li>
-<li>BigInt 和 Number 不是严格相等，但是宽松相等<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0n</span> === <span class="number">0</span> <span class="comment">// false</span></span><br><span class="line"><span class="number">0n</span> == <span class="number">0</span>  <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="number">2n</span> &gt; <span class="number">2</span>   <span class="comment">// false</span></span><br><span class="line"><span class="number">2n</span> &gt; <span class="number">1</span>   <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mixed = [<span class="number">4n</span>, <span class="number">6</span>, -<span class="number">12n</span>, <span class="number">10</span>, <span class="number">4</span>, <span class="number">0</span>, <span class="number">0n</span>];</span><br><span class="line">mixed.<span class="title function_">sort</span>();  <span class="comment">// [-12n, 0, 0n, 10, 4n, 4, 6]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 被 Object 包装的 BigInt, 使用 object 的比较规则进行比较，只用同一个对象比较时才相等</span></span><br><span class="line"><span class="number">0n</span> === <span class="title class_">Object</span>(<span class="number">0n</span>); <span class="comment">// false</span></span><br><span class="line"><span class="title class_">Object</span>(<span class="number">0n</span>) === <span class="title class_">Object</span>(<span class="number">0n</span>); <span class="comment">// false</span></span><br><span class="line"><span class="keyword">const</span> o = <span class="title class_">Object</span>(<span class="number">0n</span>);</span><br><span class="line">o === o <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="BigInt的方法"><a href="#BigInt的方法" class="headerlink" title="BigInt的方法"></a>BigInt的方法</h3><ul>
-<li>Bigint.asIntN()<ul>
-<li>将 BigInt 值转换为一个 -2^(width-1) 与 2^(width-1) - 1 之间的有符号整数。</li>
-</ul>
-</li>
-<li>BigInt.asUintN()<ul>
-<li>将一个 BigInt 值转换为 0 与 2^(width) - 1 之间的无符号整数。</li>
-</ul>
-</li>
-<li>BigInt.prototype.toLocaleString()<ul>
-<li>返回此数字的 language-sensitive 形式的字符串。覆盖 Object.prototype.toLocaleString() 方法。</li>
-</ul>
-</li>
-<li>BigInt.prototype.toString()<ul>
-<li>返回以指定基数 (base) 表示指定数字的字符串。覆盖 Object.prototype.toString() 方法。</li>
-</ul>
-</li>
-<li>BigInt.prototype.valueOf()<ul>
-<li>返回指定对象的基元值。覆盖 Object.prototype.valueOf() 方法。</li>
-</ul>
-</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/GoogleChromeLabs/jsbi">JSBI</a></li>
 </ul>
 
 </article>
@@ -611,11 +621,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/xcx-%E5%8A%A8%E6%80%81tabbar/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/sku/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">微信小程序-动态tabbar(底部菜单)</h6>
+                <h6 class="trm-op-title">sku算法</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -632,11 +642,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/h5%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/xcx-%E4%BA%8B%E4%BB%B6%E5%92%8C%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">微信小程序-H5相关问题</h6>
+                <h6 class="trm-op-title">事件和生命周期</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -708,7 +718,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="问题：scene 太长(参数少但长)，生成不了小程序码"><a rel="nofollow" class="trm-toc-link" href="#问题：scene-太长-参数少但长-，生成不了小程序码"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">问题：scene 太长(参数少但长)，生成不了小程序码</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="原因："><a rel="nofollow" class="trm-toc-link" href="#原因："><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">原因：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用 JSBI 插件"><a rel="nofollow" class="trm-toc-link" href="#使用-JSBI-插件"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">使用 JSBI 插件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决方案"><a rel="nofollow" class="trm-toc-link" href="#解决方案"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">解决方案</span></a></li><li class="trm-toc-item trm-toc-level-3" title="相关文档"><a rel="nofollow" class="trm-toc-link" href="#相关文档"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">相关文档</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="BigInt"><a rel="nofollow" class="trm-toc-link" href="#BigInt"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">BigInt</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="了解BigInt"><a rel="nofollow" class="trm-toc-link" href="#了解BigInt"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">了解BigInt</span></a></li><li class="trm-toc-item trm-toc-level-3" title="定义一个BigInt"><a rel="nofollow" class="trm-toc-link" href="#定义一个BigInt"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">定义一个BigInt</span></a></li><li class="trm-toc-item trm-toc-level-3" title="BigInt特点"><a rel="nofollow" class="trm-toc-link" href="#BigInt特点"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">BigInt特点</span></a></li><li class="trm-toc-item trm-toc-level-3" title="BigInt的方法"><a rel="nofollow" class="trm-toc-link" href="#BigInt的方法"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">BigInt的方法</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="问题与场景"><a rel="nofollow" class="trm-toc-link" href="#问题与场景"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">问题与场景</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="原因"><a rel="nofollow" class="trm-toc-link" href="#原因"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">原因</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="解决方案"><a rel="nofollow" class="trm-toc-link" href="#解决方案"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">解决方案</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="第 1 步：安装 JSBI 插件"><a rel="nofollow" class="trm-toc-link" href="#第-1-步：安装-JSBI-插件"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">第 1 步：安装 JSBI 插件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 2 步：用 JSBI.BigInt() 包裹每个参数"><a rel="nofollow" class="trm-toc-link" href="#第-2-步：用-JSBI-BigInt-包裹每个参数"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">第 2 步：用 JSBI.BigInt() 包裹每个参数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 3 步：转成 36 进制"><a rel="nofollow" class="trm-toc-link" href="#第-3-步：转成-36-进制"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">第 3 步：转成 36 进制</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 4 步：编码后生成二维码"><a rel="nofollow" class="trm-toc-link" href="#第-4-步：编码后生成二维码"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">第 4 步：编码后生成二维码</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 5 步：解码并解构参数"><a rel="nofollow" class="trm-toc-link" href="#第-5-步：解码并解构参数"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">第 5 步：解码并解构参数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 6 步：转回十进制"><a rel="nofollow" class="trm-toc-link" href="#第-6-步：转回十进制"><span class="trm-toc-number">2.6.</span> <span class="trm-toc-text">第 6 步：转回十进制</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="注意点"><a rel="nofollow" class="trm-toc-link" href="#注意点"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">注意点</span></a></li><li class="trm-toc-item trm-toc-level-2" title="补充：BigInt 基础"><a rel="nofollow" class="trm-toc-link" href="#补充：BigInt-基础"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">补充：BigInt 基础</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="了解 BigInt"><a rel="nofollow" class="trm-toc-link" href="#了解-BigInt"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">了解 BigInt</span></a></li><li class="trm-toc-item trm-toc-level-3" title="定义一个 BigInt"><a rel="nofollow" class="trm-toc-link" href="#定义一个-BigInt"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">定义一个 BigInt</span></a></li><li class="trm-toc-item trm-toc-level-3" title="BigInt 的特点"><a rel="nofollow" class="trm-toc-link" href="#BigInt-的特点"><span class="trm-toc-number">4.3.</span> <span class="trm-toc-text">BigInt 的特点</span></a></li><li class="trm-toc-item trm-toc-level-3" title="BigInt 的方法"><a rel="nofollow" class="trm-toc-link" href="#BigInt-的方法"><span class="trm-toc-number">4.4.</span> <span class="trm-toc-text">BigInt 的方法</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="参考"><a rel="nofollow" class="trm-toc-link" href="#参考"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">参考</span></a></li></ol>
       </div>
     </div>
 
@@ -832,6 +842,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

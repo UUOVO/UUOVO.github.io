@@ -7,17 +7,17 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="原型 | 原型链原型 prototype 定义：每个函数都有一个 prototype 属性, 它默认指向一个 Object 空对象(即称为: 原型对象) 当函数『以构造函数』的形式调用时，它所创建的对象中都会有一个隐含的属性执行该原型对象，『指向该构造函数的原型对象』，这个隐含的属性可以通过 __proto__ 来访问。 原型对象中有一个属性 constructor, 它指向函数对象 理解：">
+<meta name="description" content="围绕原型与原型链、执行上下文、作用域链与闭包，说明内存溢出和内存泄露的成因">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS-函数高级">
+<meta property="og:title" content="函数高级">
 <meta property="og:url" content="http://example.com/2024/10/31/JS/JS-%E5%87%BD%E6%95%B0%E9%AB%98%E7%BA%A7/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="原型 | 原型链原型 prototype 定义：每个函数都有一个 prototype 属性, 它默认指向一个 Object 空对象(即称为: 原型对象) 当函数『以构造函数』的形式调用时，它所创建的对象中都会有一个隐含的属性执行该原型对象，『指向该构造函数的原型对象』，这个隐含的属性可以通过 __proto__ 来访问。 原型对象中有一个属性 constructor, 它指向函数对象 理解：">
+<meta property="og:description" content="围绕原型与原型链、执行上下文、作用域链与闭包，说明内存溢出和内存泄露的成因">
 <meta property="og:locale">
 <meta property="og:image" content="http://example.com/img/404.jpg">
 <meta property="og:image" content="http://example.com/img/404.jpg">
-<meta property="article:published_time" content="2024-10-31T03:05:32.052Z">
-<meta property="article:modified_time" content="2025-07-31T09:26:56.984Z">
+<meta property="article:published_time" content="2024-10-31T03:05:32.000Z">
+<meta property="article:modified_time" content="2026-11-19T02:50:43.637Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="函数">
 <meta property="article:tag" content="原型链">
@@ -27,7 +27,7 @@
     <meta name="keywords" content="js, 函数,原型链">
 
 
-<title >JS-函数高级</title>
+<title >函数高级</title>
 
 <!-- Favicon -->
 
@@ -72,7 +72,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-31 17:26:56"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-19 10:50:43"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -87,6 +87,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -201,13 +203,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -243,7 +245,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -261,13 +263,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -389,7 +391,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            JS-函数高级
+                            函数高级
                         </h1>
 
                         
@@ -536,203 +538,180 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <h2 id="结论先行"><a href="#结论先行" class="headerlink" title="结论先行"></a>结论先行</h2><p>原型链决定了一个对象的属性从哪里查找，执行上下文和作用域链决定了变量从哪里来，闭包则让内部函数的变量在外部函数执行完后仍然可以存活。把这三组概念串起来，就能解释变量提升、<code>this</code> 指向、方法为什么放在原型上，以及内存泄漏是怎么产生的。</p>
+<span id="more"></span>
 
-<h2 id="原型-原型链"><a href="#原型-原型链" class="headerlink" title="原型 | 原型链"></a>原型 | 原型链</h2><h3 id="原型-prototype"><a href="#原型-prototype" class="headerlink" title="原型 prototype"></a>原型 prototype</h3><ul>
-<li>定义：每个函数都有一个 prototype 属性, 它默认指向一个 Object 空对象(即称为: 原型对象)</li>
-<li>当函数<span class="key_words">『以构造函数』</span>的形式调用时，它所创建的对象中都会有一个隐含的属性执行该原型对象，<span class="key_words">『指向该构造函数的原型对象』</span>，这个隐含的属性可以通过 <code>__proto__</code> 来访问。</li>
-<li>原型对象中有一个属性 constructor, 它指向函数对象</li>
-<li>理解：<ul>
-<li>原型对象就相当于一个公共区域，所有同一个类的实例都可以访问到这个原型对象</li>
-<li>创建构造函数时，可以将对象共有的属性和方法，统一添加到构造函数的原型对象中，可以使每个对象都具有这些属性和方法，也不会影响到全局作用域</li>
-</ul>
-</li>
-<li>函数的所有实例对象自动拥有原型中的属性(方法)</li>
-<li>示例<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">MyClass</span>(<span class="params"></span>) &#123;&#125; <span class="comment">// 普通函数</span></span><br><span class="line"><span class="title class_">MyClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">a</span> = <span class="number">123</span> <span class="comment">// 向MyClass的原型中添加属性a</span></span><br><span class="line"><span class="title class_">MyClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">sayHello</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">	<span class="comment">// 向MyClass的原型中添加一个方法</span></span><br><span class="line">	<span class="title function_">alert</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> mc = <span class="keyword">new</span> <span class="title class_">MyClass</span>() <span class="comment">// 创建一个构造函数</span></span><br><span class="line">此时mc.<span class="property">__proto__</span> == <span class="title class_">MyClass</span>.<span class="property"><span class="keyword">prototype</span></span>,</span><br><span class="line">	可以从<span class="title class_">MyClass</span>的原型上拿属性a和方法sayHello</span><br></pre></td></tr></table></figure></li>
-<li>hasOwnProperty()：检查对象自身中是否含有该属性，只有当对象自身中含有属性时，才会返回 true</li>
-</ul>
-<h3 id="显示原型-隐式原型"><a href="#显示原型-隐式原型" class="headerlink" title="显示原型 | 隐式原型"></a>显示原型 | 隐式原型</h3><ul>
-<li>每个函数function都有一个特别的属性: prototype，即<span class="key_words">『显式原型』</span>(属性)</li>
-<li>每个<span class="key_words">『实例对象』</span>都有一个特别的属性: <code>__proto__</code> ，可称为<span class="key_words">『隐式原型』</span>(属性)</li>
-<li>对象的隐式原型的值为其对应构造函数的显式原型的值<br><img src="/../../img/js/%E6%98%BE%E5%BC%8F%E5%8E%9F%E5%9E%8B%E4%B8%8E%E9%9A%90%E5%BC%8F%E5%8E%9F%E5%9E%8B.png" alt="内存结构"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
-<li>总结:<ul>
-<li>函数的 prototype 属性: 在<span class="key_words">『定义函数时自动添加』</span>的, <span class="key_words">『默认值』</span>是一个<span class="key_words">『空Object对象』</span></li>
-<li>实例对象的 <code>__proto__</code> 属性: <span class="key_words">『创建对象时自动添加』</span>的, <span class="key_words">『默认值』</span>为<span class="key_words">『构造函数的prototype属性值』</span></li>
-<li>程序员能直接操作显式原型, 但不能直接操作隐式原型(ES6 之前)</li>
-<li><span class="key_words">『原型对象即为当前实例对象的父对象』</span></li>
-</ul>
-</li>
-</ul>
-<h3 id="原型链-隐式原型链"><a href="#原型链-隐式原型链" class="headerlink" title="原型链(隐式原型链)"></a>原型链(隐式原型链)</h3><p><img src="/../../img/js/%E5%8E%9F%E5%9E%8B%E9%93%BE%E5%88%86%E6%9E%90.png" alt="原型链"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>JS 中的函数也是对象，可以作为返回值、实参，也可以被 <code>new</code> 调用。函数在被调用时会创建执行上下文，函数对象本身又带有 <code>prototype</code> 属性，实例对象带有 <code>__proto__</code> 属性。理解这些内部结构，是看懂框架源码和排查内存问题的前提。</p>
+<h2 id="步骤-1：理解原型-prototype"><a href="#步骤-1：理解原型-prototype" class="headerlink" title="步骤 1：理解原型 prototype"></a>步骤 1：理解原型 prototype</h2><p>每个函数都有一个 <code>prototype</code> 属性，它默认指向一个 Object 空对象，这个对象称为原型对象。</p>
+<p>当函数以构造函数的形式调用时，它所创建的对象中都会有一个隐含的属性指向该原型对象，这个隐含的属性可以通过 <code>__proto__</code> 来访问。</p>
+<p>原型对象中有一个属性 <code>constructor</code>，它指向函数对象。</p>
+<p>可以把原型对象理解为一个公共区域，所有同一个类的实例都可以访问到这个原型对象。创建构造函数时，可以将对象共有的属性和方法统一添加到构造函数的原型对象中，这样每个对象都具有这些属性和方法，也不会影响到全局作用域。函数的所有实例对象都会自动拥有原型中的属性（方法）。</p>
+<p>下面的例子向原型中添加属性和方法，再通过实例访问它们：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">MyClass</span>(<span class="params"></span>) &#123;&#125; <span class="comment">// 普通函数</span></span><br><span class="line"><span class="title class_">MyClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">a</span> = <span class="number">123</span> <span class="comment">// 向 MyClass 的原型中添加属性 a</span></span><br><span class="line"><span class="title class_">MyClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">sayHello</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">	<span class="comment">// 向 MyClass 的原型中添加一个方法</span></span><br><span class="line">	<span class="title function_">alert</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> mc = <span class="keyword">new</span> <span class="title class_">MyClass</span>() <span class="comment">// 创建一个实例对象</span></span><br><span class="line"><span class="comment">// mc.__proto__ === MyClass.prototype</span></span><br><span class="line"><span class="comment">// 可以从 MyClass 的原型上拿到属性 a 和方法 sayHello</span></span><br></pre></td></tr></table></figure>
+
+<p><code>hasOwnProperty()</code> 用来检查对象自身中是否含有该属性，只有当对象自身中含有属性时，才会返回 <code>true</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mc.<span class="title function_">hasOwnProperty</span>(<span class="string">&#x27;a&#x27;</span>) <span class="comment">// false，a 在原型上</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="步骤-2：区分显式原型和隐式原型"><a href="#步骤-2：区分显式原型和隐式原型" class="headerlink" title="步骤 2：区分显式原型和隐式原型"></a>步骤 2：区分显式原型和隐式原型</h2><p>每个函数 function 都有一个特别的属性 <code>prototype</code>，即显式原型（属性）。</p>
+<p>每个实例对象都有一个特别的属性 <code>__proto__</code>，可称为隐式原型（属性）。</p>
+<p>对象的隐式原型的值为其对应构造函数的显式原型的值。</p>
+<p><img src="/../../img/js/%E6%98%BE%E5%BC%8F%E5%8E%9F%E5%9E%8B%E4%B8%8E%E9%9A%90%E5%BC%8F%E5%8E%9F%E5%9E%8B.png" alt="显式原型与隐式原型内存结构"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>总结：</p>
 <ul>
-<li>定义：<ul>
-<li><span class="key_words">『当访问一个对象的属性或方法时，会先在自身属性中寻找』</span>，找到返回，</li>
-<li>如果没有则<span class="key_words">『去原型对象prototype』</span>中寻找，如果没有则<span class="key_words">『去原型的原型<code>__proto__</code>』</span>中寻找,<span class="key_words">『直到找到Object对象的原型Object.prototype』</span></li>
-<li>如果在 Object 原型中<span class="key_words">『依然没有』</span>找到，则<span class="key_words">『返回undefined』</span>，这样通过 <code>__proto__</code> 属性就形成了一个链的结构</li>
+<li>函数的 <code>prototype</code> 属性是在定义函数时自动添加的，默认值是一个空 Object 对象。</li>
+<li>实例对象的 <code>__proto__</code> 属性是在创建对象时自动添加的，默认值为构造函数的 <code>prototype</code> 属性值。</li>
+<li>程序员能直接操作显式原型，但不能直接操作隐式原型（ES6 之前）。</li>
+<li>原型对象即为当前实例对象的父对象。</li>
 </ul>
-</li>
-<li>作用: 查找对象的属性(方法)</li>
-<li>注：<ul>
-<li>原型对象 prototype 也是对象，所以它也有原型</li>
-<li><span class="key_words">『Object对象的原型没有原型』</span><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">__proto__</span> = <span class="literal">null</span></span><br></pre></td></tr></table></figure></li>
-<li>Function 是通过 new 自己产生的实例，所有函数都是 Function 的实例(包含 Function)</li>
-<li>所有的实例对象都有 <code>__proto__</code> 属性, 它指向的就是原型对象<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Function</span>.<span class="property">__proto__</span>===<span class="title class_">Function</span>.<span class="property"><span class="keyword">prototype</span></span></span><br></pre></td></tr></table></figure></li>
-<li>当给对象属性赋值时不会使用原型链, 而只是在当前对象中进行操作</li>
-<li><span class="key_words">『读取对象的属性值时, 会自动到原型链中查找』</span></li>
-<li><span class="key_words">『设置对象的属性值时, 不会查找原型链,如果当前对象中没有此属性, 直接添加此属性并设置其值』</span></li>
-<li><span class="key_words">『方法一般定义在原型中,属性一般通过构造函数定义在对象本身上』</span></li>
+<h2 id="步骤-3：理解原型链"><a href="#步骤-3：理解原型链" class="headerlink" title="步骤 3：理解原型链"></a>步骤 3：理解原型链</h2><p><img src="/../../img/js/%E5%8E%9F%E5%9E%8B%E9%93%BE%E5%88%86%E6%9E%90.png" alt="原型链分析"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>当访问一个对象的属性或方法时，会先在自身属性中寻找，找到就返回；如果没有，就去原型对象 <code>prototype</code> 中寻找；如果还没有，就去原型的原型 <code>__proto__</code> 中寻找，直到找到 Object 对象的原型 <code>Object.prototype</code>。</p>
+<p>如果在 Object 原型中依然没有找到，则返回 <code>undefined</code>。这样通过 <code>__proto__</code> 属性就形成了一个链的结构，作用就是查找对象的属性（方法）。</p>
+<p>原型对象 <code>prototype</code> 也是对象，所以它也有原型，但 Object 对象的原型没有原型：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">__proto__</span> = <span class="literal">null</span></span><br></pre></td></tr></table></figure>
+
+<p>Function 是通过 <code>new</code> 自己产生的实例，所有函数都是 Function 的实例（包含 Function 本身）：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Function</span>.<span class="property">__proto__</span> === <span class="title class_">Function</span>.<span class="property"><span class="keyword">prototype</span></span></span><br></pre></td></tr></table></figure>
+
+<p>原型链上有两条重要规则：</p>
+<ul>
+<li>读取对象的属性值时，会自动到原型链中查找。</li>
+<li>设置对象的属性值时，不会查找原型链；如果当前对象中没有此属性，直接添加此属性并设置其值。</li>
 </ul>
-</li>
+<p>因此，方法一般定义在原型中，属性一般通过构造函数定义在对象本身上。</p>
+<h2 id="步骤-4：理解变量提升与函数提升"><a href="#步骤-4：理解变量提升与函数提升" class="headerlink" title="步骤 4：理解变量提升与函数提升"></a>步骤 4：理解变量提升与函数提升</h2><p>变量提升：在变量定义语句之前，就可以访问到这个变量，值为 <code>undefined</code>。</p>
+<p>函数提升：在函数定义语句之前，就可以调用该函数，此时函数对象已经创建。</p>
+<p>先有变量提升，再有函数提升。</p>
+<h2 id="步骤-5：理解执行上下文与执行上下文栈"><a href="#步骤-5：理解执行上下文与执行上下文栈" class="headerlink" title="步骤 5：理解执行上下文与执行上下文栈"></a>步骤 5：理解执行上下文与执行上下文栈</h2><p>执行上下文是由 JS 引擎自动创建的对象，包含对应作用域中的所有变量属性。</p>
+<p>执行上下文栈用来管理产生的多个执行上下文。</p>
+<p>执行上下文分为两类：</p>
+<ul>
+<li>全局：<code>window</code>。</li>
+<li>函数：对程序员来说是透明的。</li>
 </ul>
-<h2 id="执行上下文与执行上下文栈"><a href="#执行上下文与执行上下文栈" class="headerlink" title="执行上下文与执行上下文栈"></a>执行上下文与执行上下文栈</h2><h3 id="变量提升与函数提升"><a href="#变量提升与函数提升" class="headerlink" title="变量提升与函数提升"></a>变量提升与函数提升</h3><ul>
-<li>变量提升: 在变量定义语句之前, 就可以访问到这个变量(undefined)</li>
-<li>函数提升: 在函数定义语句之前, 就执行该函数(函数定义对象)</li>
-<li>先有变量提升, 再有函数提升</li>
+<p>生命周期：</p>
+<ul>
+<li>全局：准备执行全局代码前产生，当页面刷新或关闭页面时死亡。</li>
+<li>函数：调用函数时产生，函数执行完时死亡。</li>
 </ul>
-<h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><ul>
-<li>执行上下文: 由 js 引擎自动创建的对象, 包含对应作用域中的所有变量属性</li>
-<li>执行上下文栈: 用来管理产生的多个执行上下文</li>
-<li>分类:<ul>
-<li>全局: window</li>
-<li>函数: 对程序员来说是透明的</li>
+<h3 id="全局执行上下文"><a href="#全局执行上下文" class="headerlink" title="全局执行上下文"></a>全局执行上下文</h3><p>在执行全局代码前，将 <code>window</code> 确定为全局执行上下文，并对全局数据进行预处理：</p>
+<ul>
+<li><code>var</code> 定义的全局变量赋值为 <code>undefined</code>，添加为 <code>window</code> 的属性。</li>
+<li><code>function</code> 声明的全局函数赋值为该函数，添加为 <code>window</code> 的方法。</li>
+<li><code>this</code> 赋值为 <code>window</code>。</li>
 </ul>
-</li>
-<li>生命周期<ul>
-<li>全局: 准备执行全局代码前产生, 当页面刷新&#x2F;关闭页面时死亡</li>
-<li>函数: 调用函数时产生, 函数执行完时死亡</li>
+<p>预处理完成后，开始执行全局代码。</p>
+<h3 id="函数执行上下文"><a href="#函数执行上下文" class="headerlink" title="函数执行上下文"></a>函数执行上下文</h3><p>在调用函数、准备执行函数体之前，创建对应的函数执行上下文对象（虚拟的，存在于栈中），并对局部数据进行预处理：</p>
+<ul>
+<li>形参变量赋值为对应实参，添加为执行上下文的属性。</li>
+<li><code>arguments</code> 赋值为实参列表的伪数组，添加为执行上下文的属性。</li>
+<li><code>var</code> 定义的局部变量赋值为 <code>undefined</code>，添加为执行上下文的属性。</li>
+<li><code>function</code> 声明的函数赋值为该函数，添加为执行上下文的方法。</li>
+<li><code>this</code> 赋值为调用函数的对象，如果没有指定就是 <code>window</code>。</li>
 </ul>
-</li>
+<p>预处理完成后，开始执行函数体代码。</p>
+<h3 id="执行上下文栈的进出栈过程"><a href="#执行上下文栈的进出栈过程" class="headerlink" title="执行上下文栈的进出栈过程"></a>执行上下文栈的进出栈过程</h3><p>在全局代码执行前，JS 引擎就会创建一个栈来存储管理所有的执行上下文对象。</p>
+<ul>
+<li>在全局执行上下文（<code>window</code>）确定后，将其添加到栈中（压栈）。</li>
+<li>在函数执行上下文创建后，将其添加到栈中（压栈）。</li>
+<li>在当前函数执行完后，将栈顶的对象移除（出栈）。</li>
+<li>当所有的代码执行完后，栈中只剩下 <code>window</code>。</li>
 </ul>
-<h3 id="全局执行上下文"><a href="#全局执行上下文" class="headerlink" title="全局执行上下文"></a>全局执行上下文</h3><ul>
-<li>在执行全局代码前将 window 确定为全局执行上下文</li>
-<li>对全局数据进行预处理<ul>
-<li>var 定义的全局变量 &#x3D;&#x3D;&gt; undefined, 添加为 window 的属性</li>
-<li>function 声明的全局函数 &#x3D;&#x3D;&gt; 赋值(fun), 添加为 window 的方法</li>
-<li>this &#x3D;&#x3D;&gt; 赋值(window)</li>
+<h3 id="执行上下文创建和初始化的过程"><a href="#执行上下文创建和初始化的过程" class="headerlink" title="执行上下文创建和初始化的过程"></a>执行上下文创建和初始化的过程</h3><p>全局执行上下文的创建和初始化：</p>
+<ul>
+<li>在全局代码执行前最先创建一个全局执行上下文（<code>window</code>）。</li>
+<li>收集一些全局变量，并初始化。</li>
+<li>将这些变量设置为 <code>window</code> 的属性。</li>
 </ul>
-</li>
-<li>开始执行全局代码</li>
+<p>函数执行上下文的创建和初始化：</p>
+<ul>
+<li>在调用函数时，在执行函数体之前先创建一个函数执行上下文。</li>
+<li>收集一些局部变量，并初始化。</li>
+<li>将这些变量设置为执行上下文的属性。</li>
 </ul>
-<h3 id="函数执行上下文"><a href="#函数执行上下文" class="headerlink" title="函数执行上下文"></a>函数执行上下文</h3><ul>
-<li>在调用函数, 准备执行函数体之前, 创建对应的函数执行上下文对象(虚拟的, 存在于栈中)</li>
-<li>对局部数据进行预处理<ul>
-<li>形参变量 &#x3D;&#x3D;&gt; 赋值(对应实参) &#x3D;&#x3D;&gt;添 加为执行上下文的属性</li>
-<li>arguments &#x3D;&#x3D;&gt; 赋值(实参列表的伪数组), 添加为执行上下文的属性</li>
-<li>var 定义的局部变量 &#x3D;&#x3D;&gt; undefined, 添加为执行上下文的属性</li>
-<li>function 声明的函数 &#x3D;&#x3D;&gt; 赋值(fun), 添加为执行上下文的方法</li>
-<li>this &#x3D;&#x3D;&gt; 赋值(调用函数的对象, 如果没有指定就是 window )</li>
+<h2 id="步骤-6：理解作用域与作用域链"><a href="#步骤-6：理解作用域与作用域链" class="headerlink" title="步骤 6：理解作用域与作用域链"></a>步骤 6：理解作用域与作用域链</h2><p>作用域是一块代码区域，在编码时就确定了，不会再变化。</p>
+<p>作用域链是多个上下级关系（嵌套）的作用域形成的链，它的方向是从下向上的（从内到外），查找变量时就是沿着作用域链来查找的。</p>
+<p>作用域分为全局和函数两类，JS 在 ES6 之前没有块作用域。</p>
+<p>它们的作用：</p>
+<ul>
+<li>作用域：隔离变量，可以在不同作用域定义同名的变量而不冲突。</li>
+<li>作用域链：查找变量。</li>
 </ul>
-</li>
-<li>开始执行函数体代码</li>
+<h2 id="步骤-7：区分作用域与执行上下文"><a href="#步骤-7：区分作用域与执行上下文" class="headerlink" title="步骤 7：区分作用域与执行上下文"></a>步骤 7：区分作用域与执行上下文</h2><p>区别：</p>
+<ul>
+<li>全局作用域之外，每个函数都会创建自己的作用域，作用域在函数定义时就已经确定了，而不是在函数调用时。</li>
+<li>全局执行上下文环境是在全局作用域确定之后、JS 代码马上执行之前创建。</li>
+<li>函数执行上下文是在调用函数时、函数体代码执行之前创建。</li>
+<li>作用域是静态的，只要函数定义好了就一直存在，且不会再变化。</li>
+<li>执行上下文是动态的，调用函数时创建，函数调用结束时就会自动释放。</li>
 </ul>
-<h3 id="执行上下文栈"><a href="#执行上下文栈" class="headerlink" title="执行上下文栈"></a>执行上下文栈</h3><ul>
-<li>在全局代码执行前, JS 引擎就会创建一个栈来存储管理所有的执行上下文对象</li>
-<li>在全局执行上下文(window)确定后, 将其添加到栈中(压栈)</li>
-<li>在函数执行上下文创建后, 将其添加到栈中(压栈)</li>
-<li>在当前函数执行完后,将栈顶的对象移除(出栈)</li>
-<li>当所有的代码执行完后, 栈中只剩下 window</li>
+<p>联系：</p>
+<ul>
+<li>执行上下文（对象）是从属于所在的作用域的。</li>
+<li>全局上下文环境对应全局作用域。</li>
+<li>函数上下文环境对应函数作用域。</li>
 </ul>
-<h3 id="执行上下文创建和初始化的过程"><a href="#执行上下文创建和初始化的过程" class="headerlink" title="执行上下文创建和初始化的过程"></a>执行上下文创建和初始化的过程</h3><ul>
-<li>全局:</li>
-<li>在全局代码执行前最先创建一个全局执行上下文(window)</li>
-<li>收集一些全局变量, 并初始化</li>
-<li>将这些变量设置为 window 的属性</li>
-<li>函数:</li>
-<li>在调用函数时, 在执行函数体之前先创建一个函数执行上下文</li>
-<li>收集一些局部变量, 并初始化</li>
-<li>将这些变量设置为执行上下文的属性</li>
+<h2 id="步骤-8：掌握作用域链查找变量的规则"><a href="#步骤-8：掌握作用域链查找变量的规则" class="headerlink" title="步骤 8：掌握作用域链查找变量的规则"></a>步骤 8：掌握作用域链查找变量的规则</h2><ul>
+<li>在当前作用域下的执行上下文中查找对应的属性，如果有直接返回，否则进入上一层作用域查找。</li>
+<li>在上一级作用域的执行上下文中查找对应的属性，如果有直接返回，否则进入上一层作用域查找。</li>
+<li>以此类推，直到全局作用域；如果还找不到，就抛出找不到的异常。</li>
 </ul>
-<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p><a target="_blank" rel="noopener" href="https://gitee.com/ovouu/study-notes/blob/master/javascript/exercise/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E4%B8%8E%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88%E9%9D%A2%E8%AF%95%E9%A2%98.html">执行上下文与执行上下文栈面试题</a></p>
-<h2 id="作用域与作用域链"><a href="#作用域与作用域链" class="headerlink" title="作用域与作用域链"></a>作用域与作用域链</h2><h3 id="理解-1"><a href="#理解-1" class="headerlink" title="理解:"></a>理解:</h3><ul>
-<li>作用域: 一块代码区域, 在编码时就确定了, 不会再变化</li>
-<li>作用域链: 多个上下级关系(嵌套)的作用域形成的链, 它的方向是从下向上的(从内到外)，查找变量时就是沿着作用域链来查找的</li>
-<li>分类:<ul>
-<li>全局</li>
-<li>函数</li>
-<li>js 没有块作用域(在 ES6 之前)</li>
+<h2 id="步骤-9：理解闭包"><a href="#步骤-9：理解闭包" class="headerlink" title="步骤 9：理解闭包"></a>步骤 9：理解闭包</h2><p>当嵌套的内部函数引用了外部函数的变量时，就产生了闭包。</p>
+<p>通过 Chrome 工具可以得知：闭包本质是内部函数中的一个对象，这个对象中包含引用的变量属性。</p>
+<p>在问题的上下文中，闭包被用于保持对定时器变量的引用，即使创建闭包的函数已经返回。这使得取消函数能够访问并修改定时器变量，有效地取消了延迟函数的执行。</p>
+<p>产生闭包需要满足三个条件：</p>
+<ul>
+<li>函数嵌套。</li>
+<li>内部函数引用了外部函数的数据（变量&#x2F;函数）。</li>
+<li>执行外部函数。</li>
 </ul>
-</li>
-<li>作用<ul>
-<li>作用域: 隔离变量, 可以在不同作用域定义同名的变量不冲突</li>
-<li>作用域链: 查找变量</li>
+<p>常见的闭包有两种形式：将函数作为另一个函数的返回值，以及将函数作为实参传递给另一个函数调用。</p>
+<p>下面的例子演示将函数作为另一个函数的返回值：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 将函数作为另一个函数的返回值</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn1</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="keyword">var</span> a = <span class="number">2</span> <span class="comment">// 此时闭包产生了，因为函数提升</span></span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">fn2</span>(<span class="params"></span>) &#123;</span><br><span class="line">		++a</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> fn2</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f = <span class="title function_">fn1</span>()</span><br><span class="line"><span class="title function_">f</span>() <span class="comment">// 3</span></span><br><span class="line"><span class="title function_">f</span>() <span class="comment">// 4</span></span><br><span class="line"><span class="comment">// 从以上函数可知，该函数产生多少个闭包，看调用了几次外部函数</span></span><br></pre></td></tr></table></figure>
+
+<p>下面的例子把函数作为实参传递给内部的函数调用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 2. 将函数的实参传递给内部的函数调用</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">showDelay</span>(<span class="params">msg, time</span>) &#123;</span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">		<span class="title function_">alert</span>(msg)</span><br><span class="line">	&#125;, time)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">showDelay</span>(<span class="string">&#x27;atguigu&#x27;</span>, <span class="number">2000</span>)</span><br><span class="line"><span class="comment">// 结论：会产生闭包。一是外部函数里面嵌套内部函数，</span></span><br><span class="line"><span class="comment">// 二是内部函数引用了外部函数的变量 msg；如果没有引用 msg，就不会产生闭包。</span></span><br></pre></td></tr></table></figure>
+
+<p>闭包的作用：</p>
+<ul>
+<li>使用函数内部的变量在函数执行完后，仍然存活在内存中（延长了局部变量的生命周期）。</li>
+<li>让函数外部可以操作（读写）到函数内部的数据（变量&#x2F;函数）。</li>
 </ul>
-</li>
+<p>注意：函数执行完后，函数内部声明的局部变量一般是不存在的，存在于闭包中的变量才可能存在。在函数外部不能直接访问函数内部的局部变量，但可以通过闭包让外部操作它。</p>
+<p>闭包的生命周期：</p>
+<ul>
+<li>产生：在嵌套内部函数定义执行完时就产生了（不是在调用时）。</li>
+<li>死亡：在嵌套的内部函数成为垃圾对象时（让包含闭包的函数对象等于 <code>null</code>）。</li>
 </ul>
-<h3 id="区别作用域与执行上下文"><a href="#区别作用域与执行上下文" class="headerlink" title="区别作用域与执行上下文"></a>区别作用域与执行上下文</h3><ul>
-<li>区别<ul>
-<li>全局作用域之外，每个函数都会创建自己的作用域，作用域在函数定义时就已经确定了。而不是在函数调用时</li>
-<li>全局执行上下文环境是在全局作用域确定之后, js 代码马上执行之前创建</li>
-<li>函数执行上下文是在调用函数时, 函数体代码执行之前创建</li>
-<li>作用域是静态的, 只要函数定义好了就一直存在, 且不会再变化</li>
-<li>执行上下文是动态的, 调用函数时创建, 函数调用结束时就会自动释放</li>
+<p>闭包的常见应用：</p>
+<ul>
+<li>模块化：封装一些数据以及操作数据的函数，向外暴露一些行为（对象或函数）。</li>
+<li>模块的使用者只需要通过模块暴露的对象调用方法来实现对应的功能。</li>
+<li>循环遍历加监听。</li>
+<li>JS 框架（如 jQuery）大量使用了闭包。</li>
 </ul>
-</li>
-<li>联系<ul>
-<li>执行上下文(对象)是从属于所在的作用域</li>
-<li>全局上下文环境&#x3D;&#x3D;&gt;全局作用域</li>
-<li>函数上下文环境&#x3D;&#x3D;&gt;对应的函数使用域</li>
+<p>闭包的缺点：</p>
+<ul>
+<li>函数执行完后，函数内的局部变量没有释放，占用内存的时间会变长。</li>
+<li>可能导致内存泄漏。</li>
+<li>解决办法是及时释放：</li>
 </ul>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="literal">null</span> <span class="comment">// 让内部函数对象成为垃圾对象</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="步骤-10：区分内存溢出与内存泄漏"><a href="#步骤-10：区分内存溢出与内存泄漏" class="headerlink" title="步骤 10：区分内存溢出与内存泄漏"></a>步骤 10：区分内存溢出与内存泄漏</h2><p>内存溢出是一种程序运行出现的错误：当程序运行需要的内存超过了剩余的内存时，就会抛出内存溢出的错误。</p>
+<p>内存泄漏是指占用的内存没有及时释放。内存泄漏积累多了就容易导致内存溢出。</p>
+<p>常见的内存泄漏有三类：意外的全局变量、没有及时清理的计时器或回调函数、闭包。</p>
+<p>下面的例子分别演示内存溢出和三种常见的内存泄漏：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 内存溢出</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10000</span>; i++) &#123;</span><br><span class="line">	obj[i] = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">10000000</span>)</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;-----&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 2. 内存泄露</span></span><br><span class="line"><span class="comment">// 意外的全局变量</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">	a = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">10000000</span>)</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>()</span><br><span class="line"><span class="comment">// 没有及时清理的计时器或回调函数</span></span><br><span class="line"><span class="keyword">var</span> intervalId = <span class="built_in">setInterval</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">	<span class="comment">// 启动循环定时器后不清理</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;----&#x27;</span>)</span><br><span class="line">&#125;, <span class="number">1000</span>)</span><br><span class="line"><span class="comment">// 闭包</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn1</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="keyword">var</span> a = <span class="number">4</span></span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">fn2</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(++a)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> fn2</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f = <span class="title function_">fn1</span>()</span><br><span class="line"><span class="title function_">f</span>()</span><br></pre></td></tr></table></figure>
+
+<h2 id="踩坑与注意点"><a href="#踩坑与注意点" class="headerlink" title="踩坑与注意点"></a>踩坑与注意点</h2><ul>
+<li>原型上的属性会被所有实例共享；如果属性是对象，修改它会互相影响，因此属性一般写在构造函数里，方法才放到原型上。</li>
+<li>给对象属性赋值时不会触发原型链查找，只会在当前对象上新增或修改属性；读取时才会沿原型链向上找。</li>
+<li><code>__proto__</code> 是访问隐式原型的属性，ES6 之前不建议直接操作，标准写法是 <code>Object.getPrototypeOf()</code> &#x2F; <code>Object.setPrototypeOf()</code>。</li>
+<li>判断是否发生内存泄漏时，可以在 Chrome DevTools 的 Memory 面板对比快照，确认是否有对象被意外持有。</li>
+<li>占用内存的变量不一定是泄漏，只有不再使用却仍被引用时才是泄漏；及时把引用置为 <code>null</code> 或清除定时器。</li>
 </ul>
-<h3 id="作用域链查找一个变量的规则"><a href="#作用域链查找一个变量的规则" class="headerlink" title="作用域链查找一个变量的规则"></a>作用域链查找一个变量的规则</h3><ul>
-<li>在当前作用域下的执行上下文中查找对应的属性, 如果有直接返回, 否则进入上一层作用域查找</li>
-<li>在上一级作用域的执行上下文中查找对应的属性, 如果有直接返回, 否则进入上一层作用域查找</li>
-<li>以此类推, 直到全局作用域, 如果还找不到就抛出找不到的异常</li>
-</ul>
-<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h3 id="理解-2"><a href="#理解-2" class="headerlink" title="理解"></a>理解</h3><ul>
-<li>当<span class="key_words">『嵌套的内部函数引用 了外部函数的变量』</span>时就产生了闭包</li>
-<li>通过 chrome 工具得知: 闭包<span class="key_words">『本质是内部函数中的一个对象, 这个对象中包含引用的变量属性』</span></li>
-<li>在问题的上下文中，闭包被用于保持对定时器变量的引用，即使创建闭包的函数已经返回。这使得取消函数能够访问并修改定时器变量，有效地取消了延迟函数的执行。</li>
-</ul>
-<h3 id="产生闭包的条件"><a href="#产生闭包的条件" class="headerlink" title="产生闭包的条件?"></a>产生闭包的条件?</h3><ul>
-<li>函数嵌套</li>
-<li>内部函数引用了外部函数的数据(变量&#x2F;函数)</li>
-<li>执行外部函数</li>
-</ul>
-<h3 id="常见的闭包"><a href="#常见的闭包" class="headerlink" title="常见的闭包"></a>常见的闭包</h3><ul>
-<li>将函数作为另一个函数的返回值</li>
-<li>将函数作为实参传递给另一个函数调用</li>
-<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 将函数作为另一个函数的返回值</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn1</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">2</span>   <span class="comment">//此时闭包产生了，因为函数提升</span></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">fn2</span>(<span class="params"></span>) &#123;</span><br><span class="line">    a++</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> fn2</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f = <span class="title function_">fn1</span>()</span><br><span class="line"><span class="title function_">f</span>() <span class="comment">// 3</span></span><br><span class="line"><span class="title function_">f</span>() <span class="comment">// 4</span></span><br><span class="line">结果：从以上函数克制，该函数产生多少个闭包，看调用了几次外部函数</span><br><span class="line"><span class="comment">// 2. 将函数的实参传递给内部的函数调用</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">showDelay</span>(<span class="params">msg, time</span>) &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(msg)</span><br><span class="line">  &#125;, time)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">showDelay</span>(<span class="string">&#x27;atguigu&#x27;</span>, <span class="number">2000</span>)</span><br><span class="line">结论：有产生闭包，一外部函数里面嵌套内部函数，二内部函数调用外部函数的值msg，如果没有msg就不会产生闭包</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="作用"><a href="#作用" class="headerlink" title="作用:"></a>作用:</h3><ul>
-<li>使用函数内部的变量在函数执行完后, 仍然存活在内存中(延长了局部变量的生命周期)</li>
-<li>让函数外部可以操作(读写)到函数内部的数据(变量&#x2F;函数)</li>
-<li>注：<ul>
-<li>函数<span class="key_words">『执行完后, 函数内部声明的局部变量一般是不存在, 存在于闭包中的变量才可能存在』</span></li>
-<li>在函数<span class="key_words">『外部不能直接访问函数内部的局部变量, 但可以通过闭包让外部操作它』</span></li>
-</ul>
-</li>
-</ul>
-<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><ul>
-<li>产生: 在嵌套内部函数定义执行完时就产生了(不是在调用)</li>
-<li>死亡: 在嵌套的内部函数成为垃圾对象时(让包含闭包的函数对象&#x3D;null)</li>
-</ul>
-<h3 id="闭包应用"><a href="#闭包应用" class="headerlink" title="闭包应用"></a>闭包应用</h3><ul>
-<li>模块化: 封装一些数据以及操作数据的函数, 向外暴露一些行为(对象或函数)</li>
-<li>模块的使用者, 只需要通过模块暴露的对象调用方法来实现对应的功能</li>
-<li>循环遍历加监听</li>
-<li>JS 框架(jQuery)大量使用了闭包</li>
-</ul>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
-<li>函数执行完后, 函数内的局部变量没有释放, 占用内存时间会变长</li>
-<li>可能导致内存泄露</li>
-<li>解决:及时释放<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="literal">null</span>; <span class="comment">//让内部函数对象成为垃圾对象</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="内存溢出与内存泄露"><a href="#内存溢出与内存泄露" class="headerlink" title="内存溢出与内存泄露"></a>内存溢出与内存泄露</h2><h3 id="内存溢出"><a href="#内存溢出" class="headerlink" title="内存溢出"></a>内存溢出</h3><ul>
-<li>一种程序运行出现的错误</li>
-<li>当程序运行需要的内存超过了剩余的内存时, 就出抛出内存溢出的错误</li>
-</ul>
-<h3 id="内存泄露"><a href="#内存泄露" class="headerlink" title="内存泄露"></a>内存泄露</h3><ul>
-<li>占用的内存没有及时释放</li>
-<li>内存泄露积累多了就容易导致内存溢出</li>
-<li>常见的内存泄露:<ul>
-<li>意外的全局变量</li>
-<li>没有及时清理的计时器或回调函数</li>
-<li>闭包</li>
-</ul>
-</li>
-<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 内存溢出</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10000</span>; i++) &#123;</span><br><span class="line">	obj[i] = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">10000000</span>)</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;-----&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 2. 内存泄露</span></span><br><span class="line"><span class="comment">// 意外的全局变量</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">	a = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">10000000</span>)</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>()</span><br><span class="line"><span class="comment">// 没有及时清理的计时器或回调函数</span></span><br><span class="line"><span class="keyword">var</span> intervalId = <span class="built_in">setInterval</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">	<span class="comment">//启动循环定时器后不清理</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;----&#x27;</span>)</span><br><span class="line">&#125;, <span class="number">1000</span>)</span><br><span class="line"><span class="comment">// 闭包</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn1</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="keyword">var</span> a = <span class="number">4</span></span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">fn2</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(++a)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> fn2</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f = <span class="title function_">fn1</span>()</span><br><span class="line"><span class="title function_">f</span>()</span><br></pre></td></tr></table></figure></li>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://gitee.com/ovouu/study-notes/blob/master/javascript/exercise/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E4%B8%8E%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88%E9%9D%A2%E8%AF%95%E9%A2%98.html">执行上下文与执行上下文栈面试题</a></li>
 </ul>
 
 </article>
@@ -753,11 +732,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/31/JS/JS-%E7%BA%BF%E7%A8%8B%E6%9C%BA%E5%88%B6%E4%B8%8E%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/31/JS/JS-%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E4%BE%8B%E5%AD%90/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">JS-线程机制与事件机制</h6>
+                <h6 class="trm-op-title">案例-常用例子</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -778,7 +757,7 @@
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">JS-对象高级</h6>
+                <h6 class="trm-op-title">对象高级</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -850,7 +829,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="原型 | 原型链"><a rel="nofollow" class="trm-toc-link" href="#原型-原型链"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">原型 | 原型链</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="原型 prototype"><a rel="nofollow" class="trm-toc-link" href="#原型-prototype"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">原型 prototype</span></a></li><li class="trm-toc-item trm-toc-level-3" title="显示原型 | 隐式原型"><a rel="nofollow" class="trm-toc-link" href="#显示原型-隐式原型"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">显示原型 | 隐式原型</span></a></li><li class="trm-toc-item trm-toc-level-3" title="原型链(隐式原型链)"><a rel="nofollow" class="trm-toc-link" href="#原型链-隐式原型链"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">原型链(隐式原型链)</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="执行上下文与执行上下文栈"><a rel="nofollow" class="trm-toc-link" href="#执行上下文与执行上下文栈"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">执行上下文与执行上下文栈</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="变量提升与函数提升"><a rel="nofollow" class="trm-toc-link" href="#变量提升与函数提升"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">变量提升与函数提升</span></a></li><li class="trm-toc-item trm-toc-level-3" title="理解"><a rel="nofollow" class="trm-toc-link" href="#理解"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">理解</span></a></li><li class="trm-toc-item trm-toc-level-3" title="全局执行上下文"><a rel="nofollow" class="trm-toc-link" href="#全局执行上下文"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">全局执行上下文</span></a></li><li class="trm-toc-item trm-toc-level-3" title="函数执行上下文"><a rel="nofollow" class="trm-toc-link" href="#函数执行上下文"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">函数执行上下文</span></a></li><li class="trm-toc-item trm-toc-level-3" title="执行上下文栈"><a rel="nofollow" class="trm-toc-link" href="#执行上下文栈"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">执行上下文栈</span></a></li><li class="trm-toc-item trm-toc-level-3" title="执行上下文创建和初始化的过程"><a rel="nofollow" class="trm-toc-link" href="#执行上下文创建和初始化的过程"><span class="trm-toc-number">2.6.</span> <span class="trm-toc-text">执行上下文创建和初始化的过程</span></a></li><li class="trm-toc-item trm-toc-level-3" title="例题"><a rel="nofollow" class="trm-toc-link" href="#例题"><span class="trm-toc-number">2.7.</span> <span class="trm-toc-text">例题</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="作用域与作用域链"><a rel="nofollow" class="trm-toc-link" href="#作用域与作用域链"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">作用域与作用域链</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="理解:"><a rel="nofollow" class="trm-toc-link" href="#理解-1"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">理解:</span></a></li><li class="trm-toc-item trm-toc-level-3" title="区别作用域与执行上下文"><a rel="nofollow" class="trm-toc-link" href="#区别作用域与执行上下文"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">区别作用域与执行上下文</span></a></li><li class="trm-toc-item trm-toc-level-3" title="作用域链查找一个变量的规则"><a rel="nofollow" class="trm-toc-link" href="#作用域链查找一个变量的规则"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">作用域链查找一个变量的规则</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="闭包"><a rel="nofollow" class="trm-toc-link" href="#闭包"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">闭包</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="理解"><a rel="nofollow" class="trm-toc-link" href="#理解-2"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">理解</span></a></li><li class="trm-toc-item trm-toc-level-3" title="产生闭包的条件?"><a rel="nofollow" class="trm-toc-link" href="#产生闭包的条件"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">产生闭包的条件?</span></a></li><li class="trm-toc-item trm-toc-level-3" title="常见的闭包"><a rel="nofollow" class="trm-toc-link" href="#常见的闭包"><span class="trm-toc-number">4.3.</span> <span class="trm-toc-text">常见的闭包</span></a></li><li class="trm-toc-item trm-toc-level-3" title="作用:"><a rel="nofollow" class="trm-toc-link" href="#作用"><span class="trm-toc-number">4.4.</span> <span class="trm-toc-text">作用:</span></a></li><li class="trm-toc-item trm-toc-level-3" title="生命周期"><a rel="nofollow" class="trm-toc-link" href="#生命周期"><span class="trm-toc-number">4.5.</span> <span class="trm-toc-text">生命周期</span></a></li><li class="trm-toc-item trm-toc-level-3" title="闭包应用"><a rel="nofollow" class="trm-toc-link" href="#闭包应用"><span class="trm-toc-number">4.6.</span> <span class="trm-toc-text">闭包应用</span></a></li><li class="trm-toc-item trm-toc-level-3" title="缺点"><a rel="nofollow" class="trm-toc-link" href="#缺点"><span class="trm-toc-number">4.7.</span> <span class="trm-toc-text">缺点</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="内存溢出与内存泄露"><a rel="nofollow" class="trm-toc-link" href="#内存溢出与内存泄露"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">内存溢出与内存泄露</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="内存溢出"><a rel="nofollow" class="trm-toc-link" href="#内存溢出"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">内存溢出</span></a></li><li class="trm-toc-item trm-toc-level-3" title="内存泄露"><a rel="nofollow" class="trm-toc-link" href="#内存泄露"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">内存泄露</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="结论先行"><a rel="nofollow" class="trm-toc-link" href="#结论先行"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">结论先行</span></a></li><li class="trm-toc-item trm-toc-level-2" title="背景"><a rel="nofollow" class="trm-toc-link" href="#背景"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">背景</span></a></li><li class="trm-toc-item trm-toc-level-2" title="步骤 1：理解原型 prototype"><a rel="nofollow" class="trm-toc-link" href="#步骤-1：理解原型-prototype"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">步骤 1：理解原型 prototype</span></a></li><li class="trm-toc-item trm-toc-level-2" title="步骤 2：区分显式原型和隐式原型"><a rel="nofollow" class="trm-toc-link" href="#步骤-2：区分显式原型和隐式原型"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">步骤 2：区分显式原型和隐式原型</span></a></li><li class="trm-toc-item trm-toc-level-2" title="步骤 3：理解原型链"><a rel="nofollow" class="trm-toc-link" href="#步骤-3：理解原型链"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">步骤 3：理解原型链</span></a></li><li class="trm-toc-item trm-toc-level-2" title="步骤 4：理解变量提升与函数提升"><a rel="nofollow" class="trm-toc-link" href="#步骤-4：理解变量提升与函数提升"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">步骤 4：理解变量提升与函数提升</span></a></li><li class="trm-toc-item trm-toc-level-2" title="步骤 5：理解执行上下文与执行上下文栈"><a rel="nofollow" class="trm-toc-link" href="#步骤-5：理解执行上下文与执行上下文栈"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">步骤 5：理解执行上下文与执行上下文栈</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="全局执行上下文"><a rel="nofollow" class="trm-toc-link" href="#全局执行上下文"><span class="trm-toc-number">7.1.</span> <span class="trm-toc-text">全局执行上下文</span></a></li><li class="trm-toc-item trm-toc-level-3" title="函数执行上下文"><a rel="nofollow" class="trm-toc-link" href="#函数执行上下文"><span class="trm-toc-number">7.2.</span> <span class="trm-toc-text">函数执行上下文</span></a></li><li class="trm-toc-item trm-toc-level-3" title="执行上下文栈的进出栈过程"><a rel="nofollow" class="trm-toc-link" href="#执行上下文栈的进出栈过程"><span class="trm-toc-number">7.3.</span> <span class="trm-toc-text">执行上下文栈的进出栈过程</span></a></li><li class="trm-toc-item trm-toc-level-3" title="执行上下文创建和初始化的过程"><a rel="nofollow" class="trm-toc-link" href="#执行上下文创建和初始化的过程"><span class="trm-toc-number">7.4.</span> <span class="trm-toc-text">执行上下文创建和初始化的过程</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="步骤 6：理解作用域与作用域链"><a rel="nofollow" class="trm-toc-link" href="#步骤-6：理解作用域与作用域链"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">步骤 6：理解作用域与作用域链</span></a></li><li class="trm-toc-item trm-toc-level-2" title="步骤 7：区分作用域与执行上下文"><a rel="nofollow" class="trm-toc-link" href="#步骤-7：区分作用域与执行上下文"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">步骤 7：区分作用域与执行上下文</span></a></li><li class="trm-toc-item trm-toc-level-2" title="步骤 8：掌握作用域链查找变量的规则"><a rel="nofollow" class="trm-toc-link" href="#步骤-8：掌握作用域链查找变量的规则"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">步骤 8：掌握作用域链查找变量的规则</span></a></li><li class="trm-toc-item trm-toc-level-2" title="步骤 9：理解闭包"><a rel="nofollow" class="trm-toc-link" href="#步骤-9：理解闭包"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">步骤 9：理解闭包</span></a></li><li class="trm-toc-item trm-toc-level-2" title="步骤 10：区分内存溢出与内存泄漏"><a rel="nofollow" class="trm-toc-link" href="#步骤-10：区分内存溢出与内存泄漏"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">步骤 10：区分内存溢出与内存泄漏</span></a></li><li class="trm-toc-item trm-toc-level-2" title="踩坑与注意点"><a rel="nofollow" class="trm-toc-link" href="#踩坑与注意点"><span class="trm-toc-number">13.</span> <span class="trm-toc-text">踩坑与注意点</span></a></li><li class="trm-toc-item trm-toc-level-2" title="参考"><a rel="nofollow" class="trm-toc-link" href="#参考"><span class="trm-toc-number">14.</span> <span class="trm-toc-text">参考</span></a></li></ol>
       </div>
     </div>
 
@@ -974,6 +953,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

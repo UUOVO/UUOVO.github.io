@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="filter方法 blur(): 模糊图像 brightness(): 调整亮度 saturate(): 调整饱和度 contrast(): 调整对比度 grayscale(): 改变图像灰度 drop-shadow(): 阴影,为半透明图片、伪元素等添加阴影效果,给任何非透明部分加阴影 hue-rotate(): 改变图整体色调 invert(): 反转图像颜色 opacity(): 改变">
+<meta name="description" content="汇总filter滤镜的常用函数，说明模糊、亮度等效果对元素渲染表现与性能的影响">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS-滤镜篇">
 <meta property="og:url" content="http://example.com/en/2024/10/30/HTMLCSS/css-%E6%BB%A4%E9%95%9C%E7%AF%87/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="filter方法 blur(): 模糊图像 brightness(): 调整亮度 saturate(): 调整饱和度 contrast(): 调整对比度 grayscale(): 改变图像灰度 drop-shadow(): 阴影,为半透明图片、伪元素等添加阴影效果,给任何非透明部分加阴影 hue-rotate(): 改变图整体色调 invert(): 反转图像颜色 opacity(): 改变">
+<meta property="og:description" content="汇总filter滤镜的常用函数，说明模糊、亮度等效果对元素渲染表现与性能的影响">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-10-30T07:29:10.572Z">
-<meta property="article:modified_time" content="2025-07-29T06:37:41.828Z">
+<meta property="article:published_time" content="2024-10-30T07:29:10.000Z">
+<meta property="article:modified_time" content="2026-11-18T09:38:50.243Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="CSS">
 <meta property="article:tag" content="filter">
@@ -69,7 +69,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-29 14:37:41"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-18 17:38:50"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -84,6 +84,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -198,13 +200,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -240,7 +242,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -258,13 +260,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -533,30 +535,36 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p><code>filter</code> 用一行声明就能给元素叠加图形效果，十个函数可以串联使用。它最实用的三个场景是：用 <code>drop-shadow()</code> 沿不规则轮廓投影、用 <code>sepia()</code> + <code>saturate()</code> + <code>hue-rotate()</code> 给图标染色、用伪元素加 <code>blur()</code> 做毛玻璃。这篇列出全部函数，并说明这三个场景的具体写法。</p>
+<span id="more"></span>
 
-<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ul>
-<li>blur(): 模糊图像</li>
-<li>brightness(): 调整亮度</li>
-<li>saturate(): 调整饱和度</li>
-<li>contrast(): 调整对比度</li>
-<li>grayscale(): 改变图像灰度</li>
-<li>drop-shadow(): 阴影,为半透明图片、伪元素等添加阴影效果,给任何非透明部分加阴影</li>
-<li>hue-rotate(): 改变图整体色调</li>
-<li>invert(): 反转图像颜色</li>
-<li>opacity(): 改变图像透明度</li>
-<li>sepla(): 将图像转为棕褐色</li>
+<h2 id="背景：filter-是叠加在元素上的效果"><a href="#背景：filter-是叠加在元素上的效果" class="headerlink" title="背景：filter 是叠加在元素上的效果"></a>背景：filter 是叠加在元素上的效果</h2><p><code>filter</code> 接受一个或多个滤镜函数，按书写顺序依次作用在元素上。它不需要额外的图片资源，也不改变元素尺寸，适合做状态变化和氛围效果。</p>
+<h2 id="第一步：认识常用的滤镜函数"><a href="#第一步：认识常用的滤镜函数" class="headerlink" title="第一步：认识常用的滤镜函数"></a>第一步：认识常用的滤镜函数</h2><ul>
+<li><code>blur()</code>：模糊图像</li>
+<li><code>brightness()</code>：调整亮度</li>
+<li><code>saturate()</code>：调整饱和度</li>
+<li><code>contrast()</code>：调整对比度</li>
+<li><code>grayscale()</code>：改变图像灰度</li>
+<li><code>drop-shadow()</code>：阴影，为半透明图片、伪元素等添加阴影效果，给任何非透明部分加阴影</li>
+<li><code>hue-rotate()</code>：改变图像整体色调</li>
+<li><code>invert()</code>：反转图像颜色</li>
+<li><code>opacity()</code>：改变图像透明度</li>
+<li><code>sepia()</code>：将图像转为棕褐色</li>
 </ul>
-<h3 id="不规则投影"><a href="#不规则投影" class="headerlink" title="不规则投影"></a>不规则投影</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">filter</span>: <span class="built_in">drop-shadow</span>(<span class="number">3px</span> <span class="number">3px</span> <span class="number">3px</span> <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.5</span>));</span><br></pre></td></tr></table></figure>
+<h2 id="第二步：用-drop-shadow-做不规则投影"><a href="#第二步：用-drop-shadow-做不规则投影" class="headerlink" title="第二步：用 drop-shadow 做不规则投影"></a>第二步：用 drop-shadow 做不规则投影</h2><p><code>drop-shadow()</code> 会沿着元素的不透明像素轮廓投影，因此 PNG 抠图、伪元素这类不规则形状也能得到贴合形状的阴影。下面给元素加一层向右下偏移的柔和阴影：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">filter</span>: <span class="built_in">drop-shadow</span>(<span class="number">3px</span> <span class="number">3px</span> <span class="number">3px</span> <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.5</span>));</span><br></pre></td></tr></table></figure>
 
-<h3 id="染色"><a href="#染色" class="headerlink" title="染色"></a>染色</h3><ul>
-<li>使用 sepia(1)降低饱和度的橙黄色效果，几乎所有的像素都收敛至 35-40.</li>
-<li>使用 saturate(200%)滤镜来提高像素的饱和度。</li>
-<li>使用 hut-rotate(295)滤镜改变主色调，比如想要主色调是 hsl(335, 100%, 50%),40 改变为 335,色相偏移 295 度，即 hue-rotate(295)</li>
+<h2 id="第三步：用组合滤镜给图片染色"><a href="#第三步：用组合滤镜给图片染色" class="headerlink" title="第三步：用组合滤镜给图片染色"></a>第三步：用组合滤镜给图片染色</h2><p>思路是先把颜色收拢到橙黄色，再提高饱和度，最后用色相旋转搬到目标色相：</p>
+<ul>
+<li>使用 <code>sepia(1)</code> 做出降低饱和度的橙黄色效果，几乎所有的像素都收敛至 35-40。</li>
+<li>使用 <code>saturate(200%)</code> 滤镜来提高像素的饱和度。</li>
+<li>使用 <code>hue-rotate(295)</code> 滤镜改变主色调。比如想要主色调是 <code>hsl(335, 100%, 50%)</code>，原本的 40 改变为 335，色相偏移 295 度，即 <code>hue-rotate(295)</code>。</li>
 </ul>
-<h3 id="毛玻璃"><a href="#毛玻璃" class="headerlink" title="毛玻璃"></a>毛玻璃</h3><ul>
-<li>对元素的伪元素进行处理，将其定位到元素的下层，将伪元素的背景与容器背景无缝重合，对伪元素进行模糊处理</li>
+<h2 id="第四步：用伪元素做毛玻璃"><a href="#第四步：用伪元素做毛玻璃" class="headerlink" title="第四步：用伪元素做毛玻璃"></a>第四步：用伪元素做毛玻璃</h2><p>做法是：对元素的伪元素进行处理，将其定位到元素的下层，让伪元素的背景与容器背景无缝重合，再对伪元素进行模糊处理。这样模糊的是伪元素而不是内容本身，文字不会被一起糊掉。</p>
+<h2 id="踩坑与注意点"><a href="#踩坑与注意点" class="headerlink" title="踩坑与注意点"></a>踩坑与注意点</h2><ul>
+<li>多个滤镜函数之间用空格分隔，顺序不同结果也不同；顺序写错时颜色会明显偏掉。</li>
+<li><code>drop-shadow()</code> 与 <code>box-shadow</code> 不是一回事：前者沿不透明像素轮廓，后者沿盒子边框。</li>
+<li><code>blur()</code> 会作用于元素及其内容，直接加在容器上会把文字一起模糊，所以毛玻璃要用伪元素承载模糊。</li>
 </ul>
 
 </article>
@@ -577,11 +585,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/css-%E6%96%87%E6%9C%AC%E8%83%8C%E6%99%AF%E7%AF%87/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/css-%E7%94%BB%E5%A4%9A%E8%BE%B9%E5%BD%A2/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">CSS-文本背景篇</h6>
+                <h6 class="trm-op-title">CSS-画多边形</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -598,11 +606,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/css-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%BB%9A%E5%8A%A8%E6%9D%A1/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/css%E5%8A%A8%E7%94%BB%E5%BA%93-GSAP/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">CSS-浏览器滚动条</h6>
+                <h6 class="trm-op-title">CSS动画库-GSAP</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -674,7 +682,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="filter"><a rel="nofollow" class="trm-toc-link" href="#filter"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">filter</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="方法"><a rel="nofollow" class="trm-toc-link" href="#方法"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">方法</span></a></li><li class="trm-toc-item trm-toc-level-3" title="不规则投影"><a rel="nofollow" class="trm-toc-link" href="#不规则投影"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">不规则投影</span></a></li><li class="trm-toc-item trm-toc-level-3" title="染色"><a rel="nofollow" class="trm-toc-link" href="#染色"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">染色</span></a></li><li class="trm-toc-item trm-toc-level-3" title="毛玻璃"><a rel="nofollow" class="trm-toc-link" href="#毛玻璃"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">毛玻璃</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景：filter 是叠加在元素上的效果"><a rel="nofollow" class="trm-toc-link" href="#背景：filter-是叠加在元素上的效果"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景：filter 是叠加在元素上的效果</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第一步：认识常用的滤镜函数"><a rel="nofollow" class="trm-toc-link" href="#第一步：认识常用的滤镜函数"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">第一步：认识常用的滤镜函数</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第二步：用 drop-shadow 做不规则投影"><a rel="nofollow" class="trm-toc-link" href="#第二步：用-drop-shadow-做不规则投影"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">第二步：用 drop-shadow 做不规则投影</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第三步：用组合滤镜给图片染色"><a rel="nofollow" class="trm-toc-link" href="#第三步：用组合滤镜给图片染色"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">第三步：用组合滤镜给图片染色</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第四步：用伪元素做毛玻璃"><a rel="nofollow" class="trm-toc-link" href="#第四步：用伪元素做毛玻璃"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">第四步：用伪元素做毛玻璃</span></a></li><li class="trm-toc-item trm-toc-level-2" title="踩坑与注意点"><a rel="nofollow" class="trm-toc-link" href="#踩坑与注意点"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">踩坑与注意点</span></a></li></ol>
       </div>
     </div>
 
@@ -798,6 +806,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

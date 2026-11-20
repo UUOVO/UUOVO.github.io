@@ -7,16 +7,16 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="复杂组件—日历组件的多页面不同应用解决方案现状 已经封装完的日历组件且已经应用与多个页面(此时仅有一套组件方案)  需求 该日历组件要应用与其它页面(两个)但展示的效果和功能与原方案不同  冲突 应用该组件新方案的两个页面之间,一个需要初始化数据,一个不需要,存在冲突  难点: 原来的日历组件使用的formatter,与现在页面使用的formatter不同 选择的文字字段展示与原先不同 可选">
+<meta name="description" content="以日历组件多页面复用为例，说明 formatter 注入、选中态保留与重置的处理，并记录 checkbox 伪类三角形错位的修复">
 <meta property="og:type" content="article">
-<meta property="og:title" content="微信小程序-复杂组件的应用">
+<meta property="og:title" content="复杂组件的应用">
 <meta property="og:url" content="http://example.com/en/2024/11/04/WeChatMini/%E5%A4%8D%E6%9D%82%E7%BB%84%E4%BB%B6%E7%9A%84%E5%BA%94%E7%94%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="复杂组件—日历组件的多页面不同应用解决方案现状 已经封装完的日历组件且已经应用与多个页面(此时仅有一套组件方案)  需求 该日历组件要应用与其它页面(两个)但展示的效果和功能与原方案不同  冲突 应用该组件新方案的两个页面之间,一个需要初始化数据,一个不需要,存在冲突  难点: 原来的日历组件使用的formatter,与现在页面使用的formatter不同 选择的文字字段展示与原先不同 可选">
+<meta property="og:description" content="以日历组件多页面复用为例，说明 formatter 注入、选中态保留与重置的处理，并记录 checkbox 伪类三角形错位的修复">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/404.jpg">
-<meta property="article:published_time" content="2024-11-04T01:57:32.033Z">
-<meta property="article:modified_time" content="2025-07-22T09:50:54.283Z">
+<meta property="article:published_time" content="2024-11-04T01:57:32.000Z">
+<meta property="article:modified_time" content="2026-11-19T06:24:35.016Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="checkbox样式修改">
 <meta property="article:tag" content="问题与方案">
@@ -26,7 +26,7 @@
     <meta name="keywords" content="微信小程序, checkbox样式问题">
 
 
-<title >微信小程序-复杂组件的应用</title>
+<title >复杂组件的应用</title>
 
 <!-- Favicon -->
 
@@ -71,7 +71,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-22 17:50:54"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-19 14:24:35"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -86,6 +86,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -200,13 +202,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -242,7 +244,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -260,13 +262,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -388,7 +390,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            微信小程序-复杂组件的应用
+                            复杂组件的应用
                         </h1>
 
                         
@@ -535,42 +537,70 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <blockquote>
+<p>结论先行：组件不保存业务状态；差异化展示由页面注入 formatter，是否保留选中态由页面控制，<code>reset()</code> 只在确实需要清空时调用。</p>
+</blockquote>
+<span id="more"></span>
 
-<h2 id="复杂组件—日历组件的多页面不同应用解决方案"><a href="#复杂组件—日历组件的多页面不同应用解决方案" class="headerlink" title="复杂组件—日历组件的多页面不同应用解决方案"></a>复杂组件—日历组件的多页面不同应用解决方案</h2><h3 id="现状"><a href="#现状" class="headerlink" title="现状"></a>现状</h3><ul>
-<li>已经封装完的日历组件且已经应用与多个页面(此时仅有一套组件方案)</li>
-</ul>
-<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><ul>
-<li>该日历组件要应用与其它页面(两个)但展示的效果和功能与原方案不同</li>
-</ul>
-<h3 id="冲突"><a href="#冲突" class="headerlink" title="冲突"></a>冲突</h3><ul>
-<li>应用该组件新方案的两个页面之间,一个需要初始化数据,一个不需要,存在冲突</li>
-</ul>
-<h3 id="难点"><a href="#难点" class="headerlink" title="难点:"></a>难点:</h3><ol>
-<li>原来的日历组件使用的formatter,与现在页面使用的formatter不同</li>
-<li>选择的文字字段展示与原先不同</li>
-<li>可选择日期,选择之后不能在选择同一天(不可重叠)</li>
-<li>选择预约页面:一开始空,打开后点击任意日期,没有点击确定时,关闭弹窗,在打开弹窗后,原先选中的数据要保留,选中的那天日期,选中文本,上下午状态和确定按钮,都要保留被选中的状态,和可以确定的状态</li>
-<li>更改预约页面的弹窗: 一打开为预约的那个时间(不管当天且上下午状态是否已经约满),状态都为选中的状态,点击其它可选择日期,原先的预约时间约满的禁止不可选</li>
-<li>点击更改预约时间后,在点击其它时间,不确定,关掉弹窗,在点击弹窗,状态应默认为对应预约时间的选择状态</li>
+<h2 id="一、日历组件的多页面复用"><a href="#一、日历组件的多页面复用" class="headerlink" title="一、日历组件的多页面复用"></a>一、日历组件的多页面复用</h2><h3 id="现状"><a href="#现状" class="headerlink" title="现状"></a>现状</h3><p>日历组件已经封装完成，并应用在多个页面，目前只有一套 formatter 和一套初始化逻辑。</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>组件还要接入两个新页面，但展示效果和交互与原有页面不同。</p>
+<h3 id="需求差异"><a href="#需求差异" class="headerlink" title="需求差异"></a>需求差异</h3><table>
+<thead>
+<tr>
+<th>页面</th>
+<th>初始状态</th>
+<th>关闭弹窗后再打开</th>
+<th>约满日期</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>选择预约</td>
+<td>空</td>
+<td>保留已选日期、文本和上下午状态</td>
+<td>按原逻辑处理</td>
+</tr>
+<tr>
+<td>修改预约</td>
+<td>默认选中当前预约时间</td>
+<td>保留最近一次选择</td>
+<td>其他约满日期禁用，当前预约时间仍可选</td>
+</tr>
+</tbody></table>
+<h3 id="冲突与难点"><a href="#冲突与难点" class="headerlink" title="冲突与难点"></a>冲突与难点</h3><ol>
+<li>原组件的 formatter 与新页面需要的 formatter 不同。</li>
+<li>选中后展示的文本字段与原方案不同。</li>
+<li>同一天不能重复选择。</li>
+<li>选择预约页：关闭弹窗时不能初始化数据，否则已选状态会丢失。</li>
+<li>修改预约页：打开时默认选中当前预约时间，即使当天已经约满。</li>
+<li>修改预约页：切换到其他日期后再关闭，重新打开时仍要回到当前预约时间的选中态。</li>
 </ol>
-<h3 id="解决"><a href="#解决" class="headerlink" title="解决:"></a>解决:</h3><ul>
-<li>保险起见可以先把原formatter存起来,然后写新formatter,确保满足需求后把新formatter存起来,然后还原旧formatter</li>
-<li>新formatter在页面中,通过组件传值的方式传给组件</li>
-<li>组件初始化时通过this.data判断是否存在formatter(formatter类型为null)</li>
-<li>页面中通过按钮状态判断并传递给组件</li>
-<li>组件要判断字段是否存在,以此添加到原来的选择文本字段(原来 +&#x3D; 新的), 需要监听文本字段的变化,日期不变</li>
-<li>在组件处理选择日期的函数中判断,如果是同一天就返回<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> calendarComponent = <span class="variable language_">this</span>.<span class="title function_">selectComponent</span>(<span class="string">&#x27;#calendar&#x27;</span>)</span><br><span class="line">calendarComponent.<span class="title function_">reset</span>() <span class="comment">// 重置日历组件</span></span><br></pre></td></tr></table></figure></li>
-<li>在组件关闭弹窗处,不能初始化数据,再点开时要把需要拿到的状态获取到</li>
-<li>在组件properties中的初始化时间函数要监听数据,重新获取已经处理的文本字段,日期仍然时预约那天(date)</li>
-</ul>
-<h2 id="checkbox样式问题"><a href="#checkbox样式问题" class="headerlink" title="checkbox样式问题"></a>checkbox样式问题</h2><p><img src="/../../img/WeChatMini/btn%E6%A0%B7%E5%BC%8F1.png" alt="btn样式"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
-<p>当伪类的三角形随着机型,位置浮动时,可在checkbox那添加overflow:hiddden</p>
-<h3 id="页面"><a href="#页面" class="headerlink" title="页面"></a>页面</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">checkbox</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">class</span>=<span class="string">&quot;checkbox &#123;&#123; isCheckAm &amp;&amp; isAm === amType.MORNING ? &#x27;is_checked_am&#x27; : &#x27;&#x27; &#125;&#125;&quot;</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">value</span>=<span class="string">&quot;&#123;&#123; isAm === amType.MORNING &#125;&#125;&quot;</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">mark:isAm</span>=<span class="string">&quot;&#123;&#123; amType.MORNING &#125;&#125;&quot;</span></span></span><br><span class="line"><span class="tag">  &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;iconfont icon-checkgou tick&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;car-subscribe-form-grid-view-daybtn&quot;</span>&gt;</span>上午<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">checkbox</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">checkbox &#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">200</span>rpx;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">88</span>rpx;</span><br><span class="line">	<span class="attribute">border-radius</span>: <span class="number">4</span>rpx;</span><br><span class="line">	<span class="attribute">border</span>: <span class="number">2</span>rpx solid <span class="built_in">var</span>(--border-line-color);</span><br><span class="line">	<span class="attribute">margin-top</span>: <span class="number">24</span>rpx;</span><br><span class="line">	<span class="attribute">color</span>: <span class="built_in">var</span>(--text-<span class="number">1</span>-color);</span><br><span class="line">	<span class="attribute">background</span>: <span class="built_in">var</span>(--white);</span><br><span class="line">&#125;</span><br><span class="line">checkbox<span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">0</span>rpx;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0</span>rpx;</span><br><span class="line">  <span class="attribute">border-bottom</span>: <span class="number">60</span>rpx solid <span class="built_in">var</span>(--border-line-color);</span><br><span class="line">  <span class="attribute">border-left</span>: <span class="number">60</span>rpx solid transparent;</span><br><span class="line">  <span class="attribute">margin-left</span>: -<span class="number">47</span>rpx;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">30</span>rpx;</span><br><span class="line">&#125;</span><br><span class="line">checkbox<span class="selector-pseudo">:first-child</span> &#123;</span><br><span class="line">  <span class="attribute">margin-right</span>: <span class="number">22</span>rpx;</span><br><span class="line">  <span class="attribute">margin-left</span>: <span class="number">40</span>rpx;</span><br><span class="line">&#125;</span><br><span class="line">checkbox <span class="selector-class">.wx-checkbox-input</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: none;</span><br><span class="line">   <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">checkbox <span class="selector-class">.wx-checkbox-input</span><span class="selector-class">.wx-checkbox-input-checked</span> &#123;</span><br><span class="line">  <span class="comment">/* checkbox 被选中后前面选项框的背景样式 */</span></span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">checkbox <span class="selector-class">.wx-checkbox-input</span><span class="selector-class">.wx-checkbox-input-checked</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">0</span>rpx;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">0</span>rpx;</span><br><span class="line">  <span class="attribute">font-size</span>:<span class="number">0</span>;</span><br><span class="line">  <span class="attribute">color</span>:<span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">background-color</span>:<span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.is_checked_am</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">2</span>rpx solid <span class="built_in">var</span>(--primary-color) <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.is_checked_am</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">0</span>rpx;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0</span>rpx;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">border-bottom</span>: <span class="number">60</span>rpx solid <span class="built_in">var</span>(--primary-color);</span><br><span class="line">  <span class="attribute">border-left</span>: <span class="number">60</span>rpx solid transparent;</span><br><span class="line">  <span class="attribute">margin-left</span>: -<span class="number">47</span>rpx;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">30</span>rpx;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.icon-checkgou</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">padding-left</span>: <span class="number">157</span>rpx;</span><br><span class="line">  <span class="attribute">padding-top</span>: <span class="number">100</span>rpx;</span><br><span class="line">  <span class="attribute">color</span>: white;</span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">1000</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.tick</span> &#123;</span><br><span class="line">  <span class="attribute">padding-top</span>: <span class="number">56</span>rpx <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.car-subscribe-form-grid-view-daybtn</span> &#123;</span><br><span class="line">  <span class="attribute">padding-left</span>: <span class="number">20</span>rpx;</span><br><span class="line">  <span class="attribute">padding-top</span>: <span class="number">24</span>rpx;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">160</span>rpx;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">26</span>rpx;</span><br><span class="line">  <span class="attribute">text-align</span>: left;</span><br><span class="line">  <span class="attribute">word-break</span>: break-all;</span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">50</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h3><h4 id="1-formatter-由页面注入"><a href="#1-formatter-由页面注入" class="headerlink" title="1. formatter 由页面注入"></a>1. formatter 由页面注入</h4><p>组件不写死 formatter，在 <code>properties</code> 中声明，默认值为 <code>null</code>；页面通过属性传值，组件初始化时先判断是否存在再使用。</p>
+<h4 id="2-文本字段增量拼接"><a href="#2-文本字段增量拼接" class="headerlink" title="2. 文本字段增量拼接"></a>2. 文本字段增量拼接</h4><p>新字段存在时拼接到原选择文本后面，并监听文本字段的变化；日期字段保持不变，仍取预约那天。</p>
+<h4 id="3-同一天不可重复选择"><a href="#3-同一天不可重复选择" class="headerlink" title="3. 同一天不可重复选择"></a>3. 同一天不可重复选择</h4><p>在组件处理选择日期的函数中判断，如果选中的是同一天就直接返回。</p>
+<h4 id="4-关闭弹窗只保存状态，不初始化"><a href="#4-关闭弹窗只保存状态，不初始化" class="headerlink" title="4. 关闭弹窗只保存状态，不初始化"></a>4. 关闭弹窗只保存状态，不初始化</h4><p>关闭时不要重新初始化数据；再次打开时读取上次保存的状态并回填，这样”选中日期、文本、上下午、确定按钮”的状态都能保留。</p>
+<h4 id="5-需要清空时调用-reset"><a href="#5-需要清空时调用-reset" class="headerlink" title="5. 需要清空时调用 reset()"></a>5. 需要清空时调用 reset()</h4><p>选中日历的某个日期后，重置选中日期到默认值：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> calendarComponent = <span class="variable language_">this</span>.<span class="title function_">selectComponent</span>(<span class="string">&#x27;#calendar&#x27;</span>)</span><br><span class="line">calendarComponent.<span class="title function_">reset</span>() <span class="comment">// 重置日历组件</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="calendar的reset"><a href="#calendar的reset" class="headerlink" title="calendar的reset()"></a>calendar的reset()</h2><p>选中日历的某个日期，重置选中的日期到默认值</p>
+<blockquote>
+<p>迁移建议：改动前先备份原 formatter，新 formatter 验证通过后再替换，避免影响已经在用的页面。</p>
+</blockquote>
+<h3 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h3><ul>
+<li>把”关闭弹窗”写成”初始化数据”，会导致选择预约页的选中态丢失。</li>
+<li>formatter 直接覆盖会让旧页面展示异常，必须保留原值以便回退。</li>
+<li>约满禁用的判断要排除当前预约时间，否则修改预约页一打开就无法保留原时间。</li>
+</ul>
+<h2 id="二、checkbox-的伪类三角形错位"><a href="#二、checkbox-的伪类三角形错位" class="headerlink" title="二、checkbox 的伪类三角形错位"></a>二、checkbox 的伪类三角形错位</h2><h3 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h3><p><img src="/../../img/WeChatMini/btn%E6%A0%B7%E5%BC%8F1.png" alt="btn样式"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>用伪类画出的三角形会随机型上下浮动。</p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>三角形由 <code>::after</code> 绝对定位加负 margin 绘制，溢出了 checkbox 自身范围，位置会随父容器和机型变化。</p>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>在 checkbox 上加 <code>overflow: hidden</code>，把三角形限制在自身盒子里。</p>
+<h3 id="页面结构"><a href="#页面结构" class="headerlink" title="页面结构"></a>页面结构</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">checkbox</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">class</span>=<span class="string">&quot;checkbox &#123;&#123; isCheckAm &amp;&amp; isAm === amType.MORNING ? &#x27;is_checked_am&#x27; : &#x27;&#x27; &#125;&#125;&quot;</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">value</span>=<span class="string">&quot;&#123;&#123; isAm === amType.MORNING &#125;&#125;&quot;</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">mark:isAm</span>=<span class="string">&quot;&#123;&#123; amType.MORNING &#125;&#125;&quot;</span></span></span><br><span class="line"><span class="tag">  &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;iconfont icon-checkgou tick&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;car-subscribe-form-grid-view-daybtn&quot;</span>&gt;</span>上午<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">checkbox</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">checkbox &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200</span>rpx;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">88</span>rpx;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">4</span>rpx;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">2</span>rpx solid <span class="built_in">var</span>(--border-line-color);</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">24</span>rpx;</span><br><span class="line">  <span class="attribute">color</span>: <span class="built_in">var</span>(--text-<span class="number">1</span>-color);</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">var</span>(--white);</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">checkbox<span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">0</span>rpx;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0</span>rpx;</span><br><span class="line">  <span class="attribute">border-bottom</span>: <span class="number">60</span>rpx solid <span class="built_in">var</span>(--border-line-color);</span><br><span class="line">  <span class="attribute">border-left</span>: <span class="number">60</span>rpx solid transparent;</span><br><span class="line">  <span class="attribute">margin-left</span>: -<span class="number">47</span>rpx;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">30</span>rpx;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">checkbox<span class="selector-pseudo">:first-child</span> &#123;</span><br><span class="line">  <span class="attribute">margin-right</span>: <span class="number">22</span>rpx;</span><br><span class="line">  <span class="attribute">margin-left</span>: <span class="number">40</span>rpx;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">checkbox <span class="selector-class">.wx-checkbox-input</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: none;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">checkbox <span class="selector-class">.wx-checkbox-input</span><span class="selector-class">.wx-checkbox-input-checked</span> &#123;</span><br><span class="line">  <span class="comment">/* checkbox 被选中后前面选项框的背景样式 */</span></span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">checkbox <span class="selector-class">.wx-checkbox-input</span><span class="selector-class">.wx-checkbox-input-checked</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">0</span>rpx;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0</span>rpx;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.is_checked_am</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">2</span>rpx solid <span class="built_in">var</span>(--primary-color) <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.is_checked_am</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">0</span>rpx;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0</span>rpx;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">border-bottom</span>: <span class="number">60</span>rpx solid <span class="built_in">var</span>(--primary-color);</span><br><span class="line">  <span class="attribute">border-left</span>: <span class="number">60</span>rpx solid transparent;</span><br><span class="line">  <span class="attribute">margin-left</span>: -<span class="number">47</span>rpx;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">30</span>rpx;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.icon-checkgou</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">padding-left</span>: <span class="number">157</span>rpx;</span><br><span class="line">  <span class="attribute">padding-top</span>: <span class="number">100</span>rpx;</span><br><span class="line">  <span class="attribute">color</span>: white;</span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">1000</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.tick</span> &#123;</span><br><span class="line">  <span class="attribute">padding-top</span>: <span class="number">56</span>rpx <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.car-subscribe-form-grid-view-daybtn</span> &#123;</span><br><span class="line">  <span class="attribute">padding-left</span>: <span class="number">20</span>rpx;</span><br><span class="line">  <span class="attribute">padding-top</span>: <span class="number">24</span>rpx;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">160</span>rpx;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">26</span>rpx;</span><br><span class="line">  <span class="attribute">text-align</span>: left;</span><br><span class="line">  <span class="attribute">word-break</span>: break-all;</span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">50</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><ul>
+<li><code>.is_checked_am</code> 负责选中后的边框和三角形颜色。</li>
+<li><code>.icon-checkgou</code> 和 <code>.tick</code> 控制勾选图标的位置，<code>padding-top</code> 用 <code>!important</code> 覆盖图标默认值。</li>
+</ul>
 
 </article>
     
@@ -590,11 +620,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/%E5%AF%8C%E6%96%87%E6%9C%AC/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96%E6%96%B9%E5%BC%8F/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">微信小程序-富文本</h6>
+                <h6 class="trm-op-title">代码优化方式</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -611,11 +641,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96%E6%96%B9%E5%BC%8F/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/%E5%AF%8C%E6%96%87%E6%9C%AC/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">微信小程序-代码优化方式</h6>
+                <h6 class="trm-op-title">富文本</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -687,7 +717,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="复杂组件—日历组件的多页面不同应用解决方案"><a rel="nofollow" class="trm-toc-link" href="#复杂组件—日历组件的多页面不同应用解决方案"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">复杂组件—日历组件的多页面不同应用解决方案</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="现状"><a rel="nofollow" class="trm-toc-link" href="#现状"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">现状</span></a></li><li class="trm-toc-item trm-toc-level-3" title="需求"><a rel="nofollow" class="trm-toc-link" href="#需求"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">需求</span></a></li><li class="trm-toc-item trm-toc-level-3" title="冲突"><a rel="nofollow" class="trm-toc-link" href="#冲突"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">冲突</span></a></li><li class="trm-toc-item trm-toc-level-3" title="难点:"><a rel="nofollow" class="trm-toc-link" href="#难点"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">难点:</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决:"><a rel="nofollow" class="trm-toc-link" href="#解决"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">解决:</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="checkbox样式问题"><a rel="nofollow" class="trm-toc-link" href="#checkbox样式问题"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">checkbox样式问题</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="页面"><a rel="nofollow" class="trm-toc-link" href="#页面"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">页面</span></a></li><li class="trm-toc-item trm-toc-level-3" title="样式"><a rel="nofollow" class="trm-toc-link" href="#样式"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">样式</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="calendar的reset()"><a rel="nofollow" class="trm-toc-link" href="#calendar的reset"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">calendar的reset()</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="一、日历组件的多页面复用"><a rel="nofollow" class="trm-toc-link" href="#一、日历组件的多页面复用"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">一、日历组件的多页面复用</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="现状"><a rel="nofollow" class="trm-toc-link" href="#现状"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">现状</span></a></li><li class="trm-toc-item trm-toc-level-3" title="需求"><a rel="nofollow" class="trm-toc-link" href="#需求"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">需求</span></a></li><li class="trm-toc-item trm-toc-level-3" title="需求差异"><a rel="nofollow" class="trm-toc-link" href="#需求差异"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">需求差异</span></a></li><li class="trm-toc-item trm-toc-level-3" title="冲突与难点"><a rel="nofollow" class="trm-toc-link" href="#冲突与难点"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">冲突与难点</span></a></li><li class="trm-toc-item trm-toc-level-3" title="方案"><a rel="nofollow" class="trm-toc-link" href="#方案"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">方案</span></a></li><li class="trm-toc-item trm-toc-level-3" title="踩坑"><a rel="nofollow" class="trm-toc-link" href="#踩坑"><span class="trm-toc-number">1.6.</span> <span class="trm-toc-text">踩坑</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="二、checkbox 的伪类三角形错位"><a rel="nofollow" class="trm-toc-link" href="#二、checkbox-的伪类三角形错位"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">二、checkbox 的伪类三角形错位</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="现象"><a rel="nofollow" class="trm-toc-link" href="#现象"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">现象</span></a></li><li class="trm-toc-item trm-toc-level-3" title="原因"><a rel="nofollow" class="trm-toc-link" href="#原因"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">原因</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决"><a rel="nofollow" class="trm-toc-link" href="#解决"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">解决</span></a></li><li class="trm-toc-item trm-toc-level-3" title="页面结构"><a rel="nofollow" class="trm-toc-link" href="#页面结构"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">页面结构</span></a></li><li class="trm-toc-item trm-toc-level-3" title="样式"><a rel="nofollow" class="trm-toc-link" href="#样式"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">样式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="说明"><a rel="nofollow" class="trm-toc-link" href="#说明"><span class="trm-toc-number">2.6.</span> <span class="trm-toc-text">说明</span></a></li></ol></li></ol>
       </div>
     </div>
 
@@ -811,6 +841,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

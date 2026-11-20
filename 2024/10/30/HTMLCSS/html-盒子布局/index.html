@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="文档流(normal flow) 网页是一个多层的结构，用户只能看到最顶上一层,最底下的一层称为文档流，文档流是网页的基础   CSS 可以分别为每一层来设置样式 元素默认都是在文档流中进行排列 元素主要有两个状态: 在文档流中 &#x2F; 脱离文档流 元素在文档流的特点： 块元素： 在页面中独占一行(自上向下垂直排列) 默认宽度是父元素的全部，默认高度是被内容撑开   行内元素： 不会独">
+<meta name="description" content="从文档流讲到盒模型四层结构：水平与垂直布局等式、外边距折叠、行内元素盒模型和视口像素一次理清">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Html-盒子布局">
 <meta property="og:url" content="http://example.com/2024/10/30/HTMLCSS/html-%E7%9B%92%E5%AD%90%E5%B8%83%E5%B1%80/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="文档流(normal flow) 网页是一个多层的结构，用户只能看到最顶上一层,最底下的一层称为文档流，文档流是网页的基础   CSS 可以分别为每一层来设置样式 元素默认都是在文档流中进行排列 元素主要有两个状态: 在文档流中 &#x2F; 脱离文档流 元素在文档流的特点： 块元素： 在页面中独占一行(自上向下垂直排列) 默认宽度是父元素的全部，默认高度是被内容撑开   行内元素： 不会独">
+<meta property="og:description" content="从文档流讲到盒模型四层结构：水平与垂直布局等式、外边距折叠、行内元素盒模型和视口像素一次理清">
 <meta property="og:locale">
-<meta property="article:published_time" content="2024-10-30T07:29:11.158Z">
-<meta property="article:modified_time" content="2025-07-29T09:41:00.314Z">
+<meta property="article:published_time" content="2024-10-30T07:29:11.000Z">
+<meta property="article:modified_time" content="2026-11-17T02:17:56.338Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="Html">
 <meta property="article:tag" content="布局">
@@ -69,7 +69,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-29 17:41:00"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-17 10:17:56"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -84,6 +84,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -198,13 +200,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -240,7 +242,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -258,13 +260,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -533,221 +535,189 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>盒模型决定了一个盒子占多大、怎么排。这篇按”文档流 → 盒模型的四层结构 → 水平与垂直布局的等式 → 外边距折叠 → 行内元素 → 默认样式 → 像素与视口”的顺序，把块级布局的底层规则串起来；读完后再遇到”盒子溢出、居中失效、margin 传递”这类问题，可以直接定位到是哪条规则在起作用。</p>
+<span id="more"></span>
 
-<h2 id="文档流-normal-flow"><a href="#文档流-normal-flow" class="headerlink" title="文档流(normal flow)"></a>文档流(normal flow)</h2><blockquote>
-<p>网页是一个多层的结构，用户只能看到最顶上一层,最底下的一层称为文档流，文档流是网页的基础</p>
+<h2 id="背景：网页是分层叠出来的"><a href="#背景：网页是分层叠出来的" class="headerlink" title="背景：网页是分层叠出来的"></a>背景：网页是分层叠出来的</h2><blockquote>
+<p>网页是一个多层的结构，用户只能看到最顶上一层，最底下的一层称为文档流，文档流是网页的基础。</p>
 </blockquote>
+<p>CSS 可以分别为每一层设置样式，元素默认都在文档流中排列。元素主要有两个状态：在文档流中、脱离文档流。</p>
+<h2 id="第一步：先看元素在文档流里的默认表现"><a href="#第一步：先看元素在文档流里的默认表现" class="headerlink" title="第一步：先看元素在文档流里的默认表现"></a>第一步：先看元素在文档流里的默认表现</h2><p>不同显示类型的元素，在文档流中的排列规则不同：</p>
 <ul>
-<li>CSS 可以分别为每一层来设置样式</li>
-<li>元素默认都是在文档流中进行排列</li>
-<li>元素主要有两个状态: 在文档流中 &#x2F; 脱离文档流</li>
-<li>元素在文档流的特点：<ul>
 <li>块元素：<ul>
-<li>在页面中独占一行(自上向下垂直排列)</li>
-<li>默认宽度是父元素的全部，默认高度是被内容撑开</li>
+<li>在页面中独占一行（自上向下垂直排列）</li>
+<li>默认宽度是父元素的全部，默认高度被内容撑开</li>
 </ul>
 </li>
 <li>行内元素：<ul>
-<li>不会独占页面的一行，只占自身的大小(从左向右水平排列，会换行)</li>
-<li>行内元素的默认宽度和高度都是被内容撑开</li>
+<li>不会独占一行，只占自身的大小（从左向右水平排列，会换行）</li>
+<li>默认宽度和高度都被内容撑开</li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-<h2 id="盒模型-box-model"><a href="#盒模型-box-model" class="headerlink" title="盒模型(box model)"></a>盒模型(box model)</h2><ul>
-<li>一个盒子的大小由以下几个部分组成：<ul>
-<li>内容区(content) + 内边距(padding) + 边框(border) + 外边距(margin)</li>
-</ul>
-</li>
-<li>浏览器默认使用标准盒模型</li>
-</ul>
-<ol>
-<li><span class="key_words">『标准盒模型(W3C盒模型)』</span>中 width 和 height 指的是内容区域 content 的宽高<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">box-sizing</span>: content-box;</span><br></pre></td></tr></table></figure></li>
-<li><span class="key_words">『怪异盒模型(IE盒模型)』</span>中的 width 和 height 指的是 content + border + padding 的宽高<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">box-sizing</span>: border-box;</span><br></pre></td></tr></table></figure>
+<h2 id="第二步：拆开盒模型"><a href="#第二步：拆开盒模型" class="headerlink" title="第二步：拆开盒模型"></a>第二步：拆开盒模型</h2><p>一个盒子的大小由下面几部分组成：内容区（content）+ 内边距（padding）+ 边框（border）+ 外边距（margin）。浏览器默认使用标准盒模型。</p>
+<p><code>box-sizing</code> 决定 width、height 究竟算到哪一层，这是理解盒子的起点。</p>
+<p>标准盒模型（W3C 盒模型）中，width 和 height 指的是内容区 content 的宽高：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">box-sizing</span>: content-box;</span><br></pre></td></tr></table></figure>
+
+<p>怪异盒模型（IE 盒模型）中的 width 和 height 指的是 content + border + padding 的宽高：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">box-sizing</span>: border-box;</span><br></pre></td></tr></table></figure>
+
+<p>因为内容区已经包含 border 和 padding，所以怪异盒模型下这两项不会撑开盒子。</p>
+<h3 id="内容区（content）"><a href="#内容区（content）" class="headerlink" title="内容区（content）"></a>内容区（content）</h3><p>元素中所有的子元素和文本内容都在内容区中排列，内容区的大小由 width 和 height 两个属性设置。</p>
+<h3 id="边框（border）"><a href="#边框（border）" class="headerlink" title="边框（border）"></a>边框（border）</h3><p>要设置边框，至少需要设置宽度、样式、颜色三项。可以使用简写属性（没有顺序要求）：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">border</span>: border-width border-style border-color;</span><br></pre></td></tr></table></figure>
+
+<p>各子属性分别说明：</p>
 <ul>
-<li>因为 content 已经包含 border 和 padding，所以这两项不会撑开盒子</li>
-</ul>
-</li>
-</ol>
-<h3 id="内容区-content"><a href="#内容区-content" class="headerlink" title="内容区(content)"></a>内容区(content)</h3><ul>
-<li>元素中的所有的子元素和文本内容都在内容区中排列</li>
-<li>内容区的大小由 width 和 height 两个属性来设置</li>
-</ul>
-<h3 id="边框-border"><a href="#边框-border" class="headerlink" title="边框(border)"></a>边框(border)</h3><ul>
-<li>要设置边框，需要至少设置三个样式：</li>
-<li>border-[top | right | bottom | left]简写属性(没有顺序要求):<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">border</span>: border-width border-style border-color;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>边框的宽度：border-[top | right | bottom | left]-width<ul>
-<li>默认值为 3px</li>
-<li>值的情况<ul>
+<li>边框的宽度：<code>border-[top | right | bottom | left]-width</code>，默认值为 3px。值的个数决定作用方向：<ul>
 <li>四个值：上 右 下 左</li>
 <li>三个值：上 左右 下</li>
 <li>两个值：上下 左右</li>
 <li>一个值：上下左右</li>
 </ul>
 </li>
+<li>边框的颜色：<code>border-color</code>，值的情况与 <code>border-width</code> 一样。</li>
+<li>边框的样式：</li>
 </ul>
-</li>
-<li>边框的颜色：border-color<ul>
-<li>值的情况与 border-width 一样</li>
-</ul>
-</li>
-<li>边框的样式：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">border-style</span>: none | <span class="built_in">solid</span>(实) | <span class="built_in">dotted</span>(点) | <span class="built_in">dashed</span>(虚) | <span class="built_in">double</span>(双)</span><br></pre></td></tr></table></figure></li>
-<li>圆角半径：border-[top | bottom]-[left | right]-radius<ul>
-<li>值情况：<ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">border-style</span>: none | <span class="built_in">solid</span>(实) | <span class="built_in">dotted</span>(点) | <span class="built_in">dashed</span>(虚) | <span class="built_in">double</span>(双);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>圆角半径：<code>border-[top | bottom]-[left | right]-radius</code>，值的个数决定作用方向：<ul>
 <li>两个值：左上&#x2F;右下 右上&#x2F;左下</li>
 <li>三个值：左上 右上&#x2F;左下 右下</li>
 <li>四个值：左上 右上 右下 左下</li>
 </ul>
 </li>
+<li>元素的阴影：</li>
 </ul>
-</li>
-<li>元素的阴影：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">box-shadow</span>: 水平偏移量(正值向右,负值向左) 垂直偏移量(正值向下,负值向上) 模糊半径 颜色</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">box-shadow</span>: 水平偏移量(正值向右,负值向左) 垂直偏移量(正值向下,负值向上) 模糊半径 颜色;</span><br></pre></td></tr></table></figure>
+
+<p>阴影不会影响页面布局。</p>
 <ul>
-<li>不会影响页面布局</li>
+<li>轮廓：<code>outline</code> 常用来设置 hover 效果。用法与 border 一样，但轮廓不会占用空间，也不影响元素的位置和大小。</li>
 </ul>
-</li>
-<li>轮廓：outline：常用来设置 hover 效果。与 border 一样，但轮廓不会占用空间和影响元素位置大小</li>
+<h3 id="内边距（padding）"><a href="#内边距（padding）" class="headerlink" title="内边距（padding）"></a>内边距（padding）</h3><p>用 <code>padding-[top | right | bottom | left]</code> 设置，背景颜色会延伸到内边距上。</p>
+<h3 id="外边距（margin）"><a href="#外边距（margin）" class="headerlink" title="外边距（margin）"></a>外边距（margin）</h3><p>用 <code>margin-[top | right | bottom | left]</code> 设置。元素在页面中按自左向右的顺序排列，所以默认情况下设置左、上会移动元素自身，而设置下、右会移动其他元素。</p>
+<h2 id="第三步：理解水平布局的等式"><a href="#第三步：理解水平布局的等式" class="headerlink" title="第三步：理解水平布局的等式"></a>第三步：理解水平布局的等式</h2><p>一个元素在其父元素中，水平布局必须满足下面的等式；如果相加的结果使等式不成立，就称为过度约束，浏览器会自动调整：</p>
+<blockquote>
+<p>margin-left + border-left + padding-left + width + padding-right + border-right + margin-right &#x3D; 其父元素内容区的宽度</p>
+</blockquote>
+<p>调整规则如下：</p>
+<ul>
+<li>七个值中『没有为 auto』的情况：浏览器会『自动调整 margin-right』，使等式满足。</li>
+<li>七个值中有三个可以设置为 auto：<code>width</code>、<code>margin-left</code>、<code>margin-right</code>。</li>
+<li>『某个值为 auto，则会自动调整为 auto 的那个值』。</li>
+<li>『宽度和一个外边距设置为 auto，则宽度会调整到最大，设置为 auto 的外边距会自动为 0』。</li>
+<li>『三个值都设置为 auto，则外边距都是 0，宽度最大』。</li>
+<li>『两个外边距设置为 auto、宽度为固定值，则会将外边距设置为相同的值』——这正是 <code>margin: 0 auto</code> 能水平居中的原因。</li>
 </ul>
-</li>
-</ul>
-<h3 id="内边距-padding"><a href="#内边距-padding" class="headerlink" title="内边距(padding)"></a>内边距(padding)</h3><ul>
-<li>padding-[top | right | bottom | left]</li>
-<li>背景颜色会延伸到内边距上</li>
-</ul>
-<h3 id="外边距-margin"><a href="#外边距-margin" class="headerlink" title="外边距(margin)"></a>外边距(margin)</h3><ul>
-<li>margin-[top | right | bottom | left]</li>
-<li>元素在页面中是按照自左向右的顺序排列的，所以默认情况下设置左、上会移动元素自身,而设置下、右会移动其他元素</li>
-</ul>
-<h2 id="盒子的布局"><a href="#盒子的布局" class="headerlink" title="盒子的布局"></a>盒子的布局</h2><h3 id="水平布局-—-width-xxx-margin-0-auto"><a href="#水平布局-—-width-xxx-margin-0-auto" class="headerlink" title="水平布局 — width:xxx; margin:0 auto;"></a>水平布局 — width:xxx; margin:0 auto;</h3><ul>
-<li>一个元素在其父元素中，水平布局必须要满足以下的等式，如果相加结果使等式不成立，则称为过度约束，则等式会自动调整<ul>
-<li>margin-left+border-left+padding-left+width+padding-right+border-right+margin-right &#x3D; 其父元素内容区的宽度</li>
-</ul>
-</li>
-<li>调整的情况：<ul>
-<li>如果这七个值中<span class="key_words">『没有为 auto』</span>的情况，则浏览器会<span class="key_words">『自动调整margin-right』</span>值以使等式满足</li>
-<li>这七个值中有三个值和设置为 auto<ul>
-<li>width</li>
-<li>margin-left</li>
-<li>maring-right</li>
-</ul>
-</li>
-<li><span class="key_words">『某个值为auto，则会自动调整为auto的那个值』</span></li>
-<li><span class="key_words">『宽度和一个外边距设置为auto，则宽度会调整到最大，设置为 auto 的外边距会自动为0』</span></li>
-<li><span class="key_words">『三个值都设置为auto，则外边距都是0，宽度最大』</span></li>
-<li><span class="key_words">『两个外边距设置为auto，宽度固定值，则会将外边距设置为相同的值』</span></li>
-</ul>
-</li>
-<li><span class="key_words">『开启了绝对定位』</span>后:<ul>
-<li>水平方向的布局等式就需要添加 left 和 right 两个值</li>
+<p>『开启了绝对定位』后，规则会变化：</p>
+<ul>
+<li>水平方向的布局等式需要再加上 <code>left</code> 和 <code>right</code> 两个值。</li>
 <li>当发生过度约束：<ul>
-<li>如果 9 个值中没有 auto 则自动调整 right 值以使等式满足</li>
-<li>如果有 auto，则自动调整 auto 的值以使等式满足</li>
-<li>可设置 auto 的值：margin、width、left、right</li>
-<li>因为 left 和 right 的值默认是 auto，所以如果不指定 left 和 right 则等式不满足时，会自动调整这两个值</li>
+<li>如果 9 个值中没有 auto，则自动调整 <code>right</code> 值以使等式满足。</li>
+<li>如果有 auto，则自动调整 auto 的值以使等式满足。</li>
+<li>可设置 auto 的值：<code>margin</code>、<code>width</code>、<code>left</code>、<code>right</code>。</li>
+<li>因为 <code>left</code> 和 <code>right</code> 的值默认是 auto，所以如果不指定 <code>left</code>、<code>right</code>，等式不满足时会自动调整这两个值。</li>
 </ul>
 </li>
 </ul>
-</li>
+<h2 id="第四步：垂直布局与溢出处理"><a href="#第四步：垂直布局与溢出处理" class="headerlink" title="第四步：垂直布局与溢出处理"></a>第四步：垂直布局与溢出处理</h2><p>默认情况下父元素的高度被内容撑开。子元素在父元素的内容区中排列，如果子元素大小超过父元素，子元素就会从父元素中溢出。</p>
+<p>用 <code>overflow</code> 设置父元素如何处理溢出的子元素，可选值有：</p>
+<ul>
+<li><code>visible</code>：默认值，子元素从父元素中溢出，在父元素外部的位置显示</li>
+<li><code>hidden</code>：溢出内容会被裁剪，不会显示</li>
+<li><code>scroll</code>：生成两个滚动条，通过滚动条查看完整的内容</li>
+<li><code>auto</code>：根据需要生成滚动条</li>
+<li>还可以单独对 x 和 y 方向做溢出处理：<code>overflow-x</code>、<code>overflow-y</code></li>
 </ul>
-<h3 id="垂直布局"><a href="#垂直布局" class="headerlink" title="垂直布局"></a>垂直布局</h3><ul>
-<li>默认情况下父元素的高度被内容撑开</li>
-<li>子元素是在父元素的内容区中排列的，如果子元素大小超过父元素，则子元素会从父元素中溢出</li>
-<li>使用 overflow 属性来设置父元素如何处理溢出的子元素<ul>
-<li>可选值：<ul>
-<li>visible：默认值 子元素会从父元素中溢出，在父元素外部的位置显示</li>
-<li>hidden：溢出内容将会被裁剪不会显示</li>
-<li>scroll：生成两个滚动条，通过滚动条来查看完整的内容</li>
-<li>auto：根据需要生成滚动条</li>
-<li>还可以单独对 x 和 y 方向的内容做溢出处理<ul>
-<li>overflow-x，overflow-y</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><span class="key_words">『开启了绝对定位』</span>后:<ul>
-<li>垂直方向布局的等式的也必须要满足<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top + margin-top/bottom + padding-top/bottom + border-top/bottom + height = 包含块的高度</span><br></pre></td></tr></table></figure></li>
-<li>用 margin-left,margin-right 的话必须设置 left:0,right:0</li>
+<p>『开启了绝对定位』后，垂直方向布局的等式也必须要满足：</p>
+<blockquote>
+<p>top + margin-top&#x2F;bottom + padding-top&#x2F;bottom + border-top&#x2F;bottom + height &#x3D; 包含块的高度</p>
+</blockquote>
+<p>用 <code>margin-left</code>、<code>margin-right</code> 的话，必须设置 <code>left: 0</code>、<code>right: 0</code>。</p>
+<h2 id="第五步：处理垂直外边距的重叠（折叠）"><a href="#第五步：处理垂直外边距的重叠（折叠）" class="headerlink" title="第五步：处理垂直外边距的重叠（折叠）"></a>第五步：处理垂直外边距的重叠（折叠）</h2><p>相邻的垂直方向外边距会发生重叠现象，分两种情况：</p>
+<ul>
+<li>兄弟元素（对开发有利，不需要处理）：<ul>
+<li>兄弟元素间的相邻垂直外边距，取两者中『绝对值较大的』。</li>
+<li>特殊情况：如果相邻的外边距『一正一负』，则取两者的『和』。</li>
 </ul>
 </li>
-</ul>
-<h3 id="垂直外边距的重叠（折叠）"><a href="#垂直外边距的重叠（折叠）" class="headerlink" title="垂直外边距的重叠（折叠）"></a>垂直外边距的重叠（折叠）</h3><ul>
-<li>相邻的垂直方向外边距会发生重叠现象</li>
-<li>兄弟元素(<span class="desc">对开发有利，不需要处理</span>)<ul>
-<li>兄弟元素间的相邻垂直外边距，则取两者之间<span class="key_words">『绝对值较大的』</span></li>
-<li>特殊情况：如果相邻的外边距<span class="key_words">『一正一负』</span>，则取两者的<span class="key_words">『和』</span></li>
-</ul>
-</li>
-<li>父子元素(<span class="desc">影响布局，必须处理</span>)<ul>
-<li>父子元素间的相邻垂直外边距，子元素的会传递给父元素（上外边距）</li>
+<li>父子元素（影响布局，必须处理）：<ul>
+<li>父子元素间的相邻垂直外边距，子元素的会传递给父元素（上外边距）。</li>
 </ul>
 </li>
 </ul>
-<h2 id="行内元素的盒模型"><a href="#行内元素的盒模型" class="headerlink" title="行内元素的盒模型"></a>行内元素的盒模型</h2><ul>
-<li>行内元素不支持设置宽高</li>
-<li>行内元素可以设置 padding、margin、border，但是垂直方向都不会影响页面的布局</li>
+<h2 id="第六步：行内元素的盒模型与显示类型"><a href="#第六步：行内元素的盒模型与显示类型" class="headerlink" title="第六步：行内元素的盒模型与显示类型"></a>第六步：行内元素的盒模型与显示类型</h2><p>行内元素的盒模型有两个限制：</p>
+<ul>
+<li>行内元素不支持设置宽高。</li>
+<li>行内元素可以设置 padding、margin、border，但是垂直方向都不会影响页面的布局。</li>
 </ul>
-<h3 id="display：用来设置元素显示的类型"><a href="#display：用来设置元素显示的类型" class="headerlink" title="display：用来设置元素显示的类型"></a>display：用来设置元素显示的类型</h3><ul>
-<li>inline：将元素设置为行内元素</li>
-<li>block：将元素设置为块元素</li>
-<li>inline-block：将元素设置为行内块元素，即可以设置宽度和高又不会独占一行</li>
-<li>table：将元素设置为一个表格</li>
-<li>none：元素不在页面中显示</li>
+<p><code>display</code> 用来设置元素显示的类型：</p>
+<ul>
+<li><code>inline</code>：将元素设置为行内元素</li>
+<li><code>block</code>：将元素设置为块元素</li>
+<li><code>inline-block</code>：将元素设置为行内块元素，既可以设置宽度和高度，又不会独占一行</li>
+<li><code>table</code>：将元素设置为一个表格</li>
+<li><code>none</code>：元素不在页面中显示</li>
 </ul>
-<h3 id="visibility：用来设置元素的显示状态"><a href="#visibility：用来设置元素的显示状态" class="headerlink" title="visibility：用来设置元素的显示状态"></a>visibility：用来设置元素的显示状态</h3><ul>
-<li>visible：默认值，元素在页面中正常显示</li>
-<li>hidden：元素在页面中<span class="key_words">『隐藏不显示，但是依然占据页面的位置』</span></li>
+<p><code>visibility</code> 用来设置元素的显示状态：</p>
+<ul>
+<li><code>visible</code>：默认值，元素在页面中正常显示</li>
+<li><code>hidden</code>：元素在页面中『隐藏不显示，但是依然占据页面的位置』</li>
 </ul>
-<h2 id="默认样式和重置样式表"><a href="#默认样式和重置样式表" class="headerlink" title="默认样式和重置样式表"></a>默认样式和重置样式表</h2><h3 id="默认样式："><a href="#默认样式：" class="headerlink" title="默认样式："></a>默认样式：</h3><ul>
-<li>浏览器为元素设置的样式，这写样式会影响到页面布局，通常情况下要去除</li>
+<h2 id="第七步：重置浏览器的默认样式"><a href="#第七步：重置浏览器的默认样式" class="headerlink" title="第七步：重置浏览器的默认样式"></a>第七步：重置浏览器的默认样式</h2><p>默认样式是浏览器为元素设置的样式，这些样式会影响页面布局，通常情况下要去除。</p>
+<p>重置样式表专门用来对浏览器的样式进行重置，常见的有两种：</p>
+<ul>
+<li><code>reset.css</code>：直接去除了浏览器的默认样式</li>
+<li><code>normalize.css</code>：对默认样式进行了统一</li>
 </ul>
-<h3 id="重置样式表"><a href="#重置样式表" class="headerlink" title="重置样式表"></a>重置样式表</h3><ul>
-<li>专门用来对浏览器的样式进行重置的</li>
-<li>reset.css：直接去除了浏览器的默认样式</li>
-<li>normalize.css：对默认样式进行了统一</li>
-</ul>
-<h2 id="像素与视口"><a href="#像素与视口" class="headerlink" title="像素与视口"></a>像素与视口</h2><h3 id="像素："><a href="#像素：" class="headerlink" title="像素："></a>像素：</h3><ul>
-<li>屏幕是由一个一个的点构成，这一个个的点就是像素</li>
-<li>分辨率：1920 x 1080 说的就是屏幕中点的数量</li>
-<li>在前端开发中像素要分成两种情况讨论：CSS像素 和 物理像素<ul>
-<li>物理像素，上述所说的点就属于物理像素</li>
-<li>CSS 像素，编写网页时，所用像素都是 CSS 像素</li>
-</ul>
-</li>
-<li>浏览器在显示网页时，需要将 CSS 像素转换为物理像素然后再呈现<ul>
-<li>一个 css 像素最终由几个物理像素显示，由浏览器决定</li>
-<li>默认情况下在 pc 端，<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">一个 css 像素 = 一个物理像素</span><br></pre></td></tr></table></figure></li>
+<h2 id="第八步：搞清像素与视口"><a href="#第八步：搞清像素与视口" class="headerlink" title="第八步：搞清像素与视口"></a>第八步：搞清像素与视口</h2><h3 id="像素"><a href="#像素" class="headerlink" title="像素"></a>像素</h3><ul>
+<li>屏幕是由一个一个的点构成的，这一个个的点就是像素。</li>
+<li>分辨率 1920 × 1080 说的就是屏幕中点的数量。</li>
+<li>在前端开发中，像素要分成两种情况讨论：CSS 像素和物理像素。<ul>
+<li>物理像素：上述所说的点就属于物理像素。</li>
+<li>CSS 像素：编写网页时，所用像素都是 CSS 像素。</li>
 </ul>
 </li>
+<li>浏览器在显示网页时，需要将 CSS 像素转换为物理像素再呈现。<ul>
+<li>一个 CSS 像素最终由几个物理像素显示，由浏览器决定。</li>
+<li>默认情况下在 PC 端：一个 CSS 像素 &#x3D; 一个物理像素。</li>
 </ul>
-<h3 id="视口-viewport"><a href="#视口-viewport" class="headerlink" title="视口(viewport)"></a>视口(viewport)</h3><ul>
-<li>视口就是屏幕中用来显示网页的区域</li>
-<li>默认情况下：css 像素和物理像素的比是 1:1</li>
+</li>
+</ul>
+<h3 id="视口（viewport）"><a href="#视口（viewport）" class="headerlink" title="视口（viewport）"></a>视口（viewport）</h3><p>视口就是屏幕中用来显示网页的区域。</p>
+<ul>
+<li>默认情况下：CSS 像素和物理像素的比是 1:1。</li>
 <li>放大两倍的情况：<ul>
 <li>视口宽度：960px（CSS 像素）、1920px（物理像素）</li>
-<li><ul>
-<li>此时，css 像素和物理像素的比是 1:2</li>
+<li>此时，CSS 像素和物理像素的比是 1:2。</li>
 </ul>
 </li>
-</ul>
-</li>
-<li>通过改变视口的大小，可以改变 CSS 像素和物理像素的比值</li>
+<li>通过改变视口的大小，可以改变 CSS 像素和物理像素的比值。</li>
 </ul>
 <h3 id="移动端网页"><a href="#移动端网页" class="headerlink" title="移动端网页"></a>移动端网页</h3><ul>
-<li>在不同的屏幕，单位像素的大小是不同的，像素越小屏幕会越清晰</li>
-<li>智能手机的像素点 远远小于 计算机的像素点</li>
-<li>移动端默认的视口大小是 980px(css 像素)，</li>
-<li>默认情况下，移动端的像素比就是 980&#x2F;移动端宽度</li>
-<li>可以通过 meta 标签来设置视口大小</li>
-<li>将网页的视口设置为完美视口 (<span class="desc">移动端网页必备</span>)<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li>不同的设备完美视口的大小是不一样的，所以在移动端开发时，就不能再使用 px 来进行布局了</li>
-<li>使用 vw 来表示的是视口的宽度（viewport width）<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">100vw = 一个视口的宽度</span><br></pre></td></tr></table></figure></li>
+<li>在不同的屏幕，单位像素的大小是不同的，像素越小屏幕会越清晰。</li>
+<li>智能手机的像素点远远小于计算机的像素点。</li>
+<li>移动端默认的视口大小是 980px（CSS 像素）。</li>
+<li>默认情况下，移动端的像素比就是 980 &#x2F; 移动端宽度。</li>
+<li>可以通过 meta 标签来设置视口大小。下面这行把网页设置为完美视口，是移动端网页必备的：</li>
 </ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>不同的设备完美视口的大小是不一样的，所以在移动端开发时，就不能再使用 px 来进行布局了。</li>
+<li>使用 vw 来表示视口的宽度（viewport width）：100vw &#x3D; 一个视口的宽度。</li>
+</ul>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ol>
+<li>父子元素的外边距折叠会表现为”父元素莫名其妙多出一段上间距”。要阻止它，常见做法是让父元素形成 BFC（例如设置 <code>overflow: hidden</code>），或者给父元素加 <code>border</code> &#x2F; <code>padding</code> 把两个 margin 隔开。</li>
+<li>行内元素设置垂直方向的 padding、margin、border 虽然不改变布局，但会视觉上溢出，叠在相邻行内容上。</li>
+<li><code>box-shadow</code> 和 <code>outline</code> 都不占用布局空间，不要指望用它们撑开盒子或占位。</li>
+<li>行内元素的 <code>width</code> &#x2F; <code>height</code> 无效，需要先改成 <code>inline-block</code> 或 <code>block</code>。</li>
+<li><code>margin: 0 auto</code> 只对块级元素且宽度确定的盒子有效；宽度是 auto（撑满父元素）时没有剩余空间可分，居中不会发生。</li>
+<li>移动端默认视口宽 980px，不做 meta 设置直接写 px，页面会被整体缩小，字体也会跟着变小。</li>
+</ol>
 
 </article>
     
@@ -767,11 +737,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/html-%E5%9F%BA%E7%A1%80/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/html-%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2%E5%B8%83%E5%B1%80/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">Html-基础</h6>
+                <h6 class="trm-op-title">Html-媒体查询布局</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -788,11 +758,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/html-%E8%A1%A8%E5%8D%95%E8%A1%A8%E6%A0%BC%E7%AF%87/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/html-%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80%E6%8A%80%E6%9C%AF%E7%AF%87/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">Html-表格表单篇</h6>
+                <h6 class="trm-op-title">Html-页面布局技术篇</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -864,7 +834,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="文档流(normal flow)"><a rel="nofollow" class="trm-toc-link" href="#文档流-normal-flow"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">文档流(normal flow)</span></a></li><li class="trm-toc-item trm-toc-level-2" title="盒模型(box model)"><a rel="nofollow" class="trm-toc-link" href="#盒模型-box-model"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">盒模型(box model)</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="内容区(content)"><a rel="nofollow" class="trm-toc-link" href="#内容区-content"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">内容区(content)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="边框(border)"><a rel="nofollow" class="trm-toc-link" href="#边框-border"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">边框(border)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="内边距(padding)"><a rel="nofollow" class="trm-toc-link" href="#内边距-padding"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">内边距(padding)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="外边距(margin)"><a rel="nofollow" class="trm-toc-link" href="#外边距-margin"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">外边距(margin)</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="盒子的布局"><a rel="nofollow" class="trm-toc-link" href="#盒子的布局"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">盒子的布局</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="水平布局 — width:xxx; margin:0 auto;"><a rel="nofollow" class="trm-toc-link" href="#水平布局-—-width-xxx-margin-0-auto"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">水平布局 — width:xxx; margin:0 auto;</span></a></li><li class="trm-toc-item trm-toc-level-3" title="垂直布局"><a rel="nofollow" class="trm-toc-link" href="#垂直布局"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">垂直布局</span></a></li><li class="trm-toc-item trm-toc-level-3" title="垂直外边距的重叠（折叠）"><a rel="nofollow" class="trm-toc-link" href="#垂直外边距的重叠（折叠）"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">垂直外边距的重叠（折叠）</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="行内元素的盒模型"><a rel="nofollow" class="trm-toc-link" href="#行内元素的盒模型"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">行内元素的盒模型</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="display：用来设置元素显示的类型"><a rel="nofollow" class="trm-toc-link" href="#display：用来设置元素显示的类型"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">display：用来设置元素显示的类型</span></a></li><li class="trm-toc-item trm-toc-level-3" title="visibility：用来设置元素的显示状态"><a rel="nofollow" class="trm-toc-link" href="#visibility：用来设置元素的显示状态"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">visibility：用来设置元素的显示状态</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="默认样式和重置样式表"><a rel="nofollow" class="trm-toc-link" href="#默认样式和重置样式表"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">默认样式和重置样式表</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="默认样式："><a rel="nofollow" class="trm-toc-link" href="#默认样式："><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">默认样式：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="重置样式表"><a rel="nofollow" class="trm-toc-link" href="#重置样式表"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">重置样式表</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="像素与视口"><a rel="nofollow" class="trm-toc-link" href="#像素与视口"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">像素与视口</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="像素："><a rel="nofollow" class="trm-toc-link" href="#像素："><span class="trm-toc-number">6.1.</span> <span class="trm-toc-text">像素：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="视口(viewport)"><a rel="nofollow" class="trm-toc-link" href="#视口-viewport"><span class="trm-toc-number">6.2.</span> <span class="trm-toc-text">视口(viewport)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="移动端网页"><a rel="nofollow" class="trm-toc-link" href="#移动端网页"><span class="trm-toc-number">6.3.</span> <span class="trm-toc-text">移动端网页</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景：网页是分层叠出来的"><a rel="nofollow" class="trm-toc-link" href="#背景：网页是分层叠出来的"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景：网页是分层叠出来的</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第一步：先看元素在文档流里的默认表现"><a rel="nofollow" class="trm-toc-link" href="#第一步：先看元素在文档流里的默认表现"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">第一步：先看元素在文档流里的默认表现</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第二步：拆开盒模型"><a rel="nofollow" class="trm-toc-link" href="#第二步：拆开盒模型"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">第二步：拆开盒模型</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="内容区（content）"><a rel="nofollow" class="trm-toc-link" href="#内容区（content）"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">内容区（content）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="边框（border）"><a rel="nofollow" class="trm-toc-link" href="#边框（border）"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">边框（border）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="内边距（padding）"><a rel="nofollow" class="trm-toc-link" href="#内边距（padding）"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">内边距（padding）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="外边距（margin）"><a rel="nofollow" class="trm-toc-link" href="#外边距（margin）"><span class="trm-toc-number">3.4.</span> <span class="trm-toc-text">外边距（margin）</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="第三步：理解水平布局的等式"><a rel="nofollow" class="trm-toc-link" href="#第三步：理解水平布局的等式"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">第三步：理解水平布局的等式</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第四步：垂直布局与溢出处理"><a rel="nofollow" class="trm-toc-link" href="#第四步：垂直布局与溢出处理"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">第四步：垂直布局与溢出处理</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第五步：处理垂直外边距的重叠（折叠）"><a rel="nofollow" class="trm-toc-link" href="#第五步：处理垂直外边距的重叠（折叠）"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">第五步：处理垂直外边距的重叠（折叠）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第六步：行内元素的盒模型与显示类型"><a rel="nofollow" class="trm-toc-link" href="#第六步：行内元素的盒模型与显示类型"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">第六步：行内元素的盒模型与显示类型</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第七步：重置浏览器的默认样式"><a rel="nofollow" class="trm-toc-link" href="#第七步：重置浏览器的默认样式"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">第七步：重置浏览器的默认样式</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第八步：搞清像素与视口"><a rel="nofollow" class="trm-toc-link" href="#第八步：搞清像素与视口"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">第八步：搞清像素与视口</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="像素"><a rel="nofollow" class="trm-toc-link" href="#像素"><span class="trm-toc-number">9.1.</span> <span class="trm-toc-text">像素</span></a></li><li class="trm-toc-item trm-toc-level-3" title="视口（viewport）"><a rel="nofollow" class="trm-toc-link" href="#视口（viewport）"><span class="trm-toc-number">9.2.</span> <span class="trm-toc-text">视口（viewport）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="移动端网页"><a rel="nofollow" class="trm-toc-link" href="#移动端网页"><span class="trm-toc-number">9.3.</span> <span class="trm-toc-text">移动端网页</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="注意点"><a rel="nofollow" class="trm-toc-link" href="#注意点"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">注意点</span></a></li></ol>
       </div>
     </div>
 
@@ -988,6 +958,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

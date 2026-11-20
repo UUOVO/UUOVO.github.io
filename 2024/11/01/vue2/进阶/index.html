@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="文件结构├── node_modules  ├── public │   ├── favicon.ico: 页签图标 │   └── index.html: 主页面 ├── src │   ├── assets: 存放静态资源 │   │   └── logo.png │   │── component: 存放组件 │   │   └── HelloWorld.vue │   │── App">
+<meta name="description" content="梳理 Vue2 项目文件结构、vue.config.js、ref、props、mixin、插件、nextTick、过渡动画与代理配置">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VUE2-进阶（主了解）">
 <meta property="og:url" content="http://example.com/2024/11/01/vue2/%E8%BF%9B%E9%98%B6/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="文件结构├── node_modules  ├── public │   ├── favicon.ico: 页签图标 │   └── index.html: 主页面 ├── src │   ├── assets: 存放静态资源 │   │   └── logo.png │   │── component: 存放组件 │   │   └── HelloWorld.vue │   │── App">
+<meta property="og:description" content="梳理 Vue2 项目文件结构、vue.config.js、ref、props、mixin、插件、nextTick、过渡动画与代理配置">
 <meta property="og:locale">
-<meta property="article:published_time" content="2024-11-01T05:58:26.569Z">
-<meta property="article:modified_time" content="2025-08-04T07:19:36.528Z">
+<meta property="article:published_time" content="2024-11-01T05:58:26.000Z">
+<meta property="article:modified_time" content="2026-11-17T02:38:25.765Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="vue2">
 <meta name="twitter:card" content="summary">
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-08-04 15:19:36"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-17 10:38:25"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -83,6 +83,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -197,13 +199,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -239,7 +241,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -257,13 +259,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -532,204 +534,182 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>结论先行：<strong>脚手架项目的骨架只有三样东西——public&#x2F;index.html 是页面模板，src&#x2F;main.js 是入口，App.vue 汇总所有组件。</strong> 在此基础上，ref 用来拿 DOM 或组件实例，props 用来父传子，mixin 用来抽公共配置，插件用来做全局能力注入，<code>nextTick</code> 用来等 DOM 更新完再操作。本文按「目录结构 → 版本差异 → 配置 → 属性 → 复用 → 动画 → 跨域代理」的顺序整理，每段先讲用途再给代码。</p>
+<span id="more"></span>
 
-<h2 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h2><pre><code>├── node_modules 
-├── public
-│   ├── favicon.ico: 页签图标
-│   └── index.html: 主页面
-├── src
-│   ├── assets: 存放静态资源
-│   │   └── logo.png
-│   │── component: 存放组件
-│   │   └── HelloWorld.vue
-│   │── App.vue: 汇总所有组件
-│   │── main.js: 入口文件
-├── .gitignore: git版本管制忽略的配置
-├── babel.config.js: babel的配置文件
-├── package.json: 应用包配置文件 
-├── README.md: 应用描述文件
-├── package-lock.json：包版本控制文件
-</code></pre>
-<h2 id="关于不同版本的Vue："><a href="#关于不同版本的Vue：" class="headerlink" title="关于不同版本的Vue："></a>关于不同版本的Vue：</h2><ul>
-<li>vue.js与vue.runtime.xxx.js的区别：<ul>
-<li>vue.js是完整版的Vue，包含：核心功能+模板解析器</li>
-<li>vue.runtime.xxx.js是运行版的Vue，只包含：核心功能；没有模板解析器</li>
+<h2 id="背景：先看清项目长什么样"><a href="#背景：先看清项目长什么样" class="headerlink" title="背景：先看清项目长什么样"></a>背景：先看清项目长什么样</h2><p>初学 Vue CLI 项目时最容易迷路，先认目录比先读代码更快。下面是 Vue CLI 生成的典型目录：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">├── node_modules</span><br><span class="line">├── public</span><br><span class="line">│   ├── favicon.ico: 页签图标</span><br><span class="line">│   └── index.html: 主页面</span><br><span class="line">├── src</span><br><span class="line">│   ├── assets: 存放静态资源</span><br><span class="line">│   │   └── logo.png</span><br><span class="line">│   ├── component: 存放组件</span><br><span class="line">│   │   └── HelloWorld.vue</span><br><span class="line">│   ├── App.vue: 汇总所有组件</span><br><span class="line">│   └── main.js: 入口文件</span><br><span class="line">├── .gitignore: git版本管制忽略的配置</span><br><span class="line">├── babel.config.js: babel的配置文件</span><br><span class="line">├── package.json: 应用包配置文件</span><br><span class="line">├── README.md: 应用描述文件</span><br><span class="line">├── package-lock.json：包版本控制文件</span><br></pre></td></tr></table></figure>
+
+<h2 id="第-1-步：区分不同版本的-Vue"><a href="#第-1-步：区分不同版本的-Vue" class="headerlink" title="第 1 步：区分不同版本的 Vue"></a>第 1 步：区分不同版本的 Vue</h2><p><code>vue.js</code> 与 <code>vue.runtime.xxx.js</code> 的区别：</p>
+<ul>
+<li><code>vue.js</code> 是完整版的 Vue，包含核心功能 + 模板解析器。</li>
+<li><code>vue.runtime.xxx.js</code> 是运行版的 Vue，只包含核心功能，没有模板解析器。</li>
+</ul>
+<p>因为 <code>vue.runtime.xxx.js</code> 没有模板解析器，所以不能使用 template 配置项，需要使用 render 函数接收到的 createElement 函数去指定具体内容。</p>
+<h2 id="第-2-步：定制-vue-config-js"><a href="#第-2-步：定制-vue-config-js" class="headerlink" title="第 2 步：定制 vue.config.js"></a>第 2 步：定制 vue.config.js</h2><ul>
+<li>使用 <code>vue inspect &gt; output.js</code> 可以查看到 Vue 脚手架的默认配置。</li>
+<li>使用 <code>vue.config.js</code> 可以对脚手架进行个性化定制，详情见 <a target="_blank" rel="noopener" href="https://cli.vuejs.org/zh">Vue CLI</a>。</li>
+</ul>
+<h2 id="第-3-步：用-ref-获取-DOM-或组件实例"><a href="#第-3-步：用-ref-获取-DOM-或组件实例" class="headerlink" title="第 3 步：用 ref 获取 DOM 或组件实例"></a>第 3 步：用 ref 获取 DOM 或组件实例</h2><ul>
+<li>作用：给元素或子组件注册引用信息。</li>
+<li>标签上使用 <code>ref=&quot;str&quot;</code>。</li>
+<li>在函数中通过 <code>this.$refs.str</code> 来获取。</li>
+<li><span class="key_words">『应用在 html 标签上获取的是真实 DOM 元素，应用在组件标签上是组件实例对象（vc）』</span>。</li>
+</ul>
+<h2 id="第-4-步：props-配置"><a href="#第-4-步：props-配置" class="headerlink" title="第 4 步：props 配置"></a>第 4 步：props 配置</h2><p>父组件使用子组件的标签，并通过子组件的标签传递属性：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">School</span> <span class="attr">name</span>=<span class="string">&quot;moli&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>子组件通过 props 声明接收，有三种方式。</p>
+<p>简单接收：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">props</span>:[<span class="string">&#x27;name&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>接收并对数据进行类型限制：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">props</span>:&#123;<span class="attr">sex</span>:<span class="title class_">String</span>,<span class="attr">name</span>:<span class="title class_">String</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接收并对数据进行类型限制 + 默认值的指定 + 必要性的限制：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">props</span>:&#123;</span><br><span class="line">	<span class="attr">name</span>:&#123;</span><br><span class="line">		<span class="attr">type</span>:<span class="title class_">String</span>, <span class="comment">// 类型是字符串</span></span><br><span class="line">		<span class="attr">required</span>:<span class="literal">true</span>, <span class="comment">// 必填的</span></span><br><span class="line">		<span class="attr">default</span>:<span class="string">&#x27;a&#x27;</span> <span class="comment">// 默认值</span></span><br><span class="line">	&#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注：<span class="desc">props 是只读的，Vue 底层会监测 props 的修改，如果改动，就会发出警告；若需要修改，则将 props 的内容添加到 data，并给标签上的变量前面添加 v-bind</span>。</p>
+<h2 id="第-5-步：mixin（混入）"><a href="#第-5-步：mixin（混入）" class="headerlink" title="第 5 步：mixin（混入）"></a>第 5 步：mixin（混入）</h2><p>功能：可以把多个组件共用的配置提取成一个混入对象。</p>
+<p>先单独创建一个 js 文件，把共用的变量和方法写好并暴露出来：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> huhe = &#123;<span class="title function_">data</span>(<span class="params"></span>)&#123;&#125;,<span class="attr">methods</span>:&#123;&#125;,...&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在需要使用的组件中 import 引入，然后选择全局混入或局部混入。</p>
+<p>全局混入，在 main.js 中注册：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">mixin</span>(xxx)</span><br></pre></td></tr></table></figure>
+
+<p>局部混入，在组件中添加 <code>mixins:[xxx]</code> 配置。</p>
+<h2 id="第-6-步：插件"><a href="#第-6-步：插件" class="headerlink" title="第 6 步：插件"></a>第 6 步：插件</h2><p>本质：包含 install 方法的一个对象，install 的第一个参数是 Vue，第二个以后的参数是插件使用者传递的数据。</p>
+<p>定义一个插件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">对象.<span class="property">install</span> = <span class="keyword">function</span> (<span class="params">Vue, options</span>) &#123;</span><br><span class="line">	<span class="comment">// 1. 添加全局过滤器</span></span><br><span class="line">	<span class="title class_">Vue</span>.<span class="title function_">filter</span>(....)</span><br><span class="line">	<span class="comment">// 2. 添加全局指令</span></span><br><span class="line">	<span class="title class_">Vue</span>.<span class="title function_">directive</span>(<span class="string">&#x27;指令名&#x27;</span>,&#123;</span><br><span class="line">		<span class="comment">//指令与元素成功绑定时（一上来）</span></span><br><span class="line">		<span class="title function_">bind</span>(<span class="params">element,binding</span>)&#123;</span><br><span class="line">			element.<span class="property">value</span> = binding.<span class="property">value</span></span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="comment">//指令所在元素被插入页面时</span></span><br><span class="line">		<span class="title function_">inserted</span>(<span class="params">element,binding</span>)&#123;</span><br><span class="line">			element.<span class="title function_">focus</span>()</span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="comment">//指令所在的模板被重新解析时</span></span><br><span class="line">		<span class="title function_">update</span>(<span class="params">element,binding</span>)&#123;</span><br><span class="line">			element.<span class="property">value</span> = binding.<span class="property">value</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="comment">// 3. 配置全局混入(合)</span></span><br><span class="line">	<span class="title class_">Vue</span>.<span class="title function_">mixin</span>(....)</span><br><span class="line">	<span class="comment">// 4. 添加实例方法</span></span><br><span class="line">	<span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$myMethod</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;...&#125;</span><br><span class="line">	<span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$myProperty</span> = xxxx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用插件：在 main.js 中引入后调用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(插件名,参数可选)</span><br></pre></td></tr></table></figure>
+
+<h2 id="第-7-步：style-标签的-scoped-属性"><a href="#第-7-步：style-标签的-scoped-属性" class="headerlink" title="第 7 步：style 标签的 scoped 属性"></a>第 7 步：style 标签的 scoped 属性</h2><p>作用：样式只作用于当前组件。</p>
+<h2 id="第-8-步：组件化编码流程"><a href="#第-8-步：组件化编码流程" class="headerlink" title="第 8 步：组件化编码流程"></a>第 8 步：组件化编码流程</h2><ol>
+<li>拆分静态组件：组件要按照功能点拆分，命名不要与 html 元素冲突。</li>
+<li>实现动态组件：考虑好数据的存放位置。<ul>
+<li>数据是一个组件在用：放在组件自身。</li>
+<li>数据是一些组件在用：放在他们共同的父组件上（<span class="key_words">『状态提升』</span>）。</li>
 </ul>
 </li>
-<li>因为vue.runtime.xxx.js没有模板解析器，所以不能使用template配置项，需要使用render函数接收到的createElement函数去指定具体内容</li>
-</ul>
-<h2 id="vue-config-js配置文件"><a href="#vue-config-js配置文件" class="headerlink" title="vue.config.js配置文件"></a>vue.config.js配置文件</h2><ul>
-<li>使用vue inspect &gt; output.js可以查看到Vue脚手架的默认配置</li>
-<li>使用vue.config.js可以对脚手架进行个性化定制，详情见：<a target="_blank" rel="noopener" href="https://cli.vuejs.org/zh">Vue CLI</a></li>
-</ul>
-<h2 id="ref属性"><a href="#ref属性" class="headerlink" title="ref属性"></a>ref属性</h2><ul>
-<li>作用：给元素或子组件注册引用信息</li>
-<li>标签上使用 ref&#x3D;”str”</li>
-<li>在函数中通过this.$refs.str 来获取真实DOM元素</li>
-<li><span class="key_words">『应用在html标签上获取的是真实DOM元素，应用在组件标签上是组件实例对象(vc)』</span></li>
-</ul>
-<h2 id="props配置"><a href="#props配置" class="headerlink" title="props配置"></a>props配置</h2><ul>
-<li>父组件使用子组件的标签，并通过子组件的标签传递属性<ul>
-<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">School</span> name=<span class="string">&quot;moli&quot;</span>&gt;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>子组件通过props声明接收,三种方式：<ul>
-<li>简单接收：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">props</span>:[<span class="string">&#x27;name&#x27;</span>]</span><br></pre></td></tr></table></figure></li>
-<li>接收并对数据进行类型限制：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">props</span>:&#123;<span class="attr">sex</span>:<span class="title class_">String</span>,<span class="attr">name</span>:<span class="title class_">String</span>&#125;</span><br></pre></td></tr></table></figure></li>
-<li>接收并对数据进行类型限制+默认值的指定+必要性的限制<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">props</span>:&#123;</span><br><span class="line">	<span class="attr">name</span>:&#123;</span><br><span class="line">		<span class="attr">type</span>:<span class="title class_">String</span>, <span class="comment">// 类型是字符串</span></span><br><span class="line">		<span class="attr">requigreen</span>:<span class="literal">true</span>, <span class="comment">// 必填的</span></span><br><span class="line">		<span class="attr">default</span>:<span class="string">&#x27;a&#x27;</span> <span class="comment">// 默认值</span></span><br><span class="line">	&#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>注：<span class="desc">props是只读的，Vue底层会监测props的修改，如果改动，就会发出警告，若需要修改，则将props的内容添加到data，并给标签上的变量前面添加v-bind</span></li>
-</ul>
-<h2 id="mixin-混入"><a href="#mixin-混入" class="headerlink" title="mixin(混入)"></a>mixin(混入)</h2><ul>
-<li>功能：可以把多个组件共用的配置提取成一个混入对象</li>
-<li>单独创建一个js文件，然后把共用的变量和方法写好，并暴露出来<ul>
-<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> huhe = &#123;<span class="title function_">data</span>(<span class="params"></span>)&#123;&#125;,<span class="attr">methods</span>:&#123;&#125;,...&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>在需要使用的组件中引入import<ul>
-<li>全局混入：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">mixin</span>(xxx)</span><br></pre></td></tr></table></figure></li>
-<li>局部混入：在组件中添加 mixins:[xxx] 配置</li>
-</ul>
-</li>
-</ul>
-<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><ul>
-<li>本质：包含install方法的一个对象，install的第一个参数是Vue，第二个以后的参数是插件使用者传递的数据</li>
-<li>定义插件：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">对象.<span class="property">install</span> = <span class="keyword">function</span> (<span class="params">Vue, options</span>) &#123;</span><br><span class="line">	<span class="comment">// 1. 添加全局过滤器</span></span><br><span class="line">	<span class="title class_">Vue</span>.<span class="title function_">filter</span>(....)</span><br><span class="line">	<span class="comment">// 2. 添加全局指令</span></span><br><span class="line">	<span class="title class_">Vue</span>.<span class="title function_">directive</span>(<span class="string">&#x27;指令名&#x27;</span>&#123;</span><br><span class="line">		<span class="comment">//指令与元素成功绑定时（一上来）</span></span><br><span class="line">		<span class="title function_">bind</span>(<span class="params">element,binding</span>)&#123;</span><br><span class="line">			element.<span class="property">value</span> = binding.<span class="property">value</span></span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="comment">//指令所在元素被插入页面时</span></span><br><span class="line">		<span class="title function_">inserted</span>(<span class="params">element,binding</span>)&#123;</span><br><span class="line">			element.<span class="title function_">focus</span>()</span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="comment">//指令所在的模板被重新解析时</span></span><br><span class="line">		<span class="title function_">update</span>(<span class="params">element,binding</span>)&#123;</span><br><span class="line">			element.<span class="property">value</span> = binding.<span class="property">value</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 3. 配置全局混入(合)</span></span><br><span class="line">	<span class="title class_">Vue</span>.<span class="title function_">mixin</span>(....)</span><br><span class="line">	<span class="comment">// 4. 添加实例方法</span></span><br><span class="line">	<span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$myMethod</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;...&#125;</span><br><span class="line">	<span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$myProperty</span> = xxxx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>使用插件：在main.js中引入<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(插件名,参数可选)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="style标签的scoped属性"><a href="#style标签的scoped属性" class="headerlink" title="style标签的scoped属性"></a>style标签的scoped属性</h2><ul>
-<li>作用：样式只作用于当前页面</li>
-</ul>
-<h2 id="组件化编码流程"><a href="#组件化编码流程" class="headerlink" title="组件化编码流程"></a>组件化编码流程</h2><ol>
-<li>拆分静态组件：组件要按照功能点拆分，命名不要与html元素冲突</li>
-<li>实现动态组件：考虑好数据的存放位置<ul>
-<li>数据是一个组件在用：放在组件自身</li>
-<li>数据是一些组件在用：放在他们共同的父组件上（<span class="key_words">『状态提升』</span>）</li>
-</ul>
-</li>
-<li>实现交互：从绑定事件开始</li>
+<li>实现交互：从绑定事件开始。</li>
 </ol>
+<p>使用 v-model 时要切记：v-model 绑定的值不能是 props 传过来的值，因为 props 是不可以修改的！</p>
+<p>props 传过来的若是对象类型的值，修改对象中的属性时 Vue 不会报错，但不推荐。</p>
+<h2 id="第-9-步：webStorage"><a href="#第-9-步：webStorage" class="headerlink" title="第 9 步：webStorage"></a>第 9 步：webStorage</h2><a href="/2024/10/31/JS/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/" title="浏览器缓存">阅读浏览器缓存</a>
+
+<h2 id="第-10-步：nextTick"><a href="#第-10-步：nextTick" class="headerlink" title="第 10 步：nextTick"></a>第 10 步：nextTick</h2><p>调用形式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.$nextTick(回调函数)</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>使用v-model时要切记：v-model绑定的值不能是props传过来的值，因为props是不可以修改的！</li>
-<li>props传过来的若是对象类型的值，修改对象中的属性时Vue不会报错，但不推荐</li>
+<li>作用：在下一次 DOM 更新结束后执行其指定的回调。</li>
+<li>使用场景：当改变数据后，要基于更新后的新 DOM 进行某些操作时，要在 nextTick 所指定的回调函数中执行。</li>
+<li>不用定时器的原因：<code>setInterval</code> 会无限循环。</li>
+<li>原理：nextTick 主要使用了宏任务和微任务。根据执行环境分别尝试采用 Promise、MutationObserver、setImmediate，都不行则用 setTimeout 定义一个异步方法；多次调用时，nextTick 会将方法存入队列中，通过这个异步方法清空当前队列。</li>
+<li>实现：<span class="key_words">『Vue 在更新 DOM 时是异步执行的。』</span>只要侦听到数据变化，Vue 将开启 1 个队列，并缓冲在同一事件循环中发生的所有数据变更。如果一个 watcher 被<span class="key_words">『多次』</span>触发，只会被推入到队列中<span class="key_words">『一次』</span>，避免不必要的计算和 DOM 操作。nextTick 方法会在队列中加入一个回调函数，确保该函数在前面的 DOM 操作完成后才调用。</li>
 </ul>
-<h2 id="webStorage"><a href="#webStorage" class="headerlink" title="webStorage"></a>webStorage</h2><ul>
-<li><a href="/2024/10/31/JS/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/" title="浏览器缓存">阅读浏览器缓存</a></li>
-</ul>
-<h2 id="nextTick"><a href="#nextTick" class="headerlink" title="nextTick"></a>nextTick</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.$nextTick(回调函数)</span><br></pre></td></tr></table></figure>
+<h2 id="第-11-步：Vue-封装的过渡与动画"><a href="#第-11-步：Vue-封装的过渡与动画" class="headerlink" title="第 11 步：Vue 封装的过渡与动画"></a>第 11 步：Vue 封装的过渡与动画</h2><p>作用：在插入、更新或移除 DOM 元素时，在合适的时候给元素添加样式类名。</p>
+<p>写法一：使用 transition 标签包裹要过渡的元素，并配置 name 属性。</p>
 <ul>
-<li>作用：在下一次 DOM 更新结束后执行其指定的回调</li>
-<li>使用场景：当改变数据后，要基于更新后的新DOM进行某些操作时，要在nextTick所指定的回调函数中执行</li>
-<li>不用定时器的原因：setInterval会无限循环</li>
-<li>原理：<ul>
-<li>nextTick主要使用了宏任务和微任务。根据执行环境分别尝试采用Promise、MutationObserver、setImmediate，都不行则用setTimeout定义一个异步方法，多次调用，nextTick会将方法存入队列中，通过这个异步方法清空当前队列</li>
-</ul>
-</li>
-<li>实现：<ul>
-<li><span class="key_words">『Vue在更新DOM时是异步执行的。』</span>只要侦听到数据变化，Vue将开启1个队列，并缓冲在同一事件循环中发生的所有数据变更。如果一个watcher被<span class="key_words">『多次』</span>触发，只会被推入到队列中<span class="key_words">『一次』</span>。避免不必要的计算和DOM操作。nextTick方法会在队列中加入一个回调函数，确保该函数在前面的dom操作完成后才调用。</li>
-</ul>
-</li>
-</ul>
-<h2 id="Vue封装的过度与动画"><a href="#Vue封装的过度与动画" class="headerlink" title="Vue封装的过度与动画"></a>Vue封装的过度与动画</h2><ul>
-<li>作用：在插入、更新或移除 DOM元素时，在合适的时候给元素添加样式类名。</li>
-<li>写法一：<ul>
-<li>使用 transition标签 包裹要过度的元素，并配置name属性</li>
-<li>如果给 transition标签 添加appear属性代表一出场就要有动画</li>
-<li>在style标签中写好动画样式，按一下规则命名：<ul>
+<li>如果给 transition 标签添加 <code>appear</code> 属性，代表一出场就要有动画。</li>
+<li>在 style 标签中写好动画样式，按以下规则命名：<ul>
 <li>元素进入的样式：<ol>
-<li>name-enter：进入的起点</li>
-<li>name-enter-active：进入过程中</li>
-<li>name-enter-to：进入的终点</li>
+<li><code>name-enter</code>：进入的起点</li>
+<li><code>name-enter-active</code>：进入过程中</li>
+<li><code>name-enter-to</code>：进入的终点</li>
 </ol>
 </li>
 <li>元素离开的样式：<ol>
-<li>name-leave：离开的起点</li>
-<li>name-leave-active：离开过程中</li>
-<li>name-leave-to：离开的终点</li>
+<li><code>name-leave</code>：离开的起点</li>
+<li><code>name-leave-active</code>：离开过程中</li>
+<li><code>name-leave-to</code>：离开的终点</li>
 </ol>
 </li>
 </ul>
 </li>
-<li>若有多个元素需要过度，则需要使用：transition-group标签 替换 transition标签，且每个元素都要指定key值</li>
+<li>若有多个元素需要过渡，则需要使用 transition-group 标签替换 transition 标签，且每个元素都要指定 key 值。</li>
 </ul>
-</li>
-<li>写法二：也可以使用外部样式表+标签来展示<ul>
-<li>页面标签同上</li>
-<li>引入外部样式表</li>
-<li>将样式赋给标签上对应的样式(<span class="desc">与上面的命名规则类似，不要前面的name-，在后面加-class</span>)<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;transition-group </span><br><span class="line">	appear</span><br><span class="line">	name=<span class="string">&quot;animate__animated animate__bounce&quot;</span> </span><br><span class="line">	enter-active-<span class="keyword">class</span>=<span class="string">&quot;animate__swing&quot;</span></span><br><span class="line">	leave-active-<span class="keyword">class</span>=<span class="string">&quot;animate__backOutUp&quot;</span></span><br><span class="line">&gt;...&lt;/transition-group&gt;</span><br></pre></td></tr></table></figure></li>
+<p>写法二：也可以使用外部样式表 + 标签来展示。</p>
+<ul>
+<li>页面标签同上。</li>
+<li>引入外部样式表。</li>
+<li>将样式赋给标签上对应的样式（<span class="desc">与上面的命名规则类似，不要前面的 name-，在后面加 -class</span>）。</li>
 </ul>
-</li>
-<li>常见的动画样式：animation+@keyframes，transition，transform<ul>
-<li><a href="/2024/10/30/HTMLCSS/css-%E5%8A%A8%E7%94%BB/" title="CSS-动画篇">CSS-动画篇</a></li>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">transition-group</span></span></span><br><span class="line"><span class="tag">	<span class="attr">appear</span></span></span><br><span class="line"><span class="tag">	<span class="attr">name</span>=<span class="string">&quot;animate__animated animate__bounce&quot;</span></span></span><br><span class="line"><span class="tag">	<span class="attr">enter-active-class</span>=<span class="string">&quot;animate__swing&quot;</span></span></span><br><span class="line"><span class="tag">	<span class="attr">leave-active-class</span>=<span class="string">&quot;animate__backOutUp&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span>...<span class="tag">&lt;/<span class="name">transition-group</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>常见的动画样式：animation + @keyframes、transition、transform。</p>
+<a href="/2024/10/30/HTMLCSS/css-%E5%8A%A8%E7%94%BB/" title="CSS-动画篇">CSS-动画篇</a>
+
+<h2 id="第-12-步：解决跨域的方式"><a href="#第-12-步：解决跨域的方式" class="headerlink" title="第 12 步：解决跨域的方式"></a>第 12 步：解决跨域的方式</h2><p>页面使用 axios 请求接口时，会存在浏览器跨域的问题，这是因为同源策略。</p>
+<ul>
+<li>同源策略&#x2F;SOP（Same origin policy）：一种约定，由 Netscape 公司 1995 年引入浏览器，它是浏览器最核心也最基本的安全功能，如果缺少了，浏览器很容易受到 XSS、CSRF 等攻击。</li>
+<li>所谓同源，指的是“协议 + 域名 + 端口”三者相同，只要有一个不同就会导致跨域问题。</li>
 </ul>
-</li>
-</ul>
-<h2 id="解决跨域的方式"><a href="#解决跨域的方式" class="headerlink" title="解决跨域的方式"></a>解决跨域的方式</h2><ul>
-<li>页面使用axios来请求接口时，会存在浏览器跨域的问题。这是因为同源策略。</li>
-<li>同源策略&#x2F;SOP（Same origin policy）：一种约定，由Netscape公司1995年引入浏览器，它是浏览器最核心也最基本的安全功能，如果缺少了，浏览器很容易受到XSS、CSFR等攻击。</li>
-<li>所谓同源 –&gt; 指的是 “协议+域名+端口” 三者的相同 只要有一个不同就会导致跨域问题</li>
-<li>解决方案<ol>
-<li>cors 主后端 </li>
-<li>jsonp 前后端配合 </li>
-<li>代理服务器 <ul>
+<p>解决方案：</p>
+<ol>
+<li>cors，主要靠后端。</li>
+<li>jsonp，前后端配合。</li>
+<li>代理服务器：<ul>
 <li>nginx</li>
 <li>vue</li>
 </ul>
 </li>
 </ol>
-</li>
+<h3 id="配置代理的前情提要"><a href="#配置代理的前情提要" class="headerlink" title="配置代理的前情提要"></a>配置代理的前情提要</h3><ul>
+<li>本地的端口一般默认是 8080，所以配置 proxy 写的是另一个服务器的端口号。</li>
+<li>都是在 vue.config.js 文件中添加配置。</li>
 </ul>
-<h2 id="配置代理"><a href="#配置代理" class="headerlink" title="配置代理"></a>配置代理</h2><ul>
-<li>前情提要<ul>
-<li>本地的端口一般默认时8080，所以配置proxy写的是另一个服务器的端口号</li>
-<li>都是在vue.config.js文件中添加配置</li>
-</ul>
-</li>
-</ul>
-<h3 id="开启代理服务器方法一：直接配置proxy"><a href="#开启代理服务器方法一：直接配置proxy" class="headerlink" title="开启代理服务器方法一：直接配置proxy"></a>开启代理服务器方法一：直接配置proxy</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">devServer</span>:&#123;</span><br><span class="line">  <span class="attr">proxy</span>:<span class="string">&quot;http://localhost:5000&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>优劣：<ol>
-<li>优点：配置简单，请求资源时直接发给前端（8080）即可。</li>
-<li>缺点：不能配置多个代理，不能灵活的控制请求是否走代理。</li>
-<li>工作方式：若按照上述配置代理，当请求了前端不存在的资源时，那么该请求会转发给服务器（优先匹配前端资源）</li>
-</ol>
-</li>
-</ul>
-<h3 id="开启代理服务器方法二：配置具体代理规则"><a href="#开启代理服务器方法二：配置具体代理规则" class="headerlink" title="开启代理服务器方法二：配置具体代理规则"></a>开启代理服务器方法二：配置具体代理规则</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">devServer</span>: &#123;</span><br><span class="line">	<span class="attr">proxy</span>: &#123;</span><br><span class="line">		<span class="string">&#x27;/api1&#x27;</span>: &#123;<span class="comment">// 匹配所有以 &#x27;/api1&#x27;开头的请求路径</span></span><br><span class="line">			<span class="attr">target</span>: <span class="string">&#x27;http://localhost:5000&#x27;</span>,</span><br><span class="line">			<span class="attr">changeOrigin</span>: <span class="literal">true</span>,</span><br><span class="line">			<span class="attr">pathRewrite</span>: &#123;<span class="string">&#x27;^/api1&#x27;</span>: <span class="string">&#x27;&#x27;</span>&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>接口配置属性的解析</p>
-<ul>
-<li>target：代理目标的基础路径</li>
-<li>changeOrigin：<ul>
-<li>默认值为true，服务器收到的请求头中的host为：localhost:5000。</li>
-<li>为false时，服务器收到的请求头中的host为：localhost:8080</li>
-</ul>
-</li>
-<li>pathRewrite：配带冒号前面的字符，将它替换为空字符</li>
-<li>ws：为true，支持websocket</li>
-</ul>
-</li>
-<li><p>优劣：</p>
+<h4 id="方法一：直接配置-proxy"><a href="#方法一：直接配置-proxy" class="headerlink" title="方法一：直接配置 proxy"></a>方法一：直接配置 proxy</h4><p>最简单的方式是把整个 devServer 转发到一个目标地址：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">devServer</span>:&#123;</span><br><span class="line">  <span class="attr">proxy</span>:<span class="string">&quot;http://localhost:5000&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>优劣：</p>
 <ol>
-<li>优点：可以配置多个代理，且可以灵活的控制请求是否走代理。</li>
+<li>优点：配置简单，请求资源时直接发给前端（8080）即可。</li>
+<li>缺点：不能配置多个代理，不能灵活地控制请求是否走代理。</li>
+<li>工作方式：若按照上述配置代理，当请求了前端不存在的资源时，那么该请求会转发给服务器（优先匹配前端资源）。</li>
+</ol>
+<h4 id="方法二：配置具体代理规则"><a href="#方法二：配置具体代理规则" class="headerlink" title="方法二：配置具体代理规则"></a>方法二：配置具体代理规则</h4><p>按请求前缀分别配置多个代理，并去掉转发时的前缀：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">devServer</span>: &#123;</span><br><span class="line">	<span class="attr">proxy</span>: &#123;</span><br><span class="line">		<span class="string">&#x27;/api1&#x27;</span>: &#123;<span class="comment">// 匹配所有以 &#x27;/api1&#x27;开头的请求路径</span></span><br><span class="line">			<span class="attr">target</span>: <span class="string">&#x27;http://localhost:5000&#x27;</span>,</span><br><span class="line">			<span class="attr">changeOrigin</span>: <span class="literal">true</span>,</span><br><span class="line">			<span class="attr">pathRewrite</span>: &#123;<span class="string">&#x27;^/api1&#x27;</span>: <span class="string">&#x27;&#x27;</span>&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接口配置属性的解析：</p>
+<ul>
+<li>target：代理目标的基础路径。</li>
+<li>changeOrigin：<ul>
+<li>默认值为 true，服务器收到的请求头中的 host 为 <code>localhost:5000</code>。</li>
+<li>为 false 时，服务器收到的请求头中的 host 为 <code>localhost:8080</code>。</li>
+</ul>
+</li>
+<li>pathRewrite：匹配带冒号前面的字符，将它替换为空字符。</li>
+<li>ws：为 true 时支持 websocket。</li>
+</ul>
+<p>优劣：</p>
+<ol>
+<li>优点：可以配置多个代理，且可以灵活地控制请求是否走代理。</li>
 <li>缺点：配置略微繁琐，请求资源时必须加前缀。</li>
 </ol>
-</li>
-<li><p>案例</p>
-<ul>
-<li>使用axios请求github的搜索接口：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">https</span>:<span class="comment">//api.github.com/search/users?q=$&#123;this.keyWord&#125;</span></span><br></pre></td></tr></table></figure></li>
-<li>也可以使用封装好的插件来请求或响应接口服务：vue-resource插件</li>
+<p>案例：使用 axios 请求 GitHub 的搜索接口。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">https</span>:<span class="comment">//api.github.com/search/users?q=$&#123;this.keyWord&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以使用封装好的插件来请求或响应接口服务：vue-resource 插件。</p>
+<h2 id="第-13-步：Vuex"><a href="#第-13-步：Vuex" class="headerlink" title="第 13 步：Vuex"></a>第 13 步：Vuex</h2><a href="/2024/11/01/vue3/vuex/" title="VUE3-VUEX(状态管理库) 不推荐">VUE3-VUEX(状态管理库) 不推荐</a>
+
+<p>Vuex 了解即可，现在推荐使用 Pinia。</p>
+<h2 id="第-14-步：额外补充的知识"><a href="#第-14-步：额外补充的知识" class="headerlink" title="第 14 步：额外补充的知识"></a>第 14 步：额外补充的知识</h2><ul>
+<li><code>obj.hasOwnProperty(&#39;属性名&#39;)</code>：判断对象身上是否存在某一元素。</li>
 </ul>
-</li>
+<h2 id="踩坑与注意点"><a href="#踩坑与注意点" class="headerlink" title="踩坑与注意点"></a>踩坑与注意点</h2><ul>
+<li><code>props</code> 是只读的，不要在子组件里直接改；需要“可写”时用 <code>v-bind</code> 把 props 值同步到 data，或改由父组件更新。</li>
+<li>props 传的是对象时，子组件改对象内部属性不会报警告，但会污染父组件数据，仍不推荐。</li>
+<li><code>scoped</code> 只作用于当前组件的模板，不影响子组件根元素以外的内容。</li>
+<li><code>nextTick</code> 要等 DOM 更新完再取元素，直接紧跟赋值语句之后读取会拿到旧 DOM。</li>
+<li>代理方法一无法配置多个代理，也不能灵活控制；需要多目标时用方法二并记得加路径前缀。</li>
+<li><code>pathRewrite</code> 只是把前缀从发给后端的路径里去掉，前端请求时仍然要带着这个前缀。</li>
+<li>过渡动画的类名必须以 transition 的 <code>name</code> 为前缀，写成外部样式表时要注意 <code>-class</code> 的对应关系。</li>
 </ul>
-<h2 id="Vuex-了解即可，现在推荐使用Pinia"><a href="#Vuex-了解即可，现在推荐使用Pinia" class="headerlink" title="Vuex(了解即可，现在推荐使用Pinia)"></a>Vuex(了解即可，现在推荐使用Pinia)</h2><ul>
-<li><a href="/2024/11/01/vue3/vuex/" title="VUE3-VUEX(状态管理库) 不推荐">VUE3-VUEX(状态管理库) 不推荐</a></li>
-</ul>
-<h2 id="额外补充的知识"><a href="#额外补充的知识" class="headerlink" title="额外补充的知识"></a>额外补充的知识</h2><ul>
-<li>obj.hasOwnProperty(‘属性名’)：判断对象身上是否存在某一元素</li>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://cli.vuejs.org/zh">Vue CLI 配置参考</a></li>
 </ul>
 
 </article>
@@ -750,17 +730,17 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/01/vue2/%E8%B7%AF%E7%94%B1/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/vue2/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E7%9A%84%E6%80%BB%E7%BB%93/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">VUE2-路由（主了解）</h6>
+                <h6 class="trm-op-title">VUE-组件通信</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
                 <li>24/11/01</li>
                 <li>13:58</li>
-                <li>VUE</li>
+                <li>Vue</li>
             </ul>
         </div>
     </div>
@@ -771,17 +751,17 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/01/vue2/%E5%9F%BA%E7%A1%80/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/vue2/%E8%B7%AF%E7%94%B1/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">VUE2-基础（主了解）</h6>
+                <h6 class="trm-op-title">VUE2-路由（主了解）</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
                 <li>24/11/01</li>
                 <li>13:58</li>
-                <li>VUE</li>
+                <li>Vue</li>
             </ul>
         </div>
     </div>
@@ -847,7 +827,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="文件结构"><a rel="nofollow" class="trm-toc-link" href="#文件结构"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">文件结构</span></a></li><li class="trm-toc-item trm-toc-level-2" title="关于不同版本的Vue："><a rel="nofollow" class="trm-toc-link" href="#关于不同版本的Vue："><span class="trm-toc-number">2.</span> <span class="trm-toc-text">关于不同版本的Vue：</span></a></li><li class="trm-toc-item trm-toc-level-2" title="vue.config.js配置文件"><a rel="nofollow" class="trm-toc-link" href="#vue-config-js配置文件"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">vue.config.js配置文件</span></a></li><li class="trm-toc-item trm-toc-level-2" title="ref属性"><a rel="nofollow" class="trm-toc-link" href="#ref属性"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">ref属性</span></a></li><li class="trm-toc-item trm-toc-level-2" title="props配置"><a rel="nofollow" class="trm-toc-link" href="#props配置"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">props配置</span></a></li><li class="trm-toc-item trm-toc-level-2" title="mixin(混入)"><a rel="nofollow" class="trm-toc-link" href="#mixin-混入"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">mixin(混入)</span></a></li><li class="trm-toc-item trm-toc-level-2" title="插件"><a rel="nofollow" class="trm-toc-link" href="#插件"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">插件</span></a></li><li class="trm-toc-item trm-toc-level-2" title="style标签的scoped属性"><a rel="nofollow" class="trm-toc-link" href="#style标签的scoped属性"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">style标签的scoped属性</span></a></li><li class="trm-toc-item trm-toc-level-2" title="组件化编码流程"><a rel="nofollow" class="trm-toc-link" href="#组件化编码流程"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">组件化编码流程</span></a></li><li class="trm-toc-item trm-toc-level-2" title="webStorage"><a rel="nofollow" class="trm-toc-link" href="#webStorage"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">webStorage</span></a></li><li class="trm-toc-item trm-toc-level-2" title="nextTick"><a rel="nofollow" class="trm-toc-link" href="#nextTick"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">nextTick</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Vue封装的过度与动画"><a rel="nofollow" class="trm-toc-link" href="#Vue封装的过度与动画"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">Vue封装的过度与动画</span></a></li><li class="trm-toc-item trm-toc-level-2" title="解决跨域的方式"><a rel="nofollow" class="trm-toc-link" href="#解决跨域的方式"><span class="trm-toc-number">13.</span> <span class="trm-toc-text">解决跨域的方式</span></a></li><li class="trm-toc-item trm-toc-level-2" title="配置代理"><a rel="nofollow" class="trm-toc-link" href="#配置代理"><span class="trm-toc-number">14.</span> <span class="trm-toc-text">配置代理</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="开启代理服务器方法一：直接配置proxy"><a rel="nofollow" class="trm-toc-link" href="#开启代理服务器方法一：直接配置proxy"><span class="trm-toc-number">14.1.</span> <span class="trm-toc-text">开启代理服务器方法一：直接配置proxy</span></a></li><li class="trm-toc-item trm-toc-level-3" title="开启代理服务器方法二：配置具体代理规则"><a rel="nofollow" class="trm-toc-link" href="#开启代理服务器方法二：配置具体代理规则"><span class="trm-toc-number">14.2.</span> <span class="trm-toc-text">开启代理服务器方法二：配置具体代理规则</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="Vuex(了解即可，现在推荐使用Pinia)"><a rel="nofollow" class="trm-toc-link" href="#Vuex-了解即可，现在推荐使用Pinia"><span class="trm-toc-number">15.</span> <span class="trm-toc-text">Vuex(了解即可，现在推荐使用Pinia)</span></a></li><li class="trm-toc-item trm-toc-level-2" title="额外补充的知识"><a rel="nofollow" class="trm-toc-link" href="#额外补充的知识"><span class="trm-toc-number">16.</span> <span class="trm-toc-text">额外补充的知识</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景：先看清项目长什么样"><a rel="nofollow" class="trm-toc-link" href="#背景：先看清项目长什么样"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景：先看清项目长什么样</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 1 步：区分不同版本的 Vue"><a rel="nofollow" class="trm-toc-link" href="#第-1-步：区分不同版本的-Vue"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">第 1 步：区分不同版本的 Vue</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 2 步：定制 vue.config.js"><a rel="nofollow" class="trm-toc-link" href="#第-2-步：定制-vue-config-js"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">第 2 步：定制 vue.config.js</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 3 步：用 ref 获取 DOM 或组件实例"><a rel="nofollow" class="trm-toc-link" href="#第-3-步：用-ref-获取-DOM-或组件实例"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">第 3 步：用 ref 获取 DOM 或组件实例</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 4 步：props 配置"><a rel="nofollow" class="trm-toc-link" href="#第-4-步：props-配置"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">第 4 步：props 配置</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 5 步：mixin（混入）"><a rel="nofollow" class="trm-toc-link" href="#第-5-步：mixin（混入）"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">第 5 步：mixin（混入）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 6 步：插件"><a rel="nofollow" class="trm-toc-link" href="#第-6-步：插件"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">第 6 步：插件</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 7 步：style 标签的 scoped 属性"><a rel="nofollow" class="trm-toc-link" href="#第-7-步：style-标签的-scoped-属性"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">第 7 步：style 标签的 scoped 属性</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 8 步：组件化编码流程"><a rel="nofollow" class="trm-toc-link" href="#第-8-步：组件化编码流程"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">第 8 步：组件化编码流程</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 9 步：webStorage"><a rel="nofollow" class="trm-toc-link" href="#第-9-步：webStorage"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">第 9 步：webStorage</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 10 步：nextTick"><a rel="nofollow" class="trm-toc-link" href="#第-10-步：nextTick"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">第 10 步：nextTick</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 11 步：Vue 封装的过渡与动画"><a rel="nofollow" class="trm-toc-link" href="#第-11-步：Vue-封装的过渡与动画"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">第 11 步：Vue 封装的过渡与动画</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 12 步：解决跨域的方式"><a rel="nofollow" class="trm-toc-link" href="#第-12-步：解决跨域的方式"><span class="trm-toc-number">13.</span> <span class="trm-toc-text">第 12 步：解决跨域的方式</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="配置代理的前情提要"><a rel="nofollow" class="trm-toc-link" href="#配置代理的前情提要"><span class="trm-toc-number">13.1.</span> <span class="trm-toc-text">配置代理的前情提要</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="第 13 步：Vuex"><a rel="nofollow" class="trm-toc-link" href="#第-13-步：Vuex"><span class="trm-toc-number">14.</span> <span class="trm-toc-text">第 13 步：Vuex</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 14 步：额外补充的知识"><a rel="nofollow" class="trm-toc-link" href="#第-14-步：额外补充的知识"><span class="trm-toc-number">15.</span> <span class="trm-toc-text">第 14 步：额外补充的知识</span></a></li><li class="trm-toc-item trm-toc-level-2" title="踩坑与注意点"><a rel="nofollow" class="trm-toc-link" href="#踩坑与注意点"><span class="trm-toc-number">16.</span> <span class="trm-toc-text">踩坑与注意点</span></a></li><li class="trm-toc-item trm-toc-level-2" title="参考"><a rel="nofollow" class="trm-toc-link" href="#参考"><span class="trm-toc-number">17.</span> <span class="trm-toc-text">参考</span></a></li></ol>
       </div>
     </div>
 
@@ -971,6 +951,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

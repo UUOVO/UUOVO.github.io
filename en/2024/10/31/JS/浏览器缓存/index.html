@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="浏览器端存储 API：cookie、localStorage、sessionStorage、IndexedDB 源专用文件系统（Origin Private File System，简称 OPFS）  cookie 数据会以字符串键值对的形式存储在本地，数据会『自动的传递到服务器』 cookie设置的『过期时间之前一直有效』 『cookie数据大小』不能超过4k 与服务端通信时，每次都会携">
+<meta name="description" content="对比 cookie、localStorage、sessionStorage、IndexedDB 与 OPFS 五种浏览器存储方式，说明容量、生命周期与适用场景的差异">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浏览器缓存">
 <meta property="og:url" content="http://example.com/en/2024/10/31/JS/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="浏览器端存储 API：cookie、localStorage、sessionStorage、IndexedDB 源专用文件系统（Origin Private File System，简称 OPFS）  cookie 数据会以字符串键值对的形式存储在本地，数据会『自动的传递到服务器』 cookie设置的『过期时间之前一直有效』 『cookie数据大小』不能超过4k 与服务端通信时，每次都会携">
+<meta property="og:description" content="对比 cookie、localStorage、sessionStorage、IndexedDB 与 OPFS 五种浏览器存储方式，说明容量、生命周期与适用场景的差异">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-10-31T03:05:32.124Z">
-<meta property="article:modified_time" content="2025-07-31T10:04:40.848Z">
+<meta property="article:published_time" content="2024-10-31T03:05:32.000Z">
+<meta property="article:modified_time" content="2026-11-19T02:06:13.026Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="缓存">
 <meta name="twitter:card" content="summary">
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-31 18:04:40"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-19 10:06:13"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -83,6 +83,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -197,13 +199,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -239,7 +241,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -257,13 +259,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -532,111 +534,128 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p><strong>结论先行</strong>：浏览器端一共有 cookie、sessionStorage、localStorage、IndexedDB、OPFS 五套存储。它们都能“存数据”，但容量、生命周期、是否随 HTTP 请求发送、能否存结构化数据这四点完全不同，选错就会出现容量溢出、数据丢失或请求变慢。一句话选型：需要随请求带给服务端的小标识用 cookie；当前标签页的临时数据用 sessionStorage；要长期保留的少量键值用 localStorage；数据量大、需要索引查询用 IndexedDB；需要按文件方式读写用 OPFS。</p>
+<span id="more"></span>
 
+<h2 id="背景：看起来都是-set-get，实际约束差别很大"><a href="#背景：看起来都是-set-get，实际约束差别很大" class="headerlink" title="背景：看起来都是 set&#x2F;get，实际约束差别很大"></a>背景：看起来都是 set&#x2F;get，实际约束差别很大</h2><p>这几套 API 的调用方式很像，但限制完全不同：cookie 只有 4K，而且每次请求都会带上；localStorage 只有 5M，但永久保存；sessionStorage 关掉窗口就清空；IndexedDB 是一个数据库，所有读写都要经过事务；OPFS 则是页面私有的文件系统。下面按 API 逐个说明，最后一节汇总踩坑点。</p>
+<h2 id="一、cookie：会随请求自动发送的小块数据"><a href="#一、cookie：会随请求自动发送的小块数据" class="headerlink" title="一、cookie：会随请求自动发送的小块数据"></a>一、cookie：会随请求自动发送的小块数据</h2><p>cookie 是唯一一种会“自动传递到服务器”的存储，所以它的容量和开销都被严格限制。</p>
 <ul>
-<li>浏览器端存储 API：cookie、localStorage、sessionStorage、IndexedDB</li>
-<li>源专用文件系统（Origin Private File System，简称 OPFS）</li>
+<li>数据以字符串键值对的形式存储在本地，数据会<span class="key_words">『自动的传递到服务器』</span></li>
+<li>在设置的<span class="key_words">『过期时间之前一直有效』</span></li>
+<li><span class="key_words">『cookie 数据大小』</span>不能超过 4K</li>
+<li>与服务端通信时，每次都会携带在请求的 header 中，影响安全和请求的性能</li>
 </ul>
-<h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><ul>
-<li>数据会以字符串键值对的形式存储在本地，数据会<span class="key_words">『自动的传递到服务器』</span></li>
-<li>cookie设置的<span class="key_words">『过期时间之前一直有效』</span></li>
-<li><span class="key_words">『cookie数据大小』</span>不能超过4k</li>
-<li>与服务端通信时，每次都会携带在请求中的 header 中，影响安全和请求的性能</li>
-</ul>
-<h3 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage"></a>sessionStorage</h3><ul>
-<li>数据会以字符串键值对的形式存储在本地</li>
+<h2 id="二、sessionStorage：标签页级的会话存储"><a href="#二、sessionStorage：标签页级的会话存储" class="headerlink" title="二、sessionStorage：标签页级的会话存储"></a>二、sessionStorage：标签页级的会话存储</h2><p>sessionStorage 的生命周期跟着浏览器窗口走，窗口关闭数据即消失。</p>
+<ul>
+<li>数据以字符串键值对的形式存储在本地</li>
 <li>数据在<span class="key_words">『当前浏览器窗口关闭后自动删除』</span></li>
 <li>数据大小不能超过 5M</li>
-<li>如果存储的 value 是对象或数据，最好使用 JSON.stringify() 转化，拿的时候 JSON.parse()</li>
-<li>使用：<ul>
-<li>存储：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">sessionStorage</span>.<span class="title function_">setItem</span>(<span class="string">&#x27;key&#x27;</span>,<span class="string">&#x27;value&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
-<li>获取：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">sessionStorage</span>.<span class="title function_">getItem</span>(<span class="string">&#x27;key&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
-<li>删除对应 key 中的数据：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">sessionStorage</span>.<span class="title function_">removeItem</span>(<span class="string">&#x27;key&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
-<li>删除所有保存的数据：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">sessionStorage</span>.<span class="title function_">clear</span>()</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-<li>注：<ul>
-<li>如果存储的 value 是对象或数据，最好使用 JSON.stringify() 转化，拿的时候 JSON.parse()</li>
-<li>getItem(xxx)，如果 xxx 对应的 value 获取不到，那么 getItem 的返回值是 null</li>
-<li>JSON.parse(null) 的结果依然是 null</li>
+<p>存储一个键值对，值统一按字符串保存：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">sessionStorage</span>.<span class="title function_">setItem</span>(<span class="string">&#x27;key&#x27;</span>, <span class="string">&#x27;value&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>读取时用 getItem 传入同一个 key：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">sessionStorage</span>.<span class="title function_">getItem</span>(<span class="string">&#x27;key&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>删除某个 key 对应的数据：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">sessionStorage</span>.<span class="title function_">removeItem</span>(<span class="string">&#x27;key&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>清空这个会话下的全部数据：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">sessionStorage</span>.<span class="title function_">clear</span>()</span><br></pre></td></tr></table></figure>
+
+<p>使用时有几个细节要记住：</p>
+<ul>
+<li>如果存储的 value 是对象或数组，最好先用 <code>JSON.stringify()</code> 转化，取的时候再用 <code>JSON.parse()</code></li>
+<li><code>getItem(xxx)</code> 如果取不到对应的 value，返回值是 <code>null</code></li>
+<li><code>JSON.parse(null)</code> 的结果依然是 <code>null</code></li>
 </ul>
-</li>
-</ul>
-<h3 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h3><ul>
-<li>数据会以字符串键值对的形式存储在本地</li>
-<li><span class="key_words">『永久存储』</span>，浏览器关闭后数据不丢失除非主动删除数据；</li>
+<h2 id="三、localStorage：永久保存的键值存储"><a href="#三、localStorage：永久保存的键值存储" class="headerlink" title="三、localStorage：永久保存的键值存储"></a>三、localStorage：永久保存的键值存储</h2><p>localStorage 除了生命周期是永久的，其余用法与 sessionStorage 一致。</p>
+<ul>
+<li>数据以字符串键值对的形式存储在本地</li>
+<li><span class="key_words">『永久存储』</span>，浏览器关闭后数据不丢失，除非主动删除数据</li>
 <li>数据大小不能超过 5M</li>
-<li>使用：<ul>
-<li>存储：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">localStorage</span>.<span class="title function_">setItem</span>(<span class="string">&#x27;key&#x27;</span>,<span class="string">&#x27;value&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
-<li>获取：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&#x27;key&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
-<li>删除对应 key 中的数据：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">localStorage</span>.<span class="title function_">removeItem</span>(<span class="string">&#x27;key&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
-<li>删除所有保存的数据：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">localStorage</span>.<span class="title function_">clear</span>()</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-<li>注：<ul>
-<li>如果存储的 value 是对象或数据，最好使用 JSON.stringify() 转化，拿的时候 JSON.parse()</li>
-<li>getItem(xxx): 如果 xxx 对应的 value 获取不到，那么 getItem 的返回值是 null</li>
-<li>JSON.parse(null) 的结果依然是 null</li>
+<p>存储数据：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">localStorage</span>.<span class="title function_">setItem</span>(<span class="string">&#x27;key&#x27;</span>, <span class="string">&#x27;value&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>读取数据：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&#x27;key&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>删除对应 key 的数据：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">localStorage</span>.<span class="title function_">removeItem</span>(<span class="string">&#x27;key&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>清空全部数据：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">localStorage</span>.<span class="title function_">clear</span>()</span><br></pre></td></tr></table></figure>
+
+<p>同样需要注意：</p>
+<ul>
+<li>如果存储的 value 是对象或数组，最好先用 <code>JSON.stringify()</code> 转化，取的时候再用 <code>JSON.parse()</code></li>
+<li><code>getItem(xxx)</code> 如果取不到对应的 value，返回值是 <code>null</code></li>
+<li><code>JSON.parse(null)</code> 的结果依然是 <code>null</code></li>
 </ul>
-</li>
-</ul>
-<h3 id="indexedDB"><a href="#indexedDB" class="headerlink" title="indexedDB"></a>indexedDB</h3><ul>
+<h2 id="四、IndexedDB：支持事务与索引的非关系型数据库"><a href="#四、IndexedDB：支持事务与索引的非关系型数据库" class="headerlink" title="四、IndexedDB：支持事务与索引的非关系型数据库"></a>四、IndexedDB：支持事务与索引的非关系型数据库</h2><p>数据量大、需要按字段查询时用 IndexedDB，它把数据存在“对象仓库”里，读写必须包在事务中。</p>
+<ul>
 <li>非关系型数据库，数据存储在数据库中</li>
 <li>除非被清理，否则一直存在</li>
-<li>通常 数百 MB 到 几 GB</li>
-<li>术语：<ul>
-<li>数据库：IDBDatabase 对象</li>
-<li>对象仓库：IDBObjectStore 对象(<span class="desc">相当于数据库中的表</span>)</li>
-<li>索引：IDBIndex 对象</li>
-<li>事务：IDBTransaction 对象(<span class="desc">数据记录的读写和删改，都要通过事务完成</span>) </li>
-<li>操作请求：IDBRequest 对象</li>
-<li>指针： IDBCursor 对象</li>
-<li>主键集合：IDBKeyRange 对象</li>
+<li>容量通常为数百 MB 到几 GB</li>
 </ul>
-</li>
-<li>使用:<ul>
-<li><p>打开数据库：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> request = <span class="variable language_">window</span>.<span class="property">indexedDB</span>.<span class="title function_">open</span>(<span class="attr">databaseName</span>: string, <span class="attr">version</span>: number)</span><br></pre></td></tr></table></figure></li>
-<li><p>定义一个数据库存储对象：let db;</p>
-</li>
-<li><p>打开数据库成功的处理器：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.<span class="property">onsucess</span> = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123; db = event.<span class="property">target</span>.<span class="property">result</span>;&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>打开数据库失败的处理器：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">request.<span class="property">onerror</span> = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123; </span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&quot;数据库错误：&quot;</span>,$&#123;event.<span class="property">target</span>.<span class="property">errorCode</span>&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>创建一个新的数据库或者增加已存在的数据库的版本号：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">request.<span class="property">onupgradeneeded</span> = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">const</span> db = event.<span class="property">target</span>.<span class="property">result</span>; <span class="comment">// 保存 IDBDatabase 接口</span></span><br><span class="line">	<span class="keyword">const</span> objectStore; <span class="comment">// 新建对象仓库</span></span><br><span class="line">	<span class="keyword">if</span> (!db.<span class="property">objectStoreNames</span>.<span class="title function_">contains</span>(<span class="string">&#x27;tableName&#x27;</span>)) &#123; <span class="comment">// 判断该数据库是否存在该表，不存在则创建</span></span><br><span class="line">		objectStore = db.<span class="title function_">createObjectStore</span>(<span class="string">&quot;tableName&quot;</span>, &#123; <span class="attr">keyPath</span>: <span class="string">&quot;primary key&quot;</span> &#125;)</span><br><span class="line">	&#125;</span><br><span class="line">	objectStore.<span class="title function_">createIndex</span>(<span class="string">&#x27;indeName&#x27;</span>, <span class="string">&#x27;indexProperty&#x27;</span>, &#123; <span class="attr">unique</span>: <span class="literal">false</span> &#125;) <span class="comment">// 新建索引，unique: 是否包含重复的值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>新增数据：通过事务完成</p>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">add</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">const</span> request = db.<span class="title function_">transaction</span>([<span class="string">&#x27;tableName&#x27;</span>], <span class="string">&#x27;readwrite&#x27;</span>)</span><br><span class="line">		.<span class="title function_">objectStore</span>(<span class="string">&#x27;tableName&#x27;</span>)</span><br><span class="line">		.<span class="title function_">add</span>(&#123; primary <span class="attr">key</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">&#x27;zhangsan&#x27;</span>, <span class="attr">age</span>:<span class="number">10</span>&#125;) <span class="comment">// 添加数据</span></span><br><span class="line"></span><br><span class="line">	request.<span class="property">onsucess</span> = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;数据写入成功&#x27;</span>)&#125;</span><br><span class="line">	request.<span class="property">onerror</span> = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;数据写入失败&#x27;</span>)&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">add</span>()</span><br></pre></td></tr></table></figure>
-
+<p>先记住它的七个术语，后面所有 API 都围绕它们展开：</p>
 <ul>
-<li><p>读取数据</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">read</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">const</span> transaction = db.<span class="title function_">transaction</span>([<span class="string">&#x27;tableName&#x27;</span>])</span><br><span class="line">	<span class="keyword">const</span> objectStore = transaction.<span class="title function_">objectStore</span>(<span class="string">&#x27;tableName&#x27;</span>)</span><br><span class="line">	<span class="keyword">const</span> request = objectStore.<span class="title function_">get</span>(<span class="number">1</span>) <span class="comment">// get的参数时主键的值</span></span><br><span class="line"></span><br><span class="line">	request.<span class="property">onerror</span> = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;事务失败&#x27;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	request.<span class="property">onsuccess</span> = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (request.<span class="property">result</span>) &#123;</span><br><span class="line">			<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Name:&#x27;</span> + request.<span class="property">result</span>.<span class="property">name</span>)</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;未获得数据记录&#x27;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>遍历数据</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">readAll</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">const</span> objectStore = db.<span class="title function_">transaction</span>(<span class="string">&#x27;tableName&#x27;</span>).<span class="title function_">objectStore</span>(<span class="string">&#x27;tableName&#x27;</span>)</span><br><span class="line">	objectStore.<span class="title function_">openCursor</span>().<span class="property">onsucess</span> = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">const</span> cursor = event.<span class="property">target</span>.<span class="property">result</span></span><br><span class="line">		<span class="keyword">if</span> (cursor) &#123;</span><br><span class="line">			<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Primary Key:&#x27;</span> + cursor.<span class="property">key</span>) <span class="comment">// 获取主键</span></span><br><span class="line">			<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Name:&#x27;</span> + cursor.<span class="property">value</span>.<span class="property">name</span>) <span class="comment">// 其余键值以这种方式获取</span></span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;没有更多数据&#x27;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">readAll</span>()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更新数据</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">update</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">const</span> request = db.<span class="title function_">transaction</span>([<span class="string">&#x27;tableName&#x27;</span>],<span class="string">&#x27;readwrite&#x27;</span>)</span><br><span class="line">		.<span class="title function_">objectStore</span>(<span class="string">&#x27;tableName&#x27;</span>)</span><br><span class="line">		.<span class="title function_">put</span>(&#123; primary <span class="attr">key</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">&#x27;zhangsan&#x27;</span>, <span class="attr">age</span>:<span class="number">10</span>&#125;) <span class="comment">// 自动更新primary key为1的记录</span></span><br><span class="line">	request.<span class="property">onsuccess</span> = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;数据更新成功&#x27;</span>) &#125;</span><br><span class="line">	request.<span class="property">onerror</span> = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;数据更新失败&#x27;</span>) &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">update</span>()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除数据</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">remove</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">const</span> request = db</span><br><span class="line">		.<span class="title function_">transaction</span>([<span class="string">&#x27;tableName&#x27;</span>], <span class="string">&#x27;readwrite&#x27;</span>)</span><br><span class="line">		.<span class="title function_">objectStore</span>(<span class="string">&#x27;tableName&#x27;</span>)</span><br><span class="line">		.<span class="title function_">delete</span>(<span class="number">1</span>) <span class="comment">// 通过主键去删除对应的记录</span></span><br><span class="line">	request.<span class="property">onsucess</span> = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">		conosle.<span class="title function_">log</span>(<span class="string">&#x27;数据删除成功&#x27;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">remove</span>()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用索引</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">设：存在objectStore.<span class="title function_">createIndex</span>(<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, &#123;<span class="attr">unique</span>: <span class="literal">false</span>&#125;)</span><br><span class="line">取：</span><br><span class="line"><span class="keyword">const</span> transaction = db.<span class="title function_">transaction</span>([<span class="string">&#x27;tableName&#x27;</span>], <span class="string">&#x27;readonly&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> store = transacton.<span class="title function_">objectStore</span>(<span class="string">&#x27;tableName&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> index = store.<span class="title function_">index</span>(<span class="string">&#x27;name&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> request = index.<span class="title function_">get</span>(<span class="string">&#x27;lisi&#x27;</span>)</span><br><span class="line"></span><br><span class="line">request.<span class="property">onsucess</span> = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">const</span> result = e.<span class="property">target</span>.<span class="property">result</span></span><br><span class="line">	<span class="keyword">if</span> (result) &#123; ... &#125; <span class="keyword">else</span> &#123; ... &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>数据库：<code>IDBDatabase</code> 对象</li>
+<li>对象仓库：<code>IDBObjectStore</code> 对象（<span class="desc">相当于数据库中的表</span>）</li>
+<li>索引：<code>IDBIndex</code> 对象</li>
+<li>事务：<code>IDBTransaction</code> 对象（<span class="desc">数据记录的读写和删改，都要通过事务完成</span>）</li>
+<li>操作请求：<code>IDBRequest</code> 对象</li>
+<li>指针：<code>IDBCursor</code> 对象</li>
+<li>主键集合：<code>IDBKeyRange</code> 对象</li>
 </ul>
-<h3 id="OPFS"><a href="#OPFS" class="headerlink" title="OPFS"></a>OPFS</h3><ul>
-<li>存储空间数 GB 到几十 GB，有设备磁盘空间决定。</li>
-<li>时效性： 持久存储，除非手动清除或用户明确授权清理数据</li>
-<li>性能：直接对文件操作，支持流式处理，可以在主线程或 web worker 中使用</li>
-<li>API：提供类 Unix 文件系统的 API，如 mkdir、open、close、read、write</li>
-<li>属于页面私有，用户需通过对应的浏览器插件，查看存储的文件</li>
+<h3 id="第-1-步：打开数据库"><a href="#第-1-步：打开数据库" class="headerlink" title="第 1 步：打开数据库"></a>第 1 步：打开数据库</h3><p>open 接收数据库名和版本号，返回一个请求对象：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> request = <span class="variable language_">window</span>.<span class="property">indexedDB</span>.<span class="title function_">open</span>(<span class="attr">databaseName</span>: string, <span class="attr">version</span>: number)</span><br></pre></td></tr></table></figure>
+
+<h3 id="第-2-步：声明一个保存数据库实例的变量"><a href="#第-2-步：声明一个保存数据库实例的变量" class="headerlink" title="第 2 步：声明一个保存数据库实例的变量"></a>第 2 步：声明一个保存数据库实例的变量</h3><p>打开成功后需要把 <code>IDBDatabase</code> 存下来，后续所有操作都基于它：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> db;</span><br></pre></td></tr></table></figure>
+
+<h3 id="第-3-步：处理打开成功"><a href="#第-3-步：处理打开成功" class="headerlink" title="第 3 步：处理打开成功"></a>第 3 步：处理打开成功</h3><p>请求成功时，从 <code>event.target.result</code> 取出数据库实例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.<span class="property">onsuccess</span> = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123; db = event.<span class="property">target</span>.<span class="property">result</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="第-4-步：处理打开失败"><a href="#第-4-步：处理打开失败" class="headerlink" title="第 4 步：处理打开失败"></a>第 4 步：处理打开失败</h3><p>失败时打印错误码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">request.<span class="property">onerror</span> = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&quot;数据库错误：&quot;</span>,$&#123;event.<span class="property">target</span>.<span class="property">errorCode</span>&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="第-5-步：建库或在版本升级时建表"><a href="#第-5-步：建库或在版本升级时建表" class="headerlink" title="第 5 步：建库或在版本升级时建表"></a>第 5 步：建库或在版本升级时建表</h3><p>新建数据库、或者给已存在的数据库升版本号时，会在 <code>onupgradeneeded</code> 里完成建表与建索引：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">request.<span class="property">onupgradeneeded</span> = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">const</span> db = event.<span class="property">target</span>.<span class="property">result</span>; <span class="comment">// 保存 IDBDatabase 接口</span></span><br><span class="line">	<span class="keyword">const</span> objectStore; <span class="comment">// 新建对象仓库</span></span><br><span class="line">	<span class="keyword">if</span> (!db.<span class="property">objectStoreNames</span>.<span class="title function_">contains</span>(<span class="string">&#x27;tableName&#x27;</span>)) &#123; <span class="comment">// 判断该数据库是否存在该表，不存在则创建</span></span><br><span class="line">		objectStore = db.<span class="title function_">createObjectStore</span>(<span class="string">&quot;tableName&quot;</span>, &#123; <span class="attr">keyPath</span>: <span class="string">&#x27;primaryKey&#x27;</span> &#125;)</span><br><span class="line">	&#125;</span><br><span class="line">	objectStore.<span class="title function_">createIndex</span>(<span class="string">&#x27;indeName&#x27;</span>, <span class="string">&#x27;indexProperty&#x27;</span>, &#123; <span class="attr">unique</span>: <span class="literal">false</span> &#125;) <span class="comment">// 新建索引，unique: 是否包含重复的值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="第-6-步：新增数据必须通过事务"><a href="#第-6-步：新增数据必须通过事务" class="headerlink" title="第 6 步：新增数据必须通过事务"></a>第 6 步：新增数据必须通过事务</h3><p>先用 <code>transaction</code> 指定仓库和读写模式，再在仓库上调用 <code>add</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">add</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">const</span> request = db.<span class="title function_">transaction</span>([<span class="string">&#x27;tableName&#x27;</span>], <span class="string">&#x27;readwrite&#x27;</span>)</span><br><span class="line">		.<span class="title function_">objectStore</span>(<span class="string">&#x27;tableName&#x27;</span>)</span><br><span class="line">		.<span class="title function_">add</span>(&#123; primary <span class="attr">key</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">&#x27;zhangsan&#x27;</span>, <span class="attr">age</span>:<span class="number">10</span>&#125;) <span class="comment">// 添加数据</span></span><br><span class="line"></span><br><span class="line">	request.<span class="property">onsuccess</span> = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;数据写入成功&#x27;</span>) &#125;</span><br><span class="line">	request.<span class="property">onerror</span> = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;数据写入失败&#x27;</span>) &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">add</span>()</span><br></pre></td></tr></table></figure>
+
+<h3 id="第-7-步：按主键读取数据"><a href="#第-7-步：按主键读取数据" class="headerlink" title="第 7 步：按主键读取数据"></a>第 7 步：按主键读取数据</h3><p><code>get</code> 的参数就是主键的值，回调里判断 <code>request.result</code> 是否取到记录：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">read</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">const</span> transaction = db.<span class="title function_">transaction</span>([<span class="string">&#x27;tableName&#x27;</span>])</span><br><span class="line">	<span class="keyword">const</span> objectStore = transaction.<span class="title function_">objectStore</span>(<span class="string">&#x27;tableName&#x27;</span>)</span><br><span class="line">	<span class="keyword">const</span> request = objectStore.<span class="title function_">get</span>(<span class="number">1</span>) <span class="comment">// get 的参数是主键的值</span></span><br><span class="line"></span><br><span class="line">	request.<span class="property">onerror</span> = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;事务失败&#x27;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	request.<span class="property">onsuccess</span> = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (request.<span class="property">result</span>) &#123;</span><br><span class="line">			<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Name:&#x27;</span> + request.<span class="property">result</span>.<span class="property">name</span>)</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;未获得数据记录&#x27;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="第-8-步：用游标遍历全部数据"><a href="#第-8-步：用游标遍历全部数据" class="headerlink" title="第 8 步：用游标遍历全部数据"></a>第 8 步：用游标遍历全部数据</h3><p><code>openCursor</code> 拿到游标后，用 <code>cursor.key</code> 取主键、<code>cursor.value</code> 取整条记录：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">readAll</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">const</span> objectStore = db.<span class="title function_">transaction</span>(<span class="string">&#x27;tableName&#x27;</span>).<span class="title function_">objectStore</span>(<span class="string">&#x27;tableName&#x27;</span>)</span><br><span class="line">	objectStore.<span class="title function_">openCursor</span>().<span class="property">onsuccess</span> = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">const</span> cursor = event.<span class="property">target</span>.<span class="property">result</span></span><br><span class="line">		<span class="keyword">if</span> (cursor) &#123;</span><br><span class="line">			<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Primary Key:&#x27;</span> + cursor.<span class="property">key</span>) <span class="comment">// 获取主键</span></span><br><span class="line">			<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Name:&#x27;</span> + cursor.<span class="property">value</span>.<span class="property">name</span>) <span class="comment">// 其余键值以这种方式获取</span></span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;没有更多数据&#x27;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">readAll</span>()</span><br></pre></td></tr></table></figure>
+
+<h3 id="第-9-步：更新数据"><a href="#第-9-步：更新数据" class="headerlink" title="第 9 步：更新数据"></a>第 9 步：更新数据</h3><p><code>put</code> 会按主键自动覆盖已有记录：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">update</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">const</span> request = db.<span class="title function_">transaction</span>([<span class="string">&#x27;tableName&#x27;</span>], <span class="string">&#x27;readwrite&#x27;</span>)</span><br><span class="line">		.<span class="title function_">objectStore</span>(<span class="string">&#x27;tableName&#x27;</span>)</span><br><span class="line">		.<span class="title function_">put</span>(&#123; primary <span class="attr">key</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">&#x27;zhangsan&#x27;</span>, <span class="attr">age</span>:<span class="number">10</span>&#125;) <span class="comment">// 自动更新 primary key 为 1 的记录</span></span><br><span class="line">	request.<span class="property">onsuccess</span> = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;数据更新成功&#x27;</span>) &#125;</span><br><span class="line">	request.<span class="property">onerror</span> = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;数据更新失败&#x27;</span>) &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">update</span>()</span><br></pre></td></tr></table></figure>
+
+<h3 id="第-10-步：删除数据"><a href="#第-10-步：删除数据" class="headerlink" title="第 10 步：删除数据"></a>第 10 步：删除数据</h3><p><code>delete</code> 的参数是主键，不是索引：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">remove</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">const</span> request = db</span><br><span class="line">		.<span class="title function_">transaction</span>([<span class="string">&#x27;tableName&#x27;</span>], <span class="string">&#x27;readwrite&#x27;</span>)</span><br><span class="line">		.<span class="title function_">objectStore</span>(<span class="string">&#x27;tableName&#x27;</span>)</span><br><span class="line">		.<span class="title function_">delete</span>(<span class="number">1</span>) <span class="comment">// 通过主键去删除对应的记录</span></span><br><span class="line">	request.<span class="property">onsuccess</span> = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;数据删除成功&#x27;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">remove</span>()</span><br></pre></td></tr></table></figure>
+
+<h3 id="第-11-步：使用索引查询"><a href="#第-11-步：使用索引查询" class="headerlink" title="第 11 步：使用索引查询"></a>第 11 步：使用索引查询</h3><p>前提是建表时已经执行过 <code>objectStore.createIndex(&#39;name&#39;, &#39;name&#39;, &#123; unique: false &#125;)</code>，之后就能用索引名取值。下面的片段是示意写法，<code>设</code> 和 <code>取</code> 是注释说明而不是可运行代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">设：存在 objectStore.<span class="title function_">createIndex</span>(<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, &#123; <span class="attr">unique</span>: <span class="literal">false</span> &#125;)</span><br><span class="line">取：</span><br><span class="line"><span class="keyword">const</span> transaction = db.<span class="title function_">transaction</span>([<span class="string">&#x27;tableName&#x27;</span>], <span class="string">&#x27;readonly&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> store = transaction.<span class="title function_">objectStore</span>(<span class="string">&#x27;tableName&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> index = store.<span class="title function_">index</span>(<span class="string">&#x27;name&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> request = index.<span class="title function_">get</span>(<span class="string">&#x27;lisi&#x27;</span>)</span><br><span class="line"></span><br><span class="line">request.<span class="property">onsuccess</span> = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">const</span> result = e.<span class="property">target</span>.<span class="property">result</span></span><br><span class="line">	<span class="keyword">if</span> (result) &#123; ... &#125; <span class="keyword">else</span> &#123; ... &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、OPFS：页面私有的文件系统"><a href="#五、OPFS：页面私有的文件系统" class="headerlink" title="五、OPFS：页面私有的文件系统"></a>五、OPFS：页面私有的文件系统</h2><p>OPFS（Origin Private File System）把存储抽象成文件，适合大文件、流式读写和 Worker 场景。</p>
+<ul>
+<li>容量为几 GB 到几十 GB，由设备磁盘空间决定</li>
+<li>时效性：持久存储，除非手动清除或用户明确授权清理数据</li>
+<li>性能：直接对文件操作，支持流式处理，可以在主线程或 Web Worker 中使用</li>
+<li>API：提供类 Unix 文件系统的 API，如 <code>mkdir</code>、<code>open</code>、<code>close</code>、<code>read</code>、<code>write</code></li>
+<li>属于页面私有，用户需要通过对应的浏览器插件才能查看存储的文件</li>
+</ul>
+<h2 id="踩坑与注意点"><a href="#踩坑与注意点" class="headerlink" title="踩坑与注意点"></a>踩坑与注意点</h2><ul>
+<li><strong>cookie 的成本在请求上</strong>：4K 上限之外，它每次请求都会带在 header 里，所以不要往里塞业务数据。</li>
+<li><strong>5M 是字符量级的上限</strong>：localStorage &#x2F; sessionStorage 存的是字符串，<code>JSON.stringify</code> 之后的对象会明显变大，接近上限时会直接抛异常。</li>
+<li><strong>取不到值时是 null，不是空字符串</strong>：<code>getItem</code> 返回 <code>null</code>，继续 <code>JSON.parse(null)</code> 依然是 <code>null</code>，所以要判空而不是判断 <code>undefined</code>。</li>
+<li><strong><code>const objectStore;</code></strong> <strong>未赋值就被调用</strong>：<code>createIndex</code> 前应先确认仓库已创建或已从 <code>event.target.transaction</code> 取到。</li>
+<li><strong>IndexedDB 是异步事务模型</strong>：拿到 <code>db</code> 之前不能发起读写，事务结束后也不能再复用该事务对象。</li>
 </ul>
 
 </article>
@@ -657,11 +676,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/31/JS/%E7%AE%97%E6%B3%95%EF%BC%9AJS%E7%AE%97%E6%B3%95%E7%9A%84%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/31/JS/JS-%E9%81%8D%E5%8E%86%E5%AF%B9%E8%B1%A1%E4%B8%8E%E6%98%A0%E5%B0%84/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">算法-JS算法的核心知识</h6>
+                <h6 class="trm-op-title">遍历对象与映射</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -678,11 +697,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/31/JS/%E7%82%B9%E5%87%BB%E7%A9%BA%E7%99%BD%E5%85%B3%E9%97%AD%E5%BC%B9%E7%AA%97/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/31/JS/%E7%AE%97%E6%B3%95%EF%BC%9A%E6%8C%87%E9%92%88%E7%9B%B8%E5%85%B3/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">案例-点击空白关闭弹窗</h6>
+                <h6 class="trm-op-title">算法-指针相关</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -754,7 +773,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-3" title="cookie"><a rel="nofollow" class="trm-toc-link" href="#cookie"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">cookie</span></a></li><li class="trm-toc-item trm-toc-level-3" title="sessionStorage"><a rel="nofollow" class="trm-toc-link" href="#sessionStorage"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">sessionStorage</span></a></li><li class="trm-toc-item trm-toc-level-3" title="localStorage"><a rel="nofollow" class="trm-toc-link" href="#localStorage"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">localStorage</span></a></li><li class="trm-toc-item trm-toc-level-3" title="indexedDB"><a rel="nofollow" class="trm-toc-link" href="#indexedDB"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">indexedDB</span></a></li><li class="trm-toc-item trm-toc-level-3" title="OPFS"><a rel="nofollow" class="trm-toc-link" href="#OPFS"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">OPFS</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景：看起来都是 set&#x2F;get，实际约束差别很大"><a rel="nofollow" class="trm-toc-link" href="#背景：看起来都是-set-get，实际约束差别很大"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景：看起来都是 set&#x2F;get，实际约束差别很大</span></a></li><li class="trm-toc-item trm-toc-level-2" title="一、cookie：会随请求自动发送的小块数据"><a rel="nofollow" class="trm-toc-link" href="#一、cookie：会随请求自动发送的小块数据"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">一、cookie：会随请求自动发送的小块数据</span></a></li><li class="trm-toc-item trm-toc-level-2" title="二、sessionStorage：标签页级的会话存储"><a rel="nofollow" class="trm-toc-link" href="#二、sessionStorage：标签页级的会话存储"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">二、sessionStorage：标签页级的会话存储</span></a></li><li class="trm-toc-item trm-toc-level-2" title="三、localStorage：永久保存的键值存储"><a rel="nofollow" class="trm-toc-link" href="#三、localStorage：永久保存的键值存储"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">三、localStorage：永久保存的键值存储</span></a></li><li class="trm-toc-item trm-toc-level-2" title="四、IndexedDB：支持事务与索引的非关系型数据库"><a rel="nofollow" class="trm-toc-link" href="#四、IndexedDB：支持事务与索引的非关系型数据库"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">四、IndexedDB：支持事务与索引的非关系型数据库</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="第 1 步：打开数据库"><a rel="nofollow" class="trm-toc-link" href="#第-1-步：打开数据库"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">第 1 步：打开数据库</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 2 步：声明一个保存数据库实例的变量"><a rel="nofollow" class="trm-toc-link" href="#第-2-步：声明一个保存数据库实例的变量"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">第 2 步：声明一个保存数据库实例的变量</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 3 步：处理打开成功"><a rel="nofollow" class="trm-toc-link" href="#第-3-步：处理打开成功"><span class="trm-toc-number">5.3.</span> <span class="trm-toc-text">第 3 步：处理打开成功</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 4 步：处理打开失败"><a rel="nofollow" class="trm-toc-link" href="#第-4-步：处理打开失败"><span class="trm-toc-number">5.4.</span> <span class="trm-toc-text">第 4 步：处理打开失败</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 5 步：建库或在版本升级时建表"><a rel="nofollow" class="trm-toc-link" href="#第-5-步：建库或在版本升级时建表"><span class="trm-toc-number">5.5.</span> <span class="trm-toc-text">第 5 步：建库或在版本升级时建表</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 6 步：新增数据必须通过事务"><a rel="nofollow" class="trm-toc-link" href="#第-6-步：新增数据必须通过事务"><span class="trm-toc-number">5.6.</span> <span class="trm-toc-text">第 6 步：新增数据必须通过事务</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 7 步：按主键读取数据"><a rel="nofollow" class="trm-toc-link" href="#第-7-步：按主键读取数据"><span class="trm-toc-number">5.7.</span> <span class="trm-toc-text">第 7 步：按主键读取数据</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 8 步：用游标遍历全部数据"><a rel="nofollow" class="trm-toc-link" href="#第-8-步：用游标遍历全部数据"><span class="trm-toc-number">5.8.</span> <span class="trm-toc-text">第 8 步：用游标遍历全部数据</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 9 步：更新数据"><a rel="nofollow" class="trm-toc-link" href="#第-9-步：更新数据"><span class="trm-toc-number">5.9.</span> <span class="trm-toc-text">第 9 步：更新数据</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 10 步：删除数据"><a rel="nofollow" class="trm-toc-link" href="#第-10-步：删除数据"><span class="trm-toc-number">5.10.</span> <span class="trm-toc-text">第 10 步：删除数据</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 11 步：使用索引查询"><a rel="nofollow" class="trm-toc-link" href="#第-11-步：使用索引查询"><span class="trm-toc-number">5.11.</span> <span class="trm-toc-text">第 11 步：使用索引查询</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="五、OPFS：页面私有的文件系统"><a rel="nofollow" class="trm-toc-link" href="#五、OPFS：页面私有的文件系统"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">五、OPFS：页面私有的文件系统</span></a></li><li class="trm-toc-item trm-toc-level-2" title="踩坑与注意点"><a rel="nofollow" class="trm-toc-link" href="#踩坑与注意点"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">踩坑与注意点</span></a></li></ol>
       </div>
     </div>
 
@@ -878,6 +897,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

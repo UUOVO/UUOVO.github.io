@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="基础 通过@media 媒体查询，给不同屏幕的大小编写不同的样式来实现响应式的布局 缺点：工作量大，效率低，代码累赘，以及加载事件过长 语法：1@media mediatype and not only (media feature) &#123; css-code &#125; 用法： head 标签中引入(限定对应宽度使用对应 css 文件)：1&lt;link rel&#x3D;&quot;st">
+<meta name="description" content="用 @media 媒体查询为不同屏幕尺寸编写样式：语法、媒体类型、修饰符、断点与可查询属性一次讲清">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Html-媒体查询布局">
 <meta property="og:url" content="http://example.com/en/2024/10/30/HTMLCSS/html-%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2%E5%B8%83%E5%B1%80/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="基础 通过@media 媒体查询，给不同屏幕的大小编写不同的样式来实现响应式的布局 缺点：工作量大，效率低，代码累赘，以及加载事件过长 语法：1@media mediatype and not only (media feature) &#123; css-code &#125; 用法： head 标签中引入(限定对应宽度使用对应 css 文件)：1&lt;link rel&#x3D;&quot;st">
+<meta property="og:description" content="用 @media 媒体查询为不同屏幕尺寸编写样式：语法、媒体类型、修饰符、断点与可查询属性一次讲清">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-10-30T07:29:11.163Z">
-<meta property="article:modified_time" content="2025-07-29T09:58:52.789Z">
+<meta property="article:published_time" content="2024-10-30T07:29:11.000Z">
+<meta property="article:modified_time" content="2026-11-18T09:21:32.235Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="Html">
 <meta property="article:tag" content="布局">
@@ -69,7 +69,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-29 17:58:52"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-18 17:21:32"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -84,6 +84,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -198,13 +200,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -240,7 +242,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -258,13 +260,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -533,68 +535,24 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>媒体查询（<code>@media</code>）的作用是让同一份页面在不同屏幕尺寸下命中不同的 CSS 规则，从而实现响应式布局。按下面的顺序读完，你能写出合法的语法、选对媒体类型与修饰符、用断点组织样式，也会知道它”工作量大、代码累赘”的代价出在哪里。</p>
+<span id="more"></span>
 
-<h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><ul>
-<li>通过@media 媒体查询，给不同屏幕的大小编写不同的样式来实现响应式的布局</li>
-<li>缺点：工作量大，效率低，代码累赘，以及加载事件过长</li>
-<li>语法：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> mediatype <span class="keyword">and</span> <span class="keyword">not</span> <span class="keyword">only</span> (media feature) &#123; css-<span class="selector-tag">code</span> &#125;</span><br></pre></td></tr></table></figure></li>
-<li>用法：<ul>
-<li>head 标签中引入(限定对应宽度使用对应 css 文件)：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">media</span>=<span class="string">&quot;screen and (min-width: 481px) and (max-width: 600px)&quot;</span> <span class="attr">href</span>=<span class="string">&quot;small.css&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li>css 中引入：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>:<span class="number">1200px</span>) &#123; <span class="selector-tag">body</span> &#123; <span class="attribute">background</span>: red; &#125; &#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul>
-<li>width | height: 视口的宽高</li>
-<li>min-width: 视口的最小宽度（视口大于指定宽度时生效）</li>
-<li>max-width: 视口的最大宽度（视口小于指定宽度时生效）</li>
-<li>@media: 是关键字</li>
-</ul>
-<h3 id="断点"><a href="#断点" class="headerlink" title="断点"></a>断点</h3><ul>
-<li>样式切换的分界点，我们称其为断点，也就是网页的样式会在这个点时发生变化</li>
-</ul>
+<h2 id="背景：媒体查询解决什么问题"><a href="#背景：媒体查询解决什么问题" class="headerlink" title="背景：媒体查询解决什么问题"></a>背景：媒体查询解决什么问题</h2><p>通过 <code>@media</code> 媒体查询，可以给不同屏幕大小编写不同的样式，从而实现响应式布局。</p>
+<p>它的缺点同样明确：工作量大、效率低、代码累赘，加载时间变长。因此实际项目里通常是”媒体查询 + 百分比 &#x2F; 弹性 &#x2F; vw 等自适应手段”配合使用，而不是把所有适配都压在断点上。</p>
+<h2 id="第一步：记住语法骨架"><a href="#第一步：记住语法骨架" class="headerlink" title="第一步：记住语法骨架"></a>第一步：记住语法骨架</h2><p>语法可以拆成”媒体类型 + 逻辑连接 + 媒体特性 + 规则块”四部分：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> mediatype <span class="keyword">and</span> <span class="keyword">not</span> <span class="keyword">only</span> (media feature) &#123; css-<span class="selector-tag">code</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中 <code>mediatype</code> 是媒体类型（如 <code>screen</code>），<code>and</code> 用来并列多个条件，<code>not</code>、<code>only</code> 是修饰符，<code>media feature</code> 是媒体特性（如 <code>min-width</code>），括号不能省略，<code>css-code</code> 是条件成立时生效的样式。</p>
+<h2 id="第二步：选择引入方式"><a href="#第二步：选择引入方式" class="headerlink" title="第二步：选择引入方式"></a>第二步：选择引入方式</h2><p>媒体查询有两种写法，区别在于条件写在哪一侧。</p>
+<p>第一种是把条件写在 <code>link</code> 标签的 <code>media</code> 属性上，只有宽度落在区间内才使用对应的 css 文件：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">media</span>=<span class="string">&quot;screen and (min-width: 481px) and (max-width: 600px)&quot;</span> <span class="attr">href</span>=<span class="string">&quot;small.css&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>第二种是在 css 文件内部用 <code>@media</code> 包住规则，条件成立时规则生效：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">1200px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: red;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="第三步：确定媒体类型（mediatype）"><a href="#第三步：确定媒体类型（mediatype）" class="headerlink" title="第三步：确定媒体类型（mediatype）"></a>第三步：确定媒体类型（mediatype）</h2><p>媒体类型用来限定设备大类，常用的只有下面三种：</p>
 <table>
-<thead>
-<tr>
-<th>常用的断点</th>
-<th>代表的尺寸</th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>&lt;576px</td>
-<td>Extra small</td>
-<td>max-width&#x3D;576px</td>
-</tr>
-<tr>
-<td>&gt;&#x3D;576px</td>
-<td>Small — sm</td>
-<td>min-width&#x3D;769px</td>
-</tr>
-<tr>
-<td>&gt;&#x3D;769px</td>
-<td>Medium — md</td>
-<td>min-width&#x3D;769px</td>
-</tr>
-<tr>
-<td>&gt;&#x3D;992px</td>
-<td>Large — lg</td>
-<td>min-width&#x3D;992px</td>
-</tr>
-<tr>
-<td>&gt;&#x3D;1200px</td>
-<td>X-Large — xl</td>
-<td>min-width&#x3D;1200px</td>
-</tr>
-<tr>
-<td>&gt;&#x3D;1400px</td>
-<td>XX-Large — xxl</td>
-<td>min-width&#x3D;1400px</td>
-</tr>
-</tbody></table>
-<h3 id="常用的媒体类型-mediatype"><a href="#常用的媒体类型-mediatype" class="headerlink" title="常用的媒体类型(mediatype)"></a>常用的媒体类型(mediatype)</h3><table>
 <thead>
 <tr>
 <th>媒体类型</th>
@@ -618,11 +576,63 @@
 <td>是</td>
 </tr>
 </tbody></table>
-<h3 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h3><ul>
-<li>not: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> <span class="keyword">not</span> screen <span class="keyword">and</span> (<span class="attribute">width</span>:<span class="number">888px</span>)&#123;&#125; // 对除了 screen 类型之外的所有设备类型生效。</span><br></pre></td></tr></table></figure></li>
-<li>only: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">width</span>:<span class="number">888px</span>)&#123;&#125; // 只对 screen 类型有效</span><br></pre></td></tr></table></figure></li>
+<h2 id="第四步：用修饰符收窄范围"><a href="#第四步：用修饰符收窄范围" class="headerlink" title="第四步：用修饰符收窄范围"></a>第四步：用修饰符收窄范围</h2><p><code>not</code> 表示”除了……之外”，<code>only</code> 表示”仅限”，两者都写在媒体类型之前。</p>
+<p><code>not</code> 用于排除某类设备，下例对除 <code>screen</code> 之外的所有设备生效：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> <span class="keyword">not</span> screen <span class="keyword">and</span> (<span class="attribute">width</span>: <span class="number">888px</span>) &#123;</span><br><span class="line">  <span class="comment">/* 对除了 screen 类型之外的所有设备类型生效 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>only</code> 用于限定某类设备，下例只对 <code>screen</code> 类型有效：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">width</span>: <span class="number">888px</span>) &#123;</span><br><span class="line">  <span class="comment">/* 只对 screen 类型有效 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="第五步：按断点组织样式"><a href="#第五步：按断点组织样式" class="headerlink" title="第五步：按断点组织样式"></a>第五步：按断点组织样式</h2><p>断点是样式切换的分界点，也就是网页的样式会在这个点上发生变化。常用断点如下：</p>
+<table>
+<thead>
+<tr>
+<th>屏幕范围</th>
+<th>代表尺寸</th>
+<th>媒体查询写法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt;576px</td>
+<td>Extra small</td>
+<td><code>(max-width: 576px)</code></td>
+</tr>
+<tr>
+<td>&gt;&#x3D;576px</td>
+<td>Small — sm</td>
+<td><code>(min-width: 576px)</code></td>
+</tr>
+<tr>
+<td>&gt;&#x3D;769px</td>
+<td>Medium — md</td>
+<td><code>(min-width: 769px)</code></td>
+</tr>
+<tr>
+<td>&gt;&#x3D;992px</td>
+<td>Large — lg</td>
+<td><code>(min-width: 992px)</code></td>
+</tr>
+<tr>
+<td>&gt;&#x3D;1200px</td>
+<td>X-Large — xl</td>
+<td><code>(min-width: 1200px)</code></td>
+</tr>
+<tr>
+<td>&gt;&#x3D;1400px</td>
+<td>XX-Large — xxl</td>
+<td><code>(min-width: 1400px)</code></td>
+</tr>
+</tbody></table>
+<p>写断点时，<code>min-width</code> 和 <code>max-width</code> 的生效方向是相反的：<code>min-width</code> 在视口不小于指定值时生效，<code>max-width</code> 在视口不大于指定值时生效（详见下一节），两者混用时要注意规则顺序。</p>
+<h2 id="第六步：认识可查询属性（media-feature）"><a href="#第六步：认识可查询属性（media-feature）" class="headerlink" title="第六步：认识可查询属性（media feature）"></a>第六步：认识可查询属性（media feature）</h2><p>最先要掌握的是下面四个，它们覆盖了绝大多数布局需求：</p>
+<ul>
+<li><code>width</code> | <code>height</code>：视口的宽高</li>
+<li><code>min-width</code>：视口的最小宽度（视口大于指定宽度时生效）</li>
+<li><code>max-width</code>：视口的最大宽度（视口小于指定宽度时生效）</li>
+<li><code>@media</code>：关键字</li>
 </ul>
-<h3 id="可查询属性（media-feature）"><a href="#可查询属性（media-feature）" class="headerlink" title="可查询属性（media feature）"></a>可查询属性（media feature）</h3><table>
+<p>完整的可查询属性表如下：</p>
+<table>
 <thead>
 <tr>
 <th>可查询属性</th>
@@ -664,14 +674,14 @@
 <td>device-width</td>
 <td>长度</td>
 <td>是</td>
-<td>输出设备的屏幕可见宽度(设备本身的宽度)</td>
+<td>输出设备的屏幕可见宽度（设备本身的宽度）</td>
 <td>是</td>
 </tr>
 <tr>
 <td>device-height</td>
 <td>长度</td>
 <td>是</td>
-<td>输出设备的屏幕可见高度(设备本身的高度)</td>
+<td>输出设备的屏幕可见高度（设备本身的高度）</td>
 <td>是</td>
 </tr>
 <tr>
@@ -692,21 +702,21 @@
 <td>orientation</td>
 <td>portrait&#x2F;landscape</td>
 <td>否</td>
-<td>height 是否大于或等于 width。portrait(竖屏),landscape(横屏)</td>
+<td>height 是否大于或等于 width。portrait（竖屏）、landscape（横屏）</td>
 <td>是</td>
 </tr>
 <tr>
 <td>aspect-ratio</td>
 <td>整数&#x2F;整数</td>
 <td>是</td>
-<td>width 与 height 的比率(宽高比)</td>
+<td>width 与 height 的比率（宽高比）</td>
 <td>是</td>
 </tr>
 <tr>
 <td>device-aspect-ratio</td>
 <td>整数&#x2F;整数</td>
 <td>是</td>
-<td>(设备的宽高比),常见的显示器比率：4&#x2F;3, 16&#x2F;9, 16&#x2F;10</td>
+<td>设备的宽高比，常见的显示器比率：4&#x2F;3、16&#x2F;9、16&#x2F;10</td>
 <td>是</td>
 </tr>
 <tr>
@@ -724,9 +734,10 @@
 <td>否</td>
 </tr>
 </tbody></table>
-<h3 id="移动端常见宽高"><a href="#移动端常见宽高" class="headerlink" title="移动端常见宽高"></a>移动端常见宽高</h3><ul>
-<li>竖屏常用宽高比：1:2, 2:3, 3:4, 3:5, 5:8, 9:16</li>
-<li>横屏常用宽高比：4:3, 5:3</li>
+<h2 id="第七步：参考移动端常见宽高"><a href="#第七步：参考移动端常见宽高" class="headerlink" title="第七步：参考移动端常见宽高"></a>第七步：参考移动端常见宽高</h2><p>写移动端断点时可以先对照常见机型的比例：</p>
+<ul>
+<li>竖屏常用宽高比：1:2、2:3、3:4、3:5、5:8、9:16</li>
+<li>横屏常用宽高比：4:3、5:3</li>
 </ul>
 <table>
 <thead>
@@ -819,11 +830,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/html-%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80%E6%8A%80%E6%9C%AF%E7%AF%87/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/html-%E5%9F%BA%E7%A1%80/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">Html-页面布局技术篇</h6>
+                <h6 class="trm-op-title">Html-基础</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -840,11 +851,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/html-%E5%9F%BA%E7%A1%80/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/html-%E7%9B%92%E5%AD%90%E5%B8%83%E5%B1%80/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">Html-基础</h6>
+                <h6 class="trm-op-title">Html-盒子布局</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -916,7 +927,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-3" title="基础"><a rel="nofollow" class="trm-toc-link" href="#基础"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">基础</span></a></li><li class="trm-toc-item trm-toc-level-3" title="特性"><a rel="nofollow" class="trm-toc-link" href="#特性"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">特性</span></a></li><li class="trm-toc-item trm-toc-level-3" title="断点"><a rel="nofollow" class="trm-toc-link" href="#断点"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">断点</span></a></li><li class="trm-toc-item trm-toc-level-3" title="常用的媒体类型(mediatype)"><a rel="nofollow" class="trm-toc-link" href="#常用的媒体类型-mediatype"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">常用的媒体类型(mediatype)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="修饰符"><a rel="nofollow" class="trm-toc-link" href="#修饰符"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">修饰符</span></a></li><li class="trm-toc-item trm-toc-level-3" title="可查询属性（media feature）"><a rel="nofollow" class="trm-toc-link" href="#可查询属性（media-feature）"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">可查询属性（media feature）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="移动端常见宽高"><a rel="nofollow" class="trm-toc-link" href="#移动端常见宽高"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">移动端常见宽高</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景：媒体查询解决什么问题"><a rel="nofollow" class="trm-toc-link" href="#背景：媒体查询解决什么问题"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景：媒体查询解决什么问题</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第一步：记住语法骨架"><a rel="nofollow" class="trm-toc-link" href="#第一步：记住语法骨架"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">第一步：记住语法骨架</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第二步：选择引入方式"><a rel="nofollow" class="trm-toc-link" href="#第二步：选择引入方式"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">第二步：选择引入方式</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第三步：确定媒体类型（mediatype）"><a rel="nofollow" class="trm-toc-link" href="#第三步：确定媒体类型（mediatype）"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">第三步：确定媒体类型（mediatype）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第四步：用修饰符收窄范围"><a rel="nofollow" class="trm-toc-link" href="#第四步：用修饰符收窄范围"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">第四步：用修饰符收窄范围</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第五步：按断点组织样式"><a rel="nofollow" class="trm-toc-link" href="#第五步：按断点组织样式"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">第五步：按断点组织样式</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第六步：认识可查询属性（media feature）"><a rel="nofollow" class="trm-toc-link" href="#第六步：认识可查询属性（media-feature）"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">第六步：认识可查询属性（media feature）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第七步：参考移动端常见宽高"><a rel="nofollow" class="trm-toc-link" href="#第七步：参考移动端常见宽高"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">第七步：参考移动端常见宽高</span></a></li></ol>
       </div>
     </div>
 
@@ -1040,6 +1051,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

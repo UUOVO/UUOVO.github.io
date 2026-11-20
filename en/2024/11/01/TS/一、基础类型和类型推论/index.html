@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="基础类型布尔值1let isBoolean: boolean &#x3D; true or false 数字1let isNumber: number &#x3D; 6 &#x2F;&#x2F; 可赋值null和undefined 字符串1let age: string &#x3D; &#96;this $&#123;变量&#125;&#96; 数组1let list: number[] or Array&lt;number&gt;&#x3D; [1, 2, 3]">
+<meta name="description" content="从布尔、数字等基础类型讲起，说明类型断言与类型推论在赋值中的表现">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TS-基础类型和类型推论">
+<meta property="og:title" content="基础类型和类型推论">
 <meta property="og:url" content="http://example.com/en/2024/11/01/TS/%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B%E5%92%8C%E7%B1%BB%E5%9E%8B%E6%8E%A8%E8%AE%BA/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="基础类型布尔值1let isBoolean: boolean &#x3D; true or false 数字1let isNumber: number &#x3D; 6 &#x2F;&#x2F; 可赋值null和undefined 字符串1let age: string &#x3D; &#96;this $&#123;变量&#125;&#96; 数组1let list: number[] or Array&lt;number&gt;&#x3D; [1, 2, 3]">
+<meta property="og:description" content="从布尔、数字等基础类型讲起，说明类型断言与类型推论在赋值中的表现">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-11-01T03:40:57.374Z">
-<meta property="article:modified_time" content="2025-07-18T02:08:51.370Z">
+<meta property="article:published_time" content="2024-11-01T03:40:57.000Z">
+<meta property="article:modified_time" content="2026-11-19T09:12:40.894Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="TypeScript">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <meta name="keywords" content="ts">
 
 
-<title >TS-基础类型和类型推论</title>
+<title >基础类型和类型推论</title>
 
 <!-- Favicon -->
 
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-18 10:08:51"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-19 17:12:40"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -83,6 +83,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -197,13 +199,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -239,7 +241,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -257,13 +259,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -385,7 +387,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            TS-基础类型和类型推论
+                            基础类型和类型推论
                         </h1>
 
                         
@@ -532,56 +534,58 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>这篇把 TypeScript 的基础类型、类型断言和类型推论串成一条线：先弄清每种值该用什么类型标注，再判断什么时候需要手动断言、什么时候交给编译器推断。看完能解释一段赋值代码为什么通过或报错。</p>
+<span id="more"></span>
 
-<h2 id="基础类型"><a href="#基础类型" class="headerlink" title="基础类型"></a>基础类型</h2><h3 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">isBoolean</span>: boolean = <span class="literal">true</span> or <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-<h3 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">isNumber</span>: number = <span class="number">6</span> <span class="comment">// 可赋值null和undefined</span></span><br></pre></td></tr></table></figure>
-<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">age</span>: string = <span class="string">`this <span class="subst">$&#123;变量&#125;</span>`</span></span><br></pre></td></tr></table></figure>
-<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">list</span>: number[] or <span class="title class_">Array</span>&lt;number&gt;= [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] <span class="comment">// 数值类型的数组</span></span><br></pre></td></tr></table></figure>
+<h2 id="背景：类型标注解决什么问题"><a href="#背景：类型标注解决什么问题" class="headerlink" title="背景：类型标注解决什么问题"></a>背景：类型标注解决什么问题</h2><p>JavaScript 的类型错误通常要到运行时才暴露。TypeScript 在编译期给变量、参数和返回值加上约束，把这类问题提前。基础类型是这套约束的起点，而类型推论决定了你不写类型时编译器会怎么补。</p>
+<h2 id="第一步：标注基础类型"><a href="#第一步：标注基础类型" class="headerlink" title="第一步：标注基础类型"></a>第一步：标注基础类型</h2><p>布尔值只有两个取值，用 <code>boolean</code> 标注。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">isBoolean</span>: <span class="built_in">boolean</span> = <span class="literal">true</span> or <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 
+<p>数字统一用 <code>number</code>，整数和小数不区分。注意：在非严格空值检查下，<code>null</code> 和 <code>undefined</code> 也能赋给它。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">isNumber</span>: <span class="built_in">number</span> = <span class="number">6</span> <span class="comment">// 可赋值null和undefined</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="元组（Tuple）：已知元素数量和类型的数组，各元素的类型不必相同"><a href="#元组（Tuple）：已知元素数量和类型的数组，各元素的类型不必相同" class="headerlink" title="元组（Tuple）：已知元素数量和类型的数组，各元素的类型不必相同"></a>元组（Tuple）：已知元素数量和类型的数组，各元素的类型不必相同</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">x</span>: [string, number]</span><br><span class="line">x = [<span class="string">&#x27;hello&#x27;</span>,<span class="number">10</span>] <span class="comment">// 顺序不能写错</span></span><br></pre></td></tr></table></figure>
+<p>字符串用 <code>string</code>，模板字符串同样适用。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">age</span>: <span class="built_in">string</span> = <span class="string">`this <span class="subst">$&#123;变量&#125;</span>`</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><ul>
-<li><a href="/2024/11/01/TS/%E5%85%AD%E3%80%81%E6%9E%9A%E4%B8%BE/" title="TS-枚举">TS-枚举</a></li>
-</ul>
-<h3 id="any：允许赋任意值，且可以调用在这个变量上的任意方法，而Object不能调用这些方法"><a href="#any：允许赋任意值，且可以调用在这个变量上的任意方法，而Object不能调用这些方法" class="headerlink" title="any：允许赋任意值，且可以调用在这个变量上的任意方法，而Object不能调用这些方法"></a>any：允许赋任意值，且可以调用在这个变量上的任意方法，而Object不能调用这些方法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">list</span>: any[] = [<span class="number">1</span>, <span class="literal">true</span>, <span class="string">&quot;free&quot;</span>];</span><br><span class="line">list[<span class="number">1</span>] = <span class="number">100</span>; <span class="comment">// 给list[1]赋值,覆盖原数组</span></span><br></pre></td></tr></table></figure>
+<p>数组有两种等价写法：元素类型加 <code>[]</code>，或 <code>Array&lt;元素类型&gt;</code>。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">list</span>: <span class="built_in">number</span>[] or <span class="title class_">Array</span>&lt;<span class="built_in">number</span>&gt;= [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] <span class="comment">// 数值类型的数组</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="空值-void-没有返回值的返回类型"><a href="#空值-void-没有返回值的返回类型" class="headerlink" title="空值(void): 没有返回值的返回类型"></a>空值(void): 没有返回值的返回类型</h3><h3 id="null和undefined-返回各自类型"><a href="#null和undefined-返回各自类型" class="headerlink" title="null和undefined: 返回各自类型"></a>null和undefined: 返回各自类型</h3><ul>
-<li>默认情况下，可以赋值给number</li>
-<li>指定–strictNullChecks标记，null和undefined只能赋值给void和自己</li>
-</ul>
-<h3 id="Never"><a href="#Never" class="headerlink" title="Never"></a>Never</h3><ul>
-<li>永不存在的值的类型(<span class="desc">异常，箭头函数返回值，无返回值的函数表达式，永不为真的变量)</span></li>
-<li>never可以赋值给其它类型，但除never本身，任意类型都不可以赋值给never</li>
-</ul>
-<h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">declare <span class="keyword">function</span> <span class="title function_">create</span>(<span class="params">o: object | <span class="literal">null</span></span>): <span class="keyword">void</span></span><br><span class="line"><span class="title function_">create</span>(&#123; <span class="attr">prop</span>: <span class="number">0</span> &#125;) <span class="comment">// 这里规定只可以出现对象或null，其它为error</span></span><br><span class="line">obj[key] <span class="comment">// obj[]是对象的一种写法,将key作为obj里面的一个key,返回value</span></span><br></pre></td></tr></table></figure>
+<p>这里的 <code>or</code> 同样是示意，真实代码二选一，例如 <code>let list: number[] = [1, 2, 3]</code>。</p>
+<p>元组用于“元素数量和类型都已知、且各元素类型可以不同”的数组，赋值时顺序不能写错。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">x</span>: [<span class="built_in">string</span>, <span class="built_in">number</span>]</span><br><span class="line">x = [<span class="string">&#x27;hello&#x27;</span>,<span class="number">10</span>] <span class="comment">// 顺序不能写错</span></span><br></pre></td></tr></table></figure>
 
+<p>枚举的详细内容单独成篇，见文末参考。</p>
+<h2 id="第二步：区分-any、void-与特殊类型"><a href="#第二步：区分-any、void-与特殊类型" class="headerlink" title="第二步：区分 any、void 与特殊类型"></a>第二步：区分 any、void 与特殊类型</h2><p><code>any</code> 允许赋任意值，也允许调用这个变量上的任意方法；<code>Object</code> 不具备这个能力，只能调用对象自身存在的方法。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">list</span>: <span class="built_in">any</span>[] = [<span class="number">1</span>, <span class="literal">true</span>, <span class="string">&quot;free&quot;</span>];</span><br><span class="line">list[<span class="number">1</span>] = <span class="number">100</span>; <span class="comment">// 给list[1]赋值,覆盖原数组</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="类型断言-类型转换"><a href="#类型断言-类型转换" class="headerlink" title="类型断言:类型转换"></a>类型断言:类型转换</h2><h3 id="is关键字"><a href="#is关键字" class="headerlink" title="is关键字"></a>is关键字</h3><ul>
-<li>当一个变量存在多个类型时，编译器识别不出来使用</li>
-<li>eg: 假值判断<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> type <span class="title class_">Falsy</span> = <span class="literal">false</span> | <span class="string">&#x27;&#x27;</span> | <span class="number">0</span> | <span class="literal">null</span> | <span class="literal">undefined</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> isFalsy = (<span class="attr">val</span>: unknown): val is <span class="title class_">Falsy</span> =&gt; !val;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="“尖括号”语法-使用指定someValue的类型为string"><a href="#“尖括号”语法-使用指定someValue的类型为string" class="headerlink" title="“尖括号”语法: 使用&lt;&gt;指定someValue的类型为string"></a>“尖括号”语法: 使用&lt;&gt;指定someValue的类型为string</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">someValue</span>: any = <span class="string">&quot;this is a string&quot;</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">strLength</span>: number = (&lt;string&gt;someValue).<span class="property">length</span> </span><br></pre></td></tr></table></figure>
+<p><code>void</code> 表示函数没有返回值。</p>
+<p><code>null</code> 和 <code>undefined</code> 各自成为一种类型，默认情况下可以赋给 <code>number</code> 等类型；指定 <code>--strictNullChecks</code> 标记后，它们只能赋值给 <code>void</code> 和自身。</p>
+<p><code>never</code> 表示永不存在的值的类型。场景包括：抛出异常、箭头函数的返回值、无返回值的函数表达式、永不为真的变量。<code>never</code> 可以赋值给其他类型，但除 <code>never</code> 自身外，任意类型都不可以赋值给 <code>never</code>。</p>
+<p><code>object</code> 表示非原始类型。下面的声明限定参数只能是对象或 <code>null</code>：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="keyword">function</span> <span class="title function_">create</span>(<span class="params"><span class="attr">o</span>: <span class="built_in">object</span> | <span class="literal">null</span></span>): <span class="built_in">void</span></span><br><span class="line"><span class="title function_">create</span>(&#123; <span class="attr">prop</span>: <span class="number">0</span> &#125;) <span class="comment">// 这里规定只可以出现对象或null，其它为error</span></span><br><span class="line">obj[key] <span class="comment">// obj[]是对象的一种写法,将key作为obj里面的一个key,返回value</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="as语法：使用as指定类型"><a href="#as语法：使用as指定类型" class="headerlink" title="as语法：使用as指定类型"></a>as语法：使用as指定类型</h3><ul>
-<li>在TS里使用JSX时，只有as语法断言是被允许的<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">strLength</span>: number = (someValue <span class="keyword">as</span> string).<span class="property">length</span></span><br></pre></td></tr></table></figure></li>
+<p>最后一行 <code>obj[key]</code> 是对索引访问的补充说明，和上面的 <code>create</code> 声明不是同一段可运行代码。</p>
+<h2 id="第三步：需要时使用类型断言"><a href="#第三步：需要时使用类型断言" class="headerlink" title="第三步：需要时使用类型断言"></a>第三步：需要时使用类型断言</h2><p>当一个变量存在多个类型、编译器识别不出来时，可以使用断言或自定义类型保护。<code>is</code> 关键字常用于自定义类型保护，例如判断假值：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> <span class="title class_">Falsy</span> = <span class="literal">false</span> | <span class="string">&#x27;&#x27;</span> | <span class="number">0</span> | <span class="literal">null</span> | <span class="literal">undefined</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> isFalsy = (<span class="attr">val</span>: <span class="built_in">unknown</span>): val is <span class="title class_">Falsy</span> =&gt; !val;</span><br></pre></td></tr></table></figure>
+
+<p>尖括号语法用 <code>&lt;&gt;</code> 指定 <code>someValue</code> 的类型为 <code>string</code>：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">someValue</span>: <span class="built_in">any</span> = <span class="string">&quot;this is a string&quot;</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">strLength</span>: <span class="built_in">number</span> = (&lt;<span class="built_in">string</span>&gt;someValue).<span class="property">length</span> </span><br></pre></td></tr></table></figure>
+
+<p><code>as</code> 语法达到同样效果；在 TypeScript 里使用 JSX 时，只有 <code>as</code> 断言是被允许的。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">strLength</span>: <span class="built_in">number</span> = (someValue <span class="keyword">as</span> <span class="built_in">string</span>).<span class="property">length</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="第四步：理解类型推论"><a href="#第四步：理解类型推论" class="headerlink" title="第四步：理解类型推论"></a>第四步：理解类型推论</h2><p>基础类型可以通过值来推断类型。推论发生在初始化变量和成员、设置默认参数值、以及决定函数返回值时。</p>
+<p>多个表达式中存在不同类型时，编译器需要找到通用的“最佳通用类型”。如果候选类型存在共享的父类型，会通过类或继承关系取到选项里不存在的值类型：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">zoo</span>: <span class="title class_">Animal</span>[] = [<span class="keyword">new</span> <span class="title class_">Rhino</span>(), <span class="keyword">new</span> <span class="title class_">Elephant</span>(), <span class="keyword">new</span> <span class="title class_">Snake</span>()];</span><br></pre></td></tr></table></figure>
+
+<p>如未找到最佳通用类型，类型推断的结果为“联合数组类型”，例如 <code>(Rhino | Elephant | Snake)[]</code>。</p>
+<p>上下文类型则是通过 <code>=</code> 或 <code>:</code> 的左边来推出右边的类型，明确给出类型时会忽略推断结果。使用场景包括：函数的参数、赋值表达式的右边、类型断言、对象成员、数组字面量和返回值语句。</p>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
+<li><code>null</code> &#x2F; <code>undefined</code> 能否赋给其他类型，取决于是否开启 <code>--strictNullChecks</code>，两种模式下结论不同。</li>
+<li><code>as</code> 和尖括号断言只改变编译期类型，不做运行时转换。</li>
 </ul>
-<h2 id="类型推论"><a href="#类型推论" class="headerlink" title="类型推论"></a>类型推论</h2><ul>
-<li>基础类型,通过值来推出类型: 发生在初始化变量和成员，设置默认参数值和决定函数返回值时</li>
-</ul>
-<h3 id="最佳通用类型"><a href="#最佳通用类型" class="headerlink" title="最佳通用类型"></a>最佳通用类型</h3><ul>
-<li>多个表达式中存在不同类型，需要找到通用的类型</li>
-<li>有存在共享相同的类型时,可以通过类,继承关系将选项中不存在的值类型获取到<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">zoo</span>: <span class="title class_">Animal</span>[] = [<span class="keyword">new</span> <span class="title class_">Rhino</span>(), <span class="keyword">new</span> <span class="title class_">Elephant</span>(), <span class="keyword">new</span> <span class="title class_">Snake</span>()];</span><br></pre></td></tr></table></figure></li>
-<li>如未找到最佳通用类型，类型推断的结果为<span class="key_words">『联合数组类型』</span><ul>
-<li>(Rhino | Elephant | Snake)[]</li>
-</ul>
-</li>
-</ul>
-<h3 id="上下文类型"><a href="#上下文类型" class="headerlink" title="上下文类型"></a>上下文类型</h3><ul>
-<li>通过 &#x3D; 或 : 的左边来推出右边的类型(明确给出类型则忽略推断结果)</li>
-<li>使用场景: 函数的参数，赋值表达式的右边，类型断言，对象成员和数组字面量和返回值语句。</li>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li>枚举：<a href="/2024/11/01/TS/%E5%85%AD%E3%80%81%E6%9E%9A%E4%B8%BE/" title="枚举">枚举</a></li>
 </ul>
 
 </article>
@@ -602,17 +606,17 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/01/vue2/%E5%9F%BA%E7%A1%80/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/TS/ts%E5%AE%9E%E7%94%A8%E7%B1%BB/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">VUE2-基础（主了解）</h6>
+                <h6 class="trm-op-title">实用类 Utility Types</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
                 <li>24/11/01</li>
-                <li>13:58</li>
-                <li>VUE</li>
+                <li>11:40</li>
+                <li>TypeScript</li>
             </ul>
         </div>
     </div>
@@ -623,11 +627,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/01/TS/%E4%BA%94%E3%80%81%E6%B3%9B%E5%9E%8B/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/TS/%E4%B8%89%E3%80%81%E6%8E%A5%E5%8F%A3%E4%B8%8E%E7%B1%BB/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">TS-泛型 &lt;&gt;</h6>
+                <h6 class="trm-op-title">接口与类</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -699,7 +703,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="基础类型"><a rel="nofollow" class="trm-toc-link" href="#基础类型"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">基础类型</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="布尔值"><a rel="nofollow" class="trm-toc-link" href="#布尔值"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">布尔值</span></a></li><li class="trm-toc-item trm-toc-level-3" title="数字"><a rel="nofollow" class="trm-toc-link" href="#数字"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">数字</span></a></li><li class="trm-toc-item trm-toc-level-3" title="字符串"><a rel="nofollow" class="trm-toc-link" href="#字符串"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">字符串</span></a></li><li class="trm-toc-item trm-toc-level-3" title="数组"><a rel="nofollow" class="trm-toc-link" href="#数组"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">数组</span></a></li><li class="trm-toc-item trm-toc-level-3" title="元组（Tuple）：已知元素数量和类型的数组，各元素的类型不必相同"><a rel="nofollow" class="trm-toc-link" href="#元组（Tuple）：已知元素数量和类型的数组，各元素的类型不必相同"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">元组（Tuple）：已知元素数量和类型的数组，各元素的类型不必相同</span></a></li><li class="trm-toc-item trm-toc-level-3" title="枚举"><a rel="nofollow" class="trm-toc-link" href="#枚举"><span class="trm-toc-number">1.6.</span> <span class="trm-toc-text">枚举</span></a></li><li class="trm-toc-item trm-toc-level-3" title="any：允许赋任意值，且可以调用在这个变量上的任意方法，而Object不能调用这些方法"><a rel="nofollow" class="trm-toc-link" href="#any：允许赋任意值，且可以调用在这个变量上的任意方法，而Object不能调用这些方法"><span class="trm-toc-number">1.7.</span> <span class="trm-toc-text">any：允许赋任意值，且可以调用在这个变量上的任意方法，而Object不能调用这些方法</span></a></li><li class="trm-toc-item trm-toc-level-3" title="空值(void): 没有返回值的返回类型"><a rel="nofollow" class="trm-toc-link" href="#空值-void-没有返回值的返回类型"><span class="trm-toc-number">1.8.</span> <span class="trm-toc-text">空值(void): 没有返回值的返回类型</span></a></li><li class="trm-toc-item trm-toc-level-3" title="null和undefined: 返回各自类型"><a rel="nofollow" class="trm-toc-link" href="#null和undefined-返回各自类型"><span class="trm-toc-number">1.9.</span> <span class="trm-toc-text">null和undefined: 返回各自类型</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Never"><a rel="nofollow" class="trm-toc-link" href="#Never"><span class="trm-toc-number">1.10.</span> <span class="trm-toc-text">Never</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Object"><a rel="nofollow" class="trm-toc-link" href="#Object"><span class="trm-toc-number">1.11.</span> <span class="trm-toc-text">Object</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="类型断言:类型转换"><a rel="nofollow" class="trm-toc-link" href="#类型断言-类型转换"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">类型断言:类型转换</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="is关键字"><a rel="nofollow" class="trm-toc-link" href="#is关键字"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">is关键字</span></a></li><li class="trm-toc-item trm-toc-level-3" title="“尖括号”语法: 使用&lt;&gt;指定someValue的类型为string"><a rel="nofollow" class="trm-toc-link" href="#“尖括号”语法-使用指定someValue的类型为string"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">“尖括号”语法: 使用&lt;&gt;指定someValue的类型为string</span></a></li><li class="trm-toc-item trm-toc-level-3" title="as语法：使用as指定类型"><a rel="nofollow" class="trm-toc-link" href="#as语法：使用as指定类型"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">as语法：使用as指定类型</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="类型推论"><a rel="nofollow" class="trm-toc-link" href="#类型推论"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">类型推论</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="最佳通用类型"><a rel="nofollow" class="trm-toc-link" href="#最佳通用类型"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">最佳通用类型</span></a></li><li class="trm-toc-item trm-toc-level-3" title="上下文类型"><a rel="nofollow" class="trm-toc-link" href="#上下文类型"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">上下文类型</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景：类型标注解决什么问题"><a rel="nofollow" class="trm-toc-link" href="#背景：类型标注解决什么问题"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景：类型标注解决什么问题</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第一步：标注基础类型"><a rel="nofollow" class="trm-toc-link" href="#第一步：标注基础类型"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">第一步：标注基础类型</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第二步：区分 any、void 与特殊类型"><a rel="nofollow" class="trm-toc-link" href="#第二步：区分-any、void-与特殊类型"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">第二步：区分 any、void 与特殊类型</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第三步：需要时使用类型断言"><a rel="nofollow" class="trm-toc-link" href="#第三步：需要时使用类型断言"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">第三步：需要时使用类型断言</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第四步：理解类型推论"><a rel="nofollow" class="trm-toc-link" href="#第四步：理解类型推论"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">第四步：理解类型推论</span></a></li><li class="trm-toc-item trm-toc-level-2" title="注意点"><a rel="nofollow" class="trm-toc-link" href="#注意点"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">注意点</span></a></li><li class="trm-toc-item trm-toc-level-2" title="参考"><a rel="nofollow" class="trm-toc-link" href="#参考"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">参考</span></a></li></ol>
       </div>
     </div>
 
@@ -823,6 +827,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

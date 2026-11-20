@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="zh-Hans,en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="梳理 SSR 与前后端同构的演进、前端监控与可观测体系，以及 Monorepo、构建与规范等工程化实践">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 应用知识体系（四）：同构渲染、监控与工程化">
+<meta property="og:url" content="http://example.com/en/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-04-%E5%90%8C%E6%9E%84%E6%B8%B2%E6%9F%93%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%8C%96/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="梳理 SSR 与前后端同构的演进、前端监控与可观测体系，以及 Monorepo、构建与规范等工程化实践">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-10-20T01:45:18.000Z">
+<meta property="article:modified_time" content="2026-11-16T08:17:18.048Z">
+<meta property="article:author" content="UUOVO">
+<meta property="article:tag" content="知识体系">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="AI应用">
+<meta property="article:tag" content="前端架构">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="AI, 大前端, 全栈架构, Agent, RAG, 协同编辑, 工作流引擎, monorepo">
+
+
+<title >AI 应用知识体系（四）：同构渲染、监控与工程化</title>
+
+<!-- Favicon -->
+
+    <link href='/img/sitelogo16.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/sitelogo32.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/apple-touch-icon.png?v=2.2.3' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-16 16:17:18"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+<link rel="stylesheet" href="/css/global.css">
+
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/sitelogo32.svg">
+    
+    
+        <div class="trm-logo-text">
+            UU<span>OVO</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/tags/" target="">
+                            标签
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" target="">
+                            微信小程序
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%B7%A5%E5%85%B7/" target="">
+                            前端工程化工具
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/React/" target="">
+                            React
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/Vue/" target="">
+                            VUE
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/TypeScript/" target="">
+                            TypeScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JavaScript/" target="">
+                            JavaScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/CSS-HTML/" target="">
+                            CSS&HTML
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="">
+                            网络与数据结构
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/uniapp/" target="">
+                            uniapp
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ThreeJS/" target="">
+                            ThreeJS
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/Node/" target="">
+                            Node
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JQuery/" target="">
+                            JQuery
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ES6/" target="">
+                            ES6
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/AJAX/" target="">
+                            AJAX
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/" target="">
+                            可视化
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/gallery/" target="">
+                    相册
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/gallery/wallpaper/" target="">
+                            相册详情页
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/about/" target="">
+                    关于
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/links/" target="">
+                            友链
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+    
+    <div id="trm-search-btn" class="trm-search-btn">
+        <i class="iconfont fas fa-search"></i>
+    </div>
+     
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            AI 应用知识体系（四）：同构渲染、监控与工程化
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        en
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar1.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/UUOVO" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/ovouu" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                City:
+            </div>
+            <div class="trm-label trm-label-light">
+                City
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                Age:
+            </div>
+            <div class="trm-label trm-label-light">
+                Age
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:1370203877@qq.com" class="trm-btn">
+            Contact Me
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            10/20
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            09:45
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            UUOVO
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <p>本篇是系列第 4 篇，覆盖同构渲染、前端监控和工程化架构。</p>
+<span id="more"></span>
+
+<h2 id="八、服务端渲染与前后端同构"><a href="#八、服务端渲染与前后端同构" class="headerlink" title="八、服务端渲染与前后端同构"></a><a id="s8"></a>八、服务端渲染与前后端同构</h2><h3 id="8-1-演进脉络"><a href="#8-1-演进脉络" class="headerlink" title="8.1 演进脉络"></a><a id="s8-1"></a>8.1 演进脉络</h3><table>
+<thead>
+<tr>
+<th>时期</th>
+<th>形态</th>
+<th>代表</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>初期</td>
+<td>传统服务端渲染</td>
+<td>EJS、JSP</td>
+</tr>
+<tr>
+<td>中期</td>
+<td>SPA 单页应用</td>
+<td>React &#x2F; Vue 客户端渲染</td>
+</tr>
+<tr>
+<td>后期</td>
+<td>SSR 与 SPA 结合</td>
+<td>Next.js、Nuxt.js</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>答题技巧：遇到「了解过 XX 吗」这类问题，先抓重点（服务端渲染），再讲<strong>技术背景</strong>，最后讲<strong>核心设计思想</strong>。<br>背景要从大点到小点（含优化），避免同质化。可按<strong>时间维度</strong>（初期&#x2F;中期&#x2F;后期）或<strong>空间维度</strong>（广度）展开。</p>
+</blockquote>
+<h3 id="8-2-SSR-SSG-前后端同构"><a href="#8-2-SSR-SSG-前后端同构" class="headerlink" title="8.2 SSR &#x2F; SSG &#x2F; 前后端同构"></a><a id="s8-2"></a>8.2 SSR &#x2F; SSG &#x2F; 前后端同构</h3><table>
+<thead>
+<tr>
+<th>方案</th>
+<th>概念</th>
+<th>特性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SSR</td>
+<td>在服务端处理数据并生成完整 HTML 页面返回客户端，React &#x2F; Vue 接管渲染</td>
+<td>极致首屏优化、SEO 支持（sitemap）、交互性（内容渲染提前，事件绑定随后完成）</td>
+</tr>
+<tr>
+<td>SSG</td>
+<td>渲染工作大部分不依赖服务端，直接生成静态站点文件（网页静态技术）</td>
+<td>高性能、SEO 优势、适合内容不频繁变动的场景（秒杀活动、抢购页）</td>
+</tr>
+<tr>
+<td>前后端同构</td>
+<td>定制化地把前端与后端开发工作流合并，完全统一的规范与管理模式</td>
+<td>统一开发体验、SEO 与性能优化</td>
+</tr>
+</tbody></table>
+<p><strong>SSR 全链路</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">flowchart TD</span><br><span class="line">    A[用户请求页面] --&gt; B[服务器查找对应组件]</span><br><span class="line">    B --&gt; C[服务器渲染页面生成 HTML]</span><br><span class="line">    C --&gt; D[服务器返回 HTML 到浏览器]</span><br><span class="line">    D --&gt; E[浏览器加载 JS 文件]</span><br><span class="line">    E --&gt; F[水合过程：绑定事件，恢复交互]</span><br><span class="line">    F --&gt; G[页面完全可交互]</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-3-为什么-AI-产品首选-SSR"><a href="#8-3-为什么-AI-产品首选-SSR" class="headerlink" title="8.3 为什么 AI 产品首选 SSR"></a><a id="s8-3"></a>8.3 为什么 AI 产品首选 SSR</h3><p><strong>AI 产品的特殊性</strong></p>
+<ul>
+<li><strong>追求短平快（全栈）</strong>：一套框架同时解决页面与接口。</li>
+<li><strong>隐私和安全</strong>：<ul>
+<li>数据以 JSON 请求暴露在浏览器，只要拿到 token，就能在任何位置频繁调用你的接口。</li>
+<li>很多第三方服务（OpenAI 等）的 token 若放前端会直接泄露。</li>
+</ul>
+</li>
+<li><strong>动态响应与个性化</strong>：需要按用户、按会话动态生成内容。</li>
+</ul>
+<p><strong>SSR 的三点优势</strong></p>
+<ul>
+<li>用户体验（首屏更快）</li>
+<li>减轻客户端压力</li>
+<li>降低维护成本</li>
+</ul>
+<p><strong>典型的 AI 项目形态</strong>：Dify、Coze 类 AI 应用开发平台（Prompt、RAG、知识库、模型部署与接入、流程编排、function calling、MCP 接入，以及企业级模型调优 &#x2F; 数据集 &#x2F; 训练）；v0、bolt 等 AI 生成类产品。</p>
+<h3 id="8-4-Next-js-实战"><a href="#8-4-Next-js-实战" class="headerlink" title="8.4 Next.js 实战"></a><a id="s8-4"></a>8.4 Next.js 实战</h3><p><strong>① 创建项目</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx create-next-app@latest</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>关注路由：早期主要用 Pages Router，现在用 <strong>App Router</strong>。App Router 支持模块化、组件化，并在预渲染、服务端优先水合、布局与路由的服务端优先上做了架构优化。</li>
+<li>创建过程中：TS、ESLint、App Router、Turbopack 必选；TailwindCSS、<code>src/</code> 目录、路径别名按需。</li>
+<li><strong>约定式路由</strong>：按文件目录结构创建文件，浏览器输入对应 URL 即可进入，无需配置 router。如在 <code>home</code> 文件夹下放 <code>page.tsx</code>，访问 <code>localhost:3000/home</code> 即可。</li>
+</ul>
+<p><strong>② 请求流程（五步）</strong></p>
+<ol>
+<li>用户请求页面，Next.js 处理请求。</li>
+<li>服务端渲染：根据请求渲染出 HTML（<code>getServerSideProps</code> 获取动态数据）。</li>
+<li>返回 HTML：用户看到浏览器初步渲染结果。</li>
+<li><strong>React 水合（Hydration）</strong>：React 在客户端接管已渲染的 HTML，把静态 HTML 转为动态应用。</li>
+<li>前端渲染：页面变为完整的 React 应用，用户可交互，React 接管后续界面更新与数据处理。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">flowchart TD</span><br><span class="line">   A[用户请求页面] --&gt; B[服务端渲染 SSR]</span><br><span class="line">   B --&gt; C[获取数据 getServerSideProps]</span><br><span class="line">   C --&gt; B</span><br><span class="line">   B --&gt; D[返回 HTML 给客户端]</span><br><span class="line">   D --&gt; E[React 水合 Hydration]</span><br><span class="line">   E --&gt; F[用户交互]</span><br><span class="line">   F --&gt; G[前端渲染]</span><br><span class="line">   G --&gt; E</span><br></pre></td></tr></table></figure>
+
+<p><strong>③ App Router 的关键约束</strong></p>
+<ul>
+<li>新的架构下 <strong>Server Component 优先</strong>：React Hook 只能用在客户端组件，不能用在服务端组件。</li>
+<li>客户端组件：文件顶部加 <code>&quot;use client&quot;</code>。</li>
+<li>服务端组件：默认即是。</li>
+</ul>
+<p><strong>④ 动态路由</strong></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">user</span><br><span class="line">├── page.tsx</span><br><span class="line">└── [id]        // 动态路由</span><br><span class="line">    └── page.tsx</span><br></pre></td></tr></table></figure>
+
+<p>访问 <code>localhost:3000/user</code> 或 <code>localhost:3000/user/1</code>。</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/user/[id]/page.tsx</span></span><br><span class="line"><span class="string">&quot;use client&quot;</span></span><br><span class="line"><span class="keyword">import</span> &#123; useSearchParams, usePathname, useParams &#125; <span class="keyword">from</span> <span class="string">&quot;next/navigation&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">UserDetail</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> searchParams = <span class="title function_">useSearchParams</span>()</span><br><span class="line">  <span class="keyword">const</span> pathname = <span class="title function_">usePathname</span>()</span><br><span class="line">  <span class="keyword">const</span> params = <span class="title function_">useParams</span>()</span><br><span class="line">  <span class="keyword">const</span> id = searchParams.<span class="title function_">get</span>(<span class="string">&quot;id&quot;</span>) ?? params.<span class="property">id</span></span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>用户详情页，&#123;String(id)&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/user/page.tsx</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">User</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>用户列表页<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>⑤ 编写 API</strong></p>
+<p>在 <code>app</code> 目录下创建 <code>api</code> 文件夹，文件名用 <code>route.ts</code>。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/api/route.ts</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">GET</span>(<span class="params"><span class="attr">request</span>: <span class="title class_">Request</span></span>) &#123;</span><br><span class="line">  <span class="comment">// 调用 OpenAI API</span></span><br><span class="line">  <span class="comment">// 操作数据库</span></span><br><span class="line">  <span class="comment">// 文件操作</span></span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">Response</span>.<span class="title function_">json</span>(&#123; <span class="attr">message</span>: <span class="string">&quot;Hello World&quot;</span> &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">HEAD</span>(<span class="params"><span class="attr">request</span>: <span class="title class_">Request</span></span>) &#123;&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">POST</span>(<span class="params"><span class="attr">request</span>: <span class="title class_">Request</span></span>) &#123;&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">PUT</span>(<span class="params"><span class="attr">request</span>: <span class="title class_">Request</span></span>) &#123;&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">DELETE</span>(<span class="params"><span class="attr">request</span>: <span class="title class_">Request</span></span>) &#123;&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">PATCH</span>(<span class="params"><span class="attr">request</span>: <span class="title class_">Request</span></span>) &#123;&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">OPTIONS</span>(<span class="params"><span class="attr">request</span>: <span class="title class_">Request</span></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 客户端使用：在 useEffect 中调用</span></span><br><span class="line"><span class="comment">// fetch(&quot;/api&quot;).then(res =&gt; res.json()).then(res =&gt; console.log(res))</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Pages Router 的写法是 <code>export default function handler(req, res)</code>；App Router 改为按 HTTP 方法导出具名函数。</p>
+</blockquote>
+<h3 id="8-5-从零自研一套-SSR-体系"><a href="#8-5-从零自研一套-SSR-体系" class="headerlink" title="8.5 从零自研一套 SSR 体系"></a><a id="s8-5"></a>8.5 从零自研一套 SSR 体系</h3><p><strong>① API 结构四要素</strong></p>
+<ul>
+<li>React 水合 &#x2F; <code>renderToString</code></li>
+<li>路由系统</li>
+<li>状态同步</li>
+<li>样式提取</li>
+</ul>
+<p><strong>② 设计时考虑的四个方面</strong></p>
+<ol>
+<li><strong>路由设计与管理</strong>：需要一个简单的路由系统把 URL 映射到对应 React 组件。</li>
+<li><strong>SSR 与 SSG 的选择</strong>：按页面内容变化频率与 SEO 需求决定。</li>
+<li><strong>数据获取与传递</strong>：SSR 模式下数据可在服务端直接获取后传给组件；客户端可通过 <code>getInitialProps</code> 或 <code>useEffect</code> 加载。</li>
+<li><strong>客户端与服务端的水合</strong>：客户端拿到服务端渲染的 HTML 后执行水合，恢复组件状态并绑定事件。</li>
+</ol>
+<p><strong>③ 技术要点</strong></p>
+<table>
+<thead>
+<tr>
+<th>技术</th>
+<th>角色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Vite</td>
+<td>现代构建工具，快速开发构建与 HMR，可与 SSR 构建良好集成</td>
+</tr>
+<tr>
+<td>React</td>
+<td>UI 构建框架</td>
+</tr>
+<tr>
+<td>Express</td>
+<td>轻量 Web 服务器，处理请求与响应，提供 SSR 所需 API</td>
+</tr>
+<tr>
+<td><code>ReactDOMServer.renderToString</code></td>
+<td>把 React 组件渲染成 HTML 字符串</td>
+</tr>
+<tr>
+<td><code>ReactDOM.hydrate</code></td>
+<td>在客户端接管服务端渲染页面，完成水合</td>
+</tr>
+</tbody></table>
+<p><strong>④ 老 SPA 重构为 SSR 的实践路径</strong></p>
+<ol>
+<li>先做<strong>路由收敛</strong>：把散落的页面入口统一到约定式路由表。</li>
+<li>抽<strong>数据预取层</strong>：把各页面原本在 <code>useEffect</code> 里的请求上移到服务端数据获取函数。</li>
+<li>处理<strong>样式提取</strong>：服务端渲染时同步收集 CSS，避免首屏闪样式。</li>
+<li>处理<strong>状态同步</strong>：把服务端数据序列化注入 HTML，客户端水合时复用，避免二次请求。</li>
+<li>灰度切流：按路由维度逐步切换，而不是一次性全量。</li>
+</ol>
+<blockquote>
+<p>参考实现：<code>miaoma-tiny-ssr</code>（手写一个类 Next 框架），可配合视频教程逐步跟做。</p>
+</blockquote>
+<hr>
+<h2 id="九、前端监控与可观测"><a href="#九、前端监控与可观测" class="headerlink" title="九、前端监控与可观测"></a><a id="s9"></a>九、前端监控与可观测</h2><blockquote>
+<p>一条完整的监控链路 &#x3D; <strong>采集 → 上报 → 接入缓冲 → 流式计算 → 存储 → 可视化 &#x2F; 预警 → AI 化</strong>。</p>
+</blockquote>
+<h3 id="9-1-指标体系"><a href="#9-1-指标体系" class="headerlink" title="9.1 指标体系"></a><a id="s9-1"></a>9.1 指标体系</h3><p><strong>性能指标</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>全称</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PLT</td>
+<td>Page Load Time</td>
+<td>首页加载时间：导航开始到最终整屏内容加载完成</td>
+</tr>
+<tr>
+<td>FP</td>
+<td>First Paint</td>
+<td>首次绘制</td>
+</tr>
+<tr>
+<td>FCP</td>
+<td>First Contentful Paint</td>
+<td>首次内容绘制：第一个内容绘制的时间</td>
+</tr>
+<tr>
+<td>FMP</td>
+<td>First Meaningful Paint</td>
+<td>首次有意义绘制：指标因产品而异，已被 LCP 取代</td>
+</tr>
+<tr>
+<td>LCP</td>
+<td>Largest Contentful Paint</td>
+<td>最大内容绘制时间</td>
+</tr>
+<tr>
+<td>TTI</td>
+<td>Time To Interactive</td>
+<td>可交互时间</td>
+</tr>
+<tr>
+<td>CLS</td>
+<td>Cumulative Layout Shift</td>
+<td>视觉稳定性：加载时内容意外跳动的总分，<strong>≤0.1 为良好</strong></td>
+</tr>
+<tr>
+<td>INP</td>
+<td>Interaction to Next Paint</td>
+<td>交互响应速度：从点击 &#x2F; 触摸 &#x2F; 键盘输入到浏览器完成下一帧渲染的耗时（ms）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>采集来源：<code>Performance</code> API、<code>web-vitals</code> 库、自定义指标计算。</p>
+</blockquote>
+<p><strong>异常指标</strong></p>
+<ol>
+<li>JS 运行时异常</li>
+<li>Promise 未处理拒绝（unhandled rejection）</li>
+<li>资源加载异常</li>
+<li>接口请求异常</li>
+<li>框架层异常：React 执行异常、Vue 执行异常</li>
+</ol>
+<p><strong>用户行为</strong></p>
+<ul>
+<li>新老用户判定：给 Cookie 加一个变量标记。</li>
+<li>页面浏览量（PV）、独立访客数（UV）、点击 &#x2F; 操作事件、停留时间。</li>
+</ul>
+<p><strong>工程化流程指标</strong></p>
+<ul>
+<li>构建时间</li>
+<li>缓存利用率</li>
+</ul>
+<h3 id="9-2-采集与上报策略"><a href="#9-2-采集与上报策略" class="headerlink" title="9.2 采集与上报策略"></a><a id="s9-2"></a>9.2 采集与上报策略</h3><p><strong>上报通道</strong></p>
+<ul>
+<li><strong>fetch &#x2F; XHR</strong>：可能出现跨域，日志系统通过 CORS 解决（常规数据的首选）。</li>
+<li><strong>图片打点</strong>：<code>new Image().src = url</code>，天然跨域、不阻塞。</li>
+<li><strong>Navigator.sendBeacon</strong>：页面卸载时可靠发送。</li>
+</ul>
+<p><strong>分级上报策略</strong>（兼顾实时性与页面性能）</p>
+<ul>
+<li><strong>常规数据（AJAX &#x2F; Fetch）</strong>：非阻塞日志，利用 HTTP&#x2F;2 多路复用特性，用 <code>fetch</code> 批量上报。</li>
+<li><strong>高可靠数据（sendBeacon）</strong>：页面加载、可见性变化等关键节点埋点，确保页面关闭后数据仍能送达，解决「数据丢失」痛点。</li>
+<li><strong>实时交互（WebSocket）</strong>：需要双向通信或极低延迟的场景（协同编辑监控、实时热力图），建长连接。</li>
+</ul>
+<h3 id="9-3-全链路架构"><a href="#9-3-全链路架构" class="headerlink" title="9.3 全链路架构"></a><a id="s9-3"></a>9.3 全链路架构</h3><p><strong>话术（面试可直接背）</strong></p>
+<blockquote>
+<p>我主导并落地了一套端到端的全链路监控平台，覆盖从前端 SDK 无感采集（性能、异常、用户行为三类指标）、高吞吐消息队列缓冲、流式计算清洗，直到 OLAP 数据库（ClickHouse）落库与可视化的完整数据生命周期。</p>
+</blockquote>
+<p><strong>五段链路</strong></p>
+<ol>
+<li><strong>端侧采集</strong>：自研埋点 SDK，<code>sendBeacon + XHR</code> 分级上报。</li>
+<li><strong>接入与缓冲</strong>：Nginx 负载均衡 → Node.js 网关 → Kafka 削峰填谷。</li>
+<li><strong>流式计算</strong>：Flink &#x2F; Spark 实时清洗与聚合。</li>
+<li><strong>存储引擎</strong>：ClickHouse 列式存储，海量数据毫秒级查询。</li>
+<li><strong>数据应用</strong>：实时大屏 + 智能预警 + AI 根因分析。</li>
+</ol>
+<p><strong>接入层：高可用网关</strong></p>
+<ul>
+<li><strong>Nginx</strong>：反向代理与负载均衡，承载海量并发，做 SSL 卸载与初步流量清洗。</li>
+<li><strong>Node.js（NestJS）</strong>：BFF &#x2F; 接入服务，负责鉴权、数据格式校验，然后迅速把数据「甩」给 Kafka，不做耗时逻辑，保证接口 ms 级响应。</li>
+</ul>
+<p><strong>缓冲层：Kafka</strong></p>
+<p>架构决策：引入 Kafka 是为了解耦「生产」与「消费」的速度不匹配，实现流量削峰。</p>
+<ul>
+<li><strong>Topic 设计</strong>：按数据热度与结构拆分，如 <code>topic_error_log</code>（低频、高价值）、<code>topic_performance</code>（高频、海量）。</li>
+<li><strong>Partition 策略</strong>：按 <code>session_id</code> 或 <code>user_id</code> 做 Hash 分区，保证同一用户行为落在同一分区，从而保证时序性。</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Node.js Producer 示例</span></span><br><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">Kafka</span> &#125; = <span class="built_in">require</span>(<span class="string">&#x27;kafkajs&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> kafka = <span class="keyword">new</span> <span class="title class_">Kafka</span>(&#123; <span class="attr">brokers</span>: [<span class="string">&#x27;kafka-broker:9092&#x27;</span>] &#125;)</span><br><span class="line"><span class="keyword">const</span> producer = kafka.<span class="title function_">producer</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">await</span> producer.<span class="title function_">connect</span>()</span><br><span class="line"><span class="keyword">await</span> producer.<span class="title function_">send</span>(&#123;</span><br><span class="line">  <span class="attr">topic</span>: <span class="string">&#x27;monitoring-events&#x27;</span>,</span><br><span class="line">  <span class="attr">messages</span>: [</span><br><span class="line">    &#123; <span class="attr">key</span>: event.<span class="property">user</span>.<span class="property">session_id</span>, <span class="attr">value</span>: <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(eventData) &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-4-存储层：ClickHouse"><a href="#9-4-存储层：ClickHouse" class="headerlink" title="9.4 存储层：ClickHouse"></a><a id="s9-4"></a>9.4 存储层：ClickHouse</h3><p><strong>为什么是 ClickHouse</strong>：监控数据具有「写多读少、按时间查询、海量数据聚合」的特征。</p>
+<ul>
+<li><strong>写入性能</strong>：支持高吞吐批量写入。</li>
+<li><strong>查询性能</strong>：列式存储 + 向量化执行引擎，亿级数据聚合（Group By）秒级完成。</li>
+<li><strong>数据压缩</strong>：极高压缩比，节省大量存储成本。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> monitoring_db.events</span><br><span class="line">(</span><br><span class="line">    `event_type` LowCardinality(String), <span class="comment">-- 优化枚举值存储</span></span><br><span class="line">    `<span class="type">timestamp</span>`  DateTime,</span><br><span class="line">    `user_id`    String,</span><br><span class="line">    `session_id` String,</span><br><span class="line">    `url`        String,</span><br><span class="line">    `meta_data`  Map(String, String)     <span class="comment">-- 灵活存储扩展字段</span></span><br><span class="line">)</span><br><span class="line">ENGINE <span class="operator">=</span> MergeTree()</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> toYYYYMM(<span class="type">timestamp</span>)         <span class="comment">-- 按月分区，便于冷热数据管理</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> (event_type, <span class="type">timestamp</span>)</span><br><span class="line">TTL <span class="type">timestamp</span> <span class="operator">+</span> <span class="type">INTERVAL</span> <span class="number">3</span> <span class="keyword">MONTH</span>;        <span class="comment">-- 数据生命周期，自动清理</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>写入优化铁律</strong>：<strong>千万不要单条插入</strong>。在 Consumer 层维护内存 Buffer，满足「数量达到 5000 条」或「时间间隔达到 5 秒」任一条件即批量 INSERT，最大限度减少 IO 开销。</p>
+<h3 id="9-5-可视化与智能预警"><a href="#9-5-可视化与智能预警" class="headerlink" title="9.5 可视化与智能预警"></a><a id="s9-5"></a>9.5 可视化与智能预警</h3><p><strong>数据可视化</strong><br>前端管理后台直连 ClickHouse（或经中间层 API），用 ECharts 渲染大屏：</p>
+<ul>
+<li><strong>趋势分析</strong>：按 <code>toStartOfMinute(timestamp)</code> 聚合，展示 PV &#x2F; UV 曲线。</li>
+<li><strong>性能分布</strong>：用 <code>quantile</code> 函数计算 TP50、TP90、TP99。</li>
+</ul>
+<p><strong>多级预警</strong></p>
+<ul>
+<li><strong>离线报警</strong>：CronJob 每分钟轮询 ClickHouse，对比昨日同比数据，波动超过 20% 触发邮件。</li>
+<li><strong>实时报警</strong>：在 Flink 流处理阶段直接对接 IM 机器人（飞书），捕获 FATAL 级错误立即把堆栈推送到研发群，实现秒级感知。</li>
+</ul>
+<h3 id="9-6-AI-化：从根因分析到自动修复"><a href="#9-6-AI-化：从根因分析到自动修复" class="headerlink" title="9.6 AI 化：从根因分析到自动修复"></a><a id="s9-6"></a>9.6 AI 化：从根因分析到自动修复</h3><ul>
+<li><strong>让 AI 懂你的团队</strong>：投喂开发规范、开发流程，让模型理解项目上下文。</li>
+<li><strong>精调模型</strong>：针对监控场景做微调。</li>
+<li><strong>RAG</strong>：把历史故障、值班手册、变更记录做成知识库，供根因分析检索。</li>
+<li><strong>多模态输入</strong>：用 <code>rrweb</code> 录屏、截图上传；凡需通过截图&#x2F;录制分析的场景，都要按多模态（文本 + 图片 + 视频）设计。本地调试可用 Ollama + <code>qwen3-vl:2b</code>。</li>
+<li><strong>进一步：Code Agent（Vibe Coding）</strong><ul>
+<li>根因定位后自动修复，自动提 PR。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<hr>
+<h2 id="十、工程化与架构"><a href="#十、工程化与架构" class="headerlink" title="十、工程化与架构"></a><a id="s10"></a>十、工程化与架构</h2><h3 id="10-1-Monorepo：定义与四个核心特点"><a href="#10-1-Monorepo：定义与四个核心特点" class="headerlink" title="10.1 Monorepo：定义与四个核心特点"></a><a id="s10-1"></a>10.1 Monorepo：定义与四个核心特点</h3><p><strong>Monorepo（Monolithic Repository，单一代码仓库）</strong></p>
+<ul>
+<li>一种软件开发架构策略。</li>
+<li>核心逻辑：把多个项目（Projects）、多个软件包（Packages）和公共组件库，全部放在同一个 Git 仓库中统一管理。</li>
+<li>通俗说法：前端、后端、服务端、自定义工具插件都在同一个文件夹下，通过 <code>pnpm-workspace.yaml</code> 定义 packages，彼此可互相安装、独立运行，但只提交一个 Git 仓库。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>特点</th>
+<th>深度解读</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>单一仓库（One Repo）</td>
+<td>所有代码资产在一个 Git 历史中，一次 <code>git clone</code> 拿到组织工程全貌</td>
+</tr>
+<tr>
+<td>多项目共存（Multi-Project）</td>
+<td>仓库内用文件夹隔离不同业务应用与基础设施</td>
+</tr>
+<tr>
+<td>统一依赖管理（Shared Dependencies）</td>
+<td>所有项目共用一套基础依赖（React、TS、Jest），升级时同步升级，避免版本割裂</td>
+</tr>
+<tr>
+<td>原子化提交（Atomic Commits）</td>
+<td>一个需求同时改「后端 API」和「前端调用」时，可在同一个 commit 中提交，保证逻辑完整</td>
+</tr>
+</tbody></table>
+<p><strong>Monorepo 解决的四个痛点</strong></p>
+<ul>
+<li>代码复用性瓶颈 → 增强复用</li>
+<li>依赖管理复杂化 → 更友好的依赖管理</li>
+<li>跨项目原子性缺失 → 保证代码审查、持续集成与发布的一致性</li>
+<li>工程规范分散化 → 团队规范化、流程化、自动化</li>
+</ul>
+<h3 id="10-2-Polyrepo-vs-Monorepo"><a href="#10-2-Polyrepo-vs-Monorepo" class="headerlink" title="10.2 Polyrepo vs Monorepo"></a><a id="s10-2"></a>10.2 Polyrepo vs Monorepo</h3><p>以「repo-frontend 需要 repo-utils」为例，Polyrepo 的做法是：改 repo-utils 代码 → 发布 npm 包（<code>npm publish</code>）→ repo-frontend 执行 <code>npm i</code> 安装。<strong>有 bug 就重复上述流程，调试极难。</strong></p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>Polyrepo</th>
+<th>Monorepo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>代码复用</td>
+<td>困难：复制粘贴或发私有 npm 包</td>
+<td>容易：本地物理路径引用，修改即生效</td>
+</tr>
+<tr>
+<td>依赖管理</td>
+<td>分散：各仓库各自维护 package.json，版本参差</td>
+<td>统一：根目录控制核心版本，消除「依赖地狱」</td>
+</tr>
+<tr>
+<td>开发流程</td>
+<td>繁琐：跨库开发需 link 或发包</td>
+<td>顺畅：无需发包，保存即热更新</td>
+</tr>
+<tr>
+<td>工程配置</td>
+<td>重复：每个仓库都配一遍 ESLint、Jest、CI</td>
+<td>复用：根目录定义一套规范，所有子包继承</td>
+</tr>
+</tbody></table>
+<p><strong>典型例子</strong>：Google、Vue 3、React；字节、美团、阿里的中台业务线与组件库。</p>
+<h3 id="10-3-包管理器对比"><a href="#10-3-包管理器对比" class="headerlink" title="10.3 包管理器对比"></a><a id="s10-3"></a>10.3 包管理器对比</h3><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>pnpm ⭐</th>
+<th>Yarn (v1 &#x2F; Berry)</th>
+<th>npm</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>磁盘占用</td>
+<td>极低（Content-addressable）</td>
+<td>高（复制多份）</td>
+<td>高（复制多份）</td>
+</tr>
+<tr>
+<td>安装速度</td>
+<td>极快</td>
+<td>快</td>
+<td>慢</td>
+</tr>
+<tr>
+<td>幽灵依赖</td>
+<td>严格禁止（安全）</td>
+<td>宽松</td>
+<td>存在隐患</td>
+</tr>
+<tr>
+<td>Workspace 支持</td>
+<td>原生且配置简单</td>
+<td>支持</td>
+<td>基础支持</td>
+</tr>
+</tbody></table>
+<p><strong>① 磁盘机制（硬链接）</strong></p>
+<ul>
+<li>npm &#x2F; yarn：有几个项目就复制几份依赖到各自的 <code>node_modules</code>。</li>
+<li>pnpm：用**硬链接（Hard Link）**只下载一份到磁盘全局，其他项目全部指向它。</li>
+<li>硬链接特点：同一个文件多个入口，修改任意一个全部生效；删除其中一个链接，原文件仍在。</li>
+</ul>
+<p><strong>② 幽灵依赖（Phantom Dependencies）</strong></p>
+<ul>
+<li>现象：A 依赖 B，B 依赖 C。在项目 A 中直接使用 C 不会报错，但 <code>package.json</code> 里没写 C。</li>
+<li>危害：若 B 后续不再依赖 C，代码立刻报错。</li>
+<li>pnpm 的解法：通过<strong>非扁平化的</strong> <strong><code>node_modules</code></strong> <strong>结构</strong>，物理层面彻底屏蔽幽灵依赖。</li>
+</ul>
+<h3 id="10-4-构建编排工具"><a href="#10-4-构建编排工具" class="headerlink" title="10.4 构建编排工具"></a><a id="s10-4"></a>10.4 构建编排工具</h3><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>简介</th>
+<th>优势</th>
+<th>劣势</th>
+<th>推荐场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Lerna</td>
+<td>老牌霸主，已被 Nx 收购</td>
+<td>擅长版本管理与 npm 发包</td>
+<td>构建性能差，缺乏任务缓存</td>
+<td>纯 npm 库维护</td>
+</tr>
+<tr>
+<td>Nx</td>
+<td>功能最全的企业级框架</td>
+<td>极强，插件丰富，支持分布式计算</td>
+<td>配置复杂，侵入性强，学习曲线陡</td>
+<td>超大型全栈团队</td>
+</tr>
+<tr>
+<td>Turborepo ⭐</td>
+<td>Vercel 出品，后起之秀</td>
+<td>配置极简，Go 编写、速度极快，开箱即用的远程缓存</td>
+<td>插件生态不如 Nx 丰富</td>
+<td>中小型及大厂新项目</td>
+</tr>
+</tbody></table>
+<p><strong>中大型前端项目的「黄金标准」</strong></p>
+<ul>
+<li>pnpm：处理底层依赖链接，保证<strong>快</strong>和<strong>省</strong>。</li>
+<li>Turborepo：处理上层任务调度，保证<strong>构建流水线效率</strong>（Caching、Remote Caching、Pipelines）。</li>
+<li>TypeScript：提供全链路类型安全。</li>
+</ul>
+<h3 id="10-5-目录结构与子包引用规则"><a href="#10-5-目录结构与子包引用规则" class="headerlink" title="10.5 目录结构与子包引用规则"></a><a id="s10-5"></a>10.5 目录结构与子包引用规则</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">project</span><br><span class="line">├── apps</span><br><span class="line">│   ├── web/     package.json  // @monorepo-project/web</span><br><span class="line">│   └── server/  package.json  // @monorepo-project/server</span><br><span class="line">├── packages</span><br><span class="line">│   ├── configs/        // 配置</span><br><span class="line">│   │   ├── index.js    // 所有子包都要有入口，导出方法</span><br><span class="line">│   │   ├── eslint.config.js</span><br><span class="line">│   │   └── package.json  // @monorepo-project/configs  module: &quot;index.js&quot;</span><br><span class="line">│   ├── ai-engine/      // AI 引擎层</span><br><span class="line">│   │   ├── src/index.js</span><br><span class="line">│   │   └── package.json</span><br><span class="line">│   ├── utils/         // 通用工具</span><br><span class="line">│   ├── types/         // 通用类型</span><br><span class="line">│   └── shared/        // 共享模块</span><br><span class="line">├── pnpm-workspace.yaml</span><br><span class="line">└── package.json</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pnpm-workspace.yaml</span></span><br><span class="line"><span class="attr">packages:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">&quot;apps/**&quot;</span>      <span class="comment"># 应用层</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">&quot;packages/**&quot;</span>  <span class="comment"># 子包</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>包名定义</strong>：统一为 <code>@外层包名/当前包的文件夹名</code>。</p>
+<p><strong>子包被引用的三个前提</strong></p>
+<ol>
+<li>有<strong>入口文件</strong>。</li>
+<li>在入口文件中定好并向外部导出功能模块代码。</li>
+<li><code>package.json</code> 的 <code>module</code>（或 <code>main</code>）指向入口文件，向外暴露。</li>
+</ol>
+<p><strong>引用方式</strong>：在引用方的 <code>dependencies</code> 中写 <code>&quot;@monorepo-project/configs&quot;: &quot;workspace:*&quot;</code>，然后执行安装命令。</p>
+<blockquote>
+<p>注意：每个子包都需要打包（常见用 <code>tsup</code>）。</p>
+</blockquote>
+<h3 id="10-6-从零手搭脚手架（12-步）"><a href="#10-6-从零手搭脚手架（12-步）" class="headerlink" title="10.6 从零手搭脚手架（12 步）"></a><a id="s10-6"></a>10.6 从零手搭脚手架（12 步）</h3><p><strong>需掌握的知识点</strong></p>
+<ul>
+<li>工程组织：monorepo（本质是架构约定、包的约定）</li>
+<li>规范化：ESLint、Stylelint、cspell、commitlint</li>
+<li>构建打包：Vite、esbuild、webpack</li>
+<li>测试：Jest、Vitest、<a target="_blank" rel="noopener" href="https://playwright.dev/docs/intro">Playwright ⭐⭐⭐</a></li>
+</ul>
+<p><strong>搭建流程</strong></p>
+<ol>
+<li>创建项目。</li>
+<li><code>pnpm init</code> 初始化。</li>
+<li>管理依赖 <code>package.json</code>：<ul>
+<li>运行时依赖：<code>&quot;devDependencies&quot;: &#123; &quot;typescript&quot;: &quot;版本号&quot; &#125;</code></li>
+<li>编译脚本：<code>&quot;scripts&quot;: &#123; &quot;compile&quot;: &quot;tsc&quot; &#125;</code></li>
+</ul>
+</li>
+<li>创建 <code>pnpm-workspace.yaml</code>，划分子包结构（packages &#x2F; apps）。</li>
+<li>创建对应子包。</li>
+<li>在 <code>apps</code> 下创建 <code>client</code> 与 <code>server</code>，先完成 server 配置。</li>
+<li><code>server</code> 内初始化，指定编译脚本（里层包共享外层包依赖，可省略类型依赖）。</li>
+<li>创建 <code>server/src/index.ts</code>。</li>
+<li>基本结构完成。</li>
+<li>配置启动命令：<code>server/package.json</code> → <code>&quot;scripts&quot;: &#123; &quot;dev&quot;: &quot;node dist/index.js&quot; &#125;</code>。</li>
+<li>启动验证：<code>pnpm i</code> → <code>pnpm compile</code> → <code>npx tsc --init</code> → 指定 <code>outDir</code> 与 <code>rootDir</code> 后重跑。</li>
+<li>一个基本 Node.js 全栈骨架完成。</li>
+</ol>
+<h3 id="10-7-规范体系"><a href="#10-7-规范体系" class="headerlink" title="10.7 规范体系"></a><a id="s10-7"></a>10.7 规范体系</h3><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>职责</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ESLint</td>
+<td>JS&#x2F;TS 代码质量与规则检查</td>
+</tr>
+<tr>
+<td>Prettier</td>
+<td>代码格式化</td>
+</tr>
+<tr>
+<td>cspell</td>
+<td>拼写检查</td>
+</tr>
+<tr>
+<td>commitlint</td>
+<td>Git 提交信息规范</td>
+</tr>
+<tr>
+<td>Biome</td>
+<td>一体化工具链：Formatter + Linter + Import 排序，可替代 eslint + prettier</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Biome 的边界：<strong>没有插件体系</strong>，且只支持部分 TS 类型感知的 Lint 规则，所以现实中是 <strong>ESLint + Biome 共存</strong>，而不是完全替换。</p>
+</blockquote>
+<p><strong>CI&#x2F;CD 卡点设计</strong></p>
+<ul>
+<li>提交前：lint-staged + husky。</li>
+<li>提交时：commitlint 校验 message。</li>
+<li>PR 时：类型检查、单测、构建体积对比。</li>
+</ul>
+<h3 id="10-8-组件库与设计体系"><a href="#10-8-组件库与设计体系" class="headerlink" title="10.8 组件库与设计体系"></a><a id="s10-8"></a>10.8 组件库与设计体系</h3><p><strong>原子化与组件化的三层约束</strong></p>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>手段</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Design Tokens（设计契约）</td>
+<td>定义语义化 CSS 变量</td>
+<td>作为<strong>单一事实来源</strong></td>
+</tr>
+<tr>
+<td>Utility Class（原子实现）</td>
+<td>Tailwind 读取 Tokens 生成原子类</td>
+<td>把契约落到可组合的原子类</td>
+</tr>
+<tr>
+<td>Component API（接口约束）</td>
+<td>用 CVA（Class Variance Authority）把原子类封装为类型安全的组件变体</td>
+<td>对业务暴露受控 API</td>
+</tr>
+</tbody></table>
+<p><strong>文档站：Rspress</strong></p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>Rspress（Rust 驱动）</th>
+<th>Docusaurus &#x2F; VitePress</th>
+<th>核心收益</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>构建引擎</td>
+<td>Rspack (Rust)</td>
+<td>Webpack &#x2F; Vite</td>
+<td>冷启动快 10 倍，大型站点毫秒级 HMR</td>
+</tr>
+<tr>
+<td>MDX 支持</td>
+<td>原生内置</td>
+<td>需插件 &#x2F; 部分支持</td>
+<td>无缝引入 React 组件，实现 Live Demo</td>
+</tr>
+<tr>
+<td>类型提取</td>
+<td>基于 TS AST</td>
+<td>需复杂配置</td>
+<td>自动从源码生成 API 表格，杜绝文档过时</td>
+</tr>
+<tr>
+<td>多语言</td>
+<td>原生路由支持</td>
+<td>较繁琐</td>
+<td>轻松支持 i18n</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>页面用 <code>.mdx</code> 配置实现；文档：<a target="_blank" rel="noopener" href="https://rspress.rs/guide/start/getting-started">https://rspress.rs/guide/start/getting-started</a></p>
+</blockquote>
+<p><strong>MCP 开发（组件库可顺带提供的能力）</strong></p>
+<ul>
+<li>MCP 服务端 + MCP 客户端，把二者连接起来，即可让 AI 直接使用你的组件库知识。</li>
+</ul>
+<h3 id="10-9-构建工具：Vite"><a href="#10-9-构建工具：Vite" class="headerlink" title="10.9 构建工具：Vite"></a><a id="s10-9"></a>10.9 构建工具：Vite</h3><p><strong>初始化</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm create vite@latest my-app --template vanilla-ts</span><br></pre></td></tr></table></figure>
+
+<p><strong>① Bundleless</strong><br>基于 ESM 的模块化管理与加载，少打包甚至不打包。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- bundleless 方案 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span> <span class="attr">src</span>=<span class="string">&quot;/src/main.ts&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>为什么用 Native ESM 启动</strong>：利用浏览器原生解析 <code>import</code> 的能力，省去开发环境的 bundle 打包过程，把文件处理从 <code>O(n)</code> 降为 <code>O(1)</code>。</p>
+<p><strong>② 两个高频原理题</strong></p>
+<ul>
+<li><code>tsconfig.json</code> 的 <code>moduleResolution</code> 为什么设为 <code>Node</code> 或 <code>Bundler</code>？<ul>
+<li>虽然 Vite 最终跑在浏览器，但<strong>开发阶段依赖 Node.js 环境去查找依赖</strong>（resolve <code>node_modules</code>）。</li>
+</ul>
+</li>
+<li>Path Alias 的底层原理？<ul>
+<li>它不只是 TS 的静态检查配置，更需要在 <code>vite.config.ts</code> 中配置 <code>resolve.alias</code>。本质上是在<strong>编译时用正则把</strong> <strong><code>@/xxx</code></strong> <strong>替换为绝对路径</strong>，否则浏览器运行时会报模块找不到。</li>
+</ul>
+</li>
+</ul>
+<p><strong>③ 插件体系</strong><br>微内核设计，插件本质是对象。常见插件：</p>
+<ul>
+<li>CSS 编译：<code>vite-plugin-postcss</code></li>
+<li>TS 编译：<code>vite-plugin-enhance-typescript</code></li>
+<li>GLSL 编译：<code>vite-plugin-glsl</code></li>
+<li>文件处理：<code>vite-plugin-babel</code>、<code>vite-plugin-legacy</code></li>
+<li>启动服务：内置</li>
+</ul>
+<p><strong>④ 开发一个编译类插件的三条路径</strong></p>
+<ol>
+<li>正则表达式替换（最快，也最脆）。</li>
+<li>Babel AST 做编译器（最稳）。</li>
+<li><code>magic-string</code> + <code>estree-walker</code> 遍历 AST 并实现编译（<strong>推荐</strong>）。</li>
+</ol>
+<p><strong>生态 AST 工具链</strong></p>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>acorn</code></td>
+<td>Vite &#x2F; Rollup 内置解析器，用于生成 AST（太重，不推荐直接用）</td>
+</tr>
+<tr>
+<td><code>estree-walker</code></td>
+<td>轻量 AST 遍历工具</td>
+</tr>
+<tr>
+<td><code>magic-string</code> ⭐</td>
+<td>不必重新生成整个 AST，可按索引修改字符串并自动生成 SourceMap</td>
+</tr>
+</tbody></table>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 示例：删除 console.log 的插件，之后在 vite.config.ts 的 plugins 里注册</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">MagicString</span> <span class="keyword">from</span> <span class="string">&#x27;magic-string&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; walk &#125; <span class="keyword">from</span> <span class="string">&#x27;estree-walker&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> removeConsoleLogPlugin = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;remove-console-log&quot;</span>,</span><br><span class="line">  <span class="attr">apply</span>: <span class="string">&quot;build&quot;</span>, <span class="comment">// 仅在生产构建生效</span></span><br><span class="line">  <span class="title function_">transform</span>(<span class="params"><span class="attr">code</span>: <span class="built_in">string</span>, <span class="attr">id</span>: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="comment">// 只处理 js / ts / jsx / tsx</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="regexp">/\.(js|ts|jsx|tsx)$/</span>.<span class="title function_">test</span>(id)) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> s = <span class="keyword">new</span> <span class="title class_">MagicString</span>(code)</span><br><span class="line">    <span class="keyword">const</span> ast = <span class="variable language_">this</span>.<span class="title function_">parse</span>(code)</span><br><span class="line"></span><br><span class="line">    <span class="title function_">walk</span>(ast, &#123;</span><br><span class="line">      <span class="title function_">enter</span>(<span class="params"><span class="attr">node</span>: <span class="built_in">any</span></span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (node.<span class="property">type</span> === <span class="string">&quot;CallExpression&quot;</span>) &#123;</span><br><span class="line">          <span class="keyword">const</span> callee = node.<span class="property">callee</span></span><br><span class="line">          <span class="keyword">if</span> (</span><br><span class="line">            callee.<span class="property">type</span> === <span class="string">&quot;MemberExpression&quot;</span> &amp;&amp;</span><br><span class="line">            callee.<span class="property">object</span>.<span class="property">name</span> === <span class="string">&quot;console&quot;</span> &amp;&amp;</span><br><span class="line">            callee.<span class="property">property</span>.<span class="property">name</span> === <span class="string">&quot;log&quot;</span></span><br><span class="line">          ) &#123;</span><br><span class="line">            <span class="comment">// 找到 console.log 的节点范围，在源码中移除</span></span><br><span class="line">            s.<span class="title function_">remove</span>(node.<span class="property">start</span>, node.<span class="property">end</span>)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">code</span>: s.<span class="title function_">toString</span>(),</span><br><span class="line">      <span class="attr">map</span>: s.<span class="title function_">generateMap</span>(&#123; <span class="attr">source</span>: id, <span class="attr">includeSources</span>: <span class="literal">true</span> &#125;),</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>⑤ 插件生命周期（钩子）</strong><br><code>buildEnd</code>（构建完成）→ <code>transform</code>（转换阶段）→ <code>resolveId</code>（解析阶段）→ <code>load</code>（加载阶段）……</p>
+<h3 id="10-10-编译原理：Babel"><a href="#10-10-编译原理：Babel" class="headerlink" title="10.10 编译原理：Babel"></a><a id="s10-10"></a>10.10 编译原理：Babel</h3><p><strong>Babel 是什么</strong></p>
+<ul>
+<li>一个标准 LISP 风格编译器，本质是 <strong>JS 编译器</strong>。</li>
+<li>用处：代码降级、polyfill、多端编译（Taro）。</li>
+</ul>
+<p><strong>编译的本质</strong>：把源代码加工成新代码（字符串操作）。通过词法、语法、语义分析加工代码，输出目标代码。<br><strong>AST（Abstract Syntax Tree）</strong>：描述代码结构；类比 DOM 树描述 DOM 结构。</p>
+<p><strong>四阶段架构</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">flowchart LR</span><br><span class="line">    Code[&quot;Code&quot;] --&gt; Lexer[Lexer 词法分析]</span><br><span class="line">    Lexer -- tokens --&gt; Parser[Parser 语法分析]</span><br><span class="line">    Parser -- ast --&gt; SemanticAnalysis[SemanticAnalysis 语义分析]</span><br><span class="line">    SemanticAnalysis -- analyzedAst --&gt; CodeGenerator[CodeGenerator 代码生成]</span><br><span class="line">    SemanticAnalysis -- analyzedAst --&gt; CodeInterpretor[CodeInterpretor 代码执行]</span><br><span class="line">    CodeGenerator --&gt; NewCode[&quot;New Code&quot;]</span><br><span class="line"></span><br><span class="line">    subgraph Compiler</span><br><span class="line">        Lexer</span><br><span class="line">        Parser</span><br><span class="line">        SemanticAnalysis</span><br><span class="line">        CodeGenerator</span><br><span class="line">        CodeInterpretor</span><br><span class="line">    end</span><br></pre></td></tr></table></figure>
+
+<p><strong>① 解析（Parsing）——</strong> <strong><code>@babel/parser</code></strong><br>把非结构化字符串转为结构化数据，分两个子阶段：</p>
+<ul>
+<li><strong>词法分析（Lexical Analysis &#x2F; Tokenization）</strong><ul>
+<li>机制：扫描器逐字符读取源码，移除空白与注释，切割成 Token 流。</li>
+<li>形态：<code>const a = 1</code> → <code>[Keyword(const), Identifier(a), Punctuator(=), Numeric(1)]</code></li>
+<li>重难点：处理上下文相关语法（JSX、TypeScript）需按上下文切换 Tokenizer 状态。</li>
+</ul>
+</li>
+<li><strong>语法分析（Syntactic Analysis）</strong><ul>
+<li>机制：按 ECMAScript 语法规则把 Token 流组装成 AST。</li>
+<li>形态：Token 流 → JSON 树结构（符合 ESTree 规范）</li>
+</ul>
+</li>
+</ul>
+<p><strong>② 转换（Transformation）——</strong> <strong><code>@babel/traverse</code></strong><br>最复杂、最核心的阶段，也是插件<strong>唯一介入窗口</strong>。</p>
+<ul>
+<li>机制：接收 AST，做深度优先遍历（DFS）。</li>
+<li>架构：采用<strong>访问者模式（Visitor Pattern）</strong>，解耦「数据结构（AST）」与「操作逻辑（插件）」。</li>
+<li>形态：AST → Modified AST（被增删改查后的新树）</li>
+</ul>
+<p><strong>③ 生成（Generation）——</strong> <strong><code>@babel/generator</code></strong></p>
+<ul>
+<li>机制：深度优先遍历转换后的 AST，按节点类型递归输出字符串。</li>
+<li>代码还原：把 AST 节点转回 JS 代码。</li>
+<li>SourceMap 生成：利用 AST 中保留的 <code>loc</code>（行列信息）映射回源码。</li>
+</ul>
+<p><strong>④ 最小流程</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> parser <span class="keyword">from</span> <span class="string">&#x27;@babel/parser&#x27;</span></span><br><span class="line"><span class="keyword">import</span> _traverse <span class="keyword">from</span> <span class="string">&#x27;@babel/traverse&#x27;</span></span><br><span class="line"><span class="keyword">import</span> _generator <span class="keyword">from</span> <span class="string">&#x27;@babel/generator&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> code = <span class="string">`const a = 1`</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. 生成语法树</span></span><br><span class="line"><span class="keyword">const</span> ast = parser.<span class="title function_">parse</span>(code)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 加工语法树：树的加工（二叉树遍历同理，前中后序、层序）</span></span><br><span class="line"><span class="comment">// 2.1 访问者模式</span></span><br><span class="line"><span class="keyword">const</span> visitor = &#123;</span><br><span class="line">  <span class="title class_">VariableDeclaration</span>(path) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(path.<span class="property">node</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line">_traverse.<span class="title function_">default</span>(ast, visitor)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 代码生成</span></span><br><span class="line"><span class="keyword">const</span> res = _generator.<span class="title function_">default</span>(ast, &#123;&#125;, code)</span><br></pre></td></tr></table></figure>
+
+<p><strong>完整工程流程</strong>（<code>src</code> → <code>compile.js</code> → <code>dist</code>）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// compile.js</span></span><br><span class="line"><span class="keyword">import</span> fs <span class="keyword">from</span> <span class="string">&#x27;node:fs&#x27;</span></span><br><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">&#x27;node:path&#x27;</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> parser <span class="keyword">from</span> <span class="string">&#x27;@babel/parser&#x27;</span></span><br><span class="line"><span class="keyword">import</span> _traverse <span class="keyword">from</span> <span class="string">&#x27;@babel/traverse&#x27;</span></span><br><span class="line"><span class="keyword">import</span> _generator <span class="keyword">from</span> <span class="string">&#x27;@babel/generator&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. 定义源码路径</span></span><br><span class="line"><span class="keyword">const</span> sourceCode = path.<span class="title function_">resolve</span>(<span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">dirname</span>, <span class="string">&#x27;src/index.js&#x27;</span>)</span><br><span class="line"><span class="comment">// 2. 定义输出路径</span></span><br><span class="line"><span class="keyword">const</span> dist = path.<span class="title function_">resolve</span>(<span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">dirname</span>, <span class="string">&#x27;dist/index.js&#x27;</span>)</span><br><span class="line"><span class="comment">// 3. 同步读取源码</span></span><br><span class="line"><span class="keyword">const</span> code = fs.<span class="title function_">readFileSync</span>(sourceCode, &#123; <span class="attr">encoding</span>: <span class="string">&#x27;utf-8&#x27;</span> &#125;)</span><br><span class="line"><span class="comment">// 4. 解析源码</span></span><br><span class="line"><span class="keyword">const</span> ast = parser.<span class="title function_">parse</span>(code, &#123; <span class="attr">presets</span>: [<span class="string">&#x27;@babel/preset-env&#x27;</span>] &#125;)</span><br><span class="line"><span class="comment">// 5. 加工语法树</span></span><br><span class="line"><span class="keyword">const</span> visitor = &#123;</span><br><span class="line">  <span class="title class_">VariableDeclaration</span>(path) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(path.<span class="property">node</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line">_traverse.<span class="title function_">default</span>(ast, visitor)</span><br><span class="line"><span class="comment">// 6. 代码生成</span></span><br><span class="line"><span class="keyword">const</span> res = _generator.<span class="title function_">default</span>(ast, &#123;&#125;, code)</span><br><span class="line"><span class="comment">// 7. 输出代码</span></span><br><span class="line">fs.<span class="title function_">writeFileSync</span>(dist, res.<span class="property">code</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>插件化体系（微内核）</strong></p>
+<ul>
+<li>本质：一个 Babel 插件就是 <strong>Visitor 对象的工厂函数</strong>。Babel 遍历 AST 时每走到一个节点，就去查找所有已注册插件中是否定义了针对该节点类型的钩子。</li>
+<li>插件：<code>arrowFunctionPlugin</code>（语法转换）、<code>declarePlugin</code>（声明插件）。</li>
+<li>预设（Preset）：把多个 plugin 打包在一起。如 <code>@babel/preset-env</code>——把箭头函数转为普通函数、把 <code>const</code> 转为 <code>var</code>。</li>
+</ul>
+<p><strong>访问者模式的三条规则</strong></p>
+<ul>
+<li>生命周期：每个节点经历两次访问——<code>Enter</code>（向下遍历、触达时触发，大部分逻辑写这里）、<code>Exit</code>（向上回溯、离开时触发）。</li>
+<li><strong>插件在预设之前运行</strong>。</li>
+<li>插件顺序：从前向后（First to Last）；预设顺序：从后向前（Last to First，为兼容性，先跑 loose 模式）。</li>
+</ul>
+<p><strong>写一个插件的流程</strong>：参考 <a target="_blank" rel="noopener" href="https://github.com/babel/babel/blob/main/packages/babel-plugin-transform-arrow-functions/src/index.ts">transform-arrow-functions</a> 实现 → 解析源码时把插件文件路径注册进去 → 安装即可。</p>
+<h3 id="10-11-实战：类飞书多维表公式编译器-AI-Agent-化"><a href="#10-11-实战：类飞书多维表公式编译器-AI-Agent-化" class="headerlink" title="10.11 实战：类飞书多维表公式编译器 + AI Agent 化"></a><a id="s10-11"></a>10.11 实战：类飞书多维表公式编译器 + AI Agent 化</h3><p><strong>四步走（以</strong> <strong><code>sum(a, b)</code></strong> <strong>为例）</strong></p>
+<ol>
+<li><strong>拆</strong>：<code>sum</code> <code>(</code> <code>a</code> <code>b</code> <code>)</code> —— 拆的过程就是词法分析（Tokenizer）。</li>
+<li><strong>转</strong>：转为标准 AST（DSL）—— Parser。中间可先转逆波兰式。</li>
+<li><strong>生成</strong>：Generator。</li>
+<li><strong>执行</strong>：Interpreter。</li>
+</ol>
+<p><strong>AI 公式编辑器的两条路线</strong></p>
+<table>
+<thead>
+<tr>
+<th>路线</th>
+<th>流程</th>
+<th>风险</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>传统思路（Copilot）</td>
+<td>用户输入「计算平均值」→ LLM 返回代码 → 扔进 <code>eval</code></td>
+<td><strong>危险且不可控</strong>，存在注入风险</td>
+</tr>
+<tr>
+<td>高阶思路（Agentic Flow）</td>
+<td>① Generate：LLM 基于我们的 DSL 文法生成公式② Validate：复用 <code>parse()</code> 作为校验器③ Reflect：<code>parse()</code> 报语法错误时，把错误信息回传 LLM 让其重生成④ Execute：只有通过校验的公式才送进 Interpreter⑤ 返回结果⑥ 可视化结果</td>
+<td>可控、可解释、可迭代</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>这个模式可迁移到所有「LLM 生成结构化产物」的场景：<strong>先约束文法 → 再让模型生成 → 用编译器校验 → 失败回传重试 → 最后才执行</strong>。这就是「给 AI 加一层枷锁」的低代码思路。</p>
+</blockquote>
+<hr>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-05-%E6%A1%8C%E9%9D%A2%E7%AB%AF%E4%B8%8ETS%E9%80%9F%E6%9F%A5/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">AI 应用知识体系（五）：桌面端、全栈整合与 TypeScript 速查</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>26/10/20</li>
+                <li>09:46</li>
+                <li>AI</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">AI 应用知识体系（三）：工作流引擎与协同编辑</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>26/10/20</li>
+                <li>09:44</li>
+                <li>AI</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2026</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+    
+        <div class="trm-footer-item blog-run-long"></div>
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="八、服务端渲染与前后端同构"><a rel="nofollow" class="trm-toc-link" href="#八、服务端渲染与前后端同构"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">八、服务端渲染与前后端同构</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="8.1 演进脉络"><a rel="nofollow" class="trm-toc-link" href="#8-1-演进脉络"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">8.1 演进脉络</span></a></li><li class="trm-toc-item trm-toc-level-3" title="8.2 SSR &#x2F; SSG &#x2F; 前后端同构"><a rel="nofollow" class="trm-toc-link" href="#8-2-SSR-SSG-前后端同构"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">8.2 SSR &#x2F; SSG &#x2F; 前后端同构</span></a></li><li class="trm-toc-item trm-toc-level-3" title="8.3 为什么 AI 产品首选 SSR"><a rel="nofollow" class="trm-toc-link" href="#8-3-为什么-AI-产品首选-SSR"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">8.3 为什么 AI 产品首选 SSR</span></a></li><li class="trm-toc-item trm-toc-level-3" title="8.4 Next.js 实战"><a rel="nofollow" class="trm-toc-link" href="#8-4-Next-js-实战"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">8.4 Next.js 实战</span></a></li><li class="trm-toc-item trm-toc-level-3" title="8.5 从零自研一套 SSR 体系"><a rel="nofollow" class="trm-toc-link" href="#8-5-从零自研一套-SSR-体系"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">8.5 从零自研一套 SSR 体系</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="九、前端监控与可观测"><a rel="nofollow" class="trm-toc-link" href="#九、前端监控与可观测"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">九、前端监控与可观测</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="9.1 指标体系"><a rel="nofollow" class="trm-toc-link" href="#9-1-指标体系"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">9.1 指标体系</span></a></li><li class="trm-toc-item trm-toc-level-3" title="9.2 采集与上报策略"><a rel="nofollow" class="trm-toc-link" href="#9-2-采集与上报策略"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">9.2 采集与上报策略</span></a></li><li class="trm-toc-item trm-toc-level-3" title="9.3 全链路架构"><a rel="nofollow" class="trm-toc-link" href="#9-3-全链路架构"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">9.3 全链路架构</span></a></li><li class="trm-toc-item trm-toc-level-3" title="9.4 存储层：ClickHouse"><a rel="nofollow" class="trm-toc-link" href="#9-4-存储层：ClickHouse"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">9.4 存储层：ClickHouse</span></a></li><li class="trm-toc-item trm-toc-level-3" title="9.5 可视化与智能预警"><a rel="nofollow" class="trm-toc-link" href="#9-5-可视化与智能预警"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">9.5 可视化与智能预警</span></a></li><li class="trm-toc-item trm-toc-level-3" title="9.6 AI 化：从根因分析到自动修复"><a rel="nofollow" class="trm-toc-link" href="#9-6-AI-化：从根因分析到自动修复"><span class="trm-toc-number">2.6.</span> <span class="trm-toc-text">9.6 AI 化：从根因分析到自动修复</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="十、工程化与架构"><a rel="nofollow" class="trm-toc-link" href="#十、工程化与架构"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">十、工程化与架构</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="10.1 Monorepo：定义与四个核心特点"><a rel="nofollow" class="trm-toc-link" href="#10-1-Monorepo：定义与四个核心特点"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">10.1 Monorepo：定义与四个核心特点</span></a></li><li class="trm-toc-item trm-toc-level-3" title="10.2 Polyrepo vs Monorepo"><a rel="nofollow" class="trm-toc-link" href="#10-2-Polyrepo-vs-Monorepo"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">10.2 Polyrepo vs Monorepo</span></a></li><li class="trm-toc-item trm-toc-level-3" title="10.3 包管理器对比"><a rel="nofollow" class="trm-toc-link" href="#10-3-包管理器对比"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">10.3 包管理器对比</span></a></li><li class="trm-toc-item trm-toc-level-3" title="10.4 构建编排工具"><a rel="nofollow" class="trm-toc-link" href="#10-4-构建编排工具"><span class="trm-toc-number">3.4.</span> <span class="trm-toc-text">10.4 构建编排工具</span></a></li><li class="trm-toc-item trm-toc-level-3" title="10.5 目录结构与子包引用规则"><a rel="nofollow" class="trm-toc-link" href="#10-5-目录结构与子包引用规则"><span class="trm-toc-number">3.5.</span> <span class="trm-toc-text">10.5 目录结构与子包引用规则</span></a></li><li class="trm-toc-item trm-toc-level-3" title="10.6 从零手搭脚手架（12 步）"><a rel="nofollow" class="trm-toc-link" href="#10-6-从零手搭脚手架（12-步）"><span class="trm-toc-number">3.6.</span> <span class="trm-toc-text">10.6 从零手搭脚手架（12 步）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="10.7 规范体系"><a rel="nofollow" class="trm-toc-link" href="#10-7-规范体系"><span class="trm-toc-number">3.7.</span> <span class="trm-toc-text">10.7 规范体系</span></a></li><li class="trm-toc-item trm-toc-level-3" title="10.8 组件库与设计体系"><a rel="nofollow" class="trm-toc-link" href="#10-8-组件库与设计体系"><span class="trm-toc-number">3.8.</span> <span class="trm-toc-text">10.8 组件库与设计体系</span></a></li><li class="trm-toc-item trm-toc-level-3" title="10.9 构建工具：Vite"><a rel="nofollow" class="trm-toc-link" href="#10-9-构建工具：Vite"><span class="trm-toc-number">3.9.</span> <span class="trm-toc-text">10.9 构建工具：Vite</span></a></li><li class="trm-toc-item trm-toc-level-3" title="10.10 编译原理：Babel"><a rel="nofollow" class="trm-toc-link" href="#10-10-编译原理：Babel"><span class="trm-toc-number">3.10.</span> <span class="trm-toc-text">10.10 编译原理：Babel</span></a></li><li class="trm-toc-item trm-toc-level-3" title="10.11 实战：类飞书多维表公式编译器 + AI Agent 化"><a rel="nofollow" class="trm-toc-link" href="#10-11-实战：类飞书多维表公式编译器-AI-Agent-化"><span class="trm-toc-number">3.11.</span> <span class="trm-toc-text">10.11 实战：类飞书多维表公式编译器 + AI Agent 化</span></a></li></ol></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn hidden-md" data-title="Toggle between single-column and double-column" onclick="asyncFun.switchSingleColumn()">
+            <i class="iconfont fas fa-arrows-alt-h"></i>
+        </div>
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+    <div class="trm-search-popup">
+        <div class="trm-search-wrapper">
+            <div class="form trm-search-form">
+                <div class="trm-search-input-icon">
+                    <i class="iconfont fas fa-search"></i>
+                </div>
+                <input class="trm-search-input" type="text" placeholder="Searching...">
+                <div class="trm-search-btn-close">
+                    <i class="iconfont fas fa-times"></i>
+                </div>
+            </div>
+            <div class="trm-search-result-container">
+                <div class="trm-search-empty">
+                    Please enter keywords to search
+                </div>
+            </div>
+            <div class="trm-search-footer">
+                <div class="trm-search-stats"></div>
+                <ul class="trm-search-commands">
+                    <li>
+                        <kbd class="command-palette-commands-key">
+                            <svg width="15" height="15" aria-label="Escape key" role="img">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.2">
+                                    <path
+                                        d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956">
+                                    </path>
+                                </g>
+                            </svg>
+                        </kbd>
+                        <span class="command-palette-Label">to close</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+        
+<script src="https://unpkg.com/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+
+        <script src="/js/plugins/local_search.js?v=2.2.3"></script>
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+			<script src="/js/plugins/danmu.js?v=2.2.3"></script>
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
+
+    
+
+
+
+</body>
+
+</html>

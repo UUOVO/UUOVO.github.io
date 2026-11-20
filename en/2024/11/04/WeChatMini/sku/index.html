@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="电商通用的选择该商品规格算法（sku最小存货）  sku是会计学中的一个名词，被称为库存单元，即每一个但规格选项就是一个sku。 商品和sku属于一对多的关系   要求 没有库存的置灰 同一类别切换时，图片也要跟着切(这个看返回的数据结构图片在哪在思考，在点击选项时处理(示例省略)) 默认不选的话给默认图(如果是有进来就要有图片的情况)，没有的默认选择每个类别的第一个规格  返回的数据结构">
+<meta name="description" content="以电商规格选择为例，讲解 sku 算法中库存置灰与切换规格同步更新图片的实现思路">
 <meta property="og:type" content="article">
-<meta property="og:title" content="微信小程序-sku算法">
+<meta property="og:title" content="sku算法">
 <meta property="og:url" content="http://example.com/en/2024/11/04/WeChatMini/sku/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="电商通用的选择该商品规格算法（sku最小存货）  sku是会计学中的一个名词，被称为库存单元，即每一个但规格选项就是一个sku。 商品和sku属于一对多的关系   要求 没有库存的置灰 同一类别切换时，图片也要跟着切(这个看返回的数据结构图片在哪在思考，在点击选项时处理(示例省略)) 默认不选的话给默认图(如果是有进来就要有图片的情况)，没有的默认选择每个类别的第一个规格  返回的数据结构">
+<meta property="og:description" content="以电商规格选择为例，讲解 sku 算法中库存置灰与切换规格同步更新图片的实现思路">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-11-04T01:57:31.900Z">
-<meta property="article:modified_time" content="2025-07-21T07:43:02.312Z">
+<meta property="article:published_time" content="2024-11-04T01:57:31.000Z">
+<meta property="article:modified_time" content="2026-11-17T02:13:13.236Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <meta name="keywords" content="微信小程序">
 
 
-<title >微信小程序-sku算法</title>
+<title >sku算法</title>
 
 <!-- Favicon -->
 
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-21 15:43:02"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-17 10:13:13"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -83,6 +83,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -197,13 +199,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -239,7 +241,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -257,13 +259,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -385,7 +387,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            微信小程序-sku算法
+                            sku算法
                         </h1>
 
                         
@@ -532,82 +534,81 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>这篇解决什么问题：商品详情页选规格时，要同时做到「没有库存的选项置灰」「同一类别切换时图片跟着切」「选完所有类别后取出对应库存」。下面先把 sku 的数据结构和两条实现思路拆开，再说明置灰列表是怎么算出来的。</p>
+<span id="more"></span>
 
-<h2 id="电商通用的选择该商品规格算法（sku最小存货）"><a href="#电商通用的选择该商品规格算法（sku最小存货）" class="headerlink" title="电商通用的选择该商品规格算法（sku最小存货）"></a>电商通用的选择该商品规格算法（sku最小存货）</h2><blockquote>
+<h2 id="背景：sku-是什么"><a href="#背景：sku-是什么" class="headerlink" title="背景：sku 是什么"></a>背景：sku 是什么</h2><blockquote>
 <ul>
-<li>sku是会计学中的一个名词，被称为库存单元，即每一个但规格选项就是一个sku。</li>
-<li>商品和sku属于一对多的关系</li>
+<li>sku 是会计学中的一个名词，被称为库存单元，即每一个规格选项就是一个 sku。</li>
+<li>商品和 sku 属于一对多的关系。</li>
 </ul>
 </blockquote>
-<h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h3><ul>
-<li>没有库存的置灰</li>
-<li>同一类别切换时，图片也要跟着切(<span class="desc">这个看返回的数据结构图片在哪在思考，在点击选项时处理(示例省略)</span>)</li>
-<li>默认不选的话给默认图(<span class="desc">如果是有进来就要有图片的情况</span>)，没有的默认选择每个类别的第一个规格</li>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><ul>
+<li>没有库存的选项置灰。</li>
+<li>同一类别切换时，图片也要跟着切（<span class="desc">这个要看返回的数据结构里图片在哪，在点击选项时处理，示例省略</span>）。</li>
+<li>默认不选的话给默认图（<span class="desc">如果是有进来就要有图片的情况</span>），没有的默认选择每个类别的第一个规格。</li>
 </ul>
-<h3 id="返回的数据结构"><a href="#返回的数据结构" class="headerlink" title="返回的数据结构"></a>返回的数据结构</h3><ul>
-<li>有两种数据结构<ul>
-<li>第一种：已经分配好的选项+库存，如果没有用笛卡尔乘积算法处理，一般会有</li>
-<li>第二种：类别和它的子选项，没有需要自己处理，一般会有</li>
+<h3 id="两种数据结构"><a href="#两种数据结构" class="headerlink" title="两种数据结构"></a>两种数据结构</h3><ul>
+<li>第一种：已经分配好的「选项 + 库存」。如果没有用笛卡尔乘积算法处理，一般会是这种。</li>
+<li>第二种：类别和它的子选项，需要自己处理。一般会是这种。</li>
 </ul>
-</li>
+<h2 id="实现思路一"><a href="#实现思路一" class="headerlink" title="实现思路一"></a>实现思路一</h2><p>整体流程：初始化规格数据 → 枚举所有规格组合 → 点击时更新选中项 → 根据库存计算置灰项 → 选满后取库存。</p>
+<h3 id="第-1-步：默认进来不选"><a href="#第-1-步：默认进来不选" class="headerlink" title="第 1 步：默认进来不选"></a>第 1 步：默认进来不选</h3><p>页面首次进入时不预选任何规格。</p>
+<h3 id="第-2-步：初始化数据到-skuMap"><a href="#第-2-步：初始化数据到-skuMap" class="headerlink" title="第 2 步：初始化数据到 skuMap"></a>第 2 步：初始化数据到 skuMap</h3><p>先处理后台返回的数据，初始化到一个数组 <code>skuMap</code> 中。它的结构示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">skuMap = [&#123;</span><br><span class="line">  <span class="attr">title</span>: <span class="string">&#x27;颜色&#x27;</span>,       <span class="comment">// 大类别</span></span><br><span class="line">  <span class="attr">check</span>: -<span class="number">1</span>,           <span class="comment">// 类别选中的 item 索引</span></span><br><span class="line">  <span class="attr">sub</span>: [&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;绿色&#x27;</span>,      <span class="comment">// 大类别下的 item 名称</span></span><br><span class="line">    <span class="attr">disabled</span>: <span class="literal">false</span>,   <span class="comment">// 对应 item 的置灰情况</span></span><br><span class="line">  &#125;],</span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
+
+<h3 id="第-3-步：控制页面加载时机"><a href="#第-3-步：控制页面加载时机" class="headerlink" title="第 3 步：控制页面加载时机"></a>第 3 步：控制页面加载时机</h3><p>页面的加载要跟着数组处理的过程走：数组处理完成后再显示页面。</p>
+<h3 id="第-4-步：初始化库存"><a href="#第-4-步：初始化库存" class="headerlink" title="第 4 步：初始化库存"></a>第 4 步：初始化库存</h3><p>初始化库存 <code>stock</code>，默认值为 <code>0</code>。</p>
+<h3 id="第-5-步：用-groupSku-列举规格组合"><a href="#第-5-步：用-groupSku-列举规格组合" class="headerlink" title="第 5 步：用 groupSku 列举规格组合"></a>第 5 步：用 groupSku 列举规格组合</h3><p>写一个函数 <code>groupSku</code>，将所有可排列的规格一一列举出来，并带上库存。它的输出结构示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一组规格组合 + 库存，最后一位是库存</span></span><br><span class="line">[</span><br><span class="line">  [<span class="string">&#x27;绿色&#x27;</span>, <span class="string">&#x27;xl&#x27;</span>, <span class="string">&#x27;7天内发货&#x27;</span>, <span class="number">23</span>],</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h3 id="第-6-步：点击时处理选中项"><a href="#第-6-步：点击时处理选中项" class="headerlink" title="第 6 步：点击时处理选中项"></a>第 6 步：点击时处理选中项</h3><p>处理点击当前选项的函数 <code>handleCurrentChose</code>：点击该规格时，需要传递外层索引、内层索引和内层名称。具体逻辑：</p>
+<ul>
+<li>选项置灰处理：当前选项置灰时，同一大类初始化不选中并返回。</li>
+<li>同一大类的选项切换判断：直接修改 <code>check</code> 值。</li>
+<li>判断当前选项无库存的组合元素，并把对应的名称置灰。</li>
+<li>判断是否选择完毕：查看每一个大类的 <code>check</code> 是否都不为 <code>-1</code>。</li>
+<li>选择完毕后，通过 <code>groupSku</code> 找到对应组合，获取最后一个选项的库存并设置库存。</li>
 </ul>
-<h2 id="实现思路一"><a href="#实现思路一" class="headerlink" title="实现思路一  "></a>实现思路一  <!--/p_four/component/skuAlogorithm.tsx  --></h2><ol>
-<li>默认进来不选</li>
-<li>初始化数据：先处理后台返回的数据，初始化到一个数组skuMap中,skuMap的数据结构示例<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">skuMap = [&#123;</span><br><span class="line">	<span class="attr">title</span>: 颜色, --- 大类别</span><br><span class="line">	<span class="attr">check</span>: -<span class="number">1</span>, --- 类别选中的item索引</span><br><span class="line">	<span class="attr">sub</span>: [&#123;</span><br><span class="line">		<span class="attr">name</span>: 绿色,	--- 大类别下的item名称</span><br><span class="line">		<span class="attr">disabled</span>: <span class="literal">false</span>, 对应item的置灰情况</span><br><span class="line">	&#125;]</span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure></li>
-<li>页面的加载：处理数组的过程让页面加载，数组处理完成再显示页面</li>
-<li>初始化库存stock，默认为0</li>
-<li>列举规格组合：写一个函数groupSku将所有可排列的规格一一列举出来，包括库存, groupSku的数据结构示例<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">	[<span class="string">&quot;绿色&quot;</span>，<span class="string">&quot;xl&quot;</span>,<span class="string">&quot;7天内发货&quot;</span>, <span class="number">23</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></li>
-<li>处理点击当前选项函数handleCurrentChose：点击该规格的时候需要传递外层索引，内层索引和内层名称<ul>
-<li>选项置灰处理：当前选项置灰时，同一大类初始化不选中并返回</li>
-<li>同一大类的选项切换判断：直接修改check值</li>
-<li>判断当前选项无库存的组合元素，并把对应的名称置灰</li>
-<li>判断是否选择完毕：查看每一个大类的check是否都不为-1</li>
-<li>选择完毕则通过groupSku找到对应组合获取最后一个选项库存并设置库存</li>
+<h3 id="第-7-步：计算当前选项的置灰元素"><a href="#第-7-步：计算当前选项的置灰元素" class="headerlink" title="第 7 步：计算当前选项的置灰元素"></a>第 7 步：计算当前选项的置灰元素</h3><ul>
+<li>先找到 <code>groupSku</code> 中所有库存为 0 且包含当前元素名称的组合 <code>noStockList</code>。</li>
+<li>初始化置灰元素列表。</li>
+<li>遍历 <code>noStockList</code>，去重并去除当前元素名称，最后将其余元素存储到置灰元素列表中。</li>
+<li>最后返回这个列表。</li>
 </ul>
-</li>
-<li>获取当前选项置灰的元素：<ul>
-<li>先找到groupSku中所有库存为0且包含当前元素名称的组合noStockList</li>
-<li>初始化置灰元素列表</li>
-<li>遍历noStockList，去重并去除当前元素名称，最后其余元素存储到置灰元素列表中</li>
-<li>最后返回这个列表</li>
-</ul>
-</li>
-</ol>
-<h2 id="实现思路二优化"><a href="#实现思路二优化" class="headerlink" title="实现思路二优化 "></a>实现思路二优化 <!-- p_two/src/pages/sku/sku.tsx --></h2><blockquote>
-<p>已知两种数据结构，先把规格的结构处理了，展示在页面上，分配好的选项+库存不处理(其实可以通过id定位会更方便，不过这里没有)</p>
+<h2 id="实现思路二（优化版）"><a href="#实现思路二（优化版）" class="headerlink" title="实现思路二（优化版）"></a>实现思路二（优化版）</h2><blockquote>
+<p>已知有两种数据结构：先把规格的结构处理了，展示在页面上；分配好的「选项 + 库存」不处理（其实可以通过 id 定位会更方便，不过这里没有）。</p>
 </blockquote>
-<ol>
-<li>定义一个数组来存储处理好的规格</li>
-</ol>
-<ul>
-<li>由于处理好的结构是Qbject,所以遍历使用<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Reflect</span>.<span class="title function_">ownKeys</span>(<span class="title class_">Object</span>).<span class="title function_">map</span>(<span class="function">(<span class="params">key: string</span>)=&gt;</span> &#123;<span class="comment">/* 使用shop[key]拿到这个键的值*/</span>&#125;)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<ol start="2">
-<li><p>由于定义的时候键为英文，而展示时是中文,则使用<span class="key_words">『枚举映射元组』</sapn>的方法</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> shopMapTitle = &#123;</span><br><span class="line">  <span class="string">&#x27;colors&#x27;</span>: <span class="string">&#x27;颜色&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;sizes&#x27;</span>: <span class="string">&#x27;尺寸&#x27;</span>, </span><br><span class="line">  <span class="string">&#x27;styles&#x27;</span>: <span class="string">&#x27;款式&#x27;</span>, </span><br><span class="line">  <span class="string">&#x27;delivery&#x27;</span>: <span class="string">&#x27;配送方式&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">使用：shopMapTitle[key]</span><br></pre></td></tr></table></figure></li>
-<li><p>选项要使用radio组件来实现,值得数组类型要根据radio的数据结构来定</p>
-</li>
-<li><p>定义变量: 全局map, 存储选择选项得Object</p>
-</li>
-<li><p>处理点击函数: 点击时传递当前选项的类别和选项, 并遍历已处理好的选项库存获取并判断库存</p>
-<ul>
-<li>获取选择结果:<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map.<span class="title function_">set</span>(<span class="string">`<span class="subst">$&#123;类别&#125;</span>`</span>, 当前选项)</span><br></pre></td></tr></table></figure></li>
-<li>map转Object<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">fromEntries</span>(map)</span><br></pre></td></tr></table></figure></li>
-<li>Object转Array<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">values</span>(_selectListObj)</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>处理初始化</p>
-<ul>
-<li>初始化的时候要先把遍历规格的格式处理好</li>
-<li>初始化置灰不可取，应该是选择一项后发现这一项的其它类别有库存为0 在置灰，点击其它恢复<ul>
-<li>先把要判断的存到一个数组A，通过数组判断当前元素是否在这个数组A里，存在就将除这个类别的这一项item排除，其它数组A里的元素找到位置然后置灰，否则就全部不置灰</li>
+<h3 id="第-1-步：用数组存储处理好的规格"><a href="#第-1-步：用数组存储处理好的规格" class="headerlink" title="第 1 步：用数组存储处理好的规格"></a>第 1 步：用数组存储处理好的规格</h3><p>定义一个数组来存储处理好的规格。由于处理好的结构是 Object，所以遍历时使用：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Reflect</span>.<span class="title function_">ownKeys</span>(<span class="title class_">Object</span>).<span class="title function_">map</span>(<span class="function">(<span class="params"><span class="attr">key</span>: <span class="built_in">string</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">/* 使用 shop[key] 拿到这个键的值 */</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="第-2-步：英文键映射为中文展示"><a href="#第-2-步：英文键映射为中文展示" class="headerlink" title="第 2 步：英文键映射为中文展示"></a>第 2 步：英文键映射为中文展示</h3><p>由于定义的时候键为英文，而展示时是中文，使用<span class="key_words">『枚举映射元组』</span>的方法：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> shopMapTitle = &#123;</span><br><span class="line">  <span class="attr">colors</span>: <span class="string">&#x27;颜色&#x27;</span>,</span><br><span class="line">  <span class="attr">sizes</span>: <span class="string">&#x27;尺寸&#x27;</span>,</span><br><span class="line">  <span class="attr">styles</span>: <span class="string">&#x27;款式&#x27;</span>,</span><br><span class="line">  <span class="attr">delivery</span>: <span class="string">&#x27;配送方式&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用：shopMapTitle[key]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="第-3-步：用-radio-组件渲染选项"><a href="#第-3-步：用-radio-组件渲染选项" class="headerlink" title="第 3 步：用 radio 组件渲染选项"></a>第 3 步：用 radio 组件渲染选项</h3><p>选项要使用 radio 组件来实现，值的数组类型要根据 radio 的数据结构来定。</p>
+<h3 id="第-4-步：定义全局-map"><a href="#第-4-步：定义全局-map" class="headerlink" title="第 4 步：定义全局 map"></a>第 4 步：定义全局 map</h3><p>定义变量：全局 map，存储选择选项的 Object。</p>
+<h3 id="第-5-步：处理点击"><a href="#第-5-步：处理点击" class="headerlink" title="第 5 步：处理点击"></a>第 5 步：处理点击</h3><p>点击时传递当前选项的类别和选项，并遍历已处理好的选项库存，获取并判断库存。</p>
+<p>获取选择结果：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map.<span class="title function_">set</span>(<span class="string">`<span class="subst">$&#123;类别&#125;</span>`</span>, 当前选项)</span><br></pre></td></tr></table></figure>
+
+<p>把 map 转成 Object：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">fromEntries</span>(map)</span><br></pre></td></tr></table></figure>
+
+<p>把 Object 转成 Array：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">values</span>(_selectListObj)</span><br></pre></td></tr></table></figure>
+
+<h3 id="第-6-步：处理初始化"><a href="#第-6-步：处理初始化" class="headerlink" title="第 6 步：处理初始化"></a>第 6 步：处理初始化</h3><ul>
+<li>初始化的时候要先把遍历规格的格式处理好。</li>
+<li>初始化时不置灰。应该是在选择一项后，发现这一项在其它类别有库存为 0 的选项，再置灰；点击其它选项时恢复。<ul>
+<li>先把要判断的存到一个数组 A，通过数组判断当前元素是否在这个数组 A 里：存在就将除这个类别的这一项 item 排除，其它数组 A 里的元素找到位置然后置灰，否则就全部不置灰。</li>
 </ul>
 </li>
 </ul>
-</li>
-</ol>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
+<li>思路二中的 <code>Reflect.ownKeys(Object)</code> 遍历的是全局 <code>Object</code> 构造函数，从后续 <code>shop[key]</code> 的用法看，这里大概率应该传实际的规格对象（如 <code>shop</code>）。原文如此，未做改动。</li>
+<li>图片联动取决于返回结构里图片字段的位置，需要在点击选项时处理；示例中省略了这段逻辑。</li>
+<li>置灰不是初始化时一次性算完的：选择一项后要重新根据库存为 0 的组合更新，点击其它选项时还要能恢复。</li>
+</ul>
 
 </article>
     
@@ -627,11 +628,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/xcx-%E5%A4%9A%E4%B8%AA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E9%AB%98%E5%BA%A6%E4%B8%8D%E5%90%8C%EF%BC%8C%E8%8E%B7%E5%8F%96%E6%9C%80%E9%AB%98%E7%9A%84%E9%AB%98%E5%BA%A6%E5%B1%95%E7%A4%BA/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/h5%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">微信小程序-动态展示图片，高度不一致</h6>
+                <h6 class="trm-op-title">H5相关问题</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -648,11 +649,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/xcx-%E5%8A%A8%E6%80%81tabbar/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/scene%E5%A4%AA%E9%95%BF%EF%BC%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">微信小程序-动态tabbar(底部菜单)</h6>
+                <h6 class="trm-op-title">生成二维码scene问题</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -724,7 +725,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="电商通用的选择该商品规格算法（sku最小存货）"><a rel="nofollow" class="trm-toc-link" href="#电商通用的选择该商品规格算法（sku最小存货）"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">电商通用的选择该商品规格算法（sku最小存货）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="要求"><a rel="nofollow" class="trm-toc-link" href="#要求"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">要求</span></a></li><li class="trm-toc-item trm-toc-level-3" title="返回的数据结构"><a rel="nofollow" class="trm-toc-link" href="#返回的数据结构"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">返回的数据结构</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="实现思路一  "><a rel="nofollow" class="trm-toc-link" href="#实现思路一"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">实现思路一  </span></a></li><li class="trm-toc-item trm-toc-level-2" title="实现思路二优化 "><a rel="nofollow" class="trm-toc-link" href="#实现思路二优化"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">实现思路二优化 </span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景：sku 是什么"><a rel="nofollow" class="trm-toc-link" href="#背景：sku-是什么"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景：sku 是什么</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="需求"><a rel="nofollow" class="trm-toc-link" href="#需求"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">需求</span></a></li><li class="trm-toc-item trm-toc-level-3" title="两种数据结构"><a rel="nofollow" class="trm-toc-link" href="#两种数据结构"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">两种数据结构</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="实现思路一"><a rel="nofollow" class="trm-toc-link" href="#实现思路一"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">实现思路一</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="第 1 步：默认进来不选"><a rel="nofollow" class="trm-toc-link" href="#第-1-步：默认进来不选"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">第 1 步：默认进来不选</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 2 步：初始化数据到 skuMap"><a rel="nofollow" class="trm-toc-link" href="#第-2-步：初始化数据到-skuMap"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">第 2 步：初始化数据到 skuMap</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 3 步：控制页面加载时机"><a rel="nofollow" class="trm-toc-link" href="#第-3-步：控制页面加载时机"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">第 3 步：控制页面加载时机</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 4 步：初始化库存"><a rel="nofollow" class="trm-toc-link" href="#第-4-步：初始化库存"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">第 4 步：初始化库存</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 5 步：用 groupSku 列举规格组合"><a rel="nofollow" class="trm-toc-link" href="#第-5-步：用-groupSku-列举规格组合"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">第 5 步：用 groupSku 列举规格组合</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 6 步：点击时处理选中项"><a rel="nofollow" class="trm-toc-link" href="#第-6-步：点击时处理选中项"><span class="trm-toc-number">2.6.</span> <span class="trm-toc-text">第 6 步：点击时处理选中项</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 7 步：计算当前选项的置灰元素"><a rel="nofollow" class="trm-toc-link" href="#第-7-步：计算当前选项的置灰元素"><span class="trm-toc-number">2.7.</span> <span class="trm-toc-text">第 7 步：计算当前选项的置灰元素</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="实现思路二（优化版）"><a rel="nofollow" class="trm-toc-link" href="#实现思路二（优化版）"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">实现思路二（优化版）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="第 1 步：用数组存储处理好的规格"><a rel="nofollow" class="trm-toc-link" href="#第-1-步：用数组存储处理好的规格"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">第 1 步：用数组存储处理好的规格</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 2 步：英文键映射为中文展示"><a rel="nofollow" class="trm-toc-link" href="#第-2-步：英文键映射为中文展示"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">第 2 步：英文键映射为中文展示</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 3 步：用 radio 组件渲染选项"><a rel="nofollow" class="trm-toc-link" href="#第-3-步：用-radio-组件渲染选项"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">第 3 步：用 radio 组件渲染选项</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 4 步：定义全局 map"><a rel="nofollow" class="trm-toc-link" href="#第-4-步：定义全局-map"><span class="trm-toc-number">3.4.</span> <span class="trm-toc-text">第 4 步：定义全局 map</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 5 步：处理点击"><a rel="nofollow" class="trm-toc-link" href="#第-5-步：处理点击"><span class="trm-toc-number">3.5.</span> <span class="trm-toc-text">第 5 步：处理点击</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第 6 步：处理初始化"><a rel="nofollow" class="trm-toc-link" href="#第-6-步：处理初始化"><span class="trm-toc-number">3.6.</span> <span class="trm-toc-text">第 6 步：处理初始化</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="注意点"><a rel="nofollow" class="trm-toc-link" href="#注意点"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">注意点</span></a></li></ol>
       </div>
     </div>
 
@@ -848,6 +849,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

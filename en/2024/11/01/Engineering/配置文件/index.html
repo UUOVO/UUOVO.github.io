@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="tsconfig.jsoncompileOnSave: true： 让IDE在保存文件的时候根据tsconfig.json重新生成文件。  compilerOptions: 编译选项，可以被忽略，有默认值 allowJs：默认为false，是否支持js&#x2F;.jsx文件 typeRoots: 默认编译所有@types包，编译指定typeRoots下的所有@types包 types：只有">
+<meta name="description" content="整理tsconfig、webpack与Sass配置文件的常用选项，说明保存时自动生成及at-rules等配置的作用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="配置文件">
 <meta property="og:url" content="http://example.com/en/2024/11/01/Engineering/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="tsconfig.jsoncompileOnSave: true： 让IDE在保存文件的时候根据tsconfig.json重新生成文件。  compilerOptions: 编译选项，可以被忽略，有默认值 allowJs：默认为false，是否支持js&#x2F;.jsx文件 typeRoots: 默认编译所有@types包，编译指定typeRoots下的所有@types包 types：只有">
+<meta property="og:description" content="整理tsconfig、webpack与Sass配置文件的常用选项，说明保存时自动生成及at-rules等配置的作用">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-11-01T08:52:16.774Z">
-<meta property="article:modified_time" content="2025-07-28T07:54:38.001Z">
+<meta property="article:published_time" content="2024-11-01T08:52:16.000Z">
+<meta property="article:modified_time" content="2026-11-17T02:20:02.091Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="webpack">
 <meta name="twitter:card" content="summary">
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-28 15:54:38"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-17 10:20:02"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -83,6 +83,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -197,13 +199,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -239,7 +241,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -257,13 +259,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -532,97 +534,92 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <h2 id="结论先行"><a href="#结论先行" class="headerlink" title="结论先行"></a>结论先行</h2><p>这篇汇总三类工程配置：<code>tsconfig.json</code> 的常用编译选项与路径别名、webpack 的概念与核心组成、以及 Sass 的 at-rules（<code>@use</code>、<code>@mixin</code>、<code>@extend</code>）。核心结论是：TS 别名要同时配 <code>baseUrl</code> 和带 <code>/*</code> 的 <code>paths</code>，否则编辑器会飘红；webpack 记住「入口、输出、loader、插件、模式、浏览器兼容、环境」七个核心；Sass 的颜色、混入、继承都可以用内置模块函数完成。</p>
+<span id="more"></span>
 
-<h2 id="tsconfig-json"><a href="#tsconfig-json" class="headerlink" title="tsconfig.json"></a>tsconfig.json</h2><h3 id="compileOnSave-true："><a href="#compileOnSave-true：" class="headerlink" title="compileOnSave: true："></a>compileOnSave: true：</h3><ul>
-<li>让IDE在保存文件的时候根据tsconfig.json重新生成文件。</li>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>项目里常被问到的配置问题是「TS 路径别名为什么不生效」「tsconfig 的 include&#x2F;exclude 怎么排」「webpack 到底有哪些核心配置」「Sass 的 @use 和 @mixin 怎么用」。下面按配置文件逐一整理。</p>
+<h2 id="步骤一：配置-tsconfig-json"><a href="#步骤一：配置-tsconfig-json" class="headerlink" title="步骤一：配置 tsconfig.json"></a>步骤一：配置 tsconfig.json</h2><h3 id="compileOnSave"><a href="#compileOnSave" class="headerlink" title="compileOnSave"></a>compileOnSave</h3><p><code>compileOnSave: true</code> 让 IDE 在保存文件的时候根据 <code>tsconfig.json</code> 重新生成文件。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;compileOnSave&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="compilerOptions"><a href="#compilerOptions" class="headerlink" title="compilerOptions"></a>compilerOptions</h3><p><code>compilerOptions</code> 是编译选项，可以被忽略，有默认值。常用项：</p>
+<ul>
+<li><code>allowJs</code>：默认为 <code>false</code>，是否支持 <code>.js</code>&#x2F;<code>.jsx</code> 文件；</li>
+<li><code>typeRoots</code>：默认编译所有 <code>@types</code> 包，配置后编译指定 <code>typeRoots</code> 下的所有 <code>@types</code> 包；</li>
+<li><code>types</code>：只有被列出来的包才会被包含，指定 <code>types</code> 来禁用自动引入 <code>@types</code> 包。</li>
 </ul>
-<h3 id="compilerOptions-编译选项，可以被忽略，有默认值"><a href="#compilerOptions-编译选项，可以被忽略，有默认值" class="headerlink" title="compilerOptions: 编译选项，可以被忽略，有默认值"></a>compilerOptions: 编译选项，可以被忽略，有默认值</h3><ul>
-<li>allowJs：默认为false，是否支持js&#x2F;.jsx文件</li>
-<li>typeRoots: 默认编译所有@types包，编译指定typeRoots下的所有@types包</li>
-<li>types：只有被列出来的包才会被包含，指定types来禁用自动引入@types包</li>
-<li><a target="_blank" rel="noopener" href="https://typescript.bootcss.com/compiler-options.html">其余选项点击查看文档</a></li>
+<p>其余选项可查看 <a target="_blank" rel="noopener" href="https://typescript.bootcss.com/compiler-options.html">TypeScript 编译选项文档</a>。</p>
+<h3 id="files-outDir-include-exclude"><a href="#files-outDir-include-exclude" class="headerlink" title="files &#x2F; outDir &#x2F; include &#x2F; exclude"></a>files &#x2F; outDir &#x2F; include &#x2F; exclude</h3><ul>
+<li><code>files</code>：指定一个包含相对或绝对文件路径的列表，且总是会被包含在内，<code>exclude</code> 设置无效；</li>
+<li><code>outDir</code>：指定的目录下的文件永远会被编译器排除，除非明确地使用 <code>files</code> 将其包含进来；</li>
+<li><code>include</code>：包含编译的文件，指定一个文件的 glob 匹配模式列表；</li>
+<li><code>exclude</code>：排除编译的文件，指定一个文件的 glob 匹配模式列表，默认排除 <code>node_modules</code>、<code>bower_components</code>、<code>jspm_packages</code> 和 <code>outDir</code> 目录。</li>
 </ul>
-<h3 id="files："><a href="#files：" class="headerlink" title="files："></a>files：</h3><ul>
-<li>指定一个包含相对或绝对文件路径的列表,且总是会被包含在内，exclude设置无效</li>
+<h3 id="glob-匹配模式"><a href="#glob-匹配模式" class="headerlink" title="glob 匹配模式"></a>glob 匹配模式</h3><ul>
+<li><code>*</code>：匹配 0&#x2F;n 个字符；</li>
+<li><code>?</code>：匹配一个任意字符；</li>
+<li><code>**/</code>：递归匹配任意子目录。</li>
 </ul>
-<h3 id="outDir"><a href="#outDir" class="headerlink" title="outDir:"></a>outDir:</h3><ul>
-<li>指定的目录下的文件永远会被编译器排除，除非明确地使用”files”将其包含进来</li>
-</ul>
-<h3 id="include"><a href="#include" class="headerlink" title="include:"></a>include:</h3><ul>
-<li>包含编译的文件指定一个文件的glob匹配模式列表</li>
-</ul>
-<h3 id="exclude"><a href="#exclude" class="headerlink" title="exclude:"></a>exclude:</h3><ul>
-<li>排除编译的文件指定一个文件的glob匹配模式列表,默认排除 node_modules，bower_components，jspm_packages和outDir目录</li>
-</ul>
-<h3 id="glob匹配模式列表"><a href="#glob匹配模式列表" class="headerlink" title="glob匹配模式列表"></a>glob匹配模式列表</h3><ul>
-<li>*：匹配0&#x2F;n个字符</li>
-<li>?：匹配一个任意字符</li>
-<li>**&#x2F;：递归匹配任意子目录</li>
-</ul>
-<h3 id="给路径配置别名："><a href="#给路径配置别名：" class="headerlink" title="给路径配置别名："></a>给路径配置别名：</h3><ul>
-<li>首先给属性baseUrl: “.”,</li>
-<li>其次在属性paths中配置</li>
-<li>注意：在配置时要注意给&#x2F;*，才可以获取对应文件夹下的文件，一般ts提示飘红，很可能问题出在这<ul>
-<li>示例:<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">	<span class="string">&quot;jsx&quot;</span>: <span class="string">&quot;preserve&quot;</span>,</span><br><span class="line">	<span class="string">&quot;baseUrl&quot;</span>: <span class="string">&quot;.&quot;</span>,</span><br><span class="line">	<span class="string">&quot;paths&quot;</span>: &#123;</span><br><span class="line">		<span class="string">&quot;@/*&quot;</span>: [<span class="string">&quot;src/*&quot;</span>],</span><br><span class="line">		<span class="string">&quot;@component/*&quot;</span>: [<span class="string">&quot;component/*&quot;</span>],</span><br><span class="line">		<span class="string">&quot;@utils/*&quot;</span>: [<span class="string">&quot;utils/*&quot;</span>]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h2 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
-<li>静态模块打包工具，处理应用程序时会在内部从一个或多个入口点构建一个依赖图，将项目中所需的每一个模块组合成一个或多个bundles，这些均为静态资源，用于展示内容。</li>
-</ul>
-<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><ul>
-<li>模块捆绑器： 将小块代码编译成更大更复杂的代码，运行在web浏览器</li>
-</ul>
+<h3 id="配置路径别名"><a href="#配置路径别名" class="headerlink" title="配置路径别名"></a>配置路径别名</h3><p>先给属性 <code>baseUrl: &quot;.&quot;</code>，再在属性 <code>paths</code> 中配置。注意配置时要给 <code>/*</code>，才可以获取对应文件夹下的文件；一般 TS 提示飘红，很可能问题就出在这里。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;jsx&quot;</span><span class="punctuation">:</span> <span class="string">&quot;preserve&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;baseUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;.&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;@/*&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;src/*&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;@component/*&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;component/*&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;@utils/*&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;utils/*&quot;</span><span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="步骤二：回顾-webpack-的概念与核心"><a href="#步骤二：回顾-webpack-的概念与核心" class="headerlink" title="步骤二：回顾 webpack 的概念与核心"></a>步骤二：回顾 webpack 的概念与核心</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>webpack 是静态模块打包工具，处理应用程序时会在内部从一个或多个入口点构建一个依赖图，将项目中所需的每一个模块组合成一个或多个 bundles，这些均为静态资源，用于展示内容。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>webpack 是模块捆绑器：将小块代码编译成更大更复杂的代码，运行在 Web 浏览器。</p>
 <h3 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h3><ul>
-<li>入口(entry)、</li>
-<li>输出(output)、</li>
-<li>loader、</li>
-<li>插件(plugin)、</li>
-<li>模式(mode)、</li>
-<li>浏览器兼容(browser compatibility)、</li>
-<li>环境(environment)</li>
+<li>入口（entry）</li>
+<li>输出（output）</li>
+<li>loader</li>
+<li>插件（plugin）</li>
+<li>模式（mode）</li>
+<li>浏览器兼容（browser compatibility）</li>
+<li>环境（environment）</li>
 </ul>
 <h3 id="模块（模块的离散功能块）"><a href="#模块（模块的离散功能块）" class="headerlink" title="模块（模块的离散功能块）"></a>模块（模块的离散功能块）</h3><ul>
-<li>每个模块的表面积都比完整程序小，这使得验证、调试和测试变得微不足道。</li>
+<li>每个模块的表面积都比完整程序小，这使得验证、调试和测试变得微不足道；</li>
 <li>良好的模块提供了坚实的抽象和封装边界，因此每个模块在整个应用程序中都具有连贯的设计和明确的目的。</li>
 </ul>
-<h2 id="sass-at-rules"><a href="#sass-at-rules" class="headerlink" title="sass at-rules"></a>sass at-rules</h2><h3 id="use-“sass-color”-基于现有颜色生成新颜色"><a href="#use-“sass-color”-基于现有颜色生成新颜色" class="headerlink" title="@use “sass:color” 基于现有颜色生成新颜色"></a>@use “sass:color” 基于现有颜色生成新颜色</h3><ul>
-<li>参数：<ul>
-<li>color.red(): 用于获取颜色的红色通道</li>
-<li>color.green(): 用于获取颜色的绿色通道</li>
-<li>color.blue(): 用于获取颜色的蓝色通道</li>
-<li>color.hue(): 用于获取颜色的色调</li>
-<li>color.saturation(): 用于获取颜色的饱和度</li>
-<li>color.lightness(): 用于获取颜色的亮度</li>
-<li>color.whiteness(): 用于获取颜色的白度</li>
-<li>color.blackness(): 用于获取颜色的黑度</li>
-<li>color.alpha(): 用于获取颜色的 alpha 通道</li>
+<h2 id="步骤三：使用-Sass-at-rules"><a href="#步骤三：使用-Sass-at-rules" class="headerlink" title="步骤三：使用 Sass at-rules"></a>步骤三：使用 Sass at-rules</h2><h3 id="use-“sass-color”"><a href="#use-“sass-color”" class="headerlink" title="@use “sass:color”"></a>@use “sass:color”</h3><p><code>@use &quot;sass:color&quot;</code> 用于基于现有颜色生成新颜色。</p>
+<p>参数：</p>
+<ul>
+<li><code>color.red()</code>：用于获取颜色的红色通道；</li>
+<li><code>color.green()</code>：用于获取颜色的绿色通道；</li>
+<li><code>color.blue()</code>：用于获取颜色的蓝色通道；</li>
+<li><code>color.hue()</code>：用于获取颜色的色调；</li>
+<li><code>color.saturation()</code>：用于获取颜色的饱和度；</li>
+<li><code>color.lightness()</code>：用于获取颜色的亮度；</li>
+<li><code>color.whiteness()</code>：用于获取颜色的白度；</li>
+<li><code>color.blackness()</code>：用于获取颜色的黑度；</li>
+<li><code>color.alpha()</code>：用于获取颜色的 alpha 通道。</li>
 </ul>
-</li>
-<li>方法：<ul>
-<li>color.scale(): 流畅地缩放的一个或多个属性(不包含本身)</li>
-<li>color.change(): 将颜色的一个或多个属性设置为新值。返回的是颜色值</li>
-<li>color.adjust(): 按固定量增加或减少一个或多个属性</li>
+<p>方法：</p>
+<ul>
+<li><code>color.scale()</code>：流畅地缩放一个或多个属性（不包含本身）；</li>
+<li><code>color.change()</code>：将颜色的一个或多个属性设置为新值，返回的是颜色值；</li>
+<li><code>color.adjust()</code>：按固定量增加或减少一个或多个属性；</li>
 <li>透明度：<ul>
-<li>color.scale()</li>
-<li>color.adjust($color，$alpha：-$amount)（保留现有行为）</li>
-</ul>
-</li>
+<li><code>color.scale()</code>；</li>
+<li><code>color.adjust($color, $alpha: -$amount)</code>（保留现有行为）。</li>
 </ul>
 </li>
 </ul>
 <h3 id="mixin"><a href="#mixin" class="headerlink" title="@mixin"></a>@mixin</h3><ul>
-<li>跟@include在一起使用的时候可以把多个样式放在一起。</li>
-<li>跟@each在一起使用搭配变量遍历meta.keywords(参数)</li>
-<li>跟@content在一起，定义整个样式的基调，相当于样式的插槽</li>
-<li>跟@media在一起，只有媒体查询的结果符合时，才会应用这一块内容</li>
+<li>跟 <code>@include</code> 在一起使用的时候可以把多个样式放在一起；</li>
+<li>跟 <code>@each</code> 在一起使用可以搭配变量遍历 <code>meta.keywords</code>（参数）；</li>
+<li>跟 <code>@content</code> 在一起，定义整个样式的基调，相当于样式的插槽；</li>
+<li>跟 <code>@media</code> 在一起，只有媒体查询的结果符合时，才会应用这一块内容。</li>
 </ul>
 <h3 id="extend-继承"><a href="#extend-继承" class="headerlink" title="@extend 继承"></a>@extend 继承</h3><ul>
-<li>selector.unify()：函数返回一个与两个选择器的交集匹配的选择器</li>
-<li>selector.extend()：与@extend相似，用于单选择器</li>
-<li>占位符选择器%：仅用于扩展的样式规则</li>
+<li><code>selector.unify()</code>：函数返回一个与两个选择器的交集匹配的选择器；</li>
+<li><code>selector.extend()</code>：与 <code>@extend</code> 相似，用于单选择器；</li>
+<li>占位符选择器 <code>%</code>：仅用于扩展的样式规则。</li>
+</ul>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
+<li><code>paths</code> 中的别名要带 <code>/*</code>，否则只能匹配到目录本身，匹配不到目录下的文件，这是 TS 飘红最常见的原因。</li>
+<li><code>files</code> 的优先级高于 <code>exclude</code>，被 <code>files</code> 明确列出的文件不会被排除。</li>
+<li><code>outDir</code> 目录默认被排除，不要再把它写进 <code>include</code>。</li>
+<li><code>@use &quot;sass:color&quot;</code> 是 Sass 模块系统写法，与旧版的全局 <code>lighten()</code>&#x2F;<code>darken()</code> 函数不同，迁移时注意替换。</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://typescript.bootcss.com/compiler-options.html">TypeScript 编译选项</a></li>
 </ul>
 
 </article>
@@ -643,27 +640,6 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/01/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/babel/">
-                <span class="trm-op-cover">
-                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
-                </span>
-                <h6 class="trm-op-title">Babel</h6>
-            </a>
-            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
-            <ul class="trm-card-data trm-label">
-                <li>24/11/01</li>
-                <li>17:45</li>
-                <li>JavaScript</li>
-            </ul>
-        </div>
-    </div>
-</div>
-    
-    
-        <div class="col-lg-6">
-    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
-        <div class="trm-older-publication">
-            
             <a class="trm-op-top trm-anima-link" href="/2024/11/01/Engineering/%E5%9F%8B%E7%82%B9/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
@@ -675,6 +651,27 @@
                 <li>24/11/01</li>
                 <li>16:52</li>
                 <li>前端工程化工具</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/JS/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">设计模式</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>16:52</li>
+                <li>JavaScript</li>
             </ul>
         </div>
     </div>
@@ -740,7 +737,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="tsconfig.json"><a rel="nofollow" class="trm-toc-link" href="#tsconfig-json"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">tsconfig.json</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="compileOnSave: true："><a rel="nofollow" class="trm-toc-link" href="#compileOnSave-true："><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">compileOnSave: true：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="compilerOptions: 编译选项，可以被忽略，有默认值"><a rel="nofollow" class="trm-toc-link" href="#compilerOptions-编译选项，可以被忽略，有默认值"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">compilerOptions: 编译选项，可以被忽略，有默认值</span></a></li><li class="trm-toc-item trm-toc-level-3" title="files："><a rel="nofollow" class="trm-toc-link" href="#files："><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">files：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="outDir:"><a rel="nofollow" class="trm-toc-link" href="#outDir"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">outDir:</span></a></li><li class="trm-toc-item trm-toc-level-3" title="include:"><a rel="nofollow" class="trm-toc-link" href="#include"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">include:</span></a></li><li class="trm-toc-item trm-toc-level-3" title="exclude:"><a rel="nofollow" class="trm-toc-link" href="#exclude"><span class="trm-toc-number">1.6.</span> <span class="trm-toc-text">exclude:</span></a></li><li class="trm-toc-item trm-toc-level-3" title="glob匹配模式列表"><a rel="nofollow" class="trm-toc-link" href="#glob匹配模式列表"><span class="trm-toc-number">1.7.</span> <span class="trm-toc-text">glob匹配模式列表</span></a></li><li class="trm-toc-item trm-toc-level-3" title="给路径配置别名："><a rel="nofollow" class="trm-toc-link" href="#给路径配置别名："><span class="trm-toc-number">1.8.</span> <span class="trm-toc-text">给路径配置别名：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="webpack"><a rel="nofollow" class="trm-toc-link" href="#webpack"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">webpack</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="概念"><a rel="nofollow" class="trm-toc-link" href="#概念"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">概念</span></a></li><li class="trm-toc-item trm-toc-level-3" title="原理"><a rel="nofollow" class="trm-toc-link" href="#原理"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">原理</span></a></li><li class="trm-toc-item trm-toc-level-3" title="核心"><a rel="nofollow" class="trm-toc-link" href="#核心"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">核心</span></a></li><li class="trm-toc-item trm-toc-level-3" title="模块（模块的离散功能块）"><a rel="nofollow" class="trm-toc-link" href="#模块（模块的离散功能块）"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">模块（模块的离散功能块）</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="sass at-rules"><a rel="nofollow" class="trm-toc-link" href="#sass-at-rules"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">sass at-rules</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="@use “sass:color” 基于现有颜色生成新颜色"><a rel="nofollow" class="trm-toc-link" href="#use-“sass-color”-基于现有颜色生成新颜色"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">@use “sass:color” 基于现有颜色生成新颜色</span></a></li><li class="trm-toc-item trm-toc-level-3" title="@mixin"><a rel="nofollow" class="trm-toc-link" href="#mixin"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">@mixin</span></a></li><li class="trm-toc-item trm-toc-level-3" title="@extend 继承"><a rel="nofollow" class="trm-toc-link" href="#extend-继承"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">@extend 继承</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="结论先行"><a rel="nofollow" class="trm-toc-link" href="#结论先行"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">结论先行</span></a></li><li class="trm-toc-item trm-toc-level-2" title="背景"><a rel="nofollow" class="trm-toc-link" href="#背景"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">背景</span></a></li><li class="trm-toc-item trm-toc-level-2" title="步骤一：配置 tsconfig.json"><a rel="nofollow" class="trm-toc-link" href="#步骤一：配置-tsconfig-json"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">步骤一：配置 tsconfig.json</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="compileOnSave"><a rel="nofollow" class="trm-toc-link" href="#compileOnSave"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">compileOnSave</span></a></li><li class="trm-toc-item trm-toc-level-3" title="compilerOptions"><a rel="nofollow" class="trm-toc-link" href="#compilerOptions"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">compilerOptions</span></a></li><li class="trm-toc-item trm-toc-level-3" title="files &#x2F; outDir &#x2F; include &#x2F; exclude"><a rel="nofollow" class="trm-toc-link" href="#files-outDir-include-exclude"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">files &#x2F; outDir &#x2F; include &#x2F; exclude</span></a></li><li class="trm-toc-item trm-toc-level-3" title="glob 匹配模式"><a rel="nofollow" class="trm-toc-link" href="#glob-匹配模式"><span class="trm-toc-number">3.4.</span> <span class="trm-toc-text">glob 匹配模式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="配置路径别名"><a rel="nofollow" class="trm-toc-link" href="#配置路径别名"><span class="trm-toc-number">3.5.</span> <span class="trm-toc-text">配置路径别名</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="步骤二：回顾 webpack 的概念与核心"><a rel="nofollow" class="trm-toc-link" href="#步骤二：回顾-webpack-的概念与核心"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">步骤二：回顾 webpack 的概念与核心</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="概念"><a rel="nofollow" class="trm-toc-link" href="#概念"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">概念</span></a></li><li class="trm-toc-item trm-toc-level-3" title="原理"><a rel="nofollow" class="trm-toc-link" href="#原理"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">原理</span></a></li><li class="trm-toc-item trm-toc-level-3" title="核心"><a rel="nofollow" class="trm-toc-link" href="#核心"><span class="trm-toc-number">4.3.</span> <span class="trm-toc-text">核心</span></a></li><li class="trm-toc-item trm-toc-level-3" title="模块（模块的离散功能块）"><a rel="nofollow" class="trm-toc-link" href="#模块（模块的离散功能块）"><span class="trm-toc-number">4.4.</span> <span class="trm-toc-text">模块（模块的离散功能块）</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="步骤三：使用 Sass at-rules"><a rel="nofollow" class="trm-toc-link" href="#步骤三：使用-Sass-at-rules"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">步骤三：使用 Sass at-rules</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="@use “sass:color”"><a rel="nofollow" class="trm-toc-link" href="#use-“sass-color”"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">@use “sass:color”</span></a></li><li class="trm-toc-item trm-toc-level-3" title="@mixin"><a rel="nofollow" class="trm-toc-link" href="#mixin"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">@mixin</span></a></li><li class="trm-toc-item trm-toc-level-3" title="@extend 继承"><a rel="nofollow" class="trm-toc-link" href="#extend-继承"><span class="trm-toc-number">5.3.</span> <span class="trm-toc-text">@extend 继承</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="注意点"><a rel="nofollow" class="trm-toc-link" href="#注意点"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">注意点</span></a></li><li class="trm-toc-item trm-toc-level-2" title="参考"><a rel="nofollow" class="trm-toc-link" href="#参考"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">参考</span></a></li></ol>
       </div>
     </div>
 
@@ -864,6 +861,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

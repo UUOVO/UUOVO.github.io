@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="知识篇滤镜的三种做法： canvas css 功能较弱 svg (SVG Filters 模板效果)  特效篇故障波纹动效： 使用 svg 滤镜中的两种滤镜 湍流滤镜 — 用到 Perlin Noise 算法(如连绵起伏的山峰，凹凸不平的地面，大理石的纹理，纸张的褶皱) feTurbulence 关键参数 type: turbulence(尖锐) | fractalNoise(柔和) — 此">
+<meta name="description" content="用 SVG 滤镜实现故障波纹动效：从 feTurbulence、feDisplacementMap 参数到 GSAP 时间轴的完整思路">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS样式-特效集">
 <meta property="og:url" content="http://example.com/2024/10/30/HTMLCSS/css%E6%A0%B7%E5%BC%8F-%E7%89%B9%E6%95%88%E9%9B%86/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="知识篇滤镜的三种做法： canvas css 功能较弱 svg (SVG Filters 模板效果)  特效篇故障波纹动效： 使用 svg 滤镜中的两种滤镜 湍流滤镜 — 用到 Perlin Noise 算法(如连绵起伏的山峰，凹凸不平的地面，大理石的纹理，纸张的褶皱) feTurbulence 关键参数 type: turbulence(尖锐) | fractalNoise(柔和) — 此">
+<meta property="og:description" content="用 SVG 滤镜实现故障波纹动效：从 feTurbulence、feDisplacementMap 参数到 GSAP 时间轴的完整思路">
 <meta property="og:locale">
-<meta property="article:published_time" content="2024-10-30T07:29:10.919Z">
-<meta property="article:modified_time" content="2025-07-29T08:00:54.827Z">
+<meta property="article:published_time" content="2024-10-30T07:29:10.000Z">
+<meta property="article:modified_time" content="2026-11-17T02:19:31.948Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="CSS">
 <meta property="article:tag" content="filter">
@@ -70,7 +70,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-29 16:00:54"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-17 10:19:31"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -85,6 +85,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -199,13 +201,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -241,7 +243,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -259,13 +261,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -534,45 +536,75 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>这篇把「故障波纹」动效拆成一条可复现的路径：先用模板站生成 <code>feTurbulence</code> + <code>feDisplacementMap</code> 的 SVG 滤镜，再把它挂到目标元素上，最后用 GSAP 时间轴持续修改 <code>baseFrequency</code>，让画面产生抖动的故障感。结论：这类效果优先用 SVG 滤镜实现，CSS 滤镜能力有限，canvas 则要自己处理像素。</p>
+<span id="more"></span>
 
-<h2 id="知识篇"><a href="#知识篇" class="headerlink" title="知识篇"></a>知识篇</h2><h3 id="滤镜的三种做法："><a href="#滤镜的三种做法：" class="headerlink" title="滤镜的三种做法："></a>滤镜的三种做法：</h3><ol>
-<li>canvas</li>
-<li>css 功能较弱</li>
-<li>svg (<a target="_blank" rel="noopener" href="https://yoksel.github.io/svg-filters/#/">SVG Filters 模板效果</a>)</li>
+<h2 id="背景：实现滤镜的三条路线"><a href="#背景：实现滤镜的三条路线" class="headerlink" title="背景：实现滤镜的三条路线"></a>背景：实现滤镜的三条路线</h2><ol>
+<li><strong>canvas</strong>：能力最强，但需要自己写绘制与像素处理逻辑。</li>
+<li><strong>CSS</strong>：功能较弱，复杂滤镜难以表达。</li>
+<li><strong>SVG</strong>：可以直接用现成的 <a target="_blank" rel="noopener" href="https://yoksel.github.io/svg-filters/#/">SVG Filters 模板效果</a> 调参并复制代码。</li>
 </ol>
-<h2 id="特效篇"><a href="#特效篇" class="headerlink" title="特效篇"></a>特效篇</h2><h3 id="故障波纹动效："><a href="#故障波纹动效：" class="headerlink" title="故障波纹动效："></a>故障波纹动效：</h3><ul>
-<li>使用 svg 滤镜中的两种滤镜<ul>
-<li>湍流滤镜 — 用到 Perlin Noise 算法(<span class="desc">如连绵起伏的山峰，凹凸不平的地面，大理石的纹理，纸张的褶皱</span>)<ul>
-<li>feTurbulence 关键参数<ul>
-<li>type: turbulence(尖锐) | fractalNoise(柔和) — 此处选 turbulence</li>
-<li>baseFrequency：横向 纵向 (0-1 值越小，噪声频率越小) — 此处 0 0.4</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>置换滤镜<ul>
-<li>feDisplacementMap<ul>
-<li>scale: 值越大，受噪声的影响越大 &#x2F;&#x2F; 40</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>使用上面的 svg filter 模板效果网站调整好后，复制生成的代码</li>
-<li>回到页面中使用<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">style</span>=<span class="string">&quot;display: none&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">defs</span>&gt;</span>黏贴代码<span class="tag">&lt;/<span class="name">defs</span>&gt;</span><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>本文选择第三条路线，用 SVG 滤镜叠加 GSAP 动画。</p>
+<h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><h3 id="步骤-1：在模板站生成滤波器"><a href="#步骤-1：在模板站生成滤波器" class="headerlink" title="步骤 1：在模板站生成滤波器"></a>步骤 1：在模板站生成滤波器</h3><p>这个效果用到两种 SVG 滤镜：</p>
 <ul>
-<li>本质只是借用 svg 效果，所以隐藏不显示，使用 filter 的 id，此 id 可以自定义</li>
+<li>**湍流滤镜 <code>feTurbulence</code>**：基于 Perlin Noise 算法生成噪声，类似连绵起伏的山峰、凹凸不平的地面、大理石纹理、纸张褶皱。<ul>
+<li><code>type</code>：<code>turbulence</code>（尖锐）或 <code>fractalNoise</code>（柔和），本例选 <code>turbulence</code>。</li>
+<li><code>baseFrequency</code>：依次表示横向、纵向频率，取值 0–1，值越小噪声频率越小；本例为 <code>0 0.4</code>。</li>
 </ul>
 </li>
-<li>在向要使用的元素或页面中的 class 添加 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">filter</span>: <span class="built_in">url</span>(<span class="string">#id</span>)</span><br></pre></td></tr></table></figure></li>
-<li>动画效果，关键在baseFrequency值的改变，使用 GSAP 库来修改</li>
-<li>主要使用 GSAP 的时间轴来实现，获取 feTurbulence 选择器，在 timeline 的回调函数中设置改变的 key 和 value</li>
-<li>并定义一个初始值，通过调用 timeline 来控制值的变化和过渡时间</li>
-<li>timeline 中先暂停动画，然后获取图片的选择器，</li>
-<li>判断图片是否完成加载 complete，加载完就调用 play 否则就监听 load 事件，等待完成播放</li>
+<li>**置换滤镜 <code>feDisplacementMap</code>**：用噪声位移像素。<ul>
+<li><code>scale</code>：值越大，受噪声影响越大；本例为 <code>40</code>。</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+<th>本例取值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>type</code></td>
+<td>噪声类型，<code>turbulence</code> 尖锐、<code>fractalNoise</code> 柔和</td>
+<td><code>turbulence</code></td>
+</tr>
+<tr>
+<td><code>baseFrequency</code></td>
+<td>横向、纵向噪声频率，0–1，越小越平缓</td>
+<td><code>0 0.4</code></td>
+</tr>
+<tr>
+<td><code>scale</code></td>
+<td>位移强度，越大扭曲越明显</td>
+<td><code>40</code></td>
+</tr>
+</tbody></table>
+<p>在模板网站上调到满意效果后，复制生成的 SVG 代码。</p>
+<h3 id="步骤-2：把滤镜藏进页面"><a href="#步骤-2：把滤镜藏进页面" class="headerlink" title="步骤 2：把滤镜藏进页面"></a>步骤 2：把滤镜藏进页面</h3><p>把复制的代码放进隐藏的 <code>&lt;svg&gt;&lt;defs&gt;</code> 中，只保留一个可被引用的 <code>id</code>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">style</span>=<span class="string">&quot;display: none&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">defs</span>&gt;</span>粘贴代码<span class="tag">&lt;/<span class="name">defs</span>&gt;</span><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里本质上只是借用 SVG 的滤镜效果，所以让 SVG 本身不显示；使用时通过滤镜的 <code>id</code> 引用，这个 <code>id</code> 可以自定义。</p>
+<h3 id="步骤-3：给目标元素挂上滤镜"><a href="#步骤-3：给目标元素挂上滤镜" class="headerlink" title="步骤 3：给目标元素挂上滤镜"></a>步骤 3：给目标元素挂上滤镜</h3><p>在需要应用效果的元素或 class 上写 <code>filter</code>，<code>url()</code> 里的 <code>id</code> 与上一步保持一致。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">filter</span>: <span class="built_in">url</span>(<span class="string">#id</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="步骤-4：用-GSAP-让-baseFrequency-动起来"><a href="#步骤-4：用-GSAP-让-baseFrequency-动起来" class="headerlink" title="步骤 4：用 GSAP 让 baseFrequency 动起来"></a>步骤 4：用 GSAP 让 <code>baseFrequency</code> 动起来</h3><p>静态滤镜只是扭曲画面，动画的关键在于持续改变 <code>baseFrequency</code> 的值：</p>
+<ul>
+<li>使用 GSAP 库修改 <code>feTurbulence</code> 的属性。</li>
+<li>主要用 GSAP 的时间轴（timeline）实现：先获取 <code>feTurbulence</code> 选择器，再在 timeline 的回调函数中设置要改变的 key 和 value。</li>
+<li>定义一个初始值，通过调用 timeline 控制值的变化与过渡时间。</li>
+<li>timeline 中先暂停动画，然后获取图片的选择器。</li>
+<li>判断图片是否加载完成（<code>complete</code>）：加载完成就调用 <code>play()</code>，否则监听 <code>load</code> 事件，等加载完成后再播放。</li>
+</ul>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
+<li><code>baseFrequency</code> 是横向、纵向两个值，只改其中一个方向会让波纹偏向单轴。</li>
+<li><code>scale</code> 过大会让图片严重扭曲；<code>40</code> 只是原文示例值，需要按素材调整。</li>
+<li>播放动画前先判断图片是否 <code>complete</code>，否则时间轴可能在图片尚未就绪时就开始。</li>
+<li>timeline 先暂停再手动播放，可以避免页面加载时动画已经跑完。</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://yoksel.github.io/svg-filters/#/">SVG Filters 模板效果</a></li>
 </ul>
 
 </article>
@@ -593,11 +625,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/css%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8-less/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/css%E6%A0%B7%E5%BC%8F-%E5%9F%BA%E6%9C%AC%E5%9B%BE%E5%BD%A2%E7%AF%87/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">CSS预处理器-less语法</h6>
+                <h6 class="trm-op-title">CSS样式-基本图形篇 + 步骤条实现</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -614,11 +646,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/css%E6%A0%B7%E5%BC%8F-%E5%9F%BA%E6%9C%AC%E5%9B%BE%E5%BD%A2%E7%AF%87/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/css%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8-less/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">CSS样式-基本图形篇 + 步骤条实现</h6>
+                <h6 class="trm-op-title">CSS预处理器-less语法</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -690,7 +722,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="知识篇"><a rel="nofollow" class="trm-toc-link" href="#知识篇"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">知识篇</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="滤镜的三种做法："><a rel="nofollow" class="trm-toc-link" href="#滤镜的三种做法："><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">滤镜的三种做法：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="特效篇"><a rel="nofollow" class="trm-toc-link" href="#特效篇"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">特效篇</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="故障波纹动效："><a rel="nofollow" class="trm-toc-link" href="#故障波纹动效："><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">故障波纹动效：</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景：实现滤镜的三条路线"><a rel="nofollow" class="trm-toc-link" href="#背景：实现滤镜的三条路线"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景：实现滤镜的三条路线</span></a></li><li class="trm-toc-item trm-toc-level-2" title="实现步骤"><a rel="nofollow" class="trm-toc-link" href="#实现步骤"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">实现步骤</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="步骤 1：在模板站生成滤波器"><a rel="nofollow" class="trm-toc-link" href="#步骤-1：在模板站生成滤波器"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">步骤 1：在模板站生成滤波器</span></a></li><li class="trm-toc-item trm-toc-level-3" title="步骤 2：把滤镜藏进页面"><a rel="nofollow" class="trm-toc-link" href="#步骤-2：把滤镜藏进页面"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">步骤 2：把滤镜藏进页面</span></a></li><li class="trm-toc-item trm-toc-level-3" title="步骤 3：给目标元素挂上滤镜"><a rel="nofollow" class="trm-toc-link" href="#步骤-3：给目标元素挂上滤镜"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">步骤 3：给目标元素挂上滤镜</span></a></li><li class="trm-toc-item trm-toc-level-3" title="步骤 4：用 GSAP 让 baseFrequency 动起来"><a rel="nofollow" class="trm-toc-link" href="#步骤-4：用-GSAP-让-baseFrequency-动起来"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">步骤 4：用 GSAP 让 baseFrequency 动起来</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="注意点"><a rel="nofollow" class="trm-toc-link" href="#注意点"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">注意点</span></a></li><li class="trm-toc-item trm-toc-level-2" title="参考"><a rel="nofollow" class="trm-toc-link" href="#参考"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">参考</span></a></li></ol>
       </div>
     </div>
 
@@ -814,6 +846,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

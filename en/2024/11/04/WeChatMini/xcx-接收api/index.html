@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="封装api到调用 先封装好网络请求（要记得把成功的失败的回调中返回数据） 将需要请求的参数返回给对应函数 需要使用到的页面调用接口 在onLoad () {this.调用的函数} 用async,await将参数传递过来，定义一个变量接收 在data中定义初始化变量来接收数据this.setData({空数组(或对象)：接收的变量})   跳转页面传参：可以用e.mark，将参数传进来，然后直">
+<meta name="description" content="梳理小程序接口从封装网络请求到页面取数的完整流程，涵盖二层数组处理、相对时间显示与分页加载">
 <meta property="og:type" content="article">
-<meta property="og:title" content="微信小程序-封装api到使用的一系列总结">
+<meta property="og:title" content="封装api到使用的一系列总结">
 <meta property="og:url" content="http://example.com/en/2024/11/04/WeChatMini/xcx-%E6%8E%A5%E6%94%B6api/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="封装api到调用 先封装好网络请求（要记得把成功的失败的回调中返回数据） 将需要请求的参数返回给对应函数 需要使用到的页面调用接口 在onLoad () {this.调用的函数} 用async,await将参数传递过来，定义一个变量接收 在data中定义初始化变量来接收数据this.setData({空数组(或对象)：接收的变量})   跳转页面传参：可以用e.mark，将参数传进来，然后直">
+<meta property="og:description" content="梳理小程序接口从封装网络请求到页面取数的完整流程，涵盖二层数组处理、相对时间显示与分页加载">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-11-04T01:57:31.967Z">
-<meta property="article:modified_time" content="2025-07-22T07:07:13.862Z">
+<meta property="article:published_time" content="2024-11-04T01:57:31.000Z">
+<meta property="article:modified_time" content="2026-11-17T02:10:49.757Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="api">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <meta name="keywords" content="微信小程序">
 
 
-<title >微信小程序-封装api到使用的一系列总结</title>
+<title >封装api到使用的一系列总结</title>
 
 <!-- Favicon -->
 
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-22 15:07:13"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-17 10:10:49"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -83,6 +83,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -197,13 +199,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -239,7 +241,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -257,13 +259,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -385,7 +387,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            微信小程序-封装api到使用的一系列总结
+                            封装api到使用的一系列总结
                         </h1>
 
                         
@@ -532,57 +534,52 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>结论先行：接口相关的代码要按”封装请求 → 暴露业务函数 → 页面调用取数 → <code>setData</code> 落地”这条链路分层，页面里只留调用和赋值。真正容易出问题的是取到数据之后的加工：二层数组要先用 <code>map</code> 拍平并用 <code>reduce</code> 拼接，相对时间要用逐级除法加 <code>Math</code> 方法取整，分页则要在路径上动态传参、按”累加 + 触底判断”的方式续接数据。</p>
+<span id="more"></span>
 
-<h3 id="封装api到调用"><a href="#封装api到调用" class="headerlink" title="封装api到调用"></a>封装api到调用</h3><ol>
-<li>先封装好网络请求（要记得把成功的失败的回调中返回数据）</li>
-<li>将需要请求的参数返回给对应函数</li>
-<li>需要使用到的页面调用接口<ul>
-<li>在onLoad () {this.调用的函数}</li>
-<li>用async,await将参数传递过来，定义一个变量接收</li>
-<li>在data中定义初始化变量来接收数据this.setData({空数组(或对象)：接收的变量})</li>
+<h2 id="背景与场景"><a href="#背景与场景" class="headerlink" title="背景与场景"></a>背景与场景</h2><p>小程序的每个列表页几乎都要重复”发请求、拼参数、处理返回值、渲染”这套动作。把网络请求和具体业务接口抽出去之后，页面代码会干净很多；但抽完之后又会遇到几类固定问题：返回值是二层数组、时间要显示成”几小时前”、列表要分页加载。这篇把这条链路和三类加工方式一起记下来。</p>
+<h2 id="一、从封装-API-到页面调用"><a href="#一、从封装-API-到页面调用" class="headerlink" title="一、从封装 API 到页面调用"></a>一、从封装 API 到页面调用</h2><h3 id="1-先封装网络请求"><a href="#1-先封装网络请求" class="headerlink" title="1. 先封装网络请求"></a>1. 先封装网络请求</h3><p>把 <code>wx.request</code> 包一层，统一处理域名、请求头、异常。注意在成功和失败的回调里都要把数据返回出去，否则调用方拿不到结果。</p>
+<h3 id="2-把需要请求的参数返回给对应函数"><a href="#2-把需要请求的参数返回给对应函数" class="headerlink" title="2. 把需要请求的参数返回给对应函数"></a>2. 把需要请求的参数返回给对应函数</h3><p>业务接口函数只负责组织参数并调用上一步的请求函数，例如把 <code>typeId</code>、<code>cross</code> 这类固定参数和外部传入的参数合并后交给 <code>request</code>。</p>
+<h3 id="3-在页面中调用接口取数"><a href="#3-在页面中调用接口取数" class="headerlink" title="3. 在页面中调用接口取数"></a>3. 在页面中调用接口取数</h3><ul>
+<li>在 <code>onLoad</code> 中调用：<code>onLoad () &#123; this.调用的函数 &#125;</code>。</li>
+<li>用 <code>async</code> &#x2F; <code>await</code> 等待结果，定义一个变量接收返回值。</li>
+<li>在 <code>data</code> 中定义初始化变量来接收数据，再用 <code>this.setData(&#123; 空数组(或对象)：接收的变量 &#125;)</code> 更新视图。</li>
 </ul>
-</li>
-<li>跳转页面传参：可以用e.mark，将参数传进来，然后直接在url上携带参数传到另一个页面，另一个页面接收对应的参数，获取对应的数据</li>
-</ol>
-<h4 id="注意点：-mark（事件系统）-navigateTo-路径传参"><a href="#注意点：-mark（事件系统）-navigateTo-路径传参" class="headerlink" title="注意点： mark（事件系统） | navigateTo (路径传参)"></a>注意点： mark（事件系统） | navigateTo (路径传参)</h4><h3 id="获取api数据中二层数组的数据（-拼接字符串）"><a href="#获取api数据中二层数组的数据（-拼接字符串）" class="headerlink" title="获取api数据中二层数组的数据（+拼接字符串）"></a>获取api数据中二层数组的数据（+拼接字符串）</h3><ol>
-<li>重新处理数据，用map遍历获取第一层数组中的值，然后存到一个空数组</li>
-<li>定义好一个空的字符串，用来接收拼接的字符串</li>
-<li>判断二层列表的空数组是否存在，有无长度</li>
-<li>利用累加器reduce将列表的值拼接后返回给空字符串</li>
-</ol>
-<h4 id="注意点：-map（返回一个新数组），reduce（pre，cur，idx）累加器"><a href="#注意点：-map（返回一个新数组），reduce（pre，cur，idx）累加器" class="headerlink" title="注意点： map（返回一个新数组），reduce（pre，cur，idx）累加器"></a>注意点： map（返回一个新数组），reduce（pre，cur，idx）累加器</h4><h3 id="距离发布时间过了多久"><a href="#距离发布时间过了多久" class="headerlink" title="距离发布时间过了多久"></a>距离发布时间过了多久</h3><ol>
-<li>获取当前时间</li>
-<li>获取发布的时间</li>
-<li>二者相减</li>
-<li>将年月日 时分秒 处理好后</li>
-</ol>
+<h3 id="4-跳转页面时传参"><a href="#4-跳转页面时传参" class="headerlink" title="4. 跳转页面时传参"></a>4. 跳转页面时传参</h3><p>可以用 <code>e.mark</code> 拿到参数，然后直接拼在 <code>url</code> 上带到另一个页面，另一个页面接收对应参数后再去获取对应的数据。</p>
+<blockquote>
+<p>注意点：<code>mark</code> 属于事件系统，<code>navigateTo</code> 属于路径传参，两者不是一回事。</p>
+</blockquote>
+<h2 id="二、处理接口返回的二层数组（并拼接字符串）"><a href="#二、处理接口返回的二层数组（并拼接字符串）" class="headerlink" title="二、处理接口返回的二层数组（并拼接字符串）"></a>二、处理接口返回的二层数组（并拼接字符串）</h2><h3 id="1-重新处理数据"><a href="#1-重新处理数据" class="headerlink" title="1. 重新处理数据"></a>1. 重新处理数据</h3><p>用 <code>map</code> 遍历第一层数组，把需要的内层值取出来存到一个空数组里。</p>
+<h3 id="2-准备一个空字符串"><a href="#2-准备一个空字符串" class="headerlink" title="2. 准备一个空字符串"></a>2. 准备一个空字符串</h3><p>定义一个空字符串，用来接收后续拼接的结果。</p>
+<h3 id="3-判断二层列表是否存在"><a href="#3-判断二层列表是否存在" class="headerlink" title="3. 判断二层列表是否存在"></a>3. 判断二层列表是否存在</h3><p>先判断二层列表这个数组是否存在、有没有长度，避免对 <code>undefined</code> 做遍历。</p>
+<h3 id="4-用-reduce-累加拼接"><a href="#4-用-reduce-累加拼接" class="headerlink" title="4. 用 reduce 累加拼接"></a>4. 用 reduce 累加拼接</h3><p>用累加器 <code>reduce</code> 把列表里的值依次拼接到空字符串上并返回。</p>
+<blockquote>
+<p>注意点：<code>map</code> 返回一个新数组，不会改动原数组；<code>reduce</code> 的回调参数是 <code>(pre, cur, idx)</code>，分别表示上一次的累计值、当前项和当前索引。</p>
+</blockquote>
+<h2 id="三、计算距离发布时间的间隔"><a href="#三、计算距离发布时间的间隔" class="headerlink" title="三、计算距离发布时间的间隔"></a>三、计算距离发布时间的间隔</h2><h3 id="1-获取两个时间"><a href="#1-获取两个时间" class="headerlink" title="1. 获取两个时间"></a>1. 获取两个时间</h3><p>先获取当前时间，再获取发布的时间。</p>
+<h3 id="2-相减得到差值"><a href="#2-相减得到差值" class="headerlink" title="2. 相减得到差值"></a>2. 相减得到差值</h3><p>二者相减得到毫秒差值，再按下面的关系逐级换算，最后组合成”年月日时分秒”：</p>
 <ul>
-<li>秒  &#x3D; 毫秒 &#x2F; 1000</li>
-<li>分  &#x3D; 秒 &#x2F; 60</li>
-<li>时  &#x3D; 分 &#x2F; 60</li>
-<li>日  &#x3D; 时 &#x2F; 24</li>
-<li>月  &#x3D; 日 &#x2F; 30</li>
-<li>年  &#x3D; 月 &#x2F; 12</li>
-<li>Math.floor(): 向下取整</li>
-<li>Math.ceil(): 向上取整</li>
-<li>Math.round(): 四舍五入</li>
+<li>秒 &#x3D; 毫秒 &#x2F; 1000</li>
+<li>分 &#x3D; 秒 &#x2F; 60</li>
+<li>时 &#x3D; 分 &#x2F; 60</li>
+<li>日 &#x3D; 时 &#x2F; 24</li>
+<li>月 &#x3D; 日 &#x2F; 30</li>
+<li>年 &#x3D; 月 &#x2F; 12</li>
 </ul>
-<ol start="5">
-<li>嵌套判断</li>
-</ol>
-<h3 id="请求分页"><a href="#请求分页" class="headerlink" title="请求分页"></a>请求分页</h3><ol>
-<li>路径要动态传参</li>
-<li>页面通过调用函数将参数传进来getListByTypeId({ page: curPage })</li>
-<li>判断数据是否大于每页展示的数据，是的话直接显示；不是就将当前的数据和下一个数据拼接起来 </li>
-<li>在上拉触底函数哪里判断页数是不是小于总的页数，是进入循环，当前页数加一；不是，提示无数据</li>
-<li>加个是否加载成功：加载成功提示，继续滚动框架在新数据，加载中不能加载，等待数据加载完成才能继续操作（默认第一页为加载完成）</li>
-</ol>
-<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><ol>
-<li>当api传入的数据有问题，应仔细查看一下路径是否写错</li>
-<li>动态传参：       <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">getListByTypeId : <span class="function">(<span class="params">data = &#123;&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> param = &#123;</span><br><span class="line">    ...data,</span><br><span class="line">    <span class="attr">typeId</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">cross</span>: <span class="number">1</span>,</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">request</span>(<span class="string">&#x27;/pc/index/getListByTypeId&#x27;</span>, param);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
+<h3 id="3-取整"><a href="#3-取整" class="headerlink" title="3. 取整"></a>3. 取整</h3><ul>
+<li><code>Math.floor()</code>：向下取整</li>
+<li><code>Math.ceil()</code>：向上取整</li>
+<li><code>Math.round()</code>：四舍五入</li>
+</ul>
+<h3 id="4-嵌套判断输出文案"><a href="#4-嵌套判断输出文案" class="headerlink" title="4. 嵌套判断输出文案"></a>4. 嵌套判断输出文案</h3><p>按换算结果做嵌套判断，决定最终显示”刚刚””x 分钟前”还是具体日期。</p>
+<h2 id="四、请求分页"><a href="#四、请求分页" class="headerlink" title="四、请求分页"></a>四、请求分页</h2><h3 id="1-路径要支持动态传参"><a href="#1-路径要支持动态传参" class="headerlink" title="1. 路径要支持动态传参"></a>1. 路径要支持动态传参</h3><p>分页接口的路径不能写死，页码等参数需要在调用时拼进去。</p>
+<h3 id="2-页面调用函数时把页码传进去"><a href="#2-页面调用函数时把页码传进去" class="headerlink" title="2. 页面调用函数时把页码传进去"></a>2. 页面调用函数时把页码传进去</h3><p>例如 <code>getListByTypeId(&#123; page: curPage &#125;)</code>，由页面维护当前页码。</p>
+<h3 id="3-判断并拼接数据"><a href="#3-判断并拼接数据" class="headerlink" title="3. 判断并拼接数据"></a>3. 判断并拼接数据</h3><p>判断返回的数据量是否大于每页展示的数据：是的话直接显示；不是的话，就把当前数据和下一页的数据拼接起来。</p>
+<h3 id="4-在触底函数中判断页数"><a href="#4-在触底函数中判断页数" class="headerlink" title="4. 在触底函数中判断页数"></a>4. 在触底函数中判断页数</h3><p>在上拉触底函数里判断当前页数是否小于总页数：小于则进入加载循环，当前页数加一；否则提示无数据。</p>
+<h3 id="5-加一个加载状态"><a href="#5-加一个加载状态" class="headerlink" title="5. 加一个加载状态"></a>5. 加一个加载状态</h3><p>用一个”是否加载成功&#x2F;是否加载中”的标记控制交互：加载成功时提示并允许继续滚动加载，加载中不能再次发起加载，等数据回来才能继续操作（默认第一页视为加载完成）。</p>
+<h2 id="五、注意点"><a href="#五、注意点" class="headerlink" title="五、注意点"></a>五、注意点</h2><h3 id="1-先检查路径"><a href="#1-先检查路径" class="headerlink" title="1. 先检查路径"></a>1. 先检查路径</h3><p>当接口传入的数据有问题时，先仔细检查请求路径是不是写错了，很多时候问题出在路径拼错而不是参数。</p>
+<h3 id="2-动态传参的写法"><a href="#2-动态传参的写法" class="headerlink" title="2. 动态传参的写法"></a>2. 动态传参的写法</h3><p>下面这个函数在调用方传入的参数基础上合并了固定参数 <code>typeId</code> 和 <code>cross</code>，再交给统一的 <code>request</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">getListByTypeId</span>: <span class="function">(<span class="params">data = &#123;&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> param = &#123;</span><br><span class="line">    ...data,</span><br><span class="line">    <span class="attr">typeId</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">cross</span>: <span class="number">1</span>,</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">request</span>(<span class="string">&#x27;/pc/index/getListByTypeId&#x27;</span>, param)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </article>
     
@@ -602,11 +599,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/xcx-%E4%BA%8B%E4%BB%B6%E5%92%8C%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/xcx-%E5%B0%81%E8%A3%85%E6%97%A5%E5%8E%86%E7%BB%84%E4%BB%B6%EF%BC%88%E4%B8%9A%E5%8A%A1%E7%BB%84%E4%BB%B6%EF%BC%89%E4%B8%8E%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%80%BC/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">微信小程序-事件和生命周期</h6>
+                <h6 class="trm-op-title">封装日历组件与组件传值</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -623,11 +620,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/xcx-%E5%B0%81%E8%A3%85%E6%97%A5%E5%8E%86%E7%BB%84%E4%BB%B6%EF%BC%88%E4%B8%9A%E5%8A%A1%E7%BB%84%E4%BB%B6%EF%BC%89%E4%B8%8E%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%80%BC/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/xcx-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AF%BC%E8%88%AA%E6%A0%8F/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">微信小程序-封装日历组件与组件传值</h6>
+                <h6 class="trm-op-title">自定义导航栏</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -699,7 +696,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-3" title="封装api到调用"><a rel="nofollow" class="trm-toc-link" href="#封装api到调用"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">封装api到调用</span></a></li><li class="trm-toc-item trm-toc-level-3" title="获取api数据中二层数组的数据（+拼接字符串）"><a rel="nofollow" class="trm-toc-link" href="#获取api数据中二层数组的数据（-拼接字符串）"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">获取api数据中二层数组的数据（+拼接字符串）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="距离发布时间过了多久"><a rel="nofollow" class="trm-toc-link" href="#距离发布时间过了多久"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">距离发布时间过了多久</span></a></li><li class="trm-toc-item trm-toc-level-3" title="请求分页"><a rel="nofollow" class="trm-toc-link" href="#请求分页"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">请求分页</span></a></li><li class="trm-toc-item trm-toc-level-3" title="注意："><a rel="nofollow" class="trm-toc-link" href="#注意："><span class="trm-toc-number">5.</span> <span class="trm-toc-text">注意：</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景与场景"><a rel="nofollow" class="trm-toc-link" href="#背景与场景"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景与场景</span></a></li><li class="trm-toc-item trm-toc-level-2" title="一、从封装 API 到页面调用"><a rel="nofollow" class="trm-toc-link" href="#一、从封装-API-到页面调用"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">一、从封装 API 到页面调用</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="1. 先封装网络请求"><a rel="nofollow" class="trm-toc-link" href="#1-先封装网络请求"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">1. 先封装网络请求</span></a></li><li class="trm-toc-item trm-toc-level-3" title="2. 把需要请求的参数返回给对应函数"><a rel="nofollow" class="trm-toc-link" href="#2-把需要请求的参数返回给对应函数"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">2. 把需要请求的参数返回给对应函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3. 在页面中调用接口取数"><a rel="nofollow" class="trm-toc-link" href="#3-在页面中调用接口取数"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">3. 在页面中调用接口取数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="4. 跳转页面时传参"><a rel="nofollow" class="trm-toc-link" href="#4-跳转页面时传参"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">4. 跳转页面时传参</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="二、处理接口返回的二层数组（并拼接字符串）"><a rel="nofollow" class="trm-toc-link" href="#二、处理接口返回的二层数组（并拼接字符串）"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">二、处理接口返回的二层数组（并拼接字符串）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="1. 重新处理数据"><a rel="nofollow" class="trm-toc-link" href="#1-重新处理数据"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">1. 重新处理数据</span></a></li><li class="trm-toc-item trm-toc-level-3" title="2. 准备一个空字符串"><a rel="nofollow" class="trm-toc-link" href="#2-准备一个空字符串"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">2. 准备一个空字符串</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3. 判断二层列表是否存在"><a rel="nofollow" class="trm-toc-link" href="#3-判断二层列表是否存在"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">3. 判断二层列表是否存在</span></a></li><li class="trm-toc-item trm-toc-level-3" title="4. 用 reduce 累加拼接"><a rel="nofollow" class="trm-toc-link" href="#4-用-reduce-累加拼接"><span class="trm-toc-number">3.4.</span> <span class="trm-toc-text">4. 用 reduce 累加拼接</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="三、计算距离发布时间的间隔"><a rel="nofollow" class="trm-toc-link" href="#三、计算距离发布时间的间隔"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">三、计算距离发布时间的间隔</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="1. 获取两个时间"><a rel="nofollow" class="trm-toc-link" href="#1-获取两个时间"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">1. 获取两个时间</span></a></li><li class="trm-toc-item trm-toc-level-3" title="2. 相减得到差值"><a rel="nofollow" class="trm-toc-link" href="#2-相减得到差值"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">2. 相减得到差值</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3. 取整"><a rel="nofollow" class="trm-toc-link" href="#3-取整"><span class="trm-toc-number">4.3.</span> <span class="trm-toc-text">3. 取整</span></a></li><li class="trm-toc-item trm-toc-level-3" title="4. 嵌套判断输出文案"><a rel="nofollow" class="trm-toc-link" href="#4-嵌套判断输出文案"><span class="trm-toc-number">4.4.</span> <span class="trm-toc-text">4. 嵌套判断输出文案</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="四、请求分页"><a rel="nofollow" class="trm-toc-link" href="#四、请求分页"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">四、请求分页</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="1. 路径要支持动态传参"><a rel="nofollow" class="trm-toc-link" href="#1-路径要支持动态传参"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">1. 路径要支持动态传参</span></a></li><li class="trm-toc-item trm-toc-level-3" title="2. 页面调用函数时把页码传进去"><a rel="nofollow" class="trm-toc-link" href="#2-页面调用函数时把页码传进去"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">2. 页面调用函数时把页码传进去</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3. 判断并拼接数据"><a rel="nofollow" class="trm-toc-link" href="#3-判断并拼接数据"><span class="trm-toc-number">5.3.</span> <span class="trm-toc-text">3. 判断并拼接数据</span></a></li><li class="trm-toc-item trm-toc-level-3" title="4. 在触底函数中判断页数"><a rel="nofollow" class="trm-toc-link" href="#4-在触底函数中判断页数"><span class="trm-toc-number">5.4.</span> <span class="trm-toc-text">4. 在触底函数中判断页数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="5. 加一个加载状态"><a rel="nofollow" class="trm-toc-link" href="#5-加一个加载状态"><span class="trm-toc-number">5.5.</span> <span class="trm-toc-text">5. 加一个加载状态</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="五、注意点"><a rel="nofollow" class="trm-toc-link" href="#五、注意点"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">五、注意点</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="1. 先检查路径"><a rel="nofollow" class="trm-toc-link" href="#1-先检查路径"><span class="trm-toc-number">6.1.</span> <span class="trm-toc-text">1. 先检查路径</span></a></li><li class="trm-toc-item trm-toc-level-3" title="2. 动态传参的写法"><a rel="nofollow" class="trm-toc-link" href="#2-动态传参的写法"><span class="trm-toc-number">6.2.</span> <span class="trm-toc-text">2. 动态传参的写法</span></a></li></ol></li></ol>
       </div>
     </div>
 
@@ -823,6 +820,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

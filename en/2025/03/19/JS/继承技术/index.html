@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="1. 原型链继承 最直接的继承方法之一 允许对象通过原型连接的”链”继承属性和方法 示例：123456789101112function Animal() &#123;  this.species &#x3D; &#x27;Mammal&#x27;;  this.habits &#x3D; [&#x27;sleep&#x27;, &#x27;eat&#x27;];&#125;function Dog() &amp;#1">
+<meta name="description" content="归纳原型链、构造函数、组合、寄生与寄生组合等七种 JavaScript 继承写法，并给出各自的优缺点与适用场景">
 <meta property="og:type" content="article">
 <meta property="og:title" content="7种强大的JavaScript继承技术">
 <meta property="og:url" content="http://example.com/en/2025/03/19/JS/%E7%BB%A7%E6%89%BF%E6%8A%80%E6%9C%AF/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1. 原型链继承 最直接的继承方法之一 允许对象通过原型连接的”链”继承属性和方法 示例：123456789101112function Animal() &#123;  this.species &#x3D; &#x27;Mammal&#x27;;  this.habits &#x3D; [&#x27;sleep&#x27;, &#x27;eat&#x27;];&#125;function Dog() &amp;#1">
+<meta property="og:description" content="归纳原型链、构造函数、组合、寄生与寄生组合等七种 JavaScript 继承写法，并给出各自的优缺点与适用场景">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-03-19T02:56:54.768Z">
-<meta property="article:modified_time" content="2025-08-01T03:02:04.124Z">
+<meta property="article:published_time" content="2025-03-19T02:56:54.000Z">
+<meta property="article:modified_time" content="2026-11-19T02:03:19.253Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="JS">
 <meta name="twitter:card" content="summary">
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-08-01 11:02:04"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-19 10:03:19"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -83,6 +83,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -197,13 +199,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -239,7 +241,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -257,13 +259,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -532,51 +534,86 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p><strong>结论先行</strong>：JS 的继承写法一共七种，本质都是围绕两件事做取舍——实例属性能不能各自独立、父级方法能不能复用。只看结论：原型链继承和原型继承复用性最好但引用类型会被共享；构造函数继承属性独立但方法无法复用；组合继承两边兼顾却会调用两次父构造函数；寄生组合继承和 ES6 <code>class extends</code> 是当前的主流写法。日常开发直接用 <code>class</code>，理解原理时按下面七种依次过一遍。</p>
+<span id="more"></span>
 
-<h2 id="1-原型链继承"><a href="#1-原型链继承" class="headerlink" title="1. 原型链继承"></a>1. 原型链继承</h2><ul>
+<h2 id="背景：为什么会有七种写法"><a href="#背景：为什么会有七种写法" class="headerlink" title="背景：为什么会有七种写法"></a>背景：为什么会有七种写法</h2><p>原型链提供方法复用，构造函数提供独立属性，两者怎么拼，就拼出了不同的继承方案。每种写法都是在“属性独立”和“方法复用”之间换位置，所以看每节的优点与缺点，比看代码更能记住差别。</p>
+<h2 id="1-原型链继承"><a href="#1-原型链继承" class="headerlink" title="1. 原型链继承"></a>1. 原型链继承</h2><p>让子类原型指向一个父类实例，从而通过原型链拿到父类的属性和方法。</p>
+<ul>
 <li>最直接的继承方法之一</li>
-<li>允许对象通过原型连接的”链”继承属性和方法</li>
-<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Animal</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">species</span> = <span class="string">&#x27;Mammal&#x27;</span>;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">habits</span> = [<span class="string">&#x27;sleep&#x27;</span>, <span class="string">&#x27;eat&#x27;</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Dog</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">breed</span> = <span class="string">&#x27;Bulldog&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Dog</span>.<span class="property"><span class="keyword">prototype</span></span> = <span class="keyword">new</span> <span class="title class_">Animal</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> d1 = <span class="keyword">new</span> <span class="title class_">Dog</span>();</span><br><span class="line"><span class="keyword">let</span> d2 = <span class="keyword">new</span> <span class="title class_">Dog</span>();</span><br><span class="line">d1.<span class="property">habits</span>.<span class="title function_">push</span>(<span class="string">&#x27;bark&#x27;</span>); <span class="comment">// 向Animal.habits添加了bark</span></span><br></pre></td></tr></table></figure></li>
+<li>允许对象通过原型连接的“链”继承属性和方法</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Animal</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">species</span> = <span class="string">&#x27;Mammal&#x27;</span>;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">habits</span> = [<span class="string">&#x27;sleep&#x27;</span>, <span class="string">&#x27;eat&#x27;</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Dog</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">breed</span> = <span class="string">&#x27;Bulldog&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Dog</span>.<span class="property"><span class="keyword">prototype</span></span> = <span class="keyword">new</span> <span class="title class_">Animal</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> d1 = <span class="keyword">new</span> <span class="title class_">Dog</span>();</span><br><span class="line"><span class="keyword">let</span> d2 = <span class="keyword">new</span> <span class="title class_">Dog</span>();</span><br><span class="line">d1.<span class="property">habits</span>.<span class="title function_">push</span>(<span class="string">&#x27;bark&#x27;</span>); <span class="comment">// 向Animal.habits添加了bark</span></span><br></pre></td></tr></table></figure>
+
+<p>运行上面的代码后，<code>d1.habits</code> 与 <code>d2.habits</code> 指向同一个数组，因此 <code>d2.habits</code> 里也会出现 <code>&#39;bark&#39;</code>。</p>
+<ul>
 <li>优点：设置简单，为子类提供所有父原型方法的访问权限</li>
 <li>缺点：共享引用类型可能会导致副作用，为每个实例调用父对象的构造函数</li>
 </ul>
-<h2 id="2-构造函数继承"><a href="#2-构造函数继承" class="headerlink" title="2. 构造函数继承"></a>2. 构造函数继承</h2><ul>
+<h2 id="2-构造函数继承"><a href="#2-构造函数继承" class="headerlink" title="2. 构造函数继承"></a>2. 构造函数继承</h2><p>在子构造函数里调用父构造函数，把父级的实例属性复制到子实例上。</p>
+<ul>
 <li>子对象通过在子构造函数中调用父对象的构造函数来继承属性</li>
-<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Animal</span>(<span class="params">species</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">species</span> = species;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">activities</span> = [];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Dog</span>(<span class="params">breed</span>) &#123;</span><br><span class="line">  <span class="title class_">Animal</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>, <span class="string">&#x27;Mammal&#x27;</span>); <span class="comment">// 给Dog中的父species赋值</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">breed</span> = breed;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> d = <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="string">&#x27;dog&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Animal</span>(<span class="params">species</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">species</span> = species;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">activities</span> = [];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Dog</span>(<span class="params">breed</span>) &#123;</span><br><span class="line">  <span class="title class_">Animal</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>, <span class="string">&#x27;Mammal&#x27;</span>); <span class="comment">// 给Dog中的父species赋值</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">breed</span> = breed;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> d = <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="string">&#x27;dog&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
 <li>优点：每个实例都有不同的属性，参数可以传递给父级</li>
 <li>缺点：无法跨实例重用方法，从而导致冗余</li>
 </ul>
-<h2 id="3-复合继承"><a href="#3-复合继承" class="headerlink" title="3. 复合继承"></a>3. 复合继承</h2><ul>
+<h2 id="3-复合继承（组合继承）"><a href="#3-复合继承（组合继承）" class="headerlink" title="3. 复合继承（组合继承）"></a>3. 复合继承（组合继承）</h2><p>把前两种拼起来：属性用 <code>call</code> 复制一份，方法挂在原型上复用。</p>
+<ul>
 <li>合并了原型链和构造函数继承，以便子类提供唯一属性和对父方法的访问</li>
-<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Animal</span>(<span class="params">species</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">species</span> = species;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">activities</span> = [];</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Animal</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">getSpecies</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123; <span class="comment">// 父方法</span></span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">species</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Dog</span>(<span class="params">breed</span>) &#123;</span><br><span class="line">  <span class="title class_">Animal</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>, <span class="string">&#x27;Mammal&#x27;</span>);</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">breed</span> = breed;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Dog</span>.<span class="property"><span class="keyword">prototype</span></span> = <span class="keyword">new</span> <span class="title class_">Animal</span>();</span><br><span class="line"><span class="title class_">Dog</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">constructor</span> = <span class="title class_">Dog</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Animal</span>(<span class="params">species</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">species</span> = species;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">activities</span> = [];</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Animal</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">getSpecies</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123; <span class="comment">// 父方法</span></span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">species</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Dog</span>(<span class="params">breed</span>) &#123;</span><br><span class="line">  <span class="title class_">Animal</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>, <span class="string">&#x27;Mammal&#x27;</span>);</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">breed</span> = breed;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Dog</span>.<span class="property"><span class="keyword">prototype</span></span> = <span class="keyword">new</span> <span class="title class_">Animal</span>();</span><br><span class="line"><span class="title class_">Dog</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">constructor</span> = <span class="title class_">Dog</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
 <li>优点：子类有自己的属性和原型方法</li>
 <li>缺点：父构造函数被调用两次，增加了开销</li>
 </ul>
-<h2 id="4-寄生继承"><a href="#4-寄生继承" class="headerlink" title="4. 寄生继承"></a>4. 寄生继承</h2><ul>
+<h2 id="4-寄生继承"><a href="#4-寄生继承" class="headerlink" title="4. 寄生继承"></a>4. 寄生继承</h2><p>在创建对象的同时对它做增强，再把这个对象返回，写法灵活但结构更绕。</p>
+<ul>
 <li>创建、修改和返回对象，使继承变得灵活，但增加了复杂性</li>
-<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Animal</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">species</span> = <span class="string">&#x27;Mammal&#x27;</span>;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">habits</span> = [<span class="string">&#x27;eat&#x27;</span>, <span class="string">&#x27;sleep&#x27;</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Dog</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title class_">Animal</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>);</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">breed</span> = <span class="string">&#x27;Bulldog&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Dog</span>.<span class="property"><span class="keyword">prototype</span></span> = <span class="title class_">Object</span>.<span class="title function_">create</span>(<span class="title class_">Animal</span>.<span class="property"><span class="keyword">prototype</span></span>);</span><br><span class="line"><span class="title class_">Dog</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">constructor</span> = <span class="title class_">Dog</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Animal</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">species</span> = <span class="string">&#x27;Mammal&#x27;</span>;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">habits</span> = [<span class="string">&#x27;eat&#x27;</span>, <span class="string">&#x27;sleep&#x27;</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Dog</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title class_">Animal</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>);</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">breed</span> = <span class="string">&#x27;Bulldog&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Dog</span>.<span class="property"><span class="keyword">prototype</span></span> = <span class="title class_">Object</span>.<span class="title function_">create</span>(<span class="title class_">Animal</span>.<span class="property"><span class="keyword">prototype</span></span>);</span><br><span class="line"><span class="title class_">Dog</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">constructor</span> = <span class="title class_">Dog</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
 <li>优点：允许在克隆对象上使用原型扩展</li>
 <li>缺点：不太适合大型继承结构</li>
 </ul>
-<h2 id="5-原型继承"><a href="#5-原型继承" class="headerlink" title="5. 原型继承"></a>5. 原型继承</h2><ul>
-<li>Object.create()直接创建具有指定原型的对象</li>
-<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> animal = &#123;</span><br><span class="line">  <span class="attr">species</span>: <span class="string">&#x27;Mammal&#x27;</span>,</span><br><span class="line">  <span class="attr">traits</span>: [<span class="string">&#x27;warm-blooded&#x27;</span>, <span class="string">&#x27;vertebrate&#x27;</span>]</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">createClone</span>(<span class="params">obj</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> clone = <span class="title class_">Object</span>.<span class="title function_">create</span>(obj);</span><br><span class="line">  clone.<span class="property">getTraits</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">traits</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> clone;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> dog = <span class="title function_">createClone</span>(animal);</span><br></pre></td></tr></table></figure></li>
+<h2 id="5-原型继承"><a href="#5-原型继承" class="headerlink" title="5. 原型继承"></a>5. 原型继承</h2><p>用 <code>Object.create()</code> 直接指定新对象的原型，连构造函数都不需要。</p>
+<ul>
+<li><code>Object.create()</code> 直接创建具有指定原型的对象</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> animal = &#123;</span><br><span class="line">  <span class="attr">species</span>: <span class="string">&#x27;Mammal&#x27;</span>,</span><br><span class="line">  <span class="attr">traits</span>: [<span class="string">&#x27;warm-blooded&#x27;</span>, <span class="string">&#x27;vertebrate&#x27;</span>]</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">createClone</span>(<span class="params">obj</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> clone = <span class="title class_">Object</span>.<span class="title function_">create</span>(obj);</span><br><span class="line">  clone.<span class="property">getTraits</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">traits</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> clone;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> dog = <span class="title function_">createClone</span>(animal);</span><br></pre></td></tr></table></figure>
+
+<ul>
 <li>优点：简单且不需要构造函数</li>
 <li>缺点：所有实例共享 prototype 属性</li>
 </ul>
-<h2 id="6-寄生组合继承"><a href="#6-寄生组合继承" class="headerlink" title="6. 寄生组合继承"></a>6. 寄生组合继承</h2><ul>
-<li>改进的复合继承，使用Object.create()</li>
-<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Animal</span>(<span class="params">species</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">species</span> = species;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">traits</span> = [];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Dog</span>(<span class="params">breed</span>) &#123;</span><br><span class="line">  <span class="title class_">Animal</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>, <span class="string">&#x27;Mammal&#x27;</span>);</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">breed</span> = breed;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Dog</span>.<span class="property"><span class="keyword">prototype</span></span> = <span class="title class_">Object</span>.<span class="title function_">create</span>(<span class="title class_">Animal</span>.<span class="property"><span class="keyword">prototype</span></span>);</span><br><span class="line"><span class="title class_">Dog</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">constructor</span> = <span class="title class_">Dog</span>;</span><br></pre></td></tr></table></figure></li>
-<li>优点：解决 double 构造函数调用问题;保留综合效益</li>
+<h2 id="6-寄生组合继承"><a href="#6-寄生组合继承" class="headerlink" title="6. 寄生组合继承"></a>6. 寄生组合继承</h2><p>组合继承的改良版：不再 <code>new Animal()</code>，而是用 <code>Object.create(Animal.prototype)</code> 复制一份原型，避免多余的一次父构造函数调用。</p>
+<ul>
+<li>改进的复合继承，使用 <code>Object.create()</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Animal</span>(<span class="params">species</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">species</span> = species;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">traits</span> = [];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Dog</span>(<span class="params">breed</span>) &#123;</span><br><span class="line">  <span class="title class_">Animal</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>, <span class="string">&#x27;Mammal&#x27;</span>);</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">breed</span> = breed;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Dog</span>.<span class="property"><span class="keyword">prototype</span></span> = <span class="title class_">Object</span>.<span class="title function_">create</span>(<span class="title class_">Animal</span>.<span class="property"><span class="keyword">prototype</span></span>);</span><br><span class="line"><span class="title class_">Dog</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">constructor</span> = <span class="title class_">Dog</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>优点：解决了父构造函数被调用两次的问题，同时保留了组合继承的好处</li>
 <li>缺点：代码复杂性和需要额外的封装</li>
 </ul>
-<h2 id="7-ES6类继承"><a href="#7-ES6类继承" class="headerlink" title="7. ES6类继承"></a>7. ES6类继承</h2><ul>
-<li>es6 中，在js中引入class语法</li>
-<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">species</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">species</span> = species;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">getSpecies</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">species</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Animal</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">breed</span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(<span class="string">&#x27;Mammal&#x27;</span>);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">breed</span> = breed;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<h2 id="7-ES6-类继承"><a href="#7-ES6-类继承" class="headerlink" title="7. ES6 类继承"></a>7. ES6 类继承</h2><p><code>class</code> 与 <code>extends</code> 是原型继承的语法糖，底层仍是构造函数加原型链。</p>
+<ul>
+<li>ES6 中，在 JS 里引入了 class 语法</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">species</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">species</span> = species;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">getSpecies</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">species</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Animal</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">breed</span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(<span class="string">&#x27;Mammal&#x27;</span>);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">breed</span> = breed;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
 <li>优点：干净、可读的语法，类似于传统的 OOP</li>
-<li>缺点：可能需要转译,与基于原型的方法相比，性能略有不同</li>
+<li>缺点：可能需要转译，与基于原型的方法相比，性能略有不同</li>
+</ul>
+<h2 id="踩坑与注意点"><a href="#踩坑与注意点" class="headerlink" title="踩坑与注意点"></a>踩坑与注意点</h2><ul>
+<li><strong>原型链上的引用类型永远共享</strong>：第 1 种和第 5 种里的 <code>habits</code>、<code>traits</code> 都是数组，任何一个实例改动它，其他实例都会跟着变。这是这两个方案最实际的坑。</li>
+<li><strong>组合继承的</strong> <strong><code>new Animal()</code></strong> <strong>不带参数</strong>：此时原型上的 <code>species</code> 是 <code>undefined</code>，实例上的值来自 <code>Animal.call(this, &#39;Mammal&#39;)</code>，所以不影响结果，但多执行了一次父构造函数。</li>
+<li><strong>用 ES6 类时子类构造器必须先</strong> **<code>super()</code>**：在 <code>super()</code> 之前访问 <code>this</code> 会直接抛错，这是类继承与函数式继承最明显的差异。</li>
 </ul>
 
 </article>
@@ -601,7 +638,7 @@
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">NestJs --- 可扩展Node.js服务器端应用的框架</h6>
+                <h6 class="trm-op-title">NestJs —— 可扩展Node.js服务器端应用的框架</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -694,7 +731,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="1. 原型链继承"><a rel="nofollow" class="trm-toc-link" href="#1-原型链继承"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">1. 原型链继承</span></a></li><li class="trm-toc-item trm-toc-level-2" title="2. 构造函数继承"><a rel="nofollow" class="trm-toc-link" href="#2-构造函数继承"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">2. 构造函数继承</span></a></li><li class="trm-toc-item trm-toc-level-2" title="3. 复合继承"><a rel="nofollow" class="trm-toc-link" href="#3-复合继承"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">3. 复合继承</span></a></li><li class="trm-toc-item trm-toc-level-2" title="4. 寄生继承"><a rel="nofollow" class="trm-toc-link" href="#4-寄生继承"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">4. 寄生继承</span></a></li><li class="trm-toc-item trm-toc-level-2" title="5. 原型继承"><a rel="nofollow" class="trm-toc-link" href="#5-原型继承"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">5. 原型继承</span></a></li><li class="trm-toc-item trm-toc-level-2" title="6. 寄生组合继承"><a rel="nofollow" class="trm-toc-link" href="#6-寄生组合继承"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">6. 寄生组合继承</span></a></li><li class="trm-toc-item trm-toc-level-2" title="7. ES6类继承"><a rel="nofollow" class="trm-toc-link" href="#7-ES6类继承"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">7. ES6类继承</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景：为什么会有七种写法"><a rel="nofollow" class="trm-toc-link" href="#背景：为什么会有七种写法"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景：为什么会有七种写法</span></a></li><li class="trm-toc-item trm-toc-level-2" title="1. 原型链继承"><a rel="nofollow" class="trm-toc-link" href="#1-原型链继承"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">1. 原型链继承</span></a></li><li class="trm-toc-item trm-toc-level-2" title="2. 构造函数继承"><a rel="nofollow" class="trm-toc-link" href="#2-构造函数继承"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">2. 构造函数继承</span></a></li><li class="trm-toc-item trm-toc-level-2" title="3. 复合继承（组合继承）"><a rel="nofollow" class="trm-toc-link" href="#3-复合继承（组合继承）"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">3. 复合继承（组合继承）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="4. 寄生继承"><a rel="nofollow" class="trm-toc-link" href="#4-寄生继承"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">4. 寄生继承</span></a></li><li class="trm-toc-item trm-toc-level-2" title="5. 原型继承"><a rel="nofollow" class="trm-toc-link" href="#5-原型继承"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">5. 原型继承</span></a></li><li class="trm-toc-item trm-toc-level-2" title="6. 寄生组合继承"><a rel="nofollow" class="trm-toc-link" href="#6-寄生组合继承"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">6. 寄生组合继承</span></a></li><li class="trm-toc-item trm-toc-level-2" title="7. ES6 类继承"><a rel="nofollow" class="trm-toc-link" href="#7-ES6-类继承"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">7. ES6 类继承</span></a></li><li class="trm-toc-item trm-toc-level-2" title="踩坑与注意点"><a rel="nofollow" class="trm-toc-link" href="#踩坑与注意点"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">踩坑与注意点</span></a></li></ol>
       </div>
     </div>
 
@@ -818,6 +855,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

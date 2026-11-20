@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="Float 概念：可以使一个元素向其父元素的左侧或右侧移动 使用 float 属性来设置于元素的浮动 可选值： none: 默认值 ，元素不浮动 left: 元素向左浮动 right: 元素向右浮动     元素设置浮动以后，水平布局的等式便不需要强制成立 元素设置浮动以后，会完全从文档流中脱离，不再占用文档流的位置， 元素下边的还在文档流中的元素会自动向上移动  特点 设置浮动以后元素会向">
+<meta name="description" content="讲解 float 的移动与环绕规则，分析高度塌陷的成因，并给出 clear、BFC 与 clearfix 三种处理方案">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Html-浮动布局(Float)">
 <meta property="og:url" content="http://example.com/en/2024/10/30/HTMLCSS/html-float%E5%B8%83%E5%B1%80/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Float 概念：可以使一个元素向其父元素的左侧或右侧移动 使用 float 属性来设置于元素的浮动 可选值： none: 默认值 ，元素不浮动 left: 元素向左浮动 right: 元素向右浮动     元素设置浮动以后，水平布局的等式便不需要强制成立 元素设置浮动以后，会完全从文档流中脱离，不再占用文档流的位置， 元素下边的还在文档流中的元素会自动向上移动  特点 设置浮动以后元素会向">
+<meta property="og:description" content="讲解 float 的移动与环绕规则，分析高度塌陷的成因，并给出 clear、BFC 与 clearfix 三种处理方案">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-10-30T07:29:11.127Z">
-<meta property="article:modified_time" content="2025-07-29T08:49:15.873Z">
+<meta property="article:published_time" content="2024-10-30T07:29:11.000Z">
+<meta property="article:modified_time" content="2026-11-17T02:23:03.158Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="Html">
 <meta property="article:tag" content="布局">
@@ -69,7 +69,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-29 16:49:15"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-17 10:23:03"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -84,6 +84,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -198,13 +200,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -240,7 +242,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -258,13 +260,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -533,100 +535,100 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>这篇讲清 float 的排列规则，以及它最常带来的高度塌陷，并给出 clear、BFC 和 clearfix 三种处理方式。结论：浮动元素会脱离文档流、不再撑开父元素；只要父元素高度需要包含浮动子元素，就必须清除浮动或开启 BFC，其中 <code>clearfix</code> 是最省事、兼容性也好的写法。</p>
+<span id="more"></span>
 
-<h2 id="Float"><a href="#Float" class="headerlink" title="Float"></a>Float</h2><ul>
-<li>概念：可以使一个元素向其父元素的左侧或右侧移动</li>
-<li>使用 float 属性来设置于元素的浮动<ul>
+<h2 id="背景：float-做什么"><a href="#背景：float-做什么" class="headerlink" title="背景：float 做什么"></a>背景：float 做什么</h2><ul>
+<li>概念：<code>float</code> 可以使一个元素向其父元素的左侧或右侧移动。</li>
+<li>使用 <code>float</code> 属性设置浮动，可选值：<ul>
+<li><code>none</code>：默认值，元素不浮动。</li>
+<li><code>left</code>：元素向左浮动。</li>
+<li><code>right</code>：元素向右浮动。</li>
+</ul>
+</li>
+<li>元素设置浮动以后，水平布局的等式便不再需要强制成立。</li>
+<li>元素设置浮动以后，会完全从文档流中脱离，不再占用文档流的位置。</li>
+<li>元素下边仍在文档流中的元素会自动向上移动。</li>
+</ul>
+<h2 id="一、浮动元素的特点"><a href="#一、浮动元素的特点" class="headerlink" title="一、浮动元素的特点"></a>一、浮动元素的特点</h2><ul>
+<li>设置浮动以后，元素会向父元素的左侧或右侧移动。</li>
+<li>浮动元素默认不会从父元素中移出。</li>
+<li>浮动元素向左或向右移动时，不会超过它前边的其他浮动元素。</li>
+<li>如果浮动元素的上边是一个没有浮动的块元素，则浮动元素无法上移。</li>
+<li>浮动元素不会超过它上边的浮动兄弟元素，最多和它一样高。</li>
+<li>浮动元素不会盖住文字，文字会自动环绕在浮动元素的周围，因此可以利用浮动实现文字环绕图片的效果。</li>
+<li>浮动元素会完全脱离文档流，脱离后元素的一些特点也会发生变化：<ul>
+<li>块元素：不再独占页面的一行；宽度和高度默认都被内容撑开。</li>
+<li>行内元素：脱离文档流以后会变成块元素，特点和块元素一样。</li>
+<li>脱离文档流以后，不需要再区分块元素和行内元素。</li>
+</ul>
+</li>
+</ul>
+<h3 id="简单总结"><a href="#简单总结" class="headerlink" title="简单总结"></a>简单总结</h3><ul>
+<li>目前的主要作用是让页面中的元素可以水平排列。</li>
+<li>通过浮动可以制作一些水平方向的布局。</li>
+</ul>
+<h2 id="二、清除浮动：clear"><a href="#二、清除浮动：clear" class="headerlink" title="二、清除浮动：clear"></a>二、清除浮动：clear</h2><ul>
+<li>期望：不希望某个元素因为其他元素浮动的影响而改变位置。</li>
+<li>作用：清除浮动元素对当前元素所产生的影响。</li>
 <li>可选值：<ul>
-<li>none: 默认值 ，元素不浮动</li>
-<li>left: 元素向左浮动</li>
-<li>right: 元素向右浮动</li>
+<li><code>left</code>：清除左侧浮动元素对当前元素的影响。</li>
+<li><code>right</code>：清除右侧浮动元素对当前元素的影响。</li>
+<li><code>both</code>：清除两侧中影响最大的那一侧。</li>
 </ul>
 </li>
+<li>原理：设置清除浮动以后，浏览器会自动为元素添加一个上外边距，使其位置不受其他元素影响。</li>
 </ul>
-</li>
-<li>元素设置浮动以后，水平布局的等式便不需要强制成立</li>
-<li>元素设置浮动以后，会完全从文档流中脱离，不再占用文档流的位置，</li>
-<li>元素下边的还在文档流中的元素会自动向上移动</li>
-</ul>
-<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
-<li>设置浮动以后元素会向父元素的左侧或右侧移动，</li>
-<li>浮动元素默认不会从父元素中移出</li>
-<li>浮动元素向左或向右移动时，不会超过它前边的其他浮动元素</li>
-<li>如果浮动元素的上边是一个没有浮动的块元素，则浮动元素无法上移</li>
-<li>浮动元素不会超过它上边的浮动的兄弟元素，最多最多就是和它一样高</li>
-<li>浮动元素不会盖住文字，文字会自动环绕在浮动元素的周围，所以可以利用浮动来设置文字环绕图片的效果</li>
-<li>浮动元素会完全脱离文档流，从文档流中脱离后，元素的一些特点也会发生变化<ul>
-<li>脱离文档流的特点：<ul>
-<li>块元素：<ul>
-<li>1、块元素不在独占页面的一行</li>
-<li>2、脱离文档流以后，块元素的宽度和高度默认都被内容撑开</li>
-</ul>
-</li>
-<li>行内元素：<ul>
-<li>行内元素脱离文档流以后会变成块元素，特点和块元素一样</li>
-</ul>
-</li>
-<li>脱离文档流以后，不需要再区分块和行内了</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="简单总结："><a href="#简单总结：" class="headerlink" title="简单总结："></a>简单总结：</h3><ul>
-<li>目前的主要作用就是让页面中的元素可以水平排列</li>
-<li>通过浮动可以制作一些水平方向的布局</li>
-</ul>
-<h3 id="清除浮动-clear"><a href="#清除浮动-clear" class="headerlink" title="清除浮动 clear"></a>清除浮动 clear</h3><ul>
-<li>期望：不希望某个元素因为其他元素浮动的影响而改变位置</li>
-<li>作用：清除浮动元素对当前元素所产生的影响</li>
-<li>可选值：<ul>
-<li>left: 清除左侧浮动元素对当前元素的影响</li>
-<li>right: 清除右侧浮动元素对当前元素的影响</li>
-<li>both: 清除两侧中最大影响的那侧</li>
-</ul>
-</li>
-<li>原理：设置清除浮动以后，浏览器会自动为元素添加一个上外边距，以使其位置不受其他元素的影响</li>
-</ul>
-<h2 id="BFC-Block-Formatting-Context-块级格式化环境"><a href="#BFC-Block-Formatting-Context-块级格式化环境" class="headerlink" title="BFC(Block Formatting Context) 块级格式化环境"></a>BFC(Block Formatting Context) 块级格式化环境</h2><ul>
-<li>BFC 是一个 CSS 中的一个隐含的属性，可以为一个元素开启 BFC</li>
-<li>开启 BFC 该元素会变成一个独立的布局区域</li>
+<h2 id="三、BFC（Block-Formatting-Context，块级格式化环境）"><a href="#三、BFC（Block-Formatting-Context，块级格式化环境）" class="headerlink" title="三、BFC（Block Formatting Context，块级格式化环境）"></a>三、BFC（Block Formatting Context，块级格式化环境）</h2><ul>
+<li>BFC 是 CSS 中的一个隐含属性，可以为一个元素开启 BFC。</li>
+<li>开启 BFC 后，该元素会变成一个独立的布局区域。</li>
 <li>元素开启 BFC 后的特点：<ol>
-<li>开启 BFC 的元素不会被浮动元素所覆盖</li>
-<li>开启 BFC 的元素子元素和父元素外边距不会重叠</li>
-<li>开启 BFC 的元素可以包含浮动的子元素</li>
+<li>不会被浮动元素所覆盖。</li>
+<li>子元素和父元素的外边距不会重叠。</li>
+<li>可以包含浮动的子元素。</li>
 </ol>
 </li>
-<li>可以通过一些特殊方式来开启元素的 BFC：<ul>
-<li>设置元素的浮动（不推荐）<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">float</span>: left;</span><br></pre></td></tr></table></figure></li>
-<li>将元素设置为行内块元素（不推荐）<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">display</span>: inline-block;</span><br></pre></td></tr></table></figure></li>
-<li>将元素的 overflow 设置为一个非 visible 的值<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">overflow</span>:hidden;</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-</ul>
-<h2 id="高度塌陷-—-浮动布局常见问题"><a href="#高度塌陷-—-浮动布局常见问题" class="headerlink" title="高度塌陷 — 浮动布局常见问题"></a>高度塌陷 — 浮动布局常见问题</h2><ul>
-<li>在浮动布局中，父元素的高度默认是被子元素撑开的，</li>
-<li>当子元素浮动后，其会完全脱离文档流，</li>
-<li><span class="key_words">『子元素从文档流中脱离将会无法撑起父元素的高度，导致父元素的高度丢失』</span></li>
-<li>父元素高度丢失以后，其下的元素会自动上移，导致页面的布局混乱</li>
-<li>简单概括：div 中有一个 div1，但是 div1 设置为 float 离开 div，而 div 本身没有高度，就坍塌。页面就乱了</li>
-</ul>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
-<li><p>方案一：给父元素设置伪类</p>
+<p>可以通过一些特殊方式开启元素的 BFC：</p>
 <ul>
-<li>示例：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.父元素的类选择器的值<span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;<span class="comment">/*通过设置：after伪元素解决坍陷*/</span></span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">clear</span>: both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>设置元素的浮动（不推荐）：</li>
 </ul>
-</li>
-<li><p>方案二：clearfix</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">float</span>: left;</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>可以同时解决高度塌陷和外边距重叠的问题</li>
-<li>示例<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::before</span>,</span><br><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="attribute">display</span>: table; <span class="comment">/*解决外边距重叠的问题*/</span></span><br><span class="line">    <span class="attribute">clear</span>: both; <span class="comment">/*解决高度塌陷的问题*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>将元素设置为行内块元素（不推荐）：</li>
 </ul>
-</li>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">display</span>: inline-block;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将元素的 <code>overflow</code> 设置为一个非 <code>visible</code> 的值：</li>
 </ul>
-<h3 id="点击查看，浮动的网页布局示例代码"><a href="#点击查看，浮动的网页布局示例代码" class="headerlink" title="点击查看，浮动的网页布局示例代码"></a><a target="_blank" rel="noopener" href="https://gitee.com/ovouu/study-notes/blob/master/html5%20&%20css/html/%E7%BD%91%E9%A1%B5%E7%9A%84%E5%B8%83%E5%B1%80.html">点击查看，浮动的网页布局示例代码</a></h3>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">overflow</span>: hidden;</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、高度塌陷：浮动布局的常见问题"><a href="#四、高度塌陷：浮动布局的常见问题" class="headerlink" title="四、高度塌陷：浮动布局的常见问题"></a>四、高度塌陷：浮动布局的常见问题</h2><ul>
+<li>在浮动布局中，父元素的高度默认是被子元素撑开的。</li>
+<li>当子元素浮动后，它会完全脱离文档流。</li>
+<li>子元素从文档流中脱离后，将无法撑起父元素的高度，导致父元素的高度丢失。</li>
+<li>父元素高度丢失以后，其下的元素会自动上移，导致页面布局混乱。</li>
+<li>简单概括：<code>div</code> 中有一个 <code>div1</code>，但 <code>div1</code> 设置为 <code>float</code> 离开了 <code>div</code>，而 <code>div</code> 本身没有高度，就会坍塌，页面也随之变乱。</li>
+</ul>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><h4 id="方案一：给父元素设置伪类"><a href="#方案一：给父元素设置伪类" class="headerlink" title="方案一：给父元素设置伪类"></a>方案一：给父元素设置伪类</h4><p>在父元素上追加一个清除浮动的伪元素即可。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.父元素的类选择器的值<span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>; <span class="comment">/* 通过 :after 伪元素解决塌陷 */</span></span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">clear</span>: both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="方案二：clearfix"><a href="#方案二：clearfix" class="headerlink" title="方案二：clearfix"></a>方案二：clearfix</h4><p><code>clearfix</code> 可以同时解决高度塌陷和外边距重叠的问题。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::before</span>,</span><br><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="attribute">display</span>: table; <span class="comment">/* 解决外边距重叠的问题 */</span></span><br><span class="line">  <span class="attribute">clear</span>: both; <span class="comment">/* 解决高度塌陷的问题 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
+<li>浮动元素不会移出父元素，但父元素的高度不会自动包含浮动子元素，所以需要清除浮动或开启 BFC。</li>
+<li><code>overflow: hidden</code> 会裁剪溢出内容；如果子元素有下拉菜单、阴影或放大效果，可能被截断。</li>
+<li>不推荐用 <code>float: left</code> 或 <code>display: inline-block</code> 来开启 BFC，因为会引入额外的布局副作用。</li>
+<li><code>clearfix</code> 的 <code>::before</code> 用 <code>display: table</code> 是为了阻止外边距折叠，<code>::after</code> 再通过 <code>clear: both</code> 清除浮动。</li>
+<li>清除浮动只影响当前元素与浮动元素的关系，不会修复父元素已经丢失的高度，因此仍要作用在父元素上。</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://gitee.com/ovouu/study-notes/blob/master/html5%20&%20css/html/%E7%BD%91%E9%A1%B5%E7%9A%84%E5%B8%83%E5%B1%80.html">浮动的网页布局示例代码</a></li>
+</ul>
+
 </article>
     
     
@@ -666,11 +668,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/html-Flex%E5%B8%83%E5%B1%80/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/html-%E5%85%83%E7%B4%A0%E5%B8%83%E5%B1%80%E7%AF%87/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">Html-弹性布局（Flex）</h6>
+                <h6 class="trm-op-title">Html-元素布局篇</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -742,7 +744,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="Float"><a rel="nofollow" class="trm-toc-link" href="#Float"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">Float</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="特点"><a rel="nofollow" class="trm-toc-link" href="#特点"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">特点</span></a></li><li class="trm-toc-item trm-toc-level-3" title="简单总结："><a rel="nofollow" class="trm-toc-link" href="#简单总结："><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">简单总结：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="清除浮动 clear"><a rel="nofollow" class="trm-toc-link" href="#清除浮动-clear"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">清除浮动 clear</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="BFC(Block Formatting Context) 块级格式化环境"><a rel="nofollow" class="trm-toc-link" href="#BFC-Block-Formatting-Context-块级格式化环境"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">BFC(Block Formatting Context) 块级格式化环境</span></a></li><li class="trm-toc-item trm-toc-level-2" title="高度塌陷 — 浮动布局常见问题"><a rel="nofollow" class="trm-toc-link" href="#高度塌陷-—-浮动布局常见问题"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">高度塌陷 — 浮动布局常见问题</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="解决方案"><a rel="nofollow" class="trm-toc-link" href="#解决方案"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">解决方案</span></a></li><li class="trm-toc-item trm-toc-level-3" title="点击查看，浮动的网页布局示例代码"><a rel="nofollow" class="trm-toc-link" href="#点击查看，浮动的网页布局示例代码"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">点击查看，浮动的网页布局示例代码</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景：float 做什么"><a rel="nofollow" class="trm-toc-link" href="#背景：float-做什么"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景：float 做什么</span></a></li><li class="trm-toc-item trm-toc-level-2" title="一、浮动元素的特点"><a rel="nofollow" class="trm-toc-link" href="#一、浮动元素的特点"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">一、浮动元素的特点</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="简单总结"><a rel="nofollow" class="trm-toc-link" href="#简单总结"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">简单总结</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="二、清除浮动：clear"><a rel="nofollow" class="trm-toc-link" href="#二、清除浮动：clear"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">二、清除浮动：clear</span></a></li><li class="trm-toc-item trm-toc-level-2" title="三、BFC（Block Formatting Context，块级格式化环境）"><a rel="nofollow" class="trm-toc-link" href="#三、BFC（Block-Formatting-Context，块级格式化环境）"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">三、BFC（Block Formatting Context，块级格式化环境）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="四、高度塌陷：浮动布局的常见问题"><a rel="nofollow" class="trm-toc-link" href="#四、高度塌陷：浮动布局的常见问题"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">四、高度塌陷：浮动布局的常见问题</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="解决方案"><a rel="nofollow" class="trm-toc-link" href="#解决方案"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">解决方案</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="注意点"><a rel="nofollow" class="trm-toc-link" href="#注意点"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">注意点</span></a></li><li class="trm-toc-item trm-toc-level-2" title="参考"><a rel="nofollow" class="trm-toc-link" href="#参考"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">参考</span></a></li></ol>
       </div>
     </div>
 
@@ -866,6 +868,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

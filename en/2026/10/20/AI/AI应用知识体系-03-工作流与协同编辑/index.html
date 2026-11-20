@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="zh-Hans,en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="拆解 AI 工作流引擎的节点体系、DSL 与执行器，并说明协同编辑中 CRDT、OT 与 Yjs 的选型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 应用知识体系（三）：工作流引擎与协同编辑">
+<meta property="og:url" content="http://example.com/en/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="拆解 AI 工作流引擎的节点体系、DSL 与执行器，并说明协同编辑中 CRDT、OT 与 Yjs 的选型">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-10-20T01:44:18.000Z">
+<meta property="article:modified_time" content="2026-11-16T08:17:18.047Z">
+<meta property="article:author" content="UUOVO">
+<meta property="article:tag" content="知识体系">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="AI应用">
+<meta property="article:tag" content="前端架构">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="AI, 大前端, 全栈架构, Agent, RAG, 协同编辑, 工作流引擎, monorepo">
+
+
+<title >AI 应用知识体系（三）：工作流引擎与协同编辑</title>
+
+<!-- Favicon -->
+
+    <link href='/img/sitelogo16.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/sitelogo32.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/apple-touch-icon.png?v=2.2.3' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-16 16:17:18"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+<link rel="stylesheet" href="/css/global.css">
+
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/sitelogo32.svg">
+    
+    
+        <div class="trm-logo-text">
+            UU<span>OVO</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/tags/" target="">
+                            标签
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" target="">
+                            微信小程序
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%B7%A5%E5%85%B7/" target="">
+                            前端工程化工具
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/React/" target="">
+                            React
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/Vue/" target="">
+                            VUE
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/TypeScript/" target="">
+                            TypeScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JavaScript/" target="">
+                            JavaScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/CSS-HTML/" target="">
+                            CSS&HTML
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="">
+                            网络与数据结构
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/uniapp/" target="">
+                            uniapp
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ThreeJS/" target="">
+                            ThreeJS
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/Node/" target="">
+                            Node
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JQuery/" target="">
+                            JQuery
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ES6/" target="">
+                            ES6
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/AJAX/" target="">
+                            AJAX
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/" target="">
+                            可视化
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/gallery/" target="">
+                    相册
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/gallery/wallpaper/" target="">
+                            相册详情页
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/about/" target="">
+                    关于
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/links/" target="">
+                            友链
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+    
+    <div id="trm-search-btn" class="trm-search-btn">
+        <i class="iconfont fas fa-search"></i>
+    </div>
+     
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            AI 应用知识体系（三）：工作流引擎与协同编辑
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        en
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar1.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/UUOVO" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/ovouu" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                City:
+            </div>
+            <div class="trm-label trm-label-light">
+                City
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                Age:
+            </div>
+            <div class="trm-label trm-label-light">
+                Age
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:1370203877@qq.com" class="trm-btn">
+            Contact Me
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            10/20
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            09:44
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            UUOVO
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <p>本篇是系列第 3 篇，讲工作流引擎架构和协同编辑。</p>
+<span id="more"></span>
+
+<h2 id="六、工作流与-AI-应用引擎架构"><a href="#六、工作流与-AI-应用引擎架构" class="headerlink" title="六、工作流与 AI 应用引擎架构"></a><a id="s6"></a>六、工作流与 AI 应用引擎架构</h2><blockquote>
+<p>本章是全篇的架构核心：所有「AI 应用平台 &#x2F; 低代码 &#x2F; 扣子类产品」的骨架，都是<strong>编辑器 + 执行器 + 协议</strong>。</p>
+</blockquote>
+<h3 id="6-1-三种平台形态"><a href="#6-1-三种平台形态" class="headerlink" title="6.1 三种平台形态"></a><a id="s6-1"></a>6.1 三种平台形态</h3><table>
+<thead>
+<tr>
+<th>形态</th>
+<th>实现方式</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>无代码平台</td>
+<td>把多个 action 串联执行，即 action flow，在前端页面自动执行，也称<strong>内存型工作流 &#x2F; 内存流程引擎</strong></td>
+<td>Glide</td>
+</tr>
+<tr>
+<td>低代码平台</td>
+<td>借助工作流编排，涉及触发器、代码执行器、数据查询器、循环节点等</td>
+<td>Retool</td>
+</tr>
+<tr>
+<td>AI 应用生成引擎</td>
+<td>生成式 AI 应用引擎（在传统工作流上叠加 LLM、Agent、插件、知识库）</td>
+<td>Coze、Dify</td>
+</tr>
+</tbody></table>
+<ul>
+<li>无代码：<a target="_blank" rel="noopener" href="https://www.glideapps.com/">glide</a></li>
+<li>低代码：<a target="_blank" rel="noopener" href="https://login.retool.com/auth/signup?source=navbarcta">retool</a></li>
+<li>AI 应用生成引擎：<a target="_blank" rel="noopener" href="https://www.coze.cn/overview">coze</a></li>
+<li>本地部署：Dify（见 <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-01-%E8%83%BD%E5%8A%9B%E5%9C%B0%E5%9B%BE%E4%B8%8E%E5%BA%94%E7%94%A8%E5%9F%BA%E7%A1%80/#s3-5">§3.5</a>）</li>
+</ul>
+<p><strong>流程引擎的本质</strong>：自动化管理和执行既定的业务流程，涵盖自动化处理、批处理、AI 生成详细过程。<br><strong>三大核心功能</strong>：</p>
+<ol>
+<li>工作流流程建模（编辑器）</li>
+<li>任务调度：异步处理、前后依赖、变量上下文</li>
+<li>集成外部系统、插件化构建流程功能生态</li>
+</ol>
+<h3 id="6-2-常见工作流类型"><a href="#6-2-常见工作流类型" class="headerlink" title="6.2 常见工作流类型"></a><a id="s6-2"></a>6.2 常见工作流类型</h3><ul>
+<li><strong>线性流（Sequential）</strong>：最简单的逻辑，节点按 A → B → C 顺序执行。</li>
+<li><strong>有向无环图（DAG）</strong>：AI Agent 最常见的形态，允许分支与回合，但严禁形成环路（会死循环）。</li>
+<li><strong>状态机驱动流（State Machine）</strong>：侧重状态流转（审批通过、驳回、待补件），每个节点是一个状态，连线即触发动作。</li>
+</ul>
+<h3 id="6-3-节点体系"><a href="#6-3-节点体系" class="headerlink" title="6.3 节点体系"></a><a id="s6-3"></a>6.3 节点体系</h3><p><strong>核心节点</strong></p>
+<table>
+<thead>
+<tr>
+<th>节点</th>
+<th>作用</th>
+<th>配置要点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>start 节点</td>
+<td>工作流起点，由外部事件或用户输入触发</td>
+<td>字段类型（文本&#x2F;段落&#x2F;下拉&#x2F;数字）、变量名称、显示名称、最大长度、是否必填</td>
+</tr>
+<tr>
+<td>模型节点</td>
+<td>调用生成式 AI 模型做生成或理解</td>
+<td>选择模型与参数（温度、Top P、存在惩罚、频率惩罚、最大标记、回复格式、停止序列）、上下文、提示词、记忆（记忆窗口）、输出变量</td>
+</tr>
+<tr>
+<td>知识检索节点（可选）</td>
+<td>检索已有知识库</td>
+<td>查询变量（自动带入 start 变量）、知识库（选一篇或一个文件夹）、输出变量</td>
+</tr>
+<tr>
+<td>条件节点</td>
+<td>分支控制</td>
+<td>if 区域可加多个条件；else 区域直接显示描述词</td>
+</tr>
+<tr>
+<td>代码执行节点</td>
+<td>自定义逻辑</td>
+<td>输入变量（初始两个「名 &#x2F; 值」，可增删改）、代码编辑器（可直接使用输入变量）、输出变量（变量名 + 类型）</td>
+</tr>
+<tr>
+<td>直接回答节点</td>
+<td>相当于当前最后节点，但仍可继续下一步</td>
+<td>回复文本域可拿到所有回复节点的字段</td>
+</tr>
+<tr>
+<td>更多节点</td>
+<td>模板转换、变量聚合器、参数提取器、迭代、问题分类器、HTTP 请求（可写入飞书多维表格等）</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<p><strong>扩展节点类型（平台生态视角）</strong></p>
+<ul>
+<li><strong>插件节点</strong>：调用外部插件完成集成型任务（天气查询、支付处理）。</li>
+<li><strong>业务逻辑节点</strong>：执行条件判断或复杂算法（如选择支付时触发支付流程）。</li>
+<li><strong>子工作流节点</strong>：把一个工作流嵌套进另一个工作流，支持递归调用，提升可重用性。</li>
+<li><strong>结束节点</strong>：所有任务执行完毕，返回最终结果。</li>
+</ul>
+<blockquote>
+<p>交互细节：每个节点连接下一节点时，<strong>右键可拿到当前节点可连接的所有节点</strong>（即类型校验后的候选集）。</p>
+</blockquote>
+<h3 id="6-4-数据协议与-DSL"><a href="#6-4-数据协议与-DSL" class="headerlink" title="6.4 数据协议与 DSL"></a><a id="s6-4"></a>6.4 数据协议与 DSL</h3><p><strong>两大构成要素</strong></p>
+<ul>
+<li><strong>节点（Node）</strong>：定义功能。</li>
+<li><strong>边（Edge）</strong>：定义来源（from &#x2F; source）与目的（to &#x2F; target），约束节点关系与流程。</li>
+</ul>
+<p><strong>DSL（Domain Specific Language）</strong> 领域特定语言，可与 <strong>AST（Abstract Syntax Tree）</strong> 结合使用。</p>
+<blockquote>
+<p>假设有三个节点：触发器 <code>trigger</code>、新建标签页 <code>newTab</code>、滚动执行器 <code>scroll</code>，从左往右连接成有向无环图。</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dsl = &#123;</span><br><span class="line">  <span class="attr">nodes</span>: [</span><br><span class="line">    &#123; <span class="attr">id</span>: <span class="string">&#x27;trigger1&#x27;</span>, <span class="attr">type</span>: <span class="string">&#x27;common&#x27;</span>, <span class="attr">data</span>: &#123; <span class="attr">node_type</span>: <span class="string">&#x27;trigger&#x27;</span> &#125; &#125;,</span><br><span class="line">    &#123; <span class="attr">id</span>: <span class="string">&#x27;newTab1&#x27;</span>,  <span class="attr">type</span>: <span class="string">&#x27;common&#x27;</span>, <span class="attr">data</span>: &#123; <span class="attr">node_type</span>: <span class="string">&#x27;newTab&#x27;</span> &#125; &#125;,</span><br><span class="line">    &#123; <span class="attr">id</span>: <span class="string">&#x27;scroll1&#x27;</span>,  <span class="attr">type</span>: <span class="string">&#x27;common&#x27;</span>, <span class="attr">data</span>: &#123; <span class="attr">node_type</span>: <span class="string">&#x27;scroll&#x27;</span> &#125; &#125;,</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">edges</span>: [</span><br><span class="line">    &#123; <span class="attr">id</span>: <span class="string">&#x27;edge1&#x27;</span>, <span class="attr">source</span>: <span class="string">&#x27;trigger1&#x27;</span>, <span class="attr">target</span>: <span class="string">&#x27;newTab1&#x27;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">id</span>: <span class="string">&#x27;edge2&#x27;</span>, <span class="attr">source</span>: <span class="string">&#x27;newTab1&#x27;</span>,  <span class="attr">target</span>: <span class="string">&#x27;scroll1&#x27;</span> &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>协议设计四要求</strong>：数据兜底、降级、扩展、升级。</p>
+<h3 id="6-5-编辑器技术选型"><a href="#6-5-编辑器技术选型" class="headerlink" title="6.5 编辑器技术选型"></a><a id="s6-5"></a>6.5 编辑器技术选型</h3><table>
+<thead>
+<tr>
+<th>选型方向</th>
+<th>代表库</th>
+<th>优点</th>
+<th>缺点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>原生 SVG</td>
+<td>React-Flow &#x2F; X6</td>
+<td>矢量不失真，易用 CSS 控制样式，DOM 节点易绑事件</td>
+<td>节点过多（数千）时有性能瓶颈</td>
+<td><strong>首选</strong>：中小型 AI 工作流、低代码平台</td>
+</tr>
+<tr>
+<td>Canvas</td>
+<td>LogicFlow &#x2F; LiteGraph</td>
+<td>性能上限极高，适合超大规模节点</td>
+<td>开发成本高，节点交互需手算坐标（Hit Testing）</td>
+<td>大型工业监控、超复杂逻辑链路</td>
+</tr>
+<tr>
+<td>纯 DOM &#x2F; HTML</td>
+<td>自研</td>
+<td>上手最快，可用原生拖拽 API</td>
+<td>连线算法（SVG Line）极难写，维护成本高</td>
+<td>简单的垂直线性审批流</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>面试建议：以 <strong>React-Flow 或 AntV X6</strong> 为切入点，强调其高度可定制的插件系统与成熟生态。</p>
+</blockquote>
+<p><strong>工作流开发的四个细节</strong></p>
+<ol>
+<li><strong>数据结构定义</strong> → 引擎数据协议设计（兜底、降级、拓展、升级）。</li>
+<li><strong>引擎实现</strong>：Canvas、SVG、自研框架 三选一。</li>
+<li><strong>节点 &#x2F; 边定义与灵活拓展</strong> → 物料体系灵活接入，基于插件化 &#x2F; 微内核机制（可对接远程插件市场、MCP）。</li>
+<li><strong>编辑器协同 + 执行引擎实现</strong>：协同用 CRDT &#x2F; OT 解决冲突；执行要处理建图、遍历、异步、日志、错误收集。</li>
+</ol>
+<h3 id="6-6-执行器：内存型-vs-服务型"><a href="#6-6-执行器：内存型-vs-服务型" class="headerlink" title="6.6 执行器：内存型 vs 服务型"></a><a id="s6-6"></a>6.6 执行器：内存型 vs 服务型</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>内存型工作流（In-memory）</th>
+<th>服务型工作流（Service-based）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>执行环境</td>
+<td>浏览器端或单个 Node.js 进程内存</td>
+<td>分布式微服务集群</td>
+</tr>
+<tr>
+<td>状态存储</td>
+<td>随进程结束释放，瞬时性</td>
+<td>数据库持久化（MySQL &#x2F; Redis），支持断点续传</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>前端低代码预览、轻量 AI 助手、单纯数据转换</td>
+<td>复杂审批流（需人工参与）、长时耗任务、支付链路</td>
+</tr>
+<tr>
+<td>核心挑战</td>
+<td>内存溢出与性能：节点过多导致浏览器卡死</td>
+<td>幂等性与重试：节点执行一半服务宕机如何恢复</td>
+</tr>
+</tbody></table>
+<p><strong>内存型执行机制</strong></p>
+<ul>
+<li>顶层设计：典型的事件驱动模型。</li>
+<li>运行逻辑：引擎把整个 Graph 加载进内存，通过递归或循环消费任务队列。</li>
+<li>关键点：<strong>快照同步</strong>（每行执行完直接更新 UI 状态）、<strong>轻量化</strong>（无需考虑网络延迟，节点间数据传递用引用或简单 Copy）。</li>
+</ul>
+<p><strong>服务型执行机制</strong></p>
+<ul>
+<li>顶层设计：任务队列 + 状态机持久化（类似 Temporal、Camunda 的简化版）。</li>
+<li>运行逻辑：<ol>
+<li><strong>任务解耦</strong>：引擎把待执行节点推入消息队列（RabbitMQ &#x2F; Redis）。</li>
+<li><strong>Worker 消费</strong>：不同 Worker 认领任务并执行，结果写回数据库。</li>
+<li><strong>状态脱水与复活</strong>：需要「人工审批」的节点，引擎把流程挂起（Wait），上下文脱水（Serialize）入库，触发后再复活（Hydrate）。</li>
+</ol>
+</li>
+<li>关键点：必须处理分布式事务与超时重试。</li>
+</ul>
+<h3 id="6-7-执行器实现：从最小闭环到生产可用"><a href="#6-7-执行器实现：从最小闭环到生产可用" class="headerlink" title="6.7 执行器实现：从最小闭环到生产可用"></a><a id="s6-7"></a>6.7 执行器实现：从最小闭环到生产可用</h3><p><strong>① 最小实现（内存型）</strong></p>
+<p>编辑器 + 执行器都在前端时，三步走：</p>
+<ol>
+<li>约定流程协议（节点与边的 JSON 数据）。</li>
+<li>编辑器编排工作流数据。</li>
+<li>开发执行器：从前到后按序执行，后面的节点可以拿到前面节点的上下文，通过<strong>链表</strong>串联。</li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">executeWorkflow</span>(<span class="params"><span class="attr">nodeId</span>: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> node = <span class="title function_">getNode</span>(nodeId) <span class="comment">// 通过节点 ID 获取节点</span></span><br><span class="line">  <span class="keyword">switch</span> (node.<span class="property">type</span>) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;API_CALL&#x27;</span>: &#123;</span><br><span class="line">      <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="title function_">callAPI</span>(node.<span class="property">endpoint</span>, node.<span class="property">params</span>)</span><br><span class="line">      <span class="keyword">return</span> response</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;UI_UPDATE&#x27;</span>: &#123;</span><br><span class="line">      <span class="title function_">updateUI</span>(node.<span class="property">data</span>)</span><br><span class="line">      <span class="comment">// 如果需要对 node.data 里的节点再做处理，可以进一步按节点类型分发执行</span></span><br><span class="line">      <span class="keyword">switch</span> (node.<span class="property">data</span>.<span class="property">type</span>) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;COPY&#x27;</span>:</span><br><span class="line">          navigator.<span class="property">clipboard</span>.<span class="title function_">writeText</span>(<span class="string">&#x27;123&#x27;</span>)</span><br><span class="line">          <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;SEND_EMAIL&#x27;</span>:</span><br><span class="line">          <span class="comment">// 调用发邮件的 API</span></span><br><span class="line">          <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;NOTIFICATION&#x27;</span>:</span><br><span class="line">          <span class="comment">// 通知函数</span></span><br><span class="line">          <span class="keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">&#x27;UI updated&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attr">default</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="string">&#x27;Node type not recognized&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>② 生产级三项增强</strong></p>
+<p><strong>1）完全稳定可靠的日志系统（基于异步实现）</strong><br>在每个节点执行前后记录：节点开始时间、输入与输出数据（敏感数据需加密或遮盖）、执行状态（成功 &#x2F; 失败）、错误信息。</p>
+<p><strong>2）上下文变量池</strong></p>
+<ul>
+<li>在整个流程执行期间保持全局有效，存储所有必要的状态信息。</li>
+<li>内容包括输入数据、计算结果、外部调用响应等。</li>
+<li>每个节点执行时，执行器按需从池中取数据或更新数据。</li>
+</ul>
+<p><strong>3）错误处理机制</strong></p>
+<ul>
+<li><strong>全局错误捕获</strong>：兜住所有未处理错误并记录相关信息。</li>
+<li><strong>节点级错误处理</strong>：每个节点可定义自己的错误策略，如 API 报错重试。</li>
+<li><strong>错误通知</strong>：关键节点出错时通知管理员或用户。</li>
+<li><strong>错误恢复</strong>：可恢复错误（如网络请求）设计重试机制。</li>
+</ul>
+<h3 id="6-8-平台级架构：以-Coze-为例"><a href="#6-8-平台级架构：以-Coze-为例" class="headerlink" title="6.8 平台级架构：以 Coze 为例"></a><a id="s6-8"></a>6.8 平台级架构：以 Coze 为例</h3><p><strong>从「单体作坊」到「工业化生产线」</strong><br>开源的 coze-studio 用 Docker Compose 把所有功能打包在一起，适合快速体验和中小团队；要支撑大型企业或公有云，必须转向云原生、微服务化架构。</p>
+<p><strong>设计理念：「一个中心，四大体系」</strong></p>
+<ul>
+<li><strong>一个中心</strong>：AI 编排与执行引擎（AI Orchestration &amp; Execution Engine）——平台心脏，负责解析和运行由节点（Nodes）与边（Edges）组成的业务流程图（Workflow DAG）。</li>
+<li><strong>四大体系</strong>：<ul>
+<li>a. <strong>应用构建体系</strong>：面向开发者，提供极致体验的前端编排界面、调试工具与版本管理。</li>
+<li>b. <strong>插件生态体系</strong>：平台能力扩展的基石，通过标准化 SDK、市场和沙箱环境，赋能开发者贡献工具。</li>
+<li>c. <strong>多租户与数据管理体系</strong>：企业级服务基座，负责用户、组织、权限、数据隔离与知识库向量管理。</li>
+<li>d. <strong>可观测与运维体系</strong>：日志、监控、告警与成本分析。</li>
+</ul>
+</li>
+</ul>
+<p><strong>微服务拆分</strong>（服务间推荐 gRPC 内部通信，API Gateway 统一对外提供 RESTful &#x2F; GraphQL）</p>
+<table>
+<thead>
+<tr>
+<th>服务</th>
+<th>职责</th>
+<th>与 coze-studio 的对应关系</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>API 网关</td>
+<td>所有外部请求的统一入口，负责鉴权、路由、限流、协议转换。选型：Kong、Traefik、Spring Cloud Gateway</td>
+<td>—</td>
+</tr>
+<tr>
+<td>用户与租户中心</td>
+<td>用户、组织（租户）、角色权限（RBAC），登录注册、SSO 单点登录</td>
+<td>coze-studio 只有简单的用户概念，需增强为企业级多租户模型</td>
+</tr>
+<tr>
+<td>Bot 配置中心</td>
+<td>核心 CRUD：Bot 的创建&#x2F;读取&#x2F;更新&#x2F;删除，含人设（Prompt）、插件配置、工作流静态定义（通常是一个大 JSON）</td>
+<td>coze-server 中处理数据库交互的大部分逻辑</td>
+</tr>
+<tr>
+<td>插件市场服务</td>
+<td>插件生命周期：注册、审核、发布、版本控制与发现；存插件元信息（manifest：名称、描述、输入输出 schema）</td>
+<td>—</td>
+</tr>
+<tr>
+<td>数据与向量管理服务</td>
+<td>解耦底层数据库，对上层提供统一数据访问；内部封装 PostgreSQL（业务）与 PGVector &#x2F; Milvus（向量）；负责知识库文档的切分、向量化、存储</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>AI 编排与执行引擎</strong></td>
+<td>无状态计算服务：接收 Bot 配置中心传来的工作流 DAG，负责实时执行、状态追踪与结果返回。<strong>性能与稳定性的关键</strong></td>
+<td>—</td>
+</tr>
+</tbody></table>
+<h3 id="6-9-前端编排-后端执行的关键难点"><a href="#6-9-前端编排-后端执行的关键难点" class="headerlink" title="6.9 前端编排 + 后端执行的关键难点"></a><a id="s6-9"></a>6.9 前端编排 + 后端执行的关键难点</h3><p><strong>前端编排引擎</strong>：本质是一个面向 AI 工作流的、可视化的 <strong>DAG 编辑器</strong>。</p>
+<ol>
+<li><strong>状态管理与交互</strong>：用户拖拽节点（工具、LLM、判断逻辑）并连线，实时构建复杂图结构。需要强大的状态管理方案（Redux Toolkit、Zustand）维护完整数据结构——每个节点的位置、配置与连接关系。</li>
+<li><strong>图结构序列化</strong>：点击「调试」或「发布」时，前端必须把可视化图序列化成后端执行引擎能理解的标准 JSON，描述拓扑结构与每个节点的具体参数。</li>
+<li><strong>实时调试反馈</strong>：调试模式下后端逐节点执行时，前端要实时高亮当前节点并显示输入输出。这要求前后端建立长连接（<strong>WebSocket 或 SSE</strong>），由后端主动推送执行状态与日志。</li>
+</ol>
+<p><strong>后端流式节点执行引擎</strong>：整个架构的「技术之巅」。用 for 循环按序执行是天真实现，低效且无法处理流式输出。工业级引擎必须解决：</p>
+<ol>
+<li><strong>DAG 解析与执行调度</strong>：拿到工作流 JSON 后先做<strong>拓扑排序</strong>，确定执行顺序，并识别可并行执行的分支。</li>
+<li><strong>异步非阻塞 I&#x2F;O</strong>：几乎所有节点（调 LLM、调 API、查数据库）都是 I&#x2F;O 密集型，引擎必须完全异步非阻塞（Node.js 事件循环，或 Go 协程）。</li>
+<li><strong>流式处理（Streaming）</strong>：LLM 节点不能等全部生成完再返回。<ul>
+<li>调用大模型时明确要求流式返回（如 OpenAI API 的 <code>stream: true</code>）。</li>
+<li>引擎收到的是数据流而非完整响应。</li>
+<li>通过 WebSocket &#x2F; SSE 把每个数据块（token）实时转发给前端，实现打字机效果。</li>
+<li>同时把数据块拼接成完整输出，作为下一节点的输入。</li>
+</ul>
+</li>
+<li><strong>安全沙箱（Sandbox）</strong>：执行社区开发者贡献的代码片段或插件时，绝不能在主服务直接运行。<ul>
+<li>方案一（重隔离）：为每个任务动态启动轻量 Docker 容器，隔离最好但冷启动慢。</li>
+<li>方案二（轻隔离）：WebAssembly（WASM），启动极快、安全性高，是很有前景的方向。</li>
+</ul>
+</li>
+</ol>
+<p><strong>工程化闭环五步</strong>：① 定义 DSL → ② 编辑层（状态管理 + 插件化架构）→ ③ 执行器（拓扑排序与动态调度、沙箱隔离）→ ④ AI 特化设计（变量提取与上下文流转、流式输出）→ ⑤ 测试与工程化闭环。</p>
+<h3 id="6-10-沙箱的两层理解"><a href="#6-10-沙箱的两层理解" class="headerlink" title="6.10 沙箱的两层理解"></a><a id="s6-10"></a>6.10 沙箱的两层理解</h3><ul>
+<li>记忆方式： 通过费曼学习法，记住一个，根据另一个进行推导。</li>
+<li><strong>微前端沙箱</strong>（如 qiankun 的三种 sandbox）：<code>legacy sandbox</code>、<code>proxy sandbox</code>、<code>snapshot sandbox</code>，目的在<strong>样式隔离、JS 隔离</strong>。</li>
+<li><strong>系统级沙箱</strong>：目的是<strong>系统环境隔离</strong>，保证执行安全性。deepagent 涉及文件操作、bash 执行、shell 提权，必须做隔离。</li>
+<li>服务端隔离强度排序：Docker 容器（强隔离、冷启动慢）→ WASM（轻隔离、启动快）→ <code>vm2</code> &#x2F; <code>isolated-vm</code>（进程内隔离，性能好但需谨慎使用）。</li>
+</ul>
+<hr>
+<h2 id="七、协同编辑"><a href="#七、协同编辑" class="headerlink" title="七、协同编辑"></a><a id="s7"></a>七、协同编辑</h2><blockquote>
+<p>协同系统的中级目标是维护多方数据的<strong>一致性</strong>。<br>本文只关注上层的数据同步与冲突处理；下层传输与持久化不是重点，可用 WebSocket 或其他方案替代。<br>编辑器内核选型：重量级代码编辑器（VS Code、Trae）用 Monaco Editor，其余多选 TipTap。</p>
+</blockquote>
+<h3 id="7-1-协同场景盘点"><a href="#7-1-协同场景盘点" class="headerlink" title="7.1 协同场景盘点"></a><a id="s7-1"></a>7.1 协同场景盘点</h3><table>
+<thead>
+<tr>
+<th>产品形态</th>
+<th>协同数据特征</th>
+<th>技术组合</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>协同文档（飞书文档、Notion）</td>
+<td>带格式的、流式文本内容</td>
+<td>TipTap（视图层）+ Yjs（数据模型）+ y-websocket（通信层）</td>
+</tr>
+<tr>
+<td>协同代码编辑器（VS Code、Trae）</td>
+<td>纯文本，对性能、语法高亮、开发体验要求极高</td>
+<td>CodeMirror + Yjs + y-codemirror.next + y-websocket</td>
+</tr>
+<tr>
+<td>可视化图表编辑器</td>
+<td>结构化图表配置</td>
+<td>智能协同可视化编辑引擎</td>
+</tr>
+<tr>
+<td>在线白板（博思白板、飞书画板）</td>
+<td>画布元素、层级、位置</td>
+<td>画布引擎 + CRDT</td>
+</tr>
+<tr>
+<td>协同视频编辑器（剪映）</td>
+<td>时间轴轨道、片段属性</td>
+<td>时间轴模型 + CRDT</td>
+</tr>
+<tr>
+<td>多维表格（飞书云表格）</td>
+<td>单元格、行列结构、公式</td>
+<td>类 Skia&#x2F;Canvas 渲染 + CRDT + 公式引擎</td>
+</tr>
+<tr>
+<td>数字孪生低代码（DataWind）</td>
+<td>组件树、场景图、节点属性</td>
+<td>Vue3 + WebAssembly + VanillaJS</td>
+</tr>
+<tr>
+<td>协同 AI 应用引擎（扣子）</td>
+<td>DAG 节点与边、配置</td>
+<td>图协议 + CRDT</td>
+</tr>
+</tbody></table>
+<h3 id="7-2-编辑器内核与格式化实现的三种路线"><a href="#7-2-编辑器内核与格式化实现的三种路线" class="headerlink" title="7.2 编辑器内核与格式化实现的三种路线"></a><a id="s7-2"></a>7.2 编辑器内核与格式化实现的三种路线</h3><p><strong>竞品参考</strong></p>
+<ul>
+<li><strong>飞书文档、Notion</strong>：丰富的文本格式、多媒体嵌入、实时协作；可用快捷命令（<code>/</code>、<code>@</code>）快速插入不同类型的块（Block）。</li>
+<li><strong>Google Docs、Word Online</strong>：复杂文档编辑能力——文本格式化、插图、撤销重做、表格与绘图。</li>
+<li><strong>Quill、Draft.js</strong>：开源富文本编辑器，可二次开发自定义方案，支持插件扩展与丰富 API。</li>
+</ul>
+<p><strong>文档编辑的核心清单</strong><br>基础编辑、文本格式化、多媒体插入（图片、视频、@提及、引用跳转）、undo&#x2F;redo（含 Ctrl+Z）、跨浏览器兼容、协作（协同）、AI 赋能。</p>
+<p><strong>①</strong> <strong><code>contenteditable</code></strong> <strong>属性</strong><br>在任意容器上设置该属性即可变为可编辑容器；可编辑容器内也可内嵌多个容器，不想编辑的部分设为 <code>contenteditable=&quot;false&quot;</code>。</p>
+<p><strong>② 路线一：浏览器</strong> <strong><code>execCommand</code>（小白级，过时 &#x2F; 即将废弃）</strong></p>
+<ul>
+<li><code>document.execCommand</code> 是浏览器 API，用于在 HTML 文档中执行与内容相关的命令。</li>
+<li>缺点：兼容性差、可维护性差。</li>
+</ul>
+<p><strong>③ 路线二：Selection + Range + Compiler（大神级）</strong></p>
+<ul>
+<li>单独用 <code>selection</code>（获取当前选中内容）+ <code>range</code>（精确操作选中内容）时会发现：每点击一下就被新的标签包裹。<strong>Compiler 负责切换</strong>——判断当前内容是否已有修饰标签，是则还原，否则添加修饰。</li>
+<li>大部分编辑器都提供编译器：Markdown &#x2F; MDX 有 hyper，TipTap 类基于 <code>JSONContent</code> 结构。取舍：<ol>
+<li>基于 Markdown：性能更好、约束更强。</li>
+<li>基于 JSONContent：特性更灵活，自定义节点更便捷（如 TipTap custom node）。</li>
+</ol>
+</li>
+<li><strong>内容 → 可存储格式 → 再解析回来</strong>：实现 JSON 与 HTML 双向转换，可参考 <a target="_blank" rel="noopener" href="https://github.com/Jxck/html2json">html2json</a>。<ul>
+<li>HTML 转 JSON：递归遍历 DOM 元素，构建结构化 JSON。</li>
+<li>JSON 转 HTML：从 JSON 数据生成 HTML 字符串，支持富文本格式。</li>
+</ul>
+</li>
+</ul>
+<p><strong>④ 通用数据协议</strong><br>用 Schema &#x2F; DSL &#x2F; 协议数据承载整个应用的物料体系，参考 <strong>BlockSuite</strong>。</p>
+<h3 id="7-3-个性化需求：-提及与-命令补全"><a href="#7-3-个性化需求：-提及与-命令补全" class="headerlink" title="7.3 个性化需求：@ 提及与 &#x2F; 命令补全"></a><a id="s7-3"></a>7.3 个性化需求：@ 提及与 &#x2F; 命令补全</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.editor-content&#x27;</span>).<span class="title function_">addEventListener</span>(<span class="string">&#x27;input&#x27;</span>, <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> inputText = (e.<span class="property">target</span> <span class="keyword">as</span> <span class="title class_">HTMLElement</span>).<span class="property">innerText</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (inputText.<span class="title function_">endsWith</span>(<span class="string">&#x27;/&#x27;</span>)) &#123;</span><br><span class="line">    <span class="title function_">showCommandMenu</span>(e.<span class="property">target</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (inputText.<span class="title function_">endsWith</span>(<span class="string">&#x27;@&#x27;</span>)) &#123;</span><br><span class="line">    <span class="title function_">showMentionMenu</span>(e.<span class="property">target</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">showCommandMenu</span>(<span class="params"><span class="attr">target</span>: <span class="title class_">EventTarget</span> | <span class="literal">null</span></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;显示命令菜单&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">showMentionMenu</span>(<span class="params"><span class="attr">target</span>: <span class="title class_">EventTarget</span> | <span class="literal">null</span></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;显示提及菜单&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>其他常见个性化能力</strong></p>
+<ul>
+<li><strong>协同光标</strong>：前端用 WebSocket 实时通信，每个客户端收发光标位置与编辑内容；后端 WebSocket 服务器接收消息并广播给其他客户端，保证编辑状态一致。其他方案：Yjs 等。</li>
+<li><strong>知识图谱</strong>：graph、d3 forceGraph（力导向图）。</li>
+<li><strong>历史记录栈与 Undo&#x2F;Redo</strong>：用命令模式 + 历史栈管理用户操作，把命令对象压栈；撤销时弹出最后一个命令对象并调用 <code>undo</code>，重做时调用 <code>redo</code>。</li>
+<li><strong>跨浏览器兼容</strong>：不同浏览器对 Range&#x2F;Selection 的实现差异，是编辑器落地的主要坑之一。</li>
+</ul>
+<h3 id="7-4-协同架构：协议先行"><a href="#7-4-协同架构：协议先行" class="headerlink" title="7.4 协同架构：协议先行"></a><a id="s7-4"></a>7.4 协同架构：协议先行</h3><p><strong>协同前置，协议先行。</strong></p>
+<p><strong>① 传输协议</strong>：WS、Socket.IO（下层也可用 WebRTC）。</p>
+<p><strong>② 协同数据分两类</strong></p>
+<ol>
+<li><strong>交互式数据</strong>（业务无关）：头像、光标位置。</li>
+<li><strong>核心业务数据</strong>：文档内容、图结构、单元格数据。</li>
+</ol>
+<p><strong>③ 数据冲突与两大理论</strong></p>
+<ul>
+<li><strong>OT（Operation Transformation，操作转换）</strong>：Google Docs、Etherpad 使用。<strong>集中式</strong>，强依赖中心服务器。</li>
+<li><strong>CRDT（Conflict-free Replicated Data Type，无冲突复制数据类型）</strong>：<strong>分布式友好</strong>，天然支持 P2P 与离线编辑。<ul>
+<li>进一步分类：面向状态的（state-based）、面向操作的（op-based）。</li>
+</ul>
+</li>
+</ul>
+<p><strong>④ 协同方案对比</strong></p>
+<ul>
+<li><strong>Yjs</strong>：基于 CRDT，支持实时同步与冲突处理，生态最成熟。</li>
+<li><strong>Automerge</strong>：偏 OT 思路，支持同步与冲突处理，但实时编辑体验较弱。</li>
+<li>附录：<a target="_blank" rel="noopener" href="https://crdt.tech/implementations">CRDT 论文及实现方案</a></li>
+</ul>
+<p><strong>⑤ 服务层与存储</strong></p>
+<ul>
+<li>服务层：Node、NestJS、Redis、Kafka + ClickHouse（数据量大时使用）。</li>
+<li>数据库：PostgreSQL（AI 向量化用 pgvector）。</li>
+</ul>
+<p><strong>⑥ OT 的工作原理</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">sequenceDiagram</span><br><span class="line">    participant A as 客户端A</span><br><span class="line">    participant S as 中心服务器</span><br><span class="line">    participant B as 客户端B</span><br><span class="line"></span><br><span class="line">    A-&gt;&gt;S: 发送操作 OpA (基于 V1)</span><br><span class="line">    Note over S: 校验版本, 执行 OpA, 版本变为 V2</span><br><span class="line">    S--&gt;&gt;A: 确认 OpA</span><br><span class="line">    S--&gt;&gt;B: 广播 OpA</span><br><span class="line"></span><br><span class="line">    B-&gt;&gt;S: 发送操作 OpC (基于 V1)</span><br><span class="line">    Note over S: 冲突! 当前为 V2, 收到基于 V1 的 OpC</span><br><span class="line">    Note over S: 转换操作: OpC&#x27; = Transform(OpC, OpA)</span><br><span class="line">    Note over S: 执行 OpC&#x27;, 版本变为 V3</span><br><span class="line">    S--&gt;&gt;B: 确认 OpC&#x27;</span><br><span class="line">    S--&gt;&gt;A: 广播 OpC&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong>⑦ CRDT 的工作流程</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">sequenceDiagram</span><br><span class="line">    participant A as 客户端A (CRDT)</span><br><span class="line">    participant S as 消息中继服务器 (可选)</span><br><span class="line">    participant B as 客户端B (CRDT)</span><br><span class="line"></span><br><span class="line">    Note over A: 用户插入 X, 生成 UpdateA</span><br><span class="line">    A-&gt;&gt;S: 发送 UpdateA</span><br><span class="line">    S-&gt;&gt;B: 转发 UpdateA</span><br><span class="line">    Note over B: 应用 UpdateA, 与本地状态合并</span><br><span class="line"></span><br><span class="line">    Note over B: 与此同时，用户插入 Y, 生成 UpdateB</span><br><span class="line">    B-&gt;&gt;S: 发送 UpdateB</span><br><span class="line">    S-&gt;&gt;A: 转发 UpdateB</span><br><span class="line">    Note over A: 应用 UpdateB, 与本地状态合并</span><br><span class="line"></span><br><span class="line">    Note over A,B: 最终 A 和 B 的文档状态完全一致</span><br></pre></td></tr></table></figure>
+
+<p><strong>⑧ 架构师决策：OT vs CRDT</strong></p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>OT</th>
+<th>CRDT</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>核心思想</td>
+<td>转换操作以适应上下文</td>
+<td>设计可自动合并的数据结构</td>
+</tr>
+<tr>
+<td>复杂度</td>
+<td>实现极度复杂，尤其在转换函数</td>
+<td>理论相对简单，实现门槛低</td>
+</tr>
+<tr>
+<td>架构</td>
+<td>强依赖中心化、有状态的服务器</td>
+<td>天然支持去中心化、P2P、离线编辑</td>
+</tr>
+<tr>
+<td>服务端</td>
+<td>逻辑重，是系统核心</td>
+<td>逻辑轻，通常是无状态的消息中转</td>
+</tr>
+<tr>
+<td>性能</td>
+<td>理论上元数据开销小</td>
+<td>理论上元数据开销大（Yjs 已高度优化）</td>
+</tr>
+<tr>
+<td>生态</td>
+<td>Google Docs、Zoho、Etherpad</td>
+<td>Yjs、Figma、Apple Notes、Automerge</td>
+</tr>
+</tbody></table>
+<p><strong>结论：首选 CRDT。</strong> OT 虽然强大，但在追求敏捷开发、高可用性和优秀离线体验的今天，已显得有些不合时宜。</p>
+<h3 id="7-5-Yjs-实战"><a href="#7-5-Yjs-实战" class="headerlink" title="7.5 Yjs 实战"></a><a id="s7-5"></a>7.5 Yjs 实战</h3><p><strong>① 协同原理</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">flowchart TB</span><br><span class="line">    subgraph ClientA[&quot;Client A&quot;]</span><br><span class="line">        TA[TipTap Editor] --&gt; YA[Y.Doc]</span><br><span class="line">        YA --&gt; WA[Websocket Provider]</span><br><span class="line">    end</span><br><span class="line">    subgraph ClientB[&quot;Client B&quot;]</span><br><span class="line">        TB[TipTap Editor] --&gt; YB[Y.Doc]</span><br><span class="line">        YB --&gt; WB[Websocket Provider]</span><br><span class="line">    end</span><br><span class="line">    subgraph Backend[&quot;Backend Server&quot;]</span><br><span class="line">        NS[Node.js + WebSocket]</span><br><span class="line">        PL&#123;Persistence Layer&#125;</span><br><span class="line">        DB[(Database)]</span><br><span class="line">        NS --&gt;|Periodically saves| PL</span><br><span class="line">        PL --&gt; DB</span><br><span class="line">    end</span><br><span class="line">    WA &lt;--&gt;|WebSocket| NS</span><br><span class="line">    NS --&gt;|Broadcasts updates| WA</span><br><span class="line">    NS --&gt;|Broadcasts updates| WB</span><br><span class="line">    WB &lt;--&gt;|WebSocket| NS</span><br></pre></td></tr></table></figure>
+
+<p><strong>② Yjs 的五个重要特性</strong></p>
+<ol>
+<li>核心数据结构：<strong>Item 与双向链表</strong>。</li>
+<li><strong>全局唯一 ID + 逻辑时钟</strong>。</li>
+<li>冲突解决：<strong>确定性排序规则</strong>。</li>
+<li>删除即标记（<strong>Tombstones</strong>）。</li>
+<li>性能优化：<strong>Struct 与高效二进制编码</strong>。</li>
+</ol>
+<p><strong>③ CRDT 的优缺点</strong></p>
+<ul>
+<li>优点：<ul>
+<li>实现简单：相比 OT，核心逻辑更简单，无需编写复杂转换函数。</li>
+<li>天生去中心化：完美支持 P2P 与离线编辑，离线修改联网后无冲突合并。</li>
+<li>服务端逻辑轻：通常只扮演无状态的消息中转站。</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>元数据开销：为保证可合并性需存额外元数据，理论上比 OT 占更多内存（Yjs 已做大量优化）。</li>
+<li>意图保留问题：极端场景无法完美保留「真实意图」——「剪切一段文本再粘贴到别处」会被看作「删除一串字符」+「插入一串字符」。绝大多数场景不构成问题。</li>
+</ul>
+</li>
+</ul>
+<p><strong>④ 最小可运行代码（文档协同）</strong></p>
+<p>前端主页面：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; <span class="title class_">ChangeEvent</span>, useEffect, useState &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> Y <span class="keyword">from</span> <span class="string">&quot;yjs&quot;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">WebsocketProvider</span> &#125; <span class="keyword">from</span> <span class="string">&quot;y-websocket&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 要实现无冲突数据，需要借助 Yjs 存储数据并处理冲突</span></span><br><span class="line"><span class="keyword">const</span> doc = <span class="keyword">new</span> Y.<span class="title class_">Doc</span>()</span><br><span class="line"><span class="comment">// 传输与协同：new WebsocketProvider(地址, 房间名, 绑定的 doc)</span></span><br><span class="line"><span class="keyword">const</span> provider = <span class="keyword">new</span> <span class="title class_">WebsocketProvider</span>(<span class="string">&#x27;ws://localhost:1234&#x27;</span>, <span class="string">&quot;collaborate-editor&quot;</span>, doc)</span><br><span class="line"></span><br><span class="line">provider.<span class="property">awareness</span>.<span class="title function_">on</span>(<span class="string">&#x27;change&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 可获取头像、光标的变化</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> yText = doc.<span class="title function_">getText</span>(<span class="string">&quot;content&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">CollaborateEditor</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [content, setContent] = <span class="title function_">useState</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    provider.<span class="title function_">on</span>(<span class="string">&#x27;status&#x27;</span>, <span class="function">(<span class="params"><span class="attr">event</span>: <span class="built_in">unknown</span></span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;状态：&#x27;</span>, event)</span><br><span class="line">    &#125;)</span><br><span class="line">    provider.<span class="title function_">on</span>(<span class="string">&#x27;sync&#x27;</span>, <span class="function">(<span class="params"><span class="attr">isSynced</span>: <span class="built_in">boolean</span></span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;同步：&#x27;</span>, isSynced)</span><br><span class="line">      <span class="title function_">setContent</span>(yText.<span class="title function_">toString</span>())</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;, [])</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleChange</span> = (<span class="params"><span class="attr">ev</span>: <span class="title class_">ChangeEvent</span>&lt;<span class="title class_">HTMLTextAreaElement</span>&gt;</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> val = ev.<span class="property">target</span>.<span class="property">value</span></span><br><span class="line">    <span class="title function_">setContent</span>(val)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 先删后追加</span></span><br><span class="line">    yText.<span class="title function_">delete</span>(<span class="number">0</span>, yText.<span class="property">length</span>)</span><br><span class="line">    yText.<span class="title function_">insert</span>(<span class="number">0</span>, val) <span class="comment">// 关键在光标的位置</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">value</span>=<span class="string">&#123;content&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;handleChange&#125;</span> /&gt;</span></span></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 编辑器部分选型说明：</span></span><br><span class="line"><span class="comment">   * 1. 单纯用 contenteditable 实现富文本编辑，需要自己维护数据缓冲区（没有 onChange）</span></span><br><span class="line"><span class="comment">   * 2. 用 textarea，可直接从 onChange 拿到用户输入</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>后端服务：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// dependencies: ws 与 y-websocket</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">WebSocketServer</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;ws&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; setupWSConnection &#125; <span class="keyword">from</span> <span class="string">&#x27;y-websocket/bin/utils&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">PORT</span> = <span class="number">1234</span></span><br><span class="line"><span class="keyword">const</span> wss = <span class="keyword">new</span> <span class="title class_">WebSocketServer</span>(&#123; <span class="attr">port</span>: <span class="variable constant_">PORT</span> &#125;)</span><br><span class="line"></span><br><span class="line">wss.<span class="title function_">on</span>(<span class="string">&#x27;connection&#x27;</span>, <span class="function">(<span class="params">ws</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="title function_">setupWSConnection</span>(ws, wss)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;yjs-docs-server is running on port&quot;</span>, <span class="variable constant_">PORT</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>⑤ 结构化数据的承载方式</strong></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 基于 JSON 描述的 Block 数据结构</span></span><br><span class="line"><span class="keyword">const</span> blocks = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;heading&#x27;</span>,</span><br><span class="line">    <span class="attr">level</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">content</span>: <span class="string">&#x27;Welcome to Feishu Docs&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;paragraph&#x27;</span>,</span><br><span class="line">    <span class="attr">content</span>: [&#123; <span class="attr">type</span>: <span class="string">&#x27;text&#x27;</span>, <span class="attr">text</span>: <span class="string">&#x27;这是一个段落&#x27;</span> &#125;],</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;code&#x27;</span>,</span><br><span class="line">    <span class="attr">content</span>: [&#123; <span class="attr">type</span>: <span class="string">&#x27;text&#x27;</span>, <span class="attr">text</span>: <span class="string">&#x27;console.log(&quot;hello world&quot;)&#x27;</span> &#125;],</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;list&#x27;</span>,</span><br><span class="line">    <span class="attr">items</span>: [&#123; <span class="attr">type</span>: <span class="string">&#x27;text&#x27;</span>, <span class="attr">text</span>: <span class="string">&#x27;Rich text&#x27;</span> &#125;],</span><br><span class="line">  &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>存入 Yjs Doc 时的类型选择：</p>
+<ul>
+<li>复杂数据：<code>Y.Array</code>、<code>Y.XmlFragment</code></li>
+<li>富文本：<code>Y.XmlElement</code>、<code>Y.XmlFragment</code></li>
+<li>常用按需：<code>Y.Text</code>、<code>Y.Array</code>、<code>Y.Map</code></li>
+</ul>
+<p><strong>⑥ 协同文档落地五步</strong></p>
+<ol>
+<li>平台数据协议统一。</li>
+<li>存储到 Yjs Doc。</li>
+<li>增量数据变化 → 同步。</li>
+<li>传输：WS、Socket.IO、WebRTC。</li>
+<li>协同双通道：光标&#x2F;头像（awareness）+ 内容数据（document）。</li>
+</ol>
+<p><strong>⑦ TipTap 协同依赖清单</strong></p>
+<table>
+<thead>
+<tr>
+<th>依赖</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>@tiptap/react</code></td>
+<td>TipTap 的 React 组件：渲染、事件处理</td>
+</tr>
+<tr>
+<td><code>@tiptap/core</code></td>
+<td>核心：节点 Node、修饰（加粗&#x2F;斜体&#x2F;下划线&#x2F;删除线）Mark、命令</td>
+</tr>
+<tr>
+<td><code>@tiptap/starter-kit</code></td>
+<td>默认配置：节点、修饰、命令</td>
+</tr>
+<tr>
+<td><code>@tiptap/extension-collaboration</code></td>
+<td><strong>绑定层</strong>：把 TipTap 内部的 ProseMirror 文档模型与 Yjs 的 <code>Y.Doc</code> 绑定</td>
+</tr>
+<tr>
+<td><code>@tiptap/extension-collaboration-cursor</code></td>
+<td>光标协同：位置、移动</td>
+</tr>
+<tr>
+<td><code>yjs</code></td>
+<td>CRDT 数据模型</td>
+</tr>
+<tr>
+<td><code>y-websocket</code></td>
+<td>Yjs 的 WebSocket 传输层</td>
+</tr>
+</tbody></table>
+<p><strong>接入四步</strong>：① 创建 <code>Y.Doc</code> 代表整个协同文档数据 → ② 通过 Collaboration 扩展绑定编辑器状态与 <code>Y.Doc</code> → ③ 实现实时通信 → ④ 光标同步（Awareness）→ ⑤ 后端实现。</p>
+<h3 id="7-6-多端协同架构对照"><a href="#7-6-多端协同架构对照" class="headerlink" title="7.6 多端协同架构对照"></a><a id="s7-6"></a>7.6 多端协同架构对照</h3><p><strong>文档编辑器</strong>（飞书文档）：核心是处理带格式的、流式的文本内容。<br><code>TipTap（视图层）+ Yjs（数据模型）+ y-websocket（通信层）</code></p>
+<p><strong>代码编辑器</strong>（VS Code、Trae）：核心是处理纯文本，对性能、语法高亮、开发体验要求极高。<br><code>CodeMirror（视图层）+ Yjs（数据模型）+ y-codemirror.next（绑定层）+ y-websocket（通信层）</code></p>
+<p><strong>数字孪生低代码平台</strong>（DataWind）：核心是结构化数据（组件树、场景图、节点属性）。<br><code>Vue3 + WebAssembly + VanillaJS</code></p>
+<ul>
+<li><strong>关键技术要素</strong>：IoT、AI、GIS、BIM；掌握用户故事映射等需求分析方法。</li>
+<li><strong>三维核心资产辨析</strong>：掌握 glTF&#x2F;GLB、FBX 等主流格式的特性和适用场景；理解 PBR 材质原理与纹理贴图（漫反射、法线、金属度、粗糙度、环境遮蔽）的作用；理解 LOD 对性能优化的意义；能设计并实施从三维数据采集、处理、优化到发布的全流程；针对大规模高精度场景（含模型与地理影像）制定综合性能优化策略，熟练运用 LOD、Draco 压缩、UV 优化等手段。</li>
+<li><strong>编排引擎设计</strong>：独立设计低代码编排引擎的核心数据模型 DSL 与交互逻辑，具备设计与实现事件驱动、逻辑触发机制的能力。</li>
+<li><strong>三种设计模式</strong>：观察者模式、策略模式、工厂模式。</li>
+<li><strong>核心算法</strong>：智能吸附 与 网格吸附。</li>
+</ul>
+<p><strong>数字孪生的四个重难点</strong></p>
+<table>
+<thead>
+<tr>
+<th>重难点</th>
+<th>具体表现</th>
+<th>解决思路</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>坐标系统与变换</td>
+<td>多层级坐标变换、缩放因子、边界约束</td>
+<td>统一坐标系管理、缩放因子正确应用、边界检查与约束处理</td>
+</tr>
+<tr>
+<td>吸附算法</td>
+<td>大量元素时的性能</td>
+<td>阈值过滤减少计算、空间分割优化邻近元素查找、缓存计算结果</td>
+</tr>
+<tr>
+<td>状态同步与一致性</td>
+<td>Vue 响应式系统与引擎状态双向同步</td>
+<td>单向数据流设计、事件驱动的状态更新、防抖避免频繁更新</td>
+</tr>
+<tr>
+<td>内存管理与性能</td>
+<td>大量元素的渲染与内存占用</td>
+<td>虚拟滚动、事件监听器正确清理、对象池复用减少 GC 压力</td>
+</tr>
+</tbody></table>
+<hr>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-04-%E5%90%8C%E6%9E%84%E6%B8%B2%E6%9F%93%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%8C%96/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">AI 应用知识体系（四）：同构渲染、监控与工程化</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>26/10/20</li>
+                <li>09:45</li>
+                <li>AI</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">AI 应用知识体系（二）：RAG、Agent 与开发框架</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>26/10/20</li>
+                <li>09:43</li>
+                <li>AI</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2026</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+    
+        <div class="trm-footer-item blog-run-long"></div>
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="六、工作流与 AI 应用引擎架构"><a rel="nofollow" class="trm-toc-link" href="#六、工作流与-AI-应用引擎架构"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">六、工作流与 AI 应用引擎架构</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="6.1 三种平台形态"><a rel="nofollow" class="trm-toc-link" href="#6-1-三种平台形态"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">6.1 三种平台形态</span></a></li><li class="trm-toc-item trm-toc-level-3" title="6.2 常见工作流类型"><a rel="nofollow" class="trm-toc-link" href="#6-2-常见工作流类型"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">6.2 常见工作流类型</span></a></li><li class="trm-toc-item trm-toc-level-3" title="6.3 节点体系"><a rel="nofollow" class="trm-toc-link" href="#6-3-节点体系"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">6.3 节点体系</span></a></li><li class="trm-toc-item trm-toc-level-3" title="6.4 数据协议与 DSL"><a rel="nofollow" class="trm-toc-link" href="#6-4-数据协议与-DSL"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">6.4 数据协议与 DSL</span></a></li><li class="trm-toc-item trm-toc-level-3" title="6.5 编辑器技术选型"><a rel="nofollow" class="trm-toc-link" href="#6-5-编辑器技术选型"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">6.5 编辑器技术选型</span></a></li><li class="trm-toc-item trm-toc-level-3" title="6.6 执行器：内存型 vs 服务型"><a rel="nofollow" class="trm-toc-link" href="#6-6-执行器：内存型-vs-服务型"><span class="trm-toc-number">1.6.</span> <span class="trm-toc-text">6.6 执行器：内存型 vs 服务型</span></a></li><li class="trm-toc-item trm-toc-level-3" title="6.7 执行器实现：从最小闭环到生产可用"><a rel="nofollow" class="trm-toc-link" href="#6-7-执行器实现：从最小闭环到生产可用"><span class="trm-toc-number">1.7.</span> <span class="trm-toc-text">6.7 执行器实现：从最小闭环到生产可用</span></a></li><li class="trm-toc-item trm-toc-level-3" title="6.8 平台级架构：以 Coze 为例"><a rel="nofollow" class="trm-toc-link" href="#6-8-平台级架构：以-Coze-为例"><span class="trm-toc-number">1.8.</span> <span class="trm-toc-text">6.8 平台级架构：以 Coze 为例</span></a></li><li class="trm-toc-item trm-toc-level-3" title="6.9 前端编排 + 后端执行的关键难点"><a rel="nofollow" class="trm-toc-link" href="#6-9-前端编排-后端执行的关键难点"><span class="trm-toc-number">1.9.</span> <span class="trm-toc-text">6.9 前端编排 + 后端执行的关键难点</span></a></li><li class="trm-toc-item trm-toc-level-3" title="6.10 沙箱的两层理解"><a rel="nofollow" class="trm-toc-link" href="#6-10-沙箱的两层理解"><span class="trm-toc-number">1.10.</span> <span class="trm-toc-text">6.10 沙箱的两层理解</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="七、协同编辑"><a rel="nofollow" class="trm-toc-link" href="#七、协同编辑"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">七、协同编辑</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="7.1 协同场景盘点"><a rel="nofollow" class="trm-toc-link" href="#7-1-协同场景盘点"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">7.1 协同场景盘点</span></a></li><li class="trm-toc-item trm-toc-level-3" title="7.2 编辑器内核与格式化实现的三种路线"><a rel="nofollow" class="trm-toc-link" href="#7-2-编辑器内核与格式化实现的三种路线"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">7.2 编辑器内核与格式化实现的三种路线</span></a></li><li class="trm-toc-item trm-toc-level-3" title="7.3 个性化需求：@ 提及与 &#x2F; 命令补全"><a rel="nofollow" class="trm-toc-link" href="#7-3-个性化需求：-提及与-命令补全"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">7.3 个性化需求：@ 提及与 &#x2F; 命令补全</span></a></li><li class="trm-toc-item trm-toc-level-3" title="7.4 协同架构：协议先行"><a rel="nofollow" class="trm-toc-link" href="#7-4-协同架构：协议先行"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">7.4 协同架构：协议先行</span></a></li><li class="trm-toc-item trm-toc-level-3" title="7.5 Yjs 实战"><a rel="nofollow" class="trm-toc-link" href="#7-5-Yjs-实战"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">7.5 Yjs 实战</span></a></li><li class="trm-toc-item trm-toc-level-3" title="7.6 多端协同架构对照"><a rel="nofollow" class="trm-toc-link" href="#7-6-多端协同架构对照"><span class="trm-toc-number">2.6.</span> <span class="trm-toc-text">7.6 多端协同架构对照</span></a></li></ol></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn hidden-md" data-title="Toggle between single-column and double-column" onclick="asyncFun.switchSingleColumn()">
+            <i class="iconfont fas fa-arrows-alt-h"></i>
+        </div>
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+    <div class="trm-search-popup">
+        <div class="trm-search-wrapper">
+            <div class="form trm-search-form">
+                <div class="trm-search-input-icon">
+                    <i class="iconfont fas fa-search"></i>
+                </div>
+                <input class="trm-search-input" type="text" placeholder="Searching...">
+                <div class="trm-search-btn-close">
+                    <i class="iconfont fas fa-times"></i>
+                </div>
+            </div>
+            <div class="trm-search-result-container">
+                <div class="trm-search-empty">
+                    Please enter keywords to search
+                </div>
+            </div>
+            <div class="trm-search-footer">
+                <div class="trm-search-stats"></div>
+                <ul class="trm-search-commands">
+                    <li>
+                        <kbd class="command-palette-commands-key">
+                            <svg width="15" height="15" aria-label="Escape key" role="img">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.2">
+                                    <path
+                                        d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956">
+                                    </path>
+                                </g>
+                            </svg>
+                        </kbd>
+                        <span class="command-palette-Label">to close</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+        
+<script src="https://unpkg.com/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+
+        <script src="/js/plugins/local_search.js?v=2.2.3"></script>
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+			<script src="/js/plugins/danmu.js?v=2.2.3"></script>
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
+
+    
+
+
+
+</body>
+
+</html>

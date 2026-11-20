@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="获取最高的高度展示 使用swiper组件将图片的框架搭建好(使用image标签最好加个『mode &#x3D;”widthFix”』)  如果图片是动态生成的的，按以下步骤走 由于高度不一致，通过『wx.createSelectorQuery()』获取每一张图片的属性（重点是高度） 因为框架初始要渲染，所以代码要写在onReady钩子里 定义一个存放图片节点的空数组，因为要全局使用，需放在p">
+<meta name="description" content="针对本地图片高度不一致的展示问题，介绍用 swiper 与宽度自适应获取最高高度的方法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="微信小程序-动态展示图片，高度不一致">
+<meta property="og:title" content="动态展示图片，高度不一致">
 <meta property="og:url" content="http://example.com/en/2024/11/04/WeChatMini/xcx-%E5%A4%9A%E4%B8%AA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E9%AB%98%E5%BA%A6%E4%B8%8D%E5%90%8C%EF%BC%8C%E8%8E%B7%E5%8F%96%E6%9C%80%E9%AB%98%E7%9A%84%E9%AB%98%E5%BA%A6%E5%B1%95%E7%A4%BA/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="获取最高的高度展示 使用swiper组件将图片的框架搭建好(使用image标签最好加个『mode &#x3D;”widthFix”』)  如果图片是动态生成的的，按以下步骤走 由于高度不一致，通过『wx.createSelectorQuery()』获取每一张图片的属性（重点是高度） 因为框架初始要渲染，所以代码要写在onReady钩子里 定义一个存放图片节点的空数组，因为要全局使用，需放在p">
+<meta property="og:description" content="针对本地图片高度不一致的展示问题，介绍用 swiper 与宽度自适应获取最高高度的方法">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-11-04T01:57:31.917Z">
-<meta property="article:modified_time" content="2025-07-21T09:28:38.259Z">
+<meta property="article:published_time" content="2024-11-04T01:57:31.000Z">
+<meta property="article:modified_time" content="2026-11-17T02:12:40.072Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="image">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <meta name="keywords" content="微信小程序">
 
 
-<title >微信小程序-动态展示图片，高度不一致</title>
+<title >动态展示图片，高度不一致</title>
 
 <!-- Favicon -->
 
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-21 17:28:38"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-17 10:12:40"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -83,6 +83,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -197,13 +199,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -239,7 +241,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -257,13 +259,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -385,7 +387,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            微信小程序-动态展示图片，高度不一致
+                            动态展示图片，高度不一致
                         </h1>
 
                         
@@ -532,26 +534,38 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>这篇解决什么问题：一组本地图片高度不一致，直接放进 swiper 会出现高度跳动或留白。做法是先给 <code>image</code> 加上 <code>mode=&quot;widthFix&quot;</code> 让高度随宽度自适应，再用 <code>wx.createSelectorQuery()</code> 量出最高的一张，把最高高度回填给容器。</p>
+<span id="more"></span>
 
-<h2 id="获取最高的高度展示"><a href="#获取最高的高度展示" class="headerlink" title="获取最高的高度展示"></a>获取最高的高度展示</h2><ul>
-<li>使用swiper组件将图片的框架搭建好(使用image标签最好加个<span class="key_words">『mode &#x3D;”widthFix”』</span>)</li>
-</ul>
-<h3 id="如果图片是动态生成的的，按以下步骤走"><a href="#如果图片是动态生成的的，按以下步骤走" class="headerlink" title="如果图片是动态生成的的，按以下步骤走"></a>如果图片是动态生成的的，按以下步骤走</h3><ol>
-<li>由于高度不一致，通过<span class="key_words">『wx.createSelectorQuery()』</span>获取每一张图片的属性（<span class="desc">重点是高度</span>）</li>
-<li>因为框架初始要渲染，所以代码要写在onReady钩子里</li>
-<li>定义一个存放图片节点的空数组，因为要全局使用，需放在page上方</li>
-<li>要获取图片存储的选择器，获取图片的属性(<span class="key_words">id 选择器是一对一，类选择器是选全部</span>)</li>
-<li>swiper本身有一个current属性，需在data中初始化</li>
-<li>定义一个数组，将获取到的图片节点信息res[0]存放在里面，为防止报错最好 <span class="key_words">『或一个初始值（数组[],对象 null）』</span></li>
-<li>current 要动态获取</li>
-<li>判断是否有图片，有的话就将定义的数组赋值给图片节点存放的数组</li>
-<li>获取到图片的高度，首先要在data初始化，然后然后动态传递给初始化变量</li>
-<li>查看显示的长度是否异常（<span class="desc">从执行的函数开始往下找</span>）</li>
-<li>异步，使用延时器加载</li>
+<h2 id="背景与场景"><a href="#背景与场景" class="headerlink" title="背景与场景"></a>背景与场景</h2><p>多张本地图片宽度一致、高度不同，需要在 swiper 中逐张展示，并让容器高度按最高的那张图片撑开，避免切换时页面跳动。</p>
+<h2 id="一、先搭好-swiper-框架"><a href="#一、先搭好-swiper-框架" class="headerlink" title="一、先搭好 swiper 框架"></a>一、先搭好 swiper 框架</h2><p>使用 swiper 组件把图片框架搭建好，<code>image</code> 标签最好加上 <span class="key_words">『mode&#x3D;”widthFix”』</span>，让高度跟随宽度自适应。</p>
+<p>下面的结构示意了容器高度、<code>current</code> 与图片列表的绑定方式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;swiper current=&quot;&#123;&#123;current&#125;&#125;&quot; style=&quot;height: &#123;&#123;maxHeight&#125;&#125;px;&quot;&gt;</span><br><span class="line">  &lt;swiper-item wx:for=&quot;&#123;&#123;imgList&#125;&#125;&quot; wx:key=&quot;index&quot;&gt;</span><br><span class="line">    &lt;image class=&quot;banner-img&quot; src=&quot;&#123;&#123;item&#125;&#125;&quot; mode=&quot;widthFix&quot; /&gt;</span><br><span class="line">  &lt;/swiper-item&gt;</span><br><span class="line">&lt;/swiper&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、图片动态生成时的处理步骤"><a href="#二、图片动态生成时的处理步骤" class="headerlink" title="二、图片动态生成时的处理步骤"></a>二、图片动态生成时的处理步骤</h2><ol>
+<li>由于高度不一致，通过 <span class="key_words">『wx.createSelectorQuery()』</span> 获取每一张图片的属性（<span class="desc">重点是高度</span>）。</li>
+<li>因为框架初始要渲染，所以代码要写在 <code>onReady</code> 钩子里。</li>
+<li>定义一个存放图片节点的空数组，因为要全局使用，需放在 Page 上方。</li>
+<li>要获取图片存储的选择器，再获取图片的属性（<span class="key_words">『id 选择器是一对一，类选择器是选全部』</span>）。</li>
+<li>swiper 本身有一个 <code>current</code> 属性，需在 <code>data</code> 中初始化。</li>
+<li>定义一个数组，将获取到的图片节点信息 <code>res[0]</code> 存放在里面，为防止报错，最好<span class="key_words">『给一个初始值（数组 []，对象 null）』</span>。</li>
+<li><code>current</code> 要动态获取。</li>
+<li>判断是否有图片，有的话就将定义的数组赋值给图片节点存放的数组。</li>
+<li>获取到图片的高度后，首先要在 <code>data</code> 中初始化，然后再动态传递给初始化变量。</li>
+<li>查看显示的长度是否异常（<span class="desc">从执行的函数开始往下找</span>）。</li>
+<li>异步场景下，使用延时器加载。</li>
 </ol>
-<h3 id="图片非动态的直接使用css样式和mode来控制"><a href="#图片非动态的直接使用css样式和mode来控制" class="headerlink" title="图片非动态的直接使用css样式和mode来控制"></a>图片非动态的直接使用css样式和mode来控制</h3>
+<p>按上述步骤串联的测量逻辑示意如下，选择器需要与实际页面的类名保持一致：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Page</span>(&#123;</span><br><span class="line">  <span class="attr">data</span>: &#123;</span><br><span class="line">    <span class="attr">current</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">maxHeight</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">imgList</span>: [],</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="title function_">onReady</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> query = wx.<span class="title function_">createSelectorQuery</span>()</span><br><span class="line">    query</span><br><span class="line">      .<span class="title function_">selectAll</span>(<span class="string">&#x27;.banner-img&#x27;</span>)</span><br><span class="line">      .<span class="title function_">boundingClientRect</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// 没有图片时不处理，避免取不到高度报错</span></span><br><span class="line">        <span class="keyword">if</span> (!res || !res.<span class="property">length</span>) <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">const</span> maxHeight = <span class="title class_">Math</span>.<span class="title function_">max</span>(...res.<span class="title function_">map</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> item.<span class="property">height</span>))</span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">setData</span>(&#123; maxHeight &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">      .<span class="title function_">exec</span>()</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、图片非动态的情况"><a href="#三、图片非动态的情况" class="headerlink" title="三、图片非动态的情况"></a>三、图片非动态的情况</h2><p>如果图片不是动态生成的，直接用 CSS 样式配合 <code>mode</code> 控制即可，不需要再走选择器测量。</p>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
+<li>高度必须在渲染完成后才能量到，所以测量代码放在 <code>onReady</code>；如果图片仍异步渲染，再加延时器。</li>
+<li>用 <code>selectAll</code> 才能一次拿到所有图片节点，<code>select</code> 只会拿到一个。</li>
+<li><code>data</code> 中的数组、对象要给初始值，否则后续赋值前访问会报错。</li>
+<li>使用了 <code>mode=&quot;widthFix&quot;</code> 后高度由宽度决定，容器宽度变化时需要重新测量。</li>
+</ul>
+
 </article>
     
     
@@ -570,11 +584,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/xcx-%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85%E7%BB%84%E4%BB%B6%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/xcx-%E5%8A%A8%E6%80%81tabbar/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">微信小程序-二次封装组件和自定义组件</h6>
+                <h6 class="trm-op-title">动态tabbar(底部菜单)</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -591,11 +605,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/sku/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/xcx-%E5%B0%81%E8%A3%85%E6%97%A5%E5%8E%86%E7%BB%84%E4%BB%B6%EF%BC%88%E4%B8%9A%E5%8A%A1%E7%BB%84%E4%BB%B6%EF%BC%89%E4%B8%8E%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%80%BC/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">微信小程序-sku算法</h6>
+                <h6 class="trm-op-title">封装日历组件与组件传值</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -667,7 +681,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="获取最高的高度展示"><a rel="nofollow" class="trm-toc-link" href="#获取最高的高度展示"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">获取最高的高度展示</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="如果图片是动态生成的的，按以下步骤走"><a rel="nofollow" class="trm-toc-link" href="#如果图片是动态生成的的，按以下步骤走"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">如果图片是动态生成的的，按以下步骤走</span></a></li><li class="trm-toc-item trm-toc-level-3" title="图片非动态的直接使用css样式和mode来控制"><a rel="nofollow" class="trm-toc-link" href="#图片非动态的直接使用css样式和mode来控制"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">图片非动态的直接使用css样式和mode来控制</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景与场景"><a rel="nofollow" class="trm-toc-link" href="#背景与场景"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景与场景</span></a></li><li class="trm-toc-item trm-toc-level-2" title="一、先搭好 swiper 框架"><a rel="nofollow" class="trm-toc-link" href="#一、先搭好-swiper-框架"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">一、先搭好 swiper 框架</span></a></li><li class="trm-toc-item trm-toc-level-2" title="二、图片动态生成时的处理步骤"><a rel="nofollow" class="trm-toc-link" href="#二、图片动态生成时的处理步骤"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">二、图片动态生成时的处理步骤</span></a></li><li class="trm-toc-item trm-toc-level-2" title="三、图片非动态的情况"><a rel="nofollow" class="trm-toc-link" href="#三、图片非动态的情况"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">三、图片非动态的情况</span></a></li><li class="trm-toc-item trm-toc-level-2" title="注意点"><a rel="nofollow" class="trm-toc-link" href="#注意点"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">注意点</span></a></li></ol>
       </div>
     </div>
 
@@ -791,6 +805,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

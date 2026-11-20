@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="在React中使用定时器: 主要是要注意返回清除定时器1234567891011121314151617181920import React from &quot;react&quot;import &#123; memo, useState, useEffect &#125; from &quot;react&quot;const Timer &#x3D; memo(() &#x3D;&gt; &#123;	co">
+<meta name="description" content="说明在 React 组件中使用 setInterval 的正确写法：用空依赖只创建一次、在清理函数中清除，避免重复计时与内存泄漏">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React-React与定时器">
+<meta property="og:title" content="React与定时器">
 <meta property="og:url" content="http://example.com/en/2024/11/01/react/10.react%E4%B8%8E%E5%AE%9A%E6%97%B6%E5%99%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="在React中使用定时器: 主要是要注意返回清除定时器1234567891011121314151617181920import React from &quot;react&quot;import &#123; memo, useState, useEffect &#125; from &quot;react&quot;const Timer &#x3D; memo(() &#x3D;&gt; &#123;	co">
+<meta property="og:description" content="说明在 React 组件中使用 setInterval 的正确写法：用空依赖只创建一次、在清理函数中清除，避免重复计时与内存泄漏">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-11-01T01:41:47.847Z">
-<meta property="article:modified_time" content="2025-07-17T08:20:40.629Z">
+<meta property="article:published_time" content="2024-11-01T01:41:47.000Z">
+<meta property="article:modified_time" content="2026-11-18T08:28:55.281Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="定时器">
 <meta property="article:tag" content="React">
@@ -24,7 +24,7 @@
     <meta name="keywords" content="react">
 
 
-<title >React-React与定时器</title>
+<title >React与定时器</title>
 
 <!-- Favicon -->
 
@@ -69,7 +69,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-17 16:20:40"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-18 16:28:55"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -84,6 +84,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -198,13 +200,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -240,7 +242,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -258,13 +260,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -386,7 +388,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            React-React与定时器
+                            React与定时器
                         </h1>
 
                         
@@ -533,8 +535,20 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <ul>
-<li>在React中使用定时器: 主要是要注意返回清除定时器<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&quot;react&quot;</span></span><br><span class="line"><span class="keyword">import</span> &#123; memo, useState, useEffect &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Timer</span> = <span class="title function_">memo</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>)</span><br><span class="line">	<span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">const</span> timer = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">			<span class="comment">// setCount使用箭头函数只会有一个count产生</span></span><br><span class="line">			<span class="title function_">setCount</span>(<span class="function"><span class="params">count</span> =&gt;</span> count + <span class="number">1</span>)</span><br><span class="line">		&#125;, <span class="number">1000</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">			<span class="built_in">clearInterval</span>(timer)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 不设置依赖原因: 设置了会产生多个timer和销毁多次timer</span></span><br><span class="line">	&#125;, [])</span><br><span class="line">	 </span><br><span class="line">	<span class="keyword">return</span> (<span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;count&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">Timer</span> </span><br></pre></td></tr></table></figure></li>
+    <p>这篇解决“定时器越跑越快、组件卸载后还在跑”的问题。核心只有两点：<code>useEffect</code> 的依赖数组留空，让定时器只创建一次；并在返回的清理函数里 <code>clearInterval</code>，让组件卸载时能停下来。</p>
+<span id="more"></span>
+
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p><code>setInterval</code> 是浏览器提供的全局能力，它不属于 React 的生命周期。组件重新渲染、重复挂载都不会自动帮你清除定时器；如果每次渲染都新建一个，就会叠加出多个计时器，表现为数字跳得越来越快。</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li><strong>用空依赖创建定时器</strong>：<code>useEffect</code> 的依赖数组写 <code>[]</code>，保证只在挂载时创建一次。</li>
+<li><strong>用函数式更新累加</strong>：<code>setCount(count =&gt; count + 1)</code>，回调里拿到的是最新值，不会被闭包里的旧值覆盖。</li>
+<li><strong>返回清理函数</strong>：在 <code>useEffect</code> 中返回一个函数，调用 <code>clearInterval</code> 清除定时器。</li>
+</ol>
+<p>下面的组件每秒让计数加一，并在卸载时清除定时器。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&quot;react&quot;</span></span><br><span class="line"><span class="keyword">import</span> &#123; memo, useState, useEffect &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Timer</span> = <span class="title function_">memo</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>)</span><br><span class="line">	<span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">const</span> timer = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">			<span class="comment">// setCount使用箭头函数只会有一个count产生</span></span><br><span class="line">			<span class="title function_">setCount</span>(<span class="function"><span class="params">count</span> =&gt;</span> count + <span class="number">1</span>)</span><br><span class="line">		&#125;, <span class="number">1000</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">			<span class="built_in">clearInterval</span>(timer)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 不设置依赖原因: 设置了会产生多个timer和销毁多次timer</span></span><br><span class="line">	&#125;, [count,setCount])</span><br><span class="line">	 </span><br><span class="line">	<span class="keyword">return</span> (<span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;count&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">Timer</span> </span><br></pre></td></tr></table></figure>
+
+<h2 id="踩坑与注意点"><a href="#踩坑与注意点" class="headerlink" title="踩坑与注意点"></a>踩坑与注意点</h2><ul>
+<li>开发环境开启 <code>React.StrictMode</code> 时，effect 会执行两次（挂载 → 卸载 → 再挂载），属于正常检测行为，清理函数写对了就不会出现双倍计时。</li>
 </ul>
 
 </article>
@@ -555,11 +569,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/01/react/%E5%9C%A8react%E9%A1%B9%E7%9B%AE%E9%81%87%E8%A7%81%E7%9A%84%E9%97%AE%E9%A2%98/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/react/1.%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">React-在项目中遇到的问题</h6>
+                <h6 class="trm-op-title">基础知识</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -580,7 +594,7 @@
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">React-动画与定时器案例</h6>
+                <h6 class="trm-op-title">动画与定时器案例</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -644,8 +658,24 @@
 
             
 
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景"><a rel="nofollow" class="trm-toc-link" href="#背景"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景</span></a></li><li class="trm-toc-item trm-toc-level-2" title="步骤"><a rel="nofollow" class="trm-toc-link" href="#步骤"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">步骤</span></a></li><li class="trm-toc-item trm-toc-level-2" title="踩坑与注意点"><a rel="nofollow" class="trm-toc-link" href="#踩坑与注意点"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">踩坑与注意点</span></a></li></ol>
+      </div>
+    </div>
+
             
 <div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
     
     
         <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
@@ -760,6 +790,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

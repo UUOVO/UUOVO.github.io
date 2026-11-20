@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="在使用typeScript的文件夹下执行1npm install -g typescript 新建一个.ts后缀的文件然后贴上例子 在终端执行命令且不报错1tsc greeter.ts 报错：以管理员身份开启Windows Powershell 输入指令：1set-ExecutionPolicy RemoteSigned 输入y或a没报错执行成功 回到终端再次执行1tsc greeter.">
+<meta name="description" content="说明 TypeScript 的全局安装与 tsc 编译命令，并给出 Windows PowerShell 执行策略报错的处理方式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TS-安装和编译">
+<meta property="og:title" content="安装和编译">
 <meta property="og:url" content="http://example.com/en/2024/11/01/TS/ts-%E7%BC%96%E8%AF%91/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="在使用typeScript的文件夹下执行1npm install -g typescript 新建一个.ts后缀的文件然后贴上例子 在终端执行命令且不报错1tsc greeter.ts 报错：以管理员身份开启Windows Powershell 输入指令：1set-ExecutionPolicy RemoteSigned 输入y或a没报错执行成功 回到终端再次执行1tsc greeter.">
+<meta property="og:description" content="说明 TypeScript 的全局安装与 tsc 编译命令，并给出 Windows PowerShell 执行策略报错的处理方式">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-11-01T03:40:57.240Z">
-<meta property="article:modified_time" content="2025-07-21T03:05:52.487Z">
+<meta property="article:published_time" content="2024-11-01T03:40:57.000Z">
+<meta property="article:modified_time" content="2026-11-17T02:28:41.534Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="TypeScript">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <meta name="keywords" content="ts">
 
 
-<title >TS-安装和编译</title>
+<title >安装和编译</title>
 
 <!-- Favicon -->
 
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-21 11:05:52"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-17 10:28:41"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -83,6 +83,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -197,13 +199,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -239,7 +241,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -257,13 +259,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -385,7 +387,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            TS-安装和编译
+                            安装和编译
                         </h1>
 
                         
@@ -532,18 +534,28 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <h2 id="结论先行"><a href="#结论先行" class="headerlink" title="结论先行"></a>结论先行</h2><p>跑通第一个 TypeScript 文件只要三步：全局安装 <code>typescript</code>，新建一个 <code>.ts</code> 文件，用 <code>tsc 文件名.ts</code> 编译。如果 <code>tsc</code> 报执行策略相关的错误，以管理员身份打开 PowerShell，执行 <code>set-ExecutionPolicy RemoteSigned</code>，输入 <code>y</code> 或 <code>a</code> 确认后回到原终端重试即可。</p>
+<span id="more"></span>
 
-<ol>
-<li>在使用typeScript的文件夹下执行<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g typescript</span><br></pre></td></tr></table></figure></li>
-<li>新建一个.ts后缀的文件然后贴上例子</li>
-<li>在终端执行命令且不报错<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc greeter.<span class="property">ts</span></span><br></pre></td></tr></table></figure></li>
-<li>报错：以管理员身份开启Windows Powershell</li>
-<li>输入指令：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set-<span class="title class_">ExecutionPolicy</span> <span class="title class_">RemoteSigned</span></span><br></pre></td></tr></table></figure></li>
-<li>输入y或a没报错执行成功</li>
-<li>回到终端再次执行<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc greeter.<span class="property">ts</span></span><br></pre></td></tr></table></figure></li>
-</ol>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>TypeScript 的编译入口是 <code>tsc</code> 命令，它由 <code>typescript</code> 包提供。第一次在新机器上使用时，需要先把这个命令装到全局，才能脱离具体项目直接编译单个文件。Windows 默认的执行策略比 macOS &#x2F; Linux 严格，所以初学时最常见的卡点就是执行策略拦截了脚本。</p>
+<h2 id="步骤一：全局安装-TypeScript"><a href="#步骤一：全局安装-TypeScript" class="headerlink" title="步骤一：全局安装 TypeScript"></a>步骤一：全局安装 TypeScript</h2><p>在使用 TypeScript 的文件夹下执行安装命令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g typescript</span><br></pre></td></tr></table></figure>
+
+<h2 id="步骤二：新建文件并编译"><a href="#步骤二：新建文件并编译" class="headerlink" title="步骤二：新建文件并编译"></a>步骤二：新建文件并编译</h2><p>新建一个 <code>.ts</code> 后缀的文件，把示例代码贴进去。然后在终端执行编译命令，不报错就说明环境可用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc greeter.ts</span><br></pre></td></tr></table></figure>
+
+<h2 id="步骤三：处理-PowerShell-执行策略报错"><a href="#步骤三：处理-PowerShell-执行策略报错" class="headerlink" title="步骤三：处理 PowerShell 执行策略报错"></a>步骤三：处理 PowerShell 执行策略报错</h2><p>如果上一步报错，以管理员身份打开 Windows PowerShell，输入下面的指令修改执行策略。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set-ExecutionPolicy</span> RemoteSigned</span><br></pre></td></tr></table></figure>
+
+<p>提示确认时输入 <code>y</code> 或 <code>a</code>，没报错就表示执行成功。</p>
+<p>回到原来的终端，再次执行同一条编译命令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc greeter.ts</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
+<li>安装命令里的 <code>-g</code> 是全局安装，升级或卸载时也要带上 <code>-g</code>，否则操作的是本地依赖。</li>
+<li><code>set-ExecutionPolicy</code> 需要管理员权限，普通 PowerShell 窗口执行会因权限不足失败。</li>
+<li>示例中的 <code>greeter.ts</code> 是文件名占位，换成自己实际的文件名。</li>
+</ul>
 
 </article>
     
@@ -563,17 +575,17 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/01/TS/%E5%85%AB%E3%80%81%E9%AB%98%E7%BA%A7%E7%B1%BB%E5%9E%8B/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/vue2/%E8%B7%AF%E7%94%B1/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">TS-高级类型</h6>
+                <h6 class="trm-op-title">VUE2-路由（主了解）</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
                 <li>24/11/01</li>
-                <li>11:40</li>
-                <li>TypeScript</li>
+                <li>13:58</li>
+                <li>Vue</li>
             </ul>
         </div>
     </div>
@@ -588,7 +600,7 @@
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">TS-实用类 Utility Types</h6>
+                <h6 class="trm-op-title">实用类 Utility Types</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -652,8 +664,24 @@
 
             
 
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="结论先行"><a rel="nofollow" class="trm-toc-link" href="#结论先行"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">结论先行</span></a></li><li class="trm-toc-item trm-toc-level-2" title="背景"><a rel="nofollow" class="trm-toc-link" href="#背景"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">背景</span></a></li><li class="trm-toc-item trm-toc-level-2" title="步骤一：全局安装 TypeScript"><a rel="nofollow" class="trm-toc-link" href="#步骤一：全局安装-TypeScript"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">步骤一：全局安装 TypeScript</span></a></li><li class="trm-toc-item trm-toc-level-2" title="步骤二：新建文件并编译"><a rel="nofollow" class="trm-toc-link" href="#步骤二：新建文件并编译"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">步骤二：新建文件并编译</span></a></li><li class="trm-toc-item trm-toc-level-2" title="步骤三：处理 PowerShell 执行策略报错"><a rel="nofollow" class="trm-toc-link" href="#步骤三：处理-PowerShell-执行策略报错"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">步骤三：处理 PowerShell 执行策略报错</span></a></li><li class="trm-toc-item trm-toc-level-2" title="注意点"><a rel="nofollow" class="trm-toc-link" href="#注意点"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">注意点</span></a></li></ol>
+      </div>
+    </div>
+
             
 <div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
     
     
         <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
@@ -768,6 +796,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

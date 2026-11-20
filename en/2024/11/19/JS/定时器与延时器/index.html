@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="定时器setInterval 『用于重复执行一个函数或代码片段』，每次调用之间都有一个『固定的时间』延迟。它 参数： 回调函数，该函数会每隔一段时间被调用一次 每次调用间隔的时间，单位是毫秒   返回值： 返回一个 Number 类型的数据，这个数字用来作为定时器的唯一标识   当调用 setInterval 时，它会在『初始延迟后安排执行』指定的函数的第一次执行。随后的执行将根据指定的延迟">
+<meta name="description" content="区分定时器与延时器的执行差异，说明参数含义和重复执行函数的控制方式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS-定时器与延时器">
+<meta property="og:title" content="定时器与延时器">
 <meta property="og:url" content="http://example.com/en/2024/11/19/JS/%E5%AE%9A%E6%97%B6%E5%99%A8%E4%B8%8E%E5%BB%B6%E6%97%B6%E5%99%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="定时器setInterval 『用于重复执行一个函数或代码片段』，每次调用之间都有一个『固定的时间』延迟。它 参数： 回调函数，该函数会每隔一段时间被调用一次 每次调用间隔的时间，单位是毫秒   返回值： 返回一个 Number 类型的数据，这个数字用来作为定时器的唯一标识   当调用 setInterval 时，它会在『初始延迟后安排执行』指定的函数的第一次执行。随后的执行将根据指定的延迟">
+<meta property="og:description" content="区分定时器与延时器的执行差异，说明参数含义和重复执行函数的控制方式">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-11-19T02:03:17.253Z">
-<meta property="article:modified_time" content="2025-07-24T06:55:53.548Z">
+<meta property="article:published_time" content="2024-11-19T02:03:17.000Z">
+<meta property="article:modified_time" content="2026-11-19T01:58:41.558Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="定时器">
 <meta property="article:tag" content="延时器">
@@ -24,7 +24,7 @@
     <meta name="keywords" content="js">
 
 
-<title >JS-定时器与延时器</title>
+<title >定时器与延时器</title>
 
 <!-- Favicon -->
 
@@ -69,7 +69,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-24 14:55:53"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-19 09:58:41"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -84,6 +84,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -198,13 +200,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -240,7 +242,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -258,13 +260,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -386,7 +388,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            JS-定时器与延时器
+                            定时器与延时器
                         </h1>
 
                         
@@ -533,54 +535,50 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p><code>setInterval</code> 和 <code>setTimeout</code> 都是把回调交给事件循环调度的计时函数：前者重复执行，后者只执行一次。本篇说明两者的参数、返回值、取消方式、执行时机以及常见误区。</p>
+<span id="more"></span>
 
-<h2 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h2><h3 id="setInterval"><a href="#setInterval" class="headerlink" title="setInterval"></a>setInterval</h3><ul>
-<li><span class="key_words">『用于重复执行一个函数或代码片段』</span>，每次调用之间都有一个<span class="key_words">『固定的时间』</span>延迟。它</li>
-<li>参数：<ol>
-<li>回调函数，该函数会每隔一段时间被调用一次</li>
-<li>每次调用间隔的时间，单位是毫秒</li>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>定时器和延时器解决的是“隔一段时间再执行代码”的问题，但它们的执行时刻并不精确，理解参数和返回值是用好它们的前提。</p>
+<h2 id="分步骤使用"><a href="#分步骤使用" class="headerlink" title="分步骤使用"></a>分步骤使用</h2><h3 id="第一步：用-setInterval-重复执行"><a href="#第一步：用-setInterval-重复执行" class="headerlink" title="第一步：用 setInterval 重复执行"></a>第一步：用 setInterval 重复执行</h3><p><code>setInterval</code> 用于重复执行一个函数或代码片段，每次调用之间都有一个固定的时间延迟。</p>
+<p>参数有两个：</p>
+<ol>
+<li>回调函数，该函数会每隔一段时间被调用一次；</li>
+<li>每次调用间隔的时间，单位是毫秒。</li>
 </ol>
-</li>
-<li>返回值：<ul>
-<li>返回一个 Number 类型的数据，这个数字用来作为定时器的唯一标识</li>
+<p>返回值是一个 Number 类型的数据，这个数字用来作为定时器的唯一标识。</p>
+<p>当调用 <code>setInterval</code> 时，它会在初始延迟后安排指定函数的第一次执行，随后的执行将根据指定的延迟重复发生（所以如果要从 0 毫秒开始执行，要提前调用指定函数）。</p>
+<p>注意：<code>setInterval</code> 不是完全精确的。它可以接受无限数量的参数。</p>
+<h3 id="第二步：用-clearInterval-取消重复执行"><a href="#第二步：用-clearInterval-取消重复执行" class="headerlink" title="第二步：用 clearInterval 取消重复执行"></a>第二步：用 clearInterval 取消重复执行</h3><p><code>clearInterval</code> 用于取消先前通过调用 <code>setInterval</code> 建立的定时重复操作。</p>
+<p>参数是 <code>setInterval</code> 返回的间隔 ID。</p>
+<h3 id="第三步：确认-setInterval-的适用场景"><a href="#第三步：确认-setInterval-的适用场景" class="headerlink" title="第三步：确认 setInterval 的适用场景"></a>第三步：确认 setInterval 的适用场景</h3><p>常见场景包括：</p>
+<ul>
+<li>编辑应用中的自动保存；</li>
+<li>动画和幻灯片播放定时；</li>
+<li>基于时间的提醒；</li>
+<li>间隔取消。</li>
 </ul>
-</li>
-<li>当调用 setInterval 时，它会在<span class="key_words">『初始延迟后安排执行』</span>指定的函数的第一次执行。随后的执行将根据指定的延迟重复发生。(<span class="desc">所以如果要从0毫秒开始执行，要提前调用指定函数</span>)</li>
-<li>注意:<span class="key_words">『setInterval 不是完全精确的。』</span></li>
-<li>可以接受无限数量的参数</li>
-</ul>
-<h3 id="clearInterval"><a href="#clearInterval" class="headerlink" title="clearInterval"></a>clearInterval</h3><ul>
-<li>取消先前通过调用 setInterval 建立的定时重复操作</li>
-<li>参数：setInterval 返回的间隔 ID</li>
-</ul>
-<h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
-<li>编辑应用中的自动保存</li>
-<li>动画和幻灯片播放定时</li>
-<li>基于时间的提醒</li>
-<li>间隔取消</li>
-</ul>
-<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">cancellable</span>(<span class="params">fn: <span class="built_in">Function</span>, args: any[], t: number</span>): <span class="title class_">Function</span> &#123;</span><br><span class="line">    <span class="title function_">fn</span>(...args); <span class="comment">// 从0开始执行</span></span><br><span class="line">    <span class="keyword">const</span> timer = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> <span class="title function_">fn</span>(...args), t); <span class="comment">// 从t开始执行</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">cancelFn</span> = (<span class="params"></span>) =&gt; <span class="built_in">clearInterval</span>(timer);</span><br><span class="line">    <span class="keyword">return</span> cancelFn;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="第四步：封装一个可取消的定时执行函数"><a href="#第四步：封装一个可取消的定时执行函数" class="headerlink" title="第四步：封装一个可取消的定时执行函数"></a>第四步：封装一个可取消的定时执行函数</h3><p>下面的示例先立即执行一次回调，再按间隔重复执行，并返回取消函数：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">cancellable</span>(<span class="params"><span class="attr">fn</span>: <span class="title class_">Function</span>, <span class="attr">args</span>: <span class="built_in">any</span>[], <span class="attr">t</span>: <span class="built_in">number</span></span>): <span class="title class_">Function</span> &#123;</span><br><span class="line">  <span class="title function_">fn</span>(...args); <span class="comment">// 从 0 开始执行</span></span><br><span class="line">  <span class="keyword">const</span> timer = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> <span class="title function_">fn</span>(...args), t); <span class="comment">// 从 t 开始执行</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">cancelFn</span> = (<span class="params"></span>) =&gt; <span class="built_in">clearInterval</span>(timer);</span><br><span class="line">  <span class="keyword">return</span> cancelFn;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="延时器"><a href="#延时器" class="headerlink" title="延时器"></a>延时器</h2><h3 id="setTimeout"><a href="#setTimeout" class="headerlink" title="setTimeout"></a>setTimeout</h3><ul>
-<li>允许在指定的延迟之后安排一个函数的执行</li>
-<li>接受无限数量的参数，但通常前两个参数总是要执行的函数和以毫秒为单位的延迟时间。</li>
+<h3 id="第五步：用-setTimeout-延迟执行一次"><a href="#第五步：用-setTimeout-延迟执行一次" class="headerlink" title="第五步：用 setTimeout 延迟执行一次"></a>第五步：用 setTimeout 延迟执行一次</h3><p><code>setTimeout</code> 允许在指定的延迟之后安排一个函数的执行。</p>
+<p>它接受无限数量的参数，但通常前两个参数总是要执行的函数和以毫秒为单位的延迟时间。</p>
+<h3 id="第六步：用-clearTimeout-取消延时任务"><a href="#第六步：用-clearTimeout-取消延时任务" class="headerlink" title="第六步：用 clearTimeout 取消延时任务"></a>第六步：用 clearTimeout 取消延时任务</h3><p><code>clearTimeout</code> 用于取消先前通过调用 <code>setTimeout</code> 建立的延时操作。</p>
+<p>参数是 <code>setTimeout</code> 返回的定时器 ID。</p>
+<h3 id="第七步：理解-setTimeout-的工作原理"><a href="#第七步：理解-setTimeout-的工作原理" class="headerlink" title="第七步：理解 setTimeout 的工作原理"></a>第七步：理解 setTimeout 的工作原理</h3><ul>
+<li>当调用 <code>setTimeout</code> 时，它启动一个计时器，并设置它在指定的延迟后运行；</li>
+<li>在延迟到期后，JavaScript 事件循环将指定的函数放入执行队列；</li>
+<li>一旦调用堆栈为空，函数就会被执行，其中的任何相关代码都会运行；</li>
+<li>如果在延迟到期之前取消了 <code>setTimeout</code> 函数，计划的函数将不会被执行。</li>
 </ul>
-<h3 id="clearTimeout"><a href="#clearTimeout" class="headerlink" title="clearTimeout"></a>clearTimeout</h3><ul>
-<li>取消先前通过调用 setTimeout 建立的延时操作</li>
-<li>参数：setTimeout 返回的间隔 ID</li>
-</ul>
-<h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><ul>
-<li>当调用 setTimeout 时，它启动一个计时器，并设置它在指定的延迟后运行</li>
-<li>在延迟到期后，JavaScript事件循环将指定的函数放入执行队列。</li>
-<li>一旦调用堆栈为空，函数就会被执行，其中的任何相关代码都会运行。</li>
-<li>如果在延迟到期之前取消了 setTimeout 函数，计划的函数将不会被执行。</li>
-</ul>
-<h3 id="使用示例-1"><a href="#使用示例-1" class="headerlink" title="使用示例"></a>使用示例</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">delayedFunction</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;延迟函数执行！&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> delay = <span class="number">2000</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> timerId = <span class="built_in">setTimeout</span>(delayedFunction, delay);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在延迟到期之前取消执行：</span></span><br><span class="line"><span class="built_in">clearTimeout</span>(timerId);</span><br></pre></td></tr></table></figure>
+<h3 id="第八步：取消一个延时任务"><a href="#第八步：取消一个延时任务" class="headerlink" title="第八步：取消一个延时任务"></a>第八步：取消一个延时任务</h3><p>下面的示例在延迟到期前调用 <code>clearTimeout</code>，因此 <code>delayedFunction</code> 不会执行：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">delayedFunction</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;延迟函数执行！&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> delay = <span class="number">2000</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> timerId = <span class="built_in">setTimeout</span>(delayedFunction, delay);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在延迟到期之前取消执行：</span></span><br><span class="line"><span class="built_in">clearTimeout</span>(timerId);</span><br></pre></td></tr></table></figure>
 
-<h2 id="延时器和定时器的区别"><a href="#延时器和定时器的区别" class="headerlink" title="延时器和定时器的区别"></a>延时器和定时器的区别</h2><ul>
-<li>定时调用会执行多次，而延时调用只会执行一次</li>
+<h3 id="第九步：区分定时器与延时器"><a href="#第九步：区分定时器与延时器" class="headerlink" title="第九步：区分定时器与延时器"></a>第九步：区分定时器与延时器</h3><p>定时调用会执行多次，而延时调用只会执行一次。</p>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
+<li><code>setInterval</code> 不是完全精确的，回调在主线程执行，主线程有长任务时会被推迟。</li>
+<li>需要从 0 毫秒就开始执行时，要在 <code>setInterval</code> 之前手动调用一次目标函数。</li>
+<li><code>clearInterval</code> 接收 <code>setInterval</code> 返回的 ID，<code>clearTimeout</code> 接收 <code>setTimeout</code> 返回的 ID，两者不要混用。</li>
+<li>延迟时间设为 0 也不代表立即执行，回调仍要等当前调用栈清空后才会执行。</li>
 </ul>
 
 </article>
@@ -622,11 +620,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/%E9%A1%B9%E7%9B%AE%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%90%88%E9%9B%86/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96%E6%96%B9%E5%BC%8F/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">微信小程序-项目遇到的问题合集</h6>
+                <h6 class="trm-op-title">代码优化方式</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -698,7 +696,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="定时器"><a rel="nofollow" class="trm-toc-link" href="#定时器"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">定时器</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="setInterval"><a rel="nofollow" class="trm-toc-link" href="#setInterval"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">setInterval</span></a></li><li class="trm-toc-item trm-toc-level-3" title="clearInterval"><a rel="nofollow" class="trm-toc-link" href="#clearInterval"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">clearInterval</span></a></li><li class="trm-toc-item trm-toc-level-3" title="适用场景"><a rel="nofollow" class="trm-toc-link" href="#适用场景"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">适用场景</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用示例"><a rel="nofollow" class="trm-toc-link" href="#使用示例"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">使用示例</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="延时器"><a rel="nofollow" class="trm-toc-link" href="#延时器"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">延时器</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="setTimeout"><a rel="nofollow" class="trm-toc-link" href="#setTimeout"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">setTimeout</span></a></li><li class="trm-toc-item trm-toc-level-3" title="clearTimeout"><a rel="nofollow" class="trm-toc-link" href="#clearTimeout"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">clearTimeout</span></a></li><li class="trm-toc-item trm-toc-level-3" title="工作原理"><a rel="nofollow" class="trm-toc-link" href="#工作原理"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">工作原理</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用示例"><a rel="nofollow" class="trm-toc-link" href="#使用示例-1"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">使用示例</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="延时器和定时器的区别"><a rel="nofollow" class="trm-toc-link" href="#延时器和定时器的区别"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">延时器和定时器的区别</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景"><a rel="nofollow" class="trm-toc-link" href="#背景"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景</span></a></li><li class="trm-toc-item trm-toc-level-2" title="分步骤使用"><a rel="nofollow" class="trm-toc-link" href="#分步骤使用"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">分步骤使用</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="第一步：用 setInterval 重复执行"><a rel="nofollow" class="trm-toc-link" href="#第一步：用-setInterval-重复执行"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">第一步：用 setInterval 重复执行</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第二步：用 clearInterval 取消重复执行"><a rel="nofollow" class="trm-toc-link" href="#第二步：用-clearInterval-取消重复执行"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">第二步：用 clearInterval 取消重复执行</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第三步：确认 setInterval 的适用场景"><a rel="nofollow" class="trm-toc-link" href="#第三步：确认-setInterval-的适用场景"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">第三步：确认 setInterval 的适用场景</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第四步：封装一个可取消的定时执行函数"><a rel="nofollow" class="trm-toc-link" href="#第四步：封装一个可取消的定时执行函数"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">第四步：封装一个可取消的定时执行函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第五步：用 setTimeout 延迟执行一次"><a rel="nofollow" class="trm-toc-link" href="#第五步：用-setTimeout-延迟执行一次"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">第五步：用 setTimeout 延迟执行一次</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第六步：用 clearTimeout 取消延时任务"><a rel="nofollow" class="trm-toc-link" href="#第六步：用-clearTimeout-取消延时任务"><span class="trm-toc-number">2.6.</span> <span class="trm-toc-text">第六步：用 clearTimeout 取消延时任务</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第七步：理解 setTimeout 的工作原理"><a rel="nofollow" class="trm-toc-link" href="#第七步：理解-setTimeout-的工作原理"><span class="trm-toc-number">2.7.</span> <span class="trm-toc-text">第七步：理解 setTimeout 的工作原理</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第八步：取消一个延时任务"><a rel="nofollow" class="trm-toc-link" href="#第八步：取消一个延时任务"><span class="trm-toc-number">2.8.</span> <span class="trm-toc-text">第八步：取消一个延时任务</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第九步：区分定时器与延时器"><a rel="nofollow" class="trm-toc-link" href="#第九步：区分定时器与延时器"><span class="trm-toc-number">2.9.</span> <span class="trm-toc-text">第九步：区分定时器与延时器</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="注意点"><a rel="nofollow" class="trm-toc-link" href="#注意点"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">注意点</span></a></li></ol>
       </div>
     </div>
 
@@ -822,6 +820,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

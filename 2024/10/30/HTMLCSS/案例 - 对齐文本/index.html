@@ -7,16 +7,16 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="对齐文本方式一样式 注意点 外层使用 flex flex-col 内层最好不用使用 flex 将文本内容包裹起来，会失效 内层只有文本会更准确点 text-align 和 text-align-last 要结合使用，并且值为 justify  示例：1234567891011.text_space &#123;	text-align: justify;	text-align-last: ju">
+<meta name="description" content="给出两种对齐文本的实现方式，说明两端对齐与固定前段宽度各自的适用场景和失效原因">
 <meta property="og:type" content="article">
 <meta property="og:title" content="案例-对齐文本">
 <meta property="og:url" content="http://example.com/2024/10/30/HTMLCSS/%E6%A1%88%E4%BE%8B%20-%20%E5%AF%B9%E9%BD%90%E6%96%87%E6%9C%AC/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="对齐文本方式一样式 注意点 外层使用 flex flex-col 内层最好不用使用 flex 将文本内容包裹起来，会失效 内层只有文本会更准确点 text-align 和 text-align-last 要结合使用，并且值为 justify  示例：1234567891011.text_space &#123;	text-align: justify;	text-align-last: ju">
+<meta property="og:description" content="给出两种对齐文本的实现方式，说明两端对齐与固定前段宽度各自的适用场景和失效原因">
 <meta property="og:locale">
 <meta property="og:image" content="http://example.com/img/404.jpg">
-<meta property="article:published_time" content="2024-10-30T07:29:11.189Z">
-<meta property="article:modified_time" content="2025-07-30T06:56:33.613Z">
+<meta property="article:published_time" content="2024-10-30T07:29:11.000Z">
+<meta property="article:modified_time" content="2026-11-17T02:19:06.358Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="CSS">
 <meta property="article:tag" content="案例">
@@ -71,7 +71,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-30 14:56:33"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-17 10:19:06"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -86,6 +86,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -200,13 +202,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -242,7 +244,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -260,13 +262,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -535,23 +537,31 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>“模糊 &#x2F; 亮度 &#x2F; 灰度 &#x2F; 透明度”这类长短不一的词，并排显示时右边界会参差不齐。两种做法：一是用 <code>text-align: justify</code> 配合 <code>text-align-last: justify</code> 把每行两端撑满；二是给前一段文本固定宽度，让后面的内容从同一条竖线开始。</p>
+<span id="more"></span>
 
-<h2 id="对齐文本方式一"><a href="#对齐文本方式一" class="headerlink" title="对齐文本方式一"></a>对齐文本方式一</h2><h3 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h3><p><img src="/../../img/textAlignStyle1.png" alt="示例"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
-<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><ul>
-<li>外层使用 flex flex-col</li>
-<li>内层最好不用使用 flex 将文本内容包裹起来，会失效</li>
-<li>内层只有文本会更准确点</li>
-<li>text-align 和 text-align-last 要结合使用，并且值为 justify</li>
+<h2 id="背景：两种对齐的差别"><a href="#背景：两种对齐的差别" class="headerlink" title="背景：两种对齐的差别"></a>背景：两种对齐的差别</h2><ul>
+<li>两端对齐：字距被自动拉开，所有词的行首、行尾都对齐，适合中文单词标签。</li>
+<li>固定宽度：文字仍是左对齐，只是给前面的文本留出统一宽度，后面的内容按最长文本的位置对齐。</li>
 </ul>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.text_space &#123;</span><br><span class="line">	text-align: justify;</span><br><span class="line">	text-align-last: justify;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;flex flex-col text_space&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span>模糊<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span>亮度<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span>灰度<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span>透明度<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span>对比度<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="第一步：用-text-align-实现两端对齐"><a href="#第一步：用-text-align-实现两端对齐" class="headerlink" title="第一步：用 text-align 实现两端对齐"></a>第一步：用 text-align 实现两端对齐</h2><p>实现后的效果如下：</p>
+<p><img src="/../../img/textAlignStyle1.png" alt="示例"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>核心只有两行样式：<code>text-align</code> 处理非最后一行的两端对齐，<code>text-align-last</code> 处理最后一行的两端对齐，两者都要设成 <code>justify</code>：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.text_space</span> &#123;</span><br><span class="line">  <span class="attribute">text-align</span>: justify;</span><br><span class="line">  <span class="attribute">text-align-last</span>: justify;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="对齐文本方式二"><a href="#对齐文本方式二" class="headerlink" title="对齐文本方式二"></a>对齐文本方式二</h2><h3 id="样式-1"><a href="#样式-1" class="headerlink" title="样式"></a>样式</h3><ul>
-<li>文字左对齐，然后文字后面的样式按照最长文字的距离来</li>
-<li>本质就是固定前面的文本的长度</li>
-</ul>
-<h3 id="示例：-使用-tailwind-语法"><a href="#示例：-使用-tailwind-语法" class="headerlink" title="示例：(使用 tailwind 语法)"></a>示例：(使用 tailwind 语法)</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;flex flex-col&#x27;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;flex items-center&#x27;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;w-[60px]&#x27;</span>&gt;</span>apple<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span>&gt;</span>oppo<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;flex items-center&#x27;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;w-[60px]&#x27;</span>&gt;</span>banane<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;flex items-center&#x27;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;w-[60px]&#x27;</span>&gt;</span>gray<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>结构上用纵向 flex 排列，每个词单独占一行，且内层只放文本：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div className=<span class="string">&quot;flex flex-col text_space&quot;</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>模糊<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>亮度<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>灰度<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>透明度<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>对比度<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="第二步：用固定宽度对齐前段文本"><a href="#第二步：用固定宽度对齐前段文本" class="headerlink" title="第二步：用固定宽度对齐前段文本"></a>第二步：用固定宽度对齐前段文本</h2><p>这种方式不改变文字对齐方式，只是把前面的词放进一个定宽盒子，本质就是固定前面文本的长度，后面的内容自然从同一位置开始：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div className=<span class="string">&#x27;flex flex-col&#x27;</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;flex items-center&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;w-[60px]&#x27;</span>&gt;</span>apple<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>oppo<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;flex items-center&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;w-[60px]&#x27;</span>&gt;</span>banane<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;flex items-center&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;w-[60px]&#x27;</span>&gt;</span>gray<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ol>
+<li>外层使用 <code>flex flex-col</code>，纵向排列才能让每个词各占一行。</li>
+<li>内层最好不要再套一层 flex 把文本包起来，会导致对齐失效。</li>
+<li>内层只有文本时对齐效果更准确，多包一层元素就容易对不齐。</li>
+<li><code>text-align</code> 和 <code>text-align-last</code> 要结合使用，并且值都为 <code>justify</code>，只写其中一个时最后一行仍然不会被撑满。</li>
+<li>方式二的 <code>w-[60px]</code> 需要按最长的那条文本调整，文本变长后要同步改宽度，否则会换行。</li>
+</ol>
 
 </article>
     
@@ -571,11 +581,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/%E6%A1%88%E4%BE%8B%20-%20%E5%85%89%E5%BD%B1%E6%95%88%E6%9E%9C/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/%E6%A1%88%E4%BE%8B%20-%20%E6%97%B6%E9%97%B4%E8%BD%B4%E7%89%B9%E6%95%88/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">案例-光影特效</h6>
+                <h6 class="trm-op-title">案例-时间轴特效</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -668,7 +678,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="对齐文本方式一"><a rel="nofollow" class="trm-toc-link" href="#对齐文本方式一"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">对齐文本方式一</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="样式"><a rel="nofollow" class="trm-toc-link" href="#样式"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">样式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="注意点"><a rel="nofollow" class="trm-toc-link" href="#注意点"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">注意点</span></a></li><li class="trm-toc-item trm-toc-level-3" title="示例："><a rel="nofollow" class="trm-toc-link" href="#示例："><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">示例：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="对齐文本方式二"><a rel="nofollow" class="trm-toc-link" href="#对齐文本方式二"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">对齐文本方式二</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="样式"><a rel="nofollow" class="trm-toc-link" href="#样式-1"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">样式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="示例：(使用 tailwind 语法)"><a rel="nofollow" class="trm-toc-link" href="#示例：-使用-tailwind-语法"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">示例：(使用 tailwind 语法)</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景：两种对齐的差别"><a rel="nofollow" class="trm-toc-link" href="#背景：两种对齐的差别"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景：两种对齐的差别</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第一步：用 text-align 实现两端对齐"><a rel="nofollow" class="trm-toc-link" href="#第一步：用-text-align-实现两端对齐"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">第一步：用 text-align 实现两端对齐</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第二步：用固定宽度对齐前段文本"><a rel="nofollow" class="trm-toc-link" href="#第二步：用固定宽度对齐前段文本"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">第二步：用固定宽度对齐前段文本</span></a></li><li class="trm-toc-item trm-toc-level-2" title="注意点"><a rel="nofollow" class="trm-toc-link" href="#注意点"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">注意点</span></a></li></ol>
       </div>
     </div>
 
@@ -792,6 +802,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="块级作用域和上下文会改变用let  全局用常量const，表示不应该改变  静态字符串一律使用单引号或反引号。动态字符串使用反引号。  使用数组&#x2F;对象成员对变量赋值时和返回多个值时，优先使用解构赋值。 123const arr &#x3D; [1, 2, 3, 4];&#x2F;&#x2F; goodconst [first, second] &#x3D; arr; 单行定义的对象，最后不以逗号结尾。多行，最后以逗号结">
+<meta name="description" content="围绕块级作用域与上下文变化，说明何时使用 let 和 const，并梳理字符串、解构、函数、模块与 ESLint 配置的编码约定">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ES6-编程风格">
+<meta property="og:title" content="编程风格">
 <meta property="og:url" content="http://example.com/en/2024/10/31/ES6/es6-%E7%BC%96%E7%A8%8B%E9%A3%8E%E6%A0%BC/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="块级作用域和上下文会改变用let  全局用常量const，表示不应该改变  静态字符串一律使用单引号或反引号。动态字符串使用反引号。  使用数组&#x2F;对象成员对变量赋值时和返回多个值时，优先使用解构赋值。 123const arr &#x3D; [1, 2, 3, 4];&#x2F;&#x2F; goodconst [first, second] &#x3D; arr; 单行定义的对象，最后不以逗号结尾。多行，最后以逗号结">
+<meta property="og:description" content="围绕块级作用域与上下文变化，说明何时使用 let 和 const，并梳理字符串、解构、函数、模块与 ESLint 配置的编码约定">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-10-31T07:54:04.619Z">
-<meta property="article:modified_time" content="2025-07-29T02:22:31.362Z">
+<meta property="article:published_time" content="2024-10-31T07:54:04.000Z">
+<meta property="article:modified_time" content="2026-11-18T03:58:56.539Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="ES6">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <meta name="keywords" content="es6">
 
 
-<title >ES6-编程风格</title>
+<title >编程风格</title>
 
 <!-- Favicon -->
 
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-29 10:22:31"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-18 11:58:56"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -83,6 +83,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -197,13 +199,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -239,7 +241,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -257,13 +259,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -385,7 +387,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            ES6-编程风格
+                            编程风格
                         </h1>
 
                         
@@ -532,47 +534,65 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>这篇是 ES6 的编码风格清单，覆盖变量声明、字符串、解构、对象字面量、函数参数、数据结构、类与模块、工具链八块。核心只有三条：能用 <code>const</code> 就不写 <code>let</code>；能用声明式写法（解构、扩展运算符、rest 参数、默认值）就不写命令式的赋值和判断；模块统一用 <code>import</code> &#x2F; <code>export</code>。下面每条给一句规则和一个最小示例，可以照着直接改代码。</p>
+<span id="more"></span>
 
-<ul>
-<li><p>块级作用域和上下文会改变用let</p>
-</li>
-<li><p>全局用常量const，表示不应该改变</p>
-</li>
-<li><p>静态字符串一律使用单引号或反引号。动态字符串使用反引号。</p>
-</li>
-<li><p>使用数组&#x2F;对象成员对变量赋值时和返回多个值时，优先使用解构赋值。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">const</span> [first, second] = arr;</span><br></pre></td></tr></table></figure></li>
-<li><p>单行定义的对象，最后不以逗号结尾。多行，最后以逗号结尾</p>
-</li>
-<li><p>使用扩展运算符（…）拷贝数组，使用Array.from 方法，将类数组的对象转为数组</p>
-</li>
-<li><p>立即执行函数可以写成箭头函数的形式。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 匿名函数</span></span><br><span class="line">(<span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Welcome to the Internet.&#x27;</span>))();</span><br><span class="line"></span><br><span class="line"><span class="comment">// best</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].<span class="title function_">map</span>(<span class="function"><span class="params">x</span> =&gt;</span> x * x);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 箭头函数(取代Function.prototype.bind，不应再用 self/_this/that 绑定 this)</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">args</span> = (<span class="params"></span>) =&gt; &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// best</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">boundMethod</span> = (<span class="params">...params</span>) =&gt; method.<span class="title function_">apply</span>(<span class="variable language_">this</span>, params);</span><br></pre></td></tr></table></figure></li>
-<li><p>所有配置项都应该集中在一个对象，放在最后一个参数，布尔值不可以直接作为参数。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">divide</span>(<span class="params">a, b, &#123; option = <span class="literal">false</span> &#125; = &#123;&#125;</span>) &#123;&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>不要在函数体内使用 arguments 变量，使用 rest 运算符（…）代替</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">concatenateAll</span>(<span class="params">...args</span>) &#123;</span><br><span class="line"><span class="keyword">return</span> args.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>使用默认值语法设置函数参数的默认值。</p>
+<h2 id="背景：为什么要先定风格"><a href="#背景：为什么要先定风格" class="headerlink" title="背景：为什么要先定风格"></a>背景：为什么要先定风格</h2><p>ES6 新增的语法大多有”新旧两种写法”，比如 <code>var</code> 与 <code>let</code>&#x2F;<code>const</code>、<code>+</code> 拼接与模板字符串、<code>arguments</code> 与 rest 参数。同一项目里混用会带来两类问题：作用域相关的隐蔽 bug，以及 code review 时反复争论写法。先约定规则，再用 ESLint 固化，是最省事的做法。</p>
+<h2 id="1-变量声明：优先-const，需要改再用-let"><a href="#1-变量声明：优先-const，需要改再用-let" class="headerlink" title="1. 变量声明：优先 const，需要改再用 let"></a>1. 变量声明：优先 <code>const</code>，需要改再用 <code>let</code></h2><p>一句话：块级作用域和上下文会改变的地方用 <code>let</code>；全局常量和不应被重新赋值的引用用 <code>const</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不会重新赋值，用 const</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">MAX_COUNT</span> = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 循环变量每轮都要变，用 let</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：<code>const</code> 只保证”绑定”不变，对象和数组的内容仍然可以修改，<code>const arr = []; arr.push(1)</code> 是合法的。</p>
+<h2 id="2-字符串：静态用单引号或反引号，动态用反引号"><a href="#2-字符串：静态用单引号或反引号，动态用反引号" class="headerlink" title="2. 字符串：静态用单引号或反引号，动态用反引号"></a>2. 字符串：静态用单引号或反引号，动态用反引号</h2><p>一句话：静态字符串一律使用单引号或反引号，需要插值的动态字符串使用反引号。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 静态字符串：单引号</span></span><br><span class="line"><span class="keyword">const</span> name = <span class="string">&#x27;es6&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 动态字符串：模板字符串，避免用 + 拼接</span></span><br><span class="line"><span class="keyword">const</span> greeting = <span class="string">`hello <span class="subst">$&#123;name&#125;</span>`</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-解构赋值：取成员和多返回值时优先使用"><a href="#3-解构赋值：取成员和多返回值时优先使用" class="headerlink" title="3. 解构赋值：取成员和多返回值时优先使用"></a>3. 解构赋值：取成员和多返回值时优先使用</h2><p>一句话：使用数组&#x2F;对象成员对变量赋值时，以及函数返回多个值时，优先使用解构赋值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">const</span> [first, second] = arr;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-对象字面量：单行不结尾逗号，多行结尾逗号"><a href="#4-对象字面量：单行不结尾逗号，多行结尾逗号" class="headerlink" title="4. 对象字面量：单行不结尾逗号，多行结尾逗号"></a>4. 对象字面量：单行不结尾逗号，多行结尾逗号</h2><p>一句话：单行定义的对象，最后不以逗号结尾；多行定义的对象，最后以逗号结尾。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单行：最后不加逗号</span></span><br><span class="line"><span class="keyword">const</span> point = &#123; <span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 多行：最后一行保留逗号</span></span><br><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">  <span class="attr">host</span>: <span class="string">&#x27;localhost&#x27;</span>,</span><br><span class="line">  <span class="attr">port</span>: <span class="number">3000</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>注意：多行尾逗号的好处是以后增删属性时 diff 只变动一行，不用连带修改上一行的逗号。</p>
+<h2 id="5-数组：拷贝用扩展运算符，类数组用-Array-from"><a href="#5-数组：拷贝用扩展运算符，类数组用-Array-from" class="headerlink" title="5. 数组：拷贝用扩展运算符，类数组用 Array.from"></a>5. 数组：拷贝用扩展运算符，类数组用 <code>Array.from</code></h2><p>一句话：使用扩展运算符（<code>...</code>）拷贝数组，使用 <code>Array.from</code> 方法将类数组对象转为数组。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 浅拷贝数组</span></span><br><span class="line"><span class="keyword">const</span> copy = [...arr];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类数组对象转数组</span></span><br><span class="line"><span class="keyword">const</span> nodes = <span class="title class_">Array</span>.<span class="title function_">from</span>(<span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;li&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>注意：<code>...</code> 拷贝是浅拷贝，元素是对象时新旧数组仍共享引用。</p>
+<h2 id="6-函数：箭头函数、rest-参数、默认值"><a href="#6-函数：箭头函数、rest-参数、默认值" class="headerlink" title="6. 函数：箭头函数、rest 参数、默认值"></a>6. 函数：箭头函数、rest 参数、默认值</h2><p>一句话：立即执行函数可以写成箭头函数的形式，回调和需要固定 <code>this</code> 的场景也优先用箭头函数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 匿名函数形式的立即执行函数</span></span><br><span class="line">(<span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Welcome to the Internet.&#x27;</span>))();</span><br><span class="line"></span><br><span class="line"><span class="comment">// best：回调</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].<span class="title function_">map</span>(<span class="function"><span class="params">x</span> =&gt;</span> x * x);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 箭头函数（取代 Function.prototype.bind，不应再用 self/_this/that 绑定 this）</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">args</span> = (<span class="params"></span>) =&gt; &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一句话：用箭头函数加 <code>apply</code> 可以替代 <code>Function.prototype.bind</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// best</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">boundMethod</span> = (<span class="params">...params</span>) =&gt; method.<span class="title function_">apply</span>(<span class="variable language_">this</span>, params);</span><br></pre></td></tr></table></figure>
+
+<p>注意：箭头函数没有自己的 <code>this</code> 和 <code>arguments</code>，所以它继承外层作用域；这也意味着在箭头函数里写 <code>arguments</code> 拿到的是外层的，不是当前函数的。</p>
+<p>一句话：所有配置项都应该集中在一个对象里，放在最后一个参数，布尔值不可以直接作为参数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">divide</span>(<span class="params">a, b, &#123; option = <span class="literal">false</span> &#125; = &#123;&#125;</span>) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一句话：不要在函数体内使用 <code>arguments</code> 变量，使用 rest 运算符（<code>...</code>）代替。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">concatenateAll</span>(<span class="params">...args</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> args.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一句话：使用默认值语法设置函数参数的默认值，不要在函数体里写判断。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">handleThings</span>(<span class="params">opts = &#123;&#125;</span>) &#123;&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>key: value的数据结构，使用 Map 结构，模拟现实世界的实体对象时，使用 Object</p>
-</li>
-<li><p>用class取代需要 prototype 的操作，使用extends实现继承</p>
-</li>
-<li><p>import取代require()、export取代module.exports</p>
-</li>
-<li><p>模块只有一个输出值，使用export defaul</p>
-<ul>
-<li>输出的函数名的首字母应该小写，对象名的首字母应该大写</li>
-</ul>
-</li>
-<li><p>在项目的根目录安装 ESLint</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev eslint</span><br><span class="line">npm install --save-dev eslint-config-airbnb</span><br><span class="line">npm install --save-dev eslint-plugin-<span class="keyword">import</span> eslint-plugin-jsx-a11y eslint-plugin-react</span><br></pre></td></tr></table></figure></li>
-<li><p>在项目的根目录下新建一个.eslintrc文件，配置 ESLint</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;extends&quot;</span>: <span class="string">&quot;eslint-config-airbnb&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
+
+<h2 id="7-数据结构：键值对用-Map，实体对象用-Object"><a href="#7-数据结构：键值对用-Map，实体对象用-Object" class="headerlink" title="7. 数据结构：键值对用 Map，实体对象用 Object"></a>7. 数据结构：键值对用 Map，实体对象用 Object</h2><p>一句话：<code>key: value</code> 的数据结构使用 <code>Map</code> 结构，模拟现实世界的实体对象时使用 <code>Object</code>。</p>
+<p>注意：<code>Map</code> 的键可以是任意类型、有稳定的插入顺序和 <code>size</code> 属性，适合做字典和缓存；<code>Object</code> 适合描述一个有固定字段的实体，便于序列化和解构。</p>
+<h2 id="8-类与模块：class-extends、import-export"><a href="#8-类与模块：class-extends、import-export" class="headerlink" title="8. 类与模块：class &#x2F; extends、import &#x2F; export"></a>8. 类与模块：class &#x2F; extends、import &#x2F; export</h2><p>一句话：用 <code>class</code> 取代需要操作 <code>prototype</code> 的写法，使用 <code>extends</code> 实现继承。</p>
+<p>一句话：用 <code>import</code> 取代 <code>require()</code>、用 <code>export</code> 取代 <code>module.exports</code>；模块只有一个输出值时，使用 <code>export default</code>。输出的函数名首字母应该小写，对象名的首字母应该大写。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 只有一个输出，且是函数：函数名首字母小写</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">formatDate</span>(<span class="params">date</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 只有一个输出，且是对象：对象名首字母大写</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Config</span> = &#123;&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">Config</span>;</span><br></pre></td></tr></table></figure>
+
+<br />
+
+<h2 id="9-工具链：安装并配置-ESLint"><a href="#9-工具链：安装并配置-ESLint" class="headerlink" title="9. 工具链：安装并配置 ESLint"></a>9. 工具链：安装并配置 ESLint</h2><p>一句话：在项目根目录安装 ESLint 和 Airbnb 规则集，然后新建 <code>.eslintrc</code> 指向该规则集。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev eslint</span><br><span class="line">npm install --save-dev eslint-config-airbnb</span><br><span class="line">npm install --save-dev eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react</span><br></pre></td></tr></table></figure>
+
+<p>一句话：配置文件的全部内容就是继承 Airbnb 规则集。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;extends&quot;</span><span class="punctuation">:</span> <span class="string">&quot;eslint-config-airbnb&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：原文把这两段都标成了 <code>js</code>，实际上第一条是终端命令、第二条是 JSON 配置，这里改成了 <code>bash</code> 和 <code>json</code>。另外 ESLint v9 起默认使用扁平配置 <code>eslint.config.js</code>，<code>.eslintrc</code> 需要显式开启兼容模式；如果项目用新版 ESLint，这条配置要按官方迁移指南改写。Airbnb 规则集还要求同时安装 <code>eslint-plugin-import</code>、<code>eslint-plugin-jsx-a11y</code>、<code>eslint-plugin-react</code> 这几个 peer 依赖，第三行命令已包含。</p>
+<h2 id="踩坑与注意点"><a href="#踩坑与注意点" class="headerlink" title="踩坑与注意点"></a>踩坑与注意点</h2><ol>
+<li><code>const</code> 约束的是绑定不是值，对象内容依然可变。</li>
+<li>箭头函数没有自己的 <code>this</code>、<code>arguments</code>，不能用作构造函数，也不适合需要动态 <code>this</code> 的方法。</li>
+<li>布尔值直接作为参数（如 <code>divide(10, 2, true)</code>）可读性差，统一改成选项对象。</li>
+<li><code>.eslintrc</code> 只在 ESLint v8 及以前的默认模式下生效，v9 默认使用扁平配置。</li>
+</ol>
 
 </article>
     
@@ -592,11 +612,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/31/ES6/es6-%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%8B%93%E5%B1%95/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/31/ES6/es6-%E6%95%B0%E7%BB%84%E7%9A%84%E6%8B%93%E5%B1%95/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">ES6-对象的拓展</h6>
+                <h6 class="trm-op-title">数组的拓展</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -613,11 +633,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/31/ES6/es6-set%E5%92%8Cmap/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/31/ES6/es6-%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">ES6-Set/Map构造函数</h6>
+                <h6 class="trm-op-title">解构赋值</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -681,8 +701,24 @@
 
             
 
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景：为什么要先定风格"><a rel="nofollow" class="trm-toc-link" href="#背景：为什么要先定风格"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景：为什么要先定风格</span></a></li><li class="trm-toc-item trm-toc-level-2" title="1. 变量声明：优先 const，需要改再用 let"><a rel="nofollow" class="trm-toc-link" href="#1-变量声明：优先-const，需要改再用-let"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">1. 变量声明：优先 const，需要改再用 let</span></a></li><li class="trm-toc-item trm-toc-level-2" title="2. 字符串：静态用单引号或反引号，动态用反引号"><a rel="nofollow" class="trm-toc-link" href="#2-字符串：静态用单引号或反引号，动态用反引号"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">2. 字符串：静态用单引号或反引号，动态用反引号</span></a></li><li class="trm-toc-item trm-toc-level-2" title="3. 解构赋值：取成员和多返回值时优先使用"><a rel="nofollow" class="trm-toc-link" href="#3-解构赋值：取成员和多返回值时优先使用"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">3. 解构赋值：取成员和多返回值时优先使用</span></a></li><li class="trm-toc-item trm-toc-level-2" title="4. 对象字面量：单行不结尾逗号，多行结尾逗号"><a rel="nofollow" class="trm-toc-link" href="#4-对象字面量：单行不结尾逗号，多行结尾逗号"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">4. 对象字面量：单行不结尾逗号，多行结尾逗号</span></a></li><li class="trm-toc-item trm-toc-level-2" title="5. 数组：拷贝用扩展运算符，类数组用 Array.from"><a rel="nofollow" class="trm-toc-link" href="#5-数组：拷贝用扩展运算符，类数组用-Array-from"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">5. 数组：拷贝用扩展运算符，类数组用 Array.from</span></a></li><li class="trm-toc-item trm-toc-level-2" title="6. 函数：箭头函数、rest 参数、默认值"><a rel="nofollow" class="trm-toc-link" href="#6-函数：箭头函数、rest-参数、默认值"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">6. 函数：箭头函数、rest 参数、默认值</span></a></li><li class="trm-toc-item trm-toc-level-2" title="7. 数据结构：键值对用 Map，实体对象用 Object"><a rel="nofollow" class="trm-toc-link" href="#7-数据结构：键值对用-Map，实体对象用-Object"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">7. 数据结构：键值对用 Map，实体对象用 Object</span></a></li><li class="trm-toc-item trm-toc-level-2" title="8. 类与模块：class &#x2F; extends、import &#x2F; export"><a rel="nofollow" class="trm-toc-link" href="#8-类与模块：class-extends、import-export"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">8. 类与模块：class &#x2F; extends、import &#x2F; export</span></a></li><li class="trm-toc-item trm-toc-level-2" title="9. 工具链：安装并配置 ESLint"><a rel="nofollow" class="trm-toc-link" href="#9-工具链：安装并配置-ESLint"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">9. 工具链：安装并配置 ESLint</span></a></li><li class="trm-toc-item trm-toc-level-2" title="踩坑与注意点"><a rel="nofollow" class="trm-toc-link" href="#踩坑与注意点"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">踩坑与注意点</span></a></li></ol>
+      </div>
+    </div>
+
             
 <div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
     
     
         <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
@@ -797,6 +833,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

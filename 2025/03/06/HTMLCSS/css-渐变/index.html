@@ -7,17 +7,17 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="前提 属于background的背景方式之一 语法：1background: 渐变函数; 渐变可以使用关键字作为起始位置，但在小程序中关键字无效   线性渐变linear-gradient() 场景：条纹背景 语法：1linear-gradient(角度，起始颜色， 终止颜色) 多个渐变,可以用百分比，确定每个颜色从那个位置开始过渡1linear-gradient(red 0%, orang">
+<meta name="description" content="梳理线性、径向和圆锥三种渐变的语法与方向参数，说明它们在背景中的组合与调试方式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS-渐变篇">
 <meta property="og:url" content="http://example.com/2025/03/06/HTMLCSS/css-%E6%B8%90%E5%8F%98/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="前提 属于background的背景方式之一 语法：1background: 渐变函数; 渐变可以使用关键字作为起始位置，但在小程序中关键字无效   线性渐变linear-gradient() 场景：条纹背景 语法：1linear-gradient(角度，起始颜色， 终止颜色) 多个渐变,可以用百分比，确定每个颜色从那个位置开始过渡1linear-gradient(red 0%, orang">
+<meta property="og:description" content="梳理线性、径向和圆锥三种渐变的语法与方向参数，说明它们在背景中的组合与调试方式">
 <meta property="og:locale">
 <meta property="og:image" content="http://example.com/img/404.jpg">
 <meta property="og:image" content="http://example.com/img/404.jpg">
-<meta property="article:published_time" content="2025-03-06T06:54:08.930Z">
-<meta property="article:modified_time" content="2025-07-30T07:49:01.321Z">
+<meta property="article:published_time" content="2025-03-06T06:54:08.000Z">
+<meta property="article:modified_time" content="2026-11-17T02:21:32.989Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="CSS">
 <meta property="article:tag" content="渐变">
@@ -72,7 +72,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-30 15:49:01"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-17 10:21:32"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -87,6 +87,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -201,13 +203,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -243,7 +245,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -261,13 +263,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -536,79 +538,107 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>CSS 渐变有三种：线性的 <code>linear-gradient</code>、径向的 <code>radial-gradient</code>、圆锥的 <code>conic-gradient</code>，三种都有对应的 <code>repeating-</code> 版本用来铺满容器。核心只有两件事：给一个方向（或位置），再给若干“颜色 + 起止位置”；颜色带区间就出硬边条纹，颜色不带区间就是平滑过渡。这篇把六种写法、参数含义和一个充电环实例整理在一起。</p>
+<span id="more"></span>
 
-<h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><ul>
-<li>属于background的背景方式之一</li>
-<li>语法：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">background</span>: 渐变函数;</span><br></pre></td></tr></table></figure></li>
+<h2 id="背景：渐变属于背景图"><a href="#背景：渐变属于背景图" class="headerlink" title="背景：渐变属于背景图"></a>背景：渐变属于背景图</h2><ul>
+<li>渐变属于 <code>background</code> 的背景方式之一</li>
 <li>渐变可以使用关键字作为起始位置，但在小程序中关键字无效</li>
 </ul>
+<p>基本语法是先选渐变函数，再交给 <code>background</code>：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">background</span>: 渐变函数;</span><br></pre></td></tr></table></figure>
+
 <p><img src="/../../img/visualization/gradient.jpg" alt="渐变"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
-<h2 id="线性渐变linear-gradient"><a href="#线性渐变linear-gradient" class="headerlink" title="线性渐变linear-gradient()"></a>线性渐变linear-gradient()</h2><ul>
-<li>场景：条纹背景</li>
-<li>语法：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linear-gradient(角度，起始颜色， 终止颜色)</span><br></pre></td></tr></table></figure></li>
-<li>多个渐变,可以用百分比，确定每个颜色从那个位置开始过渡<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linear-gradient(red <span class="number">0%</span>, orange <span class="number">25%</span>, blue <span class="number">50%</span>, black <span class="number">90%</span>);</span><br></pre></td></tr></table></figure></li>
-<li>如果每个颜色都有起始和结束，则形成条纹(色块分明)，起始0%和结束100%可以忽略不写<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linear-gradient(<span class="selector-tag">to</span> <span class="attribute">right</span>, red <span class="number">20%</span>, orange <span class="number">20%</span> <span class="number">40%</span>, yellow <span class="number">40%</span> <span class="number">60%</span>, green <span class="number">60%</span> <span class="number">80%</span>, blue <span class="number">80%</span>);</span><br></pre></td></tr></table></figure></li>
+<p>下面按线性、径向、圆锥三类依次说明，每类先讲普通版，再讲重复版。</p>
+<h2 id="第一步：线性渐变-linear-gradient"><a href="#第一步：线性渐变-linear-gradient" class="headerlink" title="第一步：线性渐变 linear-gradient()"></a>第一步：线性渐变 linear-gradient()</h2><p>线性渐变常用于条纹背景，颜色沿着一条直线变化。基础语法如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linear-gradient(角度, 起始颜色, 终止颜色)</span><br></pre></td></tr></table></figure>
+
+<p>多个颜色可以用百分比确定每个颜色从哪个位置开始过渡：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linear-gradient(red <span class="number">0%</span>, orange <span class="number">25%</span>, blue <span class="number">50%</span>, black <span class="number">90%</span>);</span><br></pre></td></tr></table></figure>
+
+<p>如果每个颜色都同时给出起始和结束位置，就会形成条纹（色块分明）。此时起始的 0% 和结束的 100% 可以忽略不写：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linear-gradient(<span class="selector-tag">to</span> <span class="attribute">right</span>, red <span class="number">20%</span>, orange <span class="number">20%</span> <span class="number">40%</span>, yellow <span class="number">40%</span> <span class="number">60%</span>, green <span class="number">60%</span> <span class="number">80%</span>, blue <span class="number">80%</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="第二步：重复线性渐变-repeating-linear-gradient"><a href="#第二步：重复线性渐变-repeating-linear-gradient" class="headerlink" title="第二步：重复线性渐变 repeating-linear-gradient()"></a>第二步：重复线性渐变 repeating-linear-gradient()</h2><p>语法跟 <code>linear-gradient()</code> 一样，但最后一个颜色必须给一个长度。如果没有长度，默认按 0-100% 处理，不会重复渐变；只要末尾有长度，就会无限循环直到容器被填满。</p>
+<p>只有末尾颜色带值时，按「0% - 最后一个颜色的值」重复：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repeating-linear-gradient(<span class="number">45deg</span>, white, grey <span class="number">25%</span>);</span><br></pre></td></tr></table></figure>
+
+<p>每个颜色都带值时，按「第一个颜色的值 - 最后一个颜色的值」重复：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repeating-linear-gradient(<span class="number">45deg</span>, white <span class="number">10%</span>, red <span class="number">15%</span>, grey <span class="number">20%</span>); <span class="comment">/* 代表每 10-20% 是一个渐变轮回 */</span></span><br></pre></td></tr></table></figure>
+
+<p>每个颜色都带区间值时形成条纹，按「第一个颜色的最小区间值 - 最后一个颜色的最大区间值」重复：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">repeating-linear-gradient(<span class="number">45deg</span>, grey -<span class="number">10%</span> <span class="number">0%</span>, white <span class="number">0%</span> <span class="number">5%</span>, green <span class="number">5%</span> <span class="number">10%</span>);</span><br><span class="line"><span class="comment">/* 代表每 -10%-10% 是一个渐变轮回，且色块分明，没有渐变过渡效果 */</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="第三步：径向渐变-radial-gradient"><a href="#第三步：径向渐变-radial-gradient" class="headerlink" title="第三步：径向渐变 radial-gradient()"></a>第三步：径向渐变 radial-gradient()</h2><p>径向渐变由原点一圈一圈往外形成。语法如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">radial-gradient(渐变位置, 渐变结束位置, 中间的颜色, 结束的颜色)</span><br></pre></td></tr></table></figure>
+
+<p>渐变位置有 <code>circle</code> 和 <code>ellipse</code> 两种形状。</p>
+<p>用关键字指定形状和位置，圆心在中心：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">radial-gradient(<span class="selector-tag">circle</span> at center, red, blue)</span><br></pre></td></tr></table></figure>
+
+<p>不写位置时默认为 <code>center</code>：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 不写位置时默认 at center */</span></span><br><span class="line">radial-gradient(<span class="selector-tag">circle</span>, red, blue)</span><br></pre></td></tr></table></figure>
+
+<p>关键字加范围可以限制第一个颜色的大小（包括渐变），下面的写法表示中间红色只有 50px：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">radial-gradient(<span class="selector-tag">circle</span> <span class="number">50px</span> at center, red, blue); <span class="comment">/* 代表中间红色只有 50px */</span></span><br></pre></td></tr></table></figure>
+
+<p>椭圆比圆多一个范围值，其他写法一样：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">radial-gradient(<span class="selector-tag">ellipse</span> <span class="number">50px</span> <span class="number">20px</span> at center, red, blue)</span><br></pre></td></tr></table></figure>
+
+<p>渐变结束形状有四种：</p>
+<ul>
+<li><code>farthest-corner</code>：默认值，最远角</li>
+<li><code>farthest-side</code>：与容器距离渐变中心点最远的一边，或最远的垂直和水平边相切</li>
+<li><code>closest-side</code>：与容器距离渐变中心点最近的一边（圆）或最近的垂直和水平边（椭圆）相切</li>
+<li><code>closest-corner</code>：最近角</li>
 </ul>
-<h3 id="重复线性渐变repeating-linear-gradient"><a href="#重复线性渐变repeating-linear-gradient" class="headerlink" title="重复线性渐变repeating-linear-gradient()"></a>重复线性渐变repeating-linear-gradient()</h3><ul>
-<li>语法跟linear-gradient()一样，但是最后一个颜色要给一个长度，如果没有长度，默认长度0-100%，不会重复渐变。</li>
-<li>只要末尾有长度，就会无限循环直到容器被填满</li>
-<li>只有末尾有值：<span class="key_words">『(0%-最后一个颜色的值)』</span>的重复渐变<ul>
-<li>示例：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repeating-linear-gradient(<span class="number">45deg</span>, white, grey <span class="number">25%</span>);</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>每个颜色都带值: <span class="key_words">『(第一个颜色的值-最后一个颜色的值)』</span>的重复渐变<ul>
-<li>示例：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repeating-linear-gradient(<span class="number">45deg</span>, white <span class="number">10%</span>, red <span class="number">15%</span>, grey <span class="number">20%</span>); // 代表每<span class="number">10</span>-<span class="number">20%</span>是一个渐变轮回</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>每个颜色都带区间值，条纹：<span class="key_words">『(第一个颜色的最小区间值-最后一个颜色的最大区间值)』</span>的重复渐变<ul>
-<li>示例：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">repeating-linear-gradient(<span class="number">45deg</span>, grey -<span class="number">10%</span> <span class="number">0%</span>, white <span class="number">0%</span> <span class="number">5%</span>, green <span class="number">5%</span> <span class="number">10%</span>);</span><br><span class="line">// 代表每-<span class="number">10%</span>-<span class="number">10%</span>是一个渐变轮回,且色块分明，没有渐变过渡效果 </span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h2 id="径向渐变radial-gradient-由原点一圈一圈往外形成"><a href="#径向渐变radial-gradient-由原点一圈一圈往外形成" class="headerlink" title="径向渐变radial-gradient() - 由原点一圈一圈往外形成"></a>径向渐变radial-gradient() - 由原点一圈一圈往外形成</h2><ul>
-<li>语法：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">radial-gradient(渐变位置, 渐变结束位置, 中间的颜色, 结束的颜色)</span><br></pre></td></tr></table></figure></li>
-<li>渐变位置：有circle 和 ellipse两种形状<ul>
-<li>关键字：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">radial-gradient(<span class="selector-tag">circle</span> at center, red, blue)</span><br></pre></td></tr></table></figure></li>
-<li>不写，默认：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">center：radial-gradient(<span class="selector-tag">circle</span>, red, blue)</span><br></pre></td></tr></table></figure></li>
-<li>关键字+范围：限制第一个颜色的大小(包括渐变)<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">radial-gradient(<span class="selector-tag">circle</span> <span class="number">50px</span> at center, red, blue); // 代表中间红色只有<span class="number">50px</span></span><br></pre></td></tr></table></figure></li>
-<li>椭圆比圆多一个范围值，其他写法一样：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">radial-gradient(<span class="selector-tag">ellipse</span> <span class="number">50px</span> <span class="number">20px</span> at center, red, blue)</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>渐变结束形状： <ul>
-<li>farthest-corner: 默认,最远角</li>
-<li>farthest-side: 与容器距离渐变中心点最远的一边或最远的垂直和水平边相切</li>
-<li>closest-side: 与容器距离渐变中心点最近的一边(圆)或最近的垂直和水平边(椭圆)相切。</li>
-<li>closest-corner: 最近角</li>
-</ul>
-</li>
-<li>颜色带一个值的，渐变范围在值间，0%和100%默认可以忽略不写<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">radial-gradient(cyan, transparent <span class="number">20%</span>, salmon <span class="number">40%</span>);</span><br><span class="line">// 从中间开始三种颜色<span class="number">0</span>-<span class="number">20</span>是cyan，<span class="number">20</span>-<span class="number">40</span>是transparent，<span class="number">40</span>-<span class="number">100</span>是salmon</span><br></pre></td></tr></table></figure></li>
-<li>每个值固定的区间范围，色块分明<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">radial-gradient(cyan <span class="number">0%</span> <span class="number">10%</span>, transparent <span class="number">20%</span> <span class="number">40%</span>, salmon <span class="number">40%</span> <span class="number">80%</span>, blue);</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="重复径向渐变repeating-radial-gradient"><a href="#重复径向渐变repeating-radial-gradient" class="headerlink" title="重复径向渐变repeating-radial-gradient()"></a>重复径向渐变repeating-radial-gradient()</h3><ul>
-<li>语法与径向渐变一样，但一定要有范围，不管是在位置上还是在跟着颜色在末尾处，只选取其中的最大值重复渐变</li>
-<li>不加位置，只使用颜色，渐变相交<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repeating-radial-gradient(black, white <span class="number">10px</span>);</span><br></pre></td></tr></table></figure></li>
-<li>加了位置，和每个颜色带范围，从位置开始0%-最大值一轮回<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repeating-radial-gradient(<span class="selector-tag">ellipse</span> farthest-corner at <span class="number">20%</span> <span class="number">20%</span>, red, black <span class="number">5%</span>, blue <span class="number">5%</span>, green <span class="number">10%</span>);</span><br></pre></td></tr></table></figure></li>
-<li>区间范围,色块分明<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">background</span>: <span class="built_in">repeating-radial-gradient</span>(ellipse farthest-corner at <span class="number">20%</span> <span class="number">20%</span>, red <span class="number">0</span> <span class="number">5%</span>, green <span class="number">5%</span> <span class="number">10%</span>);</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="圆锥渐变conic-gradient-–-从中间向外放射直线所形成的面"><a href="#圆锥渐变conic-gradient-–-从中间向外放射直线所形成的面" class="headerlink" title="圆锥渐变conic-gradient() – 从中间向外放射直线所形成的面"></a>圆锥渐变conic-gradient() – 从中间向外放射直线所形成的面</h2><ul>
-<li>场景：用来创建环形，扇形,充电等形状的渐变</li>
-<li>语法：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conic-gradient(&lt;起始角度&gt;, &lt;颜色值<span class="number">1</span>&gt; &lt;起始位置&gt;, &lt;颜色值<span class="number">2</span>&gt; &lt;结束位置&gt;,...);</span><br></pre></td></tr></table></figure></li>
-<li>普遍应用<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conic-gradient(color1, color2, color3)</span><br></pre></td></tr></table></figure></li>
-<li>颜色分明，带区间范围<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conic-gradient(color1 <span class="number">0%</span> <span class="number">30%</span>, color2 <span class="number">30%</span> <span class="number">60%</span>)</span><br><span class="line">conic-gradient(color1 <span class="number">30%</span>, color2 <span class="number">30%</span> <span class="number">100%</span>)</span><br></pre></td></tr></table></figure></li>
-<li>带一个值，在值附近会有过渡渐变<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conic-gradient(color1 <span class="number">30%</span>, color2 <span class="number">70%</span>)</span><br></pre></td></tr></table></figure></li>
-<li>动态效果：360旋转这个图形</li>
-<li>想要实现动态充电效果百分比，最主要是动态修改区间范围颜色值的第一个范围</li>
-</ul>
-<h3 id="重复圆锥渐变repeating-conic-gradient"><a href="#重复圆锥渐变repeating-conic-gradient" class="headerlink" title="重复圆锥渐变repeating-conic-gradient()"></a>重复圆锥渐变repeating-conic-gradient()</h3><ul>
-<li>语法与圆锥渐变一样，重复直到把容器填满</li>
-<li>重复渐变使用区间范围的第二中写法不会重复，因为容器默认0%-100%</li>
-</ul>
-<h3 id="用重复圆锥渐变实现一个充电环形底"><a href="#用重复圆锥渐变实现一个充电环形底" class="headerlink" title="用重复圆锥渐变实现一个充电环形底"></a>用重复圆锥渐变实现一个充电环形底</h3><ul>
+<p>颜色只带一个值时，渐变范围落在值之间，0% 和 100% 默认可以忽略不写：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">radial-gradient(cyan, transparent <span class="number">20%</span>, salmon <span class="number">40%</span>);</span><br><span class="line"><span class="comment">/* 从中间开始三种颜色 0-20 是 cyan，20-40 是 transparent，40-100 是 salmon */</span></span><br></pre></td></tr></table></figure>
+
+<p>每个颜色都固定区间范围时，色块分明：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">radial-gradient(cyan <span class="number">0%</span> <span class="number">10%</span>, transparent <span class="number">20%</span> <span class="number">40%</span>, salmon <span class="number">40%</span> <span class="number">80%</span>, blue);</span><br></pre></td></tr></table></figure>
+
+<h2 id="第四步：重复径向渐变-repeating-radial-gradient"><a href="#第四步：重复径向渐变-repeating-radial-gradient" class="headerlink" title="第四步：重复径向渐变 repeating-radial-gradient()"></a>第四步：重复径向渐变 repeating-radial-gradient()</h2><p>语法与径向渐变一样，但一定要有范围，不管范围写在位置上还是跟着颜色写在末尾，都只选取其中的最大值重复渐变。</p>
+<p>不写位置、只使用颜色时，渐变相交：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repeating-radial-gradient(black, white <span class="number">10px</span>);</span><br></pre></td></tr></table></figure>
+
+<p>写了位置，并且每个颜色都带范围时，从位置开始按 0% 到最大值一轮回：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repeating-radial-gradient(<span class="selector-tag">ellipse</span> farthest-corner at <span class="number">20%</span> <span class="number">20%</span>, red, black <span class="number">5%</span>, blue <span class="number">5%</span>, green <span class="number">10%</span>);</span><br></pre></td></tr></table></figure>
+
+<p>使用区间范围时色块分明：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">background</span>: <span class="built_in">repeating-radial-gradient</span>(ellipse farthest-corner at <span class="number">20%</span> <span class="number">20%</span>, red <span class="number">0</span> <span class="number">5%</span>, green <span class="number">5%</span> <span class="number">10%</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="第五步：圆锥渐变-conic-gradient"><a href="#第五步：圆锥渐变-conic-gradient" class="headerlink" title="第五步：圆锥渐变 conic-gradient()"></a>第五步：圆锥渐变 conic-gradient()</h2><p>圆锥渐变是从中间向外放射直线所形成的面，常用来创建环形、扇形、充电等形状的渐变。语法如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conic-gradient(&lt;起始角度&gt;, &lt;颜色值<span class="number">1</span>&gt; &lt;起始位置&gt;, &lt;颜色值<span class="number">2</span>&gt; &lt;结束位置&gt;, ...);</span><br></pre></td></tr></table></figure>
+
+<p>最普通的用法是直接给几个颜色：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conic-gradient(color1, color2, color3)</span><br></pre></td></tr></table></figure>
+
+<p>颜色分明、带区间范围时这样写：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conic-gradient(color1 <span class="number">0%</span> <span class="number">30%</span>, color2 <span class="number">30%</span> <span class="number">60%</span>)</span><br><span class="line">conic-gradient(color1 <span class="number">30%</span>, color2 <span class="number">30%</span> <span class="number">100%</span>)</span><br></pre></td></tr></table></figure>
+
+<p>只带一个值时，值附近会有过渡渐变：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conic-gradient(color1 <span class="number">30%</span>, color2 <span class="number">70%</span>)</span><br></pre></td></tr></table></figure>
+
+<p>要做动态效果，可以 360 度旋转这个图形。想实现动态充电的百分比，最主要的是动态修改区间范围里颜色值的第一个范围。</p>
+<h2 id="第六步：重复圆锥渐变-repeating-conic-gradient"><a href="#第六步：重复圆锥渐变-repeating-conic-gradient" class="headerlink" title="第六步：重复圆锥渐变 repeating-conic-gradient()"></a>第六步：重复圆锥渐变 repeating-conic-gradient()</h2><p>语法与圆锥渐变一样，会重复直到把容器填满。</p>
+<p>注意：重复渐变使用区间范围的第二种写法不会重复，因为容器默认就是 0%-100%。</p>
+<h2 id="实战：用重复圆锥渐变做一个充电环"><a href="#实战：用重复圆锥渐变做一个充电环" class="headerlink" title="实战：用重复圆锥渐变做一个充电环"></a>实战：用重复圆锥渐变做一个充电环</h2><p>实现思路分三层：</p>
+<ul>
 <li>底部的条纹：使用重复圆锥渐变</li>
 <li>中间白色部分：用绝对定位叠加</li>
-<li>进度条：定位一个跟条纹圆形一样大小的圆，置于中间，然后定时改变圆锥渐变的变量<br><img src="/../../img/visualization/charge1-conic.png" alt="条纹充电效果图"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">.<span class="property">bottom</span> &#123;</span><br><span class="line">  <span class="attr">position</span>: relative;</span><br><span class="line">  <span class="attr">width</span>: 200px;</span><br><span class="line">  <span class="attr">height</span>: 200px;</span><br><span class="line">  border-<span class="attr">radius</span>: 200px;</span><br><span class="line">  <span class="attr">background</span>: repeating-conic-<span class="title function_">gradient</span>(#fff <span class="number">0</span> 3deg, #<span class="number">000</span> 3deg 6deg);</span><br><span class="line">  z-<span class="attr">index</span>:<span class="number">20</span>;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="property">center</span> &#123;</span><br><span class="line">  <span class="attr">position</span>: absolute;</span><br><span class="line">  <span class="attr">top</span>:<span class="number">0</span>;</span><br><span class="line">  <span class="attr">left</span>:<span class="number">0</span>;</span><br><span class="line">  <span class="attr">width</span>: 200px;</span><br><span class="line">  <span class="attr">height</span>: 200px;</span><br><span class="line">  border-<span class="attr">radius</span>: 200px;</span><br><span class="line">  z-<span class="attr">index</span>:<span class="number">30</span>;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="property">top</span> &#123;</span><br><span class="line">  <span class="attr">position</span>: absolute;</span><br><span class="line">  <span class="attr">top</span>:10px;</span><br><span class="line">  <span class="attr">left</span>: 10px;</span><br><span class="line">  <span class="attr">width</span>:180px;</span><br><span class="line">  <span class="attr">height</span>:180px;</span><br><span class="line">  border-<span class="attr">radius</span>: 180px;</span><br><span class="line">  <span class="attr">background</span>: white;</span><br><span class="line">  z-<span class="attr">index</span>: <span class="number">50</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;bottom&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;center&quot;</span> <span class="attr">id</span>=<span class="string">&quot;center&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;top&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">let</span> cnt = <span class="number">0</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">let</span> center = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;center&#x27;</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">let</span> timer = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">if</span> (center &gt; <span class="number">100</span>) <span class="built_in">clearInterval</span>(timer)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      center.<span class="property">style</span>.<span class="property">background</span> = <span class="string">`conic-gradient(green <span class="subst">$&#123;cnt&#125;</span>%, transparent <span class="subst">$&#123;cnt&#125;</span>% 100%)`</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      cnt++</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;, <span class="number">100</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br></pre></td></tr></table></figure></li>
+<li>进度条：定位一个跟条纹圆形一样大小的圆，置于中间，然后定时改变圆锥渐变的变量</li>
+</ul>
+<p><img src="/../../img/visualization/charge1-conic.png" alt="条纹充电效果图"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>下面是与上图对应的完整页面结构，条纹底、渐变进度层、白色遮罩层依次叠放：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">  <span class="selector-class">.bottom</span> &#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">position</span>: relative;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">height</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">border-radius</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">background</span>: <span class="built_in">repeating-conic-gradient</span>(<span class="number">#fff</span> <span class="number">0</span> <span class="number">3deg</span>, <span class="number">#000</span> <span class="number">3deg</span> <span class="number">6deg</span>);</span></span><br><span class="line"><span class="language-css">    <span class="attribute">z-index</span>: <span class="number">20</span>;</span></span><br><span class="line"><span class="language-css">  &#125;</span></span><br><span class="line"><span class="language-css">  <span class="selector-class">.center</span> &#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">position</span>: absolute;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">top</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">left</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">height</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">border-radius</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">z-index</span>: <span class="number">30</span>;</span></span><br><span class="line"><span class="language-css">  &#125;</span></span><br><span class="line"><span class="language-css">  <span class="selector-class">.top</span> &#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">position</span>: absolute;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">top</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">left</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">width</span>: <span class="number">180px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">height</span>: <span class="number">180px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">border-radius</span>: <span class="number">180px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">background</span>: white;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">z-index</span>: <span class="number">50</span>;</span></span><br><span class="line"><span class="language-css">  &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;bottom&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;center&quot;</span> <span class="attr">id</span>=<span class="string">&quot;center&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;top&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> cnt = <span class="number">0</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> center = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;center&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> timer = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">if</span> (center &gt; <span class="number">100</span>) <span class="built_in">clearInterval</span>(timer)</span></span><br><span class="line"><span class="language-javascript">      center.<span class="property">style</span>.<span class="property">background</span> = <span class="string">`conic-gradient(green <span class="subst">$&#123;cnt&#125;</span>%, transparent <span class="subst">$&#123;cnt&#125;</span>% 100%)`</span></span></span><br><span class="line"><span class="language-javascript">      cnt++</span></span><br><span class="line"><span class="language-javascript">    &#125;, <span class="number">100</span>)</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="踩坑与注意点"><a href="#踩坑与注意点" class="headerlink" title="踩坑与注意点"></a>踩坑与注意点</h2><ul>
+<li>渐变是图片，必须写在 <code>background-image</code> 或 <code>background</code> 上，写在 <code>background-color</code> 上无效。</li>
+<li>重复渐变的关键是给出长度或百分比范围；只写颜色不会重复，这是最常见的“没效果”原因。</li>
+<li>渐变关键字（如 <code>to right</code>）在小程序中无效，需要改用角度。</li>
+<li>上面实例中的 <code>if (center &gt; 100) clearInterval(timer)</code> 比较的是 DOM 元素而不是计数变量，按原意应当是 <code>cnt &gt; 100</code>；此处保留原文，仅作提醒。</li>
+<li>同一实例中 <code>cnt</code> 没有上限约束，持续累加会让百分比超过 100%，实际使用时建议先判断再修改样式。</li>
 </ul>
 
 </article>
@@ -726,7 +756,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="前提"><a rel="nofollow" class="trm-toc-link" href="#前提"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">前提</span></a></li><li class="trm-toc-item trm-toc-level-2" title="线性渐变linear-gradient()"><a rel="nofollow" class="trm-toc-link" href="#线性渐变linear-gradient"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">线性渐变linear-gradient()</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="重复线性渐变repeating-linear-gradient()"><a rel="nofollow" class="trm-toc-link" href="#重复线性渐变repeating-linear-gradient"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">重复线性渐变repeating-linear-gradient()</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="径向渐变radial-gradient() - 由原点一圈一圈往外形成"><a rel="nofollow" class="trm-toc-link" href="#径向渐变radial-gradient-由原点一圈一圈往外形成"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">径向渐变radial-gradient() - 由原点一圈一圈往外形成</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="重复径向渐变repeating-radial-gradient()"><a rel="nofollow" class="trm-toc-link" href="#重复径向渐变repeating-radial-gradient"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">重复径向渐变repeating-radial-gradient()</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="圆锥渐变conic-gradient() – 从中间向外放射直线所形成的面"><a rel="nofollow" class="trm-toc-link" href="#圆锥渐变conic-gradient-–-从中间向外放射直线所形成的面"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">圆锥渐变conic-gradient() – 从中间向外放射直线所形成的面</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="重复圆锥渐变repeating-conic-gradient()"><a rel="nofollow" class="trm-toc-link" href="#重复圆锥渐变repeating-conic-gradient"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">重复圆锥渐变repeating-conic-gradient()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="用重复圆锥渐变实现一个充电环形底"><a rel="nofollow" class="trm-toc-link" href="#用重复圆锥渐变实现一个充电环形底"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">用重复圆锥渐变实现一个充电环形底</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景：渐变属于背景图"><a rel="nofollow" class="trm-toc-link" href="#背景：渐变属于背景图"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景：渐变属于背景图</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第一步：线性渐变 linear-gradient()"><a rel="nofollow" class="trm-toc-link" href="#第一步：线性渐变-linear-gradient"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">第一步：线性渐变 linear-gradient()</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第二步：重复线性渐变 repeating-linear-gradient()"><a rel="nofollow" class="trm-toc-link" href="#第二步：重复线性渐变-repeating-linear-gradient"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">第二步：重复线性渐变 repeating-linear-gradient()</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第三步：径向渐变 radial-gradient()"><a rel="nofollow" class="trm-toc-link" href="#第三步：径向渐变-radial-gradient"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">第三步：径向渐变 radial-gradient()</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第四步：重复径向渐变 repeating-radial-gradient()"><a rel="nofollow" class="trm-toc-link" href="#第四步：重复径向渐变-repeating-radial-gradient"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">第四步：重复径向渐变 repeating-radial-gradient()</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第五步：圆锥渐变 conic-gradient()"><a rel="nofollow" class="trm-toc-link" href="#第五步：圆锥渐变-conic-gradient"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">第五步：圆锥渐变 conic-gradient()</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第六步：重复圆锥渐变 repeating-conic-gradient()"><a rel="nofollow" class="trm-toc-link" href="#第六步：重复圆锥渐变-repeating-conic-gradient"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">第六步：重复圆锥渐变 repeating-conic-gradient()</span></a></li><li class="trm-toc-item trm-toc-level-2" title="实战：用重复圆锥渐变做一个充电环"><a rel="nofollow" class="trm-toc-link" href="#实战：用重复圆锥渐变做一个充电环"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">实战：用重复圆锥渐变做一个充电环</span></a></li><li class="trm-toc-item trm-toc-level-2" title="踩坑与注意点"><a rel="nofollow" class="trm-toc-link" href="#踩坑与注意点"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">踩坑与注意点</span></a></li></ol>
       </div>
     </div>
 
@@ -850,6 +880,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

@@ -7,17 +7,17 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="配置 阻止 vue 在启动时生成生产提示1Vue.config.productionTip &#x3D; false  创建一个vue实例1234567new Vue(&#123;	el:&#x27;#demo&#x27;, &#x2F;&#x2F; el用于指定当前Vue实例为哪个容器服务，值通常为css选择器字符串。	data:&#123; &#x2F;&#x2F; data中用于存储数据，数据供el所指定的容器去使用		name:&amp;#">
+<meta name="description" content="从实例创建、模板语法、数据绑定到 MVVM 模型、响应式原理与组件，梳理 Vue2 基础用法和常见配置">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VUE2-基础（主了解）">
 <meta property="og:url" content="http://example.com/2024/11/01/vue2/%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="配置 阻止 vue 在启动时生成生产提示1Vue.config.productionTip &#x3D; false  创建一个vue实例1234567new Vue(&#123;	el:&#x27;#demo&#x27;, &#x2F;&#x2F; el用于指定当前Vue实例为哪个容器服务，值通常为css选择器字符串。	data:&#123; &#x2F;&#x2F; data中用于存储数据，数据供el所指定的容器去使用		name:&amp;#">
+<meta property="og:description" content="从实例创建、模板语法、数据绑定到 MVVM 模型、响应式原理与组件，梳理 Vue2 基础用法和常见配置">
 <meta property="og:locale">
 <meta property="og:image" content="http://example.com/img/404.jpg">
 <meta property="og:image" content="http://example.com/img/404.jpg">
-<meta property="article:published_time" content="2024-11-01T05:58:26.553Z">
-<meta property="article:modified_time" content="2025-08-04T07:10:08.141Z">
+<meta property="article:published_time" content="2024-11-01T05:58:26.000Z">
+<meta property="article:modified_time" content="2026-11-17T02:33:43.893Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="vue2">
 <meta name="twitter:card" content="summary">
@@ -71,7 +71,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-08-04 15:10:08"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-17 10:33:43"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -86,6 +86,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -200,13 +202,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -242,7 +244,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -260,13 +262,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -535,59 +537,17 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>Vue2 的日常开发可以浓缩成一条主线：用 <code>new Vue</code> 创建实例（vm），把数据放进 <code>data</code>，再用模板语法和指令把数据渲染到视图。只要理解了「数据驱动视图」和「vm 代理 data」这两点，事件、计算属性、监听、指令、生命周期和组件都只是这条主线上的分支。本文按「实例 → 模板与绑定 → 事件 → 计算与监听 → 渲染控制 → 响应式与表单 → 指令 → 生命周期 → 组件」的顺序整理，每段先说明用途再给代码，可以直接对照练习，也适合面试前复习。</p>
+<span id="more"></span>
 
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
-<li>阻止 vue 在启动时生成生产提示<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="property">config</span>.<span class="property">productionTip</span> = <span class="literal">false</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="创建一个vue实例"><a href="#创建一个vue实例" class="headerlink" title="创建一个vue实例"></a>创建一个vue实例</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">	<span class="attr">el</span>:<span class="string">&#x27;#demo&#x27;</span>, <span class="comment">// el用于指定当前Vue实例为哪个容器服务，值通常为css选择器字符串。</span></span><br><span class="line">	<span class="attr">data</span>:&#123; <span class="comment">// data中用于存储数据，数据供el所指定的容器去使用</span></span><br><span class="line">		<span class="attr">name</span>:<span class="string">&#x27;atguigu&#x27;</span>,</span><br><span class="line">		<span class="attr">address</span>:<span class="string">&#x27;北京&#x27;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="模板语法"><a href="#模板语法" class="headerlink" title="模板语法"></a>模板语法</h2><ul>
-<li>插值语法<ul>
-<li>功能：用于解析标签体内容</li>
-<li>写法：<code>&#123;&#123;xxx&#125;&#125;</code>，xxx是js表达式，且可以直接读取到data中的所有属性</li>
-</ul>
-</li>
-<li>指令语法<ul>
-<li>功能：用于解析标签（<span class="desc">包括：标签属性、标签体内容、绑定事件…</span>）</li>
-<li>示例：v-bind:href&#x3D;”xxx” 或  简写为 :href&#x3D;”xxx”</li>
-</ul>
-</li>
-</ul>
-<h2 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h2><ul>
-<li>单向绑定(v-bind)：数据只能从data流向页面</li>
-<li>双向绑定(v-model)：数据不仅能从data流向页面，还可以从页面流向data</li>
-<li>注：<ul>
-<li><span class="key_words">『双向绑定一般都应用在表单类元素上』</span></li>
-<li>v-model:value 可以简写为 v-model，因为v-model默认收集的就是value值。</li>
-</ul>
-</li>
-</ul>
-<h2 id="el与data的两种写法"><a href="#el与data的两种写法" class="headerlink" title="el与data的两种写法"></a>el与data的两种写法</h2><ul>
-<li>el有2种写法<ul>
-<li>1.new Vue时候配置el属性</li>
-<li>2.先创建Vue实例，随后再通过vm.$mount(‘#root’)指定el的值<ul>
-<li>把new Vue创建的实例赋值给变量vm，然后使用vm.$mount(‘#root’)来添加</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>data有2种写法<ul>
-<li>对象式: data: {}</li>
-<li>函数式(组件只能用函数式): data() { return{}}</li>
-</ul>
-</li>
-<li>重点：<span class="key_words">『由Vue管理的函数，一定不要写箭头函数&#x3D;&gt;』</span>,一旦写了，this就不再是Vue实例了</li>
-</ul>
-<h2 id="MVVM模型"><a href="#MVVM模型" class="headerlink" title="MVVM模型"></a>MVVM模型</h2><ul>
+<h2 id="背景：先建立-MVVM-的心智模型"><a href="#背景：先建立-MVVM-的心智模型" class="headerlink" title="背景：先建立 MVVM 的心智模型"></a>背景：先建立 MVVM 的心智模型</h2><ul>
 <li>视图模型双向绑定。</li>
-<li>M(Model)：data中的数据</li>
-<li>V(View)：UI组件，模板代码</li>
-<li>VM(ViewModel)：Vue实例，M和V的桥梁，数据会绑定到VM并自动将数据渲染到页面中，视图变化的时候会通知VM更新数据。以前时操作DOM结构更新视图，现在是数据驱动视图.</li>
-<li>观察可发现：<ul>
-<li>data中所有的属性，最后都出现在了vm身上。</li>
-<li>vm身上所有的属性及Vue原型上所有属性，在Vue模板中都可以直接使用</li>
+<li>M(Model)：data 中的数据。</li>
+<li>V(View)：UI 组件，模板代码。</li>
+<li>VM(ViewModel)：Vue 实例，是 M 和 V 的桥梁。数据会绑定到 VM 并自动渲染到页面中，视图变化时会通知 VM 更新数据。以前是直接操作 DOM 结构更新视图，现在是数据驱动视图。</li>
+<li>观察可以发现：<ul>
+<li>data 中所有的属性，最后都出现在了 vm 身上。</li>
+<li>vm 身上所有的属性，以及 Vue 原型上所有属性，在 Vue 模板中都可以直接使用。</li>
 </ul>
 </li>
 <li>优点：<ul>
@@ -598,242 +558,311 @@
 </ul>
 </li>
 </ul>
-<h2 id="数据代理"><a href="#数据代理" class="headerlink" title="数据代理"></a>数据代理</h2><ul>
-<li>定义：通过一个对象代理对另一个对象中属性的操作（读&#x2F;写）<br><img src="/../../img/vue2/%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86.jpg" alt="数据代理"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
-</ul>
-<h3 id="Object-defineproperty方法"><a href="#Object-defineproperty方法" class="headerlink" title="Object.defineproperty方法"></a>Object.defineproperty方法</h3><ul>
-<li>定义：会直接在一个对象上定义一个新属性，或修改其现有属性，并返回此对象。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> number = <span class="number">18</span></span><br><span class="line"><span class="keyword">let</span> person = &#123;</span><br><span class="line">	<span class="attr">name</span>:<span class="string">&#x27;张三&#x27;</span>,</span><br><span class="line">	<span class="attr">sex</span>:<span class="string">&#x27;男&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(person,<span class="string">&#x27;age&#x27;</span>,&#123;</span><br><span class="line">	<span class="comment">// value:18,</span></span><br><span class="line">	<span class="comment">// enumerable:true, //控制属性是否可以枚举，默认值是false</span></span><br><span class="line">	<span class="comment">// writable:true, //控制属性是否可以被修改，默认值是false</span></span><br><span class="line">	<span class="comment">// configurable:true //控制属性是否可以被删除，默认值是false</span></span><br><span class="line">	<span class="comment">// 以上属性都可以在控制台被修改，删除delete person.age</span></span><br><span class="line">	<span class="comment">// 当有人读取person的age属性时，get函数(getter)就会被调用，且返回值就是age的值</span></span><br><span class="line">	<span class="title function_">get</span>(<span class="params"></span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> number</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="comment">// 当有人修改person的age属性时，set函数(setter)就会被调用，且会收到修改的具体值</span></span><br><span class="line">	<span class="title function_">set</span>(<span class="params">value</span>)&#123;</span><br><span class="line">		number = value</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="Vue中的数据代理"><a href="#Vue中的数据代理" class="headerlink" title="Vue中的数据代理"></a>Vue中的数据代理</h3><ul>
-<li>通过vm对象来代理data对象中属性的操作（读&#x2F;写）</li>
-<li>优点：更加方便的操作data中的数据</li>
-<li>基本原理：<ol>
-<li>通过Object.defineProperty()把data对象中所有属性添加到vm上</li>
-<li>为每一个添加到vm上的属性，都指定一个getter&#x2F;setter</li>
-<li>在getter&#x2F;setter内部去操作（读&#x2F;写）data中对应的属性</li>
+<h2 id="第-1-步：关闭生产提示并创建实例"><a href="#第-1-步：关闭生产提示并创建实例" class="headerlink" title="第 1 步：关闭生产提示并创建实例"></a>第 1 步：关闭生产提示并创建实例</h2><p>调试阶段先关掉生产环境提示，控制台会干净很多。下面是阻止 Vue 在启动时生成生产提示的配置：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="property">config</span>.<span class="property">productionTip</span> = <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p>创建一个最小实例：<code>el</code> 指定当前实例服务的容器，<code>data</code> 存放供该容器使用的数据。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">	<span class="attr">el</span>:<span class="string">&#x27;#demo&#x27;</span>, <span class="comment">// el用于指定当前Vue实例为哪个容器服务，值通常为css选择器字符串。</span></span><br><span class="line">	<span class="attr">data</span>:&#123; <span class="comment">// data中用于存储数据，数据供el所指定的容器去使用</span></span><br><span class="line">		<span class="attr">name</span>:<span class="string">&#x27;atguigu&#x27;</span>,</span><br><span class="line">		<span class="attr">address</span>:<span class="string">&#x27;北京&#x27;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="el-与-data-的两种写法"><a href="#el-与-data-的两种写法" class="headerlink" title="el 与 data 的两种写法"></a>el 与 data 的两种写法</h3><ul>
+<li>el 有 2 种写法：<ol>
+<li>new Vue 的时候配置 el 属性。</li>
+<li>先创建 Vue 实例，随后再通过 <code>vm.$mount(&#39;#root&#39;)</code> 指定 el 的值——把 new Vue 创建的实例赋值给变量 vm，然后用 <code>vm.$mount(&#39;#root&#39;)</code> 挂载。</li>
 </ol>
-<ul>
-<li>比如data对象中定义的属性，在vm中要使用_data.属性名来读取</li>
+</li>
+<li>data 有 2 种写法：<ul>
+<li>对象式：<code>data: &#123;&#125;</code></li>
+<li>函数式（组件只能用函数式）：<code>data() &#123; return &#123;&#125; &#125;</code></li>
 </ul>
 </li>
 </ul>
-<h2 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h2><h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><ul>
-<li>使用 v-on:xxx 或 @xxx 绑定事件，其中xxx是事件名</li>
-<li>事件的回调需要配置在methods对象中，最终会在vm上</li>
-<li><span class="key_words">『methods中配置的函数，不要用箭头函数』</span>！否则this就不是vm了</li>
-<li>methods中配置的函数，都是被Vue所管理的函数，<span class="key_words">『this的指向是vm 或 组件实例对象』</span></li>
-<li>@click&#x3D;”demo” 和 @click&#x3D;”demo($event)” 效果一致，但后者可以传参</li>
+<p>重点：由 Vue 管理的函数一定不要写成箭头函数，一旦写了，<code>this</code> 就不再是 Vue 实例了。</p>
+<h2 id="第-2-步：掌握模板语法与数据绑定"><a href="#第-2-步：掌握模板语法与数据绑定" class="headerlink" title="第 2 步：掌握模板语法与数据绑定"></a>第 2 步：掌握模板语法与数据绑定</h2><p>Vue 的模板只有两类写法：插值和指令。</p>
+<ul>
+<li>插值语法<ul>
+<li>功能：用于解析标签体内容。</li>
+<li>写法：<code>&#123;&#123;xxx&#125;&#125;</code>，xxx 是 js 表达式，且可以直接读取到 data 中的所有属性。</li>
+</ul>
+</li>
+<li>指令语法<ul>
+<li>功能：用于解析标签（<span class="desc">包括：标签属性、标签体内容、绑定事件……</span>）。</li>
+<li>示例：<code>v-bind:href=&quot;xxx&quot;</code> 或简写为 <code>:href=&quot;xxx&quot;</code>。</li>
+</ul>
+</li>
+</ul>
+<p>数据绑定分单向和双向：</p>
+<ul>
+<li>单向绑定（v-bind）：数据只能从 data 流向页面。</li>
+<li>双向绑定（v-model）：数据不仅能从 data 流向页面，还可以从页面流向 data。</li>
+<li>注：<ul>
+<li><span class="key_words">『双向绑定一般都应用在表单类元素上』</span>。</li>
+<li><code>v-model:value</code> 可以简写为 <code>v-model</code>，因为 v-model 默认收集的就是 value 值。</li>
+</ul>
+</li>
+</ul>
+<h2 id="第-3-步：理解数据代理（Object-defineProperty）"><a href="#第-3-步：理解数据代理（Object-defineProperty）" class="headerlink" title="第 3 步：理解数据代理（Object.defineProperty）"></a>第 3 步：理解数据代理（Object.defineProperty）</h2><p>定义：通过一个对象代理对另一个对象中属性的操作（读&#x2F;写）。</p>
+<p><img src="/../../img/vue2/%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86.jpg" alt="数据代理"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<h3 id="Object-defineProperty-方法"><a href="#Object-defineProperty-方法" class="headerlink" title="Object.defineProperty 方法"></a>Object.defineProperty 方法</h3><p>该方法会直接在一个对象上定义一个新属性，或修改其现有属性，并返回此对象。下面的例子把 <code>person.age</code> 代理到外部变量 <code>number</code> 上：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> number = <span class="number">18</span></span><br><span class="line"><span class="keyword">let</span> person = &#123;</span><br><span class="line">	<span class="attr">name</span>:<span class="string">&#x27;张三&#x27;</span>,</span><br><span class="line">	<span class="attr">sex</span>:<span class="string">&#x27;男&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(person,<span class="string">&#x27;age&#x27;</span>,&#123;</span><br><span class="line">	<span class="comment">// value:18,</span></span><br><span class="line">	<span class="comment">// enumerable:true, //控制属性是否可以枚举，默认值是false</span></span><br><span class="line">	<span class="comment">// writable:true, //控制属性是否可以被修改，默认值是false</span></span><br><span class="line">	<span class="comment">// configurable:true //控制属性是否可以被删除，默认值是false</span></span><br><span class="line">	<span class="comment">// 以上属性都可以在控制台被修改，删除用 delete person.age</span></span><br><span class="line">	<span class="comment">// 当有人读取person的age属性时，get函数(getter)就会被调用，且返回值就是age的值</span></span><br><span class="line">	<span class="title function_">get</span>(<span class="params"></span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> number</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="comment">// 当有人修改person的age属性时，set函数(setter)就会被调用，且会收到修改的具体值</span></span><br><span class="line">	<span class="title function_">set</span>(<span class="params">value</span>)&#123;</span><br><span class="line">		number = value</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Vue-中的数据代理"><a href="#Vue-中的数据代理" class="headerlink" title="Vue 中的数据代理"></a>Vue 中的数据代理</h3><p>Vue 通过 vm 对象来代理 data 对象中属性的操作（读&#x2F;写），好处是操作 data 中的数据更方便。</p>
+<p>基本原理：</p>
+<ol>
+<li>通过 <code>Object.defineProperty()</code> 把 data 对象中所有属性添加到 vm 上。</li>
+<li>为每一个添加到 vm 上的属性，都指定一个 getter&#x2F;setter。</li>
+<li>在 getter&#x2F;setter 内部去操作（读&#x2F;写）data 中对应的属性。</li>
+</ol>
+<p>比如 data 对象中定义的属性，在 vm 中要使用 <code>_data.属性名</code> 来读取。</p>
+<h2 id="第-4-步：绑定事件（v-on）"><a href="#第-4-步：绑定事件（v-on）" class="headerlink" title="第 4 步：绑定事件（v-on）"></a>第 4 步：绑定事件（v-on）</h2><h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><ul>
+<li>使用 <code>v-on:xxx</code> 或 <code>@xxx</code> 绑定事件，其中 xxx 是事件名。</li>
+<li>事件的回调需要配置在 methods 对象中，最终会在 vm 上。</li>
+<li><span class="key_words">『methods 中配置的函数，不要用箭头函数』</span>！否则 this 就不是 vm 了。</li>
+<li>methods 中配置的函数都是被 Vue 所管理的函数，<span class="key_words">『this 的指向是 vm 或组件实例对象』</span>。</li>
+<li><code>@click=&quot;demo&quot;</code> 和 <code>@click=&quot;demo($event)&quot;</code> 效果一致，但后者可以传参。</li>
 </ul>
 <h3 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h3><ul>
-<li>prevent：阻止默认事件</li>
-<li>stop：阻止事件冒泡</li>
-<li>once：事件只触发一次</li>
-<li>capture：使用事件的捕获模式，先捕获在冒泡</li>
-<li>self：只有event.target是当前操作的元素时才触发事件，self也能阻止冒泡</li>
-<li>passive：事件的默认行为立即执行，无需等待事件回调执行完毕<ul>
-<li>@scroll滚动条滚动触发,到滚动条末端不会再触发，<ul>
-<li>流程：优先滚动滚动条,然后在执行事件，不需要passive</li>
+<li>prevent：阻止默认事件。</li>
+<li>stop：阻止事件冒泡。</li>
+<li>once：事件只触发一次。</li>
+<li>capture：使用事件的捕获模式，先捕获再冒泡。</li>
+<li>self：只有 <code>event.target</code> 是当前操作的元素时才触发事件，self 也能阻止冒泡。</li>
+<li>passive：事件的默认行为立即执行，无需等待事件回调执行完毕。<ul>
+<li><code>@scroll</code> 滚动条滚动触发，到滚动条末端不会再触发。<ul>
+<li>流程：优先滚动滚动条，然后再执行事件，不需要 passive。</li>
 </ul>
 </li>
-<li>@wheel鼠标的滚轮滚动触发,到滚动条末端,只要滚轮在动就会触发<ul>
-<li>流程：滚动滚轮,先执行事件,后滚动条在往下走，passive后：先滚动,在执行demo</li>
+<li><code>@wheel</code> 鼠标滚轮滚动触发，到滚动条末端，只要滚轮在动就会触发。<ul>
+<li>流程：滚动滚轮，先执行事件，后滚动条再往下走；加 passive 后：先滚动，再执行 demo。</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div @click.<span class="property">prevent</span>.<span class="property">stop</span>=<span class="string">&quot;showInfo&quot;</span>&gt;修饰符可以连续使用&lt;/div&gt;</span><br></pre></td></tr></table></figure></li>
 </ul>
+<p>修饰符可以连续使用，例如下面的写法同时阻止默认事件和冒泡：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> @<span class="attr">click.prevent.stop</span>=<span class="string">&quot;showInfo&quot;</span>&gt;</span>修饰符可以连续使用<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h3><ul>
-<li>@keydown：键盘按下时触发</li>
-<li>@keyup：键盘弹起</li>
-<li>@keypress：键盘按住时触发</li>
-<li><h3 id="常用的按键别名"><a href="#常用的按键别名" class="headerlink" title="常用的按键别名"></a>常用的按键别名</h3><ul>
-<li>回车 &#x3D;&gt; @keyup.enter</li>
-<li>删除 &#x3D;&gt; @keyup.delete (捕获“删除”和“退格”键)</li>
-<li>退出 &#x3D;&gt; @keyup.esc</li>
-<li>空格 &#x3D;&gt; @keyup.space</li>
-<li>换行 &#x3D;&gt; @keyup.tab (特殊，必须配合keydown去使用)  把当前元素当前位置切走</li>
-<li>上 &#x3D;&gt; @keyup.up</li>
-<li>下 &#x3D;&gt; @keyup.down</li>
-<li>左 &#x3D;&gt; @keyup.left</li>
-<li>右 &#x3D;&gt; @keyup.right</li>
+<li><code>@keydown</code>：键盘按下时触发。</li>
+<li><code>@keyup</code>：键盘弹起时触发。</li>
+<li><code>@keypress</code>：键盘按住时触发。</li>
+</ul>
+<h4 id="常用的按键别名"><a href="#常用的按键别名" class="headerlink" title="常用的按键别名"></a>常用的按键别名</h4><ul>
+<li>回车 &#x3D;&gt; <code>@keyup.enter</code></li>
+<li>删除 &#x3D;&gt; <code>@keyup.delete</code>（捕获“删除”和“退格”键）</li>
+<li>退出 &#x3D;&gt; <code>@keyup.esc</code></li>
+<li>空格 &#x3D;&gt; <code>@keyup.space</code></li>
+<li>换行 &#x3D;&gt; <code>@keyup.tab</code>（特殊，必须配合 keydown 去使用），把当前元素当前位置切走</li>
+<li>上 &#x3D;&gt; <code>@keyup.up</code></li>
+<li>下 &#x3D;&gt; <code>@keyup.down</code></li>
+<li>左 &#x3D;&gt; <code>@keyup.left</code></li>
+<li>右 &#x3D;&gt; <code>@keyup.right</code></li>
+</ul>
+<p>Vue 未提供别名的按键，可以使用按键原始的 key 值去绑定，但注意要转为 kebab-case 形式。</p>
+<h4 id="系统修饰键（用法特殊）：ctrl、alt、shift、meta（Windows-键）"><a href="#系统修饰键（用法特殊）：ctrl、alt、shift、meta（Windows-键）" class="headerlink" title="系统修饰键（用法特殊）：ctrl、alt、shift、meta（Windows 键）"></a>系统修饰键（用法特殊）：ctrl、alt、shift、meta（Windows 键）</h4><ul>
+<li>配合 keyup 使用：按下修饰键的同时，再按下任意键，随后释放任意键，事件才被触发。<ul>
+<li>比如按 ctrl+y，还可以用 <code>ctrl.y</code> 来指定只有使用 ctrl+y 才可以触发事件。</li>
 </ul>
 </li>
-<li>Vue未提供别名的按键，可以使用按键原始的key值去绑定，但注意要转为kebab-case形式</li>
-<li><h3 id="系统修饰键（用法特殊）：ctrl、alt、shift、meta-windows键"><a href="#系统修饰键（用法特殊）：ctrl、alt、shift、meta-windows键" class="headerlink" title="系统修饰键（用法特殊）：ctrl、alt、shift、meta(windows键)"></a>系统修饰键（用法特殊）：ctrl、alt、shift、meta(windows键)</h3><ul>
-<li>配合keyup使用：按下修饰键的同时，再按下任意键，随后释放任意键，事件才被触发<ul>
-<li>比如按ctrl+y,还可以用ctrl.y来指定只有使用ctrl+y才可以触发事件</li>
+<li>配合 keydown 使用：正常触发事件。</li>
 </ul>
-</li>
-<li>配合keydown使用：正常触发事件。</li>
+<h4 id="鼠标按键修饰符"><a href="#鼠标按键修饰符" class="headerlink" title="鼠标按键修饰符"></a>鼠标按键修饰符</h4><ul>
+<li><code>.left</code></li>
+<li><code>.right</code></li>
+<li><code>.middle</code></li>
 </ul>
-</li>
-<li><h3 id="鼠标按键修饰符"><a href="#鼠标按键修饰符" class="headerlink" title="鼠标按键修饰符"></a>鼠标按键修饰符</h3><ul>
-<li>.left</li>
-<li>.right</li>
-<li>.middle</li>
-</ul>
-</li>
-<li>Vue.config.keyCodes.自定义键名 &#x3D; 键码，可以去定制按键别名</li>
-<li><a target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/essentials/event-handling.html#key-modifiers">更多别名</a></li>
-</ul>
-<h2 id="计算属性-computed"><a href="#计算属性-computed" class="headerlink" title="计算属性(computed)"></a>计算属性(computed)</h2><ul>
+<p><code>Vue.config.keyCodes.自定义键名 = 键码</code>，可以用来定制按键别名。</p>
+<p>更多别名见 <a target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/essentials/event-handling.html#key-modifiers">官方文档</a>。</p>
+<h2 id="第-5-步：用-computed-与-watch-派生和监听数据"><a href="#第-5-步：用-computed-与-watch-派生和监听数据" class="headerlink" title="第 5 步：用 computed 与 watch 派生和监听数据"></a>第 5 步：用 computed 与 watch 派生和监听数据</h2><h3 id="计算属性（computed）"><a href="#计算属性（computed）" class="headerlink" title="计算属性（computed）"></a>计算属性（computed）</h3><ul>
 <li>定义：要用的属性不存在，要通过已有属性计算得来。</li>
-<li>原理：底层借助了Objcet.defineproperty方法提供的getter和setter。</li>
-<li>get函数什么时候执行？<ol>
+<li>原理：底层借助了 <code>Object.defineProperty</code> 方法提供的 getter 和 setter。</li>
+<li>get 函数什么时候执行？<ol>
 <li>初次读取时会执行一次。</li>
 <li>当依赖的数据发生改变时会被再次调用。</li>
 </ol>
 </li>
-<li>优势：与methods实现相比，内部有缓存机制(复用)，效率更高，调试方便。</li>
+<li>优势：与 methods 实现相比，内部有缓存机制（复用），效率更高，调试方便。</li>
 <li>备注：<ol>
-<li>计算属性最终会出现在vm上，直接读取使用即可。</li>
-<li>如果计算属性要被修改，那必须写set函数去响应修改，且set中要引起计算时依赖的数据发生改变。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">computed</span>:&#123;</span><br><span class="line">	<span class="comment">// 简写(只读不写)</span></span><br><span class="line">	<span class="title function_">fullName</span>(<span class="params"></span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">firstName</span> + <span class="string">&#x27;-&#x27;</span> + <span class="variable language_">this</span>.<span class="property">lastName</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//完整写法</span></span><br><span class="line">	<span class="attr">fullName</span>: &#123;</span><br><span class="line">		<span class="title function_">get</span>(<span class="params"></span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">firstName</span> + <span class="string">&#x27;-&#x27;</span> + <span class="variable language_">this</span>.<span class="property">lastName</span></span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="title function_">set</span>(<span class="params">value</span>)&#123;</span><br><span class="line">			<span class="keyword">const</span> arr = value.<span class="title function_">split</span>(<span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">			<span class="variable language_">this</span>.<span class="property">firstName</span>= arr[<span class="number">0</span>]</span><br><span class="line">			<span class="variable language_">this</span>.<span class="property">lastName</span> = arr[<span class="number">1</span>]</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>计算属性最终会出现在 vm 上，直接读取使用即可。</li>
+<li>如果计算属性要被修改，那必须写 set 函数去响应修改，且 set 中要引起计算时依赖的数据发生改变。</li>
 </ol>
 </li>
 </ul>
-<h2 id="监视属性-watch"><a href="#监视属性-watch" class="headerlink" title="监视属性(watch)"></a>监视属性(watch)</h2><ul>
-<li>当被监视的属性变化时, 回调函数自动调用, 进行相关操作</li>
-<li><span class="key_words">『监视的属性必须存在，才能进行监视』</span></li>
-<li>写法<ol>
-<li>new Vue时传入watch配置</li>
-<li>通过vm.$watch监视</li>
+<p>如果只需要读取，用函数简写即可：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">computed</span>:&#123;</span><br><span class="line">	<span class="comment">// 简写(只读不写)</span></span><br><span class="line">	<span class="title function_">fullName</span>(<span class="params"></span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">firstName</span> + <span class="string">&#x27;-&#x27;</span> + <span class="variable language_">this</span>.<span class="property">lastName</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要支持修改时，改成带 get&#x2F;set 的完整写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">computed</span>:&#123;</span><br><span class="line">	<span class="comment">// 完整写法</span></span><br><span class="line">	<span class="attr">fullName</span>: &#123;</span><br><span class="line">		<span class="title function_">get</span>(<span class="params"></span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">firstName</span> + <span class="string">&#x27;-&#x27;</span> + <span class="variable language_">this</span>.<span class="property">lastName</span></span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="title function_">set</span>(<span class="params">value</span>)&#123;</span><br><span class="line">			<span class="keyword">const</span> arr = value.<span class="title function_">split</span>(<span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">			<span class="variable language_">this</span>.<span class="property">firstName</span> = arr[<span class="number">0</span>]</span><br><span class="line">			<span class="variable language_">this</span>.<span class="property">lastName</span> = arr[<span class="number">1</span>]</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="监视属性（watch）"><a href="#监视属性（watch）" class="headerlink" title="监视属性（watch）"></a>监视属性（watch）</h3><ul>
+<li>当被监视的属性变化时，回调函数自动调用，进行相关操作。</li>
+<li><span class="key_words">『监视的属性必须存在，才能进行监视』</span>。</li>
+<li>写法：<ol>
+<li>new Vue 时传入 watch 配置。</li>
+<li>通过 <code>vm.$watch</code> 监视。</li>
 </ol>
 </li>
-<li>深度监视<ul>
-<li>deep:true可以监视多级结构中所有属性的变化</li>
+<li>深度监视：<code>deep:true</code> 可以监视多级结构中所有属性的变化。</li>
 </ul>
-</li>
-<li>写法一示例:<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">watch</span>:&#123;</span><br><span class="line">	<span class="comment">// 完整写法</span></span><br><span class="line">	<span class="attr">isHot</span>:&#123;</span><br><span class="line">		<span class="attr">immediate</span>:<span class="literal">true</span>, <span class="comment">//初始化时让handler调用一下</span></span><br><span class="line">		<span class="attr">deep</span>:<span class="literal">true</span>, <span class="comment">// 深度监视</span></span><br><span class="line">		<span class="comment">//当isHot发生改变时，handler被调用</span></span><br><span class="line">		<span class="title function_">handler</span>(<span class="params">newValue,oldValue</span>)&#123;</span><br><span class="line">			<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;isHot被修改了&#x27;</span>,newValue,oldValue)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="comment">// 简写</span></span><br><span class="line">	<span class="title function_">isHot</span>(<span class="params">newValue,oldValue</span>)&#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;isHot被修改了&#x27;</span>,newValue,oldValue,<span class="variable language_">this</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//监视多级结构中某个属性的变化</span></span><br><span class="line">	<span class="string">&#x27;numbers.a&#x27;</span>:&#123;</span><br><span class="line">		<span class="title function_">handler</span>(<span class="params"></span>)&#123;</span><br><span class="line">			<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;a被改变了&#x27;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>写法二示例<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 完整写法</span></span><br><span class="line">vm.$watch(<span class="string">&#x27;isHot&#x27;</span>,&#123;</span><br><span class="line">	<span class="comment">// 其它的一样</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//简写</span></span><br><span class="line">vm.$watch(<span class="string">&#x27;isHot&#x27;</span>,<span class="function">(<span class="params">newValue,oldValue</span>)=&gt;</span>&#123;</span><br><span class="line">	<span class="comment">// 其它的一样</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="computed和watch之间的区别"><a href="#computed和watch之间的区别" class="headerlink" title="computed和watch之间的区别"></a>computed和watch之间的区别</h3><ul>
-<li>computed能完成的功能，watch都可以完成。优先使用computed</li>
-<li>watch属性监听是一个对象，键是需要观察的属性，值是对应回调函数，主要用来监听特定数据的变化，从而进行某些具体的业务逻辑操作，监听属性的变化，需要在数据变化时执行异步或开销大的操作时使用。</li>
-<li>computed计算属性，属性的结果会被缓存，当computed中的函数所依赖的属性没有改变的时候，那么调用当前函数的时候结果会从缓存中读取。除非依赖的响应式属性变化时才会重新计算，主要当作属性来使用。computed中的函数必须用return返回最终的结果。data不变，computed不更新</li>
+<p>写法一，在 new Vue 的 watch 配置中声明完整写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">watch</span>:&#123;</span><br><span class="line">	<span class="comment">// 完整写法</span></span><br><span class="line">	<span class="attr">isHot</span>:&#123;</span><br><span class="line">		<span class="attr">immediate</span>:<span class="literal">true</span>, <span class="comment">//初始化时让handler调用一下</span></span><br><span class="line">		<span class="attr">deep</span>:<span class="literal">true</span>, <span class="comment">// 深度监视</span></span><br><span class="line">		<span class="comment">//当isHot发生改变时，handler被调用</span></span><br><span class="line">		<span class="title function_">handler</span>(<span class="params">newValue,oldValue</span>)&#123;</span><br><span class="line">			<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;isHot被修改了&#x27;</span>,newValue,oldValue)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不需要 immediate 和 deep 时可以用简写：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">watch</span>:&#123;</span><br><span class="line">	<span class="comment">// 简写</span></span><br><span class="line">	<span class="title function_">isHot</span>(<span class="params">newValue,oldValue</span>)&#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;isHot被修改了&#x27;</span>,newValue,oldValue,<span class="variable language_">this</span>)</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="comment">//监视多级结构中某个属性的变化</span></span><br><span class="line">	<span class="string">&#x27;numbers.a&#x27;</span>:&#123;</span><br><span class="line">		<span class="title function_">handler</span>(<span class="params"></span>)&#123;</span><br><span class="line">			<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;a被改变了&#x27;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>写法二，通过实例方法 <code>$watch</code> 监视：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 完整写法</span></span><br><span class="line">vm.$watch(<span class="string">&#x27;isHot&#x27;</span>,&#123;</span><br><span class="line">	<span class="comment">// 其它的一样</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//简写</span></span><br><span class="line">vm.$watch(<span class="string">&#x27;isHot&#x27;</span>,<span class="function">(<span class="params">newValue,oldValue</span>)=&gt;</span>&#123;</span><br><span class="line">	<span class="comment">// 其它的一样</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="computed-与-watch-的区别"><a href="#computed-与-watch-的区别" class="headerlink" title="computed 与 watch 的区别"></a>computed 与 watch 的区别</h3><ul>
+<li>computed 能完成的功能，watch 都可以完成，优先使用 computed。</li>
+<li>watch 属性监听是一个对象，键是需要观察的属性，值是对应回调函数，主要用来监听特定数据的变化，从而进行某些具体的业务逻辑操作；需要在数据变化时执行异步或开销大的操作时使用。</li>
+<li>computed 计算属性，属性的结果会被缓存，当 computed 中的函数所依赖的属性没有改变的时候，调用当前函数的结果会从缓存中读取；除非依赖的响应式属性变化时才会重新计算，主要当作属性来使用。computed 中的函数必须用 return 返回最终的结果。data 不变，computed 不更新。</li>
 <li>使用场景：<ul>
-<li>computed：当一个属性搜多个属性影响时使用，如商品结算</li>
-<li>watch：当一条数据影响多条数据时使用，如搜索</li>
+<li>computed：当一个属性受多个属性影响时使用，如商品结算。</li>
+<li>watch：当一条数据影响多条数据时使用，如搜索。</li>
 </ul>
 </li>
-<li>两个重要的原则<ol>
-<li>所有被Vue管理的函数，最好写成普通函数，这样this的指向才是vm 或 组件实例对象。</li>
-<li>所有不被Vue所管理的函数（<span class="desc">定时器的回调函数、ajax的回调函数等、Promise的回调函数</span>），最好写成箭头函数，这样this的指向才是vm 或 组件实例对象。</li>
+<li>两个重要的原则：<ol>
+<li>所有被 Vue 管理的函数，最好写成普通函数，这样 this 的指向才是 vm 或组件实例对象。</li>
+<li>所有不被 Vue 所管理的函数（<span class="desc">定时器的回调函数、ajax 的回调函数、Promise 的回调函数</span>），最好写成箭头函数，这样 this 的指向才是 vm 或组件实例对象。</li>
 </ol>
 </li>
 </ul>
-<h2 id="绑定样式"><a href="#绑定样式" class="headerlink" title="绑定样式"></a>绑定样式</h2><h3 id="class样式"><a href="#class样式" class="headerlink" title="class样式"></a>class样式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:<span class="keyword">class</span>=<span class="string">&quot;xxx&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="第-6-步：控制样式与条件渲染"><a href="#第-6-步：控制样式与条件渲染" class="headerlink" title="第 6 步：控制样式与条件渲染"></a>第 6 步：控制样式与条件渲染</h2><h3 id="绑定-class-样式"><a href="#绑定-class-样式" class="headerlink" title="绑定 class 样式"></a>绑定 class 样式</h3><p>绑定 class 时，值可以是字符串、对象或数组：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:class=&quot;xxx&quot;</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>xxx可以是字符串、对象、数组。</li>
 <li>字符串写法适用于：类名不确定，要动态获取。</li>
 <li>对象写法适用于：要绑定多个样式，个数不确定，名字也不确定。</li>
 <li>数组写法适用于：要绑定多个样式，个数确定，名字也确定，但不确定用不用。</li>
 </ul>
-<h3 id="style样式"><a href="#style样式" class="headerlink" title="style样式"></a>style样式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:style=<span class="string">&quot;&#123;fontSize: xxx&#125;&quot;</span> <span class="comment">// 其中xxx是动态值</span></span><br><span class="line">:style=<span class="string">&quot;[a,b]&quot;</span> <span class="comment">// 其中a、b是样式对象</span></span><br></pre></td></tr></table></figure>
+<h3 id="绑定-style-样式"><a href="#绑定-style-样式" class="headerlink" title="绑定 style 样式"></a>绑定 style 样式</h3><p>绑定 style 时，可以直接传对象，也可以传样式对象数组：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:style=&quot;&#123;fontSize: xxx&#125;&quot; // 其中xxx是动态值</span><br><span class="line">:style=&quot;[a,b]&quot; // 其中a、b是样式对象</span><br></pre></td></tr></table></figure>
 
-<h2 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h2><h3 id="v-if"><a href="#v-if" class="headerlink" title="v-if"></a>v-if</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">v-<span class="keyword">if</span>=<span class="string">&quot;表达式&quot;</span> </span><br><span class="line">v-<span class="keyword">else</span>-<span class="keyword">if</span>=<span class="string">&quot;表达式&quot;</span></span><br><span class="line">v-<span class="keyword">else</span>=<span class="string">&quot;表达式&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="v-if"><a href="#v-if" class="headerlink" title="v-if"></a>v-if</h3><p><code>v-if</code> 用于条件渲染，可以配合 <code>v-else-if</code>、<code>v-else</code>：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">v-if=&quot;表达式&quot;</span><br><span class="line">v-else-if=&quot;表达式&quot;</span><br><span class="line">v-else=&quot;表达式&quot;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>适用于：切换频率较低的场景。</li>
-<li>特点：不展示的DOM元素直接被移除。</li>
-<li>注意：v-if可以和v-else-if、v-else一起使用，但要求结构不能被”打断”</li>
+<li>特点：不展示的 DOM 元素直接被移除。</li>
+<li>注意：v-if 可以和 v-else-if、v-else 一起使用，但要求结构不能被“打断”。</li>
 </ul>
-<h3 id="v-show"><a href="#v-show" class="headerlink" title="v-show"></a>v-show</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v-show=<span class="string">&quot;表达式&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="v-show"><a href="#v-show" class="headerlink" title="v-show"></a>v-show</h3><p><code>v-show</code> 只控制元素显示与否，不做结构移除：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v-show=&quot;表达式&quot;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>适用于：切换频率较高的场景。</li>
-<li>特点：不展示的DOM元素未被移除，仅仅是使用样式隐藏掉</li>
+<li>特点：不展示的 DOM 元素未被移除，仅仅是使用样式隐藏掉。</li>
 <li>备注：<ul>
-<li>template只能与v-if一起用</li>
-<li>使用v-if的时，元素可能无法获取到，而使用v-show一定可以获取到。</li>
+<li>template 只能与 v-if 一起用。</li>
+<li>使用 v-if 时，元素可能无法获取到，而使用 v-show 一定可以获取到。</li>
 </ul>
 </li>
 </ul>
-<h2 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h2><h3 id="基本列表-v-for指令"><a href="#基本列表-v-for指令" class="headerlink" title="基本列表(v-for指令):"></a>基本列表(v-for指令):</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v-<span class="keyword">for</span>=<span class="string">&quot;(item, index) in/of xxx&quot;</span> :key=<span class="string">&quot;index&quot;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>用于展示列表数据</li>
-<li>可遍历：数组、对象、字符串（不常用）、指定次数（不常用，of 次数）</li>
-</ul>
-<h3 id="v-for-与-对象"><a href="#v-for-与-对象" class="headerlink" title="v-for 与 对象"></a>v-for 与 对象</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;li v-<span class="keyword">for</span>=<span class="string">&quot;(value, key) in myObject&quot;</span>&gt;&#123;&#123;value&#125;&#125;&lt;/li&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>value：表值</li>
-<li>key：表属性名</li>
-<li>index：表索引</li>
-</ul>
-<h3 id="在-v-for-里使用范围值"><a href="#在-v-for-里使用范围值" class="headerlink" title="在 v-for 里使用范围值"></a>在 v-for 里使用范围值</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;span v-<span class="keyword">for</span>=<span class="string">&quot;n in 10&quot;</span>&gt;&#123;&#123; n &#125;&#125;&lt;/span&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="template标签-上的-v-for"><a href="#template标签-上的-v-for" class="headerlink" title="template标签 上的 v-for"></a>template标签 上的 v-for</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;template v-<span class="keyword">for</span>=<span class="string">&quot;item in items&quot;</span>&gt;&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="第-7-步：列表渲染与-key"><a href="#第-7-步：列表渲染与-key" class="headerlink" title="第 7 步：列表渲染与 key"></a>第 7 步：列表渲染与 key</h2><h3 id="基本列表（v-for-指令）"><a href="#基本列表（v-for-指令）" class="headerlink" title="基本列表（v-for 指令）"></a>基本列表（v-for 指令）</h3><p>遍历列表时用 v-for，并配合 key 使用：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v-for=&quot;(item, index) in/of xxx&quot; :key=&quot;index&quot;</span><br></pre></td></tr></table></figure>
 
-<h3 id="在组件标签上使用"><a href="#在组件标签上使用" class="headerlink" title="在组件标签上使用"></a>在组件标签上使用</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">MyComponent</span></span><br><span class="line">  v-<span class="keyword">for</span>=<span class="string">&quot;(item, index) in items&quot;</span></span><br><span class="line">  :item=<span class="string">&quot;item&quot;</span></span><br><span class="line">  :index=<span class="string">&quot;index&quot;</span></span><br><span class="line">  :key=<span class="string">&quot;item.id&quot;</span></span><br><span class="line">&gt;</span><br><span class="line">&lt;/<span class="title class_">MyComponent</span>&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>用于展示列表数据。</li>
+<li>可遍历：数组、对象、字符串（不常用）、指定次数（不常用，<code>of 次数</code>）。</li>
+</ul>
+<h3 id="v-for-与对象"><a href="#v-for-与对象" class="headerlink" title="v-for 与对象"></a>v-for 与对象</h3><p>遍历对象时可以同时拿到值和属性名：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">&quot;(value, key) in myObject&quot;</span>&gt;</span>&#123;&#123;value&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>value：表值。</li>
+<li>key：表属性名。</li>
+<li>index：表索引。</li>
+</ul>
+<h3 id="在-v-for-里使用范围值"><a href="#在-v-for-里使用范围值" class="headerlink" title="在 v-for 里使用范围值"></a>在 v-for 里使用范围值</h3><p>n 从 1 开始，一直遍历到指定的次数：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">v-for</span>=<span class="string">&quot;n in 10&quot;</span>&gt;</span>&#123;&#123; n &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="template-标签上的-v-for"><a href="#template-标签上的-v-for" class="headerlink" title="template 标签上的 v-for"></a>template 标签上的 v-for</h3><p>用 template 包裹时不会额外生成标签：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-for</span>=<span class="string">&quot;item in items&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="在组件标签上使用"><a href="#在组件标签上使用" class="headerlink" title="在组件标签上使用"></a>在组件标签上使用</h3><p>组件上使用 v-for 时，数据要逐个通过 props 传入：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">MyComponent</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-for</span>=<span class="string">&quot;(item, index) in items&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">:item</span>=<span class="string">&quot;item&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">:index</span>=<span class="string">&quot;index&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">:key</span>=<span class="string">&quot;item.id&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">MyComponent</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="列表过滤"><a href="#列表过滤" class="headerlink" title="列表过滤"></a>列表过滤</h3><ul>
-<li>表单使用v-model实现双向数据绑定</li>
-<li>在计算属性或者监听属性上处理数据，并使用filter</li>
-<li>字符串的模糊搜索，使用indexof</li>
-<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">computed</span>:&#123;</span><br><span class="line">	<span class="title function_">handler</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> list.<span class="title function_">filter</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> item.<span class="property">str</span>.<span class="title function_">indexof</span>(keyWord) !== -<span class="number">1</span></span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>表单使用 v-model 实现双向数据绑定。</li>
+<li>在计算属性或者监听属性上处理数据，并使用 filter。</li>
+<li>字符串的模糊搜索，使用 indexOf。</li>
 </ul>
-<h3 id="列表排序"><a href="#列表排序" class="headerlink" title="列表排序"></a>列表排序</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.<span class="title function_">sort</span>(<span class="function">(<span class="params">p1,p2</span>)=&gt;</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>返回p2-p1是降序(高到低)，返回p1-p2是升序(从低到高)</li>
-</ul>
+<p>下面用计算属性完成模糊过滤：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">computed</span>:&#123;</span><br><span class="line">	<span class="title function_">handler</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> list.<span class="title function_">filter</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> item.<span class="property">str</span>.<span class="title function_">indexOf</span>(keyWord) !== -<span class="number">1</span></span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="列表排序"><a href="#列表排序" class="headerlink" title="列表排序"></a>列表排序</h3><p>排序依赖 <code>sort</code> 的比较函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.<span class="title function_">sort</span>(<span class="function">(<span class="params">p1,p2</span>)=&gt;</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>返回 <code>p2-p1</code> 是降序（高到低），返回 <code>p1-p2</code> 是升序（从低到高）。</p>
 <h3 id="数组变化侦测"><a href="#数组变化侦测" class="headerlink" title="数组变化侦测"></a>数组变化侦测</h3><ul>
-<li>push()：将一个或多个元素添加到数组的末尾，并返回该数组的新长度</li>
-<li>pop()：从数组中删除最后一个元素，并返回该元素的值</li>
-<li>shift()：从数组中删除第一个元素，并返回该元素的值</li>
-<li>unshift()：将一个或多个元素添加到数组的开头，并返回该数组的新长度</li>
-<li>splice()：删除或替换现有元素或者原地添加新的元素来修改数组，并以数组形式返回被修改的内容。<span class="desc">此方法会改变原数组</span></li>
-<li>sort()：排序(升序)。<span class="desc">此方法会改变原数组</span></li>
-<li>reverse()：排序(降序)。<span class="desc">此方法会改变原数组</span></li>
-<li>filter()：过滤</li>
-<li>替换原数组：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">items.<span class="property">value</span> = items.<span class="property">value</span>.<span class="title function_">filter</span>(<span class="function"><span class="params">item</span> =&gt;</span> 条件)</span><br></pre></td></tr></table></figure></li>
+<li>push()：将一个或多个元素添加到数组的末尾，并返回该数组的新长度。</li>
+<li>pop()：从数组中删除最后一个元素，并返回该元素的值。</li>
+<li>shift()：从数组中删除第一个元素，并返回该元素的值。</li>
+<li>unshift()：将一个或多个元素添加到数组的开头，并返回该数组的新长度。</li>
+<li>splice()：删除或替换现有元素，或者原地添加新的元素来修改数组，并以数组形式返回被修改的内容。<span class="desc">此方法会改变原数组</span>。</li>
+<li>sort()：排序（升序）。<span class="desc">此方法会改变原数组</span>。</li>
+<li>reverse()：排序（降序）。<span class="desc">此方法会改变原数组</span>。</li>
+<li>filter()：过滤。</li>
 </ul>
-<h2 id="react、vue中的key有什么作用？（key的内部原理）"><a href="#react、vue中的key有什么作用？（key的内部原理）" class="headerlink" title="react、vue中的key有什么作用？（key的内部原理）"></a>react、vue中的key有什么作用？（key的内部原理）</h2><ol>
-<li>虚拟DOM中key的作用：<ul>
-<li>key是虚拟DOM对象的标识，当数据发生变化时，Vue会根据<span class="key_words">『新数据生成新的虚拟DOM』</span>, 随后Vue进行<span class="key_words">『新虚拟DOM与旧虚拟DOM的差异比较』</span></li>
+<p>如果要替换原数组，可以把 filter 的结果重新赋值：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">items.<span class="property">value</span> = items.<span class="property">value</span>.<span class="title function_">filter</span>(<span class="function"><span class="params">item</span> =&gt;</span> 条件)</span><br></pre></td></tr></table></figure>
+
+<h3 id="key-的内部原理"><a href="#key-的内部原理" class="headerlink" title="key 的内部原理"></a>key 的内部原理</h3><ol>
+<li>虚拟 DOM 中 key 的作用：<ul>
+<li>key 是虚拟 DOM 对象的标识，当数据发生变化时，Vue 会根据<span class="key_words">『新数据生成新的虚拟 DOM』</span>，随后 Vue 进行<span class="key_words">『新虚拟 DOM 与旧虚拟 DOM 的差异比较』</span>。</li>
 </ul>
 </li>
 <li>对比规则：<ul>
-<li>旧虚拟DOM中存在与新虚拟DOM<span class="key_words">『相同的key』</span><ul>
-<li>内容<span class="key_words">『没变, 使用旧的』</span>真实DOM</li>
-<li>内容<span class="key_words">『变了, 则生成新的真实DOM，并替换掉旧的』</span>真实DOM</li>
+<li>旧虚拟 DOM 中存在与新虚拟 DOM <span class="key_words">『相同的 key』</span>：<ul>
+<li>内容<span class="key_words">『没变，使用旧的』</span>真实 DOM。</li>
+<li>内容<span class="key_words">『变了，则生成新的真实 DOM，并替换掉旧的』</span>真实 DOM。</li>
 </ul>
 </li>
-<li>旧虚拟DOM中<span class="key_words">『未找到』</span>与新虚拟DOM相同的key<ul>
-<li><span class="key_words">『创建新的真实DOM』</span>，随后渲染到到页面</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>用index作为key可能会引发的问题：<ul>
-<li>若对数据进行：<span class="key_words">『逆序添加、逆序删除』</span>等破坏顺序操作:<ul>
-<li>会产生没有必要的真实DOM更新 &#x3D;&#x3D;&gt; 界面效果没问题, 但效率低</li>
-</ul>
-</li>
-<li>如果结构中还<span class="key_words">『包含输入类的DOM』</span>：<ul>
-<li>会产生错误DOM更新 &#x3D;&#x3D;&gt; 界面有问题</li>
+<li>旧虚拟 DOM 中<span class="key_words">『未找到』</span>与新虚拟 DOM 相同的 key：<ul>
+<li><span class="key_words">『创建新的真实 DOM』</span>，随后渲染到页面。</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>开发中如何选择key?<ul>
-<li>最好<span class="key_words">『使用每条数据的唯一标识作为key』</span></li>
-<li>如果不存在对数据的逆序添加、逆序删除等破坏顺序操作，<span class="key_words">『仅用于渲染列表用于展示，使用index作为key』</span>是没有问题的。</li>
+<li>用 index 作为 key 可能会引发的问题：<ul>
+<li>若对数据进行<span class="key_words">『逆序添加、逆序删除』</span>等破坏顺序操作：<ul>
+<li>会产生没有必要的真实 DOM 更新 &#x3D;&#x3D;&gt; 界面效果没问题，但效率低。</li>
+</ul>
+</li>
+<li>如果结构中还<span class="key_words">『包含输入类的 DOM』</span>：<ul>
+<li>会产生错误 DOM 更新 &#x3D;&#x3D;&gt; 界面有问题。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>开发中如何选择 key？<ul>
+<li>最好<span class="key_words">『使用每条数据的唯一标识作为 key』</span>。</li>
+<li>如果不存在对数据的逆序添加、逆序删除等破坏顺序操作，<span class="key_words">『仅用于渲染列表用于展示，使用 index 作为 key』</span>是没有问题的。</li>
 </ul>
 </li>
 </ol>
-<h2 id="Vue检测数据改变的原理"><a href="#Vue检测数据改变的原理" class="headerlink" title="Vue检测数据改变的原理"></a>Vue检测数据改变的原理</h2><h3 id="vue-set"><a href="#vue-set" class="headerlink" title="vue.set()"></a>vue.set()</h3><ul>
-<li>使用场景：对数组或对象进行操作时，有些操作是非响应式的，所以使用Vue.set()来进行响应式的数据更新</li>
-<li>Vue不能检测以下变动<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vm.<span class="property">list</span>[<span class="number">0</span>] = newValue</span><br><span class="line">vm.<span class="property">list</span>.<span class="property">length</span> = newLength</span><br><span class="line">property 的添加或移除</span><br></pre></td></tr></table></figure></li>
-<li>使用：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">set</span>(target,index,newValue) </span><br><span class="line">vm.$set(vm.<span class="property">items</span>, indexOfItem, newValue)</span><br></pre></td></tr></table></figure></li>
-<li>注：vue不允许添加根级响应式属性，只可以使用 Vue.set(object, propertyName, value) 方法向嵌套对象添加响应式属性</li>
-</ul>
+<h2 id="第-8-步：理解数据响应式、表单收集与过滤器"><a href="#第-8-步：理解数据响应式、表单收集与过滤器" class="headerlink" title="第 8 步：理解数据响应式、表单收集与过滤器"></a>第 8 步：理解数据响应式、表单收集与过滤器</h2><h3 id="Vue-set"><a href="#Vue-set" class="headerlink" title="Vue.set()"></a>Vue.set()</h3><p>使用场景：对数组或对象进行操作时，有些操作是非响应式的，所以使用 <code>Vue.set()</code> 来进行响应式的数据更新。</p>
+<p>Vue 不能检测以下变动：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vm.<span class="property">list</span>[<span class="number">0</span>] = newValue</span><br><span class="line">vm.<span class="property">list</span>.<span class="property">length</span> = newLength</span><br><span class="line">property 的添加或移除</span><br></pre></td></tr></table></figure>
+
+<p>改用下面的 API 才能触发更新：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">set</span>(target,index,newValue)</span><br><span class="line">vm.$set(vm.<span class="property">items</span>, indexOfItem, newValue)</span><br></pre></td></tr></table></figure>
+
+<p>注：Vue 不允许添加根级响应式属性，只可以使用 <code>Vue.set(object, propertyName, value)</code> 方法向嵌套对象添加响应式属性。</p>
 <h3 id="数据监测的原理"><a href="#数据监测的原理" class="headerlink" title="数据监测的原理"></a>数据监测的原理</h3><ul>
-<li>vue会监视data中所有层次的数据</li>
+<li>Vue 会监视 data 中所有层次的数据。</li>
 <li>如何监测对象中的数据？<ul>
-<li>通过setter实现监视，且要在new Vue时就传入要监测的数据</li>
-</ul>
-<ol>
-<li>对象中后追加的属性，Vue默认不做响应式处理</li>
-<li>如需给后添加的属性做响应式，请使用如下API：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">set</span>(target，propertyName/index，value) </span><br><span class="line">或 </span><br><span class="line">vm.$set(target，propertyName/index，value)</span><br></pre></td></tr></table></figure></li>
+<li>通过 setter 实现监视，且要在 new Vue 时就传入要监测的数据。<ol>
+<li>对象中后追加的属性，Vue 默认不做响应式处理。</li>
+<li>如需给后添加的属性做响应式，请使用如下 API：</li>
 </ol>
 </li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">set</span>(target, propertyName/index, value)</span><br><span class="line">或</span><br><span class="line">vm.$set(target, propertyName/index, value)</span><br></pre></td></tr></table></figure>
+
+<ul>
 <li>如何监测数组中的数据？<ul>
 <li>通过包裹数组更新元素的方法实现，本质就是做了两件事：<ul>
 <li>调用原生对应的方法对数组进行更新。</li>
@@ -842,177 +871,202 @@
 </li>
 </ul>
 </li>
-<li>在Vue修改数组中的某个元素一定要用如下方法：<ul>
-<li>使用这些API: push()、pop()、shift()、unshift()、splice()、sort()、reverse()</li>
-<li>Vue.set() 或 vm.$set()</li>
+<li>在 Vue 修改数组中的某个元素一定要用如下方法：<ul>
+<li>使用这些 API：push()、pop()、shift()、unshift()、splice()、sort()、reverse()。</li>
+<li><code>Vue.set()</code> 或 <code>vm.$set()</code>。</li>
 </ul>
 </li>
-<li>特别注意：Vue.set() 和 vm.$set() 不能给vm或vm的根数据对象添加属性</li>
+<li>特别注意：<code>Vue.set()</code> 和 <code>vm.$set()</code> 不能给 vm 或 vm 的根数据对象添加属性。</li>
 </ul>
 <h3 id="收集表单数据"><a href="#收集表单数据" class="headerlink" title="收集表单数据"></a>收集表单数据</h3><ul>
-<li>type&#x3D;”text”，则v-model收集的是value值，用户输入的就是value值</li>
-<li>type&#x3D;”radio”，则v-model收集的是value值，且要给标签配置value值</li>
-<li>type&#x3D;”checkbox”<ul>
-<li>没有配置input的value属性，那么收集的就是checked</li>
-<li>配置input的value属性:<ol>
-<li>v-model的初始值是非数组，那么收集的就是checked</li>
-<li>v-model的初始值是数组，那么收集的的就是value组成的数组</li>
+<li><code>type=&quot;text&quot;</code>：v-model 收集的是 value 值，用户输入的就是 value 值。</li>
+<li><code>type=&quot;radio&quot;</code>：v-model 收集的是 value 值，且要给标签配置 value 值。</li>
+<li><code>type=&quot;checkbox&quot;</code>：<ul>
+<li>没有配置 input 的 value 属性，那么收集的就是 checked。</li>
+<li>配置了 input 的 value 属性：<ol>
+<li>v-model 的初始值是非数组，那么收集的就是 checked。</li>
+<li>v-model 的初始值是数组，那么收集的就是 value 组成的数组。</li>
 </ol>
 </li>
 </ul>
 </li>
-<li>备注：v-model的三个修饰符：<ul>
-<li>lazy：失去焦点再收集数据</li>
-<li>number：输入字符串转为有效的数字</li>
-<li>trim：输入首尾空格过滤</li>
+<li>备注：v-model 的三个修饰符：<ul>
+<li>lazy：失去焦点再收集数据。</li>
+<li>number：输入字符串转为有效的数字。</li>
+<li>trim：输入首尾空格过滤。</li>
 </ul>
 </li>
 </ul>
 <h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><ul>
-<li>定义：对要显示的数据进行特定格式化后再显示</li>
-<li>语法：<ul>
-<li>注册过滤器：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">filter</span>(name,callback) 或 <span class="keyword">new</span> <span class="title class_">Vue</span>&#123;<span class="attr">filters</span>:&#123;&#125;&#125; </span><br><span class="line"><span class="comment">// name: 过滤器的名字，filters里面定义过滤的函数</span></span><br></pre></td></tr></table></figure></li>
-<li>使用过滤器：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; xxx | 过滤器名&#125;&#125;</span><br><span class="line">或</span><br><span class="line">v-<span class="attr">bind</span>:属性 = <span class="string">&quot;xxx | 过滤器名&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li>定义：对要显示的数据进行特定格式化后再显示。</li>
+<li>注册过滤器，可以全局注册，也可以在组件的 filters 中注册：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">filter</span>(name,callback) 或 <span class="keyword">new</span> <span class="title class_">Vue</span>&#123;<span class="attr">filters</span>:&#123;&#125;&#125;</span><br><span class="line"><span class="comment">// name: 过滤器的名字，filters里面定义过滤的函数</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用过滤器，可以用于插值，也可以用于 v-bind：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; xxx | 过滤器名&#125;&#125;</span><br><span class="line">或</span><br><span class="line">v-bind:属性 = &quot;xxx | 过滤器名&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>注：<ul>
+<li>过滤器也可以接收额外参数，多个过滤器也可以串联。</li>
+<li>并没有改变原本的数据，是产生新的对应的数据。</li>
 </ul>
 </li>
-<li>注： <ul>
-<li>过滤器也可以接收额外参数、多个过滤器也可以串联</li>
-<li>并没有改变原本的数据, 是产生新的对应的数据</li>
 </ul>
-</li>
-</ul>
-<h3 id="常用的指令"><a href="#常用的指令" class="headerlink" title="常用的指令"></a>常用的指令</h3><ul>
-<li>v-bind: 单向绑定解析表达式, 可简写为 :xxx</li>
-<li>v-model: 双向数据绑定</li>
-<li>v-for: 遍历数组&#x2F;对象&#x2F;字符串</li>
-<li>v-on: 绑定事件监听, 可简写为 @</li>
-<li>v-if: 条件渲染（动态控制节点是否存在）</li>
-<li>v-else: 条件渲染（动态控制节点是否存在）</li>
-<li>v-show: 条件渲染 (动态控制节点是否展示)</li>
+<h2 id="第-9-步：常用指令、内置指令与自定义指令"><a href="#第-9-步：常用指令、内置指令与自定义指令" class="headerlink" title="第 9 步：常用指令、内置指令与自定义指令"></a>第 9 步：常用指令、内置指令与自定义指令</h2><h3 id="常用的指令"><a href="#常用的指令" class="headerlink" title="常用的指令"></a>常用的指令</h3><ul>
+<li>v-bind：单向绑定解析表达式，可简写为 <code>:xxx</code>。</li>
+<li>v-model：双向数据绑定。</li>
+<li>v-for：遍历数组&#x2F;对象&#x2F;字符串。</li>
+<li>v-on：绑定事件监听，可简写为 <code>@</code>。</li>
+<li>v-if：条件渲染（动态控制节点是否存在）。</li>
+<li>v-else：条件渲染（动态控制节点是否存在）。</li>
+<li>v-show：条件渲染（动态控制节点是否展示）。</li>
 </ul>
 <h3 id="内置指令"><a href="#内置指令" class="headerlink" title="内置指令"></a>内置指令</h3><ul>
-<li>v-text指令<ul>
-<li>作用：向其所在的节点中渲染文本内容<ul>
-<li>用法：在标签上使用v-text&#x3D;”str”</li>
-<li>与插值语法的区别：v-text会替换掉节点中的内容，<code>&#123;&#123;xx&#125;&#125;</code>则不会</li>
+<li>v-text 指令<ul>
+<li>作用：向其所在的节点中渲染文本内容。</li>
+<li>用法：在标签上使用 <code>v-text=&quot;str&quot;</code>。</li>
+<li>与插值语法的区别：v-text 会替换掉节点中的内容，<code>&#123;&#123;xx&#125;&#125;</code> 则不会。</li>
 </ul>
 </li>
-</ul>
-</li>
-<li>v-html指令<ul>
-<li>作用：向指定节点中渲染包含html结构的内容</li>
-<li>用法：在标签上使用v-html&#x3D;”str”</li>
+<li>v-html 指令<ul>
+<li>作用：向指定节点中渲染包含 html 结构的内容。</li>
+<li>用法：在标签上使用 <code>v-html=&quot;str&quot;</code>。</li>
 <li>与插值语法的区别：<ul>
-<li>v-html会替换掉节点中所有的内容，<code>&#123;&#123;xx&#125;&#125;</code>则不会</li>
-<li>v-html可以识别html结构。</li>
+<li>v-html 会替换掉节点中所有的内容，<code>&#123;&#123;xx&#125;&#125;</code> 则不会。</li>
+<li>v-html 可以识别 html 结构。</li>
 </ul>
 </li>
-<li>严重注意：v-html有安全性问题！！！<ul>
-<li>在网站上动态渲染任意HTML是非常危险的，容易导致XSS攻击</li>
-<li>一定要在可信的内容上使用v-html，不要用在用户提交的内容上</li>
+<li>严重注意：v-html 有安全性问题！！！<ul>
+<li>在网站上动态渲染任意 HTML 是非常危险的，容易导致 XSS 攻击。</li>
+<li>一定要在可信的内容上使用 v-html，不要用在用户提交的内容上。</li>
 </ul>
 </li>
-<li>cookie本质是字符串</li>
+<li>cookie 本质是字符串。</li>
 </ul>
 </li>
-<li>v-cloak指令<ul>
-<li>本质是一个特殊属性，Vue实例创建完毕并接管容器后，会删掉v-cloak属性。</li>
-<li>使用css配合v-cloak可以解决网速慢时页面展示出的问题</li>
-<li>用法：在标签上使用v-cloak</li>
+<li>v-cloak 指令<ul>
+<li>本质是一个特殊属性，Vue 实例创建完毕并接管容器后，会删掉 v-cloak 属性。</li>
+<li>使用 css 配合 v-cloak 可以解决网速慢时页面展示出 <code>&#123;&#123;xxx&#125;&#125;</code> 的问题。</li>
+<li>用法：在标签上使用 <code>v-cloak</code>。</li>
 </ul>
 </li>
-<li>v-once指令<ul>
-<li>v-once所在节点在初次动态渲染后，就视为静态内容</li>
-<li>数据的改变不会引起v-once所在结构的更新，可以用于优化性能</li>
-<li>用法：在标签上使用v-once</li>
+<li>v-once 指令<ul>
+<li>v-once 所在节点在初次动态渲染后，就视为静态内容。</li>
+<li>数据的改变不会引起 v-once 所在结构的更新，可以用于优化性能。</li>
+<li>用法：在标签上使用 <code>v-once</code>。</li>
 </ul>
 </li>
-<li>v-pre指令<ul>
-<li>跳过其所在节点的编译过程</li>
-<li>可利用它跳过：没有使用指令语法、没有使用插值语法的节点，会加快编译</li>
-<li>用法：在标签上使用v-pre</li>
+<li>v-pre 指令<ul>
+<li>跳过其所在节点的编译过程。</li>
+<li>可利用它跳过：没有使用指令语法、没有使用插值语法的节点，会加快编译。</li>
+<li>用法：在标签上使用 <code>v-pre</code>。</li>
 </ul>
 </li>
 </ul>
 <h3 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h3><ol>
 <li>定义语法<ul>
-<li>局部指令：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123; <span class="attr">directives</span>: &#123;指令名:配置对象/回调函数&#125; &#125;)</span><br></pre></td></tr></table></figure></li>
-<li>全局指令：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">directive</span>(指令名,配置对象/回调函数)</span><br></pre></td></tr></table></figure></li>
+<li>局部指令，在 new Vue 的 directives 中声明：</li>
 </ul>
 </li>
-<li>配置对象中常用的3个回调：<ul>
-<li>bind：指令与元素成功绑定时调用</li>
-<li>inserted：指令所在元素被插入页面时调用</li>
-<li>update：指令所在模板结构被重新解析时调用</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123; <span class="attr">directives</span>: &#123;指令名:配置对象/回调函数&#125; &#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>全局指令，通过 <code>Vue.directive</code> 注册：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">directive</span>(指令名,配置对象/回调函数)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>配置对象中常用的 3 个回调：<ul>
+<li>bind：指令与元素成功绑定时调用。</li>
+<li>inserted：指令所在元素被插入页面时调用。</li>
+<li>update：指令所在模板结构被重新解析时调用。</li>
 </ul>
 </li>
 <li>注：<ul>
-<li>指令定义时不加v-，但使用时要加v-</li>
-<li>指令名如果是多个单词，要使用kebab-case命名方式</li>
+<li>指令定义时不加 <code>v-</code>，但使用时要加 <code>v-</code>。</li>
+<li>指令名如果是多个单词，要使用 kebab-case 命名方式。</li>
 </ul>
 </li>
 </ol>
-<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><ul>
-<li>定义：Vue在关键时刻帮我们调用的一些特殊名称的函数。生命周期函数中的this指向是vm 或 组件实例对象。<br><img src="/../../img/vue2/lifecycle2.png" alt="vue2的生命周期"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
-<li>常用的生命周期钩子<ul>
-<li>mounted: 发送ajax请求、启动定时器、绑定自定义事件、订阅消息等【初始化操作】</li>
-<li>beforeDestroy: 清除定时器、解绑自定义事件、取消订阅消息等【收尾工作】</li>
+<h2 id="第-10-步：生命周期"><a href="#第-10-步：生命周期" class="headerlink" title="第 10 步：生命周期"></a>第 10 步：生命周期</h2><p>生命周期是 Vue 在关键时刻帮我们调用的一些特殊名称的函数，函数中的 this 指向是 vm 或组件实例对象。</p>
+<p><img src="/../../img/vue2/lifecycle2.png" alt="vue2的生命周期"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>常用的生命周期钩子：</p>
+<ul>
+<li>mounted：发送 ajax 请求、启动定时器、绑定自定义事件、订阅消息等【初始化操作】。</li>
+<li>beforeDestroy：清除定时器、解绑自定义事件、取消订阅消息等【收尾工作】。</li>
 </ul>
-</li>
-<li>关于销毁Vue实例<ol>
-<li>销毁后借助Vue开发者工具看不到任何信息</li>
-<li>销毁后自定义事件会失效，但原生DOM事件依然有效</li>
-<li>一般不会在beforeDestroy操作数据，因为即便操作数据，也不会再触发更新流程</li>
+<p>关于销毁 Vue 实例：</p>
+<ol>
+<li>销毁后借助 Vue 开发者工具看不到任何信息。</li>
+<li>销毁后自定义事件会失效，但原生 DOM 事件依然有效。</li>
+<li>一般不会在 beforeDestroy 操作数据，因为即便操作数据，也不会再触发更新流程。</li>
 </ol>
-</li>
-</ul>
-<h3 id="非单文件组件"><a href="#非单文件组件" class="headerlink" title="非单文件组件"></a>非单文件组件</h3><ul>
-<li>Vue中使用组件的三大步骤：<ul>
-<li>定义组件(创建组件)<ul>
-<li>使用Vue.extend(options)，其中options和new Vue()时的options相似，但也有区别<ul>
-<li><span class="key_words">『el不要写』</span>，最终所有的组件都要经过一个vm的管理，由vm中的el决定服务哪个容器</li>
-<li><span class="key_words">『data必须写成函数』</span>，避免组件被复用时，数据存在引用关系</li>
+<h2 id="第-11-步：组件"><a href="#第-11-步：组件" class="headerlink" title="第 11 步：组件"></a>第 11 步：组件</h2><h3 id="非单文件组件"><a href="#非单文件组件" class="headerlink" title="非单文件组件"></a>非单文件组件</h3><p>Vue 中使用组件的三大步骤：</p>
+<ul>
+<li>定义组件（创建组件）<ul>
+<li>使用 <code>Vue.extend(options)</code>，其中 options 和 <code>new Vue()</code> 时的 options 相似，但也有区别：<ul>
+<li><span class="key_words">『el 不要写』</span>，最终所有的组件都要经过一个 vm 的管理，由 vm 中的 el 决定服务哪个容器。</li>
+<li><span class="key_words">『data 必须写成函数』</span>，避免组件被复用时，数据存在引用关系。</li>
 </ul>
 </li>
 </ul>
 </li>
 <li>注册组件<ol>
-<li>局部注册：new Vue的时候传入components选项</li>
-<li>全局注册：</li>
+<li>局部注册：new Vue 的时候传入 components 选项。</li>
+<li>全局注册，使用 <code>Vue.component</code>：</li>
 </ol>
 </li>
 </ul>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">component</span>(<span class="string">&#x27;组件名&#x27;</span>,组件) </span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">component</span>(<span class="string">&#x27;组件名&#x27;</span>,组件)</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>使用组件(写组件标签): - <code>&lt;school/&gt;</code></li>
-<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建</span></span><br><span class="line"><span class="keyword">const</span> school = <span class="title class_">Vue</span>.<span class="title function_">extend</span>(&#123;</span><br><span class="line">	<span class="attr">template</span>:<span class="string">`&lt;div&gt;......&lt;/div&gt;`</span>,</span><br><span class="line">	<span class="title function_">data</span>(<span class="params"></span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> &#123;&#125; <span class="comment">//这里定义的变量是template中使用的</span></span><br><span class="line">	&#125;，</span><br><span class="line">	methods：&#123;&#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 注册</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">component</span>(<span class="string">&#x27;school&#x27;</span>,school)</span><br></pre></td></tr></table></figure></li>
-<li>注：<ul>
-<li>组件名写法：kebab-case命名 或 CamelCase命名(需要Vue脚手架支持)</li>
-<li>组件标签：不使用脚手架时，<code>&lt;school/&gt;</code>会导致后续组件不能渲染</li>
-<li>简写方式：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> school = <span class="title class_">Vue</span>.<span class="title function_">extend</span>(options) </span><br><span class="line">简写：<span class="keyword">const</span> school = options</span><br></pre></td></tr></table></figure></li>
+<li>使用组件（写组件标签）：<code>&lt;school/&gt;</code>。</li>
 </ul>
-</li>
+<p>下面是一个完整的创建与注册示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建</span></span><br><span class="line"><span class="keyword">const</span> school = <span class="title class_">Vue</span>.<span class="title function_">extend</span>(&#123;</span><br><span class="line">	<span class="attr">template</span>:<span class="string">`&lt;div&gt;......&lt;/div&gt;`</span>,</span><br><span class="line">	<span class="title function_">data</span>(<span class="params"></span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> &#123;&#125; <span class="comment">//这里定义的变量是template中使用的</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">methods</span>:&#123;&#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 注册</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">component</span>(<span class="string">&#x27;school&#x27;</span>,school)</span><br></pre></td></tr></table></figure>
+
+<p>注：</p>
+<ul>
+<li>组件名写法：kebab-case 命名或 CamelCase 命名（需要 Vue 脚手架支持）。</li>
+<li>组件标签：不使用脚手架时，<code>&lt;school/&gt;</code> 会导致后续组件不能渲染。</li>
+<li>简写方式：<code>Vue.extend(options)</code> 可以简写为直接传 options。</li>
 </ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> school = <span class="title class_">Vue</span>.<span class="title function_">extend</span>(options)</span><br><span class="line">简写：<span class="keyword">const</span> school = options</span><br></pre></td></tr></table></figure>
+
 <h3 id="VueComponent"><a href="#VueComponent" class="headerlink" title="VueComponent"></a>VueComponent</h3><ul>
-<li>组件本质是一个VueComponent的构造函数，且不是自定义的，是Vue.extend生成的</li>
-<li>组件标签是Vue解析时会创建的实例对象，即Vue执行new VueComponent(options)</li>
-<li>每次调用Vue.extend，返回的都是一个全新的VueComponent</li>
-<li>this指向：<ol>
-<li>组件配置中：data函数、methods中的函数、watch中的函数、computed中的函数,this均是<span class="key_words">『VueComponent实例对象』</span></li>
-<li>new Vue(options)配置中：data函数、methods中的函数、watch中的函数、computed中的函数,this均是<span class="key_words">『Vue实例对象』</span></li>
+<li>组件本质是一个 VueComponent 的构造函数，且不是自定义的，是 <code>Vue.extend</code> 生成的。</li>
+<li>组件标签是 Vue 解析时会创建的实例对象，即 Vue 执行 <code>new VueComponent(options)</code>。</li>
+<li>每次调用 <code>Vue.extend</code>，返回的都是一个全新的 VueComponent。</li>
+<li>this 指向：<ol>
+<li>组件配置中：data 函数、methods 中的函数、watch 中的函数、computed 中的函数，this 均是<span class="key_words">『VueComponent 实例对象』</span>。</li>
+<li><code>new Vue(options)</code> 配置中：data 函数、methods 中的函数、watch 中的函数、computed 中的函数，this 均是<span class="key_words">『Vue 实例对象』</span>。</li>
 </ol>
 </li>
-<li>VueComponent的实例对象，简称vc;Vue的实例对象，简称vm</li>
-<li>内置关系：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">VueComponent</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">__proto__</span> === <span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>让组件实例对象(vc)可以访问到 Vue原型上的属性、方法</li>
+<li>VueComponent 的实例对象简称 vc，Vue 的实例对象简称 vm。</li>
+<li>内置关系：</li>
 </ul>
-</li>
-</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">VueComponent</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">__proto__</span> === <span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span></span><br></pre></td></tr></table></figure>
+
+<p>让组件实例对象（vc）可以访问到 Vue 原型上的属性、方法。</p>
 <h3 id="单文件组件"><a href="#单文件组件" class="headerlink" title="单文件组件"></a>单文件组件</h3><ul>
-<li>直接引用</li>
+<li>直接引用。</li>
+</ul>
+<h2 id="踩坑与注意点"><a href="#踩坑与注意点" class="headerlink" title="踩坑与注意点"></a>踩坑与注意点</h2><ul>
+<li>所有由 Vue 管理的函数（data、methods、computed、watch）不要用箭头函数，否则 this 不指向 vm 或组件实例。</li>
+<li>所有不被 Vue 管理的回调（定时器、ajax、Promise）反而应该用箭头函数，才能保住外层的 this。</li>
+<li>给对象新增属性、给数组下标赋值、直接修改 <code>length</code> 都不会触发响应式，必须用 <code>Vue.set</code> &#x2F; <code>vm.$set</code> 或数组的七个变异方法。</li>
+<li><code>Vue.set</code> 不能给 vm 或 vm 的根数据对象添加属性。</li>
+<li><code>v-if</code> 会真正移除 DOM，切换频繁时优先用 <code>v-show</code>；<code>template</code> 只能与 <code>v-if</code> 搭配。</li>
+<li>列表的 key 优先使用数据的唯一标识，用 index 只在“纯展示、无逆序操作”时才是安全的。</li>
+<li><code>v-html</code> 会带来 XSS 风险，不要用在用户提交的内容上。</li>
+<li>非单文件组件在无脚手架环境下不要写自闭合的 <code>&lt;school/&gt;</code>，会导致后续组件无法渲染。</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/essentials/event-handling.html#key-modifiers">Vue2 事件处理（按键修饰符）</a></li>
 </ul>
 
 </article>
@@ -1033,17 +1087,17 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/01/vue2/%E8%BF%9B%E9%98%B6/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/vue3/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">VUE2-进阶（主了解）</h6>
+                <h6 class="trm-op-title">VUE3-自定义指令</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
                 <li>24/11/01</li>
-                <li>13:58</li>
-                <li>VUE</li>
+                <li>14:39</li>
+                <li>Vue</li>
             </ul>
         </div>
     </div>
@@ -1054,17 +1108,17 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/01/TS/%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B%E5%92%8C%E7%B1%BB%E5%9E%8B%E6%8E%A8%E8%AE%BA/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/vue2/%E6%8B%93%E5%B1%95/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">TS-基础类型和类型推论</h6>
+                <h6 class="trm-op-title">VUE2-拓展（主了解）</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
                 <li>24/11/01</li>
-                <li>11:40</li>
-                <li>TypeScript</li>
+                <li>13:58</li>
+                <li>Vue</li>
             </ul>
         </div>
     </div>
@@ -1130,7 +1184,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="配置"><a rel="nofollow" class="trm-toc-link" href="#配置"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">配置</span></a></li><li class="trm-toc-item trm-toc-level-2" title="创建一个vue实例"><a rel="nofollow" class="trm-toc-link" href="#创建一个vue实例"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">创建一个vue实例</span></a></li><li class="trm-toc-item trm-toc-level-2" title="模板语法"><a rel="nofollow" class="trm-toc-link" href="#模板语法"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">模板语法</span></a></li><li class="trm-toc-item trm-toc-level-2" title="数据绑定"><a rel="nofollow" class="trm-toc-link" href="#数据绑定"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">数据绑定</span></a></li><li class="trm-toc-item trm-toc-level-2" title="el与data的两种写法"><a rel="nofollow" class="trm-toc-link" href="#el与data的两种写法"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">el与data的两种写法</span></a></li><li class="trm-toc-item trm-toc-level-2" title="MVVM模型"><a rel="nofollow" class="trm-toc-link" href="#MVVM模型"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">MVVM模型</span></a></li><li class="trm-toc-item trm-toc-level-2" title="数据代理"><a rel="nofollow" class="trm-toc-link" href="#数据代理"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">数据代理</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="Object.defineproperty方法"><a rel="nofollow" class="trm-toc-link" href="#Object-defineproperty方法"><span class="trm-toc-number">7.1.</span> <span class="trm-toc-text">Object.defineproperty方法</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Vue中的数据代理"><a rel="nofollow" class="trm-toc-link" href="#Vue中的数据代理"><span class="trm-toc-number">7.2.</span> <span class="trm-toc-text">Vue中的数据代理</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="事件处理"><a rel="nofollow" class="trm-toc-link" href="#事件处理"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">事件处理</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="基本使用"><a rel="nofollow" class="trm-toc-link" href="#基本使用"><span class="trm-toc-number">8.1.</span> <span class="trm-toc-text">基本使用</span></a></li><li class="trm-toc-item trm-toc-level-3" title="事件修饰符"><a rel="nofollow" class="trm-toc-link" href="#事件修饰符"><span class="trm-toc-number">8.2.</span> <span class="trm-toc-text">事件修饰符</span></a></li><li class="trm-toc-item trm-toc-level-3" title="键盘事件"><a rel="nofollow" class="trm-toc-link" href="#键盘事件"><span class="trm-toc-number">8.3.</span> <span class="trm-toc-text">键盘事件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="常用的按键别名"><a rel="nofollow" class="trm-toc-link" href="#常用的按键别名"><span class="trm-toc-number">8.4.</span> <span class="trm-toc-text">常用的按键别名</span></a></li><li class="trm-toc-item trm-toc-level-3" title="系统修饰键（用法特殊）：ctrl、alt、shift、meta(windows键)"><a rel="nofollow" class="trm-toc-link" href="#系统修饰键（用法特殊）：ctrl、alt、shift、meta-windows键"><span class="trm-toc-number">8.5.</span> <span class="trm-toc-text">系统修饰键（用法特殊）：ctrl、alt、shift、meta(windows键)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="鼠标按键修饰符"><a rel="nofollow" class="trm-toc-link" href="#鼠标按键修饰符"><span class="trm-toc-number">8.6.</span> <span class="trm-toc-text">鼠标按键修饰符</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="计算属性(computed)"><a rel="nofollow" class="trm-toc-link" href="#计算属性-computed"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">计算属性(computed)</span></a></li><li class="trm-toc-item trm-toc-level-2" title="监视属性(watch)"><a rel="nofollow" class="trm-toc-link" href="#监视属性-watch"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">监视属性(watch)</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="computed和watch之间的区别"><a rel="nofollow" class="trm-toc-link" href="#computed和watch之间的区别"><span class="trm-toc-number">10.1.</span> <span class="trm-toc-text">computed和watch之间的区别</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="绑定样式"><a rel="nofollow" class="trm-toc-link" href="#绑定样式"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">绑定样式</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="class样式"><a rel="nofollow" class="trm-toc-link" href="#class样式"><span class="trm-toc-number">11.1.</span> <span class="trm-toc-text">class样式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="style样式"><a rel="nofollow" class="trm-toc-link" href="#style样式"><span class="trm-toc-number">11.2.</span> <span class="trm-toc-text">style样式</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="条件渲染"><a rel="nofollow" class="trm-toc-link" href="#条件渲染"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">条件渲染</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="v-if"><a rel="nofollow" class="trm-toc-link" href="#v-if"><span class="trm-toc-number">12.1.</span> <span class="trm-toc-text">v-if</span></a></li><li class="trm-toc-item trm-toc-level-3" title="v-show"><a rel="nofollow" class="trm-toc-link" href="#v-show"><span class="trm-toc-number">12.2.</span> <span class="trm-toc-text">v-show</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="列表渲染"><a rel="nofollow" class="trm-toc-link" href="#列表渲染"><span class="trm-toc-number">13.</span> <span class="trm-toc-text">列表渲染</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="基本列表(v-for指令):"><a rel="nofollow" class="trm-toc-link" href="#基本列表-v-for指令"><span class="trm-toc-number">13.1.</span> <span class="trm-toc-text">基本列表(v-for指令):</span></a></li><li class="trm-toc-item trm-toc-level-3" title="v-for 与 对象"><a rel="nofollow" class="trm-toc-link" href="#v-for-与-对象"><span class="trm-toc-number">13.2.</span> <span class="trm-toc-text">v-for 与 对象</span></a></li><li class="trm-toc-item trm-toc-level-3" title="在 v-for 里使用范围值"><a rel="nofollow" class="trm-toc-link" href="#在-v-for-里使用范围值"><span class="trm-toc-number">13.3.</span> <span class="trm-toc-text">在 v-for 里使用范围值</span></a></li><li class="trm-toc-item trm-toc-level-3" title="template标签 上的 v-for"><a rel="nofollow" class="trm-toc-link" href="#template标签-上的-v-for"><span class="trm-toc-number">13.4.</span> <span class="trm-toc-text">template标签 上的 v-for</span></a></li><li class="trm-toc-item trm-toc-level-3" title="在组件标签上使用"><a rel="nofollow" class="trm-toc-link" href="#在组件标签上使用"><span class="trm-toc-number">13.5.</span> <span class="trm-toc-text">在组件标签上使用</span></a></li><li class="trm-toc-item trm-toc-level-3" title="列表过滤"><a rel="nofollow" class="trm-toc-link" href="#列表过滤"><span class="trm-toc-number">13.6.</span> <span class="trm-toc-text">列表过滤</span></a></li><li class="trm-toc-item trm-toc-level-3" title="列表排序"><a rel="nofollow" class="trm-toc-link" href="#列表排序"><span class="trm-toc-number">13.7.</span> <span class="trm-toc-text">列表排序</span></a></li><li class="trm-toc-item trm-toc-level-3" title="数组变化侦测"><a rel="nofollow" class="trm-toc-link" href="#数组变化侦测"><span class="trm-toc-number">13.8.</span> <span class="trm-toc-text">数组变化侦测</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="react、vue中的key有什么作用？（key的内部原理）"><a rel="nofollow" class="trm-toc-link" href="#react、vue中的key有什么作用？（key的内部原理）"><span class="trm-toc-number">14.</span> <span class="trm-toc-text">react、vue中的key有什么作用？（key的内部原理）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Vue检测数据改变的原理"><a rel="nofollow" class="trm-toc-link" href="#Vue检测数据改变的原理"><span class="trm-toc-number">15.</span> <span class="trm-toc-text">Vue检测数据改变的原理</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="vue.set()"><a rel="nofollow" class="trm-toc-link" href="#vue-set"><span class="trm-toc-number">15.1.</span> <span class="trm-toc-text">vue.set()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="数据监测的原理"><a rel="nofollow" class="trm-toc-link" href="#数据监测的原理"><span class="trm-toc-number">15.2.</span> <span class="trm-toc-text">数据监测的原理</span></a></li><li class="trm-toc-item trm-toc-level-3" title="收集表单数据"><a rel="nofollow" class="trm-toc-link" href="#收集表单数据"><span class="trm-toc-number">15.3.</span> <span class="trm-toc-text">收集表单数据</span></a></li><li class="trm-toc-item trm-toc-level-3" title="过滤器"><a rel="nofollow" class="trm-toc-link" href="#过滤器"><span class="trm-toc-number">15.4.</span> <span class="trm-toc-text">过滤器</span></a></li><li class="trm-toc-item trm-toc-level-3" title="常用的指令"><a rel="nofollow" class="trm-toc-link" href="#常用的指令"><span class="trm-toc-number">15.5.</span> <span class="trm-toc-text">常用的指令</span></a></li><li class="trm-toc-item trm-toc-level-3" title="内置指令"><a rel="nofollow" class="trm-toc-link" href="#内置指令"><span class="trm-toc-number">15.6.</span> <span class="trm-toc-text">内置指令</span></a></li><li class="trm-toc-item trm-toc-level-3" title="自定义指令"><a rel="nofollow" class="trm-toc-link" href="#自定义指令"><span class="trm-toc-number">15.7.</span> <span class="trm-toc-text">自定义指令</span></a></li><li class="trm-toc-item trm-toc-level-3" title="生命周期"><a rel="nofollow" class="trm-toc-link" href="#生命周期"><span class="trm-toc-number">15.8.</span> <span class="trm-toc-text">生命周期</span></a></li><li class="trm-toc-item trm-toc-level-3" title="非单文件组件"><a rel="nofollow" class="trm-toc-link" href="#非单文件组件"><span class="trm-toc-number">15.9.</span> <span class="trm-toc-text">非单文件组件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="VueComponent"><a rel="nofollow" class="trm-toc-link" href="#VueComponent"><span class="trm-toc-number">15.10.</span> <span class="trm-toc-text">VueComponent</span></a></li><li class="trm-toc-item trm-toc-level-3" title="单文件组件"><a rel="nofollow" class="trm-toc-link" href="#单文件组件"><span class="trm-toc-number">15.11.</span> <span class="trm-toc-text">单文件组件</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景：先建立 MVVM 的心智模型"><a rel="nofollow" class="trm-toc-link" href="#背景：先建立-MVVM-的心智模型"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景：先建立 MVVM 的心智模型</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 1 步：关闭生产提示并创建实例"><a rel="nofollow" class="trm-toc-link" href="#第-1-步：关闭生产提示并创建实例"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">第 1 步：关闭生产提示并创建实例</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="el 与 data 的两种写法"><a rel="nofollow" class="trm-toc-link" href="#el-与-data-的两种写法"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">el 与 data 的两种写法</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="第 2 步：掌握模板语法与数据绑定"><a rel="nofollow" class="trm-toc-link" href="#第-2-步：掌握模板语法与数据绑定"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">第 2 步：掌握模板语法与数据绑定</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 3 步：理解数据代理（Object.defineProperty）"><a rel="nofollow" class="trm-toc-link" href="#第-3-步：理解数据代理（Object-defineProperty）"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">第 3 步：理解数据代理（Object.defineProperty）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="Object.defineProperty 方法"><a rel="nofollow" class="trm-toc-link" href="#Object-defineProperty-方法"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">Object.defineProperty 方法</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Vue 中的数据代理"><a rel="nofollow" class="trm-toc-link" href="#Vue-中的数据代理"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">Vue 中的数据代理</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="第 4 步：绑定事件（v-on）"><a rel="nofollow" class="trm-toc-link" href="#第-4-步：绑定事件（v-on）"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">第 4 步：绑定事件（v-on）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="基本使用"><a rel="nofollow" class="trm-toc-link" href="#基本使用"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">基本使用</span></a></li><li class="trm-toc-item trm-toc-level-3" title="事件修饰符"><a rel="nofollow" class="trm-toc-link" href="#事件修饰符"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">事件修饰符</span></a></li><li class="trm-toc-item trm-toc-level-3" title="键盘事件"><a rel="nofollow" class="trm-toc-link" href="#键盘事件"><span class="trm-toc-number">5.3.</span> <span class="trm-toc-text">键盘事件</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="第 5 步：用 computed 与 watch 派生和监听数据"><a rel="nofollow" class="trm-toc-link" href="#第-5-步：用-computed-与-watch-派生和监听数据"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">第 5 步：用 computed 与 watch 派生和监听数据</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="计算属性（computed）"><a rel="nofollow" class="trm-toc-link" href="#计算属性（computed）"><span class="trm-toc-number">6.1.</span> <span class="trm-toc-text">计算属性（computed）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="监视属性（watch）"><a rel="nofollow" class="trm-toc-link" href="#监视属性（watch）"><span class="trm-toc-number">6.2.</span> <span class="trm-toc-text">监视属性（watch）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="computed 与 watch 的区别"><a rel="nofollow" class="trm-toc-link" href="#computed-与-watch-的区别"><span class="trm-toc-number">6.3.</span> <span class="trm-toc-text">computed 与 watch 的区别</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="第 6 步：控制样式与条件渲染"><a rel="nofollow" class="trm-toc-link" href="#第-6-步：控制样式与条件渲染"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">第 6 步：控制样式与条件渲染</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="绑定 class 样式"><a rel="nofollow" class="trm-toc-link" href="#绑定-class-样式"><span class="trm-toc-number">7.1.</span> <span class="trm-toc-text">绑定 class 样式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="绑定 style 样式"><a rel="nofollow" class="trm-toc-link" href="#绑定-style-样式"><span class="trm-toc-number">7.2.</span> <span class="trm-toc-text">绑定 style 样式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="v-if"><a rel="nofollow" class="trm-toc-link" href="#v-if"><span class="trm-toc-number">7.3.</span> <span class="trm-toc-text">v-if</span></a></li><li class="trm-toc-item trm-toc-level-3" title="v-show"><a rel="nofollow" class="trm-toc-link" href="#v-show"><span class="trm-toc-number">7.4.</span> <span class="trm-toc-text">v-show</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="第 7 步：列表渲染与 key"><a rel="nofollow" class="trm-toc-link" href="#第-7-步：列表渲染与-key"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">第 7 步：列表渲染与 key</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="基本列表（v-for 指令）"><a rel="nofollow" class="trm-toc-link" href="#基本列表（v-for-指令）"><span class="trm-toc-number">8.1.</span> <span class="trm-toc-text">基本列表（v-for 指令）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="v-for 与对象"><a rel="nofollow" class="trm-toc-link" href="#v-for-与对象"><span class="trm-toc-number">8.2.</span> <span class="trm-toc-text">v-for 与对象</span></a></li><li class="trm-toc-item trm-toc-level-3" title="在 v-for 里使用范围值"><a rel="nofollow" class="trm-toc-link" href="#在-v-for-里使用范围值"><span class="trm-toc-number">8.3.</span> <span class="trm-toc-text">在 v-for 里使用范围值</span></a></li><li class="trm-toc-item trm-toc-level-3" title="template 标签上的 v-for"><a rel="nofollow" class="trm-toc-link" href="#template-标签上的-v-for"><span class="trm-toc-number">8.4.</span> <span class="trm-toc-text">template 标签上的 v-for</span></a></li><li class="trm-toc-item trm-toc-level-3" title="在组件标签上使用"><a rel="nofollow" class="trm-toc-link" href="#在组件标签上使用"><span class="trm-toc-number">8.5.</span> <span class="trm-toc-text">在组件标签上使用</span></a></li><li class="trm-toc-item trm-toc-level-3" title="列表过滤"><a rel="nofollow" class="trm-toc-link" href="#列表过滤"><span class="trm-toc-number">8.6.</span> <span class="trm-toc-text">列表过滤</span></a></li><li class="trm-toc-item trm-toc-level-3" title="列表排序"><a rel="nofollow" class="trm-toc-link" href="#列表排序"><span class="trm-toc-number">8.7.</span> <span class="trm-toc-text">列表排序</span></a></li><li class="trm-toc-item trm-toc-level-3" title="数组变化侦测"><a rel="nofollow" class="trm-toc-link" href="#数组变化侦测"><span class="trm-toc-number">8.8.</span> <span class="trm-toc-text">数组变化侦测</span></a></li><li class="trm-toc-item trm-toc-level-3" title="key 的内部原理"><a rel="nofollow" class="trm-toc-link" href="#key-的内部原理"><span class="trm-toc-number">8.9.</span> <span class="trm-toc-text">key 的内部原理</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="第 8 步：理解数据响应式、表单收集与过滤器"><a rel="nofollow" class="trm-toc-link" href="#第-8-步：理解数据响应式、表单收集与过滤器"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">第 8 步：理解数据响应式、表单收集与过滤器</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="Vue.set()"><a rel="nofollow" class="trm-toc-link" href="#Vue-set"><span class="trm-toc-number">9.1.</span> <span class="trm-toc-text">Vue.set()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="数据监测的原理"><a rel="nofollow" class="trm-toc-link" href="#数据监测的原理"><span class="trm-toc-number">9.2.</span> <span class="trm-toc-text">数据监测的原理</span></a></li><li class="trm-toc-item trm-toc-level-3" title="收集表单数据"><a rel="nofollow" class="trm-toc-link" href="#收集表单数据"><span class="trm-toc-number">9.3.</span> <span class="trm-toc-text">收集表单数据</span></a></li><li class="trm-toc-item trm-toc-level-3" title="过滤器"><a rel="nofollow" class="trm-toc-link" href="#过滤器"><span class="trm-toc-number">9.4.</span> <span class="trm-toc-text">过滤器</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="第 9 步：常用指令、内置指令与自定义指令"><a rel="nofollow" class="trm-toc-link" href="#第-9-步：常用指令、内置指令与自定义指令"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">第 9 步：常用指令、内置指令与自定义指令</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="常用的指令"><a rel="nofollow" class="trm-toc-link" href="#常用的指令"><span class="trm-toc-number">10.1.</span> <span class="trm-toc-text">常用的指令</span></a></li><li class="trm-toc-item trm-toc-level-3" title="内置指令"><a rel="nofollow" class="trm-toc-link" href="#内置指令"><span class="trm-toc-number">10.2.</span> <span class="trm-toc-text">内置指令</span></a></li><li class="trm-toc-item trm-toc-level-3" title="自定义指令"><a rel="nofollow" class="trm-toc-link" href="#自定义指令"><span class="trm-toc-number">10.3.</span> <span class="trm-toc-text">自定义指令</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="第 10 步：生命周期"><a rel="nofollow" class="trm-toc-link" href="#第-10-步：生命周期"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">第 10 步：生命周期</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 11 步：组件"><a rel="nofollow" class="trm-toc-link" href="#第-11-步：组件"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">第 11 步：组件</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="非单文件组件"><a rel="nofollow" class="trm-toc-link" href="#非单文件组件"><span class="trm-toc-number">12.1.</span> <span class="trm-toc-text">非单文件组件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="VueComponent"><a rel="nofollow" class="trm-toc-link" href="#VueComponent"><span class="trm-toc-number">12.2.</span> <span class="trm-toc-text">VueComponent</span></a></li><li class="trm-toc-item trm-toc-level-3" title="单文件组件"><a rel="nofollow" class="trm-toc-link" href="#单文件组件"><span class="trm-toc-number">12.3.</span> <span class="trm-toc-text">单文件组件</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="踩坑与注意点"><a rel="nofollow" class="trm-toc-link" href="#踩坑与注意点"><span class="trm-toc-number">13.</span> <span class="trm-toc-text">踩坑与注意点</span></a></li><li class="trm-toc-item trm-toc-level-2" title="参考"><a rel="nofollow" class="trm-toc-link" href="#参考"><span class="trm-toc-number">14.</span> <span class="trm-toc-text">参考</span></a></li></ol>
       </div>
     </div>
 
@@ -1254,6 +1308,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

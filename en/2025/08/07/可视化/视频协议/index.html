@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="基础概念 视频由『容器』和『编解码器』两部分组成。 视频格式（容器）是存储音频、视频、字幕和任何其他源数据的容器。 编解码器对诸如音频和视频之类的多媒体数据进行编码和解码。 创建视频时，视频编解码器对视频进行编码和压缩，音频编解码器对声音进行编码和压缩；之后编码好的视频与音频会同步并存储在媒体容器（文件格式）中。  视频编码格式：压缩视频的方法 H.265 &#x2F; HEVC H.264">
+<meta name="description" content="区分视频的容器与编解码器概念，梳理常见编码格式、文件格式与 M3U8&#x2F;HLS 的作用和选型思路">
 <meta property="og:type" content="article">
 <meta property="og:title" content="视频协议">
 <meta property="og:url" content="http://example.com/en/2025/08/07/%E5%8F%AF%E8%A7%86%E5%8C%96/%E8%A7%86%E9%A2%91%E5%8D%8F%E8%AE%AE/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="基础概念 视频由『容器』和『编解码器』两部分组成。 视频格式（容器）是存储音频、视频、字幕和任何其他源数据的容器。 编解码器对诸如音频和视频之类的多媒体数据进行编码和解码。 创建视频时，视频编解码器对视频进行编码和压缩，音频编解码器对声音进行编码和压缩；之后编码好的视频与音频会同步并存储在媒体容器（文件格式）中。  视频编码格式：压缩视频的方法 H.265 &#x2F; HEVC H.264">
+<meta property="og:description" content="区分视频的容器与编解码器概念，梳理常见编码格式、文件格式与 M3U8&#x2F;HLS 的作用和选型思路">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-08-07T08:15:41.473Z">
-<meta property="article:modified_time" content="2026-10-13T02:31:26.541Z">
+<meta property="article:published_time" content="2025-08-07T08:15:41.000Z">
+<meta property="article:modified_time" content="2026-11-17T02:38:40.466Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="音视频">
 <meta property="article:tag" content="协议">
@@ -70,7 +70,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-10-13 10:31:26"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-17 10:38:40"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -85,6 +85,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -199,13 +201,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -241,7 +243,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -259,13 +261,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -534,16 +536,12 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>先把结论说清楚：容器决定文件长什么样，编解码器决定数据怎么压缩，两者互相独立、可以自由组合。选型时按「要兼容选 H.264，要体积选 H.265 &#x2F; AV1，要专业后期选 ProRes，要网页在线播放优先 WebM 或 MP4 + m3u8」这条线走即可。下面把编码、容器和 HLS 播放列表拆开说明。</p>
+<span id="more"></span>
 
-<h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><ul>
-<li>视频由<span class="key_words">『容器』</span>和<span class="key_words">『编解码器』</span>两部分组成。</li>
-<li>视频格式（容器）是存储音频、视频、字幕和任何其他源数据的容器。</li>
-<li>编解码器对诸如音频和视频之类的多媒体数据进行编码和解码。</li>
-<li>创建视频时，视频编解码器对视频进行编码和压缩，音频编解码器对声音进行编码和压缩；之后编码好的视频与音频会同步并存储在媒体容器（文件格式）中。</li>
-</ul>
-<h2 id="视频编码格式：压缩视频的方法"><a href="#视频编码格式：压缩视频的方法" class="headerlink" title="视频编码格式：压缩视频的方法"></a>视频编码格式：压缩视频的方法</h2><ul>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>视频由<span class="key_words">『容器』</span>和<span class="key_words">『编解码器』</span>两部分组成。视频格式（容器）是存储音频、视频、字幕和任何其他源数据的容器；编解码器负责对音频和视频这类多媒体数据进行编码和解码。创建视频时，视频编解码器对画面进行编码压缩，音频编解码器对声音进行编码压缩；之后编码好的视频与音频会同步并存储在媒体容器（文件格式）中。</p>
+<h2 id="第一步：先选视频编码格式（压缩视频的方法）"><a href="#第一步：先选视频编码格式（压缩视频的方法）" class="headerlink" title="第一步：先选视频编码格式（压缩视频的方法）"></a>第一步：先选视频编码格式（压缩视频的方法）</h2><p>常见编码格式有：</p>
+<ul>
 <li>H.265 &#x2F; HEVC</li>
 <li>H.264 &#x2F; AVC</li>
 <li>AV1</li>
@@ -551,31 +549,32 @@
 <li>ProRes（专业领域用）</li>
 </ul>
 <h3 id="H-264-AVC"><a href="#H-264-AVC" class="headerlink" title="H.264 &#x2F; AVC"></a>H.264 &#x2F; AVC</h3><ul>
-<li>优点：兼容性最好，所有设备平台都支持。</li>
-<li>缺点：压缩效率最低，文件体积大。</li>
-<li>应用：YouTube、蓝光 DVD、监控录像、直播等。</li>
+<li>优点：兼容性最好，所有设备平台都支持</li>
+<li>缺点：压缩效率最低，文件体积大</li>
+<li>应用：YouTube、蓝光 DVD、监控录像、直播等</li>
 </ul>
 <h3 id="H-265-HEVC"><a href="#H-265-HEVC" class="headerlink" title="H.265 &#x2F; HEVC"></a>H.265 &#x2F; HEVC</h3><ul>
-<li>优点：比 H.264 压缩率高出约 50%，相同画质下体积更小。</li>
-<li>缺点：硬件要求更高，部分设备不支持；有些公司收取专利费。</li>
-<li>应用：4K 蓝光、高端电视、苹果设备视频拍摄。</li>
+<li>优点：比 H.264 压缩率高出约 50%，相同画质下体积更小</li>
+<li>缺点：硬件要求更高，部分设备不支持；有些公司收取专利费</li>
+<li>应用：4K 蓝光、高端电视、苹果设备视频拍摄</li>
 </ul>
 <h3 id="VP9"><a href="#VP9" class="headerlink" title="VP9"></a>VP9</h3><ul>
-<li>优点：谷歌主推，免费开源，压缩效果接近 H.265。</li>
-<li>缺点：对硬件性能要求较高。</li>
-<li>应用：YouTube 的 4K 流媒体视频。</li>
+<li>优点：谷歌主推，免费开源，压缩效果接近 H.265</li>
+<li>缺点：对硬件性能要求较高</li>
+<li>应用：YouTube 的 4K 流媒体视频</li>
 </ul>
 <h3 id="AV1"><a href="#AV1" class="headerlink" title="AV1"></a>AV1</h3><ul>
-<li>优点：新一代开源编码，压缩效率比 H.265 和 VP9 更高。</li>
-<li>缺点：硬件支持还不普及，编码速度慢。</li>
-<li>应用：Netflix、YouTube、TikTok 等平台逐步推广中，未来趋势。</li>
+<li>优点：新一代开源编码，压缩效率比 H.265 和 VP9 更高</li>
+<li>缺点：硬件支持还不普及，编码速度慢</li>
+<li>应用：Netflix、YouTube、TikTok 等平台逐步推广中，是未来趋势</li>
 </ul>
 <h3 id="ProRes"><a href="#ProRes" class="headerlink" title="ProRes"></a>ProRes</h3><ul>
-<li>优点：高质量无损压缩，适合后期剪辑。</li>
-<li>缺点：文件体积巨大，不适合普通用户。</li>
-<li>应用：影视制作、专业剪辑。</li>
+<li>优点：高质量无损压缩，适合后期剪辑</li>
+<li>缺点：文件体积巨大，不适合普通用户</li>
+<li>应用：影视制作、专业剪辑</li>
 </ul>
-<h2 id="视频文件格式"><a href="#视频文件格式" class="headerlink" title="视频文件格式"></a>视频文件格式</h2><ul>
+<h2 id="第二步：再选视频文件格式（容器）"><a href="#第二步：再选视频文件格式（容器）" class="headerlink" title="第二步：再选视频文件格式（容器）"></a>第二步：再选视频文件格式（容器）</h2><p>常见容器有：</p>
+<ul>
 <li>mp4（.mp4）</li>
 <li>mov（.mov）</li>
 <li>mkv（.mkv）</li>
@@ -588,64 +587,64 @@
 <li>WEB-Ready GIF（.gif）</li>
 </ul>
 <h3 id="MP4"><a href="#MP4" class="headerlink" title="MP4"></a>MP4</h3><ul>
-<li>优点：兼容性强，使用 H.264 或 AV1 等高效编解码器来压缩视频，不会降低画质。</li>
-<li>应用：流媒体平台、网络上传、移动内容、在线课程、一般用途。</li>
+<li>优点：兼容性强，使用 H.264 或 AV1 等高效编解码器来压缩视频，不会降低画质</li>
+<li>应用：流媒体平台、网络上传、移动内容、在线课程、一般用途</li>
 </ul>
 <h3 id="MOV"><a href="#MOV" class="headerlink" title="MOV"></a>MOV</h3><ul>
-<li>优点：Apple 原生视频格式，可以存储高质量的视频和音频，支持 Alpha 通道等功能。</li>
-<li>缺点：文件体积大。</li>
-<li>应用：动画、后期制作、高端剪辑、高质量导出。</li>
+<li>优点：Apple 原生视频格式，可以存储高质量的视频和音频，支持 Alpha 通道等功能</li>
+<li>缺点：文件体积大</li>
+<li>应用：动画、后期制作、高端剪辑、高质量导出</li>
 </ul>
 <h3 id="MKV"><a href="#MKV" class="headerlink" title="MKV"></a>MKV</h3><ul>
-<li>优点：可以将视频、多音轨、字幕和元数据打包成一个文件。</li>
-<li>缺点：兼容性不普遍，但在普及中。</li>
-<li>应用：电影、电视剧、多语言内容。</li>
+<li>优点：可以将视频、多音轨、字幕和元数据打包成一个文件</li>
+<li>缺点：兼容性不普遍，但在普及中</li>
+<li>应用：电影、电视剧、多语言内容</li>
 </ul>
 <h3 id="WEBM"><a href="#WEBM" class="headerlink" title="WEBM"></a>WEBM</h3><ul>
-<li>优点：专为 Web 打造，采用 VP8、VP9 或 AV1 编解码器，在保持良好清晰度的同时维持较小的文件体积，网速较慢时也能流畅在线播放。</li>
-<li>应用：嵌入式网络视频、交互式网站、基于浏览器的应用程序。</li>
+<li>优点：专为 Web 打造，采用 VP8、VP9 或 AV1 编解码器，在保持良好清晰度的同时维持较小的文件体积，网速较慢时也能流畅在线播放</li>
+<li>应用：嵌入式网络视频、交互式网站、基于浏览器的应用程序</li>
 </ul>
 <h3 id="AVI"><a href="#AVI" class="headerlink" title="AVI"></a>AVI</h3><ul>
-<li>优点：支持多种编解码器，兼容许多媒体播放器。</li>
-<li>缺点：文件体积大，缺乏现代主流媒体功能支持，不适合在线发布。</li>
-<li>应用：本地播放、遗留系统、基本视频导出。</li>
+<li>优点：支持多种编解码器，兼容许多媒体播放器</li>
+<li>缺点：文件体积大，缺乏现代主流媒体功能支持，不适合在线发布</li>
+<li>应用：本地播放、遗留系统、基本视频导出</li>
 </ul>
 <h3 id="MPEG-2"><a href="#MPEG-2" class="headerlink" title="MPEG-2"></a>MPEG-2</h3><ul>
-<li>优点：DVD 标准格式，质量稳定，与大量老款播放器和硬件兼容。</li>
-<li>缺点：压缩效率低。</li>
-<li>应用：DVD、电视广播、旧的编辑系统。</li>
+<li>优点：DVD 标准格式，质量稳定，与大量老款播放器和硬件兼容</li>
+<li>缺点：压缩效率低</li>
+<li>应用：DVD、电视广播、旧的编辑系统</li>
 </ul>
 <h3 id="WMV"><a href="#WMV" class="headerlink" title="WMV"></a>WMV</h3><ul>
-<li>优点：文件小，在“尺寸比像素级画质更重要”的场景有优势。</li>
-<li>缺点：使用范围小，仅在一些商业环境中使用。</li>
-<li>应用：电子邮件附件、嵌入 PPT 演示文档、低带宽环境。</li>
+<li>优点：文件小，在「尺寸比像素级画质更重要」的场景有优势</li>
+<li>缺点：使用范围小，仅在一些商业环境中使用</li>
+<li>应用：电子邮件附件、嵌入 PPT 演示文档、低带宽环境</li>
 </ul>
 <h3 id="FLV"><a href="#FLV" class="headerlink" title="FLV"></a>FLV</h3><ul>
-<li>优点：为 Flash Player 打造，紧凑且易于流媒体播放。</li>
-<li>缺点：Flash Player 如今已销声匿迹。</li>
-<li>应用：Flash 时代的网站、档案工作、罕见的兼容性情况。</li>
+<li>优点：为 Flash Player 打造，紧凑且易于流媒体播放</li>
+<li>缺点：Flash Player 如今已销声匿迹</li>
+<li>应用：Flash 时代的网站、档案工作、罕见的兼容性情况</li>
 </ul>
 <h3 id="AVCHD"><a href="#AVCHD" class="headerlink" title="AVCHD"></a>AVCHD</h3><ul>
-<li>优点：代表高级高清视频编码，拥有出色的图像清晰度。</li>
-<li>缺点：体积庞大且复杂，不适用于网络传输。</li>
-<li>应用：摄像机镜头、存档原始视频、蓝光光盘。</li>
+<li>优点：代表高级高清视频编码，拥有出色的图像清晰度</li>
+<li>缺点：体积庞大且复杂，不适用于网络传输</li>
+<li>应用：摄像机镜头、存档原始视频、蓝光光盘</li>
 </ul>
 <h3 id="WEB-Ready-GIF"><a href="#WEB-Ready-GIF" class="headerlink" title="WEB-Ready GIF"></a>WEB-Ready GIF</h3><ul>
-<li>优点：短小、无声的动画。</li>
-<li>缺点：色彩范围较差，缺乏音频。</li>
-<li>应用：短小无声的动画、表情包以及消息平台中的视觉反馈、短动画。</li>
+<li>优点：短小、无声的动画</li>
+<li>缺点：色彩范围较差，缺乏音频</li>
+<li>应用：短小无声的动画、表情包以及消息平台中的视觉反馈、短动画</li>
 </ul>
-<h2 id="M3U8-文件"><a href="#M3U8-文件" class="headerlink" title="M3U8 文件"></a>M3U8 文件</h2><ul>
-<li>M3U8 中的 <strong>8</strong> 代表 UTF-8 编码，这是目前网络通信中最常见的全球通用编码标准。</li>
-<li>作为一个地址文件，M3U8 文件并不包含实际的媒体数据。它不是视频或音频文件本身，而是一个包含媒体播放器指令的<span class="key_words">『文本文件』</span>。</li>
-<li>M3U8 文件告诉设备在哪里找到特定的媒体段（通常称为“块”或“片段”），以及播放它们的顺序，以构成完整的在线媒体流。</li>
-<li>作用：苹果开发的、用于存储基于 HTTP Live Streaming（HLS）协议的播放列表。HLS 是一种用于实时流传输的协议，旨在提供更流畅的视频体验；m3u8 文件作为播放列表，包含视频流的信息，指导播放器如何获取和解码视频内容。</li>
-<li>特性：将整个视频分割成小块，并通过 HTTP 协议实时传输。</li>
-<li>使用场景：在线视频直播、视频点播以及移动端视频应用。</li>
-<li>优点：适应性强，能够根据网络状况自动调整视频质量，灵活在多种码率、分辨率之间切换，提供更流畅的观看体验。</li>
+<h2 id="第三步：理解-M3U8-文件与-HLS"><a href="#第三步：理解-M3U8-文件与-HLS" class="headerlink" title="第三步：理解 M3U8 文件与 HLS"></a>第三步：理解 M3U8 文件与 HLS</h2><ul>
+<li>M3U8 中的 <strong>8</strong> 代表 UTF-8 编码，这是目前网络通信中最常见的全球通用编码标准</li>
+<li>作为一个地址文件，M3U8 文件并不包含实际的媒体数据。它不是视频或音频文件本身，而是一个包含媒体播放器指令的<span class="key_words">『文本文件』</span></li>
+<li>M3U8 文件告诉设备在哪里找到特定的媒体段（通常称为「块」或「片段」），以及播放它们的顺序，从而构成完整的在线媒体流</li>
+<li>作用：苹果开发的、用于存储基于 HTTP Live Streaming（HLS）协议的播放列表。HLS 是一种用于实时流传输的协议，旨在提供更流畅的视频体验；m3u8 文件作为播放列表，包含视频流的信息，指导播放器如何获取和解码视频内容</li>
+<li>特性：将整个视频分割成小块，并通过 HTTP 协议实时传输</li>
+<li>使用场景：在线视频直播、视频点播以及移动端视频应用</li>
+<li>优点：适应性强，能够根据网络状况自动调整视频质量，灵活在多种码率、分辨率之间切换，提供更流畅的观看体验</li>
 <li>缺点：<ul>
-<li>依赖于网络，弱网络环境下可能导致视频加载缓慢。</li>
-<li>不是所有的播放器都能够支持 m3u8 格式。</li>
+<li>依赖于网络，弱网络环境下可能导致视频加载缓慢</li>
+<li>不是所有的播放器都能够支持 m3u8 格式</li>
 </ul>
 </li>
 </ul>
@@ -653,6 +652,12 @@
 <li><span class="key_words">『容器决定文件格式，编解码器决定压缩方式』</span>，两者是独立的，可以自由组合（如 MP4 + H.264、MP4 + AV1）。</li>
 <li>选型口诀：要兼容选 H.264，要体积选 H.265 &#x2F; AV1，要专业后期选 ProRes，要网页在线播放优先 WebM &#x2F; MP4 + m3u8。</li>
 </ul>
+<h2 id="踩坑与注意点"><a href="#踩坑与注意点" class="headerlink" title="踩坑与注意点"></a>踩坑与注意点</h2><ol>
+<li>改后缀名不等于转码。把 <code>.flv</code> 直接改名为 <code>.mp4</code>，容器内部结构并不会变，播放器依旧无法识别。</li>
+<li>「格式」这个词容易混淆。日常说的 MP4、MKV 是容器，H.264、AV1 是编码，同一个 MP4 文件里可以是 H.264 也可以是 AV1。</li>
+<li>选 H.265 &#x2F; AV1 时要确认播放端的解码能力，尤其是旧设备和浏览器；Web 端兼容性最稳的仍是 H.264。</li>
+<li>m3u8 本身不含画面数据，拿到 m3u8 只代表拿到了索引；播放依赖 ts&#x2F;fmp4 分片以及播放器对 HLS 的支持。</li>
+</ol>
 
 </article>
     
@@ -676,7 +681,7 @@
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">webpack --- 前言</h6>
+                <h6 class="trm-op-title">webpack —— 前言</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -697,7 +702,7 @@
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">网络安全-渗透测试与资产收集笔记</h6>
+                <h6 class="trm-op-title">渗透测试与资产收集笔记</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -769,7 +774,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="基础概念"><a rel="nofollow" class="trm-toc-link" href="#基础概念"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">基础概念</span></a></li><li class="trm-toc-item trm-toc-level-2" title="视频编码格式：压缩视频的方法"><a rel="nofollow" class="trm-toc-link" href="#视频编码格式：压缩视频的方法"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">视频编码格式：压缩视频的方法</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="H.264 &#x2F; AVC"><a rel="nofollow" class="trm-toc-link" href="#H-264-AVC"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">H.264 &#x2F; AVC</span></a></li><li class="trm-toc-item trm-toc-level-3" title="H.265 &#x2F; HEVC"><a rel="nofollow" class="trm-toc-link" href="#H-265-HEVC"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">H.265 &#x2F; HEVC</span></a></li><li class="trm-toc-item trm-toc-level-3" title="VP9"><a rel="nofollow" class="trm-toc-link" href="#VP9"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">VP9</span></a></li><li class="trm-toc-item trm-toc-level-3" title="AV1"><a rel="nofollow" class="trm-toc-link" href="#AV1"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">AV1</span></a></li><li class="trm-toc-item trm-toc-level-3" title="ProRes"><a rel="nofollow" class="trm-toc-link" href="#ProRes"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">ProRes</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="视频文件格式"><a rel="nofollow" class="trm-toc-link" href="#视频文件格式"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">视频文件格式</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="MP4"><a rel="nofollow" class="trm-toc-link" href="#MP4"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">MP4</span></a></li><li class="trm-toc-item trm-toc-level-3" title="MOV"><a rel="nofollow" class="trm-toc-link" href="#MOV"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">MOV</span></a></li><li class="trm-toc-item trm-toc-level-3" title="MKV"><a rel="nofollow" class="trm-toc-link" href="#MKV"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">MKV</span></a></li><li class="trm-toc-item trm-toc-level-3" title="WEBM"><a rel="nofollow" class="trm-toc-link" href="#WEBM"><span class="trm-toc-number">3.4.</span> <span class="trm-toc-text">WEBM</span></a></li><li class="trm-toc-item trm-toc-level-3" title="AVI"><a rel="nofollow" class="trm-toc-link" href="#AVI"><span class="trm-toc-number">3.5.</span> <span class="trm-toc-text">AVI</span></a></li><li class="trm-toc-item trm-toc-level-3" title="MPEG-2"><a rel="nofollow" class="trm-toc-link" href="#MPEG-2"><span class="trm-toc-number">3.6.</span> <span class="trm-toc-text">MPEG-2</span></a></li><li class="trm-toc-item trm-toc-level-3" title="WMV"><a rel="nofollow" class="trm-toc-link" href="#WMV"><span class="trm-toc-number">3.7.</span> <span class="trm-toc-text">WMV</span></a></li><li class="trm-toc-item trm-toc-level-3" title="FLV"><a rel="nofollow" class="trm-toc-link" href="#FLV"><span class="trm-toc-number">3.8.</span> <span class="trm-toc-text">FLV</span></a></li><li class="trm-toc-item trm-toc-level-3" title="AVCHD"><a rel="nofollow" class="trm-toc-link" href="#AVCHD"><span class="trm-toc-number">3.9.</span> <span class="trm-toc-text">AVCHD</span></a></li><li class="trm-toc-item trm-toc-level-3" title="WEB-Ready GIF"><a rel="nofollow" class="trm-toc-link" href="#WEB-Ready-GIF"><span class="trm-toc-number">3.10.</span> <span class="trm-toc-text">WEB-Ready GIF</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="M3U8 文件"><a rel="nofollow" class="trm-toc-link" href="#M3U8-文件"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">M3U8 文件</span></a></li><li class="trm-toc-item trm-toc-level-2" title="小结"><a rel="nofollow" class="trm-toc-link" href="#小结"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">小结</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景"><a rel="nofollow" class="trm-toc-link" href="#背景"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第一步：先选视频编码格式（压缩视频的方法）"><a rel="nofollow" class="trm-toc-link" href="#第一步：先选视频编码格式（压缩视频的方法）"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">第一步：先选视频编码格式（压缩视频的方法）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="H.264 &#x2F; AVC"><a rel="nofollow" class="trm-toc-link" href="#H-264-AVC"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">H.264 &#x2F; AVC</span></a></li><li class="trm-toc-item trm-toc-level-3" title="H.265 &#x2F; HEVC"><a rel="nofollow" class="trm-toc-link" href="#H-265-HEVC"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">H.265 &#x2F; HEVC</span></a></li><li class="trm-toc-item trm-toc-level-3" title="VP9"><a rel="nofollow" class="trm-toc-link" href="#VP9"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">VP9</span></a></li><li class="trm-toc-item trm-toc-level-3" title="AV1"><a rel="nofollow" class="trm-toc-link" href="#AV1"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">AV1</span></a></li><li class="trm-toc-item trm-toc-level-3" title="ProRes"><a rel="nofollow" class="trm-toc-link" href="#ProRes"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">ProRes</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="第二步：再选视频文件格式（容器）"><a rel="nofollow" class="trm-toc-link" href="#第二步：再选视频文件格式（容器）"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">第二步：再选视频文件格式（容器）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="MP4"><a rel="nofollow" class="trm-toc-link" href="#MP4"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">MP4</span></a></li><li class="trm-toc-item trm-toc-level-3" title="MOV"><a rel="nofollow" class="trm-toc-link" href="#MOV"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">MOV</span></a></li><li class="trm-toc-item trm-toc-level-3" title="MKV"><a rel="nofollow" class="trm-toc-link" href="#MKV"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">MKV</span></a></li><li class="trm-toc-item trm-toc-level-3" title="WEBM"><a rel="nofollow" class="trm-toc-link" href="#WEBM"><span class="trm-toc-number">3.4.</span> <span class="trm-toc-text">WEBM</span></a></li><li class="trm-toc-item trm-toc-level-3" title="AVI"><a rel="nofollow" class="trm-toc-link" href="#AVI"><span class="trm-toc-number">3.5.</span> <span class="trm-toc-text">AVI</span></a></li><li class="trm-toc-item trm-toc-level-3" title="MPEG-2"><a rel="nofollow" class="trm-toc-link" href="#MPEG-2"><span class="trm-toc-number">3.6.</span> <span class="trm-toc-text">MPEG-2</span></a></li><li class="trm-toc-item trm-toc-level-3" title="WMV"><a rel="nofollow" class="trm-toc-link" href="#WMV"><span class="trm-toc-number">3.7.</span> <span class="trm-toc-text">WMV</span></a></li><li class="trm-toc-item trm-toc-level-3" title="FLV"><a rel="nofollow" class="trm-toc-link" href="#FLV"><span class="trm-toc-number">3.8.</span> <span class="trm-toc-text">FLV</span></a></li><li class="trm-toc-item trm-toc-level-3" title="AVCHD"><a rel="nofollow" class="trm-toc-link" href="#AVCHD"><span class="trm-toc-number">3.9.</span> <span class="trm-toc-text">AVCHD</span></a></li><li class="trm-toc-item trm-toc-level-3" title="WEB-Ready GIF"><a rel="nofollow" class="trm-toc-link" href="#WEB-Ready-GIF"><span class="trm-toc-number">3.10.</span> <span class="trm-toc-text">WEB-Ready GIF</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="第三步：理解 M3U8 文件与 HLS"><a rel="nofollow" class="trm-toc-link" href="#第三步：理解-M3U8-文件与-HLS"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">第三步：理解 M3U8 文件与 HLS</span></a></li><li class="trm-toc-item trm-toc-level-2" title="小结"><a rel="nofollow" class="trm-toc-link" href="#小结"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">小结</span></a></li><li class="trm-toc-item trm-toc-level-2" title="踩坑与注意点"><a rel="nofollow" class="trm-toc-link" href="#踩坑与注意点"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">踩坑与注意点</span></a></li></ol>
       </div>
     </div>
 
@@ -893,6 +898,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

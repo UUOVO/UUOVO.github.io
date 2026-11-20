@@ -1,24 +1,25 @@
-.key_words {
+#article-container .key_words {
 	color: #483d8b;
 	font-weight: 700;
 }
 
-.desc {
+#article-container .desc {
 	color: #cd853f;
 	font-weight: 600;
 	font-size: 14px;
 }
-.children {
+
+#article-container .children {
 	background-color: green;
 	color: #ffffff;
 }
 
-.parent {
+#article-container .parent {
 	background-color: #479AC7;
 	color: #ffffff;
 }
 
-.grandparent{
+#article-container .grandparent {
 	background-color: #8080C0;
 	color: #ffffff;
 }

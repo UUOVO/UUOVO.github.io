@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="模块功能主要由两个命令构成：export和import1234输出：export default 名字引入文件：import 变量名 from &#x27;默认输出文件的路径&#x27;;输出方法：export const 方法名 &#x3D; (变量) &#x3D;&gt; &#123; return 返回的结果 &#125;引入方法：import &#123; 方法名 &#125; from &#x27;路">
+<meta name="description" content="介绍ES6模块的export与import语法，说明默认导出、命名导出、复合写法和动态import()的差异">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ES6-Module">
+<meta property="og:title" content="Module">
 <meta property="og:url" content="http://example.com/2024/10/31/ES6/es6-Module/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="模块功能主要由两个命令构成：export和import1234输出：export default 名字引入文件：import 变量名 from &#x27;默认输出文件的路径&#x27;;输出方法：export const 方法名 &#x3D; (变量) &#x3D;&gt; &#123; return 返回的结果 &#125;引入方法：import &#123; 方法名 &#125; from &#x27;路">
+<meta property="og:description" content="介绍ES6模块的export与import语法，说明默认导出、命名导出、复合写法和动态import()的差异">
 <meta property="og:locale">
-<meta property="article:published_time" content="2024-10-31T07:54:04.590Z">
-<meta property="article:modified_time" content="2025-07-29T02:02:59.308Z">
+<meta property="article:published_time" content="2024-10-31T07:54:04.000Z">
+<meta property="article:modified_time" content="2026-11-19T09:20:58.008Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="ES6">
 <meta property="article:tag" content="Module">
@@ -24,7 +24,7 @@
     <meta name="keywords" content="es6">
 
 
-<title >ES6-Module</title>
+<title >Module</title>
 
 <!-- Favicon -->
 
@@ -69,7 +69,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-29 10:02:59"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-19 17:20:58"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -84,6 +84,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -198,13 +200,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -240,7 +242,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -258,13 +260,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -386,7 +388,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            ES6-Module
+                            Module
                         </h1>
 
                         
@@ -533,31 +535,77 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>结论先行：ES6 模块的功能主要由两个命令构成——<code>export</code> 输出、<code>import</code> 输入。默认输出用 <code>export default</code>，引入时不用花括号、可以另起名字；命名输出必须用 <code>&#123; &#125;</code> 按名字引入，可以用 <code>as</code> 改名。需要按需加载、条件加载或动态路径时，用动态 <code>import()</code>（异步），而不是 <code>require()</code>（同步）。</p>
+<span id="more"></span>
 
-<h2 id="模块功能主要由两个命令构成：export和import"><a href="#模块功能主要由两个命令构成：export和import" class="headerlink" title="模块功能主要由两个命令构成：export和import"></a>模块功能主要由两个命令构成：export和import</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输出：<span class="keyword">export</span> <span class="keyword">default</span> 名字</span><br><span class="line">引入文件：<span class="keyword">import</span> 变量名 <span class="keyword">from</span> <span class="string">&#x27;默认输出文件的路径&#x27;</span>;</span><br><span class="line">输出方法：<span class="keyword">export</span> <span class="keyword">const</span> 方法名 = <span class="function">(<span class="params">变量</span>) =&gt;</span> &#123; <span class="keyword">return</span> 返回的结果 &#125;</span><br><span class="line">引入方法：<span class="keyword">import</span> &#123; 方法名 &#125; <span class="keyword">from</span> <span class="string">&#x27;路径&#x27;</span></span><br></pre></td></tr></table></figure>
+<h2 id="背景：一篇文章理清四条对应关系"><a href="#背景：一篇文章理清四条对应关系" class="headerlink" title="背景：一篇文章理清四条对应关系"></a>背景：一篇文章理清四条对应关系</h2><h2 id="一、先记住这四条对应关系"><a href="#一、先记住这四条对应关系" class="headerlink" title="一、先记住这四条对应关系"></a>一、先记住这四条对应关系</h2><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>写法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>默认输出</td>
+<td><code>export default 名字</code></td>
+</tr>
+<tr>
+<td>引入默认输出</td>
+<td><code>import 变量名 from &#39;默认输出文件的路径&#39;;</code></td>
+</tr>
+<tr>
+<td>输出方法</td>
+<td><code>export const 方法名 = (变量) =&gt; &#123; return 返回的结果 &#125;</code></td>
+</tr>
+<tr>
+<td>引入方法</td>
+<td><code>import &#123; 方法名 &#125; from &#39;路径&#39;</code></td>
+</tr>
+</tbody></table>
+<h2 id="二、export：输出变量和函数"><a href="#二、export：输出变量和函数" class="headerlink" title="二、export：输出变量和函数"></a>二、export：输出变量和函数</h2><p>可以先把变量声明好，再统一用 <code>export &#123; &#125;</code> 输出；也可以直接在声明前加 <code>export</code>。需要改名时用 <code>as</code> 关键字。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> firstName = <span class="string">&#x27;Michael&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> lastName = <span class="string">&#x27;Jackson&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> year = <span class="number">1958</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出变量</span></span><br><span class="line"><span class="keyword">export</span> &#123; firstName, lastName, year &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出函数</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 as 关键字重命名</span></span><br><span class="line"><span class="keyword">export</span> &#123; firstName <span class="keyword">as</span> f, lastName, year &#125;;</span><br></pre></td></tr></table></figure>
 
-<h3 id="export"><a href="#export" class="headerlink" title="export"></a>export</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> firstName = <span class="string">&#x27;Michael&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> lastName = <span class="string">&#x27;Jackson&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> year = <span class="number">1958</span>;</span><br><span class="line"><span class="comment">//输出变量</span></span><br><span class="line"><span class="keyword">export</span> &#123; firstName, lastName, year &#125;;</span><br><span class="line"><span class="comment">//函数</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">可以使用<span class="keyword">as</span>关键字重命名。</span><br><span class="line"><span class="keyword">export</span> &#123; firstName <span class="keyword">as</span>  f, lastName, year &#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="三、import：按名字引入"><a href="#三、import：按名字引入" class="headerlink" title="三、import：按名字引入"></a>三、import：按名字引入</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; 输入的对象 &#125; <span class="keyword">from</span> <span class="string">&#x27;路径&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
-<h3 id="import"><a href="#import" class="headerlink" title="import"></a>import</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; 输入的对象 &#125; <span class="keyword">from</span> <span class="string">&#x27;路径&#x27;</span>;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>多次执行同一语句，只执行一次</li>
+<li><code>输入的对象</code> 是占位写法，对应上面导出的变量，实际写出来是这样：</li>
 </ul>
-<h3 id="export-default-默认指定输出"><a href="#export-default-默认指定输出" class="headerlink" title="export default 默认指定输出"></a>export default 默认指定输出</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;foo&#x27;</span>);<span class="comment">// 默认指定输出foo</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">其它文件引入时可直接另起名字</span><br><span class="line"><span class="keyword">import</span> customName <span class="keyword">from</span> <span class="string">&#x27;默认输出文件的路径&#x27;</span>;</span><br><span class="line"><span class="title function_">customName</span>(); <span class="comment">// &#x27;foo&#x27;</span></span><br><span class="line"></span><br><span class="line">对比：<span class="keyword">import</span>是否用&#123; &#125;                    </span><br><span class="line">如果想在一条<span class="keyword">import</span>语句中，同时输入默认方法和其他接口，可以写成下面这样。</span><br><span class="line"><span class="keyword">import</span> _, &#123; each, forEach &#125; <span class="keyword">from</span> <span class="string">&#x27;lodash&#x27;</span>; <span class="comment">//each as forEach    </span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; firstName, lastName, year &#125; <span class="keyword">from</span> <span class="string">&#x27;./profile.js&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
-<h3 id="export-与-import-的复合写法"><a href="#export-与-import-的复合写法" class="headerlink" title="export 与 import 的复合写法"></a>export 与 import 的复合写法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> * <span class="keyword">as</span> ns <span class="keyword">from</span> <span class="string">&quot;mod&quot;</span>; <span class="comment">// *表输出这个模块的所有模块和方法，但会忽略该模块的default方法</span></span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> ns <span class="keyword">from</span> <span class="string">&quot;mod&quot;</span>;</span><br><span class="line"><span class="keyword">export</span> &#123;ns&#125;;<span class="comment">//但当前模块不能直接使用ns</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="import-类似于-Node-js-的require-方法"><a href="#import-类似于-Node-js-的require-方法" class="headerlink" title="import()类似于 Node.js 的require()方法"></a>import()类似于 Node.js 的require()方法</h3><ul>
-<li>区别主要是前者是异步加载，后者是同步加载</li>
+<ul>
+<li>多次执行同一 import 语句，只执行一次。</li>
 </ul>
+<h2 id="四、export-default：默认指定输出"><a href="#四、export-default：默认指定输出" class="headerlink" title="四、export default：默认指定输出"></a>四、export default：默认指定输出</h2><p><code>export default</code> 用来指定模块的默认输出，写法如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;foo&#x27;</span>);<span class="comment">// 默认指定输出foo</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其它文件引入时不用花括号，可以直接另起名字：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> customName <span class="keyword">from</span> <span class="string">&#x27;默认输出文件的路径&#x27;</span>;</span><br><span class="line"><span class="title function_">customName</span>(); <span class="comment">// &#x27;foo&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>对比一下 <code>import</code> 是否用 <code>&#123; &#125;</code>：默认输出不加花括号，命名输出必须加花括号。如果想在一条 import 语句中同时输入默认方法和其他接口，可以写成下面这样：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> _, &#123; each, forEach &#125; <span class="keyword">from</span> <span class="string">&#x27;lodash&#x27;</span>; </span><br></pre></td></tr></table></figure>
+
+<h2 id="五、export-与-import-的复合写法"><a href="#五、export-与-import-的复合写法" class="headerlink" title="五、export 与 import 的复合写法"></a>五、export 与 import 的复合写法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> * <span class="keyword">as</span> ns <span class="keyword">from</span> <span class="string">&quot;mod&quot;</span>; <span class="comment">// *表输出这个模块的所有模块和方法，但会忽略该模块的default方法</span></span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> ns <span class="keyword">from</span> <span class="string">&quot;mod&quot;</span>;</span><br><span class="line"><span class="keyword">export</span> &#123;ns&#125;;<span class="comment">//但当前模块不能直接使用ns</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="六、动态-import-：按需、条件、动态路径"><a href="#六、动态-import-：按需、条件、动态路径" class="headerlink" title="六、动态 import()：按需、条件、动态路径"></a>六、动态 import()：按需、条件、动态路径</h2><p><code>import()</code> 类似于 Node.js 的 <code>require()</code> 方法，区别主要是前者异步加载、后者同步加载。三种典型场景如下。</p>
 <ol>
-<li>按需加载<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">button.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line"><span class="keyword">import</span>(<span class="string">&#x27;./dialogBox.js&#x27;</span>)</span><br><span class="line">.<span class="title function_">then</span>(<span class="function"><span class="params">dialogBox</span> =&gt;</span> &#123;</span><br><span class="line">		dialogBox.<span class="title function_">open</span>();</span><br><span class="line">&#125;)</span><br><span class="line">.<span class="title function_">catch</span>(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">/* Error handling */</span></span><br><span class="line">&#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
-<li>条件加载 （if…else）  </li>
-<li>动态模块路径<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span>(<span class="title function_">f</span>())</span><br><span class="line">.<span class="title function_">then</span>(...);      </span><br></pre></td></tr></table></figure></li>
+<li>按需加载：比如点击按钮时才去加载弹窗模块。</li>
 </ol>
-<ul>
-<li>注意：不使用require()</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">button.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">import</span>(<span class="string">&#x27;./dialogBox.js&#x27;</span>)</span><br><span class="line">    .<span class="title function_">then</span>(<span class="function"><span class="params">dialogBox</span> =&gt;</span> &#123;</span><br><span class="line">      dialogBox.<span class="title function_">open</span>();</span><br><span class="line">    &#125;)</span><br><span class="line">    .<span class="title function_">catch</span>(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">/* Error handling */</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>条件加载：用 <code>if...else</code> 判断后再加载需要的模块。</li>
+<li>动态模块路径：模块路径由函数结果决定。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span>(<span class="title function_">f</span>())</span><br><span class="line">  .<span class="title function_">then</span>(...);</span><br></pre></td></tr></table></figure>
+
+<br />
+
+<p>结论：不要使用 <code>require()</code>，在 ES6 模块里只使用 <code>import</code> &#x2F; <code>import()</code> 这一套写法。</p>
+<h2 id="踩坑与注意点"><a href="#踩坑与注意点" class="headerlink" title="踩坑与注意点"></a>踩坑与注意点</h2><ul>
+<li><code>import</code> 是静态声明，会被提升到模块顶部，只能写在模块顶层，不能放进 <code>if</code> 或函数里；需要条件加载就用 <code>import()</code>。</li>
+<li><code>export &#123; firstName as f &#125;</code> 之后，其它文件引入时要用 <code>f</code>，不能再写 <code>firstName</code>。</li>
+<li>复合写法 <code>export * as ns from &quot;mod&quot;</code> 会忽略该模块的 default 输出；而且当前模块只能把 <code>ns</code> 转发出去，不能直接使用它。</li>
+<li><code>export default function () &#123;&#125;</code> 是匿名函数，调试或报错时函数名会显示为 <code>default</code>。</li>
 </ul>
 
 </article>
@@ -578,11 +626,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/31/ES6/es6-Promise/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/31/ES6/es6-Generator/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">ES6-Promise(resolve,reject)</h6>
+                <h6 class="trm-op-title">Generator和 Iterators</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -599,11 +647,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/31/ES6/es6-Generator/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/31/ES6/es6-Promise/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">ES6-Generator和 Iterators</h6>
+                <h6 class="trm-op-title">Promise(resolve,reject)</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -675,7 +723,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="模块功能主要由两个命令构成：export和import"><a rel="nofollow" class="trm-toc-link" href="#模块功能主要由两个命令构成：export和import"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">模块功能主要由两个命令构成：export和import</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="export"><a rel="nofollow" class="trm-toc-link" href="#export"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">export</span></a></li><li class="trm-toc-item trm-toc-level-3" title="import"><a rel="nofollow" class="trm-toc-link" href="#import"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">import</span></a></li><li class="trm-toc-item trm-toc-level-3" title="export default 默认指定输出"><a rel="nofollow" class="trm-toc-link" href="#export-default-默认指定输出"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">export default 默认指定输出</span></a></li><li class="trm-toc-item trm-toc-level-3" title="export 与 import 的复合写法"><a rel="nofollow" class="trm-toc-link" href="#export-与-import-的复合写法"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">export 与 import 的复合写法</span></a></li><li class="trm-toc-item trm-toc-level-3" title="import()类似于 Node.js 的require()方法"><a rel="nofollow" class="trm-toc-link" href="#import-类似于-Node-js-的require-方法"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">import()类似于 Node.js 的require()方法</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景：一篇文章理清四条对应关系"><a rel="nofollow" class="trm-toc-link" href="#背景：一篇文章理清四条对应关系"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景：一篇文章理清四条对应关系</span></a></li><li class="trm-toc-item trm-toc-level-2" title="一、先记住这四条对应关系"><a rel="nofollow" class="trm-toc-link" href="#一、先记住这四条对应关系"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">一、先记住这四条对应关系</span></a></li><li class="trm-toc-item trm-toc-level-2" title="二、export：输出变量和函数"><a rel="nofollow" class="trm-toc-link" href="#二、export：输出变量和函数"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">二、export：输出变量和函数</span></a></li><li class="trm-toc-item trm-toc-level-2" title="三、import：按名字引入"><a rel="nofollow" class="trm-toc-link" href="#三、import：按名字引入"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">三、import：按名字引入</span></a></li><li class="trm-toc-item trm-toc-level-2" title="四、export default：默认指定输出"><a rel="nofollow" class="trm-toc-link" href="#四、export-default：默认指定输出"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">四、export default：默认指定输出</span></a></li><li class="trm-toc-item trm-toc-level-2" title="五、export 与 import 的复合写法"><a rel="nofollow" class="trm-toc-link" href="#五、export-与-import-的复合写法"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">五、export 与 import 的复合写法</span></a></li><li class="trm-toc-item trm-toc-level-2" title="六、动态 import()：按需、条件、动态路径"><a rel="nofollow" class="trm-toc-link" href="#六、动态-import-：按需、条件、动态路径"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">六、动态 import()：按需、条件、动态路径</span></a></li><li class="trm-toc-item trm-toc-level-2" title="踩坑与注意点"><a rel="nofollow" class="trm-toc-link" href="#踩坑与注意点"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">踩坑与注意点</span></a></li></ol>
       </div>
     </div>
 
@@ -799,6 +847,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

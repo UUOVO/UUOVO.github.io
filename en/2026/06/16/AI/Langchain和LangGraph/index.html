@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="[文档] Langchain TS版  Langchain LangChain 六大核心模块预览：Modules、Prompts、Chains、Indexes、Memory、Agents。  信息：模型的输入和输出 new SystemMessage()：系统信息，必传，告诉模型要怎么做并为交互提供上下文。 new HumanMessage()：人类信息，就是用户输入的提示词。 new A">
+<meta name="description" content="对比 LangChain、LangGraph 与 deepagents 的定位差异，梳理消息、Agent、Tool、Memory、中间件等核心模块并给出实践规划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AI - Langchain和LangGraph">
+<meta property="og:title" content="Langchain和LangGraph">
 <meta property="og:url" content="http://example.com/en/2026/06/16/AI/Langchain%E5%92%8CLangGraph/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="[文档] Langchain TS版  Langchain LangChain 六大核心模块预览：Modules、Prompts、Chains、Indexes、Memory、Agents。  信息：模型的输入和输出 new SystemMessage()：系统信息，必传，告诉模型要怎么做并为交互提供上下文。 new HumanMessage()：人类信息，就是用户输入的提示词。 new A">
+<meta property="og:description" content="对比 LangChain、LangGraph 与 deepagents 的定位差异，梳理消息、Agent、Tool、Memory、中间件等核心模块并给出实践规划">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2026-06-16T02:56:45.683Z">
-<meta property="article:modified_time" content="2026-10-13T02:46:09.561Z">
+<meta property="article:published_time" content="2026-06-16T02:56:45.000Z">
+<meta property="article:modified_time" content="2026-11-18T07:30:02.577Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="LangChain">
@@ -26,7 +26,7 @@
     <meta name="keywords" content="AI, LangChain, LangGraph, Agent, LLM">
 
 
-<title >AI - Langchain和LangGraph</title>
+<title >Langchain和LangGraph</title>
 
 <!-- Favicon -->
 
@@ -71,7 +71,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-10-13 10:46:09"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-18 15:30:02"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -86,6 +86,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -200,13 +202,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -242,7 +244,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -260,13 +262,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -388,7 +390,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            AI - Langchain和LangGraph
+                            Langchain和LangGraph
                         </h1>
 
                         
@@ -535,42 +537,50 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>一句话区分三者：LangChain 是上层「代理框架」，负责把调用模型、拼提示词、挂工具这些事做得简单；LangGraph 是底层「代理运行时」，负责可控、可持久化的状态编排；deepagents 是建立在 LangGraph 之上的「代理线束」，把规划、文件系统、子代理这些能力预先装好。下面按「消息 → Agent → Tool → Memory → 中间件 → 图编排」的顺序逐层展开，最后给出一个可以照着做的实践规划。</p>
+<span id="more"></span>
 
-<blockquote>
-<p>[文档] <a target="_blank" rel="noopener" href="https://docs.langchain.com/oss/javascript/deepagents/overview">Langchain TS版</a></p>
-</blockquote>
-<h2 id="Langchain"><a href="#Langchain" class="headerlink" title="Langchain"></a>Langchain</h2><ul>
-<li>LangChain 六大核心模块预览：Modules、Prompts、Chains、Indexes、Memory、Agents。</li>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>Agent 开发的本质是一条循环：模型接收上下文、决定是否调用工具、拿到结果后继续推理，直到任务完成。LangChain 把这条循环里的每个环节都做了抽象，LangGraph 则把这条循环描述成一张可以持久化和中断恢复的图。</p>
+<p>本文基于 TypeScript 版本，官方文档见 <a target="_blank" rel="noopener" href="https://docs.langchain.com/oss/javascript/deepagents/overview">Langchain TS 版</a>。</p>
+<h2 id="第一步：先记住六大核心模块"><a href="#第一步：先记住六大核心模块" class="headerlink" title="第一步：先记住六大核心模块"></a>第一步：先记住六大核心模块</h2><p>LangChain 六大核心模块预览：Modules、Prompts、Chains、Indexes、Memory、Agents。后面的内容基本都落在这几个模块里。</p>
+<h3 id="信息：模型的输入和输出"><a href="#信息：模型的输入和输出" class="headerlink" title="信息：模型的输入和输出"></a>信息：模型的输入和输出</h3><p>LangChain 用消息对象描述一次对话中的每一类输入输出：</p>
+<ul>
+<li><code>new SystemMessage()</code>：系统信息，必传，告诉模型要怎么做并为交互提供上下文</li>
+<li><code>new HumanMessage()</code>：人类信息，就是用户输入的提示词</li>
+<li><code>new AIMessage()</code>：为了模型的语境和消息权重，可以手动创建并插入消息历史；一般情况下为「模型生成的响应 response」，需要将信息以数组的方式传递给模型</li>
+<li><code>new ToolMessage()</code>：工具信息，传递工具输出的结果，通过 <code>tool_call_id</code> 确保工具调用请求和结果的正确匹配</li>
+<li>消息元数据：以 Object 格式传递</li>
 </ul>
-<h3 id="信息：模型的输入和输出"><a href="#信息：模型的输入和输出" class="headerlink" title="信息：模型的输入和输出"></a>信息：模型的输入和输出</h3><ul>
-<li><code>new SystemMessage()</code>：系统信息，必传，告诉模型要怎么做并为交互提供上下文。</li>
-<li><code>new HumanMessage()</code>：人类信息，就是用户输入的提示词。</li>
-<li><code>new AIMessage()</code>：为了模型的语境和消息权重，可以手动创建并插入消息历史。一般情况下为 <code>[模型生成的响应 response]</code>，需要将信息以数组的方式传递给模型。</li>
-<li><code>new ToolMessage()</code>：工具信息，传递工具输出的结果，通过 <code>tool_call_id</code> 确保工具调用请求和结果的正确匹配。</li>
-<li>消息元数据：以 Object 格式传递。</li>
+<h2 id="第二步：区分-new-ChatOllama-和-createAgent"><a href="#第二步：区分-new-ChatOllama-和-createAgent" class="headerlink" title="第二步：区分 new ChatOllama() 和 createAgent()"></a>第二步：区分 new ChatOllama() 和 createAgent()</h2><p>这两个 API 经常被混用，职责其实完全不同：</p>
+<ul>
+<li><code>new ChatOllama()</code>：创建一个 LLM 实例，用于调用模型</li>
+<li><code>createAgent()</code>：创建 Agent 智能体运行器，封装 ReAct 循环、工具调度、状态管理，里面需要传入 ChatOllama 作为模型</li>
 </ul>
-<h3 id="区分-new-ChatOllama-和-createAgent"><a href="#区分-new-ChatOllama-和-createAgent" class="headerlink" title="区分 new ChatOllama() 和 createAgent()"></a>区分 new ChatOllama() 和 createAgent()</h3><ul>
-<li><code>new ChatOllama()</code>：创建一个 LLM 实例，用于调用模型。</li>
-<li><code>createAgent()</code>：创建 Agent 智能体运行器（封装 ReAct 循环、工具调度、状态管理，里面需要传入 ChatOllama 作为模型）。</li>
-<li>Agent &#x3D; ChatOllama（模型）+ Tools + 循环调度器（createAgent）。</li>
-<li>ChatOllama 是 Agent 的大脑；createAgent 是「大脑 + 工具 + 循环调度」的完整工作流。</li>
-<li>createAgent 必须依赖 ChatOllama 作为模型。</li>
-<li>createAgent 不是模型，不会独立调用 Ollama；它只是调度框架。</li>
-<li>场景区分：<ul>
-<li>ChatOllama：简单问答、RAG，不需要 AI 自动调用函数 &#x2F; 工具。</li>
-<li>createAgent + ChatOllama：AI Agent，需要自主调用工具（读文件、执行命令、查询数据），多步骤自主完成任务。<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createAgent &#125; <span class="keyword">from</span> <span class="string">&quot;langchain&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> agent = <span class="title function_">createAgent</span>(&#123;</span><br><span class="line">  <span class="attr">model</span>: llm, <span class="comment">// 传入上面的 ChatOllama 实例</span></span><br><span class="line">  <span class="attr">tools</span>: [myTool],</span><br><span class="line">  <span class="attr">system_prompt</span>: <span class="string">&quot;你是助手&quot;</span>,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> result = <span class="keyword">await</span> agent.<span class="title function_">invoke</span>(<span class="string">&quot;你好&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result.<span class="property">content</span>);</span><br></pre></td></tr></table></figure></li>
+<p>关系可以写成一行：Agent &#x3D; ChatOllama（模型）+ Tools + 循环调度器（createAgent）。</p>
+<ul>
+<li>ChatOllama 是 Agent 的大脑；createAgent 是「大脑 + 工具 + 循环调度」的完整工作流</li>
+<li>createAgent 必须依赖 ChatOllama 等模型 作为模型</li>
+<li>createAgent 不是模型，不会独立调用 Ollama，它只是调度框架</li>
 </ul>
-</li>
+<p>场景上的区分：</p>
+<ul>
+<li>ChatOllama：简单问答、RAG，不需要 AI 自动调用函数或工具</li>
+<li>createAgent + ChatOllama：AI Agent，需要自主调用工具（读文件、执行命令、查询数据），多步骤自主完成任务</li>
 </ul>
-<h3 id="学习阶段，模型推荐"><a href="#学习阶段，模型推荐" class="headerlink" title="学习阶段，模型推荐"></a>学习阶段，模型推荐</h3><ul>
-<li>使用本地的模型（Ollama：<code>qwen3:0.6b</code> 和 <code>mxbai-embed-large:latest</code>）。</li>
-<li>RAG 使用嵌入模型和向量存储。</li>
-<li>如果项目只需要简单问答、RAG，不需要 AI 自动调用工具和函数：<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 基础的提示词工程搭建</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">ChatOllama</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@langchain/ollama&quot;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">HumanMessage</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@langchain/core/messages&quot;</span></span><br><span class="line"><span class="keyword">import</span> http <span class="keyword">from</span> <span class="string">&quot;node:http&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. 创建 LLM 实例，初始化模型，指向 Ollama 本地服务</span></span><br><span class="line"><span class="keyword">const</span> llm = <span class="keyword">new</span> <span class="title class_">ChatOllama</span>(&#123;</span><br><span class="line">  <span class="attr">model</span>: <span class="string">&quot;qwen3:0.6b&quot;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 使用 http 模块创建一个基本服务</span></span><br><span class="line"><span class="keyword">const</span> app = http.<span class="title function_">createServer</span>(<span class="title function_">async</span> (req, res) =&gt; &#123;</span><br><span class="line">  <span class="comment">// 基本的调用模型，提示词工程</span></span><br><span class="line">  <span class="keyword">const</span> result = <span class="keyword">await</span> llm.<span class="title function_">invoke</span>(</span><br><span class="line">  [</span><br><span class="line">    [<span class="string">&quot;system&quot;</span>, <span class="string">&quot;你是一个专业的翻译，能将中文翻译为英文&quot;</span>],</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">HumanMessage</span>(&#123; <span class="attr">content</span>: <span class="string">&quot;你好，我叫合一，来自汕头。一二三四五六七八九十&quot;</span> &#125;)</span><br><span class="line">  ])</span><br><span class="line">  res.<span class="title function_">setHeader</span>(<span class="string">&quot;Content-Type&quot;</span>, <span class="string">&quot;text/plain; charset=utf-8&quot;</span>)</span><br><span class="line">  res.<span class="title function_">end</span>(result.<span class="property">content</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 监听端口</span></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Server is running at http://localhost:3000&quot;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-<li>或使用免费的 Groq 推理 API：<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安装</span></span><br><span class="line">npm install <span class="meta">@langchain</span>/groq <span class="meta">@langchain</span>/core</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模型名称参考 Groq 官网：console.groq.com</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">ChatGroq</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@langchain/groq&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">HumanMessage</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@langchain/core/messages&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> model = <span class="keyword">new</span> <span class="title class_">ChatGroq</span>(&#123;</span><br><span class="line">  <span class="attr">apiKey</span>: process.<span class="property">env</span>.<span class="property">GROQ_API_KEY</span>, <span class="comment">// Default value.</span></span><br><span class="line">  <span class="attr">model</span>: <span class="string">&quot;llama-3.3-70b-versatile&quot;</span>,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> message = <span class="keyword">new</span> <span class="title class_">HumanMessage</span>(<span class="string">&quot;What color is the sky?&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> res = <span class="keyword">await</span> model.<span class="title function_">invoke</span>([message]);</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="Langchain-包"><a href="#Langchain-包" class="headerlink" title="Langchain 包"></a>Langchain 包</h3><table>
+<p>创建一个最小 Agent 并调用一次：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createAgent &#125; <span class="keyword">from</span> <span class="string">&quot;langchain&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> agent = <span class="title function_">createAgent</span>(&#123;</span><br><span class="line">  <span class="attr">model</span>: llm, <span class="comment">// 传入上面的 ChatOllama 实例</span></span><br><span class="line">  <span class="attr">tools</span>: [myTool],</span><br><span class="line">  <span class="attr">system_prompt</span>: <span class="string">&quot;你是助手&quot;</span>,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> result = <span class="keyword">await</span> agent.<span class="title function_">invoke</span>(<span class="string">&quot;你好&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result.<span class="property">content</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="第三步：用本地模型跑通第一个调用"><a href="#第三步：用本地模型跑通第一个调用" class="headerlink" title="第三步：用本地模型跑通第一个调用"></a>第三步：用本地模型跑通第一个调用</h2><p>学习阶段建议使用本地模型：Ollama 的 <code>qwen3:0.6b</code> 和 <code>mxbai-embed-large:latest</code>。RAG 则需要使用嵌入模型和向量存储。</p>
+<p>如果项目只需要简单问答、RAG，不需要 AI 自动调用工具和函数，直接用提示词工程即可。下面的例子用 Node 的 http 模块起一个服务，把请求转给本地 Ollama 并返回模型输出：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 基础的提示词工程搭建</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">ChatOllama</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@langchain/ollama&quot;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">HumanMessage</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@langchain/core/messages&quot;</span></span><br><span class="line"><span class="keyword">import</span> http <span class="keyword">from</span> <span class="string">&quot;node:http&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. 创建 LLM 实例，初始化模型，指向 Ollama 本地服务</span></span><br><span class="line"><span class="keyword">const</span> llm = <span class="keyword">new</span> <span class="title class_">ChatOllama</span>(&#123;</span><br><span class="line">  <span class="attr">model</span>: <span class="string">&quot;qwen3:0.6b&quot;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 使用 http 模块创建一个基本服务</span></span><br><span class="line"><span class="keyword">const</span> app = http.<span class="title function_">createServer</span>(<span class="title function_">async</span> (req, res) =&gt; &#123;</span><br><span class="line">  <span class="comment">// 基本的调用模型，提示词工程</span></span><br><span class="line">  <span class="keyword">const</span> result = <span class="keyword">await</span> llm.<span class="title function_">invoke</span>(</span><br><span class="line">  [</span><br><span class="line">    [<span class="string">&quot;system&quot;</span>, <span class="string">&quot;你是一个专业的翻译，能将中文翻译为英文&quot;</span>],</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">HumanMessage</span>(&#123; <span class="attr">content</span>: <span class="string">&quot;你好，我叫合一，来自汕头。一二三四五六七八九十&quot;</span> &#125;)</span><br><span class="line">  ])</span><br><span class="line">  res.<span class="title function_">setHeader</span>(<span class="string">&quot;Content-Type&quot;</span>, <span class="string">&quot;text/plain; charset=utf-8&quot;</span>)</span><br><span class="line">  res.<span class="title function_">end</span>(result.<span class="property">content</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 监听端口</span></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Server is running at http://localhost:3000&quot;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>也可以换用免费的 Groq 推理 API，先安装依赖：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @langchain/groq @langchain/core</span><br></pre></td></tr></table></figure>
+
+<p>然后用 ChatGroq 发起一次调用，模型名称参考 Groq 官网 console.groq.com：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模型名称参考 Groq 官网：console.groq.com</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">ChatGroq</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@langchain/groq&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">HumanMessage</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@langchain/core/messages&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> model = <span class="keyword">new</span> <span class="title class_">ChatGroq</span>(&#123;</span><br><span class="line">  <span class="attr">apiKey</span>: process.<span class="property">env</span>.<span class="property">GROQ_API_KEY</span>, <span class="comment">// Default value.</span></span><br><span class="line">  <span class="attr">model</span>: <span class="string">&quot;llama-3.3-70b-versatile&quot;</span>,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> message = <span class="keyword">new</span> <span class="title class_">HumanMessage</span>(<span class="string">&quot;What color is the sky?&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> res = <span class="keyword">await</span> model.<span class="title function_">invoke</span>([message]);</span><br></pre></td></tr></table></figure>
+
+<h2 id="第四步：认识常用包"><a href="#第四步：认识常用包" class="headerlink" title="第四步：认识常用包"></a>第四步：认识常用包</h2><table>
 <thead>
 <tr>
 <th>包名</th>
@@ -624,110 +634,87 @@
 <td>推荐开发期启用</td>
 </tr>
 </tbody></table>
-<ul>
-<li>以上还有很多，具体情况具体分析。</li>
-<li><a target="_blank" rel="noopener" href="https://docs.langchain.com/oss/python/integrations/chat">集成</a>：当前页有模型、工具等汇总，方便使用时参考。<ul>
-<li><code>langchain-text-splitters</code>：文本分割器，用于将文本分割为更小的块，方便模型处理。</li>
+<p>以上还有很多，具体情况具体分析。<a target="_blank" rel="noopener" href="https://docs.langchain.com/oss/python/integrations/chat">集成文档</a>当前页有模型、工具等汇总，方便使用时参考。</p>
+<p>其中 <code>langchain-text-splitters</code> 是文本分割器，用于将文本分割为更小的块，方便模型处理。</p>
+<h2 id="第五步：定义-Tool-并挂到模型上"><a href="#第五步：定义-Tool-并挂到模型上" class="headerlink" title="第五步：定义 Tool 并挂到模型上"></a>第五步：定义 Tool 并挂到模型上</h2><ul>
+<li>Agent：能够自主决策、调用工具、查看结果、继续推进，直到完成任务</li>
+<li>Tool：Agent 可以调用的函数，使用 <code>tool</code> 工具去创建</li>
 </ul>
-</li>
+<p>下面的例子定义一个查库工具，导出工具集，并把工具绑定到模型上：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; tool &#125; <span class="keyword">from</span> <span class="string">&quot;langchain&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> z <span class="keyword">from</span> <span class="string">&quot;zod&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. 定义工具</span></span><br><span class="line"><span class="keyword">const</span> searchDatabase = <span class="title function_">tool</span>(</span><br><span class="line">  <span class="function">(<span class="params">&#123; query, limit &#125;</span>) =&gt;</span> <span class="string">`Found <span class="subst">$&#123;limit&#125;</span> results for &#x27;<span class="subst">$&#123;query&#125;</span>&#x27;`</span>,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;search_database&quot;</span>,</span><br><span class="line">    <span class="attr">description</span>: <span class="string">&quot;Search the customer database for records matching the query.&quot;</span>,</span><br><span class="line">    <span class="attr">schema</span>: z.<span class="title function_">object</span>(&#123;</span><br><span class="line">      <span class="attr">query</span>: z.<span class="title function_">string</span>().<span class="title function_">describe</span>(<span class="string">&quot;Search terms to look for&quot;</span>),</span><br><span class="line">      <span class="attr">limit</span>: z.<span class="title function_">number</span>().<span class="title function_">describe</span>(<span class="string">&quot;Maximum number of results to return&quot;</span>),</span><br><span class="line">    &#125;),</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 导出工具集（以工具名作为 key）</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> toolsByName = &#123;</span><br><span class="line">  [searchDatabase.<span class="property">name</span>]: searchDatabase,</span><br><span class="line">  <span class="comment">// ...更多工具</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> tools = <span class="title class_">Object</span>.<span class="title function_">values</span>(toolsByName)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 调用：在模型上配置工具调用，是否调用取决于用户提示词是否命中工具的 description</span></span><br><span class="line"><span class="keyword">const</span> modelWithTools = model.<span class="title function_">bindTools</span>([searchDatabase]);</span><br></pre></td></tr></table></figure>
+
+<h2 id="第六步：管理短期记忆"><a href="#第六步：管理短期记忆" class="headerlink" title="第六步：管理短期记忆"></a>第六步：管理短期记忆</h2><h3 id="短期记忆-MemorySaver"><a href="#短期记忆-MemorySaver" class="headerlink" title="短期记忆 MemorySaver"></a>短期记忆 MemorySaver</h3><ul>
+<li>短期内存（线程级持久性），在创建 Agents 时指定</li>
+<li>通过将这些数据存储在 graph 的状态中，agent 可以在保持不同线程间分离的同时，访问给定对话的完整上下文</li>
+<li>定制代理内存：通过创建带有状态模式的自定义中间件来扩展代理状态</li>
 </ul>
-<h3 id="Agent-与-Tool-调用"><a href="#Agent-与-Tool-调用" class="headerlink" title="Agent 与 Tool 调用"></a>Agent 与 Tool 调用</h3><ul>
-<li>Agent：能够自主决策、调用工具、查看结果、继续推进，直到完成任务。</li>
-<li>Tool：Agent 可以调用的函数，使用 <code>tool</code> 工具去创建。<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; tool &#125; <span class="keyword">from</span> <span class="string">&quot;langchain&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> z <span class="keyword">from</span> <span class="string">&quot;zod&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. 定义工具</span></span><br><span class="line"><span class="keyword">const</span> searchDatabase = <span class="title function_">tool</span>(</span><br><span class="line">  <span class="function">(<span class="params">&#123; query, limit &#125;</span>) =&gt;</span> <span class="string">`Found <span class="subst">$&#123;limit&#125;</span> results for &#x27;<span class="subst">$&#123;query&#125;</span>&#x27;`</span>,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;search_database&quot;</span>,</span><br><span class="line">    <span class="attr">description</span>: <span class="string">&quot;Search the customer database for records matching the query.&quot;</span>,</span><br><span class="line">    <span class="attr">schema</span>: z.<span class="title function_">object</span>(&#123;</span><br><span class="line">      <span class="attr">query</span>: z.<span class="title function_">string</span>().<span class="title function_">describe</span>(<span class="string">&quot;Search terms to look for&quot;</span>),</span><br><span class="line">      <span class="attr">limit</span>: z.<span class="title function_">number</span>().<span class="title function_">describe</span>(<span class="string">&quot;Maximum number of results to return&quot;</span>),</span><br><span class="line">    &#125;),</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 导出工具集（以工具名作为 key）</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> toolsByName = &#123;</span><br><span class="line">  [searchDatabase.<span class="property">name</span>]: searchDatabase,</span><br><span class="line">  <span class="comment">// ...更多工具</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> tools = <span class="title class_">Object</span>.<span class="title function_">values</span>(toolsByName)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 调用：在模型上配置工具调用，是否调用取决于用户提示词是否命中工具的 description</span></span><br><span class="line"><span class="keyword">const</span> modelWithTools = model.<span class="title function_">bindTools</span>([searchDatabase]);</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h3><h4 id="短期记忆-MemorySaver"><a href="#短期记忆-MemorySaver" class="headerlink" title="短期记忆 MemorySaver"></a>短期记忆 MemorySaver</h4><ul>
-<li>短期内存（线程级持久性），在创建 Agents 时指定。</li>
-<li>通过将这些数据存储在 graph 的状态中，agent 可以在保持不同线程间分离的同时，访问给定对话的完整上下文。</li>
-<li>定制代理内存：通过创建带有状态模式的自定义中间件来扩展代理状态。<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 使用 new StateSchema() 来定义状态，支持 Zod 对象</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">CustomState</span> = <span class="keyword">new</span> <span class="title class_">StateSchema</span>(&#123;</span><br><span class="line">  <span class="attr">userId</span>: z.<span class="title function_">string</span>(),</span><br><span class="line">  <span class="attr">preferences</span>: z.<span class="title function_">record</span>(z.<span class="title function_">string</span>(), z.<span class="title function_">any</span>())</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 创建中间件，并通过 stateSchema 字段将自定义状态赋值</span></span><br><span class="line"><span class="keyword">const</span> stateExtensionMiddleware = <span class="title function_">createMiddleware</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;StateExtension&quot;</span>,</span><br><span class="line">  <span class="attr">stateSchema</span>: <span class="title class_">CustomState</span>,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 短期记忆：在创建 Agents 时指定</span></span><br><span class="line"><span class="keyword">const</span> checkpointer = <span class="keyword">new</span> <span class="title class_">MemorySaver</span>()</span><br><span class="line"><span class="keyword">const</span> agent = <span class="title function_">createAgent</span>(&#123;</span><br><span class="line">  <span class="attr">model</span>: <span class="string">&quot;gpt-5.5&quot;</span>,</span><br><span class="line">  <span class="attr">tools</span>: [],</span><br><span class="line">  <span class="attr">middleware</span>: [stateExtensionMiddleware],</span><br><span class="line">  checkpointer,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 自定义状态可以在调用中传递</span></span><br><span class="line"><span class="keyword">const</span> result = <span class="keyword">await</span> agent.<span class="title function_">invoke</span>(&#123;</span><br><span class="line">  <span class="attr">messages</span>: [&#123; <span class="attr">role</span>: <span class="string">&quot;user&quot;</span>, <span class="attr">content</span>: <span class="string">&quot;Hello&quot;</span> &#125;],</span><br><span class="line">  <span class="attr">userId</span>: <span class="string">&quot;user_123&quot;</span>,</span><br><span class="line">  <span class="attr">preferences</span>: &#123; <span class="attr">theme</span>: <span class="string">&quot;dark&quot;</span> &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
-<li>解决短期记忆在长时间对话中超出 LLM 上下文窗口的问题：<ul>
-<li><strong>修剪消息</strong>：<ul>
-<li>在创建中间件时于 <code>beforeModel</code> 钩子中处理信息，判断当 messages 接近限制时截断，然后使用 <code>new RemoveMessage(&#123; id: REMOVE_ALL_MESSAGES &#125;)</code> 删除全部消息，再把保留的信息返回。</li>
-<li>即 <code>messages: [new RemoveMessage(&#123; id: REMOVE_ALL_MESSAGES &#125;), ...newMessages]</code></li>
-</ul>
-</li>
-<li><strong>删除特定消息或删除全部消息</strong>：<ul>
-<li>当达到限制时，直接对 <code>state.messages</code> 全部截断，或对特定消息遍历 <code>new RemoveMessage()</code>。</li>
-<li>如果有其它要求可以看文档。</li>
-</ul>
-</li>
-<li><strong>摘要信息</strong>：<ul>
-<li>修剪和删除会直接从消息队列中剔除、丢失信息。摘要则是总结历史消息。</li>
-<li>使用内置的 <code>summarizationMiddleware</code>，在创建 Agents 时处理。<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">middleware</span>: [</span><br><span class="line">  <span class="title function_">summarizationMiddleware</span>(&#123;</span><br><span class="line">    <span class="attr">model</span>: <span class="string">&quot;&quot;</span>, <span class="comment">// 总结用的模型</span></span><br><span class="line">    <span class="attr">trigger</span>: &#123; <span class="attr">tokens</span>: <span class="number">4000</span> &#125;, <span class="comment">// 配置限额</span></span><br><span class="line">    <span class="attr">keep</span>: &#123; <span class="attr">messages</span>: <span class="number">20</span> &#125;, <span class="comment">// 保留 20 条消息</span></span><br><span class="line">  &#125;),</span><br><span class="line">],</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>访问和修改短期记忆：<ul>
-<li><strong>Tool</strong>：在 tool 的第一个回调函数中添加带有 ToolRuntime 的形参。<ul>
-<li>形参：<code>config: ToolRuntime&lt;typeof CustomState.State&gt;</code></li>
-<li>在函数中就可以使用 <code>config.state.xx</code> 获取自定义 state。</li>
-<li>修改则直接从 tool 返回状态更新，更新用 <code>new Command()</code> 包裹。</li>
+<p>下面的例子定义自定义状态、创建中间件、指定 checkpointer，并在调用时传入自定义字段：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 使用 new StateSchema() 来定义状态，支持 Zod 对象</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">CustomState</span> = <span class="keyword">new</span> <span class="title class_">StateSchema</span>(&#123;</span><br><span class="line">  <span class="attr">userId</span>: z.<span class="title function_">string</span>(),</span><br><span class="line">  <span class="attr">preferences</span>: z.<span class="title function_">record</span>(z.<span class="title function_">string</span>(), z.<span class="title function_">any</span>())</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 创建中间件，并通过 stateSchema 字段将自定义状态赋值</span></span><br><span class="line"><span class="keyword">const</span> stateExtensionMiddleware = <span class="title function_">createMiddleware</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;StateExtension&quot;</span>,</span><br><span class="line">  <span class="attr">stateSchema</span>: <span class="title class_">CustomState</span>,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 短期记忆：在创建 Agents 时指定</span></span><br><span class="line"><span class="keyword">const</span> checkpointer = <span class="keyword">new</span> <span class="title class_">MemorySaver</span>()</span><br><span class="line"><span class="keyword">const</span> agent = <span class="title function_">createAgent</span>(&#123;</span><br><span class="line">  <span class="attr">model</span>: <span class="string">&quot;gpt-5.5&quot;</span>,</span><br><span class="line">  <span class="attr">tools</span>: [],</span><br><span class="line">  <span class="attr">middleware</span>: [stateExtensionMiddleware],</span><br><span class="line">  checkpointer,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 自定义状态可以在调用中传递</span></span><br><span class="line"><span class="keyword">const</span> result = <span class="keyword">await</span> agent.<span class="title function_">invoke</span>(&#123;</span><br><span class="line">  <span class="attr">messages</span>: [&#123; <span class="attr">role</span>: <span class="string">&quot;user&quot;</span>, <span class="attr">content</span>: <span class="string">&quot;Hello&quot;</span> &#125;],</span><br><span class="line">  <span class="attr">userId</span>: <span class="string">&quot;user_123&quot;</span>,</span><br><span class="line">  <span class="attr">preferences</span>: &#123; <span class="attr">theme</span>: <span class="string">&quot;dark&quot;</span> &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="解决短期记忆超出上下文窗口的问题"><a href="#解决短期记忆超出上下文窗口的问题" class="headerlink" title="解决短期记忆超出上下文窗口的问题"></a>解决短期记忆超出上下文窗口的问题</h3><p>长时间对话会让消息超出 LLM 的上下文窗口，有三种处理方式。</p>
+<p><strong>修剪消息</strong>：在创建中间件时于 <code>beforeModel</code> 钩子中处理信息，判断当 messages 接近限制时截断，然后使用 <code>new RemoveMessage(&#123; id: REMOVE_ALL_MESSAGES &#125;)</code> 删除全部消息，再把保留的信息返回。也就是返回 <code>messages: [new RemoveMessage(&#123; id: REMOVE_ALL_MESSAGES &#125;), ...newMessages]</code>。</p>
+<p><strong>删除特定消息或删除全部消息</strong>：当达到限制时，直接对 <code>state.messages</code> 全部截断，或对特定消息遍历 <code>new RemoveMessage()</code>。如果有其它要求可以看文档。</p>
+<p><strong>摘要信息</strong>：修剪和删除会直接从消息队列中剔除、丢失信息，摘要则是总结历史消息。使用内置的 <code>summarizationMiddleware</code>，在创建 Agents 时处理。下面的配置表示触发阈值为 4000 token、保留最近 20 条消息：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">middleware</span>: [</span><br><span class="line">  <span class="title function_">summarizationMiddleware</span>(&#123;</span><br><span class="line">    <span class="attr">model</span>: <span class="string">&quot;&quot;</span>, <span class="comment">// 总结用的模型</span></span><br><span class="line">    <span class="attr">trigger</span>: &#123; <span class="attr">tokens</span>: <span class="number">4000</span> &#125;, <span class="comment">// 配置限额</span></span><br><span class="line">    <span class="attr">keep</span>: &#123; <span class="attr">messages</span>: <span class="number">20</span> &#125;, <span class="comment">// 保留 20 条消息</span></span><br><span class="line">  &#125;),</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+
+<h3 id="访问和修改短期记忆"><a href="#访问和修改短期记忆" class="headerlink" title="访问和修改短期记忆"></a>访问和修改短期记忆</h3><ul>
+<li><strong>Tool</strong>：在 tool 的第一个回调函数中添加带有 ToolRuntime 的形参<ul>
+<li>形参写作 <code>config: ToolRuntime&lt;typeof CustomState.State&gt;</code></li>
+<li>在函数中就可以用 <code>config.state.xx</code> 获取自定义 state</li>
+<li>修改则直接从 tool 返回状态更新，更新用 <code>new Command()</code> 包裹</li>
 </ul>
 </li>
 <li>使用 <code>dynamicSystemPromptMiddleware&lt;ContextSchema&gt;((_, config) =&gt; &#123;&#125;)</code><ul>
-<li><code>type ContextSchema = z.infer&lt;typeof zod对象定义的状态&gt;;</code></li>
+<li>其中 <code>type ContextSchema = z.infer&lt;typeof zod对象定义的状态&gt;;</code></li>
 </ul>
 </li>
-<li>创建中间件的 <code>beforeModel</code> 钩子。</li>
-<li>创建中间件的 <code>afterModel</code> 钩子。</li>
+<li>创建中间件的 <code>beforeModel</code> 钩子</li>
+<li>创建中间件的 <code>afterModel</code> 钩子</li>
 </ul>
-</li>
-</ul>
-<h4 id="长期记忆-InMemoryStore"><a href="#长期记忆-InMemoryStore" class="headerlink" title="长期记忆 InMemoryStore"></a>长期记忆 InMemoryStore</h4><ul>
-<li>作用域为单个线程之外，长期记忆跨线程持续存在，并可随时调用。</li>
-<li>有两种，都是创建一个仓库或数据库，具体看文档。</li>
-</ul>
-<h3 id="流媒体-事件流（langchain-v1-3-推荐）"><a href="#流媒体-事件流（langchain-v1-3-推荐）" class="headerlink" title="流媒体 | 事件流（langchain v1.3 推荐）"></a>流媒体 | 事件流（langchain v1.3 推荐）</h3><ul>
-<li>通过调用事件流返回一个带有类型化投影的运行对象，因此每个投影可以独立使用，而无需解析流模式的元组。</li>
-<li><code>agent.streamEvents(&#123; messages: [...] &#125;, &#123; version: &quot;v3&quot; &#125;)</code></li>
-<li>具体参数和含义看文档：<a target="_blank" rel="noopener" href="https://docs.langchain.com/oss/javascript/langchain/event-streaming">事件流</a> —— 内容不多，主要是教你怎么用、有哪些用处。</li>
-</ul>
+<h3 id="长期记忆-InMemoryStore"><a href="#长期记忆-InMemoryStore" class="headerlink" title="长期记忆 InMemoryStore"></a>长期记忆 InMemoryStore</h3><p>作用域在单个线程之外，长期记忆跨线程持续存在，并可随时调用。有两种实现，都是创建一个仓库或数据库，具体看文档。</p>
+<h2 id="第七步：使用流式输出与结构化输出"><a href="#第七步：使用流式输出与结构化输出" class="headerlink" title="第七步：使用流式输出与结构化输出"></a>第七步：使用流式输出与结构化输出</h2><h3 id="流媒体-事件流（langchain-v1-3-推荐）"><a href="#流媒体-事件流（langchain-v1-3-推荐）" class="headerlink" title="流媒体 &#x2F; 事件流（langchain v1.3 推荐）"></a>流媒体 &#x2F; 事件流（langchain v1.3 推荐）</h3><p>通过调用事件流返回一个带有类型化投影的运行对象，因此每个投影可以独立使用，而无需解析流模式的元组。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">agent.<span class="title function_">streamEvents</span>(&#123; <span class="attr">messages</span>: [...] &#125;, &#123; <span class="attr">version</span>: <span class="string">&quot;v3&quot;</span> &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>具体参数和含义看文档：<a target="_blank" rel="noopener" href="https://docs.langchain.com/oss/javascript/langchain/event-streaming">事件流</a>。内容不多，主要是教你怎么用、有哪些用处。</p>
 <h3 id="结构化输出的响应格式"><a href="#结构化输出的响应格式" class="headerlink" title="结构化输出的响应格式"></a>结构化输出的响应格式</h3><ul>
-<li><code>toolStrategy</code> 策略：默认，输出由额外的工具调用生成。</li>
-<li><code>providerStrategy</code> 策略：某些模型支持原生结构化输出。</li>
+<li><code>toolStrategy</code> 策略：默认，输出由额外的工具调用生成</li>
+<li><code>providerStrategy</code> 策略：某些模型支持原生结构化输出</li>
 </ul>
-<h3 id="中间件-middleware"><a href="#中间件-middleware" class="headerlink" title="中间件 | middleware"></a>中间件 | middleware</h3><ul>
-<li>预构建中间件：内置可用的中间件（具体看文档）。</li>
-<li>自定义中间件：有四个节点钩子、两个缠绕式钩子。<ul>
+<h2 id="第八步：用中间件扩展-Agent"><a href="#第八步：用中间件扩展-Agent" class="headerlink" title="第八步：用中间件扩展 Agent"></a>第八步：用中间件扩展 Agent</h2><ul>
+<li>预构建中间件：内置可用的中间件，具体看文档</li>
+<li>自定义中间件：有四个节点钩子、两个缠绕式钩子</li>
+</ul>
+<p>四个节点钩子：</p>
+<ul>
 <li><code>beforeAgent</code>：agent 开始前（每次调用一次）</li>
 <li><code>beforeModel</code>：每次 model 调用前</li>
 <li><code>afterModel</code>：每次 model 响应后</li>
 <li><code>afterAgent</code>：agent 完成后（每次调用一次）</li>
+</ul>
+<p>两个缠绕式钩子：</p>
+<ul>
 <li><code>wrapModelCall</code>：围绕每个模型调用，用于重试、缓存和转换</li>
 <li><code>wrapToolCall</code>：围绕每个工具调用，用于重试、缓存和转换</li>
 </ul>
-</li>
-<li>更新：返回 <code>new Command(...)</code> 可以更新状态。</li>
+<p>更新状态时返回 <code>new Command(...)</code> 即可。</p>
+<h2 id="第九步：用-LangGraph-编排有状态流程"><a href="#第九步：用-LangGraph-编排有状态流程" class="headerlink" title="第九步：用 LangGraph 编排有状态流程"></a>第九步：用 LangGraph 编排有状态流程</h2><ul>
+<li>定位：<span class="key_words">『代理运行时』</span>，用于构建、管理和部署长期运行、有状态代理的<strong>低级编排框架与运行时</strong></li>
+<li>与 LangChain 的关系：LangChain 提供上层抽象（快速构建），LangGraph 提供底层编排（可控、可持久化）。Agent 的运行本质就是一张「图」——节点是步骤、边是流转</li>
 </ul>
-<h2 id="LangGraph"><a href="#LangGraph" class="headerlink" title="LangGraph"></a>LangGraph</h2><ul>
-<li>定位：<span class="key_words">『代理运行时』</span>，用于构建、管理和部署长期运行、有状态代理的<strong>低级编排框架与运行时</strong>。</li>
-<li>与 LangChain 的关系：LangChain 提供上层抽象（快速构建），LangGraph 提供底层编排（可控、可持久化）。Agent 的运行本质就是一张「图」——节点是步骤、边是流转。</li>
-<li>核心概念：<ul>
-<li><strong>State（状态）</strong>：在所有节点间流转的共享数据（类似 LangChain 的消息历史）。</li>
-<li><strong>Node（节点）</strong>：一个处理函数，读取 State 并返回状态更新。</li>
-<li><strong>Edge（边）</strong>：定义节点间的流转顺序；<strong>条件边</strong>可根据 State 决定下一步走向（实现分支 &#x2F; 循环）。</li>
-<li><strong>Checkpointer（检查点）</strong>：配合持久化存储，实现「持久执行 &#x2F; 中断恢复 &#x2F; 人工参与」。</li>
+<p>核心概念：</p>
+<ul>
+<li><strong>State（状态）</strong>：在所有节点间流转的共享数据（类似 LangChain 的消息历史）</li>
+<li><strong>Node（节点）</strong>：一个处理函数，读取 State 并返回状态更新</li>
+<li><strong>Edge（边）</strong>：定义节点间的流转顺序；<strong>条件边</strong>可根据 State 决定下一步走向（实现分支 &#x2F; 循环）</li>
+<li><strong>Checkpointer（检查点）</strong>：配合持久化存储，实现「持久执行 &#x2F; 中断恢复 &#x2F; 人工参与」</li>
 </ul>
-</li>
-<li>擅长能力：持久执行、流式传输、人工参与（Human-in-the-loop）、持久性、低层控制。</li>
-</ul>
-<h2 id="deepagents（深度智能体）"><a href="#deepagents（深度智能体）" class="headerlink" title="deepagents（深度智能体）"></a>deepagents（深度智能体）</h2><ul>
-<li>一个建立在 LangChain 代理核心构建模块之上、并使用 LangGraph 在生产中运行的工具。</li>
-<li>内置了使 Agents 能够执行复杂任务的工具。</li>
-</ul>
-<h2 id="以上三者的区别"><a href="#以上三者的区别" class="headerlink" title="以上三者的区别"></a>以上三者的区别</h2><ul>
-<li><strong>LangChain【代理框架】</strong>：提供结构化内容块、代理环路和中间件等抽象功能。代理框架提供了抽象，使构建 LLM 更容易入门。<ul>
-<li>关键词：快速构建、标准、灵活、简单。</li>
-</ul>
-</li>
-<li><strong>LangGraph【代理运行时】</strong>：用于构建、管理和部署长期运行、有状态代理的低级编排框架和运行时。<ul>
-<li>关键词：持久执行、流式传输、人工参与、持久性、低层控制。</li>
-</ul>
-</li>
-<li><strong>Deep Agents SDK【代理线束】</strong>：基于 LangGraph 构建，增加了规划功能、用于上下文管理的文件系统、生成子代理等功能。<ul>
-<li>关键词：规划能力、任务委派、文件系统、Token 管理。</li>
-</ul>
-</li>
+<p>擅长能力：持久执行、流式传输、人工参与（Human-in-the-loop）、持久性、低层控制。</p>
+<h2 id="第十步：了解-deepagents-与三者的差异"><a href="#第十步：了解-deepagents-与三者的差异" class="headerlink" title="第十步：了解 deepagents 与三者的差异"></a>第十步：了解 deepagents 与三者的差异</h2><p>deepagents（深度智能体）是一个建立在 LangChain 代理核心构建模块之上、并使用 LangGraph 在生产中运行的工具，内置了使 Agents 能够执行复杂任务的工具。</p>
+<p>三者的定位对比：</p>
+<ul>
+<li><strong>LangChain【代理框架】</strong>：提供结构化内容块、代理环路和中间件等抽象功能。代理框架提供了抽象，使构建 LLM 更容易入门。关键词：快速构建、标准、灵活、简单</li>
+<li><strong>LangGraph【代理运行时】</strong>：用于构建、管理和部署长期运行、有状态代理的低级编排框架和运行时。关键词：持久执行、流式传输、人工参与、持久性、低层控制</li>
+<li><strong>Deep Agents SDK【代理线束】</strong>：基于 LangGraph 构建，增加了规划功能、用于上下文管理的文件系统、生成子代理等功能。关键词：规划能力、任务委派、文件系统、Token 管理</li>
 </ul>
 <table>
 <thead>
@@ -776,29 +763,37 @@
 </tr>
 </tbody></table>
 <h2 id="实践规划"><a href="#实践规划" class="headerlink" title="实践规划"></a>实践规划</h2><ol>
-<li><p><strong>搭建一个 AI 客服助手</strong>[已尝试未应用]</p>
-<ul>
-<li>使用 <code>createAgent()</code> 创建一个智能体，工具可以内置几个，或通过网络调用外部的工具。</li>
+<li><strong>搭建一个 AI 客服助手</strong>[已尝试未应用]<ul>
+<li>使用 <code>createAgent()</code> 创建一个智能体，工具可以内置几个，或通过网络调用外部的工具</li>
 <li>createAgent 可以使用中间件，有几个内置的中间件很有用：<ul>
-<li>摘要信息中间件 <code>summarizationMiddleware</code>：用于总结历史消息，避免重复信息。</li>
-<li>状态管理中间件 <code>stateManagementMiddleware</code>：用于管理智能体的状态，方便在不同工具之间传递信息。</li>
+<li>摘要信息中间件 <code>summarizationMiddleware</code>：用于总结历史消息，避免重复信息</li>
+<li>状态管理中间件 <code>stateManagementMiddleware</code>：用于管理智能体的状态，方便在不同工具之间传递信息</li>
 </ul>
 </li>
-<li>需要注意上下文历史。</li>
+<li>需要注意上下文历史</li>
 </ul>
 </li>
-<li><p><strong>搭建一个知识库</strong>[已尝试未应用]</p>
-<ul>
-<li>需要注意：知识库要使用嵌入模型、向量存储，还要使用工具。</li>
-<li>比如 <code>langchain-text-splitters</code>：文本分割器，用于将文本分割为更小的块，方便模型处理。</li>
-<li>比如需要用到 <code>react-markdown + remark-gfm</code>：将 Markdown 转换为 React 组件，方便在 Web 应用中使用。</li>
-<li>文本解析器：用于解析文本、提取信息。</li>
-<li>代码编辑器：用于编辑代码、生成代码。</li>
-<li>流媒体：用于流式传输，方便在 Web 应用中使用。</li>
-<li>查询搜索工具：用于查询知识库中的信息。</li>
+<li><strong>搭建一个知识库</strong>[已尝试未应用]<ul>
+<li>需要注意：知识库要使用嵌入模型、向量存储，还要使用工具</li>
+<li>比如 <code>langchain-text-splitters</code>：文本分割器，用于将文本分割为更小的块，方便模型处理</li>
+<li>比如需要用到 <code>react-markdown + remark-gfm</code>：将 Markdown 转换为 React 组件，方便在 Web 应用中使用</li>
+<li>文本解析器：用于解析文本、提取信息</li>
+<li>代码编辑器：用于编辑代码、生成代码</li>
+<li>流媒体：用于流式传输，方便在 Web 应用中使用</li>
+<li>查询搜索工具：用于查询知识库中的信息</li>
 </ul>
 </li>
 </ol>
+<h2 id="踩坑与注意点"><a href="#踩坑与注意点" class="headerlink" title="踩坑与注意点"></a>踩坑与注意点</h2><ol>
+<li><code>summarizationMiddleware</code> 示例中的 <code>model: &quot;&quot;</code> 只是占位，实际使用必须填一个可用的总结模型，否则摘要中间件无法工作。</li>
+<li>短期记忆依赖 checkpointer，创建 Agent 时忘记传 <code>checkpointer</code> 就不会有线程级记忆。</li>
+<li>工具是否被调用取决于用户提示词能否命中工具的 <code>description</code>，描述写得含糊是最常见的「工具不触发」原因。</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.langchain.com/oss/javascript/deepagents/overview">Langchain TS 版文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.langchain.com/oss/python/integrations/chat">LangChain 集成汇总</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.langchain.com/oss/javascript/langchain/event-streaming">LangChain 事件流</a></li>
+</ul>
 
 </article>
     
@@ -822,7 +817,7 @@
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">AI - Stable Diffusion 使用指南</h6>
+                <h6 class="trm-op-title">Stable Diffusion 使用指南</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -843,7 +838,7 @@
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">AI - 生成式人工智能概念和原理</h6>
+                <h6 class="trm-op-title">生成式人工智能概念和原理</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -915,7 +910,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="Langchain"><a rel="nofollow" class="trm-toc-link" href="#Langchain"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">Langchain</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="信息：模型的输入和输出"><a rel="nofollow" class="trm-toc-link" href="#信息：模型的输入和输出"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">信息：模型的输入和输出</span></a></li><li class="trm-toc-item trm-toc-level-3" title="区分 new ChatOllama() 和 createAgent()"><a rel="nofollow" class="trm-toc-link" href="#区分-new-ChatOllama-和-createAgent"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">区分 new ChatOllama() 和 createAgent()</span></a></li><li class="trm-toc-item trm-toc-level-3" title="学习阶段，模型推荐"><a rel="nofollow" class="trm-toc-link" href="#学习阶段，模型推荐"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">学习阶段，模型推荐</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Langchain 包"><a rel="nofollow" class="trm-toc-link" href="#Langchain-包"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">Langchain 包</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Agent 与 Tool 调用"><a rel="nofollow" class="trm-toc-link" href="#Agent-与-Tool-调用"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">Agent 与 Tool 调用</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Memory"><a rel="nofollow" class="trm-toc-link" href="#Memory"><span class="trm-toc-number">1.6.</span> <span class="trm-toc-text">Memory</span></a></li><li class="trm-toc-item trm-toc-level-3" title="流媒体 | 事件流（langchain v1.3 推荐）"><a rel="nofollow" class="trm-toc-link" href="#流媒体-事件流（langchain-v1-3-推荐）"><span class="trm-toc-number">1.7.</span> <span class="trm-toc-text">流媒体 | 事件流（langchain v1.3 推荐）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="结构化输出的响应格式"><a rel="nofollow" class="trm-toc-link" href="#结构化输出的响应格式"><span class="trm-toc-number">1.8.</span> <span class="trm-toc-text">结构化输出的响应格式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="中间件 | middleware"><a rel="nofollow" class="trm-toc-link" href="#中间件-middleware"><span class="trm-toc-number">1.9.</span> <span class="trm-toc-text">中间件 | middleware</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="LangGraph"><a rel="nofollow" class="trm-toc-link" href="#LangGraph"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">LangGraph</span></a></li><li class="trm-toc-item trm-toc-level-2" title="deepagents（深度智能体）"><a rel="nofollow" class="trm-toc-link" href="#deepagents（深度智能体）"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">deepagents（深度智能体）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="以上三者的区别"><a rel="nofollow" class="trm-toc-link" href="#以上三者的区别"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">以上三者的区别</span></a></li><li class="trm-toc-item trm-toc-level-2" title="实践规划"><a rel="nofollow" class="trm-toc-link" href="#实践规划"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">实践规划</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景"><a rel="nofollow" class="trm-toc-link" href="#背景"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第一步：先记住六大核心模块"><a rel="nofollow" class="trm-toc-link" href="#第一步：先记住六大核心模块"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">第一步：先记住六大核心模块</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="信息：模型的输入和输出"><a rel="nofollow" class="trm-toc-link" href="#信息：模型的输入和输出"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">信息：模型的输入和输出</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="第二步：区分 new ChatOllama() 和 createAgent()"><a rel="nofollow" class="trm-toc-link" href="#第二步：区分-new-ChatOllama-和-createAgent"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">第二步：区分 new ChatOllama() 和 createAgent()</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第三步：用本地模型跑通第一个调用"><a rel="nofollow" class="trm-toc-link" href="#第三步：用本地模型跑通第一个调用"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">第三步：用本地模型跑通第一个调用</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第四步：认识常用包"><a rel="nofollow" class="trm-toc-link" href="#第四步：认识常用包"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">第四步：认识常用包</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第五步：定义 Tool 并挂到模型上"><a rel="nofollow" class="trm-toc-link" href="#第五步：定义-Tool-并挂到模型上"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">第五步：定义 Tool 并挂到模型上</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第六步：管理短期记忆"><a rel="nofollow" class="trm-toc-link" href="#第六步：管理短期记忆"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">第六步：管理短期记忆</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="短期记忆 MemorySaver"><a rel="nofollow" class="trm-toc-link" href="#短期记忆-MemorySaver"><span class="trm-toc-number">7.1.</span> <span class="trm-toc-text">短期记忆 MemorySaver</span></a></li><li class="trm-toc-item trm-toc-level-3" title="解决短期记忆超出上下文窗口的问题"><a rel="nofollow" class="trm-toc-link" href="#解决短期记忆超出上下文窗口的问题"><span class="trm-toc-number">7.2.</span> <span class="trm-toc-text">解决短期记忆超出上下文窗口的问题</span></a></li><li class="trm-toc-item trm-toc-level-3" title="访问和修改短期记忆"><a rel="nofollow" class="trm-toc-link" href="#访问和修改短期记忆"><span class="trm-toc-number">7.3.</span> <span class="trm-toc-text">访问和修改短期记忆</span></a></li><li class="trm-toc-item trm-toc-level-3" title="长期记忆 InMemoryStore"><a rel="nofollow" class="trm-toc-link" href="#长期记忆-InMemoryStore"><span class="trm-toc-number">7.4.</span> <span class="trm-toc-text">长期记忆 InMemoryStore</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="第七步：使用流式输出与结构化输出"><a rel="nofollow" class="trm-toc-link" href="#第七步：使用流式输出与结构化输出"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">第七步：使用流式输出与结构化输出</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="流媒体 &#x2F; 事件流（langchain v1.3 推荐）"><a rel="nofollow" class="trm-toc-link" href="#流媒体-事件流（langchain-v1-3-推荐）"><span class="trm-toc-number">8.1.</span> <span class="trm-toc-text">流媒体 &#x2F; 事件流（langchain v1.3 推荐）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="结构化输出的响应格式"><a rel="nofollow" class="trm-toc-link" href="#结构化输出的响应格式"><span class="trm-toc-number">8.2.</span> <span class="trm-toc-text">结构化输出的响应格式</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="第八步：用中间件扩展 Agent"><a rel="nofollow" class="trm-toc-link" href="#第八步：用中间件扩展-Agent"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">第八步：用中间件扩展 Agent</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第九步：用 LangGraph 编排有状态流程"><a rel="nofollow" class="trm-toc-link" href="#第九步：用-LangGraph-编排有状态流程"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">第九步：用 LangGraph 编排有状态流程</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第十步：了解 deepagents 与三者的差异"><a rel="nofollow" class="trm-toc-link" href="#第十步：了解-deepagents-与三者的差异"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">第十步：了解 deepagents 与三者的差异</span></a></li><li class="trm-toc-item trm-toc-level-2" title="实践规划"><a rel="nofollow" class="trm-toc-link" href="#实践规划"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">实践规划</span></a></li><li class="trm-toc-item trm-toc-level-2" title="踩坑与注意点"><a rel="nofollow" class="trm-toc-link" href="#踩坑与注意点"><span class="trm-toc-number">13.</span> <span class="trm-toc-text">踩坑与注意点</span></a></li><li class="trm-toc-item trm-toc-level-2" title="参考"><a rel="nofollow" class="trm-toc-link" href="#参考"><span class="trm-toc-number">14.</span> <span class="trm-toc-text">参考</span></a></li></ol>
       </div>
     </div>
 
@@ -1039,6 +1034,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

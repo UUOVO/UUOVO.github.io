@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="zh-Hans,en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="讲清 RAG 全链路、Agent 与工具调用原理，并对比 LangChain、LangGraph 等开发框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 应用知识体系（二）：RAG、Agent 与开发框架">
+<meta property="og:url" content="http://example.com/en/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="讲清 RAG 全链路、Agent 与工具调用原理，并对比 LangChain、LangGraph 等开发框架">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-10-20T01:43:18.000Z">
+<meta property="article:modified_time" content="2026-11-16T08:17:18.045Z">
+<meta property="article:author" content="UUOVO">
+<meta property="article:tag" content="知识体系">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="AI应用">
+<meta property="article:tag" content="前端架构">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="AI, 大前端, 全栈架构, Agent, RAG, 协同编辑, 工作流引擎, monorepo">
+
+
+<title >AI 应用知识体系（二）：RAG、Agent 与开发框架</title>
+
+<!-- Favicon -->
+
+    <link href='/img/sitelogo16.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/sitelogo32.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/apple-touch-icon.png?v=2.2.3' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-16 16:17:18"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+<link rel="stylesheet" href="/css/global.css">
+
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/sitelogo32.svg">
+    
+    
+        <div class="trm-logo-text">
+            UU<span>OVO</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/tags/" target="">
+                            标签
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" target="">
+                            微信小程序
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%B7%A5%E5%85%B7/" target="">
+                            前端工程化工具
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/React/" target="">
+                            React
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/Vue/" target="">
+                            VUE
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/TypeScript/" target="">
+                            TypeScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JavaScript/" target="">
+                            JavaScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/CSS-HTML/" target="">
+                            CSS&HTML
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="">
+                            网络与数据结构
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/uniapp/" target="">
+                            uniapp
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ThreeJS/" target="">
+                            ThreeJS
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/Node/" target="">
+                            Node
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JQuery/" target="">
+                            JQuery
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ES6/" target="">
+                            ES6
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/AJAX/" target="">
+                            AJAX
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/" target="">
+                            可视化
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/gallery/" target="">
+                    相册
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/gallery/wallpaper/" target="">
+                            相册详情页
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/about/" target="">
+                    关于
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/links/" target="">
+                            友链
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+    
+    <div id="trm-search-btn" class="trm-search-btn">
+        <i class="iconfont fas fa-search"></i>
+    </div>
+     
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            AI 应用知识体系（二）：RAG、Agent 与开发框架
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        en
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar1.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/UUOVO" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/ovouu" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                City:
+            </div>
+            <div class="trm-label trm-label-light">
+                City
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                Age:
+            </div>
+            <div class="trm-label trm-label-light">
+                Age
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:1370203877@qq.com" class="trm-btn">
+            Contact Me
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            10/20
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            09:43
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            UUOVO
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <p>本篇是系列第 2 篇，聚焦 RAG、Agent 原理和 AI 应用开发框架。</p>
+<span id="more"></span>
+
+<h2 id="四、RAG-与-Agent-原理"><a href="#四、RAG-与-Agent-原理" class="headerlink" title="四、RAG 与 Agent 原理"></a><a id="s4"></a>四、RAG 与 Agent 原理</h2><h3 id="4-1-RAG-全链路（前端视角拆解）"><a href="#4-1-RAG-全链路（前端视角拆解）" class="headerlink" title="4.1 RAG 全链路（前端视角拆解）"></a><a id="s4-1"></a>4.1 RAG 全链路（前端视角拆解）</h3><p>核心价值：给大模型外挂一个「实时、私有的知识大脑」。</p>
+<p><strong>阶段一：数据准备与索引（离线 &#x2F; 后台）</strong></p>
+<ol>
+<li><strong>文档加载（Loading）</strong>：从各种源加载原始文档。</li>
+<li><strong>文本切片（Splitting &#x2F; Chunking）</strong>：长文档切成有意义的小块。常见策略：固定长度切块、按段落&#x2F;标题切块、递归切片。</li>
+<li><strong>向量化（Embedding）</strong>：调用 Embedding 模型，把每个文本块转成高维向量——即该文本块在「语义空间」中的坐标。</li>
+<li><strong>入库（Storing）</strong>：将文本块原文与对应向量一并存入向量数据库。</li>
+</ol>
+<p><strong>阶段二：查询与生成（在线 &#x2F; 实时）</strong></p>
+<ol>
+<li><strong>用户提问</strong>：前端接收问题。</li>
+<li><strong>问题向量化</strong>：用与索引阶段相同的 Embedding 模型把问题转成向量。</li>
+<li><strong>向量检索（Retrieval）</strong>：在向量库中搜索语义最相似的文本块向量。</li>
+<li><strong>上下文增强（Augmentation）</strong>：把 Top-K（如最相关的 3 个）文本块与用户原问题组合成一个信息量更大的 Prompt。</li>
+<li><strong>生成答案（Generation）</strong>：把增强后的 Prompt 发给 LLM，基于给定材料生成最终答案。</li>
+<li><strong>前端呈现</strong>：<ul>
+<li><strong>流式输出（Streaming）</strong>：逐字渲染答案。</li>
+<li><strong>引用溯源（Citation）</strong>：RAG 应用的黄金标准。界面必须清晰展示答案的每一部分基于哪个检索到的文档块——既建立信任，也提供深挖入口。</li>
+</ul>
+</li>
+</ol>
+<h3 id="4-2-Agent-与-ReAct-循环"><a href="#4-2-Agent-与-ReAct-循环" class="headerlink" title="4.2 Agent 与 ReAct 循环"></a><a id="s4-2"></a>4.2 Agent 与 ReAct 循环</h3><p><strong>核心思想</strong>：自主循环。</p>
+<p><strong>Agent 本质公式</strong></p>
+<p>$Agent &#x3D; LLM（大模型） + Planning（规划） + Memory（上下文记忆 &#x2F; 持久化记忆） + Tool（工具） + User（MCP + Skills）$</p>
+<p><strong>ReAct（Reasoning and Acting）</strong>：目前系统级智能体最主流的推理框架，要求 LLM 在每一步都产出特定结构。</p>
+<table>
+<thead>
+<tr>
+<th>环节</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Thought（思想）</td>
+<td>LLM 自我反思：目标是什么？已知什么？下一步做什么？需要什么工具？该过程对用户不可见，但在后台日志中至关重要</td>
+</tr>
+<tr>
+<td>Action（行动）</td>
+<td>基于思考决定调用某个工具并给出输入，格式通常结构化，如 <code>&#123; &quot;tool&quot;: &quot;weather_api&quot;, &quot;tool_input&quot;: &quot;北京&quot; &#125;</code></td>
+</tr>
+<tr>
+<td>Observation（观察）</td>
+<td>系统真正执行该行动（如调用天气 API），把返回结果（如「北京今天晴，25℃」）作为观察再次输入 LLM</td>
+</tr>
+<tr>
+<td>循环</td>
+<td>接收观察结果后开始新一轮「思想 → 行动 → 观察」，直到认为目标达成，输出最终答案</td>
+</tr>
+</tbody></table>
+<p>核心价值：把 LLM 从「只会生成文本的模型」变成「能基于目标自主决策、调用工具、处理反馈的智能系统」。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">flowchart TD</span><br><span class="line">  U[用户输入目标] --&gt; THINK[LLM 思考: 下一步要做什么?]</span><br><span class="line">  THINK --&gt; DECIDE&#123;是否需要调用工具?&#125;</span><br><span class="line">  DECIDE --&gt;|是| CALL[生成工具调用指令: Tool + Args]</span><br><span class="line">  CALL --&gt; EXEC[执行工具调用]</span><br><span class="line">  EXEC --&gt; OBS[获取工具返回结果: Observation]</span><br><span class="line">  OBS --&gt; INJ[将 Observation 注入上下文]</span><br><span class="line">  INJ --&gt; THINK</span><br><span class="line">  DECIDE --&gt;|否| RESP[LLM 生成最终答案]</span><br><span class="line">  RESP --&gt; OUT[输出结果]</span><br><span class="line"></span><br><span class="line">  classDef loop fill:#f0f9ff,stroke:#0369a1;</span><br><span class="line">  classDef done fill:#f6f6f6,stroke:#444;</span><br><span class="line">  class THINK,DECIDE,CALL,EXEC,OBS,INJ loop;</span><br><span class="line">  class RESP,OUT done;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-工具（Tool）：智能体的手脚"><a href="#4-3-工具（Tool）：智能体的手脚" class="headerlink" title="4.3 工具（Tool）：智能体的手脚"></a><a id="s4-3"></a>4.3 工具（Tool）：智能体的手脚</h3><p>本质：把 LLM 的文本生成能力映射为具体的函数、API、系统指令执行能力。</p>
+<p><strong>标准工具定义三要素</strong></p>
+<ol>
+<li><strong>名称（Name）</strong>：唯一标识。</li>
+<li><strong>描述（Description）</strong>：说明这个工具做什么、什么时候用——<strong>这是 LLM 决策的关键依据</strong>。</li>
+<li><strong>参数（Args Schema）</strong>：输入参数定义，通常用 JSON Schema 描述。</li>
+</ol>
+<p><strong>常见工具类型</strong></p>
+<ul>
+<li>搜索引擎 API：查询实时信息。</li>
+<li>计算器：精确数学运算。</li>
+<li>代码解释器：执行 Python，做数据分析或绘图。</li>
+<li>企业内部 API：查订单、取用户信息、操作 CRM。</li>
+<li><strong>RAG 本身也是一个工具</strong>：从私有库检索资料。</li>
+</ul>
+<p><strong>两个前端强相关点</strong></p>
+<ul>
+<li><strong>过程可视化</strong>：Agent 执行是动态、多步骤的，优秀前端应实时清晰展示当前状态——对调试、监控、建立信任都至关重要。</li>
+<li><strong>交互式干预</strong>：允许用户在 Agent 执行过程中介入、修正方向。</li>
+</ul>
+<h3 id="4-4-智能体三分类与选型决策"><a href="#4-4-智能体三分类与选型决策" class="headerlink" title="4.4 智能体三分类与选型决策"></a><a id="s4-4"></a>4.4 智能体三分类与选型决策</h3><p><strong>① 工作流型智能体（DAG 有向无环图）</strong></p>
+<ul>
+<li>核心本质：<strong>流程优先</strong>的确定性智能体。</li>
+<li>底层逻辑：人定义规则，AI 填充执行。</li>
+<li>代表产品：Coze、Dify、Make、n8n。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">flowchart LR</span><br><span class="line">  U[用户输入目标] --&gt; P[预定义 DAG 流程]</span><br><span class="line">  P --&gt; N1[节点1: LLM 任务拆解]</span><br><span class="line">  N1 --&gt; N2[节点2: API / 工具调用]</span><br><span class="line">  N2 --&gt; N3[节点3: LLM 内容生成]</span><br><span class="line">  N3 --&gt; N4[节点4: 数据格式化 / 校验]</span><br><span class="line">  N4 --&gt; OUT[结果输出]</span><br><span class="line">  N2 --&gt;|执行异常| ERR[异常处理节点]</span><br><span class="line">  ERR --&gt; N2</span><br><span class="line"></span><br><span class="line">  classDef box fill:#F0F8FF,stroke:#334155,stroke-width:1px;</span><br><span class="line">  classDef kb fill:#FFC0CB,stroke:#FF1493;</span><br><span class="line">  class U,P,N1,N2,N3,N4,OUT box;</span><br><span class="line">  class ERR kb;</span><br></pre></td></tr></table></figure>
+
+<p><strong>② 通用型智能体（完全依赖 LLM Planning）</strong></p>
+<ul>
+<li>核心本质：<strong>目标优先</strong>的全自主智能体。</li>
+<li>底层逻辑：人定义目标，AI 定义规则与执行。</li>
+<li>代表产品：Manus、openManus、AutoGPT、GPT-4o。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">flowchart TD</span><br><span class="line">  USER[用户输入终极目标] --&gt; DECOMP[LLM 任务拆解与步骤规划]</span><br><span class="line">  DECOMP --&gt; TOOLSEL[工具选择与指令生成]</span><br><span class="line">  TOOLSEL --&gt; ENV[环境感知与指令执行]</span><br><span class="line">  ENV --&gt; VERIFY[执行结果校验与反馈]</span><br><span class="line">  VERIFY --&gt;|目标达成| OUTPUT[最终结果输出]</span><br><span class="line">  VERIFY --&gt;|目标未达成 / 执行异常| REPLAN[重新规划与步骤调整]</span><br><span class="line">  REPLAN --&gt; DECOMP</span><br><span class="line">  DECOMP &lt;--&gt;|上下文注入 / 历史存储| MEM[长程记忆模块]</span><br><span class="line">  MEM &lt;--&gt;|执行日志存储| VERIFY</span><br><span class="line"></span><br><span class="line">  classDef men fill:#7FFFD4,stroke:#B0C4DE;</span><br><span class="line">  class MEM men;</span><br></pre></td></tr></table></figure>
+
+<p><strong>③ 垂类智能体（深度定制）</strong></p>
+<ul>
+<li>三个特征：领域知识深度融合、专用工具极致封装、场景化交互深度适配。</li>
+<li>核心本质：<strong>场景优先</strong>的专用型智能体。</li>
+<li>底层逻辑：场景定义规则，领域知识赋能，AI 在边界内精准执行。</li>
+<li>代表产品：剪映智能剪辑、Figma AI、GitHub Copilot、阿里云智能客服、墨问 AI。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">flowchart LR</span><br><span class="line">  IN[领域特定输入] --&gt; UI[领域专属交互层]</span><br><span class="line">  UI --&gt; PROMPT[&quot;领域 Prompt 工程 + 规则引擎&quot;]</span><br><span class="line">  PROMPT --&gt; FT[领域微调 LLM / 大模型]</span><br><span class="line">  FT --&gt; TOOLS[领域专属工具集]</span><br><span class="line">  TOOLS --&gt; OUT[领域精准结果输出]</span><br><span class="line">  KB[领域知识库 / 数据集] --&gt;|知识注入| PROMPT</span><br><span class="line">  KB --&gt;|微调训练| FT</span><br><span class="line"></span><br><span class="line">  classDef box fill:#F0FFF0,stroke:#334155,stroke-width:1px;</span><br><span class="line">  classDef kb fill:#fff0f6,stroke:#c026d3;</span><br><span class="line">  class IN,UI,PROMPT,FT,TOOLS,OUT box;</span><br><span class="line">  class KB kb;</span><br></pre></td></tr></table></figure>
+
+<p><strong>选型决策树</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">flowchart TD</span><br><span class="line">  Q1[业务需求是否有明确、固定的执行流程?]</span><br><span class="line">  Q1 --&gt;|是，流程可标准化、可复用| Q2[是否需要严格的执行可控性、无风险?]</span><br><span class="line">  Q1 --&gt;|否，流程不固定、步骤动态变化| Q3[是否需要跨多场景的通用自主能力?]</span><br><span class="line">  Q2 --&gt;|是| A1[首选：Coze 类工作流智能体]</span><br><span class="line">  Q2 --&gt;|否，需要一定灵活性| Q3</span><br><span class="line">  Q3 --&gt;|是，目标明确但执行路径不确定| A2[首选：Manus 类通用智能体]</span><br><span class="line">  Q3 --&gt;|否，仅针对单一垂直领域的高频场景| A3[首选：垂类场景智能体]</span><br><span class="line"></span><br><span class="line">  classDef decision fill:#EEF2FF,stroke:#334155,stroke-width:1px;</span><br><span class="line">  classDef result fill:#FEF3C7,stroke:#B45309,stroke-width:1px;</span><br><span class="line">  class Q1,Q2,Q3 decision;</span><br><span class="line">  class A1,A2,A3 result;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-5-前端视角的智能体四阶闭环"><a href="#4-5-前端视角的智能体四阶闭环" class="headerlink" title="4.5 前端视角的智能体四阶闭环"></a><a id="s4-5"></a>4.5 前端视角的智能体四阶闭环</h3><ol>
+<li><strong>感知层</strong>：智能体的「眼睛和耳朵」，采集用户输入、系统环境状态、外部数据反馈——对应前端的事件监听、数据订阅、环境状态采集，是前端的传统优势阵地。</li>
+<li><strong>决策层</strong>：智能体的「大脑」，基于 LLM 内核，结合感知输入与记忆上下文，完成任务拆解、步骤规划、工具选择、异常处理——前端负责决策逻辑封装、Prompt 编排、边界校验规则。</li>
+<li><strong>行动层</strong>：智能体的「手脚」，执行指令：调用 API、操作文件、执行代码、控制系统指令——对应前端工具封装、接口调用、Node 脚本执行、系统 API 适配，是全栈能力的核心体现。</li>
+<li><strong>记忆层</strong>：智能体的「知识库」，存储会话上下文、执行历史、用户偏好、领域知识——对应前端状态管理、本地持久化、向量库交互，决定长程任务能力。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">flowchart TD</span><br><span class="line">  A[感知层 Perception] --&gt;|输入采集与环境同步| B[决策层 Decision]</span><br><span class="line">  B --&gt;|生成执行指令| C[行动层 Action]</span><br><span class="line">  C --&gt;|目标达成输出| D[用户 / 业务系统]</span><br><span class="line">  C --&gt;|执行结果反馈| E[记忆层 Memory]</span><br><span class="line">  E --&gt;|上下文注入| B</span><br><span class="line"></span><br><span class="line">  classDef layer fill:#f8f9fa,stroke:#333,stroke-width:1px;</span><br><span class="line">  class A,B,C,D,E layer;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-6-长链条任务的三个硬难点"><a href="#4-6-长链条任务的三个硬难点" class="headerlink" title="4.6 长链条任务的三个硬难点"></a><a id="s4-6"></a>4.6 长链条任务的三个硬难点</h3><ol>
+<li><strong>任务拆解策略与边界判定</strong>：三种智能体在 Prompt 工程与工具链调用上的本质区别。</li>
+<li><strong>长链条 ReAct 的自修复循环与跨进程通信</strong><ul>
+<li>用 LangGraph 实现具备「状态机」属性的复杂 Agent 逻辑。</li>
+<li>难点：设计健壮的 <strong>Commander 系统指令集封装层</strong>，把 AI 的模糊意图精准翻译成操作系统可执行的原子指令（CLI &#x2F; API）。</li>
+<li>重点：长链条任务中环境保存 &#x2F; 变更时，如何通过 <strong>Error-Reflexion（错误反射）</strong> 实现自动纠错与路径重规划，避免死循环。</li>
+</ul>
+</li>
+<li><strong>多 Agent 协作协议的复杂业务闭环</strong><ul>
+<li>类似 openclaw 系统级架构，核心是 Multi-Agent 协同中的通讯协议（SOP）与资源竞争管理。</li>
+<li>企业落地：私有化知识库（RAG）与实时工具调用（Function Calling）的深度融合策略，解决大规模并发下的<strong>幻觉控制</strong>。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="五、AI-应用开发框架"><a href="#五、AI-应用开发框架" class="headerlink" title="五、AI 应用开发框架"></a><a id="s5"></a>五、AI 应用开发框架</h2><h3 id="5-1-直接调模型会遇到什么（为什么要框架）"><a href="#5-1-直接调模型会遇到什么（为什么要框架）" class="headerlink" title="5.1 直接调模型会遇到什么（为什么要框架）"></a><a id="s5-1"></a>5.1 直接调模型会遇到什么（为什么要框架）</h3><p>模型只具备「分析与推测」能力，Agent Loop 则是不断调用工具拿结果、再从结果学习优化的反复过程。直接开发会撞上七个问题：</p>
+<ol>
+<li><strong>多模型接入需要适配器</strong>（Model Provider）——微内核设计思想，用统一标准化协议完成模型接入。</li>
+<li><strong>工具定义与调用机制</strong>（tool calling）。</li>
+<li><strong>循环</strong>：ReAct 框架。</li>
+<li><strong>模型输出形态</strong>：字符串、流式。</li>
+<li><strong>调用远程他人的 tool</strong> 需要一套标准化规则，即 <strong>MCP</strong>。</li>
+<li><strong>大量提示词优化</strong>：上下文压缩（compact）、Skills（元数据 + 可执行操作）。</li>
+<li><strong>生态适配</strong>。</li>
+</ol>
+<p>LangChain.js 对以上都做了封装，所以选它。</p>
+<p><strong>小 Demo 技术栈</strong></p>
+<ul>
+<li>TypeScript（类型完备）+ Node.js 经验：脚本测试 → 服务化（Express、Koa、Next.js、Nuxt.js、NestJS）。</li>
+<li>本地模型部署：Ollama、MStudio、Whisper。</li>
+<li>AI 引擎：LangChain.js、LangGraph.js、DeepAgent.js、Mastra、RAGFlow……</li>
+<li>方法论：<strong>问题分析 → 方案设计（MVP，抓住主要矛盾）</strong>。</li>
+</ul>
+<h3 id="5-2-LangChain-标准化接口：如何避免供应商锁定"><a href="#5-2-LangChain-标准化接口：如何避免供应商锁定" class="headerlink" title="5.2 LangChain 标准化接口：如何避免供应商锁定"></a><a id="s5-2"></a>5.2 LangChain 标准化接口：如何避免供应商锁定</h3><p>LangChain 通过 <code>BaseLLM</code> &#x2F; <code>ChatModel</code> 等核心抽象定义标准化模型接口，抹平了 Ollama（<code>@langchain/ollama</code>）、OpenAI、云厂商模型在<strong>调用协议、参数格式、返回结构</strong>上的差异。</p>
+<ul>
+<li>现在用本地 Ollama，将来切云端大模型，只需替换模型实例化逻辑（<code>OllamaChatModel</code> → <code>ChatOpenAI</code>），<strong>无需改动</strong>提示工程、工具调用（d3-dsv 解析、pg 交互）、Agent 编排等核心业务代码。</li>
+<li>标准化接口还统一了错误处理、上下文管理、流式输出等通用逻辑。</li>
+<li>结果：降低切换成本，并支持<strong>多供应商混合调用</strong>（核心场景用云端、低成本场景用本地），规避单一供应商的定价、稳定性、合规风险。</li>
+</ul>
+<h3 id="5-3-LangChain-与-LangGraph-的选型"><a href="#5-3-LangChain-与-LangGraph-的选型" class="headerlink" title="5.3 LangChain 与 LangGraph 的选型"></a><a id="s5-3"></a>5.3 LangChain 与 LangGraph 的选型</h3><p>选型锚定<strong>业务复杂度与流程特性</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>选择</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>轻量：线性流程、单轮简单多轮交互（基于 pg 数据的问答、d3-dsv 解析结果返回）</td>
+<td><strong>LangChain 核心套件</strong></td>
+<td><code>AgentExecutor</code>、<code>PromptTemplate</code> 等开箱即用，开发效率高，适配中小规模、无复杂状态管理的业务</td>
+</tr>
+<tr>
+<td>复杂：非线性流程、多角色协作、状态持久化 &#x2F; 容错重试（「拆分 → 入库 → 推理 → 纠错」闭环）</td>
+<td><strong>LangGraph</strong></td>
+<td>基于 LangChain 核心扩展，主打「有状态的推理图」，支持节点拆分、条件分支、循环执行，能精准描述状态流转，且可嵌套复用 LangChain 的工具与提示组件</td>
+</tr>
+</tbody></table>
+<h3 id="5-4-可解耦、可演进的-Agent-分层架构"><a href="#5-4-可解耦、可演进的-Agent-分层架构" class="headerlink" title="5.4 可解耦、可演进的 Agent 分层架构"></a><a id="s5-4"></a>5.4 可解耦、可演进的 Agent 分层架构</h3><p>按 <strong>接口层 → 原子能力层 → 编排层 → 业务层</strong> 分层，每层职责单一、依赖倒置：</p>
+<ol>
+<li><strong>接口层</strong>：封装统一的模型调用（基于 <code>@langchain/core</code> 抽象）与工具调用接口，屏蔽底层差异（pg 数据库、d3-dsv 解析均封装为标准 Tool）。</li>
+<li><strong>原子能力层</strong>：拆分提示模板、文本拆分、数据解析、数据库交互等原子能力，用 Zod 做参数校验，确保可复用、可独立迭代。</li>
+<li><strong>编排层</strong>：轻量场景用 LangChain <code>AgentExecutor</code>，复杂场景用 LangGraph 构建状态图；<strong>只负责流程编排，不耦合具体业务逻辑</strong>。</li>
+<li><strong>业务层</strong>：对接 Express 接口、业务规则等具体场景，通过配置化关联编排层与核心能力；新增业务只扩展这一层，无需改动底层。</li>
+</ol>
+<h3 id="5-5-LangGraph-专家级内核（对标自研的六要素）"><a href="#5-5-LangGraph-专家级内核（对标自研的六要素）" class="headerlink" title="5.5 LangGraph 专家级内核（对标自研的六要素）"></a><a id="s5-5"></a>5.5 LangGraph 专家级内核（对标自研的六要素）</h3><p>LangGraph 作为工业级 Agent 框架，核心竞争力在于一套完整的「图执行 + 状态管理」体系：</p>
+<ol>
+<li><strong>状态机驱动</strong>：基于有限状态机（FSM）与有向无环图（DAG），保障执行的确定性与可追溯性。</li>
+<li><strong>图执行引擎</strong>：支持节点的顺序、分支、并发、嵌套组合。</li>
+<li><strong>异步安全与竞态避免</strong>：确保多异步任务执行时状态一致，无脏数据覆盖。</li>
+<li><strong>状态持久化与 Checkpoint</strong>：执行快照、断点续跑、跨实例恢复，适配长周期任务。</li>
+<li><strong>子图与嵌套图</strong>：复杂流程拆为子图，提升复用性与可读性。</li>
+<li><strong>执行监控与调试</strong>：完整执行轨迹、日志与状态回溯，降低排障成本。</li>
+</ol>
+<blockquote>
+<p>前置知识：<strong>图论</strong>的基本概念——节点与边、有向图。</p>
+</blockquote>
+<p><strong>参考 openclaw 的五层分层架构</strong></p>
+<table>
+<thead>
+<tr>
+<th>openclaw 分层</th>
+<th>落地实现（LangChain.js + Express）</th>
+<th>核心职责</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>集成层</td>
+<td>封装 Ollama 模型、流式传输协议</td>
+<td>屏蔽底层模型调用差异，统一流式输出&#x2F;输入规范，对接 LangChain 核心抽象</td>
+</tr>
+<tr>
+<td>知识层</td>
+<td>极简内存知识载体 + 文本拆分（最小化）</td>
+<td>提供基础文本处理能力，预留 PG 扩展接口，暂用内存实现</td>
+</tr>
+<tr>
+<td>工具层</td>
+<td>标准化 DSV 解析工具（d3-dsv）</td>
+<td>原子化工具封装，统一输入输出校验（Zod），适配 Agent 工具调用规范</td>
+</tr>
+<tr>
+<td>Agent 编排层</td>
+<td>核心 Agent Loop（工具调用 + 流式循环）</td>
+<td>实现「思考 → 调工具 → 生成响应」闭环，处理流式回调与状态管理</td>
+</tr>
+<tr>
+<td>UI 层</td>
+<td>Express SSE 接口</td>
+<td>暴露流式交互端点，模拟 UI 层输入&#x2F;输出入口</td>
+</tr>
+</tbody></table>
+<p><strong>这一骨架的三条核心逻辑</strong></p>
+<ul>
+<li><strong>流式输出</strong>：基于 SSE，对接 LangChain 模型的 <code>stream</code> 方法。</li>
+<li><strong>Agent Loop</strong>：基于 <code>AgentExecutor</code> 封装，实现「用户输入 → 模型决策 → 工具调用 → 流式响应」的最小闭环。</li>
+<li><strong>最小可运行</strong>：只保留核心依赖，屏蔽非必要扩展（PG 暂不接入，仅预留接口）。</li>
+</ul>
+<h3 id="5-6-AI-应用的整体架构"><a href="#5-6-AI-应用的整体架构" class="headerlink" title="5.6 AI 应用的整体架构"></a><a id="s5-6"></a>5.6 AI 应用的整体架构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">flowchart TD</span><br><span class="line">    subgraph 用户端</span><br><span class="line">        A[前端应用 Next.js / Vue]</span><br><span class="line">    end</span><br><span class="line">    subgraph AI与数据基础设施</span><br><span class="line">        B[BFF/API 层 Express.js / NestJS]</span><br><span class="line">        C[AI 核心编排层 LangChain.js]</span><br><span class="line">        D[模型服务 Ollama Server 运行 Qwen3]</span><br><span class="line">        E[数据访问层 PostgreSQL / pgvector]</span><br><span class="line">    end</span><br><span class="line">    A -- HTTP / WebSocket --&gt; B</span><br><span class="line">    B --&gt; C</span><br><span class="line">    C -- 调用模型 --&gt; D</span><br><span class="line">    C -- 读写数据 / 向量 --&gt; E</span><br></pre></td></tr></table></figure>
+
+<p><strong>五步落地法</strong></p>
+<ol>
+<li>本地模型部署：Ollama + Qwen3。</li>
+<li>LangChain 三件套：LangChain、LangSmith、LangGraph。</li>
+<li>Node.js 把命令脚本化：提示词（Chat Mode）、RAG（向量存储：PGVector、Milvus）、Agent（工具）。</li>
+<li>将 AI 应用服务化。</li>
+<li>观测与治理：CI&#x2F;CD、Docker、监控告警、安全、日志。</li>
+</ol>
+<p><strong>依赖清单参考</strong></p>
+<ul>
+<li>生产：<code>langchain</code>、<code>@langchain/community</code>、<code>@langchain/core</code>、<code>@langchain/ollama</code>、<code>pg</code></li>
+<li>开发：<code>@types/node</code>（对齐当前 Node 版本）、<code>@types/pg</code>、<code>typescript</code></li>
+</ul>
+<hr>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">AI 应用知识体系（三）：工作流引擎与协同编辑</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>26/10/20</li>
+                <li>09:44</li>
+                <li>AI</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-01-%E8%83%BD%E5%8A%9B%E5%9C%B0%E5%9B%BE%E4%B8%8E%E5%BA%94%E7%94%A8%E5%9F%BA%E7%A1%80/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">AI 应用知识体系（一）：能力地图、应用基础与场景落地</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>26/10/20</li>
+                <li>09:42</li>
+                <li>AI</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2026</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+    
+        <div class="trm-footer-item blog-run-long"></div>
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="四、RAG 与 Agent 原理"><a rel="nofollow" class="trm-toc-link" href="#四、RAG-与-Agent-原理"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">四、RAG 与 Agent 原理</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="4.1 RAG 全链路（前端视角拆解）"><a rel="nofollow" class="trm-toc-link" href="#4-1-RAG-全链路（前端视角拆解）"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">4.1 RAG 全链路（前端视角拆解）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="4.2 Agent 与 ReAct 循环"><a rel="nofollow" class="trm-toc-link" href="#4-2-Agent-与-ReAct-循环"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">4.2 Agent 与 ReAct 循环</span></a></li><li class="trm-toc-item trm-toc-level-3" title="4.3 工具（Tool）：智能体的手脚"><a rel="nofollow" class="trm-toc-link" href="#4-3-工具（Tool）：智能体的手脚"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">4.3 工具（Tool）：智能体的手脚</span></a></li><li class="trm-toc-item trm-toc-level-3" title="4.4 智能体三分类与选型决策"><a rel="nofollow" class="trm-toc-link" href="#4-4-智能体三分类与选型决策"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">4.4 智能体三分类与选型决策</span></a></li><li class="trm-toc-item trm-toc-level-3" title="4.5 前端视角的智能体四阶闭环"><a rel="nofollow" class="trm-toc-link" href="#4-5-前端视角的智能体四阶闭环"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">4.5 前端视角的智能体四阶闭环</span></a></li><li class="trm-toc-item trm-toc-level-3" title="4.6 长链条任务的三个硬难点"><a rel="nofollow" class="trm-toc-link" href="#4-6-长链条任务的三个硬难点"><span class="trm-toc-number">1.6.</span> <span class="trm-toc-text">4.6 长链条任务的三个硬难点</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="五、AI 应用开发框架"><a rel="nofollow" class="trm-toc-link" href="#五、AI-应用开发框架"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">五、AI 应用开发框架</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="5.1 直接调模型会遇到什么（为什么要框架）"><a rel="nofollow" class="trm-toc-link" href="#5-1-直接调模型会遇到什么（为什么要框架）"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">5.1 直接调模型会遇到什么（为什么要框架）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="5.2 LangChain 标准化接口：如何避免供应商锁定"><a rel="nofollow" class="trm-toc-link" href="#5-2-LangChain-标准化接口：如何避免供应商锁定"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">5.2 LangChain 标准化接口：如何避免供应商锁定</span></a></li><li class="trm-toc-item trm-toc-level-3" title="5.3 LangChain 与 LangGraph 的选型"><a rel="nofollow" class="trm-toc-link" href="#5-3-LangChain-与-LangGraph-的选型"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">5.3 LangChain 与 LangGraph 的选型</span></a></li><li class="trm-toc-item trm-toc-level-3" title="5.4 可解耦、可演进的 Agent 分层架构"><a rel="nofollow" class="trm-toc-link" href="#5-4-可解耦、可演进的-Agent-分层架构"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">5.4 可解耦、可演进的 Agent 分层架构</span></a></li><li class="trm-toc-item trm-toc-level-3" title="5.5 LangGraph 专家级内核（对标自研的六要素）"><a rel="nofollow" class="trm-toc-link" href="#5-5-LangGraph-专家级内核（对标自研的六要素）"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">5.5 LangGraph 专家级内核（对标自研的六要素）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="5.6 AI 应用的整体架构"><a rel="nofollow" class="trm-toc-link" href="#5-6-AI-应用的整体架构"><span class="trm-toc-number">2.6.</span> <span class="trm-toc-text">5.6 AI 应用的整体架构</span></a></li></ol></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn hidden-md" data-title="Toggle between single-column and double-column" onclick="asyncFun.switchSingleColumn()">
+            <i class="iconfont fas fa-arrows-alt-h"></i>
+        </div>
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+    <div class="trm-search-popup">
+        <div class="trm-search-wrapper">
+            <div class="form trm-search-form">
+                <div class="trm-search-input-icon">
+                    <i class="iconfont fas fa-search"></i>
+                </div>
+                <input class="trm-search-input" type="text" placeholder="Searching...">
+                <div class="trm-search-btn-close">
+                    <i class="iconfont fas fa-times"></i>
+                </div>
+            </div>
+            <div class="trm-search-result-container">
+                <div class="trm-search-empty">
+                    Please enter keywords to search
+                </div>
+            </div>
+            <div class="trm-search-footer">
+                <div class="trm-search-stats"></div>
+                <ul class="trm-search-commands">
+                    <li>
+                        <kbd class="command-palette-commands-key">
+                            <svg width="15" height="15" aria-label="Escape key" role="img">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.2">
+                                    <path
+                                        d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956">
+                                    </path>
+                                </g>
+                            </svg>
+                        </kbd>
+                        <span class="command-palette-Label">to close</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+        
+<script src="https://unpkg.com/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+
+        <script src="/js/plugins/local_search.js?v=2.2.3"></script>
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+			<script src="/js/plugins/danmu.js?v=2.2.3"></script>
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
+
+    
+
+
+
+</body>
+
+</html>

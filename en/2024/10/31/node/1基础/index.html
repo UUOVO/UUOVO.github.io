@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="命令行窗口(小黑屏)、CMD窗口、终端、shell 的常用指令： dir: 列出当前目录下的所有文件 cd 目录名: 进入到指定的目录 md 目录名: 创建一个文件夹 rd 目录名: 删除一个文件夹  	 Node.js 一门后端语言(服务器端的程序语言)，能够连接数据库存取数据，能够接受和处理网络请求(服务器的响应，发送请求去获取数据)，单线程事件驱动，异步执行，不等待，提高IO(Inpu">
+<meta name="description" content="从命令行常用指令、Node.js 运行环境、npm 包管理讲到 global 对象与 CommonJS 模块化机制">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Node基础">
 <meta property="og:url" content="http://example.com/en/2024/10/31/node/1%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="命令行窗口(小黑屏)、CMD窗口、终端、shell 的常用指令： dir: 列出当前目录下的所有文件 cd 目录名: 进入到指定的目录 md 目录名: 创建一个文件夹 rd 目录名: 删除一个文件夹  	 Node.js 一门后端语言(服务器端的程序语言)，能够连接数据库存取数据，能够接受和处理网络请求(服务器的响应，发送请求去获取数据)，单线程事件驱动，异步执行，不等待，提高IO(Inpu">
+<meta property="og:description" content="从命令行常用指令、Node.js 运行环境、npm 包管理讲到 global 对象与 CommonJS 模块化机制">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-10-31T09:15:22.499Z">
-<meta property="article:modified_time" content="2025-08-01T07:52:19.734Z">
+<meta property="article:published_time" content="2024-10-31T09:15:22.000Z">
+<meta property="article:modified_time" content="2026-11-18T04:02:47.969Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="Node">
 <meta name="twitter:card" content="summary">
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-08-01 15:52:19"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-18 12:02:47"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -83,6 +83,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -197,13 +199,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -239,7 +241,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -257,13 +259,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -532,166 +534,193 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>这篇把 Node 入门绕不开的四件事串成一条线：命令行怎么操作目录、Node 到底是什么、npm 怎么管理包、CommonJS 怎么引用和暴露模块。读完你应该能独立初始化一个 Node 项目、写出可被 <code>require</code> 的模块，并说清 <code>exports</code> 与 <code>module.exports</code> 的区别；文末的事件示例可以直接当成一个最小的订阅&#x2F;发布模型来用。</p>
+<span id="more"></span>
 
-<h2 id="命令行窗口-小黑屏-、CMD窗口、终端、shell-的常用指令："><a href="#命令行窗口-小黑屏-、CMD窗口、终端、shell-的常用指令：" class="headerlink" title="命令行窗口(小黑屏)、CMD窗口、终端、shell 的常用指令："></a>命令行窗口(小黑屏)、CMD窗口、终端、shell 的常用指令：</h2><ul>
-<li>dir: 列出当前目录下的所有文件</li>
-<li>cd 目录名: 进入到指定的目录</li>
-<li>md 目录名: 创建一个文件夹</li>
-<li>rd 目录名: 删除一个文件夹</li>
+<h2 id="背景：为什么要先熟悉命令行和-Node"><a href="#背景：为什么要先熟悉命令行和-Node" class="headerlink" title="背景：为什么要先熟悉命令行和 Node"></a>背景：为什么要先熟悉命令行和 Node</h2><p>平时在浏览器里写 JS，能用的只有 DOM 和 BOM；一旦要读写文件、起服务、跑构建，就必须回到 Node 这一侧。Node 把 JS 从浏览器里解放出来，也因此要求你会用终端定位目录、执行脚本——所以下面先补命令行，再讲 Node 本身。</p>
+<h2 id="一、命令行窗口（CMD-终端-shell）的常用指令"><a href="#一、命令行窗口（CMD-终端-shell）的常用指令" class="headerlink" title="一、命令行窗口（CMD &#x2F; 终端 &#x2F; shell）的常用指令"></a>一、命令行窗口（CMD &#x2F; 终端 &#x2F; shell）的常用指令</h2><p>Windows 下最基础的四条目录操作，先混个眼熟：</p>
+<ul>
+<li><code>dir</code>：列出当前目录下的所有文件</li>
+<li><code>cd 目录名</code>：进入到指定的目录</li>
+<li><code>md 目录名</code>：创建一个文件夹</li>
+<li><code>rd 目录名</code>：删除一个文件夹</li>
 </ul>
-<p>	</p>
-<h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><ul>
-<li>一门后端语言(服务器端的程序语言)，能够连接数据库存取数据，能够接受和处理网络请求(<span class="desc">服务器的响应，发送请求去获取数据</span>)，单线程事件驱动，异步执行，不等待，提高IO(Input&#x2F;output)的处理速度和效率</li>
-<li>Node是一款对ES标准实现的JS引擎</li>
-<li>Node的中js引擎使用的chrome的v8引擎</li>
-<li>Node仅仅对ES标准进行了实现，所以在Node中不包含DOM 和 BOM	</li>
-<li>Node的特点：<ol>
-<li>非阻塞、异步的I&#x2F;O</li>
+<h2 id="二、Node-js-是什么"><a href="#二、Node-js-是什么" class="headerlink" title="二、Node.js 是什么"></a>二、Node.js 是什么</h2><ul>
+<li>一门后端语言（服务器端的程序语言），能够连接数据库存取数据，能够接受和处理网络请求（服务器的响应，发送请求去获取数据），单线程事件驱动，异步执行、不等待，从而提高 IO（Input&#x2F;Output）的处理速度和效率</li>
+<li>Node 是一个对 ES 标准做了实现的 JS 引擎</li>
+<li>Node 中 JS 引擎使用的是 Chrome 的 V8 引擎</li>
+<li>Node 仅仅对 ES 标准进行了实现，所以在 Node 中不包含 DOM 和 BOM</li>
+<li>Node 的特点：<ol>
+<li>非阻塞、异步的 I&#x2F;O</li>
 <li>事件和回调函数</li>
-<li>单线程（<span class="desc">主线程单线程，后台I&#x2F;O线程池</span>）</li>
+<li>单线程（主线程单线程，后台有 I&#x2F;O 线程池）</li>
 <li>跨平台</li>
 </ol>
 </li>
 </ul>
-<h2 id="包（package）"><a href="#包（package）" class="headerlink" title="包（package）"></a>包（package）</h2><ul>
-<li>将多个模块组合为一个完整的功能，就是一个包</li>
-</ul>
+<blockquote>
+<p>注意：说 Node 是“后端语言”是一种口语化说法，严格讲 Node 是 JS 的运行时环境，语言仍然是 JavaScript。</p>
+</blockquote>
+<h2 id="三、包（package）"><a href="#三、包（package）" class="headerlink" title="三、包（package）"></a>三、包（package）</h2><p>把多个模块组合为一个完整的功能，就是一个包。</p>
 <h3 id="包结构"><a href="#包结构" class="headerlink" title="包结构"></a>包结构</h3><ul>
-<li>bin: 二进制的可执行文件，一般都是一些工具包中才有</li>
-<li>lib: js文件</li>
-<li>doc: 文档</li>
-<li>test: 测试代码</li>
-<li>package.json: 包的描述文件，json格式<ul>
-<li>name：包名</li>
-<li>version：版本</li>
-<li>dependencies：依赖</li>
-<li>main：包的主要的文件</li>
-<li>bin：可执行文件</li>
+<li><code>bin</code>：二进制的可执行文件，一般只有工具包才有</li>
+<li><code>lib</code>：js 文件</li>
+<li><code>doc</code>：文档</li>
+<li><code>test</code>：测试代码</li>
+<li><code>package.json</code>：包的描述文件，json 格式<ul>
+<li><code>name</code>：包名</li>
+<li><code>version</code>：版本</li>
+<li><code>dependencies</code>：依赖</li>
+<li><code>main</code>：包的主要文件</li>
+<li><code>bin</code>：可执行文件</li>
 </ul>
 </li>
 </ul>
-<p>	</p>
-<h2 id="npm（Node-Package-Manager-node的包管理器）"><a href="#npm（Node-Package-Manager-node的包管理器）" class="headerlink" title="npm（Node Package Manager node的包管理器）"></a>npm（Node Package Manager node的包管理器）</h2><ul>
-<li>npm会在安装完node以后，自动安装</li>
-<li>通过npm下载的包都放到node_modules文件夹中，可以直接通过包名引入即可</li>
-<li>npm的常用指令<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">npm -v <span class="comment">// 查看npm的版本</span></span><br><span class="line">npm version <span class="comment">// 查看所有模块的版本</span></span><br><span class="line">npm init <span class="comment">// 初始化项目（创建package.json）</span></span><br><span class="line">npm i/install 包名 <span class="comment">// 安装指定的包</span></span><br><span class="line">npm i/install 包名 --save <span class="comment">// 安装指定的包并添加依赖</span></span><br><span class="line">npm i/install 包名 --save-dev <span class="comment">// 安装的包只用于开发环境</span></span><br><span class="line">npm i/install 包名 -g <span class="comment">// 全局安装（一般都是一些工具）</span></span><br><span class="line">npm i <span class="comment">// 安装当前项目所依赖的包</span></span><br><span class="line">npm s/search 包名 <span class="comment">// 搜索包	</span></span><br><span class="line">npm r/remove 包名 <span class="comment">// 删除一个包</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="node的全局对象-—-global"><a href="#node的全局对象-—-global" class="headerlink" title="node的全局对象 — global"></a>node的全局对象 — global</h2><ul>
-<li>在全局中创建的变量或函数都会作为global的属性或方法保存</li>
-</ul>
-<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><ul>
-<li>ES5中没有原生支持模块化，我们只能通过script标签引入js文件来实现模块化</li>
-<li>在Node中为了对模块管理，引入了CommonJS规范</li>
-</ul>
+<h2 id="四、npm（Node-Package-Manager）"><a href="#四、npm（Node-Package-Manager）" class="headerlink" title="四、npm（Node Package Manager）"></a>四、npm（Node Package Manager）</h2><p>npm 会在安装完 Node 以后自动安装；通过 npm 下载的包都放在 <code>node_modules</code> 文件夹中，引入时直接写包名即可。</p>
+<p>下面是日常最常用的 npm 指令，每条后面是它做的事：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">npm -v                    <span class="comment"># 查看 npm 的版本</span></span><br><span class="line">npm version               <span class="comment"># 查看所有模块的版本</span></span><br><span class="line">npm init                  <span class="comment"># 初始化项目（创建 package.json）</span></span><br><span class="line">npm i/install 包名        <span class="comment"># 安装指定的包</span></span><br><span class="line">npm i/install 包名 --save <span class="comment"># 安装指定的包并添加依赖</span></span><br><span class="line">npm i/install 包名 --save-dev <span class="comment"># 安装的包只用于开发环境</span></span><br><span class="line">npm i/install 包名 -g     <span class="comment"># 全局安装（一般都是一些工具）</span></span><br><span class="line">npm i                     <span class="comment"># 安装当前项目所依赖的包</span></span><br><span class="line">npm s/search 包名         <span class="comment"># 搜索包</span></span><br><span class="line">npm r/remove 包名         <span class="comment"># 删除一个包</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="五、Node-的全局对象-global"><a href="#五、Node-的全局对象-global" class="headerlink" title="五、Node 的全局对象 global"></a>五、Node 的全局对象 global</h2><p>在全局中创建的变量或函数，都会作为 <code>global</code> 的属性或方法保存。</p>
+<h2 id="六、模块化"><a href="#六、模块化" class="headerlink" title="六、模块化"></a>六、模块化</h2><p>ES5 中没有原生支持模块化，只能通过 <code>script</code> 标签引入 js 文件来模拟；Node 为了管理模块，引入了 CommonJS 规范。</p>
 <h3 id="模块的定义"><a href="#模块的定义" class="headerlink" title="模块的定义"></a>模块的定义</h3><ul>
-<li>在Node中一个js文件就是一个模块</li>
-<li>默认情况下在js文件中编写的内容，都是运行在一个独立的函数中，外部的模块无法访问</li>
+<li>在 Node 中，一个 js 文件就是一个模块</li>
+<li>默认情况下，js 文件里编写的内容都运行在一个独立的函数中，外部模块无法访问</li>
 </ul>
-<h3 id="模块的引用-require-函数"><a href="#模块的引用-require-函数" class="headerlink" title="模块的引用: require()函数"></a>模块的引用: require()函数</h3><ul>
-<li>可以传递一个文件的路径作为参数，Node将会自动根据该路径来引入外部模块<ul>
-<li>相对路径的引入：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">&quot;./math&quot;</span>);</span><br></pre></td></tr></table></figure></li>
-<li>绝对路径的引入：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>引入模块以后，该函数会返回一个对象，这个对象代表的是引入的模块</li>
-<li>引入模块时，使用的就是模块标识，可以通过模块标识来找到指定的模块</li>
-</ul>
-<h3 id="暴露变量或方法-exports-module-exports"><a href="#暴露变量或方法-exports-module-exports" class="headerlink" title="暴露变量或方法: exports &#x2F; module.exports"></a>暴露变量或方法: exports &#x2F; module.exports</h3><blockquote>
-<p>系统默认设置了 exports &#x3D; modules.exports</p>
+<h3 id="模块的引用：require-函数"><a href="#模块的引用：require-函数" class="headerlink" title="模块的引用：require() 函数"></a>模块的引用：require() 函数</h3><p><code>require()</code> 可以传递一个文件的路径作为参数，Node 会自动根据该路径引入外部模块。下面按相对路径引入同目录下的模块：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">&quot;./math&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>核心模块则直接写模块名，不需要路径（注意这里 <code>fs</code> 是核心模块，不是绝对路径）：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>引入模块以后，该函数会返回一个对象，这个对象代表被引入的模块。引入时使用的就是“模块标识”，Node 通过模块标识找到指定的模块。</p>
+<h3 id="暴露变量或方法：exports-module-exports"><a href="#暴露变量或方法：exports-module-exports" class="headerlink" title="暴露变量或方法：exports &#x2F; module.exports"></a>暴露变量或方法：exports &#x2F; module.exports</h3><blockquote>
+<p>系统默认设置了 <code>exports = module.exports</code>，也就是两者初始指向同一个对象。</p>
 </blockquote>
 <ul>
-<li>   exports<ul>
-<li>只需要将需要暴露给外部的变量或方法设置为exports的属性即可</li>
-<li>只能设置单个属性来向外暴露</li>
-<li>向外部暴露属性：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exports</span>.属性 = 属性值;</span><br></pre></td></tr></table></figure></li>
-<li>向外部暴露方法：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exports</span>.方法名 = 函数;</span><br></pre></td></tr></table></figure></li>
+<li><code>exports</code><ul>
+<li>只需要把要暴露给外部的变量或方法设置为 <code>exports</code> 的属性即可</li>
+<li>只能逐个设置属性来向外暴露</li>
+<li>向外部暴露属性：</li>
 </ul>
 </li>
-<li>module.exports<ul>
-<li>module.exports既可以单个设置属性也可以整个赋值，一切以module.exports为准<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>.属性 = 属性值</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>.方法名 = 函数</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;&#125;		</span><br></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exports</span>.属性 = 属性值;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>向外部暴露方法：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exports</span>.方法名 = 函数;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>module.exports</code><ul>
+<li><code>module.exports</code> 既可以逐个设置属性，也可以整个赋值，最终一切以 <code>module.exports</code> 为准</li>
 </ul>
 </li>
-<li>示例:<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">存在</span><br><span class="line"><span class="built_in">exports</span>.<span class="property">a</span> = <span class="number">1</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>.<span class="property">b</span> = <span class="number">2</span></span><br><span class="line">已知</span><br><span class="line"><span class="built_in">exports</span> = <span class="variable language_">module</span>.<span class="property">exports</span></span><br><span class="line">因此</span><br><span class="line"><span class="built_in">exports</span> = &#123;<span class="attr">c</span>:<span class="number">3</span>&#125; </span><br><span class="line">不成立，输出时仍显示a，b</span><br><span class="line">但</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;<span class="attr">c</span>:<span class="number">3</span>&#125;</span><br><span class="line">成立， 输出为&#123;<span class="attr">c</span>:<span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="模块的初始化"><a href="#模块的初始化" class="headerlink" title="模块的初始化"></a>模块的初始化</h3><ul>
-<li>一个模块中的js代码仅在模块第一次使用时执行一次</li>
-</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>.属性 = 属性值</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>.方法名 = 函数</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用一段代码说明“以 module.exports 为准”到底是什么意思：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始：exports 与 module.exports 指向同一个对象</span></span><br><span class="line"><span class="built_in">exports</span>.<span class="property">a</span> = <span class="number">1</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>.<span class="property">b</span> = <span class="number">2</span></span><br><span class="line"><span class="comment">// 此时导出对象上是 &#123; a: 1, b: 2 &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 因为 exports = module.exports，让 exports 指向新对象</span></span><br><span class="line"><span class="built_in">exports</span> = &#123; <span class="attr">c</span>: <span class="number">3</span> &#125;</span><br><span class="line"><span class="comment">// 不成立：只是 exports 这个变量换了指向，module.exports 没变，外部拿到的仍是 &#123; a: 1, b: 2 &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 直接改写 module.exports</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123; <span class="attr">c</span>: <span class="number">3</span> &#125;</span><br><span class="line"><span class="comment">// 成立：外部拿到的是 &#123; c: 3 &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="模块的初始化"><a href="#模块的初始化" class="headerlink" title="模块的初始化"></a>模块的初始化</h3><p>一个模块中的 js 代码仅在模块第一次被使用时执行一次，之后走缓存。</p>
 <h3 id="模块的类型"><a href="#模块的类型" class="headerlink" title="模块的类型"></a>模块的类型</h3><ul>
-<li><p>核心模块</p>
-<ul>
-<li>由node引擎提供的模块</li>
-<li>核心模块的标识就是，模块的名字</li>
+<li>核心模块<ul>
+<li>由 Node 引擎提供的模块</li>
+<li>核心模块的标识就是模块的名字</li>
 </ul>
 </li>
-<li><p>文件模块</p>
-<ul>
+<li>文件模块<ul>
 <li>由用户自己创建的模块</li>
 </ul>
 </li>
-<li><p>路径模块</p>
+<li>路径模块（<code>path</code>、<code>url</code> 等处理路径的核心模块）</li>
+</ul>
+<p>下面先引入 <code>path</code> 模块，后面几个例子都基于它：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>获取路径信息里的扩展名用 <code>path.extname</code>，传入 URL 时会截到最后一个点之后：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> info = path.<span class="title function_">extname</span>(<span class="string">&quot;https://www.baidu.com&quot;</span>)</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>获取路径信息扩展名: path.extname<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> info = path.<span class="title function_">extname</span>(<span class="string">&quot;https://www.baidu.com&quot;</span>)</span><br></pre></td></tr></table></figure>
+<li>返回后缀名 <code>.com</code></li>
+</ul>
+<p>把数组元素自动拼接成一个路径用 <code>path.resolve()</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">&#x27;/sxt&#x27;</span>,<span class="string">&#x27;xxx&#x27;</span>, <span class="string">&#x27;ppp&#x27;</span>]</span><br><span class="line"><span class="keyword">let</span> info1 = path.<span class="title function_">resolve</span>(...arr)</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>返回后缀名.com</li>
+<li>返回：当前文件所在系统盘下的 <code>\sxt\xxx\ppp</code></li>
 </ul>
-</li>
-<li>将数组的元素自动拼接成一个路径: path.resolve()<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">&#x27;/sxt&#x27;</span>,<span class="string">&#x27;xxx&#x27;</span>, <span class="string">&#x27;ppp&#x27;</span>]</span><br><span class="line"><span class="keyword">let</span> info1 = path.<span class="title function_">resolve</span>(...arr)</span><br></pre></td></tr></table></figure>
+<p>获取当前执行目录并拼接用 <code>path.join()</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> info2 = path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;sxt&#x27;</span>, <span class="string">&#x27;xxx&#x27;</span>, <span class="string">&#x27;ppp&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>返回：当前文件在的系统盘:\sxt\xxx\ppp</li>
+<li>解析网址：<code>str.split(&#39;/&#39;)</code></li>
+<li>解析路径（根路径、目录、扩展名、文件名称、文件名）：<code>path.parse(__filename)</code></li>
 </ul>
-</li>
-<li>获取当前执行目录并拼接: path.join()<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> info2 = path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;sxt&#x27;</span>, <span class="string">&#x27;xxx&#x27;</span>, <span class="string">&#x27;ppp&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
-<li>解析网址: str.split(‘&#x2F;‘)</li>
-<li>解析路径(根路径、目录、扩展名、文件名称、文件名): path.parse(__filename)<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> url = <span class="built_in">require</span>(<span class="string">&#x27;url&#x27;</span>)</span><br><span class="line">url.<span class="title function_">parse</span>(httpUrl) --- 解析路径</span><br><span class="line">url.<span class="title function_">resolve</span>(targetUrl, httpUrl) --- 将两个路径合理拼接在一起</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h3 id="系统模块"><a href="#系统模块" class="headerlink" title="系统模块"></a>系统模块</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> os = <span class="built_in">require</span>(<span class="string">&quot;os&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><code>url</code> 模块负责解析和拼接网址，两个方法的用途写在注释里：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> url = <span class="built_in">require</span>(<span class="string">&#x27;url&#x27;</span>)</span><br><span class="line"><span class="comment">// 解析路径</span></span><br><span class="line">url.<span class="title function_">parse</span>(httpUrl)</span><br><span class="line"><span class="comment">// 将两个路径合理拼接在一起</span></span><br><span class="line">url.<span class="title function_">resolve</span>(targetUrl, httpUrl)</span><br></pre></td></tr></table></figure>
+
+<h3 id="系统模块"><a href="#系统模块" class="headerlink" title="系统模块"></a>系统模块</h3><p><code>os</code> 模块用来读取操作系统层面的信息，先引入再调用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> os = <span class="built_in">require</span>(<span class="string">&quot;os&quot;</span>)</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>查看cpu信息: os.cpus()</li>
-<li>查看整个内存大小: os.totalmem()</li>
-<li>查看系统架构: os.arch()</li>
+<li>查看 CPU 信息：<code>os.cpus()</code></li>
+<li>查看整个内存大小：<code>os.totalmem()</code></li>
+<li>查看系统架构：<code>os.arch()</code></li>
 </ul>
-<h3 id="模块的标识-模块的名字或路径"><a href="#模块的标识-模块的名字或路径" class="headerlink" title="模块的标识(模块的名字或路径)"></a>模块的标识(<span class="desc">模块的名字或路径</span>)</h3><ul>
-<li>通过模块的标识来寻找模块的</li>
-<li>对于核心模块（<span class="desc">npm中下载的模块</span>），直接使用模块的名字对其进行引入</li>
-<li>对于自定义的文件模块，需要通过文件的路径来对模块进行引入<ul>
-<li>路径可以是绝对路径，如果是相对路径必须以.&#x2F;或 ..&#x2F;开头</li>
-</ul>
-</li>
-</ul>
-<h3 id="模块的运行规则"><a href="#模块的运行规则" class="headerlink" title="模块的运行规则"></a>模块的运行规则</h3><ul>
-<li>当node在执行模块中的代码时，它会将代码放进以下函数中<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> (<span class="params"><span class="built_in">exports</span>, <span class="built_in">require</span>, <span class="variable language_">module</span>, __filename, __dirname</span>) &#123;&#125;</span><br></pre></td></tr></table></figure></li>
-<li>实际上模块中的代码都是包装在一个函数中执行的，并且在函数执行时，同时传递进了5个实参<ul>
-<li>exports: 该对象用来将变量或函数暴露到外部</li>
-<li>require: 函数，用来引入外部的模块</li>
-<li>module: module代表的是当前模块本身</li>
-<li><code>__filename</code>: 获取当前执行文件的完整路径</li>
-<li><code>__dirname</code>: 当前执行文件的目录的完整路径</li>
+<h3 id="模块的标识（模块的名字或路径）"><a href="#模块的标识（模块的名字或路径）" class="headerlink" title="模块的标识（模块的名字或路径）"></a>模块的标识（模块的名字或路径）</h3><ul>
+<li>Node 通过模块的标识来寻找模块</li>
+<li>对于核心模块（以及 npm 中下载的模块），直接使用模块的名字引入</li>
+<li>对于自定义的文件模块，需要通过文件路径引入<ul>
+<li>路径可以是绝对路径；如果是相对路径，必须以 <code>./</code> 或 <code>../</code> 开头</li>
 </ul>
 </li>
 </ul>
-<h3 id="模块的查找规则"><a href="#模块的查找规则" class="headerlink" title="模块的查找规则"></a>模块的查找规则</h3><ul>
-<li>node在使用模块名字来引入模块时，它会首先在当前目录的node_modules中寻找是否含有该模块<ul>
-<li>如果有则直接使用，如果没有则去上一级目录的node_modules中寻找</li>
-<li>如果有则直接使用，如果没有则再去上一级目录寻找，直到找到为止</li>
-<li>直到找到磁盘的根目录，如果依然没有，则报错</li>
-</ul>
-</li>
-<li>arguments.callee<ul>
-<li>这个属性保存的是当前执行的函数对象</li>
-</ul>
-</li>
-</ul>
-<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><h3 id="发送和接受事件"><a href="#发送和接受事件" class="headerlink" title="发送和接受事件"></a>发送和接受事件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> event = <span class="built_in">require</span>(<span class="string">&quot;events&quot;</span>)</span><br><span class="line"><span class="keyword">let</span> ee = <span class="keyword">new</span> event.<span class="title function_">eventEmitter</span>()</span><br></pre></td></tr></table></figure>
+<h3 id="模块的运行规则"><a href="#模块的运行规则" class="headerlink" title="模块的运行规则"></a>模块的运行规则</h3><p>Node 执行模块中的代码时，会把代码放进下面这个函数里：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> (<span class="params"><span class="built_in">exports</span>, <span class="built_in">require</span>, <span class="variable language_">module</span>, __filename, __dirname</span>) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>也就是说，模块中的代码实际上都是包装在一个函数中执行的，并且函数执行时会同时传入 5 个实参：</p>
 <ul>
-<li>监听事件：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ee.<span class="title function_">on</span>(<span class="string">&#x27;事件名&#x27;</span>, <span class="function">()=&gt;</span> &#123;&#125;)</span><br></pre></td></tr></table></figure></li>
-<li>触发事件：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ee.<span class="title function_">emit</span>(<span class="string">&#x27;事件名&#x27;</span>,事件的数据data)</span><br></pre></td></tr></table></figure></li>
-<li>示例<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> events = <span class="built_in">require</span>(<span class="string">&quot;events&quot;</span>)</span><br><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>)</span><br><span class="line"><span class="keyword">let</span> ee = <span class="keyword">new</span> events.<span class="title class_">EventEmitter</span>()</span><br><span class="line"></span><br><span class="line">ee.<span class="title function_">on</span>(<span class="string">&quot;test&quot;</span>, <span class="function">(<span class="params">msg</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(msg)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;输出test&quot;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 同步</span></span><br><span class="line">fsReadDir = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">	fs.<span class="title function_">readdir</span>(<span class="string">&quot;./&quot;</span>, <span class="function">(<span class="params">err, files</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">// files 是一个包含该目录所有文件的数组</span></span><br><span class="line">		<span class="keyword">if</span>(!err) &#123;</span><br><span class="line">			ee.<span class="title function_">emit</span>(<span class="string">&quot;test&quot;</span>,files)</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="variable language_">console</span>.<span class="title function_">log</span>(err)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fsReadDir</span>()</span><br><span class="line"><span class="comment">// 异步写法</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">fsRead</span> = (<span class="params">url: string</span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">		fs.<span class="title function_">readFile</span>(url, &#123;<span class="attr">flag</span>: <span class="string">&#x27;r&#x27;</span>, <span class="attr">encoding</span>: <span class="string">&quot;utf-8&quot;</span>&#125;, <span class="function">(<span class="params">err, data</span>) =&gt;</span> &#123;</span><br><span class="line">			<span class="keyword">if</span>(!err) &#123;</span><br><span class="line">				<span class="title function_">resolve</span>(data)</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="title function_">reject</span>(err)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125; </span><br><span class="line"><span class="title function_">fsRead</span>(path).<span class="title function_">then</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">	ee.<span class="title function_">emit</span>(<span class="string">&quot;test&quot;</span>,res)</span><br><span class="line">&#125;)</span><br><span class="line">|| 两者差不多，但下面少一个回调函数</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">Test</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">let</span> res = <span class="keyword">await</span> <span class="title function_">fsRead</span>()</span><br><span class="line">	ee.<span class="title function_">emit</span>(<span class="string">&quot;test&quot;</span>,res)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Test</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 老式写法</span></span><br><span class="line"><span class="keyword">let</span> <span class="title class_">Event</span> = &#123;</span><br><span class="line">	<span class="attr">event</span>: &#123;&#125;,</span><br><span class="line">	<span class="attr">on</span>: <span class="function">(<span class="params">eventName, eventFn</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">// 如果数组中存在这个事件，就及那个对应事件的函数赋给它，不存在则先添加事件名在赋值事件函数</span></span><br><span class="line">		<span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="property">event</span>.<span class="property">eventName</span>) &#123;</span><br><span class="line">			<span class="variable language_">this</span>.<span class="property">event</span>[eventName].<span class="title function_">push</span>(eventFn)</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="variable language_">this</span>.<span class="property">event</span>[eventName] = []</span><br><span class="line">			<span class="variable language_">this</span>.<span class="property">event</span>[eventName].<span class="title function_">push</span>(eventFn)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">emit</span>: <span class="function">(<span class="params">eventName, data</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">// 数组存在这个事件就调用事件函数并返回数据</span></span><br><span class="line">		<span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="property">event</span>[eventName])&#123;</span><br><span class="line">			<span class="variable language_">this</span>.<span class="property">event</span>[eventName].<span class="title function_">forEach</span>(<span class="function"><span class="params">itemFn</span> =&gt;</span> &#123;</span><br><span class="line">				<span class="title function_">itemFn</span>(data)</span><br><span class="line">			&#125;)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">eventEmitter.<span class="title function_">on</span>(<span class="string">&quot;event1&quot;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="comment">// ... 一些事件</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li><code>exports</code>：该对象用来将变量或函数暴露到外部</li>
+<li><code>require</code>：函数，用来引入外部的模块</li>
+<li><code>module</code>：代表当前模块本身</li>
+<li><code>__filename</code>：获取当前执行文件的完整路径</li>
+<li><code>__dirname</code>：当前执行文件所在目录的完整路径</li>
 </ul>
+<h3 id="模块的查找规则"><a href="#模块的查找规则" class="headerlink" title="模块的查找规则"></a>模块的查找规则</h3><p>Node 用模块名字引入模块时，会先在当前目录的 <code>node_modules</code> 中寻找：</p>
+<ul>
+<li>如果找到则直接使用，没找到就去上一级目录的 <code>node_modules</code> 中寻找</li>
+<li>找到则直接使用，没找到继续往上一级找，直到找到为止</li>
+<li>一直找到磁盘根目录仍然没有，则报错</li>
+</ul>
+<p>补充一个调试技巧：<code>arguments.callee</code> 这个属性保存的是当前执行的函数对象。</p>
+<h2 id="七、事件"><a href="#七、事件" class="headerlink" title="七、事件"></a>七、事件</h2><p>事件模块是 Node 事件驱动模型的底座，用法就是“先监听、后触发”。</p>
+<h3 id="发送和接收事件"><a href="#发送和接收事件" class="headerlink" title="发送和接收事件"></a>发送和接收事件</h3><p>先引入 <code>events</code> 模块并创建实例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> event = <span class="built_in">require</span>(<span class="string">&quot;events&quot;</span>)</span><br><span class="line"><span class="keyword">let</span> ee = <span class="keyword">new</span> event.<span class="title class_">EventEmitter</span>()</span><br></pre></td></tr></table></figure>
+
+<p>监听一个事件，回调在事件触发时执行：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ee.<span class="title function_">on</span>(<span class="string">&#x27;事件名&#x27;</span>, <span class="function">()=&gt;</span> &#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>触发事件，第二个参数是随事件传递的数据：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ee.<span class="title function_">emit</span>(<span class="string">&#x27;事件名&#x27;</span>,事件的数据data)</span><br></pre></td></tr></table></figure>
+
+<h3 id="示例：读完目录后触发事件"><a href="#示例：读完目录后触发事件" class="headerlink" title="示例：读完目录后触发事件"></a>示例：读完目录后触发事件</h3><p>先看同步式的用法：读取当前目录，成功后把文件列表通过事件抛出去。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> events = <span class="built_in">require</span>(<span class="string">&quot;events&quot;</span>)</span><br><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>)</span><br><span class="line"><span class="keyword">let</span> ee = <span class="keyword">new</span> events.<span class="title class_">EventEmitter</span>()</span><br><span class="line"></span><br><span class="line">ee.<span class="title function_">on</span>(<span class="string">&quot;test&quot;</span>, <span class="function">(<span class="params">msg</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(msg)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;输出test&quot;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 同步</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">fsReadDir</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">	fs.<span class="title function_">readdir</span>(<span class="string">&quot;./&quot;</span>, <span class="function">(<span class="params">err, files</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">// files 是一个包含该目录所有文件的数组</span></span><br><span class="line">		<span class="keyword">if</span>(!err) &#123;</span><br><span class="line">			ee.<span class="title function_">emit</span>(<span class="string">&quot;test&quot;</span>,files)</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="variable language_">console</span>.<span class="title function_">log</span>(err)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fsReadDir</span>()</span><br></pre></td></tr></table></figure>
+
+<p>读文件也可以用 Promise 包一层。下面是封装函数，读取成功 <code>resolve</code> 内容，失败 <code>reject</code> 错误：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fsRead</span> = (<span class="params"><span class="attr">url</span>: <span class="built_in">string</span></span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">		fs.<span class="title function_">readFile</span>(url, &#123;<span class="attr">flag</span>: <span class="string">&#x27;r&#x27;</span>, <span class="attr">encoding</span>: <span class="string">&quot;utf-8&quot;</span>&#125;, <span class="function">(<span class="params">err, data</span>) =&gt;</span> &#123;</span><br><span class="line">			<span class="keyword">if</span>(!err) &#123;</span><br><span class="line">				<span class="title function_">resolve</span>(data)</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="title function_">reject</span>(err)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>封装好之后可以直接用 <code>then</code> 触发事件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">fsRead</span>(path).<span class="title function_">then</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">	ee.<span class="title function_">emit</span>(<span class="string">&quot;test&quot;</span>,res)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>两种写法差不多，但 <code>async/await</code> 的写法少一层回调：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">Test</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">let</span> res = <span class="keyword">await</span> <span class="title function_">fsRead</span>()</span><br><span class="line">	ee.<span class="title function_">emit</span>(<span class="string">&quot;test&quot;</span>,res)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Test</span>()</span><br></pre></td></tr></table></figure>
+
+<h3 id="老式写法：手写一个事件对象"><a href="#老式写法：手写一个事件对象" class="headerlink" title="老式写法：手写一个事件对象"></a>老式写法：手写一个事件对象</h3><p>不用 <code>events</code> 模块，自己维护一个事件表也能实现订阅&#x2F;发布：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="title class_">Event</span> = &#123;</span><br><span class="line">	<span class="attr">event</span>: &#123;&#125;,</span><br><span class="line">	<span class="title function_">on</span>(<span class="params">eventName, eventFn</span>) &#123;</span><br><span class="line">		<span class="comment">// 如果数组中存在这个事件，就把对应事件的函数追加进去；不存在则先添加事件名再赋值事件函数</span></span><br><span class="line">		<span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="property">event</span>.<span class="property">eventName</span>) &#123;</span><br><span class="line">			<span class="variable language_">this</span>.<span class="property">event</span>[eventName].<span class="title function_">push</span>(eventFn)</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="variable language_">this</span>.<span class="property">event</span>[eventName] = []</span><br><span class="line">			<span class="variable language_">this</span>.<span class="property">event</span>[eventName].<span class="title function_">push</span>(eventFn)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="title function_">emit</span>(<span class="params">eventName, data</span>) &#123;</span><br><span class="line">		<span class="comment">// 数组存在这个事件就调用事件函数并返回数据</span></span><br><span class="line">		<span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="property">event</span>[eventName])&#123;</span><br><span class="line">			<span class="variable language_">this</span>.<span class="property">event</span>[eventName].<span class="title function_">forEach</span>(<span class="function"><span class="params">itemFn</span> =&gt;</span> &#123;</span><br><span class="line">				<span class="title function_">itemFn</span>(data)</span><br><span class="line">			&#125;)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">eventEmitter.<span class="title function_">on</span>(<span class="string">&quot;event1&quot;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="comment">// ... 一些事件</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<br />
+
 
 </article>
     
@@ -711,6 +740,27 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
+            <a class="trm-op-top trm-anima-link" href="/2024/10/31/ES6/promise%E5%92%8Casync%E7%9A%84%E6%80%BB%E7%BB%93/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">Promise/async 与es5总结</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/10/31</li>
+                <li>17:15</li>
+                <li>ES6</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
             <a class="trm-op-top trm-anima-link" href="/2024/10/31/node/2node%E7%9A%84%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
@@ -722,27 +772,6 @@
                 <li>24/10/31</li>
                 <li>17:15</li>
                 <li>Node</li>
-            </ul>
-        </div>
-    </div>
-</div>
-    
-    
-        <div class="col-lg-6">
-    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
-        <div class="trm-older-publication">
-            
-            <a class="trm-op-top trm-anima-link" href="/2024/10/31/ES6/es6-%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                <span class="trm-op-cover">
-                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
-                </span>
-                <h6 class="trm-op-title">ES6-字符串</h6>
-            </a>
-            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
-            <ul class="trm-card-data trm-label">
-                <li>24/10/31</li>
-                <li>15:54</li>
-                <li>ES6</li>
             </ul>
         </div>
     </div>
@@ -808,7 +837,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="命令行窗口(小黑屏)、CMD窗口、终端、shell 的常用指令："><a rel="nofollow" class="trm-toc-link" href="#命令行窗口-小黑屏-、CMD窗口、终端、shell-的常用指令："><span class="trm-toc-number">1.</span> <span class="trm-toc-text">命令行窗口(小黑屏)、CMD窗口、终端、shell 的常用指令：</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Node.js"><a rel="nofollow" class="trm-toc-link" href="#Node-js"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">Node.js</span></a></li><li class="trm-toc-item trm-toc-level-2" title="包（package）"><a rel="nofollow" class="trm-toc-link" href="#包（package）"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">包（package）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="包结构"><a rel="nofollow" class="trm-toc-link" href="#包结构"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">包结构</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="npm（Node Package Manager node的包管理器）"><a rel="nofollow" class="trm-toc-link" href="#npm（Node-Package-Manager-node的包管理器）"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">npm（Node Package Manager node的包管理器）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="node的全局对象 — global"><a rel="nofollow" class="trm-toc-link" href="#node的全局对象-—-global"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">node的全局对象 — global</span></a></li><li class="trm-toc-item trm-toc-level-2" title="模块化"><a rel="nofollow" class="trm-toc-link" href="#模块化"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">模块化</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="模块的定义"><a rel="nofollow" class="trm-toc-link" href="#模块的定义"><span class="trm-toc-number">6.1.</span> <span class="trm-toc-text">模块的定义</span></a></li><li class="trm-toc-item trm-toc-level-3" title="模块的引用: require()函数"><a rel="nofollow" class="trm-toc-link" href="#模块的引用-require-函数"><span class="trm-toc-number">6.2.</span> <span class="trm-toc-text">模块的引用: require()函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="暴露变量或方法: exports &#x2F; module.exports"><a rel="nofollow" class="trm-toc-link" href="#暴露变量或方法-exports-module-exports"><span class="trm-toc-number">6.3.</span> <span class="trm-toc-text">暴露变量或方法: exports &#x2F; module.exports</span></a></li><li class="trm-toc-item trm-toc-level-3" title="模块的初始化"><a rel="nofollow" class="trm-toc-link" href="#模块的初始化"><span class="trm-toc-number">6.4.</span> <span class="trm-toc-text">模块的初始化</span></a></li><li class="trm-toc-item trm-toc-level-3" title="模块的类型"><a rel="nofollow" class="trm-toc-link" href="#模块的类型"><span class="trm-toc-number">6.5.</span> <span class="trm-toc-text">模块的类型</span></a></li><li class="trm-toc-item trm-toc-level-3" title="系统模块"><a rel="nofollow" class="trm-toc-link" href="#系统模块"><span class="trm-toc-number">6.6.</span> <span class="trm-toc-text">系统模块</span></a></li><li class="trm-toc-item trm-toc-level-3" title="模块的标识(模块的名字或路径)"><a rel="nofollow" class="trm-toc-link" href="#模块的标识-模块的名字或路径"><span class="trm-toc-number">6.7.</span> <span class="trm-toc-text">模块的标识(模块的名字或路径)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="模块的运行规则"><a rel="nofollow" class="trm-toc-link" href="#模块的运行规则"><span class="trm-toc-number">6.8.</span> <span class="trm-toc-text">模块的运行规则</span></a></li><li class="trm-toc-item trm-toc-level-3" title="模块的查找规则"><a rel="nofollow" class="trm-toc-link" href="#模块的查找规则"><span class="trm-toc-number">6.9.</span> <span class="trm-toc-text">模块的查找规则</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="事件"><a rel="nofollow" class="trm-toc-link" href="#事件"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">事件</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="发送和接受事件"><a rel="nofollow" class="trm-toc-link" href="#发送和接受事件"><span class="trm-toc-number">7.1.</span> <span class="trm-toc-text">发送和接受事件</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景：为什么要先熟悉命令行和 Node"><a rel="nofollow" class="trm-toc-link" href="#背景：为什么要先熟悉命令行和-Node"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景：为什么要先熟悉命令行和 Node</span></a></li><li class="trm-toc-item trm-toc-level-2" title="一、命令行窗口（CMD &#x2F; 终端 &#x2F; shell）的常用指令"><a rel="nofollow" class="trm-toc-link" href="#一、命令行窗口（CMD-终端-shell）的常用指令"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">一、命令行窗口（CMD &#x2F; 终端 &#x2F; shell）的常用指令</span></a></li><li class="trm-toc-item trm-toc-level-2" title="二、Node.js 是什么"><a rel="nofollow" class="trm-toc-link" href="#二、Node-js-是什么"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">二、Node.js 是什么</span></a></li><li class="trm-toc-item trm-toc-level-2" title="三、包（package）"><a rel="nofollow" class="trm-toc-link" href="#三、包（package）"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">三、包（package）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="包结构"><a rel="nofollow" class="trm-toc-link" href="#包结构"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">包结构</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="四、npm（Node Package Manager）"><a rel="nofollow" class="trm-toc-link" href="#四、npm（Node-Package-Manager）"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">四、npm（Node Package Manager）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="五、Node 的全局对象 global"><a rel="nofollow" class="trm-toc-link" href="#五、Node-的全局对象-global"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">五、Node 的全局对象 global</span></a></li><li class="trm-toc-item trm-toc-level-2" title="六、模块化"><a rel="nofollow" class="trm-toc-link" href="#六、模块化"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">六、模块化</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="模块的定义"><a rel="nofollow" class="trm-toc-link" href="#模块的定义"><span class="trm-toc-number">7.1.</span> <span class="trm-toc-text">模块的定义</span></a></li><li class="trm-toc-item trm-toc-level-3" title="模块的引用：require() 函数"><a rel="nofollow" class="trm-toc-link" href="#模块的引用：require-函数"><span class="trm-toc-number">7.2.</span> <span class="trm-toc-text">模块的引用：require() 函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="暴露变量或方法：exports &#x2F; module.exports"><a rel="nofollow" class="trm-toc-link" href="#暴露变量或方法：exports-module-exports"><span class="trm-toc-number">7.3.</span> <span class="trm-toc-text">暴露变量或方法：exports &#x2F; module.exports</span></a></li><li class="trm-toc-item trm-toc-level-3" title="模块的初始化"><a rel="nofollow" class="trm-toc-link" href="#模块的初始化"><span class="trm-toc-number">7.4.</span> <span class="trm-toc-text">模块的初始化</span></a></li><li class="trm-toc-item trm-toc-level-3" title="模块的类型"><a rel="nofollow" class="trm-toc-link" href="#模块的类型"><span class="trm-toc-number">7.5.</span> <span class="trm-toc-text">模块的类型</span></a></li><li class="trm-toc-item trm-toc-level-3" title="系统模块"><a rel="nofollow" class="trm-toc-link" href="#系统模块"><span class="trm-toc-number">7.6.</span> <span class="trm-toc-text">系统模块</span></a></li><li class="trm-toc-item trm-toc-level-3" title="模块的标识（模块的名字或路径）"><a rel="nofollow" class="trm-toc-link" href="#模块的标识（模块的名字或路径）"><span class="trm-toc-number">7.7.</span> <span class="trm-toc-text">模块的标识（模块的名字或路径）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="模块的运行规则"><a rel="nofollow" class="trm-toc-link" href="#模块的运行规则"><span class="trm-toc-number">7.8.</span> <span class="trm-toc-text">模块的运行规则</span></a></li><li class="trm-toc-item trm-toc-level-3" title="模块的查找规则"><a rel="nofollow" class="trm-toc-link" href="#模块的查找规则"><span class="trm-toc-number">7.9.</span> <span class="trm-toc-text">模块的查找规则</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="七、事件"><a rel="nofollow" class="trm-toc-link" href="#七、事件"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">七、事件</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="发送和接收事件"><a rel="nofollow" class="trm-toc-link" href="#发送和接收事件"><span class="trm-toc-number">8.1.</span> <span class="trm-toc-text">发送和接收事件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="示例：读完目录后触发事件"><a rel="nofollow" class="trm-toc-link" href="#示例：读完目录后触发事件"><span class="trm-toc-number">8.2.</span> <span class="trm-toc-text">示例：读完目录后触发事件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="老式写法：手写一个事件对象"><a rel="nofollow" class="trm-toc-link" href="#老式写法：手写一个事件对象"><span class="trm-toc-number">8.3.</span> <span class="trm-toc-text">老式写法：手写一个事件对象</span></a></li></ol></li></ol>
       </div>
     </div>
 
@@ -932,6 +961,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

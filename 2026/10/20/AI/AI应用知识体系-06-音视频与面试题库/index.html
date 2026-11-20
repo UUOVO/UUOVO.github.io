@@ -1,0 +1,2218 @@
+<!DOCTYPE html>
+<html lang="zh-Hans,en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="整理音视频与 FFmpeg 的基础知识、学习资源索引，以及初中高级面试题库和项目介绍模板">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 应用知识体系（六）：音视频、附录与面试题库">
+<meta property="og:url" content="http://example.com/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-06-%E9%9F%B3%E8%A7%86%E9%A2%91%E4%B8%8E%E9%9D%A2%E8%AF%95%E9%A2%98%E5%BA%93/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="整理音视频与 FFmpeg 的基础知识、学习资源索引，以及初中高级面试题库和项目介绍模板">
+<meta property="og:locale">
+<meta property="article:published_time" content="2026-10-20T01:47:18.000Z">
+<meta property="article:modified_time" content="2026-11-16T08:17:18.052Z">
+<meta property="article:author" content="UUOVO">
+<meta property="article:tag" content="知识体系">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="AI应用">
+<meta property="article:tag" content="前端架构">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="AI, 大前端, 全栈架构, Agent, RAG, 协同编辑, 工作流引擎, monorepo">
+
+
+<title >AI 应用知识体系（六）：音视频、附录与面试题库</title>
+
+<!-- Favicon -->
+
+    <link href='/img/sitelogo16.svg?v=2.2.3' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/sitelogo32.svg?v=2.2.3' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/apple-touch-icon.png?v=2.2.3' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper@4.5.1/dist/css/swiper.min.css">
+
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-16 16:17:18"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+<link rel="stylesheet" href="/css/global.css">
+
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/sitelogo32.svg">
+    
+    
+        <div class="trm-logo-text">
+            UU<span>OVO</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/tags/" target="">
+                            标签
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" target="">
+                            微信小程序
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%B7%A5%E5%85%B7/" target="">
+                            前端工程化工具
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/React/" target="">
+                            React
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/Vue/" target="">
+                            VUE
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/TypeScript/" target="">
+                            TypeScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JavaScript/" target="">
+                            JavaScript
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/CSS-HTML/" target="">
+                            CSS&HTML
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="">
+                            网络与数据结构
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/uniapp/" target="">
+                            uniapp
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ThreeJS/" target="">
+                            ThreeJS
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/Node/" target="">
+                            Node
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/JQuery/" target="">
+                            JQuery
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/ES6/" target="">
+                            ES6
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/AJAX/" target="">
+                            AJAX
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/" target="">
+                            可视化
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/gallery/" target="">
+                    相册
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/gallery/wallpaper/" target="">
+                            相册详情页
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/about/" target="">
+                    关于
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/links/" target="">
+                            友链
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+    
+    <div id="trm-search-btn" class="trm-search-btn">
+        <i class="iconfont fas fa-search"></i>
+    </div>
+     
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner slideshow cover-->
+    <div class="swiper-container trm-slideshow">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://pic.netbian.com/uploads/allimg/230124/002504-167449110430d8.jpg" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688440566649486.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+            <div class="swiper-slide">
+                <img style="object-position:top;object-fit:cover" src="https://img.shetu66.com/2023/07/04/1688453333865029.png" alt="banner" class="trm-banner-cover top" data-swiper-parallax-y="-200" data-swiper-parallax-scale="1.2">
+            </div>
+            
+        </div>
+    </div>
+    <!-- banner slideshow cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            AI 应用知识体系（六）：音视频、附录与面试题库
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2026
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar1.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        UUOVO
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/UUOVO" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://gitee.com/ovouu" title="Gitee" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-google"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                City:
+            </div>
+            <div class="trm-label trm-label-light">
+                City
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                Age:
+            </div>
+            <div class="trm-label trm-label-light">
+                Age
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:1370203877@qq.com" class="trm-btn">
+            联系我
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            10/20
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            09:47
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            UUOVO
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <p>本篇是系列第 6 篇，包含音视频基础、附录和面试题库。</p>
+<span id="more"></span>
+
+<h2 id="十四、音视频与-FFmpeg-基础"><a href="#十四、音视频与-FFmpeg-基础" class="headerlink" title="十四、音视频与 FFmpeg 基础"></a><a id="s14"></a>十四、音视频与 FFmpeg 基础</h2><blockquote>
+<p>一句话定位：前端做 AI 音视频，<strong>90% 的时间不花在「编解码原理」上，而花在「参数放对位置 + 滤镜串对链」上</strong>。本章按「概念 → 命令结构 → 高频操作 → 滤镜 → 色彩空间 → 前端落地」六层展开，命令均可直接复制执行。</p>
+</blockquote>
+<p><strong>能力清单</strong></p>
+<table>
+<thead>
+<tr>
+<th>能力</th>
+<th>达到什么程度</th>
+<th>对应</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>分清容器 &#x2F; 编码 &#x2F; 协议</td>
+<td>拿到一个文件能说出「换盒子还是重压」</td>
+<td><a href="#s14-1">§14.1</a></td>
+</tr>
+<tr>
+<td>像素格式与色彩参数</td>
+<td>看懂 <code>yuv420p</code>、<code>bt709</code>、<code>color_range</code> 并会修偏色</td>
+<td><a href="#s14-2">§14.2</a></td>
+</tr>
+<tr>
+<td>命令行结构与参数位置</td>
+<td>不再出现「加了参数却没生效」</td>
+<td><a href="#s14-3">§14.3</a></td>
+</tr>
+<tr>
+<td>高频操作</td>
+<td>转码、切音频、无损切片、压体积、抽帧、GIF、合并、HLS</td>
+<td><a href="#s14-4">§14.4</a></td>
+</tr>
+<tr>
+<td>滤镜链</td>
+<td>能自己写 <code>-filter_complex</code> 做画中画&#x2F;拼接&#x2F;混音</td>
+<td><a href="#s14-5">§14.5</a></td>
+</tr>
+<tr>
+<td>视觉增强</td>
+<td>裁剪、缩放补边、水印、走马灯、字幕、打码</td>
+<td><a href="#s14-6">§14.6</a></td>
+</tr>
+<tr>
+<td>色彩空间对接</td>
+<td>Canvas 的 RGBA 帧能正确喂给编码器</td>
+<td><a href="#s14-7">§14.7</a></td>
+</tr>
+<tr>
+<td>前端与 AI 场景</td>
+<td>会选 MediaRecorder &#x2F; WebCodecs &#x2F; ffmpeg.wasm</td>
+<td><a href="#s14-8">§14.8</a></td>
+</tr>
+</tbody></table>
+<h3 id="14-1-三个必须先分清的概念：容器、编码、协议"><a href="#14-1-三个必须先分清的概念：容器、编码、协议" class="headerlink" title="14.1 三个必须先分清的概念：容器、编码、协议"></a><a id="s14-1"></a>14.1 三个必须先分清的概念：容器、编码、协议</h3><p><strong>一句话</strong>：容器管「怎么装」，编码管「怎么压」，协议管「怎么传」。</p>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>职责</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>容器 Container &#x2F; Muxer</td>
+<td>把视频流、音频流、字幕、元数据打包成一个文件，并写时间戳索引</td>
+<td><code>.mp4</code> <code>.mkv</code> <code>.flv</code> <code>.webm</code> <code>.ts</code></td>
+</tr>
+<tr>
+<td>编码 Codec</td>
+<td>把原始画面与声音压缩成码流</td>
+<td>H.264、H.265、VP9、AV1、AAC、Opus</td>
+</tr>
+<tr>
+<td>协议 Protocol</td>
+<td>决定码流怎么切块、怎么传输</td>
+<td>HLS（<code>.m3u8</code> + <code>.ts</code>）、DASH、RTMP、WebRTC</td>
+</tr>
+</tbody></table>
+<p><strong>核心结论</strong>：同一个 <code>mp4</code> 里可以放 H.264，也可以放 H.265；同一份 H.264 码流既能装进 <code>mp4</code>，也能装进 <code>flv</code>。<strong>容器与编码是两个正交维度</strong>——这是这块最常被追问的点。</p>
+<table>
+<thead>
+<tr>
+<th>容器</th>
+<th>常见视频编码</th>
+<th>常见音频编码</th>
+<th>典型场景</th>
+<th>浏览器兼容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MP4</td>
+<td>H.264 &#x2F; H.265 &#x2F; AV1</td>
+<td>AAC</td>
+<td>通用点播、短视频</td>
+<td>全平台（H.265 看终端）</td>
+</tr>
+<tr>
+<td>WebM</td>
+<td>VP8 &#x2F; VP9 &#x2F; AV1</td>
+<td>Opus &#x2F; Vorbis</td>
+<td>Web 端开源方案</td>
+<td>Chrome &#x2F; Firefox；Safari 17+</td>
+</tr>
+<tr>
+<td>FLV</td>
+<td>H.264</td>
+<td>AAC &#x2F; MP3</td>
+<td>老直播、HTTP-FLV</td>
+<td>需 flv.js</td>
+</tr>
+<tr>
+<td>MKV</td>
+<td>几乎任意</td>
+<td>几乎任意</td>
+<td>本地播放、多音轨多字幕</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>TS</td>
+<td>H.264 &#x2F; H.265</td>
+<td>AAC</td>
+<td>HLS 切片载体</td>
+<td>通过 hls.js</td>
+</tr>
+<tr>
+<td>MOV</td>
+<td>H.264 &#x2F; ProRes</td>
+<td>AAC &#x2F; PCM</td>
+<td>剪辑中间态、苹果生态</td>
+<td>部分</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>编码</th>
+<th>压缩率（相对 H.264）</th>
+<th>编码耗时</th>
+<th>授权</th>
+<th>建议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>H.264 &#x2F; AVC</td>
+<td>1x</td>
+<td>快</td>
+<td>需授权但已普及</td>
+<td><strong>默认选它，兼容性最好</strong></td>
+</tr>
+<tr>
+<td>H.265 &#x2F; HEVC</td>
+<td>约 1.5~2x</td>
+<td>慢 2~5 倍</td>
+<td>专利复杂</td>
+<td>体积敏感且终端可控时用</td>
+</tr>
+<tr>
+<td>VP9</td>
+<td>约 1.3~1.5x</td>
+<td>慢</td>
+<td>免费</td>
+<td>WebM 生态</td>
+</tr>
+<tr>
+<td>AV1</td>
+<td>约 2x</td>
+<td>很慢（新硬件改善）</td>
+<td>免费</td>
+<td>趋势，但编码成本高</td>
+</tr>
+<tr>
+<td>AAC</td>
+<td>—</td>
+<td>—</td>
+<td>需授权</td>
+<td>音频默认</td>
+</tr>
+<tr>
+<td>Opus</td>
+<td>低码率下优于 AAC</td>
+<td>—</td>
+<td>免费</td>
+<td>WebM &#x2F; WebRTC</td>
+</tr>
+</tbody></table>
+<p><strong>转封装 ≠ 转码</strong>（这块最省钱的一条经验）</p>
+<ul>
+<li><strong>转封装</strong>：<code>-c copy</code>，只换盒子不重新编码，秒级完成、零画质损失。</li>
+<li><strong>转码</strong>：<code>-c:v libx264</code>，解码再编码，慢且必然有损。</li>
+<li>判断顺序：先 <code>ffprobe</code> 看源编码 → 与目标容器兼容就直接 <code>-c copy</code>。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 转封装：mp4 → mkv，秒级、无损</span></span><br><span class="line">ffmpeg -i in.mp4 -c copy out.mkv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 反例：本来只是换容器，却写了重编码，白等十分钟还掉画质</span></span><br><span class="line">ffmpeg -i in.mp4 -c:v libx264 -crf 23 out.mkv</span><br></pre></td></tr></table></figure>
+
+<h3 id="14-2-像素、色彩与压缩参数"><a href="#14-2-像素、色彩与压缩参数" class="headerlink" title="14.2 像素、色彩与压缩参数"></a><a id="s14-2"></a>14.2 像素、色彩与压缩参数</h3><p><strong>像素格式（pixel format）</strong>——决定一帧画面在内存里怎么排。</p>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>含义</th>
+<th>每像素位宽</th>
+<th>典型用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>yuv420p</code></td>
+<td>亮度全采样，色度 2×2 下采样</td>
+<td>12 bit</td>
+<td><strong>通用分发格式</strong>，H.264 硬解底线</td>
+</tr>
+<tr>
+<td><code>yuv422p</code></td>
+<td>色度水平减半</td>
+<td>16 bit</td>
+<td>采集卡、专业中间格式</td>
+</tr>
+<tr>
+<td><code>yuv444p</code></td>
+<td>色度不降采样</td>
+<td>24 bit</td>
+<td>抠像、色彩处理、无损</td>
+</tr>
+<tr>
+<td><code>nv12</code></td>
+<td>YUV420 的 UV 交错变体</td>
+<td>12 bit</td>
+<td>硬件编解码 &#x2F; GPU 纹理</td>
+</tr>
+<tr>
+<td><code>rgba</code></td>
+<td>四通道 8 位，带 alpha</td>
+<td>32 bit</td>
+<td>Canvas &#x2F; WebGL、需要透明</td>
+</tr>
+</tbody></table>
+<p>为什么用 4:2:0：人眼对亮度敏感、对色度迟钝，扔掉 3&#x2F;4 的色度信息，<strong>体积直接砍一半而肉眼几乎无感</strong>。</p>
+<p><strong>RGB 与 YUV 的换算</strong>（BT.601 全范围，前端最常用）</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Y =  0.299R + 0.587G + 0.114B</span><br><span class="line">U = -0.169R - 0.331G + 0.500B + 128</span><br><span class="line">V =  0.500R - 0.419G - 0.081B + 128</span><br></pre></td></tr></table></figure>
+
+<p>BT.709 的系数是 <code>0.2126 / 0.7152 / 0.0722</code>——<strong>系数用错，就是「偏色」的第一大原因</strong>。</p>
+<p><strong>色彩四件套</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>取值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-color_range</code></td>
+<td><code>tv</code>（16–235）&#x2F; <code>pc</code>（0–255）</td>
+<td>视频默认 tv，Canvas 出来是 pc，不声明就发灰</td>
+</tr>
+<tr>
+<td><code>-colorspace</code></td>
+<td><code>bt709</code> &#x2F; <code>bt601</code> &#x2F; <code>bt2020nc</code></td>
+<td>SD 用 601，HD 用 709，HDR 用 2020</td>
+</tr>
+<tr>
+<td><code>-color_primaries</code></td>
+<td><code>bt709</code> &#x2F; <code>bt2020</code></td>
+<td>色域</td>
+</tr>
+<tr>
+<td><code>-color_trc</code></td>
+<td><code>bt709</code> &#x2F; <code>smpte2084</code>(PQ) &#x2F; <code>arib-std-b67</code>(HLG)</td>
+<td>传输函数，HDR 的关键</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显式声明，避免播放器各自猜</span></span><br><span class="line">ffmpeg -i in.mp4 -c:v libx264 -pix_fmt yuv420p \</span><br><span class="line">  -colorspace bt709 -color_primaries bt709 -color_trc bt709 -color_range tv out.mp4</span><br></pre></td></tr></table></figure>
+
+<p><strong>四个压缩参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+<th>常见值</th>
+<th>影响</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>位深</td>
+<td>每通道比特数</td>
+<td>8bit &#x2F; 10bit</td>
+<td>10bit 减少色带，HDR 必须</td>
+</tr>
+<tr>
+<td>码率</td>
+<td>每秒数据量</td>
+<td>500k &#x2F; 2.5M &#x2F; 8M</td>
+<td>画质与体积的主开关</td>
+</tr>
+<tr>
+<td>帧率</td>
+<td>每秒帧数</td>
+<td>24 &#x2F; 25 &#x2F; 30 &#x2F; 60</td>
+<td>流畅度，同时抬高码率</td>
+</tr>
+<tr>
+<td>GOP</td>
+<td>两个 I 帧之间的间隔</td>
+<td>30 &#x2F; 48 &#x2F; 250</td>
+<td>越大越省码率，随机 seek 越慢</td>
+</tr>
+</tbody></table>
+<p><strong>体积估算（面试爱考）</strong></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">体积(Byte) ≈ (视频码率 + 音频码率) × 时长(s) / 8</span><br><span class="line">目标视频码率 ≈ 目标体积(MB) × 8192 / 时长(s) − 音频码率</span><br></pre></td></tr></table></figure>
+
+<p>例：10 分钟视频压到 100 MB → <code>100 × 8192 / 600 ≈ 1365k</code>，减掉音频 128k → <code>-b:v 1237k</code>。</p>
+<p><strong>I &#x2F; P &#x2F; B 帧</strong>：I 帧独立可解、P 帧参考前面、B 帧双向参考。B 帧越多压缩越好，但延迟越高——**直播要 <code>-bf 0</code>**。</p>
+<table>
+<thead>
+<tr>
+<th>分辨率</th>
+<th>场景</th>
+<th>H.264 30fps 推荐码率</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>640×360</td>
+<td>移动端预览</td>
+<td>500k ~ 800k</td>
+</tr>
+<tr>
+<td>1280×720</td>
+<td>通用</td>
+<td>1.5M ~ 2.5M</td>
+</tr>
+<tr>
+<td>1920×1080</td>
+<td>主流程</td>
+<td>4M ~ 6M</td>
+</tr>
+<tr>
+<td>3840×2160</td>
+<td>4K</td>
+<td>15M ~ 25M</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>码控模式</th>
+<th>参数写法</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CRF &#x2F; CQP</td>
+<td><code>-crf 23</code></td>
+<td>恒定质量、码率浮动，点播首选</td>
+</tr>
+<tr>
+<td>ABR</td>
+<td><code>-b:v 2M</code></td>
+<td>平均码率，体积可控</td>
+</tr>
+<tr>
+<td>CBR</td>
+<td><code>-b:v -minrate -maxrate</code> 相等</td>
+<td>直播推流</td>
+</tr>
+<tr>
+<td>两遍编码</td>
+<td><code>-pass 1</code> &#x2F; <code>-pass 2</code></td>
+<td>体积精确，耗时翻倍</td>
+</tr>
+</tbody></table>
+<h3 id="14-3-命令结构与参数位置"><a href="#14-3-命令结构与参数位置" class="headerlink" title="14.3 命令结构与参数位置"></a><a id="s14-3"></a>14.3 命令结构与参数位置</h3><p><strong>三个可执行程序</strong></p>
+<table>
+<thead>
+<tr>
+<th>程序</th>
+<th>职责</th>
+<th>典型用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ffmpeg</code></td>
+<td>转码 &#x2F; 处理</td>
+<td><code>ffmpeg -i in.mp4 ...</code></td>
+</tr>
+<tr>
+<td><code>ffprobe</code></td>
+<td>探测元信息</td>
+<td><code>ffprobe -v error -show_streams in.mp4</code></td>
+</tr>
+<tr>
+<td><code>ffplay</code></td>
+<td>极简播放器</td>
+<td><code>ffplay in.mp4</code></td>
+</tr>
+</tbody></table>
+<p><strong>通用结构</strong></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg [全局参数] [输入参数] -i 输入 [输出参数] 输出</span><br></pre></td></tr></table></figure>
+
+<p>位置决定语义：<code>-ss</code> &#x2F; <code>-t</code> 放 <code>-i</code> <strong>前</strong>是输入参数（快速定位，从关键帧开始读）；放 <code>-i</code> <strong>后</strong>是输出参数（精确但慢，要解码到指定时间）。</p>
+<blockquote>
+<p>⚠️ 最常见的坑：把 <code>-c:v</code>、<code>-pix_fmt</code> 写在 <code>-i</code> 之前，会被当成输入参数，结果「参数加了却没生效」。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>归类</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-i</code></td>
+<td>输入</td>
+<td>指定输入文件或 <code>-</code>（stdin）</td>
+</tr>
+<tr>
+<td><code>-y</code> &#x2F; <code>-n</code></td>
+<td>全局</td>
+<td>覆盖 &#x2F; 不覆盖输出文件</td>
+</tr>
+<tr>
+<td><code>-hide_banner</code></td>
+<td>全局</td>
+<td>隐藏版本与编译信息</td>
+</tr>
+<tr>
+<td><code>-loglevel error</code></td>
+<td>全局</td>
+<td>只打错误，方便脚本抓报错</td>
+</tr>
+<tr>
+<td><code>-nostdin</code></td>
+<td>全局</td>
+<td>后台运行时不抢 stdin</td>
+</tr>
+<tr>
+<td><code>-ss</code></td>
+<td>输入&#x2F;输出</td>
+<td>定位</td>
+</tr>
+<tr>
+<td><code>-t</code></td>
+<td>输入&#x2F;输出</td>
+<td>截取时长</td>
+</tr>
+<tr>
+<td><code>-c:v</code> &#x2F; <code>-c:a</code></td>
+<td>输出</td>
+<td>视频 &#x2F; 音频编码器，<code>copy</code> 表示不重编码</td>
+</tr>
+<tr>
+<td><code>-b:v</code> &#x2F; <code>-b:a</code></td>
+<td>输出</td>
+<td>码率</td>
+</tr>
+<tr>
+<td><code>-crf</code></td>
+<td>输出</td>
+<td>恒定质量，0–51，越小越好</td>
+</tr>
+<tr>
+<td><code>-preset</code></td>
+<td>输出</td>
+<td>速度档位 <code>ultrafast</code>→<code>veryslow</code></td>
+</tr>
+<tr>
+<td><code>-pix_fmt</code></td>
+<td>输出</td>
+<td>像素格式</td>
+</tr>
+<tr>
+<td><code>-r</code> &#x2F; <code>-s</code></td>
+<td>输出</td>
+<td>帧率 &#x2F; 分辨率（<code>-s</code> 等价于 scale）</td>
+</tr>
+<tr>
+<td><code>-vf</code> &#x2F; <code>-af</code></td>
+<td>输出</td>
+<td>视频 &#x2F; 音频简单滤镜</td>
+</tr>
+<tr>
+<td><code>-filter_complex</code></td>
+<td>输出</td>
+<td>多输入多输出滤镜图</td>
+</tr>
+<tr>
+<td><code>-map</code></td>
+<td>输出</td>
+<td>选择或重排流</td>
+</tr>
+<tr>
+<td><code>-f</code></td>
+<td>输出</td>
+<td>强制容器格式</td>
+</tr>
+<tr>
+<td><code>-movflags +faststart</code></td>
+<td>输出</td>
+<td>moov 前置，Web 秒开</td>
+</tr>
+<tr>
+<td><code>-progress pipe:1</code></td>
+<td>输出</td>
+<td>输出机器可读进度</td>
+</tr>
+</tbody></table>
+<p><strong>ffprobe 探信息</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 关键视频参数</span></span><br><span class="line">ffprobe -v error -select_streams v:0 \</span><br><span class="line">  -show_entries stream=codec_name,profile,width,height,r_frame_rate,avg_frame_rate,bit_rate,pix_fmt,nb_frames \</span><br><span class="line">  -of json in.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 时长 / 体积 / 总码率</span></span><br><span class="line">ffprobe -v error -show_entries format=duration,size,bit_rate -of csv=p=0 in.mp4</span><br></pre></td></tr></table></figure>
+
+<p>Node 里统一封装：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; execFile &#125; <span class="keyword">from</span> <span class="string">&#x27;node:child_process&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; promisify &#125; <span class="keyword">from</span> <span class="string">&#x27;node:util&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> run = <span class="title function_">promisify</span>(execFile)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">interface</span> <span class="title class_">VideoMeta</span> &#123;</span><br><span class="line">  <span class="attr">duration</span>: <span class="built_in">number</span></span><br><span class="line">  <span class="attr">width</span>: <span class="built_in">number</span></span><br><span class="line">  <span class="attr">height</span>: <span class="built_in">number</span></span><br><span class="line">  <span class="attr">fps</span>: <span class="built_in">number</span></span><br><span class="line">  <span class="attr">codec</span>: <span class="built_in">string</span></span><br><span class="line">  <span class="attr">bitrate</span>: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">probe</span>(<span class="params"><span class="attr">file</span>: <span class="built_in">string</span></span>): <span class="title class_">Promise</span>&lt;<span class="title class_">VideoMeta</span>&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; stdout &#125; = <span class="keyword">await</span> <span class="title function_">run</span>(<span class="string">&#x27;ffprobe&#x27;</span>, [</span><br><span class="line">    <span class="string">&#x27;-v&#x27;</span>, <span class="string">&#x27;error&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;-select_streams&#x27;</span>, <span class="string">&#x27;v:0&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;-show_entries&#x27;</span>, <span class="string">&#x27;stream=codec_name,width,height,avg_frame_rate,bit_rate:format=duration,bit_rate&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;-of&#x27;</span>, <span class="string">&#x27;json&#x27;</span>,</span><br><span class="line">    file,</span><br><span class="line">  ])</span><br><span class="line">  <span class="keyword">const</span> j = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(stdout)</span><br><span class="line">  <span class="keyword">const</span> s = j.<span class="property">streams</span>?.[<span class="number">0</span>] ?? &#123;&#125;</span><br><span class="line">  <span class="keyword">const</span> [num, den] = <span class="title class_">String</span>(s.<span class="property">avg_frame_rate</span> ?? <span class="string">&#x27;0/1&#x27;</span>).<span class="title function_">split</span>(<span class="string">&#x27;/&#x27;</span>).<span class="title function_">map</span>(<span class="title class_">Number</span>)</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">duration</span>: <span class="title class_">Number</span>(j.<span class="property">format</span>?.<span class="property">duration</span> ?? <span class="number">0</span>),</span><br><span class="line">    <span class="attr">width</span>: s.<span class="property">width</span> ?? <span class="number">0</span>,</span><br><span class="line">    <span class="attr">height</span>: s.<span class="property">height</span> ?? <span class="number">0</span>,</span><br><span class="line">    <span class="attr">fps</span>: den ? num / den : <span class="number">0</span>,</span><br><span class="line">    <span class="attr">codec</span>: s.<span class="property">codec_name</span> ?? <span class="string">&#x27;unknown&#x27;</span>,</span><br><span class="line">    <span class="attr">bitrate</span>: <span class="title class_">Number</span>(s.<span class="property">bit_rate</span> ?? j.<span class="property">format</span>?.<span class="property">bit_rate</span> ?? <span class="number">0</span>),</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意 <code>-show_entries</code> 只用一处，<code>stream=...</code> 与 <code>format=...</code> 之间用<strong>冒号</strong>连接；写成两个 <code>-show_entries</code> 会互相覆盖。</p>
+</blockquote>
+<p><strong>进度解析</strong>——长任务必须给前端反馈。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -nostdin -i in.mp4 -c:v libx264 -crf 23 -progress pipe:1 -nostats out.mp4</span><br></pre></td></tr></table></figure>
+
+<p>输出是 <code>key=value</code> 流：<code>frame=</code>、<code>fps=</code>、<code>out_time_ms=</code>、<code>speed=</code>、<code>progress=continue|end</code>。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; spawn &#125; <span class="keyword">from</span> <span class="string">&#x27;node:child_process&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> proc = <span class="title function_">spawn</span>(<span class="string">&#x27;ffmpeg&#x27;</span>, [</span><br><span class="line">  <span class="string">&#x27;-nostdin&#x27;</span>, <span class="string">&#x27;-i&#x27;</span>, file, <span class="string">&#x27;-c:v&#x27;</span>, <span class="string">&#x27;libx264&#x27;</span>, <span class="string">&#x27;-crf&#x27;</span>, <span class="string">&#x27;23&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;-progress&#x27;</span>, <span class="string">&#x27;pipe:1&#x27;</span>, <span class="string">&#x27;-nostats&#x27;</span>, out,</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> buf = <span class="string">&#x27;&#x27;</span></span><br><span class="line">proc.<span class="property">stdout</span>.<span class="title function_">on</span>(<span class="string">&#x27;data&#x27;</span>, <span class="function">(<span class="params">chunk</span>) =&gt;</span> &#123;</span><br><span class="line">  buf += chunk.<span class="title function_">toString</span>()</span><br><span class="line">  <span class="keyword">const</span> lines = buf.<span class="title function_">split</span>(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">  buf = lines.<span class="title function_">pop</span>() ?? <span class="string">&#x27;&#x27;</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> line <span class="keyword">of</span> lines) &#123;</span><br><span class="line">    <span class="keyword">const</span> [k, v] = line.<span class="title function_">split</span>(<span class="string">&#x27;=&#x27;</span>)</span><br><span class="line">    <span class="comment">// out_time_ms 实际单位是微秒（FFmpeg 历史遗留的命名错误）</span></span><br><span class="line">    <span class="keyword">if</span> (k === <span class="string">&#x27;out_time_ms&#x27;</span>) <span class="title function_">onProgress</span>(<span class="title class_">Math</span>.<span class="title function_">min</span>(<span class="number">1</span>, <span class="title class_">Number</span>(v) / <span class="number">1e6</span> / duration))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="14-4-高频操作（可直接抄）"><a href="#14-4-高频操作（可直接抄）" class="headerlink" title="14.4 高频操作（可直接抄）"></a><a id="s14-4"></a>14.4 高频操作（可直接抄）</h3><table>
+<thead>
+<tr>
+<th>#</th>
+<th>场景</th>
+<th>关键参数</th>
+<th>小节</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>通用转码</td>
+<td><code>-c:v libx264 -crf 23 -pix_fmt yuv420p</code></td>
+<td>下</td>
+</tr>
+<tr>
+<td>2</td>
+<td>提取 &#x2F; 剥离音频</td>
+<td><code>-vn</code> &#x2F; <code>-an</code></td>
+<td>下</td>
+</tr>
+<tr>
+<td>3</td>
+<td>无损切片</td>
+<td><code>-ss</code> + <code>-t</code> + <code>-c copy</code></td>
+<td>下</td>
+</tr>
+<tr>
+<td>4</td>
+<td>压到目标体积</td>
+<td><code>-b:v</code> 两遍编码</td>
+<td>下</td>
+</tr>
+<tr>
+<td>5</td>
+<td>抽帧 &#x2F; 封面 &#x2F; 雪碧图</td>
+<td><code>-vf fps=</code>、<code>tile</code></td>
+<td>下</td>
+</tr>
+<tr>
+<td>6</td>
+<td>图片序列转视频</td>
+<td><code>-framerate</code></td>
+<td>下</td>
+</tr>
+<tr>
+<td>7</td>
+<td>转 GIF</td>
+<td><code>palettegen</code> + <code>paletteuse</code></td>
+<td>下</td>
+</tr>
+<tr>
+<td>8</td>
+<td>多段合并</td>
+<td><code>-f concat</code></td>
+<td>下</td>
+</tr>
+<tr>
+<td>9</td>
+<td>音视频合流</td>
+<td><code>-map</code> + <code>-shortest</code></td>
+<td>下</td>
+</tr>
+<tr>
+<td>10</td>
+<td>变速</td>
+<td><code>setpts</code> + <code>atempo</code></td>
+<td>下</td>
+</tr>
+<tr>
+<td>11</td>
+<td>HLS 切片</td>
+<td><code>-f hls</code></td>
+<td>下</td>
+</tr>
+<tr>
+<td>12</td>
+<td>硬件加速</td>
+<td><code>h264_nvenc</code> &#x2F; <code>videotoolbox</code></td>
+<td>下</td>
+</tr>
+</tbody></table>
+<p><strong>① 通用转码</strong>（兼容性拉满的默认档）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i in.mov -c:v libx264 -preset medium -crf 23 -profile:v high -level 4.0 \</span><br><span class="line">  -pix_fmt yuv420p -c:a aac -b:a 128k -movflags +faststart out.mp4</span><br></pre></td></tr></table></figure>
+
+<p><code>-pix_fmt yuv420p</code> 是硬解底线，<code>+faststart</code> 让首帧更快到达（moov 前置）。</p>
+<p><strong>② 提取 &#x2F; 剥离音频</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i in.mp4 -vn -c:a copy out.m4a                  <span class="comment"># 原样提取，无损且秒级</span></span><br><span class="line">ffmpeg -i in.mp4 -vn -c:a libmp3lame -q:a 2 out.mp3      <span class="comment"># 转 MP3</span></span><br><span class="line">ffmpeg -i in.mp4 -an -c:v copy out.mp4                   <span class="comment"># 只去音频</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>③ 无损切片</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -ss 00:01:30 -i in.mp4 -t 30 -c copy out.mp4</span><br></pre></td></tr></table></figure>
+
+<p>坑：<code>copy</code> 只能在关键帧处切，实际起点会前移到最近的 I 帧，时长也可能多几帧。要帧级精确，就重编码，或「先精确定位一小段再 copy」。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i in.mp4 -ss 00:01:30.500 -t 30 -c:v libx264 -crf 20 -c:a aac out.mp4</span><br></pre></td></tr></table></figure>
+
+<p><strong>④ 压到目标体积（两遍编码）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一遍只分析，输出丢弃；Windows 用 NUL，Linux / macOS 用 /dev/null</span></span><br><span class="line">ffmpeg -y -i in.mp4 -c:v libx264 -b:v 1200k -pass 1 -an -f mp4 /dev/null</span><br><span class="line">ffmpeg -i in.mp4 -c:v libx264 -b:v 1200k -pass 2 -c:a aac -b:a 128k out.mp4</span><br></pre></td></tr></table></figure>
+
+<p><strong>⑤ 抽帧 &#x2F; 封面 &#x2F; 雪碧图</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i in.mp4 -vf fps=1 frames/%05d.jpg                                <span class="comment"># 每秒一帧</span></span><br><span class="line">ffmpeg -i in.mp4 -vf <span class="string">&quot;select=&#x27;eq(pict_type,I)&#x27;&quot;</span> -fps_mode vfr key/%05d.jpg <span class="comment"># 只抽关键帧</span></span><br><span class="line">ffmpeg -ss 3 -i in.mp4 -frames:v 1 -q:v 2 cover.jpg                        <span class="comment"># 封面</span></span><br><span class="line">ffmpeg -i in.mp4 -vf <span class="string">&quot;fps=1/10,scale=160:-2,tile=5x4&quot;</span> -frames:v 1 sprite.jpg <span class="comment"># 雪碧图</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>⑥ 图片序列转视频</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -framerate 24 -i frames/%05d.png -c:v libx264 -pix_fmt yuv420p out.mp4</span><br></pre></td></tr></table></figure>
+
+<p><strong>⑦ 转 GIF（必须走调色板）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i in.mp4 -vf <span class="string">&quot;fps=12,scale=480:-2:flags=lanczos,palettegen=stats_mode=diff&quot;</span> palette.png</span><br><span class="line">ffmpeg -i in.mp4 -i palette.png -filter_complex \</span><br><span class="line">  <span class="string">&quot;[0:v]fps=12,scale=480:-2:flags=lanczos[v];[v][1:v]paletteuse=dither=bayer&quot;</span> out.gif</span><br></pre></td></tr></table></figure>
+
+<p>不生成调色板直接转，颜色会脏成 256 色抖动——这是 GIF 清晰度的决定性一步。</p>
+<p><strong>⑧ 多段合并</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span> <span class="string">&quot;file &#x27;%s&#x27;\n&quot;</span> a.mp4 b.mp4 c.mp4 &gt; list.txt</span><br><span class="line">ffmpeg -f concat -safe 0 -i list.txt -c copy out.mp4</span><br></pre></td></tr></table></figure>
+
+<p>前提：编码、分辨率、帧率、像素格式全一致，否则先统一转码再合并。</p>
+<p><strong>⑨ 音视频合流</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.m4a -c:v copy -c:a aac -shortest out.mp4</span><br></pre></td></tr></table></figure>
+
+<p><code>-shortest</code> 以短的一路为准；不带它就会在流的末尾留下空画面或空音轨。</p>
+<p><strong>⑩ 变速</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i in.mp4 -filter_complex \</span><br><span class="line">  <span class="string">&quot;[0:v]setpts=0.5*PTS[v];[0:a]atempo=2.0[a]&quot;</span> -map <span class="string">&quot;[v]&quot;</span> -map <span class="string">&quot;[a]&quot;</span> out.mp4</span><br></pre></td></tr></table></figure>
+
+<p>音频 <code>atempo</code> 单次只支持 0.5–2.0，超过要串联（4 倍速 &#x3D; <code>atempo=2.0,atempo=2.0</code>）。</p>
+<p><strong>⑪ HLS 切片</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i in.mp4 -c:v libx264 -c:a aac -f hls \</span><br><span class="line">  -hls_time 6 -hls_playlist_type vod \</span><br><span class="line">  -hls_segment_filename <span class="string">&quot;seg_%03d.ts&quot;</span> index.m3u8</span><br></pre></td></tr></table></figure>
+
+<p><strong>⑫ 编码器的两个特例</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># H.265：必须加 -tag:v hvc1，否则苹果生态不认</span></span><br><span class="line">ffmpeg -i in.mp4 -c:v libx265 -crf 28 -preset medium -tag:v hvc1 -c:a copy out.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># VP9：-b:v 0 让 CRF 生效</span></span><br><span class="line">ffmpeg -i in.mp4 -c:v libvpx-vp9 -crf 32 -b:v 0 -row-mt 1 -c:a libopus -b:a 96k out.webm</span><br></pre></td></tr></table></figure>
+
+<p><strong>⑬ 清元数据与硬件加速</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i in.mp4 -map_metadata -1 -map_chapters -1 -c copy out.mp4</span><br><span class="line"></span><br><span class="line">ffmpeg -hwaccel cuda -i in.mp4 -c:v h264_nvenc -preset p5 -rc vbr -cq 23 -c:a copy out.mp4  <span class="comment"># NVIDIA</span></span><br><span class="line">ffmpeg -i in.mp4 -c:v hevc_videotoolbox -q:v 55 -c:a copy out.mp4                             <span class="comment"># macOS</span></span><br></pre></td></tr></table></figure>
+
+<p><code>-cq</code> &#x2F; <code>-q:v</code> 是各家的质量档位，<strong>与 <code>-crf</code> 不等价</strong>，照抄数值会得到不同的画质曲线。</p>
+<h3 id="14-5-滤镜系统：线性链与非线性链"><a href="#14-5-滤镜系统：线性链与非线性链" class="headerlink" title="14.5 滤镜系统：线性链与非线性链"></a><a id="s14-5"></a>14.5 滤镜系统：线性链与非线性链</h3><p>两套滤镜入口，先分清再动手：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>简单滤镜 <code>-vf</code> &#x2F; <code>-af</code></th>
+<th>复杂滤镜 <code>-filter_complex</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>输入数</td>
+<td>1</td>
+<td>多</td>
+</tr>
+<tr>
+<td>输出数</td>
+<td>1</td>
+<td>多</td>
+</tr>
+<tr>
+<td>链内分隔符</td>
+<td>逗号 <code>,</code></td>
+<td>逗号 <code>,</code></td>
+</tr>
+<tr>
+<td>链间分隔符</td>
+<td>无（一条链）</td>
+<td>分号 <code>;</code></td>
+</tr>
+<tr>
+<td>典型场景</td>
+<td>缩放、裁剪、加字幕、加文字</td>
+<td>画中画、多路拼接、混音、多输出</td>
+</tr>
+</tbody></table>
+<p><strong>非线性链的语法</strong>：<code>[输入标签]滤镜=参数,滤镜=参数[输出标签]</code></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[0:v]scale=1280:-2,format=yuv420p[v0];</span><br><span class="line">[1:v]scale=320:-2[logo];</span><br><span class="line">[v0][logo]overlay=W-w-16:16</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>[0:v]</code> 第 0 个输入的视频流，<code>[0:a]</code> 音频，<code>[0:s]</code> 字幕</li>
+<li>每条链 &#x3D; 输入标签 → 滤镜序列 → 输出标签</li>
+<li>没被下游消费的输出标签，由 <code>-map</code> 决定落到哪个输出文件</li>
+</ul>
+<p><strong>四条必踩的坑</strong></p>
+<ol>
+<li><code>-vf</code> 与 <code>-filter_complex</code> 同时写，且抢同一条流——会报 <code>Filter ... has an unconnected output</code>。统一用 <code>-filter_complex</code>。</li>
+<li>造了标签却没 <code>-map</code>——输出文件里干脆没有这条流，静默成功。</li>
+<li>表达式里的逗号没转义——被当成滤镜分隔符，报参数错误。写成 <code>\,</code>，即使在双引号内。</li>
+<li><code>scale</code> 的宽高必须偶数（yuv420 要求），用 <code>-2</code> 而不是 <code>-1</code>（<code>-1</code> 可能算出奇数）。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 画中画：右上角小窗，等比缩到主画面 1/3</span></span><br><span class="line">ffmpeg -i main.mp4 -i pip.mp4 -filter_complex \</span><br><span class="line">  <span class="string">&quot;[1:v]scale=iw/3:-2[pip];[0:v][pip]overlay=W-w-16:16&quot;</span> -c:a copy out.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 横拼两路</span></span><br><span class="line">ffmpeg -i a.mp4 -i b.mp4 -filter_complex \</span><br><span class="line">  <span class="string">&quot;[0:v]scale=640:-2[l];[1:v]scale=640:-2[r];[l][r]hstack=inputs=2&quot;</span> -c:a copy out.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 音频混音：背景乐压到 0.3，人声保持 1.0</span></span><br><span class="line">ffmpeg -i bgm.mp3 -i voice.wav -filter_complex \</span><br><span class="line">  <span class="string">&quot;[0:a]volume=0.3[b];[1:a]volume=1.0[v];[b][v]amix=inputs=2:duration=longest[a]&quot;</span> \</span><br><span class="line">  -map <span class="string">&quot;[a]&quot;</span> out.m4a</span><br><span class="line"></span><br><span class="line"><span class="comment"># 只在 5~10 秒显示水印</span></span><br><span class="line">ffmpeg -i in.mp4 -i logo.png -filter_complex \</span><br><span class="line">  <span class="string">&quot;[0:v][1:v]overlay=W-w-20:20:enable=&#x27;between(t,5,10)&#x27;&quot;</span> -c:a copy out.mp4</span><br></pre></td></tr></table></figure>
+
+<h3 id="14-6-视觉增强"><a href="#14-6-视觉增强" class="headerlink" title="14.6 视觉增强"></a><a id="s14-6"></a>14.6 视觉增强</h3><p><strong>裁剪 crop</strong>：参数顺序是 <code>w:h:x:y</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i in.mp4 -vf <span class="string">&quot;crop=1280:720:0:0&quot;</span> out.mp4        <span class="comment"># 从左上角取 1280x720</span></span><br><span class="line">ffmpeg -i in.mp4 -vf <span class="string">&quot;crop=in_w:in_h-120:0:0&quot;</span> out.mp4   <span class="comment"># 裁掉底部 120px</span></span><br><span class="line">ffmpeg -i in.mp4 -vf <span class="string">&quot;cropdetect=24:16:0&quot;</span> -f null -      <span class="comment"># 自动探测黑边，从日志读结果</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>缩放 scale + 补边 pad</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 等比缩到 1280 宽，高度自适应且保证偶数</span></span><br><span class="line">ffmpeg -i in.mp4 -vf <span class="string">&quot;scale=1280:-2&quot;</span> out.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 强制 1280x720 且不变形：先等比缩小再补黑边</span></span><br><span class="line">ffmpeg -i in.mp4 -vf \</span><br><span class="line">  <span class="string">&quot;scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2:color=black&quot;</span> out.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 只缩不放（大图压小，小图保持原样）</span></span><br><span class="line">ffmpeg -i in.mp4 -vf <span class="string">&quot;scale=w=&#x27;min(1920,iw)&#x27;:h=-2&quot;</span> out.mp4</span><br></pre></td></tr></table></figure>
+
+<p><strong>水印 overlay</strong>：位置用表达式，<code>W/h</code> 是主画面尺寸，<code>w/h</code> 是水印尺寸。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i in.mp4 -i logo.png -filter_complex \</span><br><span class="line">  <span class="string">&quot;[1:v]scale=120:-2[logo];[0:v][logo]overlay=W-w-20:H-h-20&quot;</span> -c:a copy out.mp4</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>表达式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>右下角</td>
+<td><code>W-w-20:H-h-20</code></td>
+</tr>
+<tr>
+<td>居中</td>
+<td><code>(W-w)/2:(H-h)/2</code></td>
+</tr>
+<tr>
+<td>跟随时间</td>
+<td><code>x=&#39;if(lt(t,5),20,W-w-20)&#39;:y=20</code></td>
+</tr>
+</tbody></table>
+<p><strong>走马灯（滚动文字）</strong>——用 <code>drawtext</code> 的 <code>x</code> 表达式做位移，比 overlay 更轻。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i in.mp4 -vf \</span><br><span class="line">  <span class="string">&quot;drawtext=text=&#x27;内部资料 禁止外传&#x27;:fontsize=28:fontcolor=white@0.7:x=w-mod(t*200\,w+800):y=h-56&quot;</span> \</span><br><span class="line">  -c:a copy out.mp4</span><br></pre></td></tr></table></figure>
+
+<p>要点：<code>t*200</code> 是滚动速度（像素&#x2F;秒），<code>800</code> 是文字宽度的近似值（超出画面宽度才能滚出视野外）；<code>mod()</code> 让位移循环，从右侧画外进入。中文字体要指定 <code>fontfile</code>，Windows 上写 <code>fontfile=&#39;C\:/Windows/Fonts/msyh.ttc&#39;</code>——<strong>盘符后的冒号必须转义</strong>。</p>
+<p><strong>打码：局部模糊或纯色遮挡</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 把区域裁出来模糊，再盖回原位置</span></span><br><span class="line">ffmpeg -i in.mp4 -filter_complex \</span><br><span class="line">  <span class="string">&quot;[0:v]crop=200:80:100:60,boxblur=10:1[b];[0:v][b]overlay=100:60&quot;</span> -c:a copy out.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 纯色遮挡</span></span><br><span class="line">ffmpeg -i in.mp4 -vf <span class="string">&quot;drawbox=x=100:y=60:w=200:h=80:color=black@0.8:t=fill&quot;</span> out.mp4</span><br></pre></td></tr></table></figure>
+
+<p><strong>字幕：软挂与硬压</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 硬压 srt，顺便指定字体样式</span></span><br><span class="line">ffmpeg -i in.mp4 -vf \</span><br><span class="line">  <span class="string">&quot;subtitles=sub.srt:force_style=&#x27;FontName=Microsoft YaHei,FontSize=20,PrimaryColour=&amp;H00FFFFFF&#x27;&quot;</span> out.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># ass 定位更自由（需要 libass）</span></span><br><span class="line">ffmpeg -i in.mp4 -vf <span class="string">&quot;ass=sub.ass&quot;</span> out.mp4</span><br></pre></td></tr></table></figure>
+
+<p>坑：<code>subtitles</code> 依赖编译时带 libass，很多精简版 FFmpeg 没有；Windows 路径要写成 <code>C\:/x/sub.srt</code>。</p>
+<p><strong>旋转与镜像</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i in.mp4 -vf <span class="string">&quot;transpose=1&quot;</span> out.mp4   <span class="comment"># 顺时针 90°</span></span><br><span class="line">ffmpeg -i in.mp4 -vf <span class="string">&quot;hflip&quot;</span> out.mp4         <span class="comment"># 水平镜像</span></span><br><span class="line">ffmpeg -i in.mp4 -vf <span class="string">&quot;vflip&quot;</span> out.mp4         <span class="comment"># 垂直翻转</span></span><br></pre></td></tr></table></figure>
+
+<p>手机拍摄的旋转信息存在容器元数据里，转码后可能「自动转正」或「反而歪掉」——统一用 <code>-vf transpose</code> 显式处理，别依赖元数据。</p>
+<h3 id="14-7-色彩空间：Canvas-帧-→-编码器"><a href="#14-7-色彩空间：Canvas-帧-→-编码器" class="headerlink" title="14.7 色彩空间：Canvas 帧 → 编码器"></a><a id="s14-7"></a>14.7 色彩空间：Canvas 帧 → 编码器</h3><p>背景：Canvas 只给你 <strong>RGBA（sRGB，pc range）</strong>，而视频编码器吃 <strong>YUV420P（tv range）</strong>。中间有三种对接路线。</p>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>怎么拿帧</th>
+<th>谁负责转 YUV</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MediaRecorder + Canvas</td>
+<td><code>canvas.captureStream()</code></td>
+<td>浏览器内部</td>
+<td>纯录制，无需精修</td>
+</tr>
+<tr>
+<td>WebCodecs</td>
+<td><code>VideoFrame</code> → <code>VideoEncoder</code></td>
+<td>指定 <code>format: &#39;I420&#39;</code></td>
+<td>高性能、需要逐帧控制</td>
+</tr>
+<tr>
+<td>ffmpeg.wasm &#x2F; 原生 FFmpeg</td>
+<td><code>getImageData()</code> → RGBA 字节</td>
+<td>FFmpeg 或自己写</td>
+<td>需要滤镜、封装、兼容老浏览器</td>
+</tr>
+</tbody></table>
+<p><strong>方案 A：交给 FFmpeg 转（最省事）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从 stdin 读 RGBA 原始帧，FFmpeg 自己转 yuv420p</span></span><br><span class="line">ffmpeg -f rawvideo -pix_fmt rgba -s 1280x720 -r 30 -i - \</span><br><span class="line">  -c:v libx264 -pix_fmt yuv420p -crf 20 out.mp4</span><br></pre></td></tr></table></figure>
+
+<p><strong>方案 B：自己算 RGBA → YUV420P</strong>（BT.601 全范围，与 14.2 的公式一致）</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">clamp</span> = (<span class="params"><span class="attr">v</span>: <span class="built_in">number</span></span>) =&gt; (v &lt; <span class="number">0</span> ? <span class="number">0</span> : v &gt; <span class="number">255</span> ? <span class="number">255</span> : v | <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/** RGBA(Uint8ClampedArray) → yuv420p 紧凑布局：Y 平面 + U 平面 + V 平面 */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">rgbaToYuv420p</span>(<span class="params"><span class="attr">rgba</span>: <span class="title class_">Uint8ClampedArray</span>, <span class="attr">w</span>: <span class="built_in">number</span>, <span class="attr">h</span>: <span class="built_in">number</span></span>): <span class="title class_">Uint8Array</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> ySize = w * h</span><br><span class="line">  <span class="keyword">const</span> uvW = w &gt;&gt; <span class="number">1</span></span><br><span class="line">  <span class="keyword">const</span> uvH = h &gt;&gt; <span class="number">1</span></span><br><span class="line">  <span class="keyword">const</span> out = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(ySize + uvW * uvH * <span class="number">2</span>)</span><br><span class="line">  <span class="keyword">const</span> uOff = ySize</span><br><span class="line">  <span class="keyword">const</span> vOff = ySize + uvW * uvH</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 亮度：逐像素</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; h; j++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; w; i++) &#123;</span><br><span class="line">      <span class="keyword">const</span> p = (j * w + i) * <span class="number">4</span></span><br><span class="line">      <span class="keyword">const</span> r = rgba[p], g = rgba[p + <span class="number">1</span>], b = rgba[p + <span class="number">2</span>]</span><br><span class="line">      out[j * w + i] = <span class="title function_">clamp</span>(<span class="number">0.299</span> * r + <span class="number">0.587</span> * g + <span class="number">0.114</span> * b)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 色度：2x2 下采样，先把四像素 RGB 平均再换算，避免边缘串色</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; uvH; j++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; uvW; i++) &#123;</span><br><span class="line">      <span class="keyword">let</span> r = <span class="number">0</span>, g = <span class="number">0</span>, b = <span class="number">0</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">const</span> [dx, dy] <span class="keyword">of</span> [[<span class="number">0</span>, <span class="number">0</span>], [<span class="number">1</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">1</span>], [<span class="number">1</span>, <span class="number">1</span>]]) &#123;</span><br><span class="line">        <span class="keyword">const</span> p = ((j * <span class="number">2</span> + dy) * w + (i * <span class="number">2</span> + dx)) * <span class="number">4</span></span><br><span class="line">        r += rgba[p]; g += rgba[p + <span class="number">1</span>]; b += rgba[p + <span class="number">2</span>]</span><br><span class="line">      &#125;</span><br><span class="line">      r /= <span class="number">4</span>; g /= <span class="number">4</span>; b /= <span class="number">4</span></span><br><span class="line">      out[uOff + j * uvW + i] = <span class="title function_">clamp</span>(-<span class="number">0.169</span> * r - <span class="number">0.331</span> * g + <span class="number">0.5</span> * b + <span class="number">128</span>)</span><br><span class="line">      out[vOff + j * uvW + i] = <span class="title function_">clamp</span>(<span class="number">0.5</span> * r - <span class="number">0.419</span> * g - <span class="number">0.081</span> * b + <span class="number">128</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> out</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>把帧写进编码器</strong></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; spawn &#125; <span class="keyword">from</span> <span class="string">&#x27;node:child_process&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">createEncoder</span>(<span class="params"><span class="attr">out</span>: <span class="built_in">string</span>, <span class="attr">w</span>: <span class="built_in">number</span>, <span class="attr">h</span>: <span class="built_in">number</span>, fps = <span class="number">30</span></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> ff = <span class="title function_">spawn</span>(<span class="string">&#x27;ffmpeg&#x27;</span>, [</span><br><span class="line">    <span class="string">&#x27;-f&#x27;</span>, <span class="string">&#x27;rawvideo&#x27;</span>, <span class="string">&#x27;-pix_fmt&#x27;</span>, <span class="string">&#x27;yuv420p&#x27;</span>, <span class="string">&#x27;-s&#x27;</span>, <span class="string">`<span class="subst">$&#123;w&#125;</span>x<span class="subst">$&#123;h&#125;</span>`</span>, <span class="string">&#x27;-r&#x27;</span>, <span class="title class_">String</span>(fps), <span class="string">&#x27;-i&#x27;</span>, <span class="string">&#x27;-&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;-c:v&#x27;</span>, <span class="string">&#x27;libx264&#x27;</span>, <span class="string">&#x27;-preset&#x27;</span>, <span class="string">&#x27;veryfast&#x27;</span>, <span class="string">&#x27;-crf&#x27;</span>, <span class="string">&#x27;20&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;-pix_fmt&#x27;</span>, <span class="string">&#x27;yuv420p&#x27;</span>, <span class="string">&#x27;-colorspace&#x27;</span>, <span class="string">&#x27;bt709&#x27;</span>, <span class="string">&#x27;-color_range&#x27;</span>, <span class="string">&#x27;tv&#x27;</span>,</span><br><span class="line">    out,</span><br><span class="line">  ])</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">write</span>: <span class="function">(<span class="params"><span class="attr">plane</span>: <span class="title class_">Uint8Array</span></span>) =&gt;</span> ff.<span class="property">stdin</span>.<span class="title function_">write</span>(plane),</span><br><span class="line">    <span class="attr">end</span>: <span class="function">() =&gt;</span></span><br><span class="line">      <span class="keyword">new</span> <span class="title class_">Promise</span>&lt;<span class="built_in">void</span>&gt;(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">        ff.<span class="title function_">on</span>(<span class="string">&#x27;close&#x27;</span>, <span class="function">() =&gt;</span> <span class="title function_">resolve</span>())</span><br><span class="line">        ff.<span class="property">stdin</span>.<span class="title function_">end</span>()</span><br><span class="line">      &#125;),</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>背压要点：<code>ff.stdin.write()</code> 返回 <code>false</code> 时说明管道满了，必须等 <code>drain</code> 再写下一帧，否则内存会被帧数据堆爆。</p>
+</blockquote>
+<p><strong>偏色的三个根因</strong></p>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>根因</th>
+<th>修法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>整体发灰、黑色不黑</td>
+<td>range 不一致（把 pc 当 tv 解码）</td>
+<td>声明 <code>-color_range</code>，或用 <code>scale=in_range=full:out_range=tv</code></td>
+</tr>
+<tr>
+<td>肤色偏绿 &#x2F; 偏紫</td>
+<td>矩阵用错（把 601 当 709 解码）</td>
+<td>统一 <code>-colorspace bt709</code>，或 <code>scale=in_color_matrix=bt709:out_color_matrix=bt709</code></td>
+</tr>
+<tr>
+<td>大面积色带、渐变断裂</td>
+<td>8bit + 高压缩 + 无抖动</td>
+<td>降低 CRF、用 10bit 中间格式、加 <code>dither</code></td>
+</tr>
+</tbody></table>
+<p>一句话：<strong>Canvas 出来是「pc range + sRGB」，H.264 分发一般是「tv range + BT.709」，两头必须显式对齐，靠播放器猜一定偏色。</strong></p>
+<h3 id="14-8-前端与-AI-场景落地"><a href="#14-8-前端与-AI-场景落地" class="headerlink" title="14.8 前端与 AI 场景落地"></a><a id="s14-8"></a>14.8 前端与 AI 场景落地</h3><p><strong>浏览器能力对照</strong></p>
+<table>
+<thead>
+<tr>
+<th>能力</th>
+<th>API</th>
+<th>能做什么</th>
+<th>限制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>录制</td>
+<td><code>MediaRecorder</code></td>
+<td>摄像头 &#x2F; 屏幕 &#x2F; Canvas → WebM</td>
+<td>码率控制粗，格式受限</td>
+</tr>
+<tr>
+<td>逐帧编解码</td>
+<td><code>WebCodecs</code></td>
+<td><code>VideoEncoder</code> &#x2F; <code>VideoDecoder</code></td>
+<td>Chrome 94+，Safari 覆盖不全</td>
+</tr>
+<tr>
+<td>播放</td>
+<td>MSE + hls.js</td>
+<td>拉 HLS &#x2F; DASH</td>
+<td>低延迟需 LL-HLS</td>
+</tr>
+<tr>
+<td>转码</td>
+<td>ffmpeg.wasm</td>
+<td>浏览器内跑 FFmpeg</td>
+<td>慢、吃内存，需要 COOP&#x2F;COEP 响应头</td>
+</tr>
+<tr>
+<td>采集</td>
+<td><code>getUserMedia</code> &#x2F; <code>getDisplayMedia</code></td>
+<td>摄像头 &#x2F; 屏幕</td>
+<td>需权限，移动端限制多</td>
+</tr>
+</tbody></table>
+<p><strong>四类真实场景</strong></p>
+<ol>
+<li><strong>上传前压缩</strong>：弱网下先在本地降码率（WebCodecs 或 ffmpeg.wasm），服务端再统一转标准档，减少带宽也减少排队。</li>
+<li><strong>AI 视频理解</strong>：抽帧 → 多模态模型。不要按固定 fps 猛抽，先做场景切换检测再抽，帧数能降一个量级。</li>
+<li><strong>AI 视频生产的后处理</strong>：模型返回的分片 → <code>concat</code> 拼接 → 统一转码 → 生成封面与字幕。</li>
+<li><strong>录屏 &#x2F; 会议回放</strong>：<code>MediaRecorder</code> 出 WebM → 服务端转 HLS 切片 → CDN 分发。</li>
+</ol>
+<p><strong>给多模态模型抽帧的两条命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 每 2 秒一帧，缩到 512 宽（控制 token 成本）</span></span><br><span class="line">ffmpeg -i in.mp4 -vf <span class="string">&quot;fps=1/2,scale=512:-2&quot;</span> -q:v 3 frames/%04d.jpg</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按场景变化抽帧，去除大量重复画面</span></span><br><span class="line">ffmpeg -i in.mp4 -vf <span class="string">&quot;select=&#x27;gt(scene,0.4)&#x27;,scale=512:-2&quot;</span> -fps_mode vfr frames/%04d.jpg</span><br></pre></td></tr></table></figure>
+
+<h3 id="14-9-踩坑与经验"><a href="#14-9-踩坑与经验" class="headerlink" title="14.9 踩坑与经验"></a><a id="s14-9"></a>14.9 踩坑与经验</h3><ol>
+<li><strong>参数位置错 → 静默失效</strong>：输出参数写在 <code>-i</code> 之前会被当成输入参数，命令照样成功，结果完全不对。</li>
+<li><strong><code>copy</code> 切片起点不准</strong>：只能在关键帧切，起点会前移；要精确就重编码。</li>
+<li><strong>压完反而更大</strong>：源已是高压缩低码率，再压只会更差；或根本是 <code>-b:v</code> 设得比源码率还高。</li>
+<li><strong>奇数分辨率报错</strong>：yuv420p 要求偶数，用 <code>scale=1280:-2</code>，必要时补 <code>pad=ceil(iw/2)*2:ceil(ih/2)*2</code>。</li>
+<li><strong>Web 上拖进度条很久才出画</strong>：缺 <code>-movflags +faststart</code>，moov 在文件末尾。</li>
+<li><strong>Windows 下滤镜报参数错</strong>：路径冒号写 <code>C\:/</code>，表达式逗号写 <code>\,</code>。</li>
+<li><strong>批量任务不要拼 shell 字符串</strong>：用 <code>execFile(&#39;ffmpeg&#39;, [...])</code> 传数组，避免空格与注入。</li>
+<li><strong>并发要限流</strong>：x264 默认吃满所有核，N 个并发必须 <code>-threads</code> 或队列串行，否则整机卡死。</li>
+<li><strong>失败了先看 stderr 末尾</strong>：<code>-loglevel error</code> 只留关键报错，比翻几百行 banner 快得多。</li>
+<li><strong>转码是 IO + CPU 双高</strong>：容器里要限 CPU、给足临时盘、设超时，避免僵尸任务堆积。</li>
+</ol>
+<p><strong>一句话总结</strong>：换不换容器看 <code>-c copy</code>，画质好坏看 <code>-crf</code> 与 <code>-pix_fmt</code>，复杂效果看 <code>-filter_complex</code>，偏色看 <code>color_range</code> 与 <code>colorspace</code>。</p>
+<hr>
+<h2 id="十五、附录"><a href="#十五、附录" class="headerlink" title="十五、附录"></a><a id="s15"></a>十五、附录</h2><h3 id="15-1-学习资源索引"><a href="#15-1-学习资源索引" class="headerlink" title="15.1 学习资源索引"></a><a id="s15-1"></a>15.1 学习资源索引</h3><p><strong>平台与产品</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://apptpoasvdl3817.pc.xiaoe-tech.com/all/20370062?navIndex=1">妙码免费公开课</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.coze.cn/overview">Coze</a> · <a target="_blank" rel="noopener" href="https://github.com/coze-dev/coze-studio">Coze Studio 开源版</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.glideapps.com/">Glide（无代码）</a> · <a target="_blank" rel="noopener" href="https://login.retool.com/auth/signup?source=navbarcta">Retool（低代码）</a></li>
+</ul>
+<p><strong>模型与部署</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://ollama.com/search">Ollama</a> · <a target="_blank" rel="noopener" href="https://ollama.com/library/deepseek-r1">deepseek-r1</a> · <a target="_blank" rel="noopener" href="https://ollama.com/library/qwen3">qwen3:0.6b</a> · <a target="_blank" rel="noopener" href="https://ollama.com/library/mxbai-embed-large">mxbai-embed-large</a> · <a target="_blank" rel="noopener" href="https://ollama.com/library/qwen3-vl">qwen3-vl:2b</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.docker.com/">Docker</a></li>
+</ul>
+<p><strong>协同与编辑器</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://crdt.tech/implementations">CRDT 实现方案</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Jxck/html2json">html2json</a></li>
+<li><a target="_blank" rel="noopener" href="https://reactflow.dev/learn/advanced-use/uncontrolled-flow">React Flow</a> · <a target="_blank" rel="noopener" href="https://flow.reactjs.ac.cn/api-reference/components/handle">React Flow 中文</a></li>
+<li><a target="_blank" rel="noopener" href="https://tiptap.dev/">TipTap</a> · <a target="_blank" rel="noopener" href="https://microsoft.github.io/monaco-editor/">Monaco Editor</a></li>
+</ul>
+<p><strong>数字孪生与三维</strong></p>
+<ul>
+<li>IBM 数字孪生：<a target="_blank" rel="noopener" href="https://www.ibm.com/cn-zh/think/topics/digital-twin">https://www.ibm.com/cn-zh/think/topics/digital-twin</a></li>
+<li>Mars3D 模板：<a target="_blank" rel="noopener" href="https://www.mars3d.com/template">https://www.mars3d.com/template</a></li>
+<li>易知微数字孪生低代码：<a target="_blank" rel="noopener" href="https://easyv.cloud/">https://easyv.cloud</a></li>
+<li>glTF：<a target="_blank" rel="noopener" href="https://github.com/KhronosGroup/glTF">https://github.com/KhronosGroup/glTF</a></li>
+<li>Cesium：<a target="_blank" rel="noopener" href="https://cesium.com/">https://cesium.com/</a> · OpenLayers：<a target="_blank" rel="noopener" href="https://openlayers.org/">https://openlayers.org/</a> · Three.js：<a target="_blank" rel="noopener" href="https://threejs.org/">https://threejs.org/</a></li>
+<li>3D 建模 Blender：<a target="_blank" rel="noopener" href="https://www.blender.org/">https://www.blender.org/</a></li>
+<li>天地图：<a target="_blank" rel="noopener" href="https://www.tianditu.gov.cn/">https://www.tianditu.gov.cn/</a></li>
+<li>QGIS（免费开源，生成瓦片）：<a target="_blank" rel="noopener" href="https://www.qgis.org/">https://www.qgis.org/</a></li>
+</ul>
+<p><strong>工程化</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://rspress.rs/guide/start/getting-started">Rspress</a> · <a target="_blank" rel="noopener" href="https://ui.shadcn.com/docs/installation/vite">shadcn&#x2F;ui</a> · <a target="_blank" rel="noopener" href="https://playwright.dev/docs/intro">Playwright</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/type-challenges/type-challenges">type-challenges</a></li>
+<li><a target="_blank" rel="noopener" href="https://v2.tauri.org.cn/">Tauri</a> · <a target="_blank" rel="noopener" href="https://www.electronforge.io/">Electron Forge</a></li>
+<li><a target="_blank" rel="noopener" href="https://prisma.org.cn/docs/getting-started">Prisma</a> · <a target="_blank" rel="noopener" href="https://typeorm.io/docs/getting-started/">TypeORM</a></li>
+</ul>
+<p><strong>LangChain 生态</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.langchain.com/oss/javascript/langchain/overview">LangChain.js 概览</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.langchain.com/oss/javascript/langgraph/quickstart#2-define-state">LangGraph 快速开始</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ycfenxi/p/19203998">LangChain 生态：核心包架构解析</a></li>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000047541813">LangChain 模型对应的集成包</a></li>
+<li><a target="_blank" rel="noopener" href="https://eastondev.com/blog/zh/posts/ai/ollama-langchain-integration/">Ollama 与 OpenAI 切换</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.langchain.com/oss/javascript/migrate/langchain-v1">MemoryVectorStore 迁移指南 @langchain&#x2F;classic</a></li>
+</ul>
+<p><strong>音视频与 FFmpeg</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://ffmpeg.org/documentation.html">FFmpeg 官方文档</a> · <a target="_blank" rel="noopener" href="https://ffmpeg.org/ffmpeg-filters.html">Filters 滤镜全表</a> · <a target="_blank" rel="noopener" href="https://ffmpeg.org/ffmpeg-formats.html">Formats 封装全表</a></li>
+<li><a target="_blank" rel="noopener" href="https://ffmpeg.org/ffmpeg-codecs.html">FFmpeg 编解码器与参数</a> · <a target="_blank" rel="noopener" href="https://ffmpeg.org/ffprobe.html">ffprobe 用法</a></li>
+<li><a target="_blank" rel="noopener" href="https://trac.ffmpeg.org/wiki/Encode/H.264">FFmpeg Wiki：H.264 编码指南</a> · <a target="_blank" rel="noopener" href="https://trac.ffmpeg.org/wiki/Encode/H.265">H.265 指南</a> · <a target="_blank" rel="noopener" href="https://trac.ffmpeg.org/wiki/Encode/VP9">VP9 指南</a></li>
+<li><a target="_blank" rel="noopener" href="https://trac.ffmpeg.org/wiki/colorspace">Color range 与色彩空间（trac wiki）</a></li>
+<li><a target="_blank" rel="noopener" href="https://ffmpegwasm.netlify.app/">ffmpeg.wasm（浏览器内转码）</a> · <a target="_blank" rel="noopener" href="https://github.com/video-dev/hls.js/">hls.js</a> · <a target="_blank" rel="noopener" href="https://w3c.github.io/webcodecs/">WebCodecs 规范</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Chroma_subsampling">YUV 图解（4:2:0 采样原理）</a></li>
+</ul>
+<h3 id="15-2-本机案例路径索引"><a href="#15-2-本机案例路径索引" class="headerlink" title="15.2 本机案例路径索引"></a><a id="s15-2"></a>15.2 本机案例路径索引</h3><table>
+<thead>
+<tr>
+<th>主题</th>
+<th>路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AI 引擎全栈</td>
+<td><code>E:/practice/demo/1.ai-engine</code></td>
+</tr>
+<tr>
+<td>服务端 AI 编排</td>
+<td><code>E:/practice/demo/1.ai-engine/apps/server</code></td>
+</tr>
+<tr>
+<td>Prompt &#x2F; 结构化输出</td>
+<td><code>E:/practice/demo/1.ai-engine/1.prompt.js</code>、<code>E:/practice/demo/1.ai-engine/9.structure.js</code></td>
+</tr>
+<tr>
+<td>TS &#x2F; Zod 示例</td>
+<td><code>E:/practice/demo/1.ai-engine/10.typescript.ts</code>、<code>E:/practice/demo/1.ai-engine/11.zod.ts</code></td>
+</tr>
+<tr>
+<td>多模态 Agent</td>
+<td><code>E:/practice/demo/1.ai-engine/12.agent-image.ts</code></td>
+</tr>
+<tr>
+<td>服务型工作流引擎</td>
+<td><code>E:/practice/demo/1.ai-engine/13.flow-engine.ts</code></td>
+</tr>
+<tr>
+<td>监控 SDK 单体</td>
+<td><code>E:/practice/demo/案例/ai-monitor</code></td>
+</tr>
+<tr>
+<td>监控 monorepo 全栈</td>
+<td><code>E:/practice/demo/案例/ai-monitor-ful</code></td>
+</tr>
+<tr>
+<td>监控 AI 分析服务</td>
+<td><code>E:/practice/demo/案例/ai-monitor-ful/packages/ai</code></td>
+</tr>
+<tr>
+<td>监控 + AI 巡检</td>
+<td><code>E:/practice/demo/案例/ai-inspect</code></td>
+</tr>
+<tr>
+<td>编辑器三路线</td>
+<td><code>E:/practice/demo/案例/simple-editor/&#123;contenteditable,execCommand,selection&#125;.html</code></td>
+</tr>
+</tbody></table>
+<h2 id="十六、面试题库"><a href="#十六、面试题库" class="headerlink" title="十六、面试题库"></a><a id="s16"></a>十六、面试题库</h2><blockquote>
+<p><strong>用法</strong>：先看题干自测，能说出「骨架」再看要点。每题后附 <code>→ §x.x</code> 指向正文的详细展开。<br>题目按 <strong>初中级 → 中高级 → 专业级 → 专家级</strong> 递增排列，共 48 题。</p>
+</blockquote>
+<h3 id="16-1-初中级（16-题）"><a href="#16-1-初中级（16-题）" class="headerlink" title="16.1 初中级（16 题）"></a><a id="s16-1"></a>16.1 初中级（16 题）</h3><p><strong>Q1｜说说你对生成式 AI 应用引擎的整体理解和业务流程</strong></p>
+<ul>
+<li>本质：把 LLM、Agent、插件、工作流、触发器、知识库、记忆整合成一个平台。</li>
+<li>六大模块：插件化抽象复用逻辑 → 工作流自动化编排 → 触发器驱动 → 知识库检索 → 记忆维持上下文 → 输入输出闭环。</li>
+<li>业务流程：用户输入 → 引擎编排 → 模型 &#x2F; 知识库 &#x2F; 插件协同 → 流式输出。</li>
+<li>三种前端集成方式：iframe、API、Agent 商城式发布。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-01-%E8%83%BD%E5%8A%9B%E5%9C%B0%E5%9B%BE%E4%B8%8E%E5%BA%94%E7%94%A8%E5%9F%BA%E7%A1%80/#s3-4">§3.4</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-01-%E8%83%BD%E5%8A%9B%E5%9C%B0%E5%9B%BE%E4%B8%8E%E5%BA%94%E7%94%A8%E5%9F%BA%E7%A1%80/#s2-2">§2.2</a></li>
+</ul>
+<p><strong>Q2｜是否有过自动化、批处理或生成式 AI 相关业务？说说对流程引擎的理解和整体方案</strong></p>
+<ul>
+<li>自动化 &#x2F; 批处理核心：重复性任务、抽象层次高，把期望的任务列成步骤逐步执行。</li>
+<li>生成式 AI 的区别：<strong>用户控制整个流程，AI 去具体实现</strong>（搜索 → 提关键字 → 清洗 → 给模型分析 → RAG 优化 → 循环 → 判断）。</li>
+<li>流程引擎三要素：流程建模（编辑器）、任务调度（异步 &#x2F; 依赖 &#x2F; 变量上下文）、插件化集成外部系统。</li>
+<li>实现分型：内存型（前端全量执行）、服务端型（OA 审批、低代码、大数据平台）、生成式 AI 引擎（调模型、参数召回、上下文缓存、向量库操作）。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s6-1">§6.1</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s6-6">§6.6</a></li>
+</ul>
+<p><strong>Q3｜开发一个类似飞书文档的知识库，文档编辑如何设计？重点说原理与技术实现</strong></p>
+<ul>
+<li>核心清单：基础编辑、文本格式化、多媒体插入、undo&#x2F;redo、跨浏览器兼容、协同、AI 赋能。</li>
+<li>三条技术路线：<code>contenteditable</code> 裸做 → <code>execCommand</code>（过时）→ <code>Selection + Range + Compiler</code>（推荐）。</li>
+<li>Compiler 解决的核心问题：反复点击导致标签无限嵌套，需要判断已有修饰并做「加强 &#x2F; 还原」。</li>
+<li>数据层：Markdown 路线性能好约束强；JSONContent 路线更灵活，自定义节点方便（TipTap custom node）。</li>
+<li>通用协议：Schema &#x2F; DSL 承载物料体系（BlockSuite）。</li>
+<li>个性化：<code>/</code> 命令、<code>@</code> 提及、协同光标、力导向图谱、命令栈 undo&#x2F;redo。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s7-2">§7.2</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s7-3">§7.3</a></li>
+</ul>
+<p><strong>Q4｜了解过服务端渲染吗？为什么当下 AI 辅助编程首选服务端渲染方案？</strong></p>
+<ul>
+<li>先讲演进：EJS&#x2F;JSP → SPA → SSR + SPA 结合。</li>
+<li>再讲 AI 特殊性：追求短平快（全栈一体）、<strong>隐私与安全</strong>（token 不能落前端，否则可被任意调用）、动态与个性化。</li>
+<li>三点优势：体验（首屏）、减轻客户端压力、降低维护成本。</li>
+<li>补充类比项目：Coze、Dify 这类平台，以及 v0、bolt 这类生成式产品。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-04-%E5%90%8C%E6%9E%84%E6%B8%B2%E6%9F%93%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%8C%96/#s8-1">§8.1</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-04-%E5%90%8C%E6%9E%84%E6%B8%B2%E6%9F%93%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%8C%96/#s8-2">§8.2</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-04-%E5%90%8C%E6%9E%84%E6%B8%B2%E6%9F%93%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%8C%96/#s8-3">§8.3</a></li>
+</ul>
+<p><strong>Q5｜简单描述协同文档编辑器的方案和核心实现</strong></p>
+<ul>
+<li>分层：编辑器内核（TipTap &#x2F; ProseMirror）+ 协同算法（CRDT &#x2F; OT）+ 具体实现（Yjs &#x2F; Automerge）+ 传输（WS &#x2F; WebRTC）+ 服务层（Node &#x2F; NestJS &#x2F; Redis &#x2F; Kafka）+ 存储（PostgreSQL + pgvector）。</li>
+<li>关键判断：CRDT 分布式友好，OT 依赖集中式；Yjs 是当前首选。</li>
+<li>实现五步：建 <code>Y.Doc</code> → 绑定编辑器 → 实时通信 → 光标同步（Awareness）→ 后端接入。</li>
+<li>依赖清单要能报出来：<code>@tiptap/extension-collaboration</code> 是<strong>绑定层</strong>。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s7-4">§7.4</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s7-5">§7.5</a></li>
+</ul>
+<p><strong>Q6｜有没有做过 AI 相关业务？说说 AI 大模型应用开发的核心方向和重要技术点</strong></p>
+<ul>
+<li>三个方向：AI 原生应用、AI 赋能已有业务、AI 应用开发平台。</li>
+<li>四大技术：LLM（概率预测、涌现、上下文依赖；基础模型 vs 微调模型）、Prompt 工程（角色 &#x2F; 思维链 &#x2F; 结构化输出 &#x2F; 指令数据分离）、RAG（索引 + 查询两阶段）、Agent（ReAct + 工具 + 过程可视化 + 交互干预）。</li>
+<li>选型三关注：上下文窗口、成本（token 计费）、响应速度。</li>
+<li>前端两个黄金点：<strong>流式渲染</strong>、<strong>引用溯源</strong>。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-01-%E8%83%BD%E5%8A%9B%E5%9C%B0%E5%9B%BE%E4%B8%8E%E5%BA%94%E7%94%A8%E5%9F%BA%E7%A1%80/#s3-2">§3.2</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-01-%E8%83%BD%E5%8A%9B%E5%9C%B0%E5%9B%BE%E4%B8%8E%E5%BA%94%E7%94%A8%E5%9F%BA%E7%A1%80/#s2-3">§2.3</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-01-%E8%83%BD%E5%8A%9B%E5%9C%B0%E5%9B%BE%E4%B8%8E%E5%BA%94%E7%94%A8%E5%9F%BA%E7%A1%80/#s2-4">§2.4</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/#s4-1">§4.1</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/#s4-2">§4.2</a></li>
+</ul>
+<p><strong>Q7｜做过前端监控？性能与异常监控指标是怎么算的？</strong></p>
+<ul>
+<li>性能：PLT、FP&#x2F;FCP、FMP、LCP、TTI、CLS（≤0.1 良好）、INP。</li>
+<li>异常：JS 运行时、Promise unhandled rejection、资源加载、接口请求、React&#x2F;Vue 框架异常。</li>
+<li>行为：PV、UV、点击&#x2F;操作、停留时间；新老用户用 Cookie 标记。</li>
+<li>上报：fetch&#x2F;XHR（CORS 解决跨域）、图片打点、<code>sendBeacon</code>。</li>
+<li>工程化指标：构建时间、缓存利用率。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-04-%E5%90%8C%E6%9E%84%E6%B8%B2%E6%9F%93%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%8C%96/#s9-1">§9.1</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-04-%E5%90%8C%E6%9E%84%E6%B8%B2%E6%9F%93%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%8C%96/#s9-2">§9.2</a></li>
+</ul>
+<p><strong>Q8｜前端 AI 这块做过什么？了解过私有化 AI 平台部署和应用吗？</strong></p>
+<ul>
+<li>回答框架：技术广度 + 工程化能力（私有化部署）+ 业务思考。</li>
+<li>硬前置：CPU ≥ 2 核、内存 ≥ 4G，装 Docker。</li>
+<li>两条路：Coze Studio（Docker Compose 拉源码部署 + 配豆包 API Key&#x2F;Endpoint）；Ollama + Dify（本地模型 + 向量库）。</li>
+<li>关键坑：容器里的模型 URL 不能写 localhost，要用局域网 IP。</li>
+<li>收尾升华：从「平台构建者视角」讲清人设、插件、知识库、工作流如何协作。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-01-%E8%83%BD%E5%8A%9B%E5%9C%B0%E5%9B%BE%E4%B8%8E%E5%BA%94%E7%94%A8%E5%9F%BA%E7%A1%80/#s3-5">§3.5</a></li>
+</ul>
+<p><strong>Q9｜对 LangChain.js 这类框架有了解吗？用它搭过 Agent 吗？怎么看它降低门槛？</strong></p>
+<ul>
+<li>先答「不用框架的七个坑」：模型适配、tool calling、ReAct 循环、输出形态、MCP 远程工具、提示词优化（compact + skills）、生态。</li>
+<li>框架的价值：把这七件事封装成标准抽象。</li>
+<li>小 Demo 技术栈：TS + Node（脚本 → 服务化）+ Ollama + LangChain.js。</li>
+<li>方法论：问题分析 → 方案设计（MVP，抓主要矛盾）。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/#s5-1">§5.1</a></li>
+</ul>
+<p><strong>Q10｜你 TS 掌握得怎么样？TS 与 Zod 为什么在 Agent 开发中应用广泛？前端往 Agent 能有哪些沉淀？</strong></p>
+<ul>
+<li>TS：编译时静态检查，约束框架契约与协议数据结构。</li>
+<li>Zod：运行时校验，做入参标准、输出结构化、参数提取 schema、工具入参防护。</li>
+<li>TS 重点：基础类型&#x2F;别名&#x2F;接口、联合与交叉（面向协议编程）、类型守卫（类型收敛）、工具类型（Omit&#x2F;Pick&#x2F;Partial）、泛型与类型体操。</li>
+<li>前端三点沉淀：TS AI SDK 工程化、Node&#x2F;Nest&#x2F;Nuxt 服务化、Prisma + PostgreSQL 持久化。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-05-%E6%A1%8C%E9%9D%A2%E7%AB%AF%E4%B8%8ETS%E9%80%9F%E6%9F%A5/#s13">§13</a></li>
+</ul>
+<p><strong>Q11｜有没有参与过工作流编辑器开发？简述工作流类型、技术选型与实现细节</strong></p>
+<ul>
+<li>三种类型：线性流、DAG（AI 最常用，严禁环路）、状态机流。</li>
+<li>选型：SVG（React-Flow&#x2F;X6，首选）vs Canvas（LogicFlow&#x2F;LiteGraph，超大规模）vs 纯 DOM（上手快但连线难写）。</li>
+<li>四个细节：数据协议（兜底&#x2F;降级&#x2F;拓展&#x2F;升级）、引擎实现三选一、节点边物料体系（插件化&#x2F;微内核）、协同 + 执行（建图、遍历、异步、日志、错误收集）。</li>
+<li>面试建议：以 React-Flow &#x2F; AntV X6 切入，强调可定制插件系统。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s6-2">§6.2</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s6-5">§6.5</a></li>
+</ul>
+<p><strong>Q12｜了解过什么服务端框架？最快实现 AI 全栈 POC，技术栈怎么选？</strong></p>
+<ul>
+<li>先分清 POC 与 MVP：POC 验证可行性、低成本试错、用于演示立项；MVP 在 POC 上补登录&#x2F;页面&#x2F;异常处理&#x2F;打包 Docker，能交付测试。</li>
+<li>前端：HTML&#x2F;CSS（Tailwind）&#x2F;TS + Zod&#x2F;React&#x2F;Next.js。</li>
+<li>AI：LangChain.js &#x2F; LangGraph.js &#x2F; DeepAgent.js。</li>
+<li>数据：PostgreSQL + Prisma。</li>
+<li>部署：Docker，脱离平台绑定。</li>
+<li>四层架构图：前端交互层 → AI 核心能力层 → 数据持久化层 → 部署环境层。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/#s5-6">§5.6</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-05-%E6%A1%8C%E9%9D%A2%E7%AB%AF%E4%B8%8ETS%E9%80%9F%E6%9F%A5/#s12">§12</a></li>
+</ul>
+<p><strong>Q13｜了解 monorepo 架构？为什么大厂和开源项目都青睐这种架构？</strong></p>
+<ul>
+<li>定义 + 四特点：单一仓库、多项目共存、统一依赖、原子化提交。</li>
+<li>解决四痛点：复用、依赖管理、跨项目原子性、规范分散。</li>
+<li>对比 Polyrepo：改库要发 npm 包，调试链路长。</li>
+<li>例子：Google、Vue 3、React、字节&#x2F;美团&#x2F;阿里的中台。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-04-%E5%90%8C%E6%9E%84%E6%B8%B2%E6%9F%93%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%8C%96/#s10-1">§10.1</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-04-%E5%90%8C%E6%9E%84%E6%B8%B2%E6%9F%93%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%8C%96/#s10-2">§10.2</a></li>
+</ul>
+<p><strong>Q14｜基于 Node.js + TypeScript 以及 monorepo 的架构设计思路</strong></p>
+<ul>
+<li>先讲必备知识点：monorepo 组织、规范（eslint&#x2F;stylelint&#x2F;cspell&#x2F;commitlint）、构建（vite&#x2F;esbuild&#x2F;webpack）、测试（jest&#x2F;vitest&#x2F;playwright）。</li>
+<li>再讲优势四条（对应四个痛点）。</li>
+<li>搭建三步：定 <code>pnpm-workspace.yaml</code> → 分子包（apps &#x2F; packages）→ 配 <code>tsc</code> 编译与 <code>dev</code> 启动脚本。</li>
+<li>强调「里层包共享外层包依赖」可省依赖声明。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-04-%E5%90%8C%E6%9E%84%E6%B8%B2%E6%9F%93%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%8C%96/#s10-6">§10.6</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-04-%E5%90%8C%E6%9E%84%E6%B8%B2%E6%9F%93%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%8C%96/#s10-5">§10.5</a></li>
+</ul>
+<p><strong>Q15｜对 AI 智能体的理解：Coze 类工作流智能体、Manus 通用智能体、垂类智能体的区别</strong></p>
+<ul>
+<li>本质公式：Agent &#x3D; LLM + Planning + Memory + Tool (+ MCP&#x2F;Skills)。</li>
+<li>Coze 类：DAG 确定性编排，人定规则 AI 填充，可控无风险。</li>
+<li>Manus 类：LLM Planning 主导，人定目标 AI 定规则，路径不确定。</li>
+<li>垂类：特定 Schema&#x2F;场景优化，领域知识 + 专用工具 + 场景交互。</li>
+<li>选型决策树：流程是否固定 → 是否需强可控 → 是否跨多场景。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/#s4-2">§4.2</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/#s4-4">§4.4</a></li>
+</ul>
+<p><strong>Q16｜尝试过 Vibe Coding 吗？了解哪些模型和工具？怎么解决 AI 生成代码混乱？</strong></p>
+<ul>
+<li>一句话答案：<strong>上下文清晰控制策略</strong>。</li>
+<li>两个抓手：开发手册（含 eslint&#x2F;prettier 约束）+ 清晰规划（方案、步骤、风险、测试用例、反思）。</li>
+<li>SOP：Plan → Coding → Lint → 开发隔离（新特性、设计文档、实施文档分开）。</li>
+<li>工具：Claude + Codex。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-05-%E6%A1%8C%E9%9D%A2%E7%AB%AF%E4%B8%8ETS%E9%80%9F%E6%9F%A5/#s12-1">§12.1</a></li>
+</ul>
+<h3 id="16-2-中高级（16-题）"><a href="#16-2-中高级（16-题）" class="headerlink" title="16.2 中高级（16 题）"></a><a id="s16-2"></a>16.2 中高级（16 题）</h3><p><strong>Q17｜对智能体与生成式 AI 应用引擎业务的理解，以及具体落地实现</strong></p>
+<ul>
+<li>答题结构必须是：业务流程 → 核心架构 → 核心实现方案。</li>
+<li>核心模块五项：插件、工作流、触发器、知识库、记忆 + 输入输出。</li>
+<li>落地重难点五项：编排编辑器、节点执行沙箱、日志系统、错误处理、服务化。</li>
+<li>学习捷径：Coze 生态更健全（功能与插件），Dify 模型选择更多。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-01-%E8%83%BD%E5%8A%9B%E5%9C%B0%E5%9B%BE%E4%B8%8E%E5%BA%94%E7%94%A8%E5%9F%BA%E7%A1%80/#s3-4">§3.4</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-01-%E8%83%BD%E5%8A%9B%E5%9C%B0%E5%9B%BE%E4%B8%8E%E5%BA%94%E7%94%A8%E5%9F%BA%E7%A1%80/#s3-4">§3.4</a> 重难点</li>
+</ul>
+<p><strong>Q18｜有低代码 &#x2F; AI 应用引擎经验，说说流程引擎编辑器和执行的具体实现</strong></p>
+<ul>
+<li>编辑器定义：图形化界面 + 可视化操作（拖拽、配节点）+ 产出工作流蓝图；选型 React：xyflow &#x2F; x6，Vue：vue-flow。</li>
+<li>执行器定义：按蓝图实际运行，负责节点执行（含异步节点）、异步正确性与回调、流程监控与反馈。</li>
+<li>内存型实现三步：约定协议（节点+边）→ 编辑器编排 → 执行器按序执行（链表串联上下文）。</li>
+<li>三项生产级增强：异步日志系统、全局上下文变量池、四级错误处理（全局捕获 &#x2F; 节点级 &#x2F; 通知 &#x2F; 恢复重试）。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s6-5">§6.5</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s6-7">§6.7</a></li>
+</ul>
+<p><strong>Q19｜很多工具类产品都有协同编辑，说说协同编辑器的核心架构与方案</strong></p>
+<ul>
+<li>总纲：<strong>协同前置，协议先行</strong>。</li>
+<li>盘点产品：富文本、可视化图表、白板、视频剪辑、AI 应用引擎、多维表格。</li>
+<li>传输协议：WS、Socket.IO。</li>
+<li>数据分两类：交互式（头像&#x2F;光标，业务无关）、核心业务数据。</li>
+<li>冲突方案：CRDT（面向状态 &#x2F; 面向操作）与 OT。</li>
+<li>Yjs 代码要能讲：<code>Y.Doc</code> + <code>WebsocketProvider</code> + <code>yText</code> 的删增同步；后端 <code>setupWSConnection</code>。</li>
+<li>落地五步：协议统一 → 存 Yjs Doc → 增量同步 → 传输选型 → 双通道协同。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s7-4">§7.4</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s7-5">§7.5</a></li>
+</ul>
+<p><strong>Q20｜详细说说 SSR、SSG 以及前后端同构，有没有了解过 Next &#x2F; Nuxt，简述原理</strong></p>
+<ul>
+<li>三者概念 + 特性对比（首屏、SEO、内容变动频率）。</li>
+<li>Next 请求五步：请求 → 服务端渲染（<code>getServerSideProps</code>）→ 返回 HTML → React 水合 → 前端渲染接管。</li>
+<li>App Router：约定式路由（文件夹 + <code>page.tsx</code>）、Server Component 优先、Hook 只能在 <code>&quot;use client&quot;</code> 组件里用。</li>
+<li>动态路由 <code>[id]</code> + <code>useParams</code> &#x2F; <code>useSearchParams</code>。</li>
+<li>API：<code>app/api/route.ts</code> 按 HTTP 方法导出具名函数。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-04-%E5%90%8C%E6%9E%84%E6%B8%B2%E6%9F%93%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%8C%96/#s8-2">§8.2</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-04-%E5%90%8C%E6%9E%84%E6%B8%B2%E6%9F%93%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%8C%96/#s8-4">§8.4</a></li>
+</ul>
+<p><strong>Q21｜协同业务很多，文档、代码、数字孪生低代码编辑器的协同如何架构并落地？</strong></p>
+<ul>
+<li>统一公式：视图层 + 数据模型（Yjs）+ 绑定层 + 通信层。</li>
+<li>文档：TipTap + Yjs + y-websocket。</li>
+<li>代码：CodeMirror + Yjs + y-codemirror.next + y-websocket。</li>
+<li>数字孪生：Vue3 + WASM + VanillaJS；核心是结构化数据（组件树、场景图、节点属性）。</li>
+<li>数字孪生四重难点：坐标变换、吸附算法性能、状态双向同步、内存与渲染性能。</li>
+<li>设计模式：观察者、策略、工厂。</li>
+<li>算法：智能吸附 + 网格吸附。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s7-6">§7.6</a></li>
+</ul>
+<p><strong>Q22｜AI 大模型应用开发的完整流程？如果要架构设计一个 AI 应用，你的思路？</strong></p>
+<ul>
+<li>四步：本地模型部署（Ollama + Qwen3）→ LangChain 三件套 → Node 脚本化（Prompt &#x2F; RAG &#x2F; Agent）→ 服务化。</li>
+<li>架构图四层：用户端 → BFF&#x2F;API → AI 编排层 → 模型服务 + 数据访问层。</li>
+<li>数据层选型：PGVector &#x2F; Milvus。</li>
+<li>强调「脚本先跑通，再服务化」的开发节奏。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/#s5-6">§5.6</a></li>
+</ul>
+<p><strong>Q23｜设计过大型实时数据流系统？详细说明监控平台的方案设计与落地</strong></p>
+<ul>
+<li>开场只讲核心方案概览（一句话覆盖全链路）。</li>
+<li>五段：端侧采集 → 接入缓冲（Nginx → NestJS → Kafka）→ 流式计算（Flink&#x2F;Spark）→ ClickHouse → 可视化与预警。</li>
+<li>上报分级：fetch 批量（HTTP&#x2F;2 多路复用）、sendBeacon（页面关闭不丢）、WebSocket（低延迟双向）。</li>
+<li>Monorepo 拆分：<code>apps/demo</code>、<code>packages/metrics</code>（tsup 打包）、<code>packages/ai</code>，用 <code>workspace:*</code> 引用。</li>
+<li>Kafka：按热度拆 Topic、按 <code>session_id</code> Hash 分区保时序。</li>
+<li>ClickHouse：MergeTree、按月分区、<code>LowCardinality</code>、<code>Map</code> 扩展字段、TTL；<strong>禁止单条插入</strong>，5000 条或 5 秒批量。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-04-%E5%90%8C%E6%9E%84%E6%B8%B2%E6%9F%93%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%8C%96/#s9-3">§9.3</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-04-%E5%90%8C%E6%9E%84%E6%B8%B2%E6%9F%93%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%8C%96/#s9-4">§9.4</a></li>
+</ul>
+<p><strong>Q24｜基于 TypeScript 落地 AI 大模型应用开发的最佳实践与核心重难点</strong></p>
+<ul>
+<li>四件套：TS + LangChain.js + Ollama 私有化 + pgvector。</li>
+<li>依赖要说准：<code>langchain</code>、<code>@langchain/community</code>、<code>@langchain/core</code>、<code>@langchain/ollama</code>、<code>pg</code>。</li>
+<li>三类踩坑：ESM（<code>&quot;type&quot;: &quot;module&quot;</code> + <code>nodenext</code>）、<code>@types/node</code> 不生效（配 <code>types: [&quot;node&quot;]</code>）、<code>MemoryVectorStore</code> 迁到 <code>@langchain/classic</code>。</li>
+<li>结论：TS 生态已足够承载 AI 应用，前端可直接全栈。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/#s5-6">§5.6</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-05-%E6%A1%8C%E9%9D%A2%E7%AB%AF%E4%B8%8ETS%E9%80%9F%E6%9F%A5/#s13-3">§13.3</a></li>
+</ul>
+<p><strong>Q25｜聊聊 LangChain 标准化模型接口对避免供应商锁定的价值，以及 LangChain 与 LangGraph 如何选型、如何做可解耦可演进的 Agent 分层架构</strong></p>
+<ul>
+<li>标准化：<code>BaseLLM</code> &#x2F; <code>ChatModel</code> 抹平协议、参数、返回结构差异；换模型只换实例化，不动业务代码；支持多供应商混合调用。</li>
+<li>选型：线性轻量 → LangChain；非线性、多角色、状态持久化 → LangGraph。</li>
+<li>分层四层：接口层 → 原子能力层（Zod 校验）→ 编排层 → 业务层，依赖倒置。</li>
+<li>补充沙箱两层：微前端沙箱（legacy&#x2F;proxy&#x2F;snapshot）解决样式与 JS 隔离；系统级沙箱解决环境隔离。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/#s5-2">§5.2</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/#s5-3">§5.3</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/#s5-4">§5.4</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s6-10">§6.10</a></li>
+</ul>
+<p><strong>Q26｜基于 TypeScript 搭建 AI Agents 基础框架（参考 LangGraph 核心能力），说核心设计与关键代码</strong></p>
+<ul>
+<li>先定能力边界：文生文&#x2F;图&#x2F;视频、图生图&#x2F;视频、文生 PPT、文生 UI。</li>
+<li>模型选型要能报出国内外对照。</li>
+<li>智能体类型三分 + 是否私有化（Ollama、Whisper）。</li>
+<li>框架核心：状态（State）+ 节点（Node）+ 边（Edge），Zod 做入参与输出结构化。</li>
+<li>生态事实：主流框架都同时提供 Python 与 TS 版本。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-01-%E8%83%BD%E5%8A%9B%E5%9C%B0%E5%9B%BE%E4%B8%8E%E5%BA%94%E7%94%A8%E5%9F%BA%E7%A1%80/#s2-5">§2.5</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/#s4-4">§4.4</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-05-%E6%A1%8C%E9%9D%A2%E7%AB%AF%E4%B8%8ETS%E9%80%9F%E6%9F%A5/#s13">§13</a></li>
+</ul>
+<p><strong>Q27｜怎么实现通用工作流编辑器与工作流执行引擎？说说内存型与服务型的顶层设计</strong></p>
+<ul>
+<li>对比四维度：执行环境、状态存储、适用场景、核心挑战。</li>
+<li>内存型：事件驱动，加载整图进内存，递归&#x2F;循环消费任务队列；关键在快照同步与轻量化。</li>
+<li>服务型：任务队列 + 状态机持久化（类 Temporal&#x2F;Camunda）；三步走——任务解耦（MQ）、Worker 消费、<strong>状态脱水与复活</strong>（挂起时序列化上下文入库，触发后 Hydrate）。</li>
+<li>必须处理分布式事务与超时重试。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s6-6">§6.6</a></li>
+</ul>
+<p><strong>Q28｜基于 Next.js、Docker、Prisma、LangChain.js 快速实现 AI Agents 应用基础架构</strong></p>
+<ul>
+<li>三条主线：基础交互层架构、前后端联调打通、容器化。</li>
+<li>命令链：<code>pnpm create next-app@latest</code> → 装 langchain&#x2F;prisma&#x2F;dotenv → <code>npx prisma init</code> → 配 <code>docker.compose.yml</code> → <code>prisma generate</code>。</li>
+<li>Docker 安装注意：<code>--accept-license</code>、<code>--installation-dir</code>、<code>--wsl-default-data-root</code>，默认安装需重启。</li>
+<li>收尾：<code>.env</code> 配置、建表、起服务。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-04-%E5%90%8C%E6%9E%84%E6%B8%B2%E6%9F%93%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%8C%96/#s8-4">§8.4</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/#s5-6">§5.6</a></li>
+</ul>
+<p><strong>Q29｜设计一个 AI 前端驱动的全栈应用，pnpm monorepo 的架构细节</strong></p>
+<ul>
+<li>结构：<code>apps/web</code> + <code>apps/server</code> + <code>packages/&#123;configs, ai-engine, utils, types, shared&#125;</code>。</li>
+<li>子包被引用四前提：入口文件、导出模块、入口导出方法、<code>package.json</code> 的 <code>module</code> 指向入口。</li>
+<li>引用写法：<code>&quot;@monorepo-project/configs&quot;: &quot;workspace:*&quot;</code>。</li>
+<li>每个子包都要打包（tsup）。</li>
+<li>收益：前后端共享数据契约，改完立刻生效。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-04-%E5%90%8C%E6%9E%84%E6%B8%B2%E6%9F%93%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%8C%96/#s10-5">§10.5</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-04-%E5%90%8C%E6%9E%84%E6%B8%B2%E6%9F%93%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%8C%96/#s10-6">§10.6</a></li>
+</ul>
+<p><strong>Q30｜主导公司 AI 应用赋能部分产品的全栈开发，说详细结构与核心流程拆解</strong></p>
+<ul>
+<li>先盘点可被 AI 协助的模块：CRM 数据分析、开发提效（自动审查）、Code Review 自动化、BI 报表（ChatDB + RAG）、后台管理与客服助手。</li>
+<li>五条设计原则：业务目标对齐、最小化侵入、可观测性、迭代式演进、模型无关性与数据隐私。</li>
+<li>宏观架构：前端 → BFF&#x2F;API → AI 核心编排（LangChain.js）→ 数据访问（PG + pgvector）→ 模型服务（Ollama）。</li>
+<li>流程四阶段：业务定义与场景选择 → 技术选型与 POC → 智能体编排 → 服务化接入。</li>
+<li>交互两种：blocking &#x2F; streaming。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-01-%E8%83%BD%E5%8A%9B%E5%9C%B0%E5%9B%BE%E4%B8%8E%E5%BA%94%E7%94%A8%E5%9F%BA%E7%A1%80/#s3-2">§3.2</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/#s5-6">§5.6</a></li>
+</ul>
+<p><strong>Q31｜用类似 Claude 的工具，如何实现一个系统级 AI 智能体？基于 LangChain + Commander 说思路</strong></p>
+<ul>
+<li>前置：ReAct 闭环（Thought → Action → Observation → 循环）+ 工具调用机制。</li>
+<li>工具三要素：Name、Description（决策依据）、Args Schema。</li>
+<li>技术栈五件：Commander.js（CLI）、Node.js（运行时）、NestJS（服务层）、Next.js（可视化）、LangChain.js（编排）。</li>
+<li>分层架构五层：前端交互层 → 服务编排层（API + WS）→ Agent 核心层（Agent &#x2F; Memory &#x2F; Tool Registry）→ 工具执行层（FS &#x2F; 系统命令 &#x2F; 代码执行 &#x2F; 三方 API）→ 存储层（SQL + 向量库）。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/#s4-2">§4.2</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/#s4-3">§4.3</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/#s5-4">§5.4</a></li>
+</ul>
+<p><strong>Q32｜基于 Vibe Coding 完成亿级协同表格全栈开发，怎么搞定性能瓶颈与代码质量？</strong></p>
+<ul>
+<li>三层约束：全局约束 → <code>.clauderules</code> → <code>.plan</code>。</li>
+<li><code>.plan</code> 用 STAR-L 法则（需求、方案、步骤、性能瓶颈、优化细节）+ 顶层数据协议抽象。</li>
+<li>按特性拆：渲染引擎（千万行流畅）、公式引擎、WebWorker 多线程、协同（Yjs&#x2F;OT + 协同服务 + 传输协议）、界面（登录 + 渲染）。</li>
+<li>SOP 六步 + MCP 配套（deepwiki 查资料、context7 查上下文、playwright 集成测试、zcf 管模型与 MCP）。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-05-%E6%A1%8C%E9%9D%A2%E7%AB%AF%E4%B8%8ETS%E9%80%9F%E6%9F%A5/#s12-2">§12.2</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-05-%E6%A1%8C%E9%9D%A2%E7%AB%AF%E4%B8%8ETS%E9%80%9F%E6%9F%A5/#s12-3">§12.3</a></li>
+</ul>
+<h3 id="16-3-专业级（13-题）"><a href="#16-3-专业级（13-题）" class="headerlink" title="16.3 专业级（13 题）"></a><a id="s16-3"></a>16.3 专业级（13 题）</h3><p><strong>Q33｜开发一个类似 Coze 的企业内部 AI 开发平台，整体架构设计与核心点</strong></p>
+<ul>
+<li>核心点五项：LLM 接入、流程引擎编辑器（<code>@xyflow/react</code>）、工作流节点抽象、执行沙箱（Python）、业务侧服务端。</li>
+<li>技术架构五条：模型接入（DeepSeek）、模型配置（复杂表单 <code>react-hook-form</code>）、上下文维持（PostgreSQL 向量）、流程编排（xyflow）、双端沙箱（前端 JS 低代码 + 服务端）。</li>
+<li>一句话主线：<strong>编辑器 + 协议 + 执行器 + 沙箱 + 服务化</strong>。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s6-5">§6.5</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s6-7">§6.7</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s6-8">§6.8</a></li>
+</ul>
+<p><strong>Q34｜要构建一个完整的生成式 AI 应用引擎，平台生态体系如何实现？</strong></p>
+<ul>
+<li>六大模块 + 六类节点 + 执行流程 + 三项优化（缓存、错误处理、并发执行）。</li>
+<li>节点清单要完整：开始 &#x2F; 模型 &#x2F; 插件 &#x2F; 业务逻辑 &#x2F; 子工作流 &#x2F; 结束。</li>
+<li>执行流程：输入接收 → 节点顺序执行 → 数据传递 → 结束节点返回。</li>
+<li>优化三条：高频插件加缓存、节点级错误兜底、可并行节点并发执行。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-01-%E8%83%BD%E5%8A%9B%E5%9C%B0%E5%9B%BE%E4%B8%8E%E5%BA%94%E7%94%A8%E5%9F%BA%E7%A1%80/#s3-4">§3.4</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s6-3">§6.3</a></li>
+</ul>
+<p><strong>Q35｜从零到一将已有产品 AI 智能化，详细说明架构与实践流程</strong></p>
+<ul>
+<li>先做场景盘点：AI 应用引擎、文档 AI 助手、表格助手、低代码托管、智能客服、销售运营链、AIGC 产品。</li>
+<li>六步开发流程：梳理业务关键节点 → 匹配模型 → 智能体&#x2F;复合智能体搭建 → 技术实现（LangChain &#x2F; LlamaIndex 或类扣子平台）→ 能力服务化 → 能力接入。</li>
+<li>智能体编排两条路：低代码编排式 &#x2F; 代码式（LangChain、LlamaIndex）。</li>
+<li>交互方式：blocking &#x2F; streaming。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-01-%E8%83%BD%E5%8A%9B%E5%9C%B0%E5%9B%BE%E4%B8%8E%E5%BA%94%E7%94%A8%E5%9F%BA%E7%A1%80/#s3-2">§3.2</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/#s5-6">§5.6</a></li>
+</ul>
+<p><strong>Q36｜作为前端 Leader，从零到一设计服务端渲染体系，并完成老 SPA 重构，详述设计与实践</strong></p>
+<ul>
+<li>四要素：路由系统、SSR&#x2F;SSG 选择、数据获取与传递、客户端水合；配 React hydrate &#x2F; <code>renderToString</code>。</li>
+<li>技术要点：Vite + React + Express + <code>renderToString</code> + <code>hydrate</code>。</li>
+<li>重构路径五步：路由收敛 → 数据预取层上移 → 样式提取 → 状态序列化注入 → 灰度切流。</li>
+<li>加分：能说出自研框架（类 Next）的目录与职责。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-04-%E5%90%8C%E6%9E%84%E6%B8%B2%E6%9F%93%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%8C%96/#s8-5">§8.5</a></li>
+</ul>
+<p><strong>Q37｜作为前端 Leader，设计类 Dify AI 应用引擎平台的完整闭环；公司 AI 项目从立项到落地你参与了多少？</strong></p>
+<ul>
+<li>用「立项阶段 + 研发落地阶段」双段式，每段分<strong>业务产出</strong>与<strong>技术产出</strong>。</li>
+<li>业务产出用数字说话：审查时间 45 min → 15 min、满意度 95%、V2 Roadmap。</li>
+<li>技术产出要具体：文档-视图-控制器分层、虚拟滚动、文本坐标体系做像素级高亮、流式解析与错误恢复。</li>
+<li>沉淀：<code>react-ai-stream-parser</code> 组件库 + 《前端 AI 应用开发规范》。<br>→ <a href="#s16-6">§16.6</a> 案例 A（完整模板）</li>
+</ul>
+<p><strong>Q38｜中大厂的前端 AI 化：基于 LangChain.js 与 Qwen-VL 的多模态根因分析引擎如何实现？</strong></p>
+<ul>
+<li>链路：监控数据 + 录屏&#x2F;截图（rrweb）→ 多模态模型（<code>qwen3-vl:2b</code>）→ 根因定位 → 定位到代码 → 自动修复提 PR。</li>
+<li>关键设计：把团队开发规范与流程投喂给模型；历史故障做 RAG；多模态输入按「文本 + 图像 + 视频」三类设计。</li>
+<li>本地调试闭环：Ollama 起模型，先跑通再上服务。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-04-%E5%90%8C%E6%9E%84%E6%B8%B2%E6%9F%93%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%8C%96/#s9-6">§9.6</a></li>
+</ul>
+<p><strong>Q39｜如果让你负责 Coze 开发，说架构思路、微服务架构、关键业务流程与插件生态</strong></p>
+<ul>
+<li>起点：coze-studio 是「单体作坊」（Docker Compose 打包），面向企业&#x2F;公有云必须转「工业化生产线」（云原生 + 微服务）。</li>
+<li>理念：<strong>一个中心，四大体系</strong>（编排执行引擎；应用构建、插件生态、多租户数据、可观测运维）。</li>
+<li>六个微服务：API 网关、用户租户中心、Bot 配置中心、插件市场、数据与向量服务、AI 编排执行引擎（gRPC 内部通信）。</li>
+<li>两大重难点：前端 DAG 编排（状态管理、序列化、实时调试）；后端流式执行引擎（拓扑排序、异步非阻塞、流式处理、安全沙箱）。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s6-8">§6.8</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s6-9">§6.9</a></li>
+</ul>
+<p><strong>Q40｜基于 openclaw 的分层架构理念，实现含 Agent Loop（工具调用 + 流式输出）的最小可运行骨架</strong></p>
+<ul>
+<li>五层表要能背：集成层（Ollama + 流式协议）、知识层（内存 + 文本拆分，预留 PG）、工具层（d3-dsv + Zod）、Agent 编排层（Agent Loop）、UI 层（Express SSE）。</li>
+<li>三条核心逻辑：SSE 流式对接模型 <code>stream</code>、<code>AgentExecutor</code> 闭环、最小依赖可运行。</li>
+<li>强调「预留接口但不实现」的克制，这是 POC 的正确形态。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/#s5-5">§5.5</a></li>
+</ul>
+<p><strong>Q41｜实现一个对标 LangGraph 的 TypeScript AI Agents 框架，说架构、模块划分与源码级难点</strong></p>
+<ul>
+<li>前置：图论基础（节点、边、有向图）。</li>
+<li>六要素：状态机驱动、图执行引擎、异步安全与竞态避免、状态持久化与 Checkpoint、子图嵌套、执行监控与调试。</li>
+<li>难点按序展开：拓扑排序与并发调度、状态快照与恢复、断点续跑的幂等性、错误重规划。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/#s5-5">§5.5</a></li>
+</ul>
+<p><strong>Q42｜如果你是 n8n &#x2F; Dify &#x2F; 扣子平台的作者，说工程化架构与编辑器执行器落地的完整链路</strong></p>
+<ul>
+<li>五步：定义 DSL → 编辑层（状态管理 + 插件化）→ 执行器（拓扑排序、动态调度、沙箱隔离）→ AI 特化（变量提取、上下文流转、流式输出）→ 工程化闭环（测试）。</li>
+<li>每步都要能补一句「为什么这一步不能省」。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s6-4">§6.4</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s6-9">§6.9</a></li>
+</ul>
+<p><strong>Q43｜假如你是 LangChain.js 框架，从零到一设计一个 AI Agent 开发框架，说架构与核心实现</strong></p>
+<ul>
+<li>分层：接口层（Model &#x2F; Tool 抽象）→ 原子能力层（Prompt、Splitter、Parser、Retriever）→ 编排层（Chain &#x2F; Graph 执行器）→ 扩展层（插件、MCP、Skills）。</li>
+<li>关键决策：为什么要标准化接口（换供应商不动业务）、为什么要有两种编排（线性 vs 图）、如何做流式与回调（Callback + Stream）。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/#s5-2">§5.2</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/#s5-5">§5.5</a></li>
+</ul>
+<p><strong>Q44｜字节、阿里等中大厂基于 monorepo 的 AI 全栈工程架构最佳实践，做多模态应用有哪些关键节点？</strong></p>
+<ul>
+<li>四步：确定业务（文生文&#x2F;图&#x2F;视频、text2sql、text2code、混排、自动剪辑、数字人）→ 选模型（自部署 &#x2F; SaaS）→ 规划链路（workflow or agent）→ 选技术栈（前端框架、服务框架、PG + ORM、容器编排、AI 层）。</li>
+<li>monorepo 收益要落到「数据契约不失联」上。</li>
+<li>加分：能说出 Turborepo 的增量构建与远程缓存机制。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-04-%E5%90%8C%E6%9E%84%E6%B8%B2%E6%9F%93%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%8C%96/#s10-4">§10.4</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-04-%E5%90%8C%E6%9E%84%E6%B8%B2%E6%9F%93%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%8C%96/#s10-5">§10.5</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-01-%E8%83%BD%E5%8A%9B%E5%9C%B0%E5%9B%BE%E4%B8%8E%E5%BA%94%E7%94%A8%E5%9F%BA%E7%A1%80/#s2-5">§2.5</a></li>
+</ul>
+<p><strong>Q45｜给你一个小时，用 Vibe Coding 从零交付一个类飞书亿级协同在线表格应用</strong></p>
+<ul>
+<li>三份文档递进：项目规划 → 新特性开发规范 → <strong>核心功能计划</strong>（指明技术实现）。</li>
+<li>核心功能要具体：Canvas 底层绘制 + 遮罩 div 借用滚动条做可视区渲染 + 单元格插件化协议；Next.js + shadcn + Tailwind；Prisma + PostgreSQL；docker compose 起基础设施。</li>
+<li>收尾：测试 + lint + 检查规划执行偏差。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-05-%E6%A1%8C%E9%9D%A2%E7%AB%AF%E4%B8%8ETS%E9%80%9F%E6%9F%A5/#s12-3">§12.3</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-05-%E6%A1%8C%E9%9D%A2%E7%AB%AF%E4%B8%8ETS%E9%80%9F%E6%9F%A5/#s12-4">§12.4</a></li>
+</ul>
+<h3 id="16-4-专家级（3-题）"><a href="#16-4-专家级（3-题）" class="headerlink" title="16.4 专家级（3 题）"></a><a id="s16-4"></a>16.4 专家级（3 题）</h3><p><strong>Q46｜站在前端架构师角度，说明协同编辑器原理、Yjs 实现，以及 CRDT &#x2F; OT 的概念与实现</strong></p>
+<ul>
+<li>从「一致性」这个目标切入，再讲两大理论。</li>
+<li>OT：中心服务器 + 版本校验 + <code>Transform(OpC, OpA)</code> 转换（要能画出时序图）。</li>
+<li>CRDT：生成 Update → 中转 → 本地合并；面向状态 vs 面向操作。</li>
+<li>Yjs 五特性：Item + 双向链表、全局唯一 ID + 逻辑时钟、确定性排序、Tombstone、Struct 二进制编码。</li>
+<li>优缺点各两条（元数据开销、意图保留问题）。</li>
+<li>结论：<strong>首选 CRDT</strong>，OT 在敏捷、高可用、离线体验面前已不合时宜。</li>
+<li>附带技术储备：算法、3D 数字孪生（WebGL&#x2F;WASM、正射影像与倾斜摄影、Tile 与模型处理、PBR 与粒子）、全面性能优化（打包构建、资源、应用、缓存四层）。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s7-4">§7.4</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s7-5">§7.5</a></li>
+</ul>
+<p><strong>Q47｜假设你是架构师，实现企业内部类 Coze &#x2F; Dify 垂直业务 AI 应用开发平台，说明需求及实现</strong></p>
+<ul>
+<li>需求侧：先讲清业务痛点与角色（业务方、开发者、运维），再落到功能清单。</li>
+<li>平台侧：插件机制（统一接口 + 协议生态）、工作流机制（节点顺序执行）、触发器机制、知识库节点。</li>
+<li>节点体系与「如何选节点」四原则：任务类型、模块化、依赖关系、性能考虑。</li>
+<li>编辑器三能力：拖拽节点、设置属性、连接节点。</li>
+<li>最后用完整项目案例收尾（立项 → 研发 → 沉淀）。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-01-%E8%83%BD%E5%8A%9B%E5%9C%B0%E5%9B%BE%E4%B8%8E%E5%BA%94%E7%94%A8%E5%9F%BA%E7%A1%80/#s3-4">§3.4</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-03-%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91/#s6-3">§6.3</a>、<a href="#s16-6">§16.6</a> 案例 A</li>
+</ul>
+<p><strong>Q48｜开发类似 openclaw 的系统级 AI 智能体，有明确实现方案吗？怎样让 AI 在企业工作流真正落地？</strong></p>
+<ul>
+<li>模块化：monorepo（shared &#x2F; plugins &#x2F; web &#x2F; cli &#x2F; core），core 内含 agent、plugin-system、utils。</li>
+<li>五模块职责与扩展点：cli（多命令、交互配置）、core（沙箱、权限、长程记忆、可观测）、plugins（市场、权限分级、MCP 适配）、shared（统一 Schema、错误码、通信协议）、web（任务看板、执行追踪、人机干预、多租户）。</li>
+<li>插件三件事：定义规范、扫描加载注册、动态注入。</li>
+<li>企业级升级六项：权限管控（RBAC&#x2F;ABAC）、安全沙箱（vm2&#x2F;isolated-vm）、长程记忆（向量库）、可观测（日志&#x2F;追踪&#x2F;监控）、多模态感知（视觉&#x2F;文档解析）、API 网关。</li>
+<li>标准演进：MCP（统一工具与上下文协议，插件系统既可是 Client 也可是 Server）+ Skills（预定义多步流程与 Prompt 模板组合，含 <code>SKILL.md</code> + <code>scripts</code> + <code>references</code>）。</li>
+<li>落地四条能力：脚手架、服务端、前端界面、AI 应用引擎层。<br>→ <a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/#s4-6">§4.6</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/#s5-4">§5.4</a>、<a href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-02-RAG%E4%B8%8EAgent/#s5-5">§5.5</a></li>
+</ul>
+<h3 id="16-5-高频追问速答表"><a href="#16-5-高频追问速答表" class="headerlink" title="16.5 高频追问速答表"></a><a id="s16-5"></a>16.5 高频追问速答表</h3><table>
+<thead>
+<tr>
+<th>追问</th>
+<th>一句话答案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CRDT 还是 OT？</td>
+<td>首选 CRDT：去中心化、支持离线、服务端轻；OT 转换函数太复杂且强依赖中心服务器</td>
+</tr>
+<tr>
+<td>内存型还是服务型工作流？</td>
+<td>前者快、无持久化，适合前端预览；后者可断点续传、能人工审批，适合长链路业务</td>
+</tr>
+<tr>
+<td>SSE 还是 WebSocket？</td>
+<td>单向流式推送用 SSE（简单、自动重连）；需要双向或低延迟交互用 WS</td>
+</tr>
+<tr>
+<td>pnpm 为什么快？</td>
+<td>硬链接只存一份 + 非扁平结构屏蔽幽灵依赖</td>
+</tr>
+<tr>
+<td>Turborepo 凭什么快？</td>
+<td>任务管线 + 本地&#x2F;远程缓存命中，只重跑受影响的包</td>
+</tr>
+<tr>
+<td>ClickHouse 为什么适合监控？</td>
+<td>写多读少、按时间聚合；列存 + 向量化执行，亿级 Group By 秒级出结果</td>
+</tr>
+<tr>
+<td>为什么要 Kafka？</td>
+<td>解耦生产与消费速度，削峰填谷；按 session 分区保时序</td>
+</tr>
+<tr>
+<td>为什么选 SSR 做 AI 应用？</td>
+<td>token 不能落前端 + 首屏与 SEO + 全栈一体提效</td>
+</tr>
+<tr>
+<td>沙箱怎么选？</td>
+<td>强隔离用 Docker（慢）、轻隔离用 WASM（快）、进程内用 vm2&#x2F;isolated-vm（需谨慎）</td>
+</tr>
+<tr>
+<td>前端在 Agent 里的不可替代性？</td>
+<td>过程可视化、人机干预、流式渲染、引用溯源——全是前端活</td>
+</tr>
+<tr>
+<td>LCP &#x2F; CLS &#x2F; INP 分别衡量什么？</td>
+<td>加载性能 &#x2F; 视觉稳定性（≤0.1）&#x2F; 交互响应速度</td>
+</tr>
+<tr>
+<td>LangChain 和 LangGraph 怎么选？</td>
+<td>线性简单用 LangChain，有状态、分支、循环、可恢复用 LangGraph</td>
+</tr>
+<tr>
+<td>为什么提示词要结构化输出？</td>
+<td>免去字符串解析，直接绑定状态，前端最实用的一招</td>
+</tr>
+<tr>
+<td>低代码为什么能约束 AI？</td>
+<td>DSL 相当于给 AI 加一层枷锁，生成物可被编译器校验后再执行</td>
+</tr>
+</tbody></table>
+<h3 id="16-6-案例-A：项目介绍模板（可直接背）"><a href="#16-6-案例-A：项目介绍模板（可直接背）" class="headerlink" title="16.6 案例 A：项目介绍模板（可直接背）"></a><a id="s16-6"></a>16.6 案例 A：项目介绍模板（可直接背）</h3><blockquote>
+<p>适用于「公司 AI 项目从立项到落地你参与了多少」这类题。<strong>结构固定：立项阶段（业务产出 + 技术产出）→ 研发落地阶段（业务产出 + 技术产出）→ 技术资产沉淀。</strong></p>
+</blockquote>
+<p>作为前端 Leader，我深度参与了公司级 AI 项目「智能合同分析助手」的全链路过程，主要产出如下：</p>
+<p><strong>立项阶段（参与度 80%）</strong></p>
+<ul>
+<li>业务产出：<ul>
+<li>与法务、销售团队共同做需求访谈，识别核心痛点：审查效率低、风险点易遗漏。</li>
+<li>主导编写产品原型与交互设计稿，通过可交互 Demo 向管理层展示核心价值与体验，成功推动立项；强调「信息高亮」「风险可视化」「人机协同修订」等前端交互价值点。</li>
+</ul>
+</li>
+<li>技术产出：<ul>
+<li>技术预研（PoC），与后端架构师共同验证「RAG + 少量微调模型」方案的可行性。</li>
+<li>输出《前端技术选型报告》，确定 React + SSE 技术栈，并预估人力成本与时间线。</li>
+</ul>
+</li>
+</ul>
+<p><strong>研发与落地阶段（参与度 100%）</strong></p>
+<ul>
+<li>业务产出：<ul>
+<li>V1 上线后，法务团队单份合同平均审查时间从约 45 分钟缩短至约 15 分钟。</li>
+<li>上线「风险条款一键定位与解释」功能，用户满意度约 95%。</li>
+<li>与产品经理共同制定 V2 Roadmap，规划「多版本合同对比分析」等高级功能。</li>
+</ul>
+</li>
+<li>技术产出：<ul>
+<li>主导前端架构：采用「文档 - 视图 - 控制器」分离。文档层负责与后端流式接口通信并管理原始数据；视图层高效渲染长篇合同文本与 AI 高亮结果；控制器层处理复杂交互逻辑。</li>
+<li>攻克三个难点：<ul>
+<li>长文档渲染性能：虚拟滚动，100 页以上 PDF 秒级加载与流畅滚动。</li>
+<li>高精度文本定位：与后端协作定义文本坐标体系，实现风险条款的像素级高亮。</li>
+<li>高并发流式解析：设计稳健的解析与错误恢复机制，网络抖动或响应缺失时前端平滑回退并提示。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>技术资产沉淀：<ul>
+<li>封装内部 <code>react-ai-stream-parser</code> 组件库，统一处理各类 LLM 流式响应，已在公司另外两个项目复用。</li>
+<li>编写《前端 AI 应用开发规范》，统一状态管理、API 调用、错误处理的最佳实践。</li>
+</ul>
+</li>
+</ul>
+<p><strong>收尾句</strong>：通过这个项目，不仅交付了高价值业务产品，更在团队内部建立了可复用的前端 AI 工程化体系与方法论，为后续 AI 项目打下基础。</p>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            其他文章
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/2026/10/20/AI/AI%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-05-%E6%A1%8C%E9%9D%A2%E7%AB%AF%E4%B8%8ETS%E9%80%9F%E6%9F%A5/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">AI 应用知识体系（五）：桌面端、全栈整合与 TypeScript 速查</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>26/10/20</li>
+                <li>09:46</li>
+                <li>AI</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024.10.30 - 2026</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">UUOVO</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                主题 - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.3
+            </span>
+        </div>
+      
+
+    
+        <div class="trm-footer-item blog-run-long"></div>
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        目录导航
+				<span id="post-toc-top">
+					置顶
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="十四、音视频与 FFmpeg 基础"><a rel="nofollow" class="trm-toc-link" href="#十四、音视频与-FFmpeg-基础"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">十四、音视频与 FFmpeg 基础</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="14.1 三个必须先分清的概念：容器、编码、协议"><a rel="nofollow" class="trm-toc-link" href="#14-1-三个必须先分清的概念：容器、编码、协议"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">14.1 三个必须先分清的概念：容器、编码、协议</span></a></li><li class="trm-toc-item trm-toc-level-3" title="14.2 像素、色彩与压缩参数"><a rel="nofollow" class="trm-toc-link" href="#14-2-像素、色彩与压缩参数"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">14.2 像素、色彩与压缩参数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="14.3 命令结构与参数位置"><a rel="nofollow" class="trm-toc-link" href="#14-3-命令结构与参数位置"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">14.3 命令结构与参数位置</span></a></li><li class="trm-toc-item trm-toc-level-3" title="14.4 高频操作（可直接抄）"><a rel="nofollow" class="trm-toc-link" href="#14-4-高频操作（可直接抄）"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">14.4 高频操作（可直接抄）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="14.5 滤镜系统：线性链与非线性链"><a rel="nofollow" class="trm-toc-link" href="#14-5-滤镜系统：线性链与非线性链"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">14.5 滤镜系统：线性链与非线性链</span></a></li><li class="trm-toc-item trm-toc-level-3" title="14.6 视觉增强"><a rel="nofollow" class="trm-toc-link" href="#14-6-视觉增强"><span class="trm-toc-number">1.6.</span> <span class="trm-toc-text">14.6 视觉增强</span></a></li><li class="trm-toc-item trm-toc-level-3" title="14.7 色彩空间：Canvas 帧 → 编码器"><a rel="nofollow" class="trm-toc-link" href="#14-7-色彩空间：Canvas-帧-→-编码器"><span class="trm-toc-number">1.7.</span> <span class="trm-toc-text">14.7 色彩空间：Canvas 帧 → 编码器</span></a></li><li class="trm-toc-item trm-toc-level-3" title="14.8 前端与 AI 场景落地"><a rel="nofollow" class="trm-toc-link" href="#14-8-前端与-AI-场景落地"><span class="trm-toc-number">1.8.</span> <span class="trm-toc-text">14.8 前端与 AI 场景落地</span></a></li><li class="trm-toc-item trm-toc-level-3" title="14.9 踩坑与经验"><a rel="nofollow" class="trm-toc-link" href="#14-9-踩坑与经验"><span class="trm-toc-number">1.9.</span> <span class="trm-toc-text">14.9 踩坑与经验</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="十五、附录"><a rel="nofollow" class="trm-toc-link" href="#十五、附录"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">十五、附录</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="15.1 学习资源索引"><a rel="nofollow" class="trm-toc-link" href="#15-1-学习资源索引"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">15.1 学习资源索引</span></a></li><li class="trm-toc-item trm-toc-level-3" title="15.2 本机案例路径索引"><a rel="nofollow" class="trm-toc-link" href="#15-2-本机案例路径索引"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">15.2 本机案例路径索引</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="十六、面试题库"><a rel="nofollow" class="trm-toc-link" href="#十六、面试题库"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">十六、面试题库</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="16.1 初中级（16 题）"><a rel="nofollow" class="trm-toc-link" href="#16-1-初中级（16-题）"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">16.1 初中级（16 题）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="16.2 中高级（16 题）"><a rel="nofollow" class="trm-toc-link" href="#16-2-中高级（16-题）"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">16.2 中高级（16 题）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="16.3 专业级（13 题）"><a rel="nofollow" class="trm-toc-link" href="#16-3-专业级（13-题）"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">16.3 专业级（13 题）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="16.4 专家级（3 题）"><a rel="nofollow" class="trm-toc-link" href="#16-4-专家级（3-题）"><span class="trm-toc-number">3.4.</span> <span class="trm-toc-text">16.4 专家级（3 题）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="16.5 高频追问速答表"><a rel="nofollow" class="trm-toc-link" href="#16-5-高频追问速答表"><span class="trm-toc-number">3.5.</span> <span class="trm-toc-text">16.5 高频追问速答表</span></a></li><li class="trm-toc-item trm-toc-level-3" title="16.6 案例 A：项目介绍模板（可直接背）"><a rel="nofollow" class="trm-toc-link" href="#16-6-案例-A：项目介绍模板（可直接背）"><span class="trm-toc-number">3.6.</span> <span class="trm-toc-text">16.6 案例 A：项目介绍模板（可直接背）</span></a></li></ol></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn hidden-md" data-title="单栏和双栏切换" onclick="asyncFun.switchSingleColumn()">
+            <i class="iconfont fas fa-arrows-alt-h"></i>
+        </div>
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+    <div class="trm-search-popup">
+        <div class="trm-search-wrapper">
+            <div class="form trm-search-form">
+                <div class="trm-search-input-icon">
+                    <i class="iconfont fas fa-search"></i>
+                </div>
+                <input class="trm-search-input" type="text" placeholder="搜索文章...">
+                <div class="trm-search-btn-close">
+                    <i class="iconfont fas fa-times"></i>
+                </div>
+            </div>
+            <div class="trm-search-result-container">
+                <div class="trm-search-empty">
+                    请输入关键词进行搜索
+                </div>
+            </div>
+            <div class="trm-search-footer">
+                <div class="trm-search-stats"></div>
+                <ul class="trm-search-commands">
+                    <li>
+                        <kbd class="command-palette-commands-key">
+                            <svg width="15" height="15" aria-label="Escape key" role="img">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.2">
+                                    <path
+                                        d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956">
+                                    </path>
+                                </g>
+                            </svg>
+                        </kbd>
+                        <span class="command-palette-Label">to close</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+<script src="https://unpkg.com/swiper@4.5.1/dist/js/swiper.min.js"></script>
+
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.3"></script>
+    
+
+    
+        
+<script src="https://unpkg.com/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+
+        <script src="/js/plugins/local_search.js?v=2.2.3"></script>
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+			<script src="/js/plugins/danmu.js?v=2.2.3"></script>
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.3"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
+
+    
+
+
+
+</body>
+
+</html>

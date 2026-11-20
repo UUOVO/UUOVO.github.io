@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="启动流程环境准备 小程序运行进程及运行环境的准备 代码包下载、校验及初始化 视图层系统组件、webview容器和原生组件的初始化 逻辑层JS引擎初始化及域创建  代码注入 框架及第三方基础代码的初始化 — 小程序基础库、扩展库、插件，自定义组件 开发者代码注入 开发者逻辑层代码 — 派发App.onLaunch还有App.onShow这些事件 开发者视图层代码 — 公共代码以及页面代码的注入">
+<meta name="description" content="按启动流程、启动方式与具体优化手段三段整理小程序性能优化，覆盖代码注入、渲染、分包、setData 与图片处理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="微信小程序-小程序优化 | 学习笔记">
+<meta property="og:title" content="小程序优化 | 学习笔记">
 <meta property="og:url" content="http://example.com/2024/11/04/WeChatMini/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BC%98%E5%8C%96/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="启动流程环境准备 小程序运行进程及运行环境的准备 代码包下载、校验及初始化 视图层系统组件、webview容器和原生组件的初始化 逻辑层JS引擎初始化及域创建  代码注入 框架及第三方基础代码的初始化 — 小程序基础库、扩展库、插件，自定义组件 开发者代码注入 开发者逻辑层代码 — 派发App.onLaunch还有App.onShow这些事件 开发者视图层代码 — 公共代码以及页面代码的注入">
+<meta property="og:description" content="按启动流程、启动方式与具体优化手段三段整理小程序性能优化，覆盖代码注入、渲染、分包、setData 与图片处理">
 <meta property="og:locale">
-<meta property="article:published_time" content="2024-11-04T01:57:32.100Z">
-<meta property="article:modified_time" content="2025-07-24T06:40:43.776Z">
+<meta property="article:published_time" content="2024-11-04T01:57:32.000Z">
+<meta property="article:modified_time" content="2026-11-19T06:39:32.501Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="知识">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <meta name="keywords" content="微信小程序">
 
 
-<title >微信小程序-小程序优化 | 学习笔记</title>
+<title >小程序优化 | 学习笔记</title>
 
 <!-- Favicon -->
 
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-24 14:40:43"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-19 14:39:32"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -83,6 +83,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -197,13 +199,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -239,7 +241,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -257,13 +259,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -385,7 +387,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            微信小程序-小程序优化 | 学习笔记
+                            小程序优化 | 学习笔记
                         </h1>
 
                         
@@ -532,355 +534,379 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>结论先行：小程序的性能问题基本都能落回两个阶段——启动阶段（环境准备、代码注入、首屏渲染）和运行阶段（逻辑层与视图层之间的 <code>setData</code> 通信与重渲染）。所以优化也按这个顺序展开：先看启动流程里哪些节点可以压缩，再区分冷启动与热启动，最后按”启动期手段”和”运行期手段”逐项落地，包括骨架屏、分包异步化、虚拟列表、<code>setData</code> 合并、缓存与图片压缩等。</p>
+<span id="more"></span>
 
-<h2 id="启动流程"><a href="#启动流程" class="headerlink" title="启动流程"></a>启动流程</h2><h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><ul>
-<li>小程序运行进程及运行环境的准备</li>
-<li>代码包下载、校验及初始化</li>
-<li>视图层系统组件、webview容器和原生组件的初始化</li>
-<li>逻辑层JS引擎初始化及域创建</li>
+<h2 id="背景与场景"><a href="#背景与场景" class="headerlink" title="背景与场景"></a>背景与场景</h2><p>用户感知到的”小程序慢”，通常表现为点开白屏久、首页数据出得慢、列表滑动卡顿。这些现象对应的其实是不同阶段：白屏久多半在代码注入和首屏渲染，滑不动多半在 <code>setData</code> 传得太多或节点太多。因此先理解启动流程，再谈具体手段，才不会盲目优化。</p>
+<h2 id="一、启动流程"><a href="#一、启动流程" class="headerlink" title="一、启动流程"></a>一、启动流程</h2><h3 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1. 环境准备"></a>1. 环境准备</h3><ul>
+<li>小程序运行进程及运行环境的准备。</li>
+<li>代码包下载、校验及初始化。</li>
+<li>视图层系统组件、webview 容器和原生组件的初始化。</li>
+<li>逻辑层 JS 引擎初始化及域创建。</li>
 </ul>
-<h3 id="代码注入"><a href="#代码注入" class="headerlink" title="代码注入"></a>代码注入</h3><ul>
-<li>框架及第三方基础代码的初始化 — <span class="desc">小程序基础库、扩展库、插件，自定义组件</span></li>
-<li>开发者代码注入<ul>
-<li>开发者逻辑层代码 — <span class="desc">派发App.onLaunch还有App.onShow这些事件</span></li>
-<li>开发者视图层代码 — <span class="desc">公共代码以及页面代码的注入</span></li>
+<h3 id="2-代码注入"><a href="#2-代码注入" class="headerlink" title="2. 代码注入"></a>2. 代码注入</h3><ul>
+<li>框架及第三方基础代码的初始化 —— <span class="desc">小程序基础库、扩展库、插件、自定义组件</span>。</li>
+<li>开发者代码注入：<ul>
+<li>开发者逻辑层代码 —— <span class="desc">派发 App.onLaunch 以及 App.onShow 这些事件</span>。</li>
+<li>开发者视图层代码 —— <span class="desc">公共代码以及页面代码的注入</span>。</li>
 </ul>
 </li>
 </ul>
-<h3 id="首屏渲染"><a href="#首屏渲染" class="headerlink" title="首屏渲染"></a>首屏渲染</h3><ul>
-<li>逻辑层页面的初始化，这个时间点是initDataSendTime的一个触发时机，会派发Page.onLoad事件</li>
-<li>视图层时间点走到viewLayerReaderStartTime，会派发Page.onShow事件</li>
-<li>开发者代码从后端拉取数据，准备data数据</li>
-<li>页面的整体的渲染</li>
-<li>视图层时间点走到viewLayerReaderEndTime，会派发Page.onReady事件，标志着首屏渲染的完成</li>
+<h3 id="3-首屏渲染"><a href="#3-首屏渲染" class="headerlink" title="3. 首屏渲染"></a>3. 首屏渲染</h3><ul>
+<li>逻辑层页面的初始化，这个时间点是 initDataSendTime 的一个触发时机，会派发 <code>Page.onLoad</code> 事件。</li>
+<li>视图层时间点走到 viewLayerReaderStartTime，会派发 <code>Page.onShow</code> 事件。</li>
+<li>开发者代码从后端拉取数据，准备 <code>data</code> 数据。</li>
+<li>页面的整体渲染。</li>
+<li>视图层时间点走到 viewLayerReaderEndTime，会派发 <code>Page.onReady</code> 事件，标志首屏渲染完成。</li>
 </ul>
-<h2 id="启动方式"><a href="#启动方式" class="headerlink" title="启动方式"></a>启动方式</h2><h3 id="冷启动"><a href="#冷启动" class="headerlink" title="冷启动"></a>冷启动</h3><ul>
-<li>用户设备上第一次打开或销毁后再打开小程序，进入后台<span class="key_words">『30分钟以后』</span>再次进入前台冷启动</li>
-</ul>
-<h3 id="热启动"><a href="#热启动" class="headerlink" title="热启动"></a>热启动</h3><ul>
-<li>小程序启动的一种优化机制，小程序进入后台<span class="key_words">『30分钟以内』</span>再次进入前台，可以直接从后台状态然后恢复到前台，前面的启动流程都不会执行</li>
-</ul>
-<h2 id="小程序性能的优化"><a href="#小程序性能的优化" class="headerlink" title="小程序性能的优化"></a>小程序性能的优化</h2><h3 id="冷启动性能的优化"><a href="#冷启动性能的优化" class="headerlink" title="冷启动性能的优化"></a>冷启动性能的优化</h3><h4 id="涉及的生命周期函数"><a href="#涉及的生命周期函数" class="headerlink" title="涉及的生命周期函数"></a>涉及的生命周期函数</h4><ul>
-<li>App.onLaunch: 监听小程序初始化 — <span class="desc">启动流程，一次性</span></li>
-<li>App.onHide：监听小程序切后台 — <span class="desc">运行时性能</span></li>
-<li>App.onShow：监听小程序启动或切前台 — <span class="desc">视图显示时派发，重复派发与启动流程相关的事件,运行时性能</span></li>
+<h2 id="二、启动方式"><a href="#二、启动方式" class="headerlink" title="二、启动方式"></a>二、启动方式</h2><h3 id="1-冷启动"><a href="#1-冷启动" class="headerlink" title="1. 冷启动"></a>1. 冷启动</h3><p>用户设备上第一次打开小程序，或小程序被销毁后再次打开；以及进入后台<span class="key_words">『30 分钟以后』</span>再次进入前台，都属于冷启动。</p>
+<h3 id="2-热启动"><a href="#2-热启动" class="headerlink" title="2. 热启动"></a>2. 热启动</h3><p>小程序启动的一种优化机制：小程序进入后台<span class="key_words">『30 分钟以内』</span>再次进入前台，可以直接从后台状态恢复到前台，前面的启动流程都不会执行。</p>
+<h2 id="三、具体优化手段"><a href="#三、具体优化手段" class="headerlink" title="三、具体优化手段"></a>三、具体优化手段</h2><h3 id="3-1-冷启动性能优化"><a href="#3-1-冷启动性能优化" class="headerlink" title="3.1 冷启动性能优化"></a>3.1 冷启动性能优化</h3><h4 id="涉及的应用生命周期函数"><a href="#涉及的应用生命周期函数" class="headerlink" title="涉及的应用生命周期函数"></a>涉及的应用生命周期函数</h4><ul>
+<li><code>App.onLaunch</code>：监听小程序初始化 —— <span class="desc">启动流程，一次性</span>。</li>
+<li><code>App.onHide</code>：监听小程序切后台 —— <span class="desc">运行时性能</span>。</li>
+<li><code>App.onShow</code>：监听小程序启动或切前台 —— <span class="desc">视图显示时派发，会重复派发与启动流程相关的事件，属于运行时性能</span>。</li>
 </ul>
 <h4 id="涉及的页面生命周期函数"><a href="#涉及的页面生命周期函数" class="headerlink" title="涉及的页面生命周期函数"></a>涉及的页面生命周期函数</h4><ul>
-<li>Page.onLoad：监听页面加载 — <span class="desc">启动流程，一次性</span></li>
-<li>Page.onShow：监听页面显示 — <span class="desc">视图显示时派发，重复派发与启动流程优化相关的一次性事件</span></li>
-<li>Page.onHide：监听页面隐藏 — <span class="desc">运行时性能</span></li>
-<li>Page.onReady：监听页面初次渲染完成 — <span class="desc">启动流程，一次性</span></li>
-<li>Page.onUnload：监听页面卸载 — <span class="desc">运行时性能</span></li>
+<li><code>Page.onLoad</code>：监听页面加载 —— <span class="desc">启动流程，一次性</span>。</li>
+<li><code>Page.onShow</code>：监听页面显示 —— <span class="desc">视图显示时派发，会重复派发与启动流程优化相关的一次性事件</span>。</li>
+<li><code>Page.onHide</code>：监听页面隐藏 —— <span class="desc">运行时性能</span>。</li>
+<li><code>Page.onReady</code>：监听页面初次渲染完成 —— <span class="desc">启动流程，一次性</span>。</li>
+<li><code>Page.onUnload</code>：监听页面卸载 —— <span class="desc">运行时性能</span>。</li>
 </ul>
-<h4 id="顺着整个过程和涉及的生命周期函数的可优化节点"><a href="#顺着整个过程和涉及的生命周期函数的可优化节点" class="headerlink" title="顺着整个过程和涉及的生命周期函数的可优化节点"></a>顺着整个过程和涉及的生命周期函数的可优化节点</h4><ul>
-<li>环境准备阶段、拉取小程序基本信息阶段 — <span class="desc">拉取信息是同步(用户使用越多启动性能越好，提高轮询机制的命中率)</span></li>
-<li>紧跟小程序基础库更新 — <span class="desc">提高预加载环境的命中率</span></li>
-<li>代码注入阶段 — <span class="desc">减少代码的注入量和复杂度，以期减少启动时间</span></li>
-<li>合适的生命周期函数节点 — <span class="desc">首屏渲染要从后端拉取数据并在首页进行渲染时，使用异步转同步的编程范式以及使用并发复合命令，在多个文件里边对齐这个代码的执行点</span></li>
-<li>Page.onReady时间派发、首屏渲染完成阶段 — <span class="desc">使用动态数据加载的，使用骨架屏技巧、压缩图片、提高服务器接口响应效率和数据传输效率</span></li>
-<li>数据预拉去和周期性更新机制 — <span class="desc">微信提供了数据预加载周期性更新机制</span></li>
-<li>低端机首次渲染需要较长时间的情况下 — <span class="desc">微信提供了初始渲染缓存机制</span></li>
+<h4 id="顺着流程可优化的节点"><a href="#顺着流程可优化的节点" class="headerlink" title="顺着流程可优化的节点"></a>顺着流程可优化的节点</h4><ul>
+<li>环境准备阶段、拉取小程序基本信息阶段 —— <span class="desc">拉取信息是同步的，用户使用越多启动性能越好，可提高轮询机制的命中率</span>。</li>
+<li>紧跟小程序基础库更新 —— <span class="desc">提高预加载环境的命中率</span>。</li>
+<li>代码注入阶段 —— <span class="desc">减少代码的注入量和复杂度，以期减少启动时间</span>。</li>
+<li>合适的生命周期函数节点 —— <span class="desc">首屏渲染要从后端拉取数据并在首页渲染时，使用异步转同步的编程范式以及并发复合命令，在多个文件里对齐代码的执行点</span>。</li>
+<li><code>Page.onReady</code> 时间派发、首屏渲染完成阶段 —— <span class="desc">使用动态数据加载的，可以采用骨架屏技巧、压缩图片、提高服务器接口响应效率和数据传输效率</span>。</li>
+<li>数据预拉取和周期性更新机制 —— <span class="desc">微信提供了数据预拉取与周期性更新机制</span>。</li>
+<li>低端机首次渲染需要较长时间的情况下 —— <span class="desc">微信提供了初始渲染缓存机制</span>。</li>
 </ul>
-<h3 id="运行时渲染性能的优化"><a href="#运行时渲染性能的优化" class="headerlink" title="运行时渲染性能的优化"></a>运行时渲染性能的优化</h3><h4 id="双线程运行机制"><a href="#双线程运行机制" class="headerlink" title="双线程运行机制"></a>双线程运行机制</h4><ul>
-<li>微信小程序可以看作是由逻辑层、视图层两个线程协同完成运行的</li>
-<li><span class="key_words">『逻辑层负责执行JS代码，视图层负责渲染UI页面。』</span>逻辑层与视图层之间的事件触发以及数据传递，即<span class="key_words">『setData方法的调用全是由底层的Native层负责中转完成的』</span>。</li>
-<li><span class="key_words">『setData函数用于更新视图数据』</span>，按照微信小程序的性能评判标准，setData每次传递的数据大小不能超过256KB，超过这个限制页面就容易卡顿。在页面或者是列表组件scroll事件里面，频繁地调用setData,视图层来不及渲染也会出现明显的卡顿现象。</li>
+<h3 id="3-2-运行时渲染性能优化"><a href="#3-2-运行时渲染性能优化" class="headerlink" title="3.2 运行时渲染性能优化"></a>3.2 运行时渲染性能优化</h3><h4 id="双线程运行机制"><a href="#双线程运行机制" class="headerlink" title="双线程运行机制"></a>双线程运行机制</h4><ul>
+<li>微信小程序可以看作由逻辑层、视图层两个线程协同完成运行。</li>
+<li><span class="key_words">『逻辑层负责执行 JS 代码，视图层负责渲染 UI 页面。』</span>逻辑层与视图层之间的事件触发以及数据传递，也就是<span class="key_words">『setData 方法的调用全是由底层的 Native 层负责中转完成的』</span>。</li>
+<li><span class="key_words">『setData 函数用于更新视图数据』</span>。按照微信小程序的性能评判标准，<code>setData</code> 每次传递的数据大小不能超过 256KB，超过这个限制页面就容易卡顿。在页面或列表组件的 <code>scroll</code> 事件里频繁调用 <code>setData</code>，视图层来不及渲染，也会出现明显的卡顿。</li>
 </ul>
-<h4 id="冷启动时以及运行时可以使用的性能优化技巧"><a href="#冷启动时以及运行时可以使用的性能优化技巧" class="headerlink" title="冷启动时以及运行时可以使用的性能优化技巧"></a>冷启动时以及运行时可以使用的性能优化技巧</h4><ul>
-<li>使用WXS脚本，在视图层完成事件处理</li>
-<li>重渲染机制</li>
-<li>支持WXWebAssembly</li>
-<li>允许开发者另开Worker线程 — <span class="desc">针对JS是单线程执行</span></li>
-<li>分页渲染、使用虚拟DOM — <span class="desc">针对长列表页面setData单次传递的数据不能超过256KB限制</span></li>
-<li>使用LocalStorange接口数据缓存于本地 — <span class="desc">针对每次拉取动态数据需要时间</span></li>
-<li>5s的“挂起”状态 — <span class="desc">进入后台后有5秒挂起状态，在这种状态下setData没有必要执行</span></li>
-<li>启用Http2、Quic协议 — <span class="desc">与后台进行数据交互的时候可以启用Http2 Quic等协议</span></li>
-<li>getCurrentPages()接口 — <span class="desc">在page.Unload中将定时器以及wx.onxx的全局监听和与全局对象有关的事件监听全部移除</span></li>
-<li>原生的Context节点 — <span class="desc">原生组件，可以通过SelectorQuery查询到这个原生节点，然后再利用这个原生节点直接操作和更新视图</span></li>
-<li>本地图片上传到云</li>
+<h4 id="冷启动与运行时都可用的优化技巧"><a href="#冷启动与运行时都可用的优化技巧" class="headerlink" title="冷启动与运行时都可用的优化技巧"></a>冷启动与运行时都可用的优化技巧</h4><ul>
+<li>使用 WXS 脚本，在视图层完成事件处理。</li>
+<li>重渲染机制。</li>
+<li>支持 WXWebAssembly。</li>
+<li>允许开发者另开 Worker 线程 —— <span class="desc">针对 JS 是单线程执行</span>。</li>
+<li>分页渲染、使用虚拟 DOM —— <span class="desc">针对长列表页面 setData 单次传递数据不能超过 256KB 的限制</span>。</li>
+<li>使用 localStorage 接口把数据缓存于本地 —— <span class="desc">针对每次拉取动态数据需要时间</span>。</li>
+<li>5s 的”挂起”状态 —— <span class="desc">进入后台后有 5 秒挂起状态，这种状态下 setData 没有必要执行</span>。</li>
+<li>启用 Http2、Quic 协议 —— <span class="desc">与后台进行数据交互时可以启用 Http2、Quic 等协议</span>。</li>
+<li><code>getCurrentPages()</code> 接口 —— <span class="desc">在 page.onUnload 中将定时器以及 wx.onXXX 的全局监听和与全局对象有关的事件监听全部移除</span>。</li>
+<li>原生的 Context 节点 —— <span class="desc">原生组件可以通过 SelectorQuery 查询到原生节点，再利用这个节点直接操作和更新视图</span>。</li>
+<li>本地图片上传到云。</li>
 </ul>
-<h2 id="骨架屏"><a href="#骨架屏" class="headerlink" title="骨架屏"></a>骨架屏</h2><ul>
-<li>优缺点：<span class="key_words">『不能使首屏渲染加快』</span>，但在白屏时给用户提供反馈，<span class="key_words">『减缓用户焦虑』</span>等待的情绪</li>
-<li>在data中默认设置loading:true，在数据加载完成后设置loading:false，在页面中可以通过wx:if 和 wx:else来避免数据先加载出来导致和骨架屏页面<span class="key_words">『重叠』</span></li>
-<li>不要直接修改生成的骨架屏代码<ul>
-<li>修改配置以后要重新生成骨架屏代码，wxml或js代码后续有修改也要重新生成骨架屏</li>
-</ul>
-</li>
-<li>骨架屏只给主页使用</li>
-</ul>
-<h2 id="使用虚拟DOM，优化长列表内容"><a href="#使用虚拟DOM，优化长列表内容" class="headerlink" title="使用虚拟DOM，优化长列表内容"></a>使用虚拟DOM，优化长列表内容</h2><ul>
-<li>使用recycle-view组件(平台能力-&gt;扩展能力-&gt;扩展组件)<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save miniprogram-recycle-view</span><br></pre></td></tr></table></figure></li>
-<li>安装完成后，构建npm</li>
-<li>在页面的json文件中将recycle-view和recycle-item引用到usingComponent</li>
-<li>很好的实现了虚拟DMOM</li>
-<li>结合滚动事件scrolltolower，还可以实现逐页加载与更新列表数据</li>
-<li>本身已经<span class="key_words">『默认开启throttle函数』</span>节流机制</li>
-<li>预留了插槽，方便开发者添加个性业务</li>
-</ul>
-<h2 id="页面容器page-container"><a href="#页面容器page-container" class="headerlink" title="页面容器page-container"></a>页面容器page-container</h2><ul>
-<li>做弹窗</li>
-</ul>
-<h2 id="优化视图页动画效果"><a href="#优化视图页动画效果" class="headerlink" title="优化视图页动画效果"></a>优化视图页动画效果</h2><ul>
-<li>使用Animation对象实现的CSS动画 — <span class="desc">效率最低</span></li>
-<li>使用页面或组件对象拥有的animate，实现<span class="key_words">『关键帧』</span>动画 — <span class="desc">第一推荐,效率非最高</span></li>
-<li>滚动事件驱动的响应式动画 — <span class="desc">推荐的低成本创建响应式页面效果的方式</span><ul>
-<li><span class="key_words">『本质上响应式动画也是通过animation接口实现的』</span></li>
-<li>依据scroller这个组件的滚动而变化</li>
-<li>通过wx.createSelectorQuery().select(‘#id’).fields()去查询scroller组件</li>
-<li>然后再回调里面调用animate去设置它的对象，然后再onReady中调用</li>
+<h3 id="3-3-骨架屏"><a href="#3-3-骨架屏" class="headerlink" title="3.3 骨架屏"></a>3.3 骨架屏</h3><ul>
+<li>优缺点：<span class="key_words">『不能使首屏渲染加快』</span>，但在白屏时给用户提供反馈，<span class="key_words">『减缓用户焦虑』</span>等待的情绪。</li>
+<li>在 <code>data</code> 中默认设置 <code>loading: true</code>，数据加载完成后再设为 <code>loading: false</code>；页面里通过 <code>wx:if</code> 和 <code>wx:else</code> 切换，避免数据先加载出来与骨架屏页面<span class="key_words">『重叠』</span>。</li>
+<li>不要直接修改生成的骨架屏代码。<ul>
+<li>修改配置以后要重新生成骨架屏代码；wxml 或 js 代码后续有修改，也要重新生成骨架屏。</li>
 </ul>
 </li>
-<li>通过WXS脚本实现的样式动画 —  <span class="desc">效率最高，适用高频动画，但目前只支持es5</span><ul>
-<li>由.wxs脚本实现，事件绑定再一个WXS脚本导出的事件句柄函数</li>
-<li>通过<span class="key_words">『事件句柄函数的ownerInstance』</span>调用的selectAllComponents或者selectComponent去查询页面上的组件，查询后通过setStyle设置组件的样式</li>
+<li>骨架屏只给主页使用。</li>
+</ul>
+<h3 id="3-4-使用虚拟-DOM-优化长列表"><a href="#3-4-使用虚拟-DOM-优化长列表" class="headerlink" title="3.4 使用虚拟 DOM 优化长列表"></a>3.4 使用虚拟 DOM 优化长列表</h3><ul>
+<li>使用 <code>recycle-view</code> 组件（平台能力 → 扩展能力 → 扩展组件）。先安装依赖，再构建 npm：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save miniprogram-recycle-view</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装完成后，在开发者工具中执行”构建 npm”。</li>
+<li>在页面的 json 文件中把 <code>recycle-view</code> 和 <code>recycle-item</code> 引入 <code>usingComponents</code>。</li>
+<li>它很好地实现了虚拟 DOM。</li>
+<li>结合滚动事件 <code>scrolltolower</code>，还可以实现逐页加载与更新列表数据。</li>
+<li>它本身已经<span class="key_words">『默认开启 throttle 函数』</span>节流机制。</li>
+<li>预留了插槽，方便开发者添加个性化业务。</li>
+</ul>
+<h3 id="3-5-页面容器-page-container"><a href="#3-5-页面容器-page-container" class="headerlink" title="3.5 页面容器 page-container"></a>3.5 页面容器 page-container</h3><p>用 <code>page-container</code> 做弹窗，避免自己维护遮罩层与层级。</p>
+<h3 id="3-6-优化视图层动画效果"><a href="#3-6-优化视图层动画效果" class="headerlink" title="3.6 优化视图层动画效果"></a>3.6 优化视图层动画效果</h3><ul>
+<li>使用 Animation 对象实现的 CSS 动画 —— <span class="desc">效率最低</span>。</li>
+<li>使用页面或组件对象拥有的 <code>animate</code> 实现<span class="key_words">『关键帧』</span>动画 —— <span class="desc">第一推荐，但效率不是最高</span>。</li>
+<li>滚动事件驱动的响应式动画 —— <span class="desc">推荐的低成本创建响应式页面效果的方式</span>。<ul>
+<li><span class="key_words">『本质上响应式动画也是通过 animation 接口实现的』</span>。</li>
+<li>依据 scroller 组件的滚动而变化。</li>
+<li>通过 <code>wx.createSelectorQuery().select(&#39;#id&#39;).fields()</code> 查询 scroller 组件。</li>
+<li>然后在回调里调用 <code>animate</code> 设置它的对象，并在 <code>onReady</code> 中调用。</li>
+</ul>
+</li>
+<li>通过 WXS 脚本实现的样式动画 —— <span class="desc">效率最高，适用于高频动画，但目前只支持 ES5</span>。<ul>
+<li>由 <code>.wxs</code> 脚本实现，事件绑定在一个 WXS 脚本导出的事件句柄函数上。</li>
+<li>通过<span class="key_words">『事件句柄函数的 ownerInstance』</span>调用 <code>selectAllComponents</code> 或 <code>selectComponent</code> 查询页面上的组件，查询后通过 <code>setStyle</code> 设置组件样式。</li>
 </ul>
 </li>
 </ul>
-<h2 id="重渲染与自定义组件优化"><a href="#重渲染与自定义组件优化" class="headerlink" title="重渲染与自定义组件优化"></a>重渲染与自定义组件优化</h2><blockquote>
-<p>重渲染： 使用新的节点树，有目标地将原节点树上需要更新的节点一一更新的过程</p>
+<h3 id="3-7-重渲染与自定义组件优化"><a href="#3-7-重渲染与自定义组件优化" class="headerlink" title="3.7 重渲染与自定义组件优化"></a>3.7 重渲染与自定义组件优化</h3><blockquote>
+<p>重渲染：使用新的节点树，有目标地将原节点树上需要更新的节点一一更新的过程。</p>
 </blockquote>
 <ul>
-<li>将界面功能组件化 — <span class="desc">频繁改动的功能</span></li>
-<li>去掉不必要的数据设置，减少每次setData设置的数据量</li>
-<li>通过wxs脚本改写组件，可以在视图层完成的代码逻辑<ul>
-<li>wxml增加了wxs模块的引入，并且在view中添加,wxs脚本中通过函数判断mode来调用对应模式的函数或代码<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">change</span>:mode=<span class="string">&quot;&#123;&#123;index.modeObserver&#125;&#125;&quot;</span> mode=<span class="string">&quot;&#123;&#123;mode&#125;&#125;&quot;</span></span><br></pre></td></tr></table></figure></li>
-<li>使用page.requestAnimationFrame()可以防止跟不上渲染造成卡顿</li>
+<li>将界面功能组件化 —— <span class="desc">频繁改动的功能</span>。</li>
+<li>去掉不必要的数据设置，减少每次 <code>setData</code> 设置的数据量。</li>
+<li>通过 WXS 脚本改写组件，把可以在视图层完成的代码逻辑下放到视图层。<ul>
+<li>wxml 中增加 WXS 模块的引入，并在 view 上添加 <code>change:mode</code> 与 <code>mode</code> 属性；WXS 脚本中通过函数判断 <code>mode</code>，调用对应模式的函数或代码：<code>change:mode=&quot;&#123;&#123; index.modeObserver &#125;&#125;&quot; mode=&quot;&#123;&#123; mode &#125;&#125;&quot;</code>。</li>
+<li>使用 <code>page.requestAnimationFrame()</code> 可以防止跟不上渲染造成卡顿。</li>
 </ul>
 </li>
 </ul>
-<h2 id="代码按需注入与初始渲染缓存"><a href="#代码按需注入与初始渲染缓存" class="headerlink" title="代码按需注入与初始渲染缓存"></a>代码按需注入与初始渲染缓存</h2><ul>
-<li>按需注入<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;lazyCodeLoading&quot;</span>: <span class="string">&quot;requiredComponents&quot;</span></span><br></pre></td></tr></table></figure></li>
-<li>使视图层不需要等待逻辑层初始化完毕<ul>
-<li>参数：static 静态初始渲染缓存 | dynamic 动态缓存<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;initialRenderingCache&quot;</span>:<span class="string">&quot;xxx&quot;</span></span><br><span class="line"><span class="comment">// 设置需要动态缓存的数据</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="title function_">setInitialRenderingCache</span>(&#123;<span class="attr">swiperlist</span>: swipers&#125;)</span><br></pre></td></tr></table></figure></li>
+<h3 id="3-8-代码按需注入与初始渲染缓存"><a href="#3-8-代码按需注入与初始渲染缓存" class="headerlink" title="3.8 代码按需注入与初始渲染缓存"></a>3.8 代码按需注入与初始渲染缓存</h3><h4 id="按需注入"><a href="#按需注入" class="headerlink" title="按需注入"></a>按需注入</h4><p>在 app.json 中开启按需注入，只注入当前页面用到的组件代码：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;lazyCodeLoading&quot;</span><span class="punctuation">:</span> <span class="string">&quot;requiredComponents&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="初始渲染缓存"><a href="#初始渲染缓存" class="headerlink" title="初始渲染缓存"></a>初始渲染缓存</h4><p>使视图层不需要等待逻辑层初始化完毕即可渲染首屏。参数 <code>static</code> 表示静态初始渲染缓存，<code>dynamic</code> 表示动态缓存：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;initialRenderingCache&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xxx&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>设置为动态缓存时，还需要在逻辑层把要缓存的数据交给框架：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="title function_">setInitialRenderingCache</span>(&#123; <span class="attr">swiperlist</span>: swipers &#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="选型建议"><a href="#选型建议" class="headerlink" title="选型建议"></a>选型建议</h4><p>静态导航页用初始渲染缓存，动态详情页用骨架屏。</p>
+<h3 id="3-9-使用独立分包和分包预加载"><a href="#3-9-使用独立分包和分包预加载" class="headerlink" title="3.9 使用独立分包和分包预加载"></a>3.9 使用独立分包和分包预加载</h3><h4 id="指定-tabBar-默认选中项"><a href="#指定-tabBar-默认选中项" class="headerlink" title="指定 tabBar 默认选中项"></a>指定 tabBar 默认选中项</h4><p>通过组件实例调用 <code>select</code> 指定默认选中的索引：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="title function_">selectComponent</span>(<span class="string">&#x27;#id&#x27;</span>).<span class="title function_">select</span>(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="tabBar-使用自定义组件"><a href="#tabBar-使用自定义组件" class="headerlink" title="tabBar 使用自定义组件"></a>tabBar 使用自定义组件</h4><p>tabBar 最好使用自定义组件，便于统一控制选中态与样式。</p>
+<h4 id="配置独立分包与预加载"><a href="#配置独立分包与预加载" class="headerlink" title="配置独立分包与预加载"></a>配置独立分包与预加载</h4><p>独立分包可以脱离主包独立运行；预加载则让用户在进入某个页面时提前下载其他分包。下面的配置声明：访问”页面路径”时预下载主包（<code>__APP__</code> 代表主包）：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;preloadRule&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;页面路径&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;network&quot;</span><span class="punctuation">:</span> <span class="string">&quot;all&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;packages&quot;</span><span class="punctuation">:</span> <span class="string">&quot;__APP__&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>独立分包中如果需要兜底获取 App，可这样调用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">getApp</span>(&#123; <span class="attr">allowDefault</span>: <span class="literal">true</span> &#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-10-独立分包使用占位组件（分包异步化）"><a href="#3-10-独立分包使用占位组件（分包异步化）" class="headerlink" title="3.10 独立分包使用占位组件（分包异步化）"></a>3.10 独立分包使用占位组件（分包异步化）</h3><p>前提：项目已经启用懒加载机制，代码是按需注入的。此时可以使用占位组件，给自定义组件安排一个”替身”，在真实自定义组件加载并注入之前先用替身展示，进一步优化启动性能。</p>
+<h4 id="1-组件的分包异步化与主页占位"><a href="#1-组件的分包异步化与主页占位" class="headerlink" title="1. 组件的分包异步化与主页占位"></a>1. 组件的分包异步化与主页占位</h4><ul>
+<li>将首页使用的所有自定义组件移动到分包中，然后使用占位组件延迟加载它们。</li>
+<li>在 app.json 中创建组件分包，这个分包可以没有页面，只把组件放在该分包中。</li>
+<li>修改主页配置：组件由全局引用改为页面引用，并进行占位组件声明。</li>
+<li>在页面的 <code>componentPlaceholder</code> 选项下设置组件替身，格式为 <code>&#123;&quot;原组件名&quot;: &quot;自定义组件|标准组件view&quot;&#125;</code>；使用自定义组件作为替身时，要先引入组件再写组件名。</li>
 </ul>
-</li>
-<li>静态导航页用初始渲染缓存，动态详情页用骨架屏</li>
+<h4 id="2-使用封面页"><a href="#2-使用封面页" class="headerlink" title="2. 使用封面页"></a>2. 使用封面页</h4><ul>
+<li>创建一个空白效果的页面作为伪首页，只放一个 logo 和名称；在 <code>onReady</code> 中添加跳转到真首页的代码，作用是先加载主包中的所有基础内容，加载完成后再跳转真首页。</li>
+<li>封面页位于主包内，真首页移到分包中，同时用 <code>preloadRule</code> 开启对该分包的预加载。</li>
+<li><span class="key_words">『非独立分包中的页面被访问时，主包同时也会被下载，但其他普通分包不会被下载。』</span></li>
+<li><span class="key_words">『独立分包并不加载主包，放在主包里的共享代码，在独立分包里无法直接使用。』</span></li>
 </ul>
-<h2 id="使用独立分包和分包预加载"><a href="#使用独立分包和分包预加载" class="headerlink" title="使用独立分包和分包预加载"></a>使用独立分包和分包预加载</h2><ul>
-<li>指定tarbar默认选中那个索引<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="title function_">selectComponent</span>(<span class="string">&#x27;#id&#x27;</span>).<span class="title function_">select</span>(<span class="number">2</span>)</span><br></pre></td></tr></table></figure></li>
-<li>tarbar最好使用自定的组件</li>
-<li>独立分包<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">getApp(<span class="punctuation">&#123;</span>allowDefault <span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">&#125;</span>)</span><br><span class="line"><span class="attr">&quot;preloadRule&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;页面路径&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;nrework&quot;</span><span class="punctuation">:</span> <span class="string">&quot;all&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;packages&quot;</span><span class="punctuation">:</span> <span class="string">&quot;__APP__&quot;</span> <span class="comment">//代表主包</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="独立分包使用占位组件-—-分包异步化"><a href="#独立分包使用占位组件-—-分包异步化" class="headerlink" title="独立分包使用占位组件 — 分包异步化"></a>独立分包使用占位组件 — 分包异步化</h2><ul>
-<li>前提项目已经启用懒加载机制，代码是按需加载注入的，使用占位组件，给自定义组件安排一个替身，在真实的自定义组件加载并注入之前先用替身展示，进一步优化启动的性能</li>
-</ul>
-<h3 id="组件的分包异步化及主页中占位组件的使用"><a href="#组件的分包异步化及主页中占位组件的使用" class="headerlink" title="组件的分包异步化及主页中占位组件的使用"></a>组件的分包异步化及主页中占位组件的使用</h3><ul>
-<li>将首页使用的所有自定义组件移动到分包中，然后再使用占位组件延迟加载它们</li>
-<li>app.json创建组件分包,可以没有页面，把组件放在该分包中</li>
-<li>修改主页配置，将组件由全局用用改为页面引用，并进行占位的组件声明，</li>
-<li>在页面的componentPlaceholder选项下设置组件替身{“原组件名”：”自定义组件|标准组件view”}， 使用自定义组件的话要先引入，然后使用自定义组件名即可</li>
-</ul>
-<h3 id="使用封面页"><a href="#使用封面页" class="headerlink" title="使用封面页"></a>使用封面页</h3><ul>
-<li>创建一个空白效果的页面，作为伪首页只放一个logo和名称，在onReady中添加跳转到真首页代码，作用加载主包中的所有基础内容，加载完成后跳转真首页</li>
-<li>封面页位于主包内，真首页移到分包中，同时preloadRule开启最该分包的预加载</li>
-<li><span class="key_words">『非独立分包中的页面被访问时主包同时也会被下载，但其他普通分包不会被下载。』</span></li>
-<li><span class="key_words">『独立分包它并不加载主包，放在主包里边的共享代码，在独立分包里无法直接使用』</span></li>
-</ul>
-<h2 id="JS代码的分包异步化"><a href="#JS代码的分包异步化" class="headerlink" title="JS代码的分包异步化"></a>JS代码的分包异步化</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">;(<span class="title function_">async</span> () =&gt; &#123;&#125;</span><br><span class="line"><span class="keyword">const</span> &#123;<span class="attr">default</span>:getNavList&#125; = <span class="keyword">await</span> <span class="built_in">require</span>.<span class="title function_">async</span>(<span class="string">&quot;../相对路径&quot;</span>)&#125;)&#123;&#125;</span><br><span class="line"><span class="keyword">const</span> &#123;<span class="attr">default</span>:getNavList&#125; = <span class="keyword">await</span> getApp.<span class="title function_">requireAsync</span>(<span class="string">&quot;/绝对地址&quot;</span>)&#125;)&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-11-JS-代码的分包异步化"><a href="#3-11-JS-代码的分包异步化" class="headerlink" title="3.11 JS 代码的分包异步化"></a>3.11 JS 代码的分包异步化</h3><p>把非首屏必需的 JS 改为运行时异步加载，首个代码块演示用 <code>require.async</code> 动态引入模块，第二个地址是 app.js 中封装的支持绝对路径的方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">;(<span class="title function_">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; <span class="attr">default</span>: getNavList &#125; = <span class="keyword">await</span> <span class="built_in">require</span>.<span class="title function_">async</span>(<span class="string">&#x27;../相对路径&#x27;</span>)</span><br><span class="line">  <span class="comment">// 也可以使用 app.js 中定义的支持绝对路径的方法</span></span><br><span class="line">  <span class="comment">// const &#123; default: getNavList &#125; = await getApp.requireAsync(&#x27;/绝对地址&#x27;)</span></span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>在app.js文件中定义两个支持绝对路径的方法，代替默认的require以及require.async(少用)</li>
+<li>在 app.js 文件中定义两个支持绝对路径的方法，代替默认的 <code>require</code> 以及 <code>require.async</code>（少用）。</li>
 </ul>
-<h3 id="项目插件化"><a href="#项目插件化" class="headerlink" title="项目插件化"></a>项目插件化</h3><ul>
-<li>在插件模式下，静态依赖分析工作不了</li>
-<li>使用插件模式，创建plugin目录，在app.json中给使用的分包配置plugin选项，在app.json中添加pluginRoot选项，配置plugin的放置位置</li>
-<li>在onReady中<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">requirePlugin</span>(<span class="string">&#x27;myPlugin&#x27;</span>,<span class="function"><span class="params">plugin</span> =&gt;</span> &#123;&#125;)</span><br><span class="line">或 </span><br><span class="line">requirePlugin.<span class="title function_">async</span>(<span class="string">&quot;myPlugin&quot;</span>).<span class="title function_">then</span>(<span class="function"><span class="params">plugin</span> =&gt;</span> &#123;&#125;)</span><br></pre></td></tr></table></figure></li>
-<li>使用立即执行函数<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">;(<span class="title function_">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="title function_">requirePlugin</span>(<span class="string">&#x27;myPlugin&#x27;</span>,<span class="function"><span class="params">plugin</span> =&gt;</span> &#123;&#125;)</span><br><span class="line">  <span class="comment">// 或 let plugin = await requirePlugin.async(&quot;myPlugin&quot;).catch()</span></span><br><span class="line">&#125;)&#123;&#125;</span><br></pre></td></tr></table></figure></li>
+<h4 id="项目插件化"><a href="#项目插件化" class="headerlink" title="项目插件化"></a>项目插件化</h4><ul>
+<li>在插件模式下，静态依赖分析工作不了。</li>
+<li>使用插件模式：创建 plugin 目录，在 app.json 中给使用的分包配置 <code>plugin</code> 选项，并在 app.json 中添加 <code>pluginRoot</code> 选项，配置 plugin 的放置位置。</li>
+<li>在 <code>onReady</code> 中调用插件：</li>
 </ul>
-<h2 id="使用WXWebAssembly优化运算性能"><a href="#使用WXWebAssembly优化运算性能" class="headerlink" title="使用WXWebAssembly优化运算性能"></a>使用WXWebAssembly优化运算性能</h2><blockquote>
-<p>允许开发者使用Go、C、C++等后端强类型语言编写代码，然后将其编译为一种类似于汇编代码的二进制代码，弥补解析新语言JS在执行性能上的不足</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">requirePlugin</span>(<span class="string">&#x27;myPlugin&#x27;</span>, <span class="function"><span class="params">plugin</span> =&gt;</span> &#123;&#125;)</span><br><span class="line"><span class="comment">// 或</span></span><br><span class="line">requirePlugin.<span class="title function_">async</span>(<span class="string">&#x27;myPlugin&#x27;</span>).<span class="title function_">then</span>(<span class="function"><span class="params">plugin</span> =&gt;</span> &#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>也可以使用立即执行函数包一层：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">;(<span class="title function_">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="title function_">requirePlugin</span>(<span class="string">&#x27;myPlugin&#x27;</span>, <span class="function"><span class="params">plugin</span> =&gt;</span> &#123;&#125;)</span><br><span class="line">  <span class="comment">// 或 let plugin = await requirePlugin.async(&#x27;myPlugin&#x27;).catch()</span></span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-12-使用-WXWebAssembly-优化运算性能"><a href="#3-12-使用-WXWebAssembly-优化运算性能" class="headerlink" title="3.12 使用 WXWebAssembly 优化运算性能"></a>3.12 使用 WXWebAssembly 优化运算性能</h3><blockquote>
+<p>允许开发者使用 Go、C、C++ 等后端强类型语言编写代码，然后编译为一种类似汇编的二进制代码，弥补 JS 在执行性能上的不足。</p>
 </blockquote>
 <ul>
-<li>编写go语言 –&gt; 编译压缩为wasm文件 –&gt; 从Go语言源码里面拷贝并且修改wasm_exec.js文件(必不可少),同时也需要一个text_encoder.js文件</li>
-<li>在项目的根目录创建一个目录，放置Go语言代码（<span class="desc">Go版本和文件想对应，所以版本安装要谨慎&lt;&#x2F;span）<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">关闭环境变量: go env -w <span class="title class_">GO111MODULE</span>=off</span><br><span class="line">调用: ./build.<span class="property">sh</span> (<span class="title class_">GO111MODULE</span>=off <span class="variable constant_">GOOS</span>-js <span class="variable constant_">GOARCH</span>=wasm go build -o 编译后的名字.<span class="property">wasm</span> 编译的文件.<span class="property">go</span>)</span><br><span class="line">安装: brew install brotli </span><br><span class="line">目标位置删除: rm -f 目标路径/xx.<span class="property">wasm</span>.<span class="property">br</span>,</span><br><span class="line">压缩文件: brotli -o 文件的位置/xxx.<span class="property">wasm</span>.<span class="property">br</span> xxx.<span class="property">wasm</span></span><br></pre></td></tr></table></figure></li>
-<li>将相关的js文件、wasm文件全部拷贝至对应的目录，并在次目录下依照原组件的代码，创建新组件</li>
+<li>整体流程：编写 Go 语言代码 → 编译压缩为 wasm 文件 → 从 Go 语言源码里拷贝并修改 <code>wasm_exec.js</code>（必不可少），同时还需要一个 <code>text_encoder.js</code> 文件。</li>
+<li>在项目根目录创建一个目录，放置 Go 语言代码（<span class="desc">Go 版本和文件要对应，版本安装要谨慎</span>）。</li>
+<li>编译与压缩命令如下，先关闭模块化，再用 <code>brotli</code> 压缩 wasm：</li>
 </ul>
-<h2 id="使用异步转同步的编程范式"><a href="#使用异步转同步的编程范式" class="headerlink" title="使用异步转同步的编程范式"></a>使用异步转同步的编程范式</h2><blockquote>
-<p>异步编程： 除了主线程以外还有一个或者多个异步线程，异步线程处理worker timer定时器、网络请求、用户输入监听、事件派发等任务,<span class="key_words">『当异步线程有回调函数代码需要执行的时候，异步代码将这些代码推入到主线程的执行队列里面去，由主线程在不是很忙碌的时候尽快将这些代码进行执行。』</span></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">go <span class="built_in">env</span> -w GO111MODULE=off</span><br><span class="line">./build.sh   <span class="comment"># GO111MODULE=off GOOS=js GOARCH=wasm go build -o 编译后的名字.wasm 编译的文件.go</span></span><br><span class="line">brew install brotli</span><br><span class="line"><span class="built_in">rm</span> -f 目标路径/xx.wasm.br</span><br><span class="line">brotli -o 文件的位置/xxx.wasm.br xxx.wasm</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将相关的 js 文件、wasm 文件全部拷贝至对应目录，并在此目录下参照原组件的代码创建新组件。</li>
+</ul>
+<h3 id="3-13-使用异步转同步的编程范式"><a href="#3-13-使用异步转同步的编程范式" class="headerlink" title="3.13 使用异步转同步的编程范式"></a>3.13 使用异步转同步的编程范式</h3><blockquote>
+<p>异步编程：除了主线程以外还有一个或多个异步线程，异步线程处理 worker、timer 定时器、网络请求、用户输入监听、事件派发等任务。<span class="key_words">『当异步线程有回调函数代码需要执行时，异步线程会将这些代码推入主线程的执行队列，由主线程在不忙碌时尽快执行。』</span></p>
 </blockquote>
 <ul>
-<li>编写异步转同步函数:promisify替代request，文件放在公共的位置</li>
-<li>require不支持绝对路径，但在app.js文件中可以使用绝对路径<ul>
-<li>全局的全部示例app可以通过getApp()取到，app.js文件位于项目的根目录下方便标记</li>
-<li>函数调用时为了避免程序报错，在后面一定要加上一个默认的catch设置。</li>
-<li>使用promisify函数的父函数，由于添加了async关键字，已经是同步函数，要避免在主线程上以阻塞的方式，即<span class="key_words">『添加await关键字的方式调用函数』</span></li>
+<li>编写异步转同步函数：用 <code>promisify</code> 替代 <code>request</code>，文件放在公共位置。</li>
+<li><code>require</code> 不支持绝对路径，但在 app.js 文件中可以使用绝对路径。<ul>
+<li>全局的应用实例可以通过 <code>getApp()</code> 取到，app.js 位于项目根目录，便于标记。</li>
+<li>函数调用时为了避免程序报错，后面一定要加上默认的 <code>catch</code>。</li>
+<li>使用 <code>promisify</code> 函数的父函数添加了 <code>async</code> 关键字后已经是同步函数，要避免在主线程上以阻塞的方式调用，即<span class="key_words">『用 await 关键字调用函数』</span>。</li>
 </ul>
 </li>
 </ul>
-<h2 id="使用复合命令模式对齐代码的执行点"><a href="#使用复合命令模式对齐代码的执行点" class="headerlink" title="使用复合命令模式对齐代码的执行点"></a>使用复合命令模式对齐代码的执行点</h2><blockquote>
-<p>复合命令模式是一个设计模式，它和异步转同步的编程范式一样主要作用在于使我们这个代码结构变得更加清晰,易于维护，其次它还可以优化代码的调用逻辑，统筹安排代码的一个执行时机。</p>
+<h3 id="3-14-使用复合命令模式对齐代码的执行点"><a href="#3-14-使用复合命令模式对齐代码的执行点" class="headerlink" title="3.14 使用复合命令模式对齐代码的执行点"></a>3.14 使用复合命令模式对齐代码的执行点</h3><blockquote>
+<p>复合命令模式是一个设计模式，和异步转同步的编程范式一样，主要作用是让代码结构更清晰、易于维护，其次还可以优化代码的调用逻辑，统筹安排代码的执行时机。</p>
 </blockquote>
 <ul>
-<li>在App.onLaunch事件在开始拉取动态数据，将App.onLaunch和首页的Page.onLoad这两个时间节点使用并发的复合命令模式管理起来，让它们可以并发执行</li>
+<li>在 <code>App.onLaunch</code> 事件中开始拉取动态数据，把 <code>App.onLaunch</code> 和首页的 <code>Page.onLoad</code> 这两个时间节点用并发的复合命令模式管理起来，让它们可以并发执行。</li>
 </ul>
-<h2 id="使用worker开启新线程进行耗时运算"><a href="#使用worker开启新线程进行耗时运算" class="headerlink" title="使用worker开启新线程进行耗时运算"></a>使用worker开启新线程进行耗时运算</h2><blockquote>
-<p>worker：依托于寄主的环境而存在的，可以在后台并行执行JS代码，不影响页面渲染的技术，将worker看作异步线程，可以在异步线程中执行一些比较耗时的计算代码，在计算代码执行完成以后再将执行结果同步给主线程使用</p>
+<h3 id="3-15-使用-Worker-开启新线程进行耗时运算"><a href="#3-15-使用-Worker-开启新线程进行耗时运算" class="headerlink" title="3.15 使用 Worker 开启新线程进行耗时运算"></a>3.15 使用 Worker 开启新线程进行耗时运算</h3><blockquote>
+<p>Worker：依托宿主环境存在，可以在后台并行执行 JS 代码而不影响页面渲染。可以把 Worker 看作异步线程，在异步线程中执行比较耗时的计算，计算完成后再把结果同步给主线程使用。</p>
 </blockquote>
 <ul>
-<li>创建worker线程<ul>
-<li>在app.json文件中配置workers:workers”</li>
+<li>在 <code>app.json</code> 中配置 <code>workers</code>，声明 Worker 代码所在目录。</li>
+<li>创建组件，只有 js 需要改动，使用后要主动销毁 Worker：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">worker</span> = wx.<span class="title function_">createWorker</span>(</span><br><span class="line">  <span class="string">&#x27;目录位置&#x27;</span>,</span><br><span class="line">  &#123; <span class="attr">useExperimentalworker</span>: <span class="literal">true</span> &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Worker 和 WXS 都是异步执行，但 Worker 的限制更多：<ul>
+<li>不能使用 <code>wx</code> 开头的小程序接口。</li>
+<li>workers 目录下可以有很多 Worker 文件，但同一时间只能有一个 Worker 线程开启；要开新线程需要先停掉、销毁原来的线程，并且系统资源紧张时 Worker 线程还可能被系统回收。</li>
+<li>Worker 只能放在特定的、已经配置好的目录下，不能随意放到其他目录。</li>
+<li>通讯不方便，Worker 线程和主线程之间只能通过 <code>postMessage</code> 和 <code>onMessage</code> 相互通讯，相当于观察者模式的一种通讯机制。</li>
 </ul>
 </li>
-<li>创建组件，只有js改动，在使用后主动销毁worker<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">worker</span>=wx.<span class="title function_">createWorker</span>(</span><br><span class="line">  <span class="string">&quot;目录位置&quot;</span>,</span><br><span class="line">  &#123; <span class="attr">useExperimentalworker</span>:<span class="literal">true</span> &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
-<li>worker和wxs都是异步执行worker比wxs的限制<ul>
-<li>不能使用wx开头的小程序接口</li>
-<li>workers目录下面可以有很多的worker文件，但同时只能有一个worker线程在开启，如果想要开新的线程，需要将原来的先给停掉，销毁掉，并且如果系统资源紧张，worker线程还有可能被系统回收掉</li>
-<li>worker只能放在特定的已经配置好的目录下面，不能随意地放置在其他目录下</li>
-<li>通讯不方便，worker线程和主线程之间的通讯只能使用postMessage和onMessage进行相互通讯，这是相当于观察者模式的一种通讯机制</li>
 </ul>
-</li>
+<h3 id="3-16-在后端使用-Go-语言异步执行逻辑运算（把前端工作后移）"><a href="#3-16-在后端使用-Go-语言异步执行逻辑运算（把前端工作后移）" class="headerlink" title="3.16 在后端使用 Go 语言异步执行逻辑运算（把前端工作后移）"></a>3.16 在后端使用 Go 语言异步执行逻辑运算（把前端工作后移）</h3><ul>
+<li>创建后端计算接口，存放在 server 目录。</li>
+<li><code>main.go</code> 中有启动代码，在终端中使用 <code>npm run dev</code> 启动，启动前要先启用 Go 语言模块化。</li>
+<li>扩展接口时，把 Go 代码中要扩展的接口主要代码、相关变量和函数拷贝到项目中要使用页面的其他代码上方。</li>
+<li>用 curl 测试 API 地址：<code>curl api地址</code>。</li>
 </ul>
-<h2 id="在后端使用Go语言异步执行逻辑运算代码（如何将前端工作后移）"><a href="#在后端使用Go语言异步执行逻辑运算代码（如何将前端工作后移）" class="headerlink" title="在后端使用Go语言异步执行逻辑运算代码（如何将前端工作后移）"></a>在后端使用Go语言异步执行逻辑运算代码（如何将前端工作后移）</h2><ul>
-<li>创建后端计算接口，存放在server目录</li>
-<li>main.go 会有启动代码，在终端中使用: npm dev，要先启用go语言模块化</li>
-<li>扩展接口，将go代码的要扩展的接口主要的代码和相关变量，函数拷贝的项目中要使用页面的其他代码上方</li>
-<li>用curl测试api地址: curl api地址</li>
-</ul>
-<h2 id="使用串发命令模式延迟同步请求-如何使用数据缓存"><a href="#使用串发命令模式延迟同步请求-如何使用数据缓存" class="headerlink" title="使用串发命令模式延迟同步请求(如何使用数据缓存)"></a>使用串发命令模式延迟同步请求(如何使用数据缓存)</h2><blockquote>
-<p>同步会阻塞主流线程<br>有些接口虽然名称上由Sync结尾，但实际却仍是同步接口，如wx.getSystemInfo、wx.getStorage、wx.setStorage这三个接口经常在App.onLaunch还有Page.onLoad中用到</p>
+<h3 id="3-17-使用串发命令模式延迟同步请求（如何使用数据缓存）"><a href="#3-17-使用串发命令模式延迟同步请求（如何使用数据缓存）" class="headerlink" title="3.17 使用串发命令模式延迟同步请求（如何使用数据缓存）"></a>3.17 使用串发命令模式延迟同步请求（如何使用数据缓存）</h3><blockquote>
+<p>同步会阻塞主线程。<br>有些接口虽然名称以 Sync 结尾，但实际仍是同步接口，例如 <code>wx.getSystemInfo</code>、<code>wx.getStorage</code>、<code>wx.setStorage</code>，这三个接口经常在 <code>App.onLaunch</code> 和 <code>Page.onLoad</code> 中用到。</p>
 </blockquote>
+<h4 id="1-用拆分接口获取系统信息"><a href="#1-用拆分接口获取系统信息" class="headerlink" title="1. 用拆分接口获取系统信息"></a>1. 用拆分接口获取系统信息</h4><ul>
+<li><code>wx.getSystemSetting</code>：获取设备设置。</li>
+<li><code>wx.getAppAuthorizeSetting</code>：获取微信 App 授权设置。</li>
+<li><code>wx.getDeviceInfo</code>：获取设备基础信息。</li>
+<li><code>wx.getWindowInfo</code>：获取窗口信息。</li>
+<li><code>wx.getAppBaseInfo</code>：获取微信 App 基础信息。</li>
+</ul>
+<h4 id="2-启动阶段先用默认参数"><a href="#2-启动阶段先用默认参数" class="headerlink" title="2. 启动阶段先用默认参数"></a>2. 启动阶段先用默认参数</h4><p>启动过程先使用默认参数，启动完成（即 <code>Page.onReady</code> 事件派发后）再进行相关接口调用，以及后端接口数据的本地缓存存取。</p>
+<h4 id="3-创建-SystemInfoManager-模块"><a href="#3-创建-SystemInfoManager-模块" class="headerlink" title="3. 创建 SystemInfoManager 模块"></a>3. 创建 SystemInfoManager 模块</h4><p>这样系统信息的获取会推迟到首屏渲染之后：</p>
 <ul>
-<li><h3 id="用分接口获取系统信息"><a href="#用分接口获取系统信息" class="headerlink" title="用分接口获取系统信息"></a>用分接口获取系统信息</h3><ul>
-<li>wx.getSystemSetting 获取设备设置</li>
-<li>wx.getAppAuthorizeSetting 获取微信APP授权设置</li>
-<li>wx.getDeviceInfo 获取设备基础信息</li>
-<li>wx.getWindowInfo 获取窗口信息</li>
-<li>wx.getAppBaseInfo 获取微信APP基础信息</li>
+<li><code>global.asyncRetrieveSystemInfo.getCommand(0).markComplete()</code> 允许异步拉取系统信息。</li>
+<li>拉取系统信息的代码写在 <code>onLaunch</code> 中。</li>
+<li>分页拉取数据，默认 <code>page = 1</code>。</li>
 </ul>
-</li>
-<li><h3 id="启动过程先使用默认参数，启动完成后-即Page-onReady事件派发后-再进行相关接口的调用和缓存后端接口数据的本地缓存存取代码"><a href="#启动过程先使用默认参数，启动完成后-即Page-onReady事件派发后-再进行相关接口的调用和缓存后端接口数据的本地缓存存取代码" class="headerlink" title="启动过程先使用默认参数，启动完成后(即Page.onReady事件派发后)再进行相关接口的调用和缓存后端接口数据的本地缓存存取代码"></a>启动过程先使用默认参数，启动完成后(即Page.onReady事件派发后)再进行相关接口的调用和缓存后端接口数据的本地缓存存取代码</h3></li>
-<li><h3 id="创建SystemInfoManager模块，这样系统信息的获取在首屏渲染后"><a href="#创建SystemInfoManager模块，这样系统信息的获取在首屏渲染后" class="headerlink" title="创建SystemInfoManager模块，这样系统信息的获取在首屏渲染后"></a>创建SystemInfoManager模块，这样系统信息的获取在首屏渲染后</h3><ul>
-<li>global.asyncRetrieveSystemInfo.getCommand(0).markComplete()允许异步拉取系统信息 </li>
-<li>拉去系统信息的代码卸载onLaunch</li>
-<li>分页拉取数据，默认page&#x3D;1</li>
+<h3 id="3-18-首页动态数据的优化"><a href="#3-18-首页动态数据的优化" class="headerlink" title="3.18 首页动态数据的优化"></a>3.18 首页动态数据的优化</h3><ul>
+<li>在 <code>App.onLaunch</code> 节点开始加载数据。</li>
+<li>只加载首页首次渲染所需的一页数据。</li>
 </ul>
-</li>
+<h3 id="3-19-小程序切换后台后关闭-setData-调用"><a href="#3-19-小程序切换后台后关闭-setData-调用" class="headerlink" title="3.19 小程序切换后台后关闭 setData 调用"></a>3.19 小程序切换后台后关闭 setData 调用</h3><ul>
+<li>用 <code>wx.onAppHide</code> 监听小程序进入后台事件，或者用 <code>App.onHide</code> 捕捉进入后台的时机。</li>
+<li>劫持 Page 对象：在 page.js 文件中先劫持 <code>onLoad</code> 和 <code>setData</code>，在 <code>onLoad</code> 中获得 <code>setData</code> 的引用，然后在 app.js 文件中调用 page.js。</li>
+<li>定义工具函数 <code>mySetData</code>，把原来所有调用 <code>setData</code> 的地方改为调用 <code>mySetData</code>，<span class="desc">不建议</span>。</li>
+<li>如果必须劫持，一定要把劫持代码统一放在程序的入口处。</li>
 </ul>
-<h2 id="首页动态数据的优化"><a href="#首页动态数据的优化" class="headerlink" title="首页动态数据的优化"></a>首页动态数据的优化</h2><ul>
-<li>在App.onLaunch节点开始加载数据</li>
-<li>只加载首页首次渲染所需的一页数据</li>
-</ul>
-<h2 id="小程序切换后台后，关闭对setData的一个调用（监听App进入后台）"><a href="#小程序切换后台后，关闭对setData的一个调用（监听App进入后台）" class="headerlink" title="小程序切换后台后，关闭对setData的一个调用（监听App进入后台）"></a>小程序切换后台后，关闭对setData的一个调用（监听App进入后台）</h2><ul>
-<li>wx.onAppHide监听小程序进入后台事件或者 App.onHide捕捉小程序进入后台的时机</li>
-<li>劫持Page对象，再page.js文件中先劫持onLoad和setData，在onLoad中获得setData的引用，然后在app.js文件里面调用page.js文件</li>
-<li>定义工具函数mySetData，在原来所有调用setData的地方改为调用mySetData，<span class="desc">不建议</span></li>
-<li>如果必须要发生劫持的话一定要把劫持代码同意放在程序的入口处</li>
-</ul>
-<h2 id="在项目外使用数据预拉取与周期性更新（弱网情况）"><a href="#在项目外使用数据预拉取与周期性更新（弱网情况）" class="headerlink" title="在项目外使用数据预拉取与周期性更新（弱网情况）"></a>在项目外使用数据预拉取与周期性更新（弱网情况）</h2><ul>
-<li>数据预拉取：在小程序启动时，由微信异步调用开发者设置的原函数或数据接口，待拿到数据后，在传递给小程序使用</li>
-<li>周期性更新：微信每隔12小时轮询开发者设置的云函数或数据接口，由开发者在小程序中取用</li>
-<li>在微信小程序平台开启</li>
-<li>使用并发复合命令的竞赛模式拉取数据<ul>
-<li>wx.onBackgroundFetchData: 微信在拿到预拉取数据的时候设置一个回调函数</li>
-<li>wx.getBackgroundFetchData: 主动获取微信在本地缓存的预拉取数据，本地没有则拉取失败</li>
+<h3 id="3-20-在项目外使用数据预拉取与周期性更新（弱网情况）"><a href="#3-20-在项目外使用数据预拉取与周期性更新（弱网情况）" class="headerlink" title="3.20 在项目外使用数据预拉取与周期性更新（弱网情况）"></a>3.20 在项目外使用数据预拉取与周期性更新（弱网情况）</h3><ul>
+<li>数据预拉取：小程序启动时，由微信异步调用开发者设置的云函数或数据接口，拿到数据后再传递给小程序使用。</li>
+<li>周期性更新：微信每隔 12 小时轮询开发者设置的云函数或数据接口，由开发者在小程序中取用。</li>
+<li>需要在微信小程序平台开启。</li>
+<li>使用并发复合命令的竞赛模式拉取数据：<ul>
+<li><code>wx.onBackgroundFetchData</code>：微信拿到预拉取数据时设置的回调函数。</li>
+<li><code>wx.getBackgroundFetchData</code>：主动获取微信在本地缓存的预拉取数据，本地没有则拉取失败。</li>
 </ul>
 </li>
 </ul>
-<h2 id="优化后端接口及网络请求参数-wx-request"><a href="#优化后端接口及网络请求参数-wx-request" class="headerlink" title="优化后端接口及网络请求参数(wx.request)"></a>优化后端接口及网络请求参数(wx.request)</h2><ul>
-<li>enableCache，开启cache</li>
-<li>enableHttp2，开启http2 — <span class="desc">后端需要开启相关支持</span></li>
-<li>enableQuic，开启quic — <span class="desc">第三代网络，后端需要开启相关支持</span></li>
+<h3 id="3-21-优化后端接口及网络请求参数（wx-request）"><a href="#3-21-优化后端接口及网络请求参数（wx-request）" class="headerlink" title="3.21 优化后端接口及网络请求参数（wx.request）"></a>3.21 优化后端接口及网络请求参数（wx.request）</h3><ul>
+<li><code>enableCache</code>：开启 cache。</li>
+<li><code>enableHttp2</code>：开启 HTTP&#x2F;2 —— <span class="desc">后端需要开启相关支持</span>。</li>
+<li><code>enableQuic</code>：开启 QUIC —— <span class="desc">第三代网络协议，后端需要开启相关支持</span>。</li>
 </ul>
-<h2 id="视图代码优化技巧"><a href="#视图代码优化技巧" class="headerlink" title="视图代码优化技巧"></a>视图代码优化技巧</h2><h3 id="在动态列表渲染优化wx-key使用"><a href="#在动态列表渲染优化wx-key使用" class="headerlink" title="在动态列表渲染优化wx:key使用"></a>在动态列表渲染优化wx:key使用</h3><ul>
-<li>如果列表元素是<span class="key_words">『单一』</span>的基本数据类型，并且是唯一的，直接写成<em>this，</em>this就代表当前数据列表中的元素item</li>
-<li>如果列表元素是<span class="key_words">『对象』</span>类型，可以填写列表元素对象中的一个<span class="key_words">『字段名』</span>，这个字段名在整个数据列表中必须是唯一的</li>
-<li>列表<span class="key_words">『不是动态』</span>的，只渲染一次，wx:key设置为index</li>
+<h3 id="3-22-视图代码优化技巧"><a href="#3-22-视图代码优化技巧" class="headerlink" title="3.22 视图代码优化技巧"></a>3.22 视图代码优化技巧</h3><h4 id="1-动态列表渲染中的-wx-key"><a href="#1-动态列表渲染中的-wx-key" class="headerlink" title="1. 动态列表渲染中的 wx:key"></a>1. 动态列表渲染中的 wx:key</h4><ul>
+<li>如果列表元素是<span class="key_words">『单一』</span>的基本数据类型，并且唯一，直接写成 <code>*this</code>，<code>*this</code> 代表当前数据列表中的元素 item。</li>
+<li>如果列表元素是<span class="key_words">『对象』</span>类型，可以填写对象中的一个<span class="key_words">『字段名』</span>，该字段名在整个数据列表中必须唯一。</li>
+<li>列表<span class="key_words">『不是动态』</span>的、只渲染一次时，<code>wx:key</code> 设置为 <code>index</code>。</li>
 </ul>
-<h3 id="绑定视图事件"><a href="#绑定视图事件" class="headerlink" title="绑定视图事件"></a>绑定视图事件</h3><ul>
-<li>使用catch代替bind，不需要冒泡只在特定节点监听事件</li>
-<li>回传额外信息用data-的形式</li>
+<h4 id="2-绑定视图事件"><a href="#2-绑定视图事件" class="headerlink" title="2. 绑定视图事件"></a>2. 绑定视图事件</h4><ul>
+<li>使用 <code>catch</code> 代替 <code>bind</code>，不需要冒泡、只在特定节点监听事件。</li>
+<li>回传额外信息用 <code>data-</code> 的形式。</li>
 </ul>
-<h3 id="使用节流函数和防抖函数，防止按钮误单击与scroll事件函数频繁触发"><a href="#使用节流函数和防抖函数，防止按钮误单击与scroll事件函数频繁触发" class="headerlink" title="使用节流函数和防抖函数，防止按钮误单击与scroll事件函数频繁触发"></a>使用节流函数和防抖函数，防止按钮误单击与scroll事件函数频繁触发</h3><ul>
-<li>节流：控制某段JS代码的执行频率</li>
-<li>防抖：避免一次事件当作多次处理</li>
-<li>对于scroll高频事件要节流，使用节流函数throttle</li>
-<li>对于用户的<span class="key_words">『单击』</span>事件，可以适当使用防抖函数debounce</li>
+<h4 id="3-节流与防抖"><a href="#3-节流与防抖" class="headerlink" title="3. 节流与防抖"></a>3. 节流与防抖</h4><ul>
+<li>节流：控制某段 JS 代码的执行频率。</li>
+<li>防抖：避免一次事件被当作多次处理。</li>
+<li>对于 scroll 这类高频事件要节流，使用节流函数 <code>throttle</code>。</li>
+<li>对于用户的<span class="key_words">『单击』</span>事件，可以适当使用防抖函数 <code>debounce</code>，防止按钮误单击。</li>
 </ul>
-<h3 id="重渲染与使用wxml标签要克制"><a href="#重渲染与使用wxml标签要克制" class="headerlink" title="重渲染与使用wxml标签要克制"></a>重渲染与使用wxml标签要克制</h3><ul>
-<li>减少wxml节点的数量,总页面节点数少于1000个，节点数深度层级少于30层，子节点数不大于60个</li>
-<li>控制setData每次传递的数据量</li>
-<li>能不用容器标签就不用</li>
+<h4 id="4-克制使用重渲染与-wxml-标签"><a href="#4-克制使用重渲染与-wxml-标签" class="headerlink" title="4. 克制使用重渲染与 wxml 标签"></a>4. 克制使用重渲染与 wxml 标签</h4><ul>
+<li>减少 wxml 节点数量：总页面节点数少于 1000 个，节点深度少于 30 层，子节点数不大于 60 个。</li>
+<li>控制 <code>setData</code> 每次传递的数据量。</li>
+<li>能不用容器标签就不用。</li>
 </ul>
-<h2 id="WXSS优化技巧"><a href="#WXSS优化技巧" class="headerlink" title="WXSS优化技巧"></a>WXSS优化技巧</h2><ul>
-<li>给滚动组件开启惯性滚动<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-webkit-<span class="attribute">overflow</span>-scrolling: touch;</span><br></pre></td></tr></table></figure></li>
-<li>使用hover-class实现按钮的单击态<ul>
-<li>代替:active伪类</li>
+<h3 id="3-23-WXSS-优化技巧"><a href="#3-23-WXSS-优化技巧" class="headerlink" title="3.23 WXSS 优化技巧"></a>3.23 WXSS 优化技巧</h3><h4 id="1-开启惯性滚动"><a href="#1-开启惯性滚动" class="headerlink" title="1. 开启惯性滚动"></a>1. 开启惯性滚动</h4><p>给滚动组件开启惯性滚动：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-webkit-<span class="attribute">overflow</span>-scrolling: touch;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-用-hover-class-实现单击态"><a href="#2-用-hover-class-实现单击态" class="headerlink" title="2. 用 hover-class 实现单击态"></a>2. 用 hover-class 实现单击态</h4><p>使用 <code>hover-class</code> 实现按钮的单击态，代替 <code>:active</code> 伪类。</p>
+<h4 id="3-用-gulp-删除无用样式"><a href="#3-用-gulp-删除无用样式" class="headerlink" title="3. 用 gulp 删除无用样式"></a>3. 用 gulp 删除无用样式</h4><p>先全局安装 gulp，再安装清理 wxss 的插件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install gulp -g</span><br><span class="line">npm install --save-dev gulp gulp-cleanwxss</span><br></pre></td></tr></table></figure>
+
+<p>然后创建 <code>gulpfile.js</code> 并执行 <code>gulp</code>。下面的配置会把页面样式中的无用规则清理后输出到 <code>dist</code> 目录（只能静态甄别，不能动态判断）：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// gulpfile.js 文件</span></span><br><span class="line"><span class="keyword">const</span> gulp = <span class="built_in">require</span>(<span class="string">&#x27;gulp&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> cleanwxss = <span class="built_in">require</span>(<span class="string">&#x27;gulp-cleanwxss&#x27;</span>)</span><br><span class="line"></span><br><span class="line">gulp.<span class="title function_">task</span>(<span class="string">&#x27;default&#x27;</span>, <span class="function">(<span class="params">done</span>) =&gt;</span> &#123; <span class="comment">// 默认执行</span></span><br><span class="line">  gulp.<span class="title function_">src</span>(<span class="string">&#x27;../miniprogram/index/page/*/*.wxss&#x27;</span>) <span class="comment">// 处理的文件</span></span><br><span class="line">    .<span class="title function_">pipe</span>(<span class="title function_">cleanwxss</span>(&#123; <span class="attr">log</span>: <span class="literal">true</span> &#125;))</span><br><span class="line">    .<span class="title function_">pipe</span>(gulp.<span class="title function_">dest</span>(<span class="string">&#x27;./dist&#x27;</span>)) <span class="comment">// 处理结果放在该目录下</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-24-UI-交互技巧"><a href="#3-24-UI-交互技巧" class="headerlink" title="3.24 UI 交互技巧"></a>3.24 UI 交互技巧</h3><ul>
+<li>使用<span class="key_words">『padding 改变单击区域大小』</span>。</li>
+<li>使用<span class="key_words">『伪元素改变点击区域大小』</span>：给父元素 <code>position: relative</code>，伪元素设为 <code>absolute</code>，并把 <code>top</code>、<code>left</code>、<code>right</code>、<code>bottom</code> 设为负值来扩大点击区域。</li>
+</ul>
+<h3 id="3-25-脚本优化技巧"><a href="#3-25-脚本优化技巧" class="headerlink" title="3.25 脚本优化技巧"></a>3.25 脚本优化技巧</h3><ul>
+<li>如果对象被异步线程引用，或者被全局对象引用，会造成内存泄漏。</li>
+<li>定时器属于异步线程，离开页面一定要记得销毁。</li>
+<li><span class="key_words">『使用 wx.onXXX 全局绑定一定要小心，有一个监听必须有一个反监听，在 onUnload 事件中销毁』</span>。</li>
+<li>主题切换事件可以在模拟器中通过在 app.json 配置 <code>&quot;darkmode&quot;: true</code> 验证。</li>
+<li>使用全局对象要小心：<ul>
+<li>所有在 global 上或 app 上定义的全局数据，以及在上面添加的事件监听，都要及时清理；自定义对象要定义一个 <code>dispose</code> 方法。</li>
 </ul>
 </li>
-<li>使用gulp工具删除无用wxss样式 — <span class="desc">只能静态甄别不能动态</span><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install gulp -g</span><br><span class="line">npm install --save-dev gulp gulp-cleanwxss</span><br></pre></td></tr></table></figure>
+<li>使用 <code>this</code> 对象要谨慎，尤其是在周期性发生的异步回调函数里。</li>
+</ul>
+<h3 id="3-26-setData-调用优化"><a href="#3-26-setData-调用优化" class="headerlink" title="3.26 setData 调用优化"></a>3.26 setData 调用优化</h3><ul>
+<li>小程序切换到后台后，<code>setData</code> 不再调用，可以结合小程序的双线程运行机制和重渲染机制理解。</li>
+<li>不要多次分开调用 <code>setData</code>，尽量合并调用。</li>
+<li>不准备渲染的数据不要放在 <code>data</code> 数据对象里。<ul>
+<li><span class="key_words">『只有需要触发视图更新的数据才需要放在 data 对象』</span>。</li>
+<li>不需要触发的，可以放在 <code>data</code> 对象外面（即当前页面对象上），通过 <code>this</code> 直接取用。</li>
+</ul>
+</li>
+<li>通过 index 局部更新长列表数据：<ul>
+<li>使用索引或计算属性更新局部数据。</li>
+<li>直接使用当前组件上下文对象的 <code>update</code> 方法。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-27-网络请求优化：本地缓存与请求优先级"><a href="#3-27-网络请求优化：本地缓存与请求优先级" class="headerlink" title="3.27 网络请求优化：本地缓存与请求优先级"></a>3.27 网络请求优化：本地缓存与请求优先级</h3><h4 id="1-用本地缓存减少不必要的请求"><a href="#1-用本地缓存减少不必要的请求" class="headerlink" title="1. 用本地缓存减少不必要的请求"></a>1. 用本地缓存减少不必要的请求</h4><p>首页 JS 文件里有加载小程序导航数据的代码，可以在这里尝试本地缓存：先从本地缓存中取数据展示，然后向后端发起请求，拿到最新导航数据后再调用 <code>setData</code> 重新设置，并把本地缓存刷新一遍，避免缓存过时（<span class="desc">优化：改用并发复合命令或两个异步函数</span>）。</p>
+<h4 id="2-优化请求参数"><a href="#2-优化请求参数" class="headerlink" title="2. 优化请求参数"></a>2. 优化请求参数</h4><p>优化网络请求参数以提高通讯效率，具体参数见上文 <code>wx.request</code> 部分。</p>
+<h4 id="3-优化并发数，让优先级高的请求先执行"><a href="#3-优化并发数，让优先级高的请求先执行" class="headerlink" title="3. 优化并发数，让优先级高的请求先执行"></a>3. 优化并发数，让优先级高的请求先执行</h4><p><code>wx.request</code> 发出的请求有最大 10 个的并发限制（限基础库 1.4.0 以下）。可以改造 <code>request</code> 工具函数，先安装并构建 npm：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add priority-async-queue</span><br></pre></td></tr></table></figure>
+
+<p>使用自定义的 <code>request</code> 方法时，在重要的网络请求上添加 <code>priority</code> 选项：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> res = <span class="keyword">await</span> <span class="title function_">request</span>(&#123; <span class="attr">url</span>: <span class="string">&#x27;&#x27;</span>, <span class="attr">priority</span>: <span class="string">&#x27;urgent&#x27;</span> &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>然后在自定义 <code>request</code> 方法中引入队列，按优先级排队执行请求：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">PriorityAsyncQueue</span> = <span class="built_in">require</span>(<span class="string">&#x27;priority-async-queue&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> queue = <span class="keyword">new</span> <span class="title class_">PriorityAsyncQueue</span>(<span class="number">10</span>) <span class="comment">// default 10</span></span><br><span class="line"><span class="keyword">const</span> low = <span class="string">&#x27;low&#x27;</span>, normal = <span class="string">&#x27;normal&#x27;</span>, mid = <span class="string">&#x27;mid&#x27;</span>, high = <span class="string">&#x27;high&#x27;</span>, urgent = <span class="string">&#x27;urgent&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> priority = &#123; low, normal, mid, high, urgent &#125;</span><br><span class="line"><span class="keyword">const</span> priority = args.<span class="property">priority</span> ? args.<span class="property">priority</span> : normal</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  queue.<span class="title function_">addTask</span>(&#123; priority &#125;, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    wx.<span class="title function_">request</span>(</span><br><span class="line">      <span class="title class_">Object</span>.<span class="title function_">assign</span>(args, &#123; <span class="attr">success</span>: resolve, <span class="attr">fail</span>: reject &#125;)</span><br><span class="line">    )</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-28-图片优化技巧"><a href="#3-28-图片优化技巧" class="headerlink" title="3.28 图片优化技巧"></a>3.28 图片优化技巧</h3><ul>
+<li>尽量减少图片的请求参数。</li>
+<li>尽量压缩图片的大小。</li>
+<li>尽量使用带有 CDN 加速的网络图片链接。</li>
+<li>尽可能使用高压缩比图片，例如 webp 格式。</li>
+<li>生成雪碧图：把多张图片合成一张，通过 <code>background-image</code> 使用。先安装依赖，再执行生成的脚本：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install libpng</span><br><span class="line">npm -g install miniprogram-slim</span><br><span class="line"><span class="comment"># 生成的脚本：generate_sprite.sh</span></span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>创建一个gulpfile.js文件并执行 gulp<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// gulpfile.js文件</span></span><br><span class="line"><span class="keyword">const</span> gulp = <span class="built_in">require</span>(<span class="string">&quot;gulp&quot;</span>)</span><br><span class="line"><span class="keyword">const</span> cleanwxss = <span class="built_in">require</span>(<span class="string">&quot;gulp-cleanwxss&quot;</span>)</span><br><span class="line">gulp.<span class="title function_">task</span>(<span class="string">&quot;default&quot;</span>, <span class="function">(<span class="params">done</span>) =&gt;</span> &#123; <span class="comment">// 默认执行</span></span><br><span class="line">  gulp.<span class="title function_">arc</span>(<span class="string">&quot;../miniprogram/index/page/*/*.wxss&quot;</span>) <span class="comment">// 处理的文件</span></span><br><span class="line">      .<span class="title function_">pipe</span>(<span class="title function_">cleanwxss</span>(&#123;<span class="attr">log</span>: <span class="literal">true</span>&#125;))</span><br><span class="line">      .<span class="title function_">pipe</span>(gulp.<span class="title function_">dest</span>(<span class="string">&quot;./dist&quot;</span>))  <span class="comment">//处理结果放在该目录下</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>图片压缩：<ul>
+<li>在线压缩：<a target="_blank" rel="noopener" href="https://tinypng.com/">https://tinypng.com/</a></li>
+<li>离线压缩：把图片所在文件夹拷贝到 tools 文件夹下，然后执行 <code>compress.sh</code> 脚本。</li>
+</ul>
+</li>
+<li>离线压缩需要先安装依赖，再用 <code>miniprogram-slim</code> 批量处理 png：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install libpng</span><br><span class="line">miniprogram-slim imagemin -o ./生成的文件夹 --png-quality <span class="string">&quot;0.65,0.8&quot;</span> ./存放图片的文件夹/**/*.png</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用腾讯云 COS 存储本地图片：<ul>
+<li>上传本地图片到 COS 的方法：<code>uploadImageToCos()</code>。</li>
+<li>安装 <a target="_blank" rel="noopener" href="https://github.com/tencentyun/cos-nodejs-sdk-v5">cos-nodejs-sdk-v5</a>。</li>
+<li>登录腾讯云官方网站开通对象存储服务，并创建一个默认的存储桶。</li>
+<li>创建一个 <code>upload.js</code> 文件，实现 <code>uploadImageToCos</code> 函数。</li>
 </ul>
 </li>
 </ul>
-<h2 id="UI交互技巧"><a href="#UI交互技巧" class="headerlink" title="UI交互技巧"></a>UI交互技巧</h2><ul>
-<li>使用<span class="key_words">『padding改变单击区域大小』</span></li>
-<li>使用<span class="key_words">『伪元素改变点击区域大小』</span><ul>
-<li>给父元素reletive，伪类为absolute，且top、left、right、bottom设置为负值，扩大点击区域</li>
-</ul>
-</li>
-</ul>
-<h2 id="脚本优化技巧"><a href="#脚本优化技巧" class="headerlink" title="脚本优化技巧"></a>脚本优化技巧</h2><ul>
-<li>如果对象被异步线程引用，或者是被全局对象引用，会造成内存泄漏</li>
-<li>定时器是异步线程里的东西，离开页面一定要记得销毁</li>
-<li><span class="key_words">『使用wx.onXXX全局绑定一定要小心，有一个监听必须有一个反监听，在onUnload事件销毁』</span></li>
-<li>主题切换事件在模拟器可以通过在app.json配置”darkmode”:true</li>
-<li>使用全局对象要小心<ul>
-<li>所有在global上或者在app上定义的全局数据，或者在上面添加的事件监听</li>
-<li>要及时清理，自定义对象要定义一个dispose方法</li>
-</ul>
-</li>
-<li>使用this对象要谨慎（在周期性发生的异步回调函数里面）</li>
-</ul>
-<h2 id="setData调用优化"><a href="#setData调用优化" class="headerlink" title="setData调用优化"></a>setData调用优化</h2><ul>
-<li>小程序切换到后台后，setData不再调用，可以结合小程序的双线程运行机制和重渲染机制</li>
-<li>不要多次分开调用setData，尽量要合并调用</li>
-<li>不准备渲染的数据不要放在data数据对象里边<ul>
-<li><span class="key_words">『只有需要触发视图更新的数据才需要放在data对象』</span></li>
-<li>不需要触发的，可以放在data对象外面（即当前页面对象上），通过this直接取用</li>
-</ul>
-</li>
-<li>通过index局部更新长列表数据<ul>
-<li>使用索引或计算属性更新局部数据</li>
-<li>直接使用当前组件上下文对象的update方法</li>
-</ul>
-</li>
-</ul>
-<h2 id="网络请求优化之使用本地缓存-并发请求的优先级不一致"><a href="#网络请求优化之使用本地缓存-并发请求的优先级不一致" class="headerlink" title="网络请求优化之使用本地缓存 并发请求的优先级不一致"></a>网络请求优化之使用本地缓存 并发请求的优先级不一致</h2><h3 id="减少不必要的网络请求，使用本地缓存的数据代替从后端接口拉取的数据"><a href="#减少不必要的网络请求，使用本地缓存的数据代替从后端接口拉取的数据" class="headerlink" title="减少不必要的网络请求，使用本地缓存的数据代替从后端接口拉取的数据"></a>减少不必要的网络请求，使用本地缓存的数据代替从后端接口拉取的数据</h3><ul>
-<li>在首页的JS文件里边有加载小程序导航数据的代码，可以再这里尝试使用本地缓存技术</li>
-<li>首先从本地缓存中尝试取出缓存数据，然后向后端发起网络请求，拿到最新的导航数据以后再调用setData重新设置一下数据，并把本地数据也刷新一遍，避免本地缓存过时（<span class="desc">优化：改用并发复合命令或两个异步函数</span>）</li>
-</ul>
-<h3 id="优化网络请求参数，提高网络请求的通讯效率-—-前面讲wx-request参数已讲"><a href="#优化网络请求参数，提高网络请求的通讯效率-—-前面讲wx-request参数已讲" class="headerlink" title="优化网络请求参数，提高网络请求的通讯效率 — 前面讲wx.request参数已讲"></a>优化网络请求参数，提高网络请求的通讯效率 — <span class="desc">前面讲wx.request参数已讲</span></h3><h3 id="优化网络请求的并发数，让优先级高的请求先执行"><a href="#优化网络请求的并发数，让优先级高的请求先执行" class="headerlink" title="优化网络请求的并发数，让优先级高的请求先执行"></a>优化网络请求的并发数，让优先级高的请求先执行</h3><ul>
-<li>因为有由wx.request发出的请求有最大10个的并发限制（限基础库1.4.0以下）</li>
-<li>改造request工具函数<ul>
-<li>安装并构建npm<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add priority-<span class="keyword">async</span>-queue</span><br></pre></td></tr></table></figure></li>
-<li>使用自定义的request方法时，在重要的网络请求添加priority选项<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> res = <span class="keyword">await</span> <span class="title function_">request</span>(&#123;<span class="attr">url</span>:<span class="string">&quot;&quot;</span>,<span class="attr">priority</span>:<span class="string">&quot;urgent&quot;</span>&#125;)</span><br></pre></td></tr></table></figure></li>
-<li>在自定义的request方法中引入<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">PriorityAsyncQueue</span> = <span class="built_in">require</span> <span class="string">&quot;priority-async-queue&quot;</span></span><br><span class="line"><span class="keyword">const</span> queue = <span class="keyword">new</span> <span class="title class_">PriorityAsyncQueue</span>(<span class="number">10</span>) <span class="comment">// default 10</span></span><br><span class="line"><span class="keyword">const</span> low=<span class="string">&quot;low&quot;</span>,normal=<span class="string">&quot;normal&quot;</span>,mid=<span class="string">&quot;mid&quot;</span>,high=<span class="string">&quot;high&quot;</span>,urgent=<span class="string">&quot;urgent&quot;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> priority = &#123;low , normal, mid, high, urgent&#125;</span><br><span class="line"><span class="keyword">const</span> priority = args.<span class="property">priority</span> ? args.<span class="property">priority</span> : normal</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>) =&gt;</span> &#123;</span><br><span class="line">  queue.<span class="title function_">addTask</span>(&#123;prority&#125;, <span class="function">()=&gt;</span>&#123;</span><br><span class="line">    wx.<span class="title function_">request</span>(</span><br><span class="line">      <span class="title class_">Object</span>.<span class="title function_">assign</span>(args,&#123;<span class="attr">success</span>:resolve,<span class="attr">fail</span>:reject&#125;)</span><br><span class="line">  )&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h2 id="图片优化技巧"><a href="#图片优化技巧" class="headerlink" title="图片优化技巧"></a>图片优化技巧</h2><ul>
-<li>尽量减少图片的请求参数</li>
-<li>尽量压缩图片的大小</li>
-<li>尽量使用带有cdn加速的网络图片链接</li>
-<li>尽可能使用高压缩比图片，例如webp格式的图片</li>
-<li>生成雪碧图<ul>
-<li>多张图片合成一张图片，通过background-image来使用的图片<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install libpng</span><br><span class="line">npm -g install miniprogram-slim</span><br><span class="line">生成的脚本: generate_sprite.<span class="property">sh</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>图片压缩<ul>
-<li>在线 <a target="_blank" rel="noopener" href="https://tinypng.com/">https://tinypng.com/</a></li>
-<li>离线 将图片存放的文件夹拷贝在tools文件夹下，然后执行cpmpress.sh脚本<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install libpng</span><br><span class="line">miniprogram-slim imagemin -o ./生成的文件夹 --png-quality <span class="string">&quot;0.65,0.8&quot;</span> ./存放图片的文件夹<span class="comment">/**/</span>*.<span class="property">png</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>使用腾讯云cos存储本地图片<ul>
-<li>上传本地图片到cos的方法: uploadImageToCos() </li>
-<li>安装<a target="_blank" rel="noopener" href="https://github.com/tencentyun/cos-nodejs-sdk-v5">cos-nodejs-sdk-v5</a><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install cos-nodejs-sdk-v5</span><br></pre></td></tr></table></figure></li>
-<li>然后登录腾讯云官方网站开通对象存储服务并创建一个默认的存储桶</li>
-<li>创建一个upload.js文件，实现uploadImageToCos函数</li>
-</ul>
-</li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install cos-nodejs-sdk-v5</span><br></pre></td></tr></table></figure>
+
+<h2 id="踩坑与注意点"><a href="#踩坑与注意点" class="headerlink" title="踩坑与注意点"></a>踩坑与注意点</h2><ul>
+<li><strong>骨架屏不会加快首屏</strong>：它的价值是减少白屏焦虑；且不要在生成结果上手动改代码，配置或 wxml&#x2F;js 改动后要重新生成。</li>
+<li><strong><code>setData</code> 有硬限制</strong>：单次数据不超过 256KB；页面节点总数控制在 1000 以内、层级少于 30 层、子节点不多于 60 个。</li>
+<li><strong>离开页面要清理</strong>：定时器、<code>wx.onXXX</code> 全局监听、挂在 global&#x2F;app 上的数据和监听都要在 <code>onUnload</code> 等时机移除，否则会内存泄漏。</li>
+<li><strong>WXS 只支持 ES5</strong>：在 WXS 里写 ES6 语法会直接报错。</li>
+<li><strong>Worker 不能调 <code>wx</code> 接口</strong>，且同一时间只能有一个 Worker 线程，位置也必须在配置好的目录中。</li>
+<li><strong><code>require</code> 的路径限制</strong>：<code>require</code> 不支持绝对路径，只有 app.js 中可以使用绝对路径，因此才需要额外封装 <code>requireAsync</code>。</li>
+<li><strong>带 Sync 的接口仍是同步的</strong>：如 <code>wx.getStorage</code>、<code>wx.setStorage</code>、<code>wx.getSystemInfo</code>，放在 <code>onLaunch</code> &#x2F; <code>onLoad</code> 中会阻塞启动，尽量后移到 <code>onReady</code> 之后或用拆分接口。</li>
 </ul>
 
 </article>
@@ -901,11 +927,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/%E9%A1%B9%E7%9B%AE%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%90%88%E9%9B%86/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/%E5%AF%8C%E6%96%87%E6%9C%AC/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">微信小程序-项目遇到的问题合集</h6>
+                <h6 class="trm-op-title">富文本</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -922,11 +948,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/%E8%A7%A3%E5%86%B3%E6%BB%9A%E5%8A%A8%E5%88%B0%E5%AF%B9%E5%BA%94%E8%A7%86%E5%9B%BE%E6%A0%87%E7%AD%BE%E4%B9%9F%E9%9A%8F%E7%9D%80%E5%8A%A8/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/%E6%B5%B7%E6%8A%A5%E7%94%9F%E6%88%90/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">微信小程序-解决滚动到对应试图标签也随着动</h6>
+                <h6 class="trm-op-title">海报生成</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -998,7 +1024,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="启动流程"><a rel="nofollow" class="trm-toc-link" href="#启动流程"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">启动流程</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="环境准备"><a rel="nofollow" class="trm-toc-link" href="#环境准备"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">环境准备</span></a></li><li class="trm-toc-item trm-toc-level-3" title="代码注入"><a rel="nofollow" class="trm-toc-link" href="#代码注入"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">代码注入</span></a></li><li class="trm-toc-item trm-toc-level-3" title="首屏渲染"><a rel="nofollow" class="trm-toc-link" href="#首屏渲染"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">首屏渲染</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="启动方式"><a rel="nofollow" class="trm-toc-link" href="#启动方式"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">启动方式</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="冷启动"><a rel="nofollow" class="trm-toc-link" href="#冷启动"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">冷启动</span></a></li><li class="trm-toc-item trm-toc-level-3" title="热启动"><a rel="nofollow" class="trm-toc-link" href="#热启动"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">热启动</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="小程序性能的优化"><a rel="nofollow" class="trm-toc-link" href="#小程序性能的优化"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">小程序性能的优化</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="冷启动性能的优化"><a rel="nofollow" class="trm-toc-link" href="#冷启动性能的优化"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">冷启动性能的优化</span></a></li><li class="trm-toc-item trm-toc-level-3" title="运行时渲染性能的优化"><a rel="nofollow" class="trm-toc-link" href="#运行时渲染性能的优化"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">运行时渲染性能的优化</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="骨架屏"><a rel="nofollow" class="trm-toc-link" href="#骨架屏"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">骨架屏</span></a></li><li class="trm-toc-item trm-toc-level-2" title="使用虚拟DOM，优化长列表内容"><a rel="nofollow" class="trm-toc-link" href="#使用虚拟DOM，优化长列表内容"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">使用虚拟DOM，优化长列表内容</span></a></li><li class="trm-toc-item trm-toc-level-2" title="页面容器page-container"><a rel="nofollow" class="trm-toc-link" href="#页面容器page-container"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">页面容器page-container</span></a></li><li class="trm-toc-item trm-toc-level-2" title="优化视图页动画效果"><a rel="nofollow" class="trm-toc-link" href="#优化视图页动画效果"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">优化视图页动画效果</span></a></li><li class="trm-toc-item trm-toc-level-2" title="重渲染与自定义组件优化"><a rel="nofollow" class="trm-toc-link" href="#重渲染与自定义组件优化"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">重渲染与自定义组件优化</span></a></li><li class="trm-toc-item trm-toc-level-2" title="代码按需注入与初始渲染缓存"><a rel="nofollow" class="trm-toc-link" href="#代码按需注入与初始渲染缓存"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">代码按需注入与初始渲染缓存</span></a></li><li class="trm-toc-item trm-toc-level-2" title="使用独立分包和分包预加载"><a rel="nofollow" class="trm-toc-link" href="#使用独立分包和分包预加载"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">使用独立分包和分包预加载</span></a></li><li class="trm-toc-item trm-toc-level-2" title="独立分包使用占位组件 — 分包异步化"><a rel="nofollow" class="trm-toc-link" href="#独立分包使用占位组件-—-分包异步化"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">独立分包使用占位组件 — 分包异步化</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="组件的分包异步化及主页中占位组件的使用"><a rel="nofollow" class="trm-toc-link" href="#组件的分包异步化及主页中占位组件的使用"><span class="trm-toc-number">11.1.</span> <span class="trm-toc-text">组件的分包异步化及主页中占位组件的使用</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用封面页"><a rel="nofollow" class="trm-toc-link" href="#使用封面页"><span class="trm-toc-number">11.2.</span> <span class="trm-toc-text">使用封面页</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="JS代码的分包异步化"><a rel="nofollow" class="trm-toc-link" href="#JS代码的分包异步化"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">JS代码的分包异步化</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="项目插件化"><a rel="nofollow" class="trm-toc-link" href="#项目插件化"><span class="trm-toc-number">12.1.</span> <span class="trm-toc-text">项目插件化</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="使用WXWebAssembly优化运算性能"><a rel="nofollow" class="trm-toc-link" href="#使用WXWebAssembly优化运算性能"><span class="trm-toc-number">13.</span> <span class="trm-toc-text">使用WXWebAssembly优化运算性能</span></a></li><li class="trm-toc-item trm-toc-level-2" title="使用异步转同步的编程范式"><a rel="nofollow" class="trm-toc-link" href="#使用异步转同步的编程范式"><span class="trm-toc-number">14.</span> <span class="trm-toc-text">使用异步转同步的编程范式</span></a></li><li class="trm-toc-item trm-toc-level-2" title="使用复合命令模式对齐代码的执行点"><a rel="nofollow" class="trm-toc-link" href="#使用复合命令模式对齐代码的执行点"><span class="trm-toc-number">15.</span> <span class="trm-toc-text">使用复合命令模式对齐代码的执行点</span></a></li><li class="trm-toc-item trm-toc-level-2" title="使用worker开启新线程进行耗时运算"><a rel="nofollow" class="trm-toc-link" href="#使用worker开启新线程进行耗时运算"><span class="trm-toc-number">16.</span> <span class="trm-toc-text">使用worker开启新线程进行耗时运算</span></a></li><li class="trm-toc-item trm-toc-level-2" title="在后端使用Go语言异步执行逻辑运算代码（如何将前端工作后移）"><a rel="nofollow" class="trm-toc-link" href="#在后端使用Go语言异步执行逻辑运算代码（如何将前端工作后移）"><span class="trm-toc-number">17.</span> <span class="trm-toc-text">在后端使用Go语言异步执行逻辑运算代码（如何将前端工作后移）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="使用串发命令模式延迟同步请求(如何使用数据缓存)"><a rel="nofollow" class="trm-toc-link" href="#使用串发命令模式延迟同步请求-如何使用数据缓存"><span class="trm-toc-number">18.</span> <span class="trm-toc-text">使用串发命令模式延迟同步请求(如何使用数据缓存)</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="用分接口获取系统信息"><a rel="nofollow" class="trm-toc-link" href="#用分接口获取系统信息"><span class="trm-toc-number">18.1.</span> <span class="trm-toc-text">用分接口获取系统信息</span></a></li><li class="trm-toc-item trm-toc-level-3" title="启动过程先使用默认参数，启动完成后(即Page.onReady事件派发后)再进行相关接口的调用和缓存后端接口数据的本地缓存存取代码"><a rel="nofollow" class="trm-toc-link" href="#启动过程先使用默认参数，启动完成后-即Page-onReady事件派发后-再进行相关接口的调用和缓存后端接口数据的本地缓存存取代码"><span class="trm-toc-number">18.2.</span> <span class="trm-toc-text">启动过程先使用默认参数，启动完成后(即Page.onReady事件派发后)再进行相关接口的调用和缓存后端接口数据的本地缓存存取代码</span></a></li><li class="trm-toc-item trm-toc-level-3" title="创建SystemInfoManager模块，这样系统信息的获取在首屏渲染后"><a rel="nofollow" class="trm-toc-link" href="#创建SystemInfoManager模块，这样系统信息的获取在首屏渲染后"><span class="trm-toc-number">18.3.</span> <span class="trm-toc-text">创建SystemInfoManager模块，这样系统信息的获取在首屏渲染后</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="首页动态数据的优化"><a rel="nofollow" class="trm-toc-link" href="#首页动态数据的优化"><span class="trm-toc-number">19.</span> <span class="trm-toc-text">首页动态数据的优化</span></a></li><li class="trm-toc-item trm-toc-level-2" title="小程序切换后台后，关闭对setData的一个调用（监听App进入后台）"><a rel="nofollow" class="trm-toc-link" href="#小程序切换后台后，关闭对setData的一个调用（监听App进入后台）"><span class="trm-toc-number">20.</span> <span class="trm-toc-text">小程序切换后台后，关闭对setData的一个调用（监听App进入后台）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="在项目外使用数据预拉取与周期性更新（弱网情况）"><a rel="nofollow" class="trm-toc-link" href="#在项目外使用数据预拉取与周期性更新（弱网情况）"><span class="trm-toc-number">21.</span> <span class="trm-toc-text">在项目外使用数据预拉取与周期性更新（弱网情况）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="优化后端接口及网络请求参数(wx.request)"><a rel="nofollow" class="trm-toc-link" href="#优化后端接口及网络请求参数-wx-request"><span class="trm-toc-number">22.</span> <span class="trm-toc-text">优化后端接口及网络请求参数(wx.request)</span></a></li><li class="trm-toc-item trm-toc-level-2" title="视图代码优化技巧"><a rel="nofollow" class="trm-toc-link" href="#视图代码优化技巧"><span class="trm-toc-number">23.</span> <span class="trm-toc-text">视图代码优化技巧</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="在动态列表渲染优化wx:key使用"><a rel="nofollow" class="trm-toc-link" href="#在动态列表渲染优化wx-key使用"><span class="trm-toc-number">23.1.</span> <span class="trm-toc-text">在动态列表渲染优化wx:key使用</span></a></li><li class="trm-toc-item trm-toc-level-3" title="绑定视图事件"><a rel="nofollow" class="trm-toc-link" href="#绑定视图事件"><span class="trm-toc-number">23.2.</span> <span class="trm-toc-text">绑定视图事件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用节流函数和防抖函数，防止按钮误单击与scroll事件函数频繁触发"><a rel="nofollow" class="trm-toc-link" href="#使用节流函数和防抖函数，防止按钮误单击与scroll事件函数频繁触发"><span class="trm-toc-number">23.3.</span> <span class="trm-toc-text">使用节流函数和防抖函数，防止按钮误单击与scroll事件函数频繁触发</span></a></li><li class="trm-toc-item trm-toc-level-3" title="重渲染与使用wxml标签要克制"><a rel="nofollow" class="trm-toc-link" href="#重渲染与使用wxml标签要克制"><span class="trm-toc-number">23.4.</span> <span class="trm-toc-text">重渲染与使用wxml标签要克制</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="WXSS优化技巧"><a rel="nofollow" class="trm-toc-link" href="#WXSS优化技巧"><span class="trm-toc-number">24.</span> <span class="trm-toc-text">WXSS优化技巧</span></a></li><li class="trm-toc-item trm-toc-level-2" title="UI交互技巧"><a rel="nofollow" class="trm-toc-link" href="#UI交互技巧"><span class="trm-toc-number">25.</span> <span class="trm-toc-text">UI交互技巧</span></a></li><li class="trm-toc-item trm-toc-level-2" title="脚本优化技巧"><a rel="nofollow" class="trm-toc-link" href="#脚本优化技巧"><span class="trm-toc-number">26.</span> <span class="trm-toc-text">脚本优化技巧</span></a></li><li class="trm-toc-item trm-toc-level-2" title="setData调用优化"><a rel="nofollow" class="trm-toc-link" href="#setData调用优化"><span class="trm-toc-number">27.</span> <span class="trm-toc-text">setData调用优化</span></a></li><li class="trm-toc-item trm-toc-level-2" title="网络请求优化之使用本地缓存 并发请求的优先级不一致"><a rel="nofollow" class="trm-toc-link" href="#网络请求优化之使用本地缓存-并发请求的优先级不一致"><span class="trm-toc-number">28.</span> <span class="trm-toc-text">网络请求优化之使用本地缓存 并发请求的优先级不一致</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="减少不必要的网络请求，使用本地缓存的数据代替从后端接口拉取的数据"><a rel="nofollow" class="trm-toc-link" href="#减少不必要的网络请求，使用本地缓存的数据代替从后端接口拉取的数据"><span class="trm-toc-number">28.1.</span> <span class="trm-toc-text">减少不必要的网络请求，使用本地缓存的数据代替从后端接口拉取的数据</span></a></li><li class="trm-toc-item trm-toc-level-3" title="优化网络请求参数，提高网络请求的通讯效率 — 前面讲wx.request参数已讲"><a rel="nofollow" class="trm-toc-link" href="#优化网络请求参数，提高网络请求的通讯效率-—-前面讲wx-request参数已讲"><span class="trm-toc-number">28.2.</span> <span class="trm-toc-text">优化网络请求参数，提高网络请求的通讯效率 — 前面讲wx.request参数已讲</span></a></li><li class="trm-toc-item trm-toc-level-3" title="优化网络请求的并发数，让优先级高的请求先执行"><a rel="nofollow" class="trm-toc-link" href="#优化网络请求的并发数，让优先级高的请求先执行"><span class="trm-toc-number">28.3.</span> <span class="trm-toc-text">优化网络请求的并发数，让优先级高的请求先执行</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="图片优化技巧"><a rel="nofollow" class="trm-toc-link" href="#图片优化技巧"><span class="trm-toc-number">29.</span> <span class="trm-toc-text">图片优化技巧</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景与场景"><a rel="nofollow" class="trm-toc-link" href="#背景与场景"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景与场景</span></a></li><li class="trm-toc-item trm-toc-level-2" title="一、启动流程"><a rel="nofollow" class="trm-toc-link" href="#一、启动流程"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">一、启动流程</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="1. 环境准备"><a rel="nofollow" class="trm-toc-link" href="#1-环境准备"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">1. 环境准备</span></a></li><li class="trm-toc-item trm-toc-level-3" title="2. 代码注入"><a rel="nofollow" class="trm-toc-link" href="#2-代码注入"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">2. 代码注入</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3. 首屏渲染"><a rel="nofollow" class="trm-toc-link" href="#3-首屏渲染"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">3. 首屏渲染</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="二、启动方式"><a rel="nofollow" class="trm-toc-link" href="#二、启动方式"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">二、启动方式</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="1. 冷启动"><a rel="nofollow" class="trm-toc-link" href="#1-冷启动"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">1. 冷启动</span></a></li><li class="trm-toc-item trm-toc-level-3" title="2. 热启动"><a rel="nofollow" class="trm-toc-link" href="#2-热启动"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">2. 热启动</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="三、具体优化手段"><a rel="nofollow" class="trm-toc-link" href="#三、具体优化手段"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">三、具体优化手段</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="3.1 冷启动性能优化"><a rel="nofollow" class="trm-toc-link" href="#3-1-冷启动性能优化"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">3.1 冷启动性能优化</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.2 运行时渲染性能优化"><a rel="nofollow" class="trm-toc-link" href="#3-2-运行时渲染性能优化"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">3.2 运行时渲染性能优化</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.3 骨架屏"><a rel="nofollow" class="trm-toc-link" href="#3-3-骨架屏"><span class="trm-toc-number">4.3.</span> <span class="trm-toc-text">3.3 骨架屏</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.4 使用虚拟 DOM 优化长列表"><a rel="nofollow" class="trm-toc-link" href="#3-4-使用虚拟-DOM-优化长列表"><span class="trm-toc-number">4.4.</span> <span class="trm-toc-text">3.4 使用虚拟 DOM 优化长列表</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.5 页面容器 page-container"><a rel="nofollow" class="trm-toc-link" href="#3-5-页面容器-page-container"><span class="trm-toc-number">4.5.</span> <span class="trm-toc-text">3.5 页面容器 page-container</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.6 优化视图层动画效果"><a rel="nofollow" class="trm-toc-link" href="#3-6-优化视图层动画效果"><span class="trm-toc-number">4.6.</span> <span class="trm-toc-text">3.6 优化视图层动画效果</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.7 重渲染与自定义组件优化"><a rel="nofollow" class="trm-toc-link" href="#3-7-重渲染与自定义组件优化"><span class="trm-toc-number">4.7.</span> <span class="trm-toc-text">3.7 重渲染与自定义组件优化</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.8 代码按需注入与初始渲染缓存"><a rel="nofollow" class="trm-toc-link" href="#3-8-代码按需注入与初始渲染缓存"><span class="trm-toc-number">4.8.</span> <span class="trm-toc-text">3.8 代码按需注入与初始渲染缓存</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.9 使用独立分包和分包预加载"><a rel="nofollow" class="trm-toc-link" href="#3-9-使用独立分包和分包预加载"><span class="trm-toc-number">4.9.</span> <span class="trm-toc-text">3.9 使用独立分包和分包预加载</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.10 独立分包使用占位组件（分包异步化）"><a rel="nofollow" class="trm-toc-link" href="#3-10-独立分包使用占位组件（分包异步化）"><span class="trm-toc-number">4.10.</span> <span class="trm-toc-text">3.10 独立分包使用占位组件（分包异步化）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.11 JS 代码的分包异步化"><a rel="nofollow" class="trm-toc-link" href="#3-11-JS-代码的分包异步化"><span class="trm-toc-number">4.11.</span> <span class="trm-toc-text">3.11 JS 代码的分包异步化</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.12 使用 WXWebAssembly 优化运算性能"><a rel="nofollow" class="trm-toc-link" href="#3-12-使用-WXWebAssembly-优化运算性能"><span class="trm-toc-number">4.12.</span> <span class="trm-toc-text">3.12 使用 WXWebAssembly 优化运算性能</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.13 使用异步转同步的编程范式"><a rel="nofollow" class="trm-toc-link" href="#3-13-使用异步转同步的编程范式"><span class="trm-toc-number">4.13.</span> <span class="trm-toc-text">3.13 使用异步转同步的编程范式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.14 使用复合命令模式对齐代码的执行点"><a rel="nofollow" class="trm-toc-link" href="#3-14-使用复合命令模式对齐代码的执行点"><span class="trm-toc-number">4.14.</span> <span class="trm-toc-text">3.14 使用复合命令模式对齐代码的执行点</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.15 使用 Worker 开启新线程进行耗时运算"><a rel="nofollow" class="trm-toc-link" href="#3-15-使用-Worker-开启新线程进行耗时运算"><span class="trm-toc-number">4.15.</span> <span class="trm-toc-text">3.15 使用 Worker 开启新线程进行耗时运算</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.16 在后端使用 Go 语言异步执行逻辑运算（把前端工作后移）"><a rel="nofollow" class="trm-toc-link" href="#3-16-在后端使用-Go-语言异步执行逻辑运算（把前端工作后移）"><span class="trm-toc-number">4.16.</span> <span class="trm-toc-text">3.16 在后端使用 Go 语言异步执行逻辑运算（把前端工作后移）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.17 使用串发命令模式延迟同步请求（如何使用数据缓存）"><a rel="nofollow" class="trm-toc-link" href="#3-17-使用串发命令模式延迟同步请求（如何使用数据缓存）"><span class="trm-toc-number">4.17.</span> <span class="trm-toc-text">3.17 使用串发命令模式延迟同步请求（如何使用数据缓存）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.18 首页动态数据的优化"><a rel="nofollow" class="trm-toc-link" href="#3-18-首页动态数据的优化"><span class="trm-toc-number">4.18.</span> <span class="trm-toc-text">3.18 首页动态数据的优化</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.19 小程序切换后台后关闭 setData 调用"><a rel="nofollow" class="trm-toc-link" href="#3-19-小程序切换后台后关闭-setData-调用"><span class="trm-toc-number">4.19.</span> <span class="trm-toc-text">3.19 小程序切换后台后关闭 setData 调用</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.20 在项目外使用数据预拉取与周期性更新（弱网情况）"><a rel="nofollow" class="trm-toc-link" href="#3-20-在项目外使用数据预拉取与周期性更新（弱网情况）"><span class="trm-toc-number">4.20.</span> <span class="trm-toc-text">3.20 在项目外使用数据预拉取与周期性更新（弱网情况）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.21 优化后端接口及网络请求参数（wx.request）"><a rel="nofollow" class="trm-toc-link" href="#3-21-优化后端接口及网络请求参数（wx-request）"><span class="trm-toc-number">4.21.</span> <span class="trm-toc-text">3.21 优化后端接口及网络请求参数（wx.request）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.22 视图代码优化技巧"><a rel="nofollow" class="trm-toc-link" href="#3-22-视图代码优化技巧"><span class="trm-toc-number">4.22.</span> <span class="trm-toc-text">3.22 视图代码优化技巧</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.23 WXSS 优化技巧"><a rel="nofollow" class="trm-toc-link" href="#3-23-WXSS-优化技巧"><span class="trm-toc-number">4.23.</span> <span class="trm-toc-text">3.23 WXSS 优化技巧</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.24 UI 交互技巧"><a rel="nofollow" class="trm-toc-link" href="#3-24-UI-交互技巧"><span class="trm-toc-number">4.24.</span> <span class="trm-toc-text">3.24 UI 交互技巧</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.25 脚本优化技巧"><a rel="nofollow" class="trm-toc-link" href="#3-25-脚本优化技巧"><span class="trm-toc-number">4.25.</span> <span class="trm-toc-text">3.25 脚本优化技巧</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.26 setData 调用优化"><a rel="nofollow" class="trm-toc-link" href="#3-26-setData-调用优化"><span class="trm-toc-number">4.26.</span> <span class="trm-toc-text">3.26 setData 调用优化</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.27 网络请求优化：本地缓存与请求优先级"><a rel="nofollow" class="trm-toc-link" href="#3-27-网络请求优化：本地缓存与请求优先级"><span class="trm-toc-number">4.27.</span> <span class="trm-toc-text">3.27 网络请求优化：本地缓存与请求优先级</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3.28 图片优化技巧"><a rel="nofollow" class="trm-toc-link" href="#3-28-图片优化技巧"><span class="trm-toc-number">4.28.</span> <span class="trm-toc-text">3.28 图片优化技巧</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="踩坑与注意点"><a rel="nofollow" class="trm-toc-link" href="#踩坑与注意点"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">踩坑与注意点</span></a></li></ol>
       </div>
     </div>
 
@@ -1122,6 +1148,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="在一个类型里面部分+必选 Required、Pick&lt;T, K&gt; - (T☞type， K☞keys)12345678interface totalProps &#123;  a?: number;  b?: string;  c?: string  d?: number&#125;type aPropsPick &#x3D; Pick&lt;totalProps, &#x27;a&amp;#x2">
+<meta name="description" content="整理 Required、Pick、Record、Omit、Exclude、Extract 的组合用法，用于构造对象类型的必选与排除">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TS-实用类 Utility Types">
+<meta property="og:title" content="实用类 Utility Types">
 <meta property="og:url" content="http://example.com/en/2024/11/01/TS/ts%E5%AE%9E%E7%94%A8%E7%B1%BB/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="在一个类型里面部分+必选 Required、Pick&lt;T, K&gt; - (T☞type， K☞keys)12345678interface totalProps &#123;  a?: number;  b?: string;  c?: string  d?: number&#125;type aPropsPick &#x3D; Pick&lt;totalProps, &#x27;a&amp;#x2">
+<meta property="og:description" content="整理 Required、Pick、Record、Omit、Exclude、Extract 的组合用法，用于构造对象类型的必选与排除">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-11-01T03:40:57.240Z">
-<meta property="article:modified_time" content="2025-07-21T03:24:31.691Z">
+<meta property="article:published_time" content="2024-11-01T03:40:57.000Z">
+<meta property="article:modified_time" content="2026-11-17T02:28:45.789Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="TypeScript">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <meta name="keywords" content="ts">
 
 
-<title >TS-实用类 Utility Types</title>
+<title >实用类 Utility Types</title>
 
 <!-- Favicon -->
 
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-21 11:24:31"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-17 10:28:45"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -83,6 +83,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -197,13 +199,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -239,7 +241,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -257,13 +259,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -385,7 +387,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            TS-实用类 Utility Types
+                            实用类 Utility Types
                         </h1>
 
                         
@@ -532,22 +534,36 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <h2 id="结论先行"><a href="#结论先行" class="headerlink" title="结论先行"></a>结论先行</h2><p>工具类型（Utility Types）解决的是”从已有类型派生出新类型”的问题：<code>Pick&lt;T, K&gt;</code> 挑出若干字段，<code>Required&lt;T&gt;</code> 把这些可选字段变成必选，<code>Record&lt;Keys, Type&gt;</code> 按一组键批量构造对象类型，<code>Omit</code> 排除字段，<code>Exclude</code> &#x2F; <code>Extract</code> 在联合类型上做过滤。把它们组合起来，就能在不重复定义接口的前提下得到精确的类型。</p>
+<span id="more"></span>
 
-<h3 id="在一个类型里面部分-必选"><a href="#在一个类型里面部分-必选" class="headerlink" title="在一个类型里面部分+必选"></a>在一个类型里面<span class="key_words">部分+必选</span></h3><ul>
-<li>Required<T>、Pick&lt;T, K&gt; - (<span class="desc">T☞type， K☞keys</span>)<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> totalProps &#123;</span><br><span class="line">  a?: <span class="built_in">number</span>;</span><br><span class="line">  b?: <span class="built_in">string</span>;</span><br><span class="line">  c?: <span class="built_in">string</span></span><br><span class="line">  d?: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> aPropsPick = <span class="title class_">Pick</span>&lt;totalProps, <span class="string">&#x27;a&#x27;</span> | <span class="string">&#x27;c&#x27;</span> | <span class="string">&#x27;d&#x27;</span> &gt;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">obj2</span>: <span class="title class_">Required</span>&lt;aPropsPick&gt; = &#123; <span class="attr">a</span>: <span class="number">5</span> ,<span class="attr">c</span>: <span class="string">&#x27;ddd&#x27;</span>,<span class="attr">d</span>: <span class="number">123</span> &#125;;</span><br></pre></td></tr></table></figure></li>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>同一个数据结构经常需要多个变体：编辑表单要求全字段必填，列表展示只要少数几个字段，配置对象又要按 id 建索引。手写多份 interface 既啰嗦又容易不同步，工具类型就是在原类型上做”投影”和”变换”。下面先记组合用法，再到 type-challenges 上按标签练习。</p>
+<h2 id="步骤一：在一个类型里做”部分字段-必选”"><a href="#步骤一：在一个类型里做”部分字段-必选”" class="headerlink" title="步骤一：在一个类型里做”部分字段 + 必选”"></a>步骤一：在一个类型里做”部分字段 + 必选”</h2><p><code>Required&lt;T&gt;</code> 把 <code>T</code> 的所有可选属性变成必选，<code>Pick&lt;T, K&gt;</code> 从 <code>T</code> 中挑出键为 <code>K</code> 的属性。其中 <code>T</code> 是类型，<code>K</code> 是键。</p>
+<p>下面的例子先从 <code>totalProps</code> 中挑出 <code>a</code>、<code>c</code>、<code>d</code> 三个可选字段，再用 <code>Required</code> 转成必选，因此赋值时必须三个字段都写齐。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> totalProps &#123;</span><br><span class="line">  a?: <span class="built_in">number</span>;</span><br><span class="line">  b?: <span class="built_in">string</span>;</span><br><span class="line">  c?: <span class="built_in">string</span></span><br><span class="line">  d?: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> aPropsPick = <span class="title class_">Pick</span>&lt;totalProps, <span class="string">&#x27;a&#x27;</span> | <span class="string">&#x27;c&#x27;</span> | <span class="string">&#x27;d&#x27;</span> &gt;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">obj2</span>: <span class="title class_">Required</span>&lt;aPropsPick&gt; = &#123; <span class="attr">a</span>: <span class="number">5</span> ,<span class="attr">c</span>: <span class="string">&#x27;ddd&#x27;</span>,<span class="attr">d</span>: <span class="number">123</span> &#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="步骤二：用-Record-构造对象类型"><a href="#步骤二：用-Record-构造对象类型" class="headerlink" title="步骤二：用 Record 构造对象类型"></a>步骤二：用 Record 构造对象类型</h2><p><code>Record&lt;Keys, Type&gt;</code> 适用于构造对象类型，两个参数分别是键和值。</p>
+<p>下面用 <code>keyType</code> 限定键只能是这五个字面量，值统一是 <code>totalProps</code> 结构。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> keyType = <span class="string">&#x27;input&#x27;</span> | <span class="string">&#x27;arrow&#x27;</span> | <span class="string">&#x27;pick&#x27;</span> | <span class="string">&#x27;icon&#x27;</span> | <span class="string">&#x27;radio&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> totalProps &#123;</span><br><span class="line">  <span class="attr">classname</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">placeholder</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">value</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">obj2</span>: <span class="title class_">Record</span>&lt;keyType, totalProps&gt; = &#123;</span><br><span class="line">  <span class="attr">input</span>: &#123;</span><br><span class="line">    <span class="attr">classname</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">    <span class="attr">placeholder</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">    <span class="attr">value</span>: <span class="number">123</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">arrow</span>: &#123;</span><br><span class="line">    <span class="attr">classname</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">    <span class="attr">placeholder</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">    <span class="attr">value</span>: <span class="number">123</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">pick</span>: &#123;</span><br><span class="line">    <span class="attr">classname</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">    <span class="attr">placeholder</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">    <span class="attr">value</span>: <span class="number">123</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">icon</span>: &#123;</span><br><span class="line">    <span class="attr">classname</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">    <span class="attr">placeholder</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">    <span class="attr">value</span>: <span class="number">123</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">radio</span>: &#123;</span><br><span class="line">    <span class="attr">classname</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">    <span class="attr">placeholder</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">    <span class="attr">value</span>: <span class="number">123</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="步骤三：省略与排除"><a href="#步骤三：省略与排除" class="headerlink" title="步骤三：省略与排除"></a>步骤三：省略与排除</h2><ul>
+<li><code>Omit&lt;对象, 要省略的字段&gt;</code>：从对象类型中去掉指定字段。</li>
+<li><code>Exclude&lt;字符串字面量, 要排除的字段&gt;</code>：从联合类型中排除指定成员。</li>
+<li><code>Extract&lt;Type, Union&gt;</code>：返回的是一个并集。</li>
 </ul>
-<h3 id="适用于构造对象类型"><a href="#适用于构造对象类型" class="headerlink" title="适用于构造对象类型"></a>适用于构造<span class="key_words">对象类型</span></h3><ul>
-<li>Record&lt;Keys, Type&gt; - (<span class="desc">键，值</span>)<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> keyType = <span class="string">&#x27;input&#x27;</span> | <span class="string">&#x27;arrow&#x27;</span> | <span class="string">&#x27;pick&#x27;</span> | <span class="string">&#x27;icon&#x27;</span> | <span class="string">&#x27;radio&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> totalProps &#123;</span><br><span class="line">  <span class="attr">classname</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">placeholder</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">value</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">obj2</span>: <span class="title class_">Record</span>&lt;keyType, totalProps&gt; = &#123;</span><br><span class="line">  <span class="attr">input</span>: &#123;</span><br><span class="line">    <span class="attr">classname</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">    <span class="attr">placeholder</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">    <span class="attr">value</span>: <span class="number">123</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">arrow</span>: &#123;</span><br><span class="line">    <span class="attr">classname</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">    <span class="attr">placeholder</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">    <span class="attr">value</span>: <span class="number">123</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">pick</span>: &#123;</span><br><span class="line">    <span class="attr">classname</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">    <span class="attr">placeholder</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">    <span class="attr">value</span>: <span class="number">123</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">icon</span>: &#123;</span><br><span class="line">    <span class="attr">classname</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">    <span class="attr">placeholder</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">    <span class="attr">value</span>: <span class="number">123</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">radio</span>: &#123;</span><br><span class="line">    <span class="attr">classname</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">    <span class="attr">placeholder</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">    <span class="attr">value</span>: <span class="number">123</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<p>下面用 <code>Exclude</code> 从四个字面量中排除 <code>&quot;b&quot;</code>，得到的 <code>TodoPreview</code> 只包含 <code>&quot;a&quot; | &quot;c&quot; | &quot;d&quot;</code>。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">TodoPreview</span> = <span class="title class_">Exclude</span>&lt;<span class="string">&#x27;a&#x27;</span> | <span class="string">&quot;b&quot;</span> | <span class="string">&quot;c&quot;</span> | <span class="string">&quot;d&quot;</span>, <span class="string">&quot;b&quot;</span>&gt;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
+<li><code>Pick</code> 的第二个参数必须是第一个类型里真实存在的键，写错键名会直接报错。</li>
+<li><code>Required</code> 只处理当前层级，深层嵌套的可选属性不会被递归变成必选。</li>
+<li>第二个例子里的 <code>interface totalProps</code> 与第一个例子同名但结构不同，实际项目里不要这样复用名字；<code>obj2</code> 也被重复使用，抄的时候注意改名。</li>
 </ul>
-<h3 id="省略-排除"><a href="#省略-排除" class="headerlink" title="省略 排除"></a>省略 排除</h3><ul>
-<li>Omit&lt;对象，要省略的字段&gt;</li>
-<li>Exclude&lt;字符串字面量，要排除的字段&gt;</li>
-<li>Extract&lt;Type,Union&gt;: 返回的是一个并集</li>
-<li>type TodoPreview &#x3D; Exclude&lt;’a’ | “b” |”c” | “d”, “b”&gt;;</li>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/type-challenges/type-challenges">type-challenges</a>：可从 readme 的 challenges 里任选标签练习。</li>
 </ul>
-<h3 id="更多映射类型-—"><a href="#更多映射类型-—" class="headerlink" title="更多映射类型 — "></a>更多映射类型 — <a href="/2024/11/01/TS/%E5%85%AB%E3%80%81%E9%AB%98%E7%BA%A7%E7%B1%BB%E5%9E%8B/" title="TS-高级类型">TS-高级类型</a></h3>
+<h2 id="更多映射类型"><a href="#更多映射类型" class="headerlink" title="更多映射类型"></a>更多映射类型</h2><p>详见 <a href="/2024/11/01/TS/%E5%85%AB%E3%80%81%E9%AB%98%E7%BA%A7%E7%B1%BB%E5%9E%8B/" title="高级类型">高级类型</a>。</p>
+
 </article>
     
     
@@ -570,7 +586,7 @@
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">TS-安装和编译</h6>
+                <h6 class="trm-op-title">安装和编译</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -587,17 +603,17 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/01/threeJS/%E4%BF%AE%E6%94%B9%E6%A8%A1%E5%9E%8B%E7%9A%84child/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/TS/%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B%E5%92%8C%E7%B1%BB%E5%9E%8B%E6%8E%A8%E8%AE%BA/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">threeJS-修改模型的child</h6>
+                <h6 class="trm-op-title">基础类型和类型推论</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
                 <li>24/11/01</li>
-                <li>11:01</li>
-                <li>ThreeJS</li>
+                <li>11:40</li>
+                <li>TypeScript</li>
             </ul>
         </div>
     </div>
@@ -663,7 +679,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-3" title="在一个类型里面部分+必选"><a rel="nofollow" class="trm-toc-link" href="#在一个类型里面部分-必选"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">在一个类型里面部分+必选</span></a></li><li class="trm-toc-item trm-toc-level-3" title="适用于构造对象类型"><a rel="nofollow" class="trm-toc-link" href="#适用于构造对象类型"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">适用于构造对象类型</span></a></li><li class="trm-toc-item trm-toc-level-3" title="省略 排除"><a rel="nofollow" class="trm-toc-link" href="#省略-排除"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">省略 排除</span></a></li><li class="trm-toc-item trm-toc-level-3" title="更多映射类型 — TS-高级类型"><a rel="nofollow" class="trm-toc-link" href="#更多映射类型-—"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">更多映射类型 — TS-高级类型</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="结论先行"><a rel="nofollow" class="trm-toc-link" href="#结论先行"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">结论先行</span></a></li><li class="trm-toc-item trm-toc-level-2" title="背景"><a rel="nofollow" class="trm-toc-link" href="#背景"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">背景</span></a></li><li class="trm-toc-item trm-toc-level-2" title="步骤一：在一个类型里做”部分字段 + 必选”"><a rel="nofollow" class="trm-toc-link" href="#步骤一：在一个类型里做”部分字段-必选”"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">步骤一：在一个类型里做”部分字段 + 必选”</span></a></li><li class="trm-toc-item trm-toc-level-2" title="步骤二：用 Record 构造对象类型"><a rel="nofollow" class="trm-toc-link" href="#步骤二：用-Record-构造对象类型"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">步骤二：用 Record 构造对象类型</span></a></li><li class="trm-toc-item trm-toc-level-2" title="步骤三：省略与排除"><a rel="nofollow" class="trm-toc-link" href="#步骤三：省略与排除"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">步骤三：省略与排除</span></a></li><li class="trm-toc-item trm-toc-level-2" title="注意点"><a rel="nofollow" class="trm-toc-link" href="#注意点"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">注意点</span></a></li><li class="trm-toc-item trm-toc-level-2" title="参考"><a rel="nofollow" class="trm-toc-link" href="#参考"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">参考</span></a></li><li class="trm-toc-item trm-toc-level-2" title="更多映射类型"><a rel="nofollow" class="trm-toc-link" href="#更多映射类型"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">更多映射类型</span></a></li></ol>
       </div>
     </div>
 
@@ -787,6 +803,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

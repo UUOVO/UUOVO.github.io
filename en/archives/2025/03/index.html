@@ -61,7 +61,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":false,"isHome":false,"postUpdate":"2026-10-20 16:24:35"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":false,"isHome":false,"postUpdate":"2026-11-19 17:40:39"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -76,6 +76,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -190,13 +192,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -232,7 +234,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -250,13 +252,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -508,7 +510,7 @@
         <div class="trm-card">
             <div style="padding: 0 20px;">
                 
-                    <ul class="trm-tag-list"><li class="trm-tag-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">（4）</span></li><li class="trm-tag-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a><span class="archive-list-count">（16）</span></li><li class="trm-tag-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">（180）</span></li></ul>
+                    <ul class="trm-tag-list"><li class="trm-tag-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">（10）</span></li><li class="trm-tag-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a><span class="archive-list-count">（16）</span></li><li class="trm-tag-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">（179）</span></li></ul>
                 
             </div>
         </div>
@@ -548,12 +550,16 @@
                                         <li class="trm-accent-color">03/19</li>
                                         <li class="trm-accent-color">10:56</li>
                                         
-                                        <li>728</li>
+                                        <li>1.4k</li>
                                         
                                     </ul>
                                 </div>
                             </div>
                         </div>
+                        
+                            <div class="trm-publication trm-mt-15">
+                                <p><strong>结论先行</strong>：JS 的继承写法一共七种，本质都是围绕两件事做取舍——实例属性能不能各自独立、父级方法能不能复用。只看结论：原型链继承和原型继承复用性最好但引用类型会被共享；构造函数继承属性独立但方法无法复用；组合继承两边兼顾却会调用两次父构造函数；寄生组合继承和 ES6 <code>class extends</code> 是当前的主流写法。日常开发直接用 <code>class</code>，理解原理时按下面七种依次过一遍。</p>
+                            </div>
                         
                     
                 </div>
@@ -576,12 +582,16 @@
                                         <li class="trm-accent-color">03/19</li>
                                         <li class="trm-accent-color">10:06</li>
                                         
-                                        <li>10.7k</li>
+                                        <li>12.8k</li>
                                         
                                     </ul>
                                 </div>
                             </div>
                         </div>
+                        
+                            <div class="trm-publication trm-mt-15">
+                                <h2 id="什么是-Solid？"><a href="#什么是-Solid？" class="headerlink" title="什么是 Solid？"></a>什么是 Solid？</h2><p>Solid 是一个用 JSX 编写界面的 JavaScript 框架，语法接近 React，运行时模型却完全不同。它采用细粒度响应式：状态存放在信号（signal）中，读取信号的表达式会自动建立订阅，状态变化时只重新执行依赖它的那一小段逻辑。Solid 没有虚拟 DOM，JSX 在编译期被转换成直接的 DOM 创建和更新代码，因此更新可以细到单个文本节点或属性。本文从响应式原理讲起，依次覆盖状态管理、组件与 Props、条件与列表渲染、Effect 与 memo、Context、Store、Refs、Router 以及 <code>createResource</code> 数据获取，并在最后列出容易踩坑的注意点。</p>
+                            </div>
                         
                     
                 </div>
@@ -604,12 +614,16 @@
                                         <li class="trm-accent-color">03/10</li>
                                         <li class="trm-accent-color">12:01</li>
                                         
-                                        <li>7.1k</li>
+                                        <li>8.2k</li>
                                         
                                     </ul>
                                 </div>
                             </div>
                         </div>
+                        
+                            <div class="trm-publication trm-mt-15">
+                                <p>这篇按「画布 → 图形 → 路径 → 样式 → 文字 → 渐变 → 裁剪 → 动画」的顺序把 SVG 的基础过一遍，每个知识点都配可直接粘贴运行的代码。目标是看完就能手写一个图标或一段路径动画，遇到不熟的属性也能按章节回查。</p>
+                            </div>
                         
                     
                 </div>
@@ -632,12 +646,16 @@
                                         <li class="trm-accent-color">03/06</li>
                                         <li class="trm-accent-color">14:54</li>
                                         
-                                        <li>1.3k</li>
+                                        <li>1.8k</li>
                                         
                                     </ul>
                                 </div>
                             </div>
                         </div>
+                        
+                            <div class="trm-publication trm-mt-15">
+                                <p>CSS 渐变有三种：线性的 <code>linear-gradient</code>、径向的 <code>radial-gradient</code>、圆锥的 <code>conic-gradient</code>，三种都有对应的 <code>repeating-</code> 版本用来铺满容器。核心只有两件事：给一个方向（或位置），再给若干“颜色 + 起止位置”；颜色带区间就出硬边条纹，颜色不带区间就是平滑过渡。这篇把六种写法、参数含义和一个充电环实例整理在一起。</p>
+                            </div>
                         
                     
                 </div>
@@ -660,40 +678,16 @@
                                         <li class="trm-accent-color">03/05</li>
                                         <li class="trm-accent-color">14:05</li>
                                         
-                                        <li>427</li>
+                                        <li>796</li>
                                         
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2025/03/05/%E5%8F%AF%E8%A7%86%E5%8C%96/%E8%AF%8D%E4%BA%91%E5%9B%BE/" class="trm-anima-link">
-                                        词云图
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">03/05</li>
-                                        <li class="trm-accent-color">10:09</li>
-                                        
-                                        <li>660</li>
-                                        
-                                    </ul>
-                                </div>
+                            <div class="trm-publication trm-mt-15">
+                                <p>echarts-gl 是 ECharts 的三维扩展，这篇说明三件事：它能画哪些 3D 图、三维坐标系由哪几个组件拼成、以及如何把默认会随鼠标漂移的视角锁死。需要把平面图表升级成三维散点、曲面或地球时，按下面的顺序配即可跑通。</p>
                             </div>
-                        </div>
                         
                     
                 </div>
@@ -716,12 +710,16 @@
                                         <li class="trm-accent-color">03/03</li>
                                         <li class="trm-accent-color">15:59</li>
                                         
-                                        <li>175</li>
+                                        <li>373</li>
                                         
                                     </ul>
                                 </div>
                             </div>
                         </div>
+                        
+                            <div class="trm-publication trm-mt-15">
+                                <p>这篇记录两个高频问题：同一容器重复初始化时报实例已存在，以及 itemStyle 使用渐变后 label 颜色无法跟随。两处都给出原因和可直接套用的处理方式。</p>
+                            </div>
                         
                     
                 </div>
@@ -744,12 +742,16 @@
                                         <li class="trm-accent-color">03/03</li>
                                         <li class="trm-accent-color">15:41</li>
                                         
-                                        <li>353</li>
+                                        <li>699</li>
                                         
                                     </ul>
                                 </div>
                             </div>
                         </div>
+                        
+                            <div class="trm-publication trm-mt-15">
+                                <p>ECharts 仪表盘适合展示「单一指标的当前值」，比如速度、得分、完成率。这篇解决两件事：把每个配置项对应到外盘的具体部位（弧线、刻度、文字、指针），以及给出一份可以直接改数据就用的完整 option。</p>
+                            </div>
                         
                     
                 </div>
@@ -772,12 +774,48 @@
                                         <li class="trm-accent-color">03/03</li>
                                         <li class="trm-accent-color">15:15</li>
                                         
-                                        <li>706</li>
+                                        <li>1.3k</li>
                                         
                                     </ul>
                                 </div>
                             </div>
                         </div>
+                        
+                            <div class="trm-publication trm-mt-15">
+                                <p>水球图用一个会晃动的液面表达百分比，适合做进度、完成率、水位这类指标。这篇解决三个问题：扩展怎么装、liquidFill 的配置项各管什么、一份完整 option 应该长什么样。</p>
+                            </div>
+                        
+                    
+                </div>
+            </div>
+            
+            <div class="trm-timeline-item trm-scroll-animation">
+                <div class="trm-timeline-mark-light"></div>
+                <div class="trm-timeline-mark"></div>
+                <div class="trm-timeline-content more">
+                    
+                        <div class="trm-card-header">
+                            <div class="trm-left-side">
+                                <h6>
+                                    <a href="/2025/03/03/%E5%8F%AF%E8%A7%86%E5%8C%96/%E8%AF%8D%E4%BA%91%E5%9B%BE/" class="trm-anima-link">
+                                        词云图
+                                    </a>
+                                </h6>
+                                <div class="trm-text-sm trm-accent-color trm-mt-15">
+                                    <ul class="trm-card-data trm-label ">
+                                        <li class="trm-accent-color">03/03</li>
+                                        <li class="trm-accent-color">10:09</li>
+                                        
+                                        <li>1.1k</li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                            <div class="trm-publication trm-mt-15">
+                                <p>词云图按权重把关键词铺陈在一个形状里，常用于展示热词、标签分布。这篇解决四个实际问题：扩展怎么装、形状怎么换成自定义图片、字号范围为什么会让数据显示不全、以及横向&#x2F;斜向排列该怎么配。</p>
+                            </div>
                         
                     
                 </div>
@@ -953,6 +991,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

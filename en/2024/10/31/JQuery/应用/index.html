@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="表格的隔行变色 表格结构中使用:odd来选中偶数行，并使用attr来添加样式 表格结构：table&gt;thead(表头) tbody(表格内容与表头为兄弟)&gt;tr(行)&gt;td(列) eg：1$(&#x27;table&gt;tbody&gt;tr:odd&#x27;).attr(&#x27;class&#x27;,&#x27;写好的样式&#x27;)  多tab切换 tab按">
+<meta name="description" content="用 jQuery 实现表格隔行变色、多 tab 切换、回到顶部、全选反选和下拉导航等交互">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JQuery应用">
 <meta property="og:url" content="http://example.com/en/2024/10/31/JQuery/%E5%BA%94%E7%94%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="表格的隔行变色 表格结构中使用:odd来选中偶数行，并使用attr来添加样式 表格结构：table&gt;thead(表头) tbody(表格内容与表头为兄弟)&gt;tr(行)&gt;td(列) eg：1$(&#x27;table&gt;tbody&gt;tr:odd&#x27;).attr(&#x27;class&#x27;,&#x27;写好的样式&#x27;)  多tab切换 tab按">
+<meta property="og:description" content="用 jQuery 实现表格隔行变色、多 tab 切换、回到顶部、全选反选和下拉导航等交互">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-10-31T07:42:38.180Z">
-<meta property="article:modified_time" content="2025-07-30T09:01:03.602Z">
+<meta property="article:published_time" content="2024-10-31T07:42:38.000Z">
+<meta property="article:modified_time" content="2026-11-18T03:54:37.898Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="JQuery">
 <meta name="twitter:card" content="summary">
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-30 17:01:03"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-18 11:54:37"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -83,6 +83,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -197,13 +199,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -239,7 +241,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -257,13 +259,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -532,49 +534,70 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>这篇把 jQuery 放进 7 个真实页面场景里：隔行变色、tab 切换、回到顶部、悬停下拉导航、反选、全选&#x2F;全不选、表格增删记录。每个场景都按「先讲思路，再给关键代码」的方式组织，可以直接对照自己的页面改造。</p>
+<span id="more"></span>
 
-<h3 id="表格的隔行变色"><a href="#表格的隔行变色" class="headerlink" title="表格的隔行变色"></a>表格的隔行变色</h3><ul>
-<li>表格结构中使用:odd来选中偶数行，并使用attr来添加样式</li>
-<li>表格结构：table&gt;thead(表头) tbody(表格内容与表头为兄弟)&gt;tr(行)&gt;td(列)</li>
-<li>eg：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;table&gt;tbody&gt;tr:odd&#x27;</span>).<span class="title function_">attr</span>(<span class="string">&#x27;class&#x27;</span>,<span class="string">&#x27;写好的样式&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>下面所有示例都假设页面已经引入 jQuery，并且 DOM 结构按各场景的说明写好。示例只给核心逻辑，样式类的名字需要替换成项目里实际使用的类名。</p>
+<h2 id="第-1-步：表格隔行变色"><a href="#第-1-步：表格隔行变色" class="headerlink" title="第 1 步：表格隔行变色"></a>第 1 步：表格隔行变色</h2><p>思路是在 <code>tbody</code> 的行里用 <code>:odd</code> 选出偶数行，再用 <code>attr</code> 给这些行加上提前写好的样式类。</p>
+<p>表格结构为：<code>table &gt; thead</code>（表头）、<code>tbody</code>（表格内容，与表头为兄弟节点）<code>&gt; tr</code>（行）<code>&gt; td</code>（列）。</p>
+<p>选中偶数行并写入 class：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;table&gt;tbody&gt;tr:odd&#x27;</span>).<span class="title function_">attr</span>(<span class="string">&#x27;class&#x27;</span>,<span class="string">&#x27;写好的样式&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="第-2-步：多-tab-切换"><a href="#第-2-步：多-tab-切换" class="headerlink" title="第 2 步：多 tab 切换"></a>第 2 步：多 tab 切换</h2><p>结构上分两块：</p>
+<ul>
+<li>tab 按钮用 <code>ul&gt;li</code> 实现。</li>
+<li>按钮对应的内容区域使用相对定位。</li>
+<li>内容区域中有与 li 数量对应的 div，每个 div 都使用绝对定位，固定在按钮切换展示的位置。</li>
+<li>给除默认 div 之外的所有 div 加上 <code>display:none</code>。</li>
 </ul>
-<h3 id="多tab切换"><a href="#多tab切换" class="headerlink" title="多tab切换"></a>多tab切换</h3><ul>
-<li>tab按钮用 ul&gt;li 实现</li>
-<li>按钮对应的内容区域使用相对定位</li>
-<li>这个内容区域中有对应li数的div，每个div都使用绝对定位，固定在按钮切换展示的位置</li>
-<li>然后给除了默认的div都加上样式display:none</li>
-<li>定义一个变量index &#x3D; 0</li>
-<li>获取到内容区域的div(获取到的是一个数组)</li>
-<li>然后获取ul&gt;li的点击事件</li>
-<li>拿到点击事件对应的currentIndex，<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="variable language_">this</span>).<span class="title function_">index</span>()</span><br></pre></td></tr></table></figure></li>
-<li>判断点击的currentIndex如果不等于index就设置display&#x3D;”none”,对应内容的索引的display&#x3D;”block”,index&#x3D;currentIndex</li>
-</ul>
-<h3 id="回到顶部"><a href="#回到顶部" class="headerlink" title="回到顶部"></a>回到顶部</h3><ul>
-<li>样式就是一个固定在页面的按钮，点击回到最顶部</li>
-<li>读取页面滚动条的Y轴坐标：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="variable language_">document</span>.<span class="property">body</span>).<span class="title function_">scrollTop</span>()+$(<span class="variable language_">document</span>.<span class="property">documentElement</span>).<span class="title function_">scrollTop</span>()</span><br></pre></td></tr></table></figure></li>
-<li>使用平滑的滚动回顶点，读取页面滚动条的Y轴坐标，如果偏移offset为0返回</li>
-<li>定义滚动的总时长，定时的间隔，和每次间隔滚动多少(offest&#x2F;(总时长&#x2F;间隔))</li>
-<li>使用定时器，将offset -&#x3D; 每次间隔滚动的长度，如果offset&lt;&#x3D;0，则offset&#x3D;0,清除定时器；如果&gt;0,$(‘html,body’).scrollTop(offset)</li>
-</ul>
-<h3 id="导航栏动态显示效果-悬停有下拉列表"><a href="#导航栏动态显示效果-悬停有下拉列表" class="headerlink" title="导航栏动态显示效果(悬停有下拉列表)"></a>导航栏动态显示效果(悬停有下拉列表)</h3><ul>
-<li>样式写好，有列表的固定好并且隐藏</li>
-<li>使用:has(ul)判断鼠标悬停时有无列表，使用hover事件，分别给两个函数添加下滑和上滑的动画效果</li>
-</ul>
-<h3 id="反选功能"><a href="#反选功能" class="headerlink" title="反选功能"></a>反选功能</h3><ul>
-<li>获取所有checkbox的数组</li>
-<li>使用each遍历checked的状态为checked的反选</li>
-</ul>
-<h3 id="全选-全不选"><a href="#全选-全不选" class="headerlink" title="全选&#x2F;全不选"></a>全选&#x2F;全不选</h3><ul>
-<li>使用each给每个item的checked设置为true&#x2F;false</li>
-</ul>
-<h3 id="添加删除记录"><a href="#添加删除记录" class="headerlink" title="添加删除记录"></a>添加删除记录</h3><ul>
-<li>输入的样式使用input，并给每个input添加对应的id</li>
-<li>获取每个input的dom并使用val()获取值<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;&lt;tr&gt;&lt;/tr&gt;&#x27;</span>)</span><br><span class="line">.<span class="title function_">append</span>(<span class="string">&#x27;&lt;td&gt;&#x27;</span>+inputDom.<span class="title function_">val</span>(),有几条写几条+<span class="string">&#x27;&lt;/td&gt;&#x27;</span>)</span><br><span class="line">.<span class="title function_">appendTo</span>(<span class="string">&#x27;追加到已存在的表格id的表格中&#x27;</span>)</span><br><span class="line">.<span class="title function_">find</span>(<span class="string">&#x27;a&#x27;</span>) <span class="comment">// 找到后代选择器中的a标签</span></span><br><span class="line">.<span class="title function_">click</span>(并点击触发删除事件)</span><br></pre></td></tr></table></figure></li>
-<li>初始化值</li>
-<li>删除事件：在删除事件中要先阻止默认事件，然后通过this和parent()获取删除这一行表格的dom</li>
-<li>然后调用remove()即可</li>
+<p>切换逻辑：</p>
+<ol>
+<li>定义一个变量 <code>index = 0</code>，记录当前显示的内容索引。</li>
+<li>获取内容区域的 div（获取到的是一个数组）。</li>
+<li>给 <code>ul&gt;li</code> 绑定点击事件。</li>
+<li>在回调里拿到点击项对应的 <code>currentIndex</code>。</li>
+</ol>
+<p>用 <code>index()</code> 取得当前点击的 li 在兄弟中的下标：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="variable language_">this</span>).<span class="title function_">index</span>()</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>判断点击的 <code>currentIndex</code> 如果不等于 <code>index</code>，就把当前显示的 div 设为 <code>display=&quot;none&quot;</code>，把对应索引的内容设为 <code>display=&quot;block&quot;</code>，最后令 <code>index = currentIndex</code>。</li>
+</ol>
+<h2 id="第-3-步：回到顶部"><a href="#第-3-步：回到顶部" class="headerlink" title="第 3 步：回到顶部"></a>第 3 步：回到顶部</h2><p>样式上就是一个固定在页面的按钮，点击后回到页面最顶部。</p>
+<p>先读取页面滚动条的 Y 轴坐标：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="variable language_">document</span>.<span class="property">body</span>).<span class="title function_">scrollTop</span>()+$(<span class="variable language_">document</span>.<span class="property">documentElement</span>).<span class="title function_">scrollTop</span>()</span><br></pre></td></tr></table></figure>
+
+<p>然后用平滑滚动回到顶点：</p>
+<ol>
+<li>读取页面滚动条的 Y 轴坐标，如果偏移 <code>offset</code> 为 0 就直接返回。</li>
+<li>定义滚动的总时长、定时器的间隔，以及每次间隔滚动的距离（<code>offset/(总时长/间隔)</code>）。</li>
+<li>用定时器让 <code>offset -= 每次间隔滚动的长度</code>：如果 <code>offset&lt;=0</code>，则令 <code>offset=0</code> 并清除定时器；如果 <code>offset&gt;0</code>，执行 <code>$(&#39;html,body&#39;).scrollTop(offset)</code>。</li>
+</ol>
+<h2 id="第-4-步：导航栏动态显示效果（悬停有下拉列表）"><a href="#第-4-步：导航栏动态显示效果（悬停有下拉列表）" class="headerlink" title="第 4 步：导航栏动态显示效果（悬停有下拉列表）"></a>第 4 步：导航栏动态显示效果（悬停有下拉列表）</h2><ol>
+<li>样式先写好，有下拉列表的项固定好位置并隐藏。</li>
+<li>用 <code>:has(ul)</code> 判断鼠标悬停的项有没有下拉列表。</li>
+<li>使用 <code>hover</code> 事件，分别给两个回调添加下滑和上滑的动画效果。</li>
+</ol>
+<h2 id="第-5-步：反选功能"><a href="#第-5-步：反选功能" class="headerlink" title="第 5 步：反选功能"></a>第 5 步：反选功能</h2><ol>
+<li>获取所有 checkbox 的数组。</li>
+<li>用 <code>each</code> 遍历每个 checkbox，把 <code>checked</code> 状态取反。</li>
+</ol>
+<h2 id="第-6-步：全选-全不选"><a href="#第-6-步：全选-全不选" class="headerlink" title="第 6 步：全选&#x2F;全不选"></a>第 6 步：全选&#x2F;全不选</h2><p>用 <code>each</code> 给每个 item 的 <code>checked</code> 设置为 <code>true</code>&#x2F;<code>false</code>。</p>
+<h2 id="第-7-步：添加删除记录"><a href="#第-7-步：添加删除记录" class="headerlink" title="第 7 步：添加删除记录"></a>第 7 步：添加删除记录</h2><ol>
+<li>输入的样式使用 input，并给每个 input 添加对应的 id。</li>
+<li>获取每个 input 的 dom，并用 <code>val()</code> 获取值。</li>
+<li>拼出一行新的 <code>tr</code> 并追加到表格中，同时给行内的删除链接绑定点击事件：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;&lt;tr&gt;&lt;/tr&gt;&#x27;</span>)</span><br><span class="line">.<span class="title function_">append</span>(<span class="string">&#x27;&lt;td&gt;&#x27;</span>+inputDom.<span class="title function_">val</span>(),有几条写几条+<span class="string">&#x27;&lt;/td&gt;&#x27;</span>)</span><br><span class="line">.<span class="title function_">appendTo</span>(<span class="string">&#x27;追加到已存在的表格id的表格中&#x27;</span>)</span><br><span class="line">.<span class="title function_">find</span>(<span class="string">&#x27;a&#x27;</span>) <span class="comment">// 找到后代选择器中的a标签</span></span><br><span class="line">.<span class="title function_">click</span>(并点击触发删除事件)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>初始化值。</li>
+<li>删除事件：在删除事件中要先阻止默认行为，然后通过 <code>this</code> 和 <code>parent()</code> 获取要删除的这一行表格的 dom。</li>
+<li>调用 <code>remove()</code> 删除该行。</li>
+</ol>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
+<li>隔行变色用 <code>attr(&#39;class&#39;, ...)</code> 会覆盖行上原有的 class；如果行本身已有其他类名，改用 <code>addClass()</code> 更安全。</li>
+<li>多 tab 切换时，<code>$(this).index()</code> 取的是当前 li 在<strong>同级兄弟</strong>中的下标，因此内容 div 的顺序必须与按钮顺序一一对应。</li>
 </ul>
 
 </article>
@@ -616,11 +639,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/31/uniApp/%E4%BD%BF%E7%94%A8%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/31/uniApp/uniCloud/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">HBuilder X快捷键</h6>
+                <h6 class="trm-op-title">uniCloud</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -692,7 +715,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-3" title="表格的隔行变色"><a rel="nofollow" class="trm-toc-link" href="#表格的隔行变色"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">表格的隔行变色</span></a></li><li class="trm-toc-item trm-toc-level-3" title="多tab切换"><a rel="nofollow" class="trm-toc-link" href="#多tab切换"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">多tab切换</span></a></li><li class="trm-toc-item trm-toc-level-3" title="回到顶部"><a rel="nofollow" class="trm-toc-link" href="#回到顶部"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">回到顶部</span></a></li><li class="trm-toc-item trm-toc-level-3" title="导航栏动态显示效果(悬停有下拉列表)"><a rel="nofollow" class="trm-toc-link" href="#导航栏动态显示效果-悬停有下拉列表"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">导航栏动态显示效果(悬停有下拉列表)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="反选功能"><a rel="nofollow" class="trm-toc-link" href="#反选功能"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">反选功能</span></a></li><li class="trm-toc-item trm-toc-level-3" title="全选&#x2F;全不选"><a rel="nofollow" class="trm-toc-link" href="#全选-全不选"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">全选&#x2F;全不选</span></a></li><li class="trm-toc-item trm-toc-level-3" title="添加删除记录"><a rel="nofollow" class="trm-toc-link" href="#添加删除记录"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">添加删除记录</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景"><a rel="nofollow" class="trm-toc-link" href="#背景"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 1 步：表格隔行变色"><a rel="nofollow" class="trm-toc-link" href="#第-1-步：表格隔行变色"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">第 1 步：表格隔行变色</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 2 步：多 tab 切换"><a rel="nofollow" class="trm-toc-link" href="#第-2-步：多-tab-切换"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">第 2 步：多 tab 切换</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 3 步：回到顶部"><a rel="nofollow" class="trm-toc-link" href="#第-3-步：回到顶部"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">第 3 步：回到顶部</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 4 步：导航栏动态显示效果（悬停有下拉列表）"><a rel="nofollow" class="trm-toc-link" href="#第-4-步：导航栏动态显示效果（悬停有下拉列表）"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">第 4 步：导航栏动态显示效果（悬停有下拉列表）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 5 步：反选功能"><a rel="nofollow" class="trm-toc-link" href="#第-5-步：反选功能"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">第 5 步：反选功能</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 6 步：全选&#x2F;全不选"><a rel="nofollow" class="trm-toc-link" href="#第-6-步：全选-全不选"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">第 6 步：全选&#x2F;全不选</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 7 步：添加删除记录"><a rel="nofollow" class="trm-toc-link" href="#第-7-步：添加删除记录"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">第 7 步：添加删除记录</span></a></li><li class="trm-toc-item trm-toc-level-2" title="注意点"><a rel="nofollow" class="trm-toc-link" href="#注意点"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">注意点</span></a></li></ol>
       </div>
     </div>
 
@@ -816,6 +839,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

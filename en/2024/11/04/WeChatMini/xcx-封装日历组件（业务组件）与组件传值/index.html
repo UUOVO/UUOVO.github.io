@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="封装日历组件 基于封装日历组件，学会封装业务组件到使用的流程   新建baseCalendar文件夹(具体步骤👉微信小程序-二次封装组件和自定义组件) 在该文件夹下的json文件中添加1234567&#123;  &quot;component&quot;: true,  &quot;styleIsolation&quot;: &quot;shared&quot;,  &quot;usin">
+<meta name="description" content="以 van-calendar 为基础封装日历业务组件，并梳理页面请求约满数据后向组件传值的完整链路">
 <meta property="og:type" content="article">
-<meta property="og:title" content="微信小程序-封装日历组件与组件传值">
+<meta property="og:title" content="封装日历组件与组件传值">
 <meta property="og:url" content="http://example.com/en/2024/11/04/WeChatMini/xcx-%E5%B0%81%E8%A3%85%E6%97%A5%E5%8E%86%E7%BB%84%E4%BB%B6%EF%BC%88%E4%B8%9A%E5%8A%A1%E7%BB%84%E4%BB%B6%EF%BC%89%E4%B8%8E%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%80%BC/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="封装日历组件 基于封装日历组件，学会封装业务组件到使用的流程   新建baseCalendar文件夹(具体步骤👉微信小程序-二次封装组件和自定义组件) 在该文件夹下的json文件中添加1234567&#123;  &quot;component&quot;: true,  &quot;styleIsolation&quot;: &quot;shared&quot;,  &quot;usin">
+<meta property="og:description" content="以 van-calendar 为基础封装日历业务组件，并梳理页面请求约满数据后向组件传值的完整链路">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-11-04T01:57:31.952Z">
-<meta property="article:modified_time" content="2025-07-22T02:26:28.400Z">
+<meta property="article:published_time" content="2024-11-04T01:57:31.000Z">
+<meta property="article:modified_time" content="2026-11-19T09:39:09.637Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="组件封装">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <meta name="keywords" content="微信小程序">
 
 
-<title >微信小程序-封装日历组件与组件传值</title>
+<title >封装日历组件与组件传值</title>
 
 <!-- Favicon -->
 
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-22 10:26:28"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-19 17:39:09"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -83,6 +83,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -197,13 +199,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -239,7 +241,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -257,13 +259,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -385,7 +387,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            微信小程序-封装日历组件与组件传值
+                            封装日历组件与组件传值
                         </h1>
 
                         
@@ -532,57 +534,61 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>结论先行：封装业务组件的固定套路是”新建目录 → 在 json 里声明依赖 → 把原组件的 properties 搬过来 → 在 wxml 里组合原组件与插槽 → 注册给页面使用”，本质是在原组件外面套一层，用来固化样式、补充业务方法。组件传值则分两条链路：简单类型靠页面 <code>setData</code> 直接改值；复杂类型（接口返回的数组）要靠 <code>properties.observer</code> 配合 <code>lifetimes.ready</code>，等数据真正到位后再初始化组件内部状态。</p>
+<span id="more"></span>
 
-<h2 id="封装日历组件"><a href="#封装日历组件" class="headerlink" title="封装日历组件"></a>封装日历组件</h2><blockquote>
-<p>基于封装日历组件，学会封装业务组件到使用的流程</p>
-</blockquote>
-<ol>
-<li>新建baseCalendar文件夹(具体步骤👉<a href="/2024/11/04/WeChatMini/xcx-%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85%E7%BB%84%E4%BB%B6%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6/" title="微信小程序-二次封装组件和自定义组件">微信小程序-二次封装组件和自定义组件</a>)</li>
-<li>在该文件夹下的json文件中添加<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;component&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;styleIsolation&quot;</span><span class="punctuation">:</span> <span class="string">&quot;shared&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;usingComponents&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;van-calendar&quot;</span><span class="punctuation">:</span> <span class="string">&quot;@vant/weapp/calendar/index&quot;</span> <span class="comment">// 要封装组件的路径</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li>
-<li>从原组件的js文件中将props中需要的内容复制到封装组件的js文件中的properties中</li>
-<li>在封装组件的wxml文件下使用原组件和添加插槽</li>
-<li>在app.json中的usingComponents定义的封装组件标签名和路径</li>
-<li>页面通过使用封装组件的标签来使用原组件加自定义的方法和样式</li>
-<li>更改组件的样式，通过官方的文档找到对应组件的样式和属性进行更改</li>
-</ol>
-<h2 id="组件的传值"><a href="#组件的传值" class="headerlink" title="组件的传值"></a>组件的传值</h2><ol>
-<li><p>页面使用: 页面中的组件要使用这个属性或方法</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minDate=<span class="string">&quot;&#123;&#123; minTimestamp &#125;&#125;&quot;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>页面数据初始化: 在js文件中的data定义变量,并给一个默认值</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">minTimestamp</span>: <span class="number">0</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>组件类型初始化:  在js文件中的properties中写上属性名及其类型, 两种写法</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">方式一：<span class="attr">minDate</span>: <span class="title class_">Number</span></span><br><span class="line">方式二：<span class="attr">minDate</span>:&#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="title class_">Number</span>,</span><br><span class="line">  <span class="attr">value</span>: <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>组件使用: wxml中使用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minDate=<span class="string">&quot;&#123;&#123; minDate &#125;&#125;&quot;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>页面更改: js文件的函数去更改minTimestamp的值，以此更新页面数据 — 完成传值（简单类型）</p>
-</li>
-</ol>
-<h2 id="调接口获取数据后-页面向组件传值（以动态显示该日期是否约满为例）"><a href="#调接口获取数据后-页面向组件传值（以动态显示该日期是否约满为例）" class="headerlink" title="调接口获取数据后 页面向组件传值（以动态显示该日期是否约满为例）"></a>调接口获取数据后 页面向组件传值（以动态显示该日期是否约满为例）</h2><ol>
-<li><p>页面请求并获取约满的数据，fullTimes要初始化</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">data</span>: &#123;</span><br><span class="line">  <span class="attr">fullTimes</span>: []</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="title function_">getFullTimes</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> result = <span class="keyword">await</span> <span class="variable constant_">API</span>.<span class="title function_">getFullTimes</span>()</span><br><span class="line">	<span class="variable language_">this</span>.<span class="title function_">setData</span>(&#123;</span><br><span class="line">    <span class="attr">fullTimes</span>: result.<span class="property">result</span>.<span class="property">list</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>页面在onLoad()中调用并初始化请求</p>
+<h2 id="背景与场景"><a href="#背景与场景" class="headerlink" title="背景与场景"></a>背景与场景</h2><p>项目里多个页面都要用日历，并且需要根据后端返回的”约满日期”把对应日期置灰。如果每个页面都直接写 <code>van-calendar</code>，配置和 <code>formatter</code> 逻辑会重复很多遍。于是把它封装成 <code>baseCalendar</code> 业务组件：页面只负责取数据并传进来，展示规则收敛在组件内部。</p>
+<h2 id="一、封装日历组件"><a href="#一、封装日历组件" class="headerlink" title="一、封装日历组件"></a>一、封装日历组件</h2><h3 id="1-新建组件目录"><a href="#1-新建组件目录" class="headerlink" title="1. 新建组件目录"></a>1. 新建组件目录</h3><p>新建 <code>baseCalendar</code> 文件夹，按自定义组件的文件结构补齐所需文件。新建组件的具体步骤见文末参考链接。</p>
+<h3 id="2-在组件的-json-中声明”这是组件”，并引入被封装的原组件"><a href="#2-在组件的-json-中声明”这是组件”，并引入被封装的原组件" class="headerlink" title="2. 在组件的 json 中声明”这是组件”，并引入被封装的原组件"></a>2. 在组件的 json 中声明”这是组件”，并引入被封装的原组件</h3><p><code>component: true</code> 表示该目录是一个自定义组件；<code>usingComponents</code> 里声明要封装的原组件 <code>van-calendar</code>；<code>styleIsolation: &quot;shared&quot;</code> 让页面样式可以渗透进组件内部，方便覆盖 Vant 的默认样式。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;component&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;styleIsolation&quot;</span><span class="punctuation">:</span> <span class="string">&quot;shared&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;usingComponents&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;van-calendar&quot;</span><span class="punctuation">:</span> <span class="string">&quot;@vant/weapp/calendar/index&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-搬迁属性"><a href="#3-搬迁属性" class="headerlink" title="3. 搬迁属性"></a>3. 搬迁属性</h3><p>从原组件（<code>van-calendar</code>）的 js 文件中，把 <code>props</code> 里需要对外暴露的内容复制到封装组件的 js 文件的 <code>properties</code> 中，这样页面就能像用原组件一样给封装组件传参。</p>
+<h3 id="4-在封装组件的-wxml-中使用原组件，并添加插槽"><a href="#4-在封装组件的-wxml-中使用原组件，并添加插槽" class="headerlink" title="4. 在封装组件的 wxml 中使用原组件，并添加插槽"></a>4. 在封装组件的 wxml 中使用原组件，并添加插槽</h3><p>把原组件标签放进去，同时保留 <code>&lt;slot /&gt;</code>，让页面仍然可以向内部插入自定义内容。</p>
+<h3 id="5-在-app-json-中注册封装组件"><a href="#5-在-app-json-中注册封装组件" class="headerlink" title="5. 在 app.json 中注册封装组件"></a>5. 在 app.json 中注册封装组件</h3><p>在 <code>app.json</code> 的 <code>usingComponents</code> 中定义封装组件的标签名和路径，页面即可直接使用该标签。</p>
+<h3 id="6-页面调用封装组件"><a href="#6-页面调用封装组件" class="headerlink" title="6. 页面调用封装组件"></a>6. 页面调用封装组件</h3><p>页面通过封装组件的标签来使用原组件，并在外面补充自定义的方法和样式。</p>
+<h3 id="7-调整样式"><a href="#7-调整样式" class="headerlink" title="7. 调整样式"></a>7. 调整样式</h3><p>通过 Vant 官方文档找到 <code>van-calendar</code> 对应的样式变量和属性，按需覆盖，而不是直接改动 <code>node_modules</code> 里的源码。</p>
+<h2 id="二、组件传值：简单类型"><a href="#二、组件传值：简单类型" class="headerlink" title="二、组件传值：简单类型"></a>二、组件传值：简单类型</h2><h3 id="1-页面使用属性"><a href="#1-页面使用属性" class="headerlink" title="1. 页面使用属性"></a>1. 页面使用属性</h3><p>在页面的 wxml 中给封装组件传值：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">base-calendar</span> <span class="attr">minDate</span>=<span class="string">&quot;&#123;&#123; minTimestamp &#125;&#125;&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-页面数据初始化"><a href="#2-页面数据初始化" class="headerlink" title="2. 页面数据初始化"></a>2. 页面数据初始化</h3><p>在页面 js 的 <code>data</code> 中定义变量并给一个默认值：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">data</span>: &#123;</span><br><span class="line">  <span class="attr">minTimestamp</span>: <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-组件类型初始化"><a href="#3-组件类型初始化" class="headerlink" title="3. 组件类型初始化"></a>3. 组件类型初始化</h3><p>在组件 js 的 <code>properties</code> 中声明属性名及其类型，有两种写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方式一：只写类型</span></span><br><span class="line"><span class="attr">minDate</span>: <span class="title class_">Number</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 方式二：写类型和默认值</span></span><br><span class="line"><span class="attr">minDate</span>: &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="title class_">Number</span>,</span><br><span class="line">  <span class="attr">value</span>: <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-组件内部使用该属性"><a href="#4-组件内部使用该属性" class="headerlink" title="4. 组件内部使用该属性"></a>4. 组件内部使用该属性</h3><p>在组件 wxml 中把属性继续传给内部的 <code>van-calendar</code>：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">van-calendar</span> <span class="attr">minDate</span>=<span class="string">&quot;&#123;&#123; minDate &#125;&#125;&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-页面更新数据完成传值"><a href="#5-页面更新数据完成传值" class="headerlink" title="5. 页面更新数据完成传值"></a>5. 页面更新数据完成传值</h3><p>在页面 js 的函数中调用 <code>setData</code> 修改 <code>minTimestamp</code>，页面数据更新后会自动同步到组件，简单类型的传值就完成了。</p>
+<h2 id="三、调接口取数后向组件传值（以动态标记”约满”为例）"><a href="#三、调接口取数后向组件传值（以动态标记”约满”为例）" class="headerlink" title="三、调接口取数后向组件传值（以动态标记”约满”为例）"></a>三、调接口取数后向组件传值（以动态标记”约满”为例）</h2><h3 id="1-页面请求并保存约满数据"><a href="#1-页面请求并保存约满数据" class="headerlink" title="1. 页面请求并保存约满数据"></a>1. 页面请求并保存约满数据</h3><p><code>fullTimes</code> 必须先在 <code>data</code> 中初始化为空数组，否则首次渲染拿到的是 <code>undefined</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">data</span>: &#123;</span><br><span class="line">  <span class="attr">fullTimes</span>: []</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="title function_">getFullTimes</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> result = <span class="keyword">await</span> <span class="variable constant_">API</span>.<span class="title function_">getFullTimes</span>()</span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">setData</span>(&#123;</span><br><span class="line">    <span class="attr">fullTimes</span>: result.<span class="property">result</span>.<span class="property">list</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-在-onLoad-中发起请求"><a href="#2-在-onLoad-中发起请求" class="headerlink" title="2. 在 onLoad 中发起请求"></a>2. 在 onLoad 中发起请求</h3><p>页面加载时触发一次请求：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">onLoad</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">getFullTimes</span>()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>页面组件使用这个属性或方法</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fullTimes=<span class="string">&quot;&#123;&#123; fullTimes &#125;&#125;&quot;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>自定义组件在js文件中的properties中定义属性名及其类型</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">properties</span>:&#123;</span><br><span class="line">  <span class="attr">fullTimes</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="title class_">Array</span>,</span><br><span class="line">    <span class="attr">value</span>: [],</span><br><span class="line">    <span class="comment">// 监听这边是否接收到fullTimes，有数据才初始化，防止二次初始化</span></span><br><span class="line">    <span class="title function_">observer</span>(<span class="params">newFullTimes</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (newFullTimes.<span class="property">length</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">initCalendarDateFormat</span>()</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;,</span><br><span class="line"><span class="attr">data</span>: &#123;</span><br><span class="line">  <span class="attr">formatter</span>: <span class="literal">null</span> <span class="comment">// 初始化</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>自定义组件在wxml文件中使用该变量</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">formatter=<span class="string">&quot;&#123;&#123; formatter &#125;&#125;&quot;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>自定义组件中初始化日历的状态</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">methods：&#123;</span><br><span class="line">  <span class="title function_">initCalendarDateFormat</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> fullTimes = <span class="variable language_">this</span>.<span class="property">data</span>.<span class="property">fullTimes</span></span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">formatter</span> = (<span class="params">day</span>) =&gt; &#123;</span><br><span class="line">      <span class="comment">// 此处使用了封装的函数</span></span><br><span class="line">      <span class="keyword">const</span> today = <span class="title function_">isTodday</span>(<span class="title class_">Date</span>.<span class="title function_">now</span>(), day.<span class="property">date</span>.<span class="title function_">valueOf</span>())</span><br><span class="line">      <span class="comment">// includes() 方法:判断fullTimes是否包含一个day.date.valueOf()值</span></span><br><span class="line">      <span class="keyword">if</span> (fullTimes.<span class="title function_">includes</span>(day.<span class="property">date</span>.<span class="title function_">valueOf</span>())) &#123;</span><br><span class="line">        day.<span class="property">type</span> = <span class="string">&#x27;disabled&#x27;</span></span><br><span class="line">        day.<span class="property">bottomInfo</span> = <span class="string">&#x27;约满&#x27;</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (today) &#123;</span><br><span class="line">        day.<span class="property">type</span> = <span class="string">&#x27;disabled&#x27;</span></span><br><span class="line">        day.<span class="property">bottomInfo</span> = <span class="string">&#x27;今天&#x27;</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> day</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">setData</span>(&#123;</span><br><span class="line">      formatter</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>自定义组件在lifetimes中的ready再次初始化 — 完成传值（复杂类型）</p>
-</li>
-</ol>
+
+<h3 id="3-页面把数据传给组件"><a href="#3-页面把数据传给组件" class="headerlink" title="3. 页面把数据传给组件"></a>3. 页面把数据传给组件</h3><p>在页面 wxml 中把 <code>fullTimes</code> 绑定到组件属性上：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">base-calendar</span> <span class="attr">fullTimes</span>=<span class="string">&quot;&#123;&#123; fullTimes &#125;&#125;&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-组件声明接收属性，并在数据到达时初始化"><a href="#4-组件声明接收属性，并在数据到达时初始化" class="headerlink" title="4. 组件声明接收属性，并在数据到达时初始化"></a>4. 组件声明接收属性，并在数据到达时初始化</h3><p><code>observer</code> 会在 <code>fullTimes</code> 变化时触发。这里先判断 <code>length</code>，只有真正拿到数据才初始化，避免空数组导致第一次无效初始化：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">properties</span>: &#123;</span><br><span class="line">  <span class="attr">fullTimes</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="title class_">Array</span>,</span><br><span class="line">    <span class="attr">value</span>: [],</span><br><span class="line">    <span class="comment">// 监听是否接收到 fullTimes，有数据才初始化，防止二次初始化</span></span><br><span class="line">    <span class="title function_">observer</span>(<span class="params">newFullTimes</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (newFullTimes.<span class="property">length</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">initCalendarDateFormat</span>()</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;,</span><br><span class="line"><span class="attr">data</span>: &#123;</span><br><span class="line">  <span class="attr">formatter</span>: <span class="literal">null</span> <span class="comment">// 初始化</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-组件内部继续向下传递"><a href="#5-组件内部继续向下传递" class="headerlink" title="5. 组件内部继续向下传递"></a>5. 组件内部继续向下传递</h3><p>把 <code>formatter</code> 传给内部的 <code>van-calendar</code>：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">van-calendar</span> <span class="attr">formatter</span>=<span class="string">&quot;&#123;&#123; formatter &#125;&#125;&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="6-初始化日历中每天的显示状态"><a href="#6-初始化日历中每天的显示状态" class="headerlink" title="6. 初始化日历中每天的显示状态"></a>6. 初始化日历中每天的显示状态</h3><p><code>formatter</code> 会收到每一个日期对象，在这里判断它是否在 <code>fullTimes</code> 中，或是否为今天，然后改写 <code>type</code> 与 <code>bottomInfo</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">methods</span>: &#123;</span><br><span class="line">  <span class="title function_">initCalendarDateFormat</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> fullTimes = <span class="variable language_">this</span>.<span class="property">data</span>.<span class="property">fullTimes</span></span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">formatter</span> = (<span class="params">day</span>) =&gt; &#123;</span><br><span class="line">      <span class="comment">// 此处使用了封装的函数</span></span><br><span class="line">      <span class="keyword">const</span> today = <span class="title function_">isToday</span>(<span class="title class_">Date</span>.<span class="title function_">now</span>(), day.<span class="property">date</span>.<span class="title function_">valueOf</span>())</span><br><span class="line">      <span class="comment">// includes()：判断 fullTimes 是否包含 day.date.valueOf() 这个值</span></span><br><span class="line">      <span class="keyword">if</span> (fullTimes.<span class="title function_">includes</span>(day.<span class="property">date</span>.<span class="title function_">valueOf</span>())) &#123;</span><br><span class="line">        day.<span class="property">type</span> = <span class="string">&#x27;disabled&#x27;</span></span><br><span class="line">        day.<span class="property">bottomInfo</span> = <span class="string">&#x27;约满&#x27;</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (today) &#123;</span><br><span class="line">        day.<span class="property">type</span> = <span class="string">&#x27;disabled&#x27;</span></span><br><span class="line">        day.<span class="property">bottomInfo</span> = <span class="string">&#x27;今天&#x27;</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> day</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">setData</span>(&#123;</span><br><span class="line">      formatter</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-在-lifetimes-ready-中再初始化一次"><a href="#7-在-lifetimes-ready-中再初始化一次" class="headerlink" title="7. 在 lifetimes.ready 中再初始化一次"></a>7. 在 lifetimes.ready 中再初始化一次</h3><p>组件的 <code>ready</code> 表示视图布局已经完成，在这个生命周期里再调用一次 <code>initCalendarDateFormat</code>，可以兜住”首次渲染早于数据到达”的情况，复杂类型的传值到这里闭环。</p>
+<h2 id="踩坑与注意点"><a href="#踩坑与注意点" class="headerlink" title="踩坑与注意点"></a>踩坑与注意点</h2><ul>
+<li><strong><code>formatter</code></strong> <strong>要先占位</strong>：在 <code>data</code> 中初始化为 <code>null</code>，等 <code>fullTimes</code> 到了再 <code>setData</code> 成函数。若一开始写成函数，数据还没回来时渲染出来的每一天都不会被标记。</li>
+<li><strong><code>observer</code></strong> <strong>里判断</strong> **<code>length</code>**：空数组也会触发一次 <code>observer</code>，不判断就会多跑一次无效初始化。</li>
+<li><strong>两个</strong> <strong><code>if</code></strong> <strong>是顺序覆盖的</strong>：如果某天既约满又正好是今天，后写的”今天”会覆盖前面的”约满”。若业务要求”约满”优先，需要调整 <code>if</code> 顺序或改成 <code>else if</code>。</li>
+<li><strong>时间戳量级要一致</strong>：<code>day.date.valueOf()</code> 得到的是毫秒时间戳，<code>fullTimes</code> 里也必须是同一量级的毫秒时间戳，否则 <code>includes</code> 永远返回 <code>false</code>，日历不会置灰。</li>
+<li><strong><code>styleIsolation: &quot;shared&quot;</code></strong> <strong>有副作用</strong>：页面样式可以影响组件内部，改 Vant 样式时注意加命名空间，避免污染其他页面。</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li>新建自定义组件与二次封装：<a href="/2024/11/04/WeChatMini/xcx-%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85%E7%BB%84%E4%BB%B6%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6/" title="二次封装组件和自定义组件">二次封装组件和自定义组件</a></li>
+</ul>
 
 </article>
     
@@ -602,11 +608,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/xcx-%E6%8E%A5%E6%94%B6api/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/xcx-%E5%A4%9A%E4%B8%AA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E9%AB%98%E5%BA%A6%E4%B8%8D%E5%90%8C%EF%BC%8C%E8%8E%B7%E5%8F%96%E6%9C%80%E9%AB%98%E7%9A%84%E9%AB%98%E5%BA%A6%E5%B1%95%E7%A4%BA/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">微信小程序-封装api到使用的一系列总结</h6>
+                <h6 class="trm-op-title">动态展示图片，高度不一致</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -623,11 +629,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/xcx-%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85%E7%BB%84%E4%BB%B6%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/xcx-%E6%8E%A5%E6%94%B6api/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">微信小程序-二次封装组件和自定义组件</h6>
+                <h6 class="trm-op-title">封装api到使用的一系列总结</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -699,7 +705,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="封装日历组件"><a rel="nofollow" class="trm-toc-link" href="#封装日历组件"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">封装日历组件</span></a></li><li class="trm-toc-item trm-toc-level-2" title="组件的传值"><a rel="nofollow" class="trm-toc-link" href="#组件的传值"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">组件的传值</span></a></li><li class="trm-toc-item trm-toc-level-2" title="调接口获取数据后 页面向组件传值（以动态显示该日期是否约满为例）"><a rel="nofollow" class="trm-toc-link" href="#调接口获取数据后-页面向组件传值（以动态显示该日期是否约满为例）"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">调接口获取数据后 页面向组件传值（以动态显示该日期是否约满为例）</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景与场景"><a rel="nofollow" class="trm-toc-link" href="#背景与场景"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景与场景</span></a></li><li class="trm-toc-item trm-toc-level-2" title="一、封装日历组件"><a rel="nofollow" class="trm-toc-link" href="#一、封装日历组件"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">一、封装日历组件</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="1. 新建组件目录"><a rel="nofollow" class="trm-toc-link" href="#1-新建组件目录"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">1. 新建组件目录</span></a></li><li class="trm-toc-item trm-toc-level-3" title="2. 在组件的 json 中声明”这是组件”，并引入被封装的原组件"><a rel="nofollow" class="trm-toc-link" href="#2-在组件的-json-中声明”这是组件”，并引入被封装的原组件"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">2. 在组件的 json 中声明”这是组件”，并引入被封装的原组件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3. 搬迁属性"><a rel="nofollow" class="trm-toc-link" href="#3-搬迁属性"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">3. 搬迁属性</span></a></li><li class="trm-toc-item trm-toc-level-3" title="4. 在封装组件的 wxml 中使用原组件，并添加插槽"><a rel="nofollow" class="trm-toc-link" href="#4-在封装组件的-wxml-中使用原组件，并添加插槽"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">4. 在封装组件的 wxml 中使用原组件，并添加插槽</span></a></li><li class="trm-toc-item trm-toc-level-3" title="5. 在 app.json 中注册封装组件"><a rel="nofollow" class="trm-toc-link" href="#5-在-app-json-中注册封装组件"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">5. 在 app.json 中注册封装组件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="6. 页面调用封装组件"><a rel="nofollow" class="trm-toc-link" href="#6-页面调用封装组件"><span class="trm-toc-number">2.6.</span> <span class="trm-toc-text">6. 页面调用封装组件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="7. 调整样式"><a rel="nofollow" class="trm-toc-link" href="#7-调整样式"><span class="trm-toc-number">2.7.</span> <span class="trm-toc-text">7. 调整样式</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="二、组件传值：简单类型"><a rel="nofollow" class="trm-toc-link" href="#二、组件传值：简单类型"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">二、组件传值：简单类型</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="1. 页面使用属性"><a rel="nofollow" class="trm-toc-link" href="#1-页面使用属性"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">1. 页面使用属性</span></a></li><li class="trm-toc-item trm-toc-level-3" title="2. 页面数据初始化"><a rel="nofollow" class="trm-toc-link" href="#2-页面数据初始化"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">2. 页面数据初始化</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3. 组件类型初始化"><a rel="nofollow" class="trm-toc-link" href="#3-组件类型初始化"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">3. 组件类型初始化</span></a></li><li class="trm-toc-item trm-toc-level-3" title="4. 组件内部使用该属性"><a rel="nofollow" class="trm-toc-link" href="#4-组件内部使用该属性"><span class="trm-toc-number">3.4.</span> <span class="trm-toc-text">4. 组件内部使用该属性</span></a></li><li class="trm-toc-item trm-toc-level-3" title="5. 页面更新数据完成传值"><a rel="nofollow" class="trm-toc-link" href="#5-页面更新数据完成传值"><span class="trm-toc-number">3.5.</span> <span class="trm-toc-text">5. 页面更新数据完成传值</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="三、调接口取数后向组件传值（以动态标记”约满”为例）"><a rel="nofollow" class="trm-toc-link" href="#三、调接口取数后向组件传值（以动态标记”约满”为例）"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">三、调接口取数后向组件传值（以动态标记”约满”为例）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="1. 页面请求并保存约满数据"><a rel="nofollow" class="trm-toc-link" href="#1-页面请求并保存约满数据"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">1. 页面请求并保存约满数据</span></a></li><li class="trm-toc-item trm-toc-level-3" title="2. 在 onLoad 中发起请求"><a rel="nofollow" class="trm-toc-link" href="#2-在-onLoad-中发起请求"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">2. 在 onLoad 中发起请求</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3. 页面把数据传给组件"><a rel="nofollow" class="trm-toc-link" href="#3-页面把数据传给组件"><span class="trm-toc-number">4.3.</span> <span class="trm-toc-text">3. 页面把数据传给组件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="4. 组件声明接收属性，并在数据到达时初始化"><a rel="nofollow" class="trm-toc-link" href="#4-组件声明接收属性，并在数据到达时初始化"><span class="trm-toc-number">4.4.</span> <span class="trm-toc-text">4. 组件声明接收属性，并在数据到达时初始化</span></a></li><li class="trm-toc-item trm-toc-level-3" title="5. 组件内部继续向下传递"><a rel="nofollow" class="trm-toc-link" href="#5-组件内部继续向下传递"><span class="trm-toc-number">4.5.</span> <span class="trm-toc-text">5. 组件内部继续向下传递</span></a></li><li class="trm-toc-item trm-toc-level-3" title="6. 初始化日历中每天的显示状态"><a rel="nofollow" class="trm-toc-link" href="#6-初始化日历中每天的显示状态"><span class="trm-toc-number">4.6.</span> <span class="trm-toc-text">6. 初始化日历中每天的显示状态</span></a></li><li class="trm-toc-item trm-toc-level-3" title="7. 在 lifetimes.ready 中再初始化一次"><a rel="nofollow" class="trm-toc-link" href="#7-在-lifetimes-ready-中再初始化一次"><span class="trm-toc-number">4.7.</span> <span class="trm-toc-text">7. 在 lifetimes.ready 中再初始化一次</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="踩坑与注意点"><a rel="nofollow" class="trm-toc-link" href="#踩坑与注意点"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">踩坑与注意点</span></a></li><li class="trm-toc-item trm-toc-level-2" title="参考"><a rel="nofollow" class="trm-toc-link" href="#参考"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">参考</span></a></li></ol>
       </div>
     </div>
 
@@ -823,6 +829,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="项目中使用 gsap 的插件 安装 gsap：1import install gsap 在页面中引入：1import &#123;插件名&#125; from &quot;gsap&#x2F;all&quot; 在页面中注册：1gsap.registerPlugin(插件名) 具体按文档，不是插件可以直接调用    Draggable问题归纳 Q1: 使用”-&#x3D;”时怎么控制到某一程度不在减">
+<meta name="description" content="介绍GSAP动画库的安装与插件用法，以Draggable为例说明如何在项目中实现拖拽交互动效">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS动画库-GSAP">
 <meta property="og:url" content="http://example.com/2024/10/30/HTMLCSS/css%E5%8A%A8%E7%94%BB%E5%BA%93-GSAP/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="项目中使用 gsap 的插件 安装 gsap：1import install gsap 在页面中引入：1import &#123;插件名&#125; from &quot;gsap&#x2F;all&quot; 在页面中注册：1gsap.registerPlugin(插件名) 具体按文档，不是插件可以直接调用    Draggable问题归纳 Q1: 使用”-&#x3D;”时怎么控制到某一程度不在减">
+<meta property="og:description" content="介绍GSAP动画库的安装与插件用法，以Draggable为例说明如何在项目中实现拖拽交互动效">
 <meta property="og:locale">
-<meta property="article:published_time" content="2024-10-30T07:29:10.691Z">
-<meta property="article:modified_time" content="2025-07-29T07:46:59.314Z">
+<meta property="article:published_time" content="2024-10-30T07:29:10.000Z">
+<meta property="article:modified_time" content="2026-11-19T09:16:57.673Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="CSS">
 <meta property="article:tag" content="动画">
@@ -70,7 +70,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-29 15:46:59"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-19 17:16:57"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -85,6 +85,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -199,13 +201,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -241,7 +243,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -259,13 +261,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -534,22 +536,28 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>GSAP 的核心库只能做基础动画，Draggable、Observer 这类能力都要以插件形式单独引入并注册。这篇先给出安装、引入、注册三步通用流程，再用一个滚轮缩放的例子说明：<code>-=</code>、<code>+=</code> 只能让值缓慢增减，想让它缩到某个下限就停下，得自己维护一个变量并在回调里控制。</p>
+<span id="more"></span>
 
-<ul>
-<li>项目中使用 gsap 的插件<ul>
-<li>安装 gsap：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> install gsap</span><br></pre></td></tr></table></figure></li>
-<li>在页面中引入：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;插件名&#125; <span class="keyword">from</span> <span class="string">&quot;gsap/all&quot;</span></span><br></pre></td></tr></table></figure></li>
-<li>在页面中注册：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gsap.<span class="title function_">registerPlugin</span>(插件名)</span><br></pre></td></tr></table></figure></li>
-<li>具体按文档，不是插件可以直接调用</li>
-</ul>
-</li>
-</ul>
-<h2 id="Draggable"><a href="#Draggable" class="headerlink" title="Draggable"></a>Draggable</h2><h3 id="问题归纳"><a href="#问题归纳" class="headerlink" title="问题归纳"></a>问题归纳</h3><ul>
-<li>Q1: 使用”-&#x3D;”时怎么控制到某一程度不在减少</li>
-<li>A1: “-&#x3D;”, “+&#x3D;”用来控制变量缓慢增加和减少，遇到如缩放到一定程度不想继续缩小，可以定制一个变量，在回调中控制变量的大小</li>
-<li>示例片段：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">1</span> <span class="comment">// 空值缩小时到0.3后不再继续缩小</span></span><br><span class="line"><span class="title class_">Observer</span>.<span class="title function_">create</span>(&#123;</span><br><span class="line">	<span class="attr">target</span>: <span class="string">&#x27;.octangonal&#x27;</span>,</span><br><span class="line">	<span class="attr">type</span>: <span class="string">&#x27;wheel,pointer&#x27;</span>,</span><br><span class="line">	<span class="attr">wheelSpeed</span>: <span class="number">0.5</span>,</span><br><span class="line">	<span class="attr">onWheel</span>: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (res.<span class="property">deltaY</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			gsap.<span class="title function_">from</span>(<span class="string">&#x27;.octangonal&#x27;</span>, &#123;</span><br><span class="line">				<span class="attr">scale</span>: num,</span><br><span class="line">				<span class="title function_">onStart</span>(<span class="params"></span>) &#123;</span><br><span class="line">					<span class="keyword">if</span> (num &gt;= <span class="number">0.3</span>) &#123;</span><br><span class="line">						num -= <span class="number">0.1</span></span><br><span class="line">					&#125;</span><br><span class="line">				&#125;,</span><br><span class="line">			&#125;)</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			gsap.<span class="title function_">from</span>(<span class="string">&#x27;.octangonal&#x27;</span>, &#123;</span><br><span class="line">				<span class="attr">scale</span>: <span class="string">&#x27;+=0.1&#x27;</span>,</span><br><span class="line">			&#125;)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<h2 id="背景：插件为什么要单独注册"><a href="#背景：插件为什么要单独注册" class="headerlink" title="背景：插件为什么要单独注册"></a>背景：插件为什么要单独注册</h2><p>项目中使用 GSAP 的插件时，核心库和插件是分开引入的：插件不注册，代码里调用不到对应能力。原文提到“具体按文档，不是插件可以直接调用”，即是否属于插件以官方文档为准。</p>
+<h2 id="第一步：安装-gsap"><a href="#第一步：安装-gsap" class="headerlink" title="第一步：安装 gsap"></a>第一步：安装 gsap</h2><p>安装写法如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install gsap</span><br></pre></td></tr></table></figure>
+
+<h2 id="第二步：在页面中引入插件"><a href="#第二步：在页面中引入插件" class="headerlink" title="第二步：在页面中引入插件"></a>第二步：在页面中引入插件</h2><p>从 <code>gsap/all</code> 中按名字取出需要的插件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;插件名&#125; <span class="keyword">from</span> <span class="string">&quot;gsap/all&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="第三步：在页面中注册插件"><a href="#第三步：在页面中注册插件" class="headerlink" title="第三步：在页面中注册插件"></a>第三步：在页面中注册插件</h2><p>引入之后必须注册，插件才会生效：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gsap.<span class="title function_">registerPlugin</span>(插件名)</span><br></pre></td></tr></table></figure>
+
+<h2 id="第四步：Draggable-场景下限制缩放下限"><a href="#第四步：Draggable-场景下限制缩放下限" class="headerlink" title="第四步：Draggable 场景下限制缩放下限"></a>第四步：Draggable 场景下限制缩放下限</h2><p>问题：使用 <code>-=</code> 时怎么控制到某一程度不再减少？</p>
+<p>答案：<code>-=</code>、<code>+=</code> 用来控制变量缓慢增加和减少。遇到如缩放到一定程度不想继续缩小的情况，可以定制一个变量，在回调中控制变量的大小。</p>
+<p>下面的片段用 Observer 监听滚轮与指针，向下滚动时按 <code>num</code> 缩放，并保证 <code>num</code> 不小于 0.3：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">1</span> <span class="comment">// 空值缩小时到 0.3 后不再继续缩小</span></span><br><span class="line"><span class="title class_">Observer</span>.<span class="title function_">create</span>(&#123;</span><br><span class="line">  <span class="attr">target</span>: <span class="string">&#x27;.octangonal&#x27;</span>,</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;wheel,pointer&#x27;</span>,</span><br><span class="line">  <span class="attr">wheelSpeed</span>: <span class="number">0.5</span>,</span><br><span class="line">  <span class="attr">onWheel</span>: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (res.<span class="property">deltaY</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      gsap.<span class="title function_">from</span>(<span class="string">&#x27;.octangonal&#x27;</span>, &#123;</span><br><span class="line">        <span class="attr">scale</span>: num,</span><br><span class="line">        <span class="title function_">onStart</span>(<span class="params"></span>) &#123;</span><br><span class="line">          <span class="keyword">if</span> (num &gt;= <span class="number">0.3</span>) &#123;</span><br><span class="line">            num -= <span class="number">0.1</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      gsap.<span class="title function_">from</span>(<span class="string">&#x27;.octangonal&#x27;</span>, &#123;</span><br><span class="line">        <span class="attr">scale</span>: <span class="string">&#x27;+=0.1&#x27;</span>,</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="踩坑与注意点"><a href="#踩坑与注意点" class="headerlink" title="踩坑与注意点"></a>踩坑与注意点</h2><ul>
+<li>插件从 <code>&quot;gsap/all&quot;</code> 引入后必须调用 <code>gsap.registerPlugin()</code>，否则 <code>Observer.create</code>、<code>Draggable.create</code> 等方法不可用。</li>
+<li><code>scale: &#39;+=0.1&#39;</code> 是相对当前值的写法，连续触发会不断累加，没有上限；需要范围控制时同样要自己维护变量。</li>
+<li>每次滚轮事件都会新建一个 <code>gsap.from</code> 补间，连续滚动时可能存在多个补间叠加，效果异常时可以先清理上一个补间。</li>
 </ul>
 
 </article>
@@ -570,11 +578,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/css%E6%A0%B7%E5%BC%8F-%E5%9F%BA%E6%9C%AC%E5%9B%BE%E5%BD%A2%E7%AF%87/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/css-%E6%BB%A4%E9%95%9C%E7%AF%87/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">CSS样式-基本图形篇 + 步骤条实现</h6>
+                <h6 class="trm-op-title">CSS-滤镜篇</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -591,11 +599,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/css-%E6%96%87%E6%9C%AC%E8%83%8C%E6%99%AF%E7%AF%87/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/css%E6%A0%B7%E5%BC%8F-%E5%9F%BA%E6%9C%AC%E5%9B%BE%E5%BD%A2%E7%AF%87/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">CSS-文本背景篇</h6>
+                <h6 class="trm-op-title">CSS样式-基本图形篇 + 步骤条实现</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -667,7 +675,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="Draggable"><a rel="nofollow" class="trm-toc-link" href="#Draggable"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">Draggable</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="问题归纳"><a rel="nofollow" class="trm-toc-link" href="#问题归纳"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">问题归纳</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景：插件为什么要单独注册"><a rel="nofollow" class="trm-toc-link" href="#背景：插件为什么要单独注册"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景：插件为什么要单独注册</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第一步：安装 gsap"><a rel="nofollow" class="trm-toc-link" href="#第一步：安装-gsap"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">第一步：安装 gsap</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第二步：在页面中引入插件"><a rel="nofollow" class="trm-toc-link" href="#第二步：在页面中引入插件"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">第二步：在页面中引入插件</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第三步：在页面中注册插件"><a rel="nofollow" class="trm-toc-link" href="#第三步：在页面中注册插件"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">第三步：在页面中注册插件</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第四步：Draggable 场景下限制缩放下限"><a rel="nofollow" class="trm-toc-link" href="#第四步：Draggable-场景下限制缩放下限"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">第四步：Draggable 场景下限制缩放下限</span></a></li><li class="trm-toc-item trm-toc-level-2" title="踩坑与注意点"><a rel="nofollow" class="trm-toc-link" href="#踩坑与注意点"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">踩坑与注意点</span></a></li></ol>
       </div>
     </div>
 
@@ -791,6 +799,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

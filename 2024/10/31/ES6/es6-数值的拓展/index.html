@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="二八进制表示法 八进制 前缀0o 二进制 前缀0b 转为十进制 使用Number方法  不支持数值分隔符（_） Number() parseInt()  parseFloat()  Number.isFinite(), Number.isNaN() Number.isFinite() 用来检查一个数值是否为有限的（finite）,不是数值返回false Number.isNaN() 用来检查">
+<meta name="description" content="整理二进制与八进制写法以及 Number.isFinite、isInteger 等数值判断方法，说明安全整数范围与 Math.trunc、Math.sign 的行为">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ES6-数值的拓展">
+<meta property="og:title" content="数值的拓展">
 <meta property="og:url" content="http://example.com/2024/10/31/ES6/es6-%E6%95%B0%E5%80%BC%E7%9A%84%E6%8B%93%E5%B1%95/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="二八进制表示法 八进制 前缀0o 二进制 前缀0b 转为十进制 使用Number方法  不支持数值分隔符（_） Number() parseInt()  parseFloat()  Number.isFinite(), Number.isNaN() Number.isFinite() 用来检查一个数值是否为有限的（finite）,不是数值返回false Number.isNaN() 用来检查">
+<meta property="og:description" content="整理二进制与八进制写法以及 Number.isFinite、isInteger 等数值判断方法，说明安全整数范围与 Math.trunc、Math.sign 的行为">
 <meta property="og:locale">
-<meta property="article:published_time" content="2024-10-31T07:54:04.642Z">
-<meta property="article:modified_time" content="2025-07-29T02:34:03.485Z">
+<meta property="article:published_time" content="2024-10-31T07:54:04.000Z">
+<meta property="article:modified_time" content="2026-11-17T02:28:12.183Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="ES6">
 <meta property="article:tag" content="数值">
@@ -24,7 +24,7 @@
     <meta name="keywords" content="es6">
 
 
-<title >ES6-数值的拓展</title>
+<title >数值的拓展</title>
 
 <!-- Favicon -->
 
@@ -69,7 +69,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-29 10:34:03"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-17 10:28:12"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -84,6 +84,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -198,13 +200,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -240,7 +242,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -258,13 +260,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -386,7 +388,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            ES6-数值的拓展
+                            数值的拓展
                         </h1>
 
                         
@@ -533,44 +535,62 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>数值的拓展可以归成三组：字面量写法（<code>0o</code> 八进制、<code>0b</code> 二进制）、数值判断（<code>Number.isFinite</code>、<code>Number.isNaN</code>、<code>Number.isInteger</code>、<code>Number.isSafeInteger</code>）以及和精度相关的一组常量（<code>Number.EPSILON</code>、<code>MAX_SAFE_INTEGER</code> &#x2F; <code>MIN_SAFE_INTEGER</code>），最后还有 <code>Math.trunc</code>、<code>Math.sign</code> 两个小工具。这篇按”怎么写 → 怎么判断 → 怎么算”的顺序整理，示例保留原笔记的参数和结论。</p>
+<span id="more"></span>
 
-<h2 id="二八进制表示法"><a href="#二八进制表示法" class="headerlink" title="二八进制表示法"></a>二八进制表示法</h2><ul>
-<li>八进制 前缀0o</li>
-<li>二进制 前缀0b</li>
-<li>转为十进制 使用Number方法</li>
+<h2 id="背景：为什么要新增这些方法"><a href="#背景：为什么要新增这些方法" class="headerlink" title="背景：为什么要新增这些方法"></a>背景：为什么要新增这些方法</h2><p>JavaScript 只有一种数字类型 Number，本质是 IEEE 754 双精度浮点数，能精确表示的整数上限是 2^53 - 1。全局的 <code>isFinite</code>、<code>isNaN</code> 会先做类型转换，判断结果经常出人意料；ES6 因此补了一组不做隐式转换的 <code>Number.*</code> 静态方法，并把 0b &#x2F; 0o 字面量写进规范。</p>
+<h2 id="1-二进制与八进制表示法"><a href="#1-二进制与八进制表示法" class="headerlink" title="1. 二进制与八进制表示法"></a>1. 二进制与八进制表示法</h2><p>一句话：八进制用 <code>0o</code> 前缀、二进制用 <code>0b</code> 前缀书写，用 <code>Number()</code> 可以把它们转回十进制。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字面量写法</span></span><br><span class="line"><span class="number">0o10</span>    <span class="comment">// 8</span></span><br><span class="line"><span class="number">0b1010</span>  <span class="comment">// 10</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 转为十进制</span></span><br><span class="line"><span class="title class_">Number</span>(<span class="string">&#x27;0o10&#x27;</span>)    <span class="comment">// 8</span></span><br><span class="line"><span class="title class_">Number</span>(<span class="string">&#x27;0b1010&#x27;</span>)  <span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：ES6 之前的老写法 <code>010</code> 会被当作八进制，在严格模式下直接报错，所以新代码统一用 <code>0o</code>；两种新前缀都不区分大小写（<code>0O</code>、<code>0B</code> 也合法）。</p>
+<h2 id="2-不支持数值分隔符（-）"><a href="#2-不支持数值分隔符（-）" class="headerlink" title="2. 不支持数值分隔符（_）"></a>2. 不支持数值分隔符（<code>_</code>）</h2><p>一句话：<code>Number()</code>、<code>parseInt()</code>、<code>parseFloat()</code> 这三个函数都不识别数值分隔符 <code>_</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Number</span>(<span class="string">&#x27;1_000&#x27;</span>)     <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&#x27;1_000&#x27;</span>)   <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">parseFloat</span>(<span class="string">&#x27;1_000&#x27;</span>) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：<code>1_000</code> 这种字面量本身是合法的（ES2021 引入），只是上面三个函数不会替你”去掉下划线”：<code>Number</code> 认为整个字符串不是合法数字，<code>parseInt</code> &#x2F; <code>parseFloat</code> 则解析到 <code>_</code> 就停止。</p>
+<h2 id="3-Number-isFinite-与-Number-isNaN"><a href="#3-Number-isFinite-与-Number-isNaN" class="headerlink" title="3. Number.isFinite() 与 Number.isNaN()"></a>3. <code>Number.isFinite()</code> 与 <code>Number.isNaN()</code></h2><p>一句话：<code>Number.isFinite()</code> 检查一个数值是否为有限的（finite），不是数值一律返回 <code>false</code>；<code>Number.isNaN()</code> 只在参数确实是 <code>NaN</code> 时返回 <code>true</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Number</span>.<span class="built_in">isNaN</span>(<span class="number">9</span>/<span class="title class_">NaN</span>)           <span class="comment">// true</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">isNaN</span>(<span class="string">&#x27;true&#x27;</span> / <span class="number">0</span>)      <span class="comment">// true</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">isNaN</span>(<span class="string">&#x27;true&#x27;</span> / <span class="string">&#x27;true&#x27;</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：这两个方法都不做类型转换，和全局的 <code>isFinite()</code> &#x2F; <code>isNaN()</code> 不同——<code>Number.isFinite(&#39;1&#39;)</code> 是 <code>false</code>，而 <code>isFinite(&#39;1&#39;)</code> 是 <code>true</code>；<code>Number.isNaN(&#39;foo&#39;)</code> 是 <code>false</code>，而 <code>isNaN(&#39;foo&#39;)</code> 是 <code>true</code>。原文三个例子都是先算出 <code>NaN</code> 再判断，所以结果都是 <code>true</code>。</p>
+<h2 id="4-Number-isInteger-：是否为整数"><a href="#4-Number-isInteger-：是否为整数" class="headerlink" title="4. Number.isInteger()：是否为整数"></a>4. <code>Number.isInteger()</code>：是否为整数</h2><p>一句话：判断一个数值是否为整数，非数值返回 <code>false</code>；但它只能看到双精度浮点数能表示的位数。</p>
+<ul>
+<li>数值精度最多可以达到 53 个二进制位（<span class="desc">1 个隐藏位与 52 个有效位</span>）。如果数值的精度超过这个限度，第 54 位及后面的位就会被丢弃，这种情况下 <code>Number.isInteger</code> 可能会误判。</li>
 </ul>
-<h2 id="不支持数值分隔符（-）"><a href="#不支持数值分隔符（-）" class="headerlink" title="不支持数值分隔符（_）"></a>不支持数值分隔符（_）</h2><ul>
-<li>Number()</li>
-<li>parseInt() </li>
-<li>parseFloat()</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Number</span>.<span class="title function_">isInteger</span>(<span class="number">3.0000000000000002</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：<code>3.0000000000000002</code> 在存进 Number 时就已经被舍入成 <code>3</code>，所以返回 <code>true</code>，并不是方法本身判断错了。</p>
+<h2 id="5-Number-EPSILON"><a href="#5-Number-EPSILON" class="headerlink" title="5. Number.EPSILON"></a>5. <code>Number.EPSILON</code></h2><p>一句话：表示 1 与大于 1 的最小浮点数之间的差（<span class="desc">最小误差范围</span>），常用来做浮点数相等比较的容差。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 两个浮点数差值小于 EPSILON 时，可以认为相等</span></span><br><span class="line"><span class="title class_">Math</span>.<span class="title function_">abs</span>(<span class="number">0.1</span> + <span class="number">0.2</span> - <span class="number">0.3</span>) &lt; <span class="title class_">Number</span>.<span class="property">EPSILON</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：<code>EPSILON</code> 是针对 1 附近的最小间隔，数值越大，实际可用的精度间隔也越大，所以它适合做”差不多相等”的容差，不适合当通用精度单位。</p>
+<h2 id="6-安全整数范围：MAX-SAFE-INTEGER-MIN-SAFE-INTEGER"><a href="#6-安全整数范围：MAX-SAFE-INTEGER-MIN-SAFE-INTEGER" class="headerlink" title="6. 安全整数范围：MAX_SAFE_INTEGER &#x2F; MIN_SAFE_INTEGER"></a>6. 安全整数范围：<code>MAX_SAFE_INTEGER</code> &#x2F; <code>MIN_SAFE_INTEGER</code></h2><p>一句话：这两个常量用来表示安全整数范围的上下限。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Number</span>.<span class="property">MAX_SAFE_INTEGER</span> === <span class="title class_">Math</span>.<span class="title function_">pow</span>(<span class="number">2</span>, <span class="number">53</span>) - <span class="number">1</span>     <span class="comment">// true</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="property">MAX_SAFE_INTEGER</span> === <span class="number">9007199254740991</span>        <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Number</span>.<span class="property">MIN_SAFE_INTEGER</span> === -<span class="title class_">Number</span>.<span class="property">MAX_SAFE_INTEGER</span> <span class="comment">// true</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="property">MIN_SAFE_INTEGER</span> === -<span class="number">9007199254740991</span>       <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>一句话：<code>Number.isSafeInteger()</code> 用来判断一个整数是否落在这个范围之内。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Number</span>.<span class="title function_">isSafeInteger</span>(<span class="number">9007199254740991</span>) <span class="comment">// true</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="title function_">isSafeInteger</span>(<span class="number">9007199254740992</span>) <span class="comment">// false</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="title function_">isSafeInteger</span>(<span class="number">1.5</span>)              <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：<code>isSafeInteger</code> 只对整数返回 <code>true</code>，小数、<code>NaN</code>、字符串都直接是 <code>false</code>，不会先做类型转换。</p>
+<h2 id="7-Math-trunc-：取整数部分"><a href="#7-Math-trunc-：取整数部分" class="headerlink" title="7. Math.trunc()：取整数部分"></a>7. <code>Math.trunc()</code>：取整数部分</h2><p>一句话：去除一个数的小数部分，返回整数部分；非数值会先转成数值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Math</span>.<span class="title function_">trunc</span>(<span class="number">4.9</span>)    <span class="comment">// 4</span></span><br><span class="line"><span class="title class_">Math</span>.<span class="title function_">trunc</span>(-<span class="number">4.9</span>)   <span class="comment">// -4</span></span><br><span class="line"><span class="title class_">Math</span>.<span class="title function_">trunc</span>(<span class="string">&#x27;12.3&#x27;</span>) <span class="comment">// 12</span></span><br><span class="line"><span class="title class_">Math</span>.<span class="title function_">trunc</span>(<span class="string">&#x27;foo&#x27;</span>)  <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：原文”控制或无法截取整数的值，返回 NAN”表述不够明确，这里按实际行为写成”无法转成数值时返回 <code>NaN</code>“，需要作者确认原意。另外 <code>Math.trunc</code> 只截断、不四舍五入，和 <code>Math.round</code>（四舍五入）、<code>Math.floor</code>（向下取整）的结果可能不同。</p>
+<h2 id="8-Math-sign-：判断正负"><a href="#8-Math-sign-：判断正负" class="headerlink" title="8. Math.sign()：判断正负"></a>8. <code>Math.sign()</code>：判断正负</h2><p>一句话：判断一个数到底是正数、负数还是零，对于非数值会先将其转换为数值。</p>
+<ul>
+<li>参数为正数，返回 <code>+1</code></li>
+<li>参数为负数，返回 <code>-1</code></li>
+<li>参数为 <code>0</code>，返回 <code>0</code></li>
+<li>参数为 <code>-0</code>，返回 <code>-0</code></li>
+<li>其他值，返回 <code>NaN</code></li>
 </ul>
-<h2 id="Number-isFinite-Number-isNaN"><a href="#Number-isFinite-Number-isNaN" class="headerlink" title="Number.isFinite(), Number.isNaN()"></a>Number.isFinite(), Number.isNaN()</h2><ul>
-<li>Number.isFinite() 用来检查一个数值是否为有限的（finite）,不是数值返回false</li>
-<li>Number.isNaN() 用来检查一个值是否为NaN。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Number</span>.<span class="built_in">isNaN</span>(<span class="number">9</span>/<span class="title class_">NaN</span>) <span class="comment">// true</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">isNaN</span>(<span class="string">&#x27;true&#x27;</span> / <span class="number">0</span>) <span class="comment">// true</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">isNaN</span>(<span class="string">&#x27;true&#x27;</span> / <span class="string">&#x27;true&#x27;</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="Number-isInteger-是否为整数"><a href="#Number-isInteger-是否为整数" class="headerlink" title="Number.isInteger() 是否为整数"></a>Number.isInteger() 是否为整数</h2><ul>
-<li>数值精度最多可以达到 53 个二进制位（<span class="desc">1 个隐藏位与 52 个有效位</span>）。如果数值的精度超过这个限度，第54位及后面的位就会被丢弃，这种情况下，Number.isInteger可能会误判。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Number</span>.<span class="title function_">isInteger</span>(<span class="number">3.0000000000000002</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="Number-EPSILON"><a href="#Number-EPSILON" class="headerlink" title="Number.EPSILON"></a>Number.EPSILON</h2><ul>
-<li>表示 1 与大于 1 的最小浮点数之间的差。（<span class="desc">最小误差范围</span>）</li>
-</ul>
-<h2 id="Number-MAX-SAFE-INTEGER和Number-MIN-SAFE-INTEGER"><a href="#Number-MAX-SAFE-INTEGER和Number-MIN-SAFE-INTEGER" class="headerlink" title="Number.MAX_SAFE_INTEGER和Number.MIN_SAFE_INTEGER"></a>Number.MAX_SAFE_INTEGER和Number.MIN_SAFE_INTEGER</h2><ul>
-<li>这两个常量，用来表示这个范围的上下限<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Number</span>.<span class="property">MAX_SAFE_INTEGER</span> === <span class="title class_">Math</span>.<span class="title function_">pow</span>(<span class="number">2</span>, <span class="number">53</span>) - <span class="number">1</span>		<span class="comment">// true</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="property">MAX_SAFE_INTEGER</span> === <span class="number">9007199254740991</span>		<span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Number</span>.<span class="property">MIN_SAFE_INTEGER</span> === -<span class="title class_">Number</span>.<span class="property">MAX_SAFE_INTEGER</span>	<span class="comment">// true</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="property">MIN_SAFE_INTEGER</span> === -<span class="number">9007199254740991</span>			<span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="Number-isSafeInteger-则是用来判断一个整数是否落在这个范围之内。"><a href="#Number-isSafeInteger-则是用来判断一个整数是否落在这个范围之内。" class="headerlink" title="Number.isSafeInteger()则是用来判断一个整数是否落在这个范围之内。"></a>Number.isSafeInteger()则是用来判断一个整数是否落在这个范围之内。</h2><h2 id="Math-trunc-去除一个数的小数部分，返回整数部分。"><a href="#Math-trunc-去除一个数的小数部分，返回整数部分。" class="headerlink" title="Math.trunc()  去除一个数的小数部分，返回整数部分。"></a>Math.trunc()  去除一个数的小数部分，返回整数部分。</h2><ul>
-<li>非数值，先转数值</li>
-<li>控制或无法截取整数的值，返回NAN</li>
-</ul>
-<h2 id="Math-sign方法"><a href="#Math-sign方法" class="headerlink" title="Math.sign方法"></a>Math.sign方法</h2><ul>
-<li>用来判断一个数到底是正数、负数、还是零。对于非数值，会先将其转换为数值。</li>
-<li>参数为正数，返回+1；</li>
-<li>参数为负数，返回-1；</li>
-<li>参数为 0，返回0；</li>
-<li>参数为-0，返回-0;</li>
-<li>其他值，返回NaN。</li>
-</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Math</span>.<span class="title function_">sign</span>(<span class="number">5</span>)     <span class="comment">// 1</span></span><br><span class="line"><span class="title class_">Math</span>.<span class="title function_">sign</span>(-<span class="number">5</span>)    <span class="comment">// -1</span></span><br><span class="line"><span class="title class_">Math</span>.<span class="title function_">sign</span>(<span class="number">0</span>)     <span class="comment">// 0</span></span><br><span class="line"><span class="title class_">Math</span>.<span class="title function_">sign</span>(-<span class="number">0</span>)    <span class="comment">// -0</span></span><br><span class="line"><span class="title class_">Math</span>.<span class="title function_">sign</span>(<span class="string">&#x27;foo&#x27;</span>) <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：<code>Math.sign(&#39;5&#39;)</code> 返回 <code>1</code>，因为字符串会先转成数值；<code>-0</code> 和 <code>0</code> 的返回值也不同，需要严格区分时不能用 <code>===</code> 比较。</p>
+<h2 id="踩坑与注意点"><a href="#踩坑与注意点" class="headerlink" title="踩坑与注意点"></a>踩坑与注意点</h2><ol>
+<li>老写法 <code>010</code> 在严格模式下报错，八进制统一写 <code>0o</code>。</li>
+<li><code>Number(&#39;1_000&#39;)</code> 得到 <code>NaN</code>，但 <code>parseInt(&#39;1_000&#39;)</code> 得到 <code>1</code>，二者行为不一致，处理用户输入时不要混用。</li>
+<li><code>Number.isInteger</code> 受 53 位精度限制，超长小数会被舍入后再判断。</li>
+<li><code>MAX_SAFE_INTEGER</code> 之外整数运算不再精确，涉及大整数（如订单号）要用字符串或 BigInt。</li>
+<li><code>Math.trunc</code> 不是四舍五入，负数方向也不同：<code>Math.trunc(-4.9)</code> 是 <code>-4</code>，<code>Math.floor(-4.9)</code> 是 <code>-5</code>。</li>
+</ol>
 
 </article>
     
@@ -590,11 +610,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/31/ES6/es6-%E6%95%B0%E7%BB%84%E7%9A%84%E6%8B%93%E5%B1%95/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/31/ES6/es6-%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%8B%93%E5%B1%95/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">ES6-数组的拓展</h6>
+                <h6 class="trm-op-title">对象的拓展</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -611,11 +631,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/31/ES6/es6-%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/31/ES6/es6-%E6%95%B0%E7%BB%84%E7%9A%84%E6%8B%93%E5%B1%95/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">ES6-解构赋值</h6>
+                <h6 class="trm-op-title">数组的拓展</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -687,7 +707,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="二八进制表示法"><a rel="nofollow" class="trm-toc-link" href="#二八进制表示法"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">二八进制表示法</span></a></li><li class="trm-toc-item trm-toc-level-2" title="不支持数值分隔符（_）"><a rel="nofollow" class="trm-toc-link" href="#不支持数值分隔符（-）"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">不支持数值分隔符（_）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Number.isFinite(), Number.isNaN()"><a rel="nofollow" class="trm-toc-link" href="#Number-isFinite-Number-isNaN"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">Number.isFinite(), Number.isNaN()</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Number.isInteger() 是否为整数"><a rel="nofollow" class="trm-toc-link" href="#Number-isInteger-是否为整数"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">Number.isInteger() 是否为整数</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Number.EPSILON"><a rel="nofollow" class="trm-toc-link" href="#Number-EPSILON"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">Number.EPSILON</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Number.MAX_SAFE_INTEGER和Number.MIN_SAFE_INTEGER"><a rel="nofollow" class="trm-toc-link" href="#Number-MAX-SAFE-INTEGER和Number-MIN-SAFE-INTEGER"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">Number.MAX_SAFE_INTEGER和Number.MIN_SAFE_INTEGER</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Number.isSafeInteger()则是用来判断一个整数是否落在这个范围之内。"><a rel="nofollow" class="trm-toc-link" href="#Number-isSafeInteger-则是用来判断一个整数是否落在这个范围之内。"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">Number.isSafeInteger()则是用来判断一个整数是否落在这个范围之内。</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Math.trunc()  去除一个数的小数部分，返回整数部分。"><a rel="nofollow" class="trm-toc-link" href="#Math-trunc-去除一个数的小数部分，返回整数部分。"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">Math.trunc()  去除一个数的小数部分，返回整数部分。</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Math.sign方法"><a rel="nofollow" class="trm-toc-link" href="#Math-sign方法"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">Math.sign方法</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景：为什么要新增这些方法"><a rel="nofollow" class="trm-toc-link" href="#背景：为什么要新增这些方法"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景：为什么要新增这些方法</span></a></li><li class="trm-toc-item trm-toc-level-2" title="1. 二进制与八进制表示法"><a rel="nofollow" class="trm-toc-link" href="#1-二进制与八进制表示法"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">1. 二进制与八进制表示法</span></a></li><li class="trm-toc-item trm-toc-level-2" title="2. 不支持数值分隔符（_）"><a rel="nofollow" class="trm-toc-link" href="#2-不支持数值分隔符（-）"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">2. 不支持数值分隔符（_）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="3. Number.isFinite() 与 Number.isNaN()"><a rel="nofollow" class="trm-toc-link" href="#3-Number-isFinite-与-Number-isNaN"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">3. Number.isFinite() 与 Number.isNaN()</span></a></li><li class="trm-toc-item trm-toc-level-2" title="4. Number.isInteger()：是否为整数"><a rel="nofollow" class="trm-toc-link" href="#4-Number-isInteger-：是否为整数"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">4. Number.isInteger()：是否为整数</span></a></li><li class="trm-toc-item trm-toc-level-2" title="5. Number.EPSILON"><a rel="nofollow" class="trm-toc-link" href="#5-Number-EPSILON"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">5. Number.EPSILON</span></a></li><li class="trm-toc-item trm-toc-level-2" title="6. 安全整数范围：MAX_SAFE_INTEGER &#x2F; MIN_SAFE_INTEGER"><a rel="nofollow" class="trm-toc-link" href="#6-安全整数范围：MAX-SAFE-INTEGER-MIN-SAFE-INTEGER"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">6. 安全整数范围：MAX_SAFE_INTEGER &#x2F; MIN_SAFE_INTEGER</span></a></li><li class="trm-toc-item trm-toc-level-2" title="7. Math.trunc()：取整数部分"><a rel="nofollow" class="trm-toc-link" href="#7-Math-trunc-：取整数部分"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">7. Math.trunc()：取整数部分</span></a></li><li class="trm-toc-item trm-toc-level-2" title="8. Math.sign()：判断正负"><a rel="nofollow" class="trm-toc-link" href="#8-Math-sign-：判断正负"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">8. Math.sign()：判断正负</span></a></li><li class="trm-toc-item trm-toc-level-2" title="踩坑与注意点"><a rel="nofollow" class="trm-toc-link" href="#踩坑与注意点"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">踩坑与注意点</span></a></li></ol>
       </div>
     </div>
 
@@ -811,6 +831,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

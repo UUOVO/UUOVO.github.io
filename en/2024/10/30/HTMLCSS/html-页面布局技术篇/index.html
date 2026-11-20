@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="布局类型 💚 自适应布局 百分比布局 弹性布局(Flex) rem 布局 vw、vh 布局   💚 响应式布局 媒体查询   静态布局(固定布局) 流式布局(Flow) - 默认网页模型, CSS 盒布局模型 块级元素自上而下垂直分布，默认状态下，块级元素的宽度为 100%，占整行 内联元素会在所处的最近父级容器元素内从左到右水平分布   浮动布局(Float) - CSS 盒布局模型">
+<meta name="description" content="对比百分比、rem、vw&#x2F;vh 与定宽等布局方案，说明自适应与响应式的区别，并讲清定位（Layer 布局）的完整规则">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Html-页面布局技术篇">
 <meta property="og:url" content="http://example.com/en/2024/10/30/HTMLCSS/html-%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80%E6%8A%80%E6%9C%AF%E7%AF%87/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="布局类型 💚 自适应布局 百分比布局 弹性布局(Flex) rem 布局 vw、vh 布局   💚 响应式布局 媒体查询   静态布局(固定布局) 流式布局(Flow) - 默认网页模型, CSS 盒布局模型 块级元素自上而下垂直分布，默认状态下，块级元素的宽度为 100%，占整行 内联元素会在所处的最近父级容器元素内从左到右水平分布   浮动布局(Float) - CSS 盒布局模型">
+<meta property="og:description" content="对比百分比、rem、vw&#x2F;vh 与定宽等布局方案，说明自适应与响应式的区别，并讲清定位（Layer 布局）的完整规则">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-10-30T07:29:11.168Z">
-<meta property="article:modified_time" content="2025-07-30T02:49:27.301Z">
+<meta property="article:published_time" content="2024-10-30T07:29:11.000Z">
+<meta property="article:modified_time" content="2026-11-19T09:18:01.179Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="Html">
 <meta property="article:tag" content="布局">
@@ -69,7 +69,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-30 10:49:27"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-19 17:18:01"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -84,6 +84,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -198,13 +200,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -240,7 +242,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -258,13 +260,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -533,33 +535,34 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>页面布局的第一步不是写样式，而是选模型：流式、浮动、定位负责”怎么排”，百分比、rem、vw&#x2F;vh 负责”怎么随屏幕缩放”，媒体查询负责”什么时候换一套样式”。这篇先给出布局类型全景和自适应&#x2F;响应式的分界，再逐个说明四种自适应方案，最后完整梳理定位（Layer 布局）与它依赖的偏移量、层级、透明度。</p>
+<span id="more"></span>
 
-<h2 id="布局类型"><a href="#布局类型" class="headerlink" title="布局类型"></a>布局类型</h2><ul>
-<li>💚 自适应布局<ul>
+<h2 id="背景：布局模型的全景"><a href="#背景：布局模型的全景" class="headerlink" title="背景：布局模型的全景"></a>背景：布局模型的全景</h2><p>按实现手段可以把布局分成下面几类，前两组负责适配，后面几组是 CSS 的盒布局模型：</p>
+<ul>
+<li>自适应布局<ul>
 <li>百分比布局</li>
 <li><a href="/2024/10/30/HTMLCSS/html-Flex%E5%B8%83%E5%B1%80/" title="Html-弹性布局（Flex）">弹性布局(Flex)</a></li>
 <li>rem 布局</li>
 <li>vw、vh 布局</li>
 </ul>
 </li>
-<li>💚 响应式布局<ul>
+<li>响应式布局<ul>
 <li><a href="/2024/10/30/HTMLCSS/html-%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2%E5%B8%83%E5%B1%80/" title="Html-媒体查询布局">媒体查询</a></li>
 </ul>
 </li>
-<li>静态布局(固定布局)</li>
-<li>流式布局(Flow) - <span class="desc">默认网页模型, CSS 盒布局模型</span><ul>
+<li>静态布局（固定布局）</li>
+<li>流式布局（Flow）—— 默认网页模型，CSS 盒布局模型<ul>
 <li>块级元素自上而下垂直分布，默认状态下，块级元素的宽度为 100%，占整行</li>
 <li>内联元素会在所处的最近父级容器元素内从左到右水平分布</li>
 </ul>
 </li>
-<li><a href="/2024/10/30/HTMLCSS/html-float%E5%B8%83%E5%B1%80/" title="Html-浮动布局(Float)">浮动布局(Float)</a> - <span class="desc">CSS 盒布局模型</span></li>
-<li>Layer 布局(定位) - <span class="desc">CSS 盒布局模型</span></li>
+<li><a href="/2024/10/30/HTMLCSS/html-float%E5%B8%83%E5%B1%80/" title="Html-浮动布局(Float)">浮动布局(Float)</a> —— CSS 盒布局模型</li>
+<li>Layer 布局（定位）—— CSS 盒布局模型</li>
 </ul>
-<hr>
-<h2 id="自适应和响应式"><a href="#自适应和响应式" class="headerlink" title="自适应和响应式"></a>自适应和响应式</h2><h3 id="自适应"><a href="#自适应" class="headerlink" title="自适应"></a>自适应</h3><ul>
-<li>特点：不管屏幕大小(分辨率)怎么变化，页面的元素的位置会变化而大小不会变化。</li>
+<h2 id="第一步：区分自适应与响应式"><a href="#第一步：区分自适应与响应式" class="headerlink" title="第一步：区分自适应与响应式"></a>第一步：区分自适应与响应式</h2><p>两者经常被混用，但出发点是不同的。</p>
+<h3 id="自适应"><a href="#自适应" class="headerlink" title="自适应"></a>自适应</h3><ul>
+<li>特点：不管屏幕大小（分辨率）怎么变化，页面的元素的位置会变化而大小不会变化。</li>
 <li>方法：<ul>
 <li>使用 flex 布局</li>
 <li>使用百分比</li>
@@ -569,102 +572,98 @@
 </li>
 </ul>
 <h3 id="响应式"><a href="#响应式" class="headerlink" title="响应式"></a>响应式</h3><ul>
-<li>特点：在同一套项目中做兼容(设计多个方案和不同方案对应的样式)</li>
-<li>方法：使用 @media 媒体查询 和网格系统 (Grid System) 配合相对布局单位进行布局</li>
-<li>优点：面对不同的分辨率设备灵活性强，适合中小型网站</li>
-<li>缺点：如果浏览器大小改变时，需要改变的样式太多，那么多套样式代码会很繁琐</li>
+<li>特点：在同一套项目中做兼容（设计多个方案和不同方案对应的样式）。</li>
+<li>方法：使用 @media 媒体查询和网格系统（Grid System）配合相对布局单位进行布局。</li>
+<li>优点：面对不同的分辨率设备灵活性强，适合中小型网站。</li>
+<li>缺点：如果浏览器大小改变时需要改变的样式太多，那么多套样式代码会很繁琐。</li>
 </ul>
 <h3 id="自适应与响应式的区别"><a href="#自适应与响应式的区别" class="headerlink" title="自适应与响应式的区别"></a>自适应与响应式的区别</h3><ul>
-<li>响应式是先@media 确定设备，再有需要的地方，css 用上%或者 vw，vh 等</li>
-<li>自适应是属于 pc、手机等设备都做一套设计</li>
+<li>响应式是先 @media 确定设备，再在需要的地方用上 % 或 vw、vh 等单位。</li>
+<li>自适应是 PC、手机等设备都单独做一套设计。</li>
 </ul>
-<h2 id="百分比布局"><a href="#百分比布局" class="headerlink" title="百分比布局"></a>百分比布局</h2><ul>
-<li>视窗变化时，height、width、padding、margin、border 都是依托父组件的宽高，并且单位为%</li>
-<li>子元素的 margin、padding 为百分比参照父级容器的宽度</li>
-<li>border-radius 为百分比，则是相对于自身的宽度</li>
-<li>子元素的 top、bottom|(right、left)为百分比则相对于非 static 定位的父元素的高度|(宽度)。</li>
-<li>缺点：计算困难</li>
+<h2 id="第二步：百分比布局"><a href="#第二步：百分比布局" class="headerlink" title="第二步：百分比布局"></a>第二步：百分比布局</h2><p>百分比的核心是”参照物是谁”，不同属性参照的对象并不相同：</p>
+<ul>
+<li>视窗变化时，height、width、padding、margin、border 都是依托父组件的宽高，并且单位为 %。</li>
+<li>子元素的 margin、padding 为百分比时，参照父级容器的宽度。</li>
+<li>border-radius 为百分比，则是相对于自身的宽度。</li>
+<li>子元素的 top、bottom（right、left）为百分比时，相对于非 static 定位的父元素的高度（宽度）。</li>
+<li>缺点：计算困难。</li>
 </ul>
-<h2 id="rem-布局"><a href="#rem-布局" class="headerlink" title="rem 布局"></a>rem 布局</h2><ul>
-<li>本质是<span class="key_words">『等比缩放，依赖于整体的html根标签』</span>，通常用来适配<span class="key_words">『移动端』</span>布局，字体，图片高度</li>
-<li>缺点：<ul>
-<li>数据量大：所有图片，盒子都需要给一个准确的值，才能保证不同机型的适配</li>
-<li>在响应式布局中，必须通过 js 来动态控制根元素 font-size 的大小，即 css 样式和 js 代码有一定的耦合性，且必须将改变 font-size 的代码放在 css 样式之前</li>
-</ul>
-</li>
-<li>解决：使用 flexible.js 插件</li>
-</ul>
-<h2 id="vw、vh-布局"><a href="#vw、vh-布局" class="headerlink" title="vw、vh 布局"></a>vw、vh 布局</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1vw(vh) = (视窗宽度(高度) / 100)px</span><br></pre></td></tr></table></figure>
+<h2 id="第三步：rem-布局"><a href="#第三步：rem-布局" class="headerlink" title="第三步：rem 布局"></a>第三步：rem 布局</h2><p>rem 的本质是『等比缩放，依赖于整体的 html 根标签』，通常用来适配『移动端』布局、字体、图片高度。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">1.5rem</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="静态布局-—-定宽"><a href="#静态布局-—-定宽" class="headerlink" title="静态布局 — 定宽"></a>静态布局 — 定宽</h2><ul>
-<li>特点：常规 pc 网站都是静态布局，即就是设置了 min-width,小于宽度出滚动条，大于内容居中加背景。</li>
+<p>缺点有两个：</p>
+<ul>
+<li>数据量大：所有图片、盒子都需要给一个准确的值，才能保证不同机型的适配。</li>
+<li>在响应式布局中，必须通过 js 来动态控制根元素 font-size 的大小，即 css 样式和 js 代码有一定的耦合性，且必须将改变 font-size 的代码放在 css 样式之前。</li>
+</ul>
+<p>解决方式是使用 flexible.js 插件。</p>
+<h2 id="第四步：vw-vh-布局"><a href="#第四步：vw-vh-布局" class="headerlink" title="第四步：vw &#x2F; vh 布局"></a>第四步：vw &#x2F; vh 布局</h2><p>vw、vh 直接以视口为参照，换算关系是：</p>
+<blockquote>
+<p>1vw(vh) &#x3D; (视窗宽度(高度) &#x2F; 100)px</p>
+</blockquote>
+<p>也就是说 100vw 就是一个视口的宽度，元素用 vw 做单位时会随视口等比缩放，不需要像 rem 那样额外用 js 改根字号。</p>
+<h2 id="第五步：静态布局-——-定宽"><a href="#第五步：静态布局-——-定宽" class="headerlink" title="第五步：静态布局 —— 定宽"></a>第五步：静态布局 —— 定宽</h2><p>静态布局就是常见 PC 站点的做法：</p>
+<ul>
+<li>特点：常规 PC 网站都是静态布局，即设置了 min-width，小于该宽度出滚动条，大于该宽度则内容居中并加背景。</li>
 <li>方法：<ul>
-<li>PC：居中布局，所有样式使用绝对宽度&#x2F;高度(px)，设计一个 Layout，在屏幕宽高有调整时，使用横向和竖向的滚动条来查阅被遮掩部分；</li>
-<li>移动设备：另外建立移动网站，单独设计一个布局，使用不同的域名如 wap.或 m.。</li>
+<li>PC：居中布局，所有样式使用绝对宽度&#x2F;高度（px），设计一个 Layout，在屏幕宽高有调整时，使用横向和竖向的滚动条来查阅被遮掩部分。</li>
+<li>移动设备：另外建立移动网站，单独设计一个布局，使用不同的域名如 wap. 或 m.。</li>
 </ul>
 </li>
-<li>在移动端开发中采用静态布局的两种方式：(来自：流布局与响应式网页设计有什么区别？)<ul>
+<li>在移动端开发中采用静态布局的两种方式（来自：流布局与响应式网页设计有什么区别？）：<ul>
 <li>在 viewport meta 标签上设置 width&#x3D;320，页面的各个元素也采用 px 作为单位。通过用 JS 动态修改标签的 initial-scale 使得页面等比缩放，从而刚好占满整个屏幕。</li>
 <li>在 viewport meta 标签上设置 content&#x3D;”width&#x3D;640,user-scalable&#x3D;no”，页面的各个元素也采用 px 作为单位。由于 640px 超出了手机宽度，浏览器会自动缩小页面至刚好全屏。</li>
 </ul>
 </li>
 <li>缺点：不能根据用户的屏幕尺寸做出不同的表现。</li>
 </ul>
-<h2 id="定位（Layer-布局-—-层级布局模型）"><a href="#定位（Layer-布局-—-层级布局模型）" class="headerlink" title="定位（Layer 布局 — 层级布局模型）"></a>定位（Layer 布局 — 层级布局模型）</h2><h3 id="相对定位（relative）"><a href="#相对定位（relative）" class="headerlink" title="相对定位（relative）"></a>相对定位（relative）</h3><ul>
-<li>该属性本身不做任何事，但可以用 top、left 来操作它的位置</li>
-</ul>
+<p>对应的视口设置写法：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=640, user-scalable=no&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="第六步：定位（Layer-布局-——-层级布局模型）"><a href="#第六步：定位（Layer-布局-——-层级布局模型）" class="headerlink" title="第六步：定位（Layer 布局 —— 层级布局模型）"></a>第六步：定位（Layer 布局 —— 层级布局模型）</h2><h3 id="相对定位（relative）"><a href="#相对定位（relative）" class="headerlink" title="相对定位（relative）"></a>相对定位（relative）</h3><p>该属性本身不做任何事，但可以用 top、left 来操作它的位置。具体特点：</p>
 <ol>
-<li>相对于元素自身在文档流中的位置进行定位</li>
-<li>相对定位的元素<span class="key_words">『不会脱离文档流』</span>&gt;，定位元素的性质不会改变，块还是块，内联还是内联</li>
-<li>如果不设置偏移量，元素不会发生任何的变化</li>
-<li>会提升元素的层级</li>
+<li>相对于元素自身在文档流中的位置进行定位。</li>
+<li>相对定位的元素『不会脱离文档流』，定位元素的性质不会改变，块还是块，内联还是内联。</li>
+<li>如果不设置偏移量，元素不会发生任何变化。</li>
+<li>会提升元素的层级。</li>
 </ol>
-<h3 id="绝对定位（absolute）"><a href="#绝对定位（absolute）" class="headerlink" title="绝对定位（absolute）"></a>绝对定位（absolute）</h3><ul>
-<li>将元素移除正常布局，屏幕滚动时也会跟着滚动。</li>
-</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="绝对定位（absolute）"><a href="#绝对定位（absolute）" class="headerlink" title="绝对定位（absolute）"></a>绝对定位（absolute）</h3><p>将元素移出正常布局，屏幕滚动时也会跟着滚动。具体特点：</p>
 <ol>
-<li>开启绝对定位后，如果不设置偏移量元素的位置不会发生变化</li>
-<li>开启绝对定位后，<span class="key_words">『元素脱离文档流中』</span></li>
-<li>绝对定位会改变元素的性质，行内变成块，块的宽高被内容撑开</li>
-<li>绝对定位会使元素提升一个层级</li>
-<li>绝对定位元素是相对于包含块进行定位的，使用 left、right、top、bottom 操作</li>
+<li>开启绝对定位后，如果不设置偏移量，元素的位置不会发生变化。</li>
+<li>开启绝对定位后，『元素脱离文档流』。</li>
+<li>绝对定位会改变元素的性质，行内变成块，块的宽高被内容撑开。</li>
+<li>绝对定位会使元素提升一个层级。</li>
+<li>绝对定位元素是相对于包含块进行定位的，使用 left、right、top、bottom 操作。</li>
 </ol>
+<p>包含块（containing block）的判定规则：</p>
 <ul>
-<li>包含块(containing block)<ul>
-<li>正常情况下，包含块就是离当前元素最近的祖先块元素</li>
-<li>绝对定位的包含块:<ul>
-<li>包含块就是离它最近的开启了定位的祖先元素，</li>
+<li>正常情况下，包含块就是离当前元素最近的祖先块元素。</li>
+<li>绝对定位的包含块，就是离它最近的开启了定位的祖先元素。</li>
+<li>如果所有的祖先元素都没有开启定位，则根元素就是它的包含块：html（根元素、初始包含块）。</li>
 </ul>
-</li>
-<li>如果所有的祖先元素都没有开启定位则根元素就是它的包含块<ul>
-<li>html（根元素、初始包含块）</li>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.father</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.children</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="固定定位（fixed）"><a href="#固定定位（fixed）" class="headerlink" title="固定定位（fixed）"></a>固定定位（fixed）</h3><p>固定定位也是一种绝对定位，和绝对定位大致相同，不同的是：</p>
+<ul>
+<li>fixed 永远相对于浏览器窗口进行定位。</li>
+<li>fixed 会固定在浏览器指定的位置，不会随页面一起滚动。</li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="固定定位（fixed）"><a href="#固定定位（fixed）" class="headerlink" title="固定定位（fixed）"></a>固定定位（fixed）</h3><ul>
-<li>固定定位也是一种绝对定位，和绝对定位是大致相同的</li>
-<li>不同的是：<ul>
-<li>fixed 永远相对于浏览器窗口进行定位</li>
-<li>fixed 会固定在浏览器的指定的位置，不会随页面一起滚动</li>
-</ul>
-</li>
-</ul>
-<h3 id="粘滞定位（sticky）"><a href="#粘滞定位（sticky）" class="headerlink" title="粘滞定位（sticky）"></a>粘滞定位（sticky）</h3><ul>
-<li>粘滞定位和相对定位的特点基本一致</li>
-<li>不同的是粘滞定位可以在元素到达某个位置时将其固定</li>
-<li>理解：在页面中的某个位置设置后，当滚动到顶部时，层级最高,固定在顶部，滚回来后回到原来的位置</li>
-</ul>
-<h3 id="偏移量（offset）"><a href="#偏移量（offset）" class="headerlink" title="偏移量（offset）"></a>偏移量（offset）</h3><ul>
-<li>当元素开启了定位以后，可以通过偏移量来设置元素的位置<ul>
-<li>top：相对于定位位置的顶部的偏移量</li>
-<li>bottom：相对于定位位置的底部的偏移量</li>
+<h3 id="粘滞定位（sticky）"><a href="#粘滞定位（sticky）" class="headerlink" title="粘滞定位（sticky）"></a>粘滞定位（sticky）</h3><p>粘滞定位和相对定位的特点基本一致，不同的是粘滞定位可以在元素到达某个位置时将其固定。</p>
+<p>理解方式：在页面中的某个位置设置后，当滚动到顶部时层级最高、固定在顶部，滚回来后回到原来的位置。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.header</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: sticky;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="偏移量（offset）"><a href="#偏移量（offset）" class="headerlink" title="偏移量（offset）"></a>偏移量（offset）</h3><p>当元素开启了定位以后，可以通过偏移量来设置元素的位置：</p>
+<ul>
+<li><code>top</code>：相对于定位位置的顶部的偏移量</li>
+<li><code>bottom</code>：相对于定位位置的底部的偏移量</li>
 <li>定位元素垂直方向的位置由 top 和 bottom 两个属性来控制</li>
-<li>left：相对于定位位置的左侧的偏移量</li>
-<li>right：相对于定位位置的右侧的偏移量</li>
+<li><code>left</code>：相对于定位位置的左侧的偏移量</li>
+<li><code>right</code>：相对于定位位置的右侧的偏移量</li>
 <li>定位元素水平方向的位置由 left 和 right 两个属性来控制</li>
-<li>一般只需要使用两个值即可给元素进行定位<ul>
+<li>一般只需要使用两个值即可给元素进行定位：<ul>
 <li>top left</li>
 <li>top right</li>
 <li>bottom left</li>
@@ -673,28 +672,35 @@
 </li>
 <li>偏移量也可以指定一个负值，如果是负值则元素会向相反的方向移动</li>
 </ul>
-</li>
-</ul>
 <h3 id="层级（z-index-number-）"><a href="#层级（z-index-number-）" class="headerlink" title="层级（z-index: number;）"></a>层级（z-index: number;）</h3><ul>
-<li>需要一个正整数作为参数，值越大层级越高，层级越高越优先显示</li>
+<li>需要一个正整数作为参数，值越大层级越高，层级越高越优先显示。</li>
 <li>如果层级一样，则后边的会盖住前边的，父元素永远都不会盖住子元素。</li>
-<li><span class="key_words">『文档流 &lt; 浮动 &lt; 定位』</span></li>
+<li>『文档流 &lt; 浮动 &lt; 定位』。</li>
 </ul>
-<h3 id="元素的透明"><a href="#元素的透明" class="headerlink" title="元素的透明"></a>元素的透明</h3><ul>
-<li>使用 opacity 来设置元素的透明度<ul>
+<h3 id="元素的透明"><a href="#元素的透明" class="headerlink" title="元素的透明"></a>元素的透明</h3><p>使用 <code>opacity</code> 来设置元素的透明度：</p>
+<ul>
 <li>需要一个 0-1 之间的值</li>
 <li>0 表示完全透明</li>
 <li>1 表示完全不透明</li>
 </ul>
-</li>
-<li>IE8 及以下的浏览器不支持该样式，需要使用如下方式来设置<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">filter</span>:<span class="built_in">alpha</span>(opacity=透明度);</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0.5</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>IE8 及以下的浏览器不支持该样式，需要使用下面的方式来设置，值域是 0-100：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">filter</span>: <span class="built_in">alpha</span>(opacity=<span class="number">50</span>);</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>需要一个 0-100 之间的值</li>
 <li>0 表示完全透明</li>
 <li>100 表示完全不透明</li>
 </ul>
-</li>
-</ul>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ol>
+<li>rem 布局里”改变 font-size 的 js 要放在 css 之前”，否则首屏会先按默认字号渲染再跳变。</li>
+<li>vw 以视口宽度为基准，视口出现滚动条时 100vw 仍然按包含滚动条的宽度计算，容易多出一条横向滚动条，用 100% 更稳妥。</li>
+<li>绝对定位元素的站位依赖”最近的定位祖先”，父级忘记写 <code>position: relative</code> 时，元素会一路向上找到 html，表现为跑到页面左上角。</li>
+<li><code>sticky</code> 必须配合 <code>top</code>（或 bottom&#x2F;left&#x2F;right）才会生效，只写 <code>position: sticky</code> 没有任何效果。</li>
+<li><code>z-index</code> 只在已定位元素（以及部分形成层叠上下文的元素）上生效；『文档流 &lt; 浮动 &lt; 定位』是常规层级结论，父子元素之间的层叠另受层叠上下文影响。</li>
+<li><code>opacity</code> 会作用于元素及其所有子元素，只想让背景透明时应改用 <code>rgba()</code> 背景色。</li>
+</ol>
 
 </article>
     
@@ -714,11 +720,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/html-%E5%85%83%E7%B4%A0%E5%B8%83%E5%B1%80%E7%AF%87/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/html-%E7%9B%92%E5%AD%90%E5%B8%83%E5%B1%80/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">Html-元素布局篇</h6>
+                <h6 class="trm-op-title">Html-盒子布局</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -735,11 +741,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/html-%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2%E5%B8%83%E5%B1%80/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/html-%E8%A1%A8%E5%8D%95%E8%A1%A8%E6%A0%BC%E7%AF%87/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">Html-媒体查询布局</h6>
+                <h6 class="trm-op-title">Html-表格表单篇</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -811,7 +817,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="布局类型"><a rel="nofollow" class="trm-toc-link" href="#布局类型"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">布局类型</span></a></li><li class="trm-toc-item trm-toc-level-2" title="自适应和响应式"><a rel="nofollow" class="trm-toc-link" href="#自适应和响应式"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">自适应和响应式</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="自适应"><a rel="nofollow" class="trm-toc-link" href="#自适应"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">自适应</span></a></li><li class="trm-toc-item trm-toc-level-3" title="响应式"><a rel="nofollow" class="trm-toc-link" href="#响应式"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">响应式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="自适应与响应式的区别"><a rel="nofollow" class="trm-toc-link" href="#自适应与响应式的区别"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">自适应与响应式的区别</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="百分比布局"><a rel="nofollow" class="trm-toc-link" href="#百分比布局"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">百分比布局</span></a></li><li class="trm-toc-item trm-toc-level-2" title="rem 布局"><a rel="nofollow" class="trm-toc-link" href="#rem-布局"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">rem 布局</span></a></li><li class="trm-toc-item trm-toc-level-2" title="vw、vh 布局"><a rel="nofollow" class="trm-toc-link" href="#vw、vh-布局"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">vw、vh 布局</span></a></li><li class="trm-toc-item trm-toc-level-2" title="静态布局 — 定宽"><a rel="nofollow" class="trm-toc-link" href="#静态布局-—-定宽"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">静态布局 — 定宽</span></a></li><li class="trm-toc-item trm-toc-level-2" title="定位（Layer 布局 — 层级布局模型）"><a rel="nofollow" class="trm-toc-link" href="#定位（Layer-布局-—-层级布局模型）"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">定位（Layer 布局 — 层级布局模型）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="相对定位（relative）"><a rel="nofollow" class="trm-toc-link" href="#相对定位（relative）"><span class="trm-toc-number">7.1.</span> <span class="trm-toc-text">相对定位（relative）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="绝对定位（absolute）"><a rel="nofollow" class="trm-toc-link" href="#绝对定位（absolute）"><span class="trm-toc-number">7.2.</span> <span class="trm-toc-text">绝对定位（absolute）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="固定定位（fixed）"><a rel="nofollow" class="trm-toc-link" href="#固定定位（fixed）"><span class="trm-toc-number">7.3.</span> <span class="trm-toc-text">固定定位（fixed）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="粘滞定位（sticky）"><a rel="nofollow" class="trm-toc-link" href="#粘滞定位（sticky）"><span class="trm-toc-number">7.4.</span> <span class="trm-toc-text">粘滞定位（sticky）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="偏移量（offset）"><a rel="nofollow" class="trm-toc-link" href="#偏移量（offset）"><span class="trm-toc-number">7.5.</span> <span class="trm-toc-text">偏移量（offset）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="层级（z-index: number;）"><a rel="nofollow" class="trm-toc-link" href="#层级（z-index-number-）"><span class="trm-toc-number">7.6.</span> <span class="trm-toc-text">层级（z-index: number;）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="元素的透明"><a rel="nofollow" class="trm-toc-link" href="#元素的透明"><span class="trm-toc-number">7.7.</span> <span class="trm-toc-text">元素的透明</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景：布局模型的全景"><a rel="nofollow" class="trm-toc-link" href="#背景：布局模型的全景"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景：布局模型的全景</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第一步：区分自适应与响应式"><a rel="nofollow" class="trm-toc-link" href="#第一步：区分自适应与响应式"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">第一步：区分自适应与响应式</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="自适应"><a rel="nofollow" class="trm-toc-link" href="#自适应"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">自适应</span></a></li><li class="trm-toc-item trm-toc-level-3" title="响应式"><a rel="nofollow" class="trm-toc-link" href="#响应式"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">响应式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="自适应与响应式的区别"><a rel="nofollow" class="trm-toc-link" href="#自适应与响应式的区别"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">自适应与响应式的区别</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="第二步：百分比布局"><a rel="nofollow" class="trm-toc-link" href="#第二步：百分比布局"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">第二步：百分比布局</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第三步：rem 布局"><a rel="nofollow" class="trm-toc-link" href="#第三步：rem-布局"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">第三步：rem 布局</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第四步：vw &#x2F; vh 布局"><a rel="nofollow" class="trm-toc-link" href="#第四步：vw-vh-布局"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">第四步：vw &#x2F; vh 布局</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第五步：静态布局 —— 定宽"><a rel="nofollow" class="trm-toc-link" href="#第五步：静态布局-——-定宽"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">第五步：静态布局 —— 定宽</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第六步：定位（Layer 布局 —— 层级布局模型）"><a rel="nofollow" class="trm-toc-link" href="#第六步：定位（Layer-布局-——-层级布局模型）"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">第六步：定位（Layer 布局 —— 层级布局模型）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="相对定位（relative）"><a rel="nofollow" class="trm-toc-link" href="#相对定位（relative）"><span class="trm-toc-number">7.1.</span> <span class="trm-toc-text">相对定位（relative）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="绝对定位（absolute）"><a rel="nofollow" class="trm-toc-link" href="#绝对定位（absolute）"><span class="trm-toc-number">7.2.</span> <span class="trm-toc-text">绝对定位（absolute）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="固定定位（fixed）"><a rel="nofollow" class="trm-toc-link" href="#固定定位（fixed）"><span class="trm-toc-number">7.3.</span> <span class="trm-toc-text">固定定位（fixed）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="粘滞定位（sticky）"><a rel="nofollow" class="trm-toc-link" href="#粘滞定位（sticky）"><span class="trm-toc-number">7.4.</span> <span class="trm-toc-text">粘滞定位（sticky）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="偏移量（offset）"><a rel="nofollow" class="trm-toc-link" href="#偏移量（offset）"><span class="trm-toc-number">7.5.</span> <span class="trm-toc-text">偏移量（offset）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="层级（z-index: number;）"><a rel="nofollow" class="trm-toc-link" href="#层级（z-index-number-）"><span class="trm-toc-number">7.6.</span> <span class="trm-toc-text">层级（z-index: number;）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="元素的透明"><a rel="nofollow" class="trm-toc-link" href="#元素的透明"><span class="trm-toc-number">7.7.</span> <span class="trm-toc-text">元素的透明</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="注意点"><a rel="nofollow" class="trm-toc-link" href="#注意点"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">注意点</span></a></li></ol>
       </div>
     </div>
 
@@ -935,6 +941,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

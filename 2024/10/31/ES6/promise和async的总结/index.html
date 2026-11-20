@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="ES5正常写法1getAjax(url, (res) &#x3D;&gt; &#123;&#125;) Promise1get(url).then((res) &#x3D;&gt; &#123;&#125;) async await1(async () &#x3D;&gt; &#123; let res &#x3D; await get(url) &#125;)()  ES5与promise与async总结： ES5 写法和pr">
+<meta name="description" content="对比 ES5 回调、Promise 与 async&#x2F;await 三种写法，并通过手写 LcPromise 理解回调注册与状态切换的内部原理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Promise&#x2F;async 与es5总结">
 <meta property="og:url" content="http://example.com/2024/10/31/ES6/promise%E5%92%8Casync%E7%9A%84%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="ES5正常写法1getAjax(url, (res) &#x3D;&gt; &#123;&#125;) Promise1get(url).then((res) &#x3D;&gt; &#123;&#125;) async await1(async () &#x3D;&gt; &#123; let res &#x3D; await get(url) &#125;)()  ES5与promise与async总结： ES5 写法和pr">
+<meta property="og:description" content="对比 ES5 回调、Promise 与 async&#x2F;await 三种写法，并通过手写 LcPromise 理解回调注册与状态切换的内部原理">
 <meta property="og:locale">
-<meta property="article:published_time" content="2024-10-31T09:15:22.585Z">
-<meta property="article:modified_time" content="2025-07-29T02:48:10.938Z">
+<meta property="article:published_time" content="2024-10-31T09:15:22.000Z">
+<meta property="article:modified_time" content="2026-11-17T02:28:50.692Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="ES6">
 <meta property="article:tag" content="Promise 和 async&#x2F;await">
@@ -69,7 +69,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-29 10:48:10"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-17 10:28:50"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -84,6 +84,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -198,13 +200,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -240,7 +242,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -258,13 +260,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -533,41 +535,69 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>三种异步写法解决的是同一个问题：拿到结果之后那段代码放在哪里。ES5 写在回调参数里，Promise 挪到 <code>.then</code> 里形成链，async&#x2F;await 则是 Promise 的语法糖——编译之后依然是 Promise。这篇文章先对照三种写法，再用一份手写的 <code>LcPromise</code> 拆解 <code>.then</code> &#x2F; <code>.catch</code> 的内部原理：状态、成功回调队列、失败回调队列。文末单独列出这份实现里的几处笔误，方便对照修正。</p>
+<span id="more"></span>
 
+<h2 id="背景：从回调到-Promise"><a href="#背景：从回调到-Promise" class="headerlink" title="背景：从回调到 Promise"></a>背景：从回调到 Promise</h2><p>回调写法的痛点是嵌套：每一步都依赖上一步的结果，层级一深就难以阅读和错误处理。Promise 把”结果”变成一个对象，用 <code>.then</code> 注册成功回调、用 <code>.catch</code> 统一处理失败，解决了嵌套和错误冒泡；async&#x2F;await 再把这套机制包装成同步写法，让 <code>try/catch</code> 也能捕获异步错误。</p>
+<h2 id="1-三种写法对照"><a href="#1-三种写法对照" class="headerlink" title="1. 三种写法对照"></a>1. 三种写法对照</h2><p>一句话：同一个”取数据”的动作，三者的区别就在于结果之后的代码写在哪里。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES5 正常写法：结果处理写在回调参数里</span></span><br><span class="line"><span class="title function_">getAjax</span>(url, <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>一句话：Promise 把结果处理从回调参数挪到 <code>.then</code> 的函数里。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Promise</span></span><br><span class="line"><span class="title function_">get</span>(url).<span class="title function_">then</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>一句话：async&#x2F;await 用 <code>await</code> 等待结果，写起来接近同步代码。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// async await</span></span><br><span class="line">(<span class="title function_">async</span> () =&gt; &#123; <span class="keyword">let</span> res = <span class="keyword">await</span> <span class="title function_">get</span>(url) &#125;)()</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-三者的关系"><a href="#2-三者的关系" class="headerlink" title="2. 三者的关系"></a>2. 三者的关系</h2><p>一句话：ES5 写法和 Promise 写法主要区别在写法不同，Promise 可以让回调函数在 <code>.then</code> 的函数里执行；async&#x2F;await 在底层编译之后会自动转化成 Promise 写法。</p>
 <ul>
-<li>ES5正常写法<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">getAjax</span>(url, <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;&#125;)</span><br></pre></td></tr></table></figure></li>
-<li>Promise<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">get</span>(url).<span class="title function_">then</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;&#125;)</span><br></pre></td></tr></table></figure></li>
-<li>async await<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="title function_">async</span> () =&gt; &#123; <span class="keyword">let</span> res = <span class="keyword">await</span> <span class="title function_">get</span>(url) &#125;)()</span><br></pre></td></tr></table></figure></li>
+<li>ES5 写法和 Promise 写法，主要区别在写法不同，Promise 可以让回调函数在 <code>.then</code> 的函数里执行</li>
+<li>async 和 Promise 的写法在底层编译之后会自动转化成 Promise 写法</li>
 </ul>
-<h3 id="ES5与promise与async总结："><a href="#ES5与promise与async总结：" class="headerlink" title="ES5与promise与async总结："></a>ES5与promise与async总结：</h3><ul>
-<li>ES5 写法和promise写法，主要区别在写法不同，promise可以让回调函数在.then的函数里执行</li>
-<li>async和promise的写法在底层编译之后会自动转化成promise写法</li>
-</ul>
-<h3 id="Promise-实现原理"><a href="#Promise-实现原理" class="headerlink" title="Promise 实现原理"></a>Promise 实现原理</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">resolve, reject</span>) &#123;</span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="literal">true</span>) &#123; <span class="comment">// 条件自己赋予</span></span><br><span class="line">			<span class="title function_">resolve</span>()</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="title function_">reject</span>()</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> <span class="title class_">LcPromise</span>(fn)</span><br><span class="line">p1.<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">res</span>)&#123;</span><br><span class="line">	<span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">style</span>.<span class="property">background</span>=<span class="string">&quot;greenyellow&quot;</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;成功的事&quot;</span>)</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">&#125;)</span><br><span class="line">p1.<span class="title function_">catch</span>(<span class="keyword">function</span>(<span class="params">res</span>)&#123;</span><br><span class="line">	<span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">style</span>.<span class="property">background</span>=<span class="string">&quot;blue&quot;</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;失败的事&quot;</span>)</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>注意：这里说的是”编译器&#x2F;转译器的等价转换”，<code>async/await</code> 的运行时语义仍然是基于 Promise 的微任务调度，所以 <code>await</code> 后面的代码一定晚于当前同步代码执行。</p>
+<h2 id="3-先看-Promise-的使用形态"><a href="#3-先看-Promise-的使用形态" class="headerlink" title="3. 先看 Promise 的使用形态"></a>3. 先看 Promise 的使用形态</h2><p>一句话：<code>new Promise(executor)</code> 接收一个执行器函数，执行器拿到 <code>resolve</code> 和 <code>reject</code> 两个参数，异步操作成功时调用 <code>resolve</code>，失败时调用 <code>reject</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">resolve, reject</span>) &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">true</span>) &#123; <span class="comment">// 条件自己赋予</span></span><br><span class="line">      <span class="title function_">resolve</span>()</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="title function_">reject</span>()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> <span class="title class_">LcPromise</span>(fn)</span><br><span class="line">p1.<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params">res</span>) &#123;</span><br><span class="line">  <span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">style</span>.<span class="property">background</span> = <span class="string">&quot;greenyellow&quot;</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;成功的事&quot;</span>)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">&#125;)</span><br><span class="line">p1.<span class="title function_">catch</span>(<span class="keyword">function</span> (<span class="params">res</span>) &#123;</span><br><span class="line">  <span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">style</span>.<span class="property">background</span> = <span class="string">&quot;blue&quot;</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;失败的事&quot;</span>)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>一句话：理解这段代码要抓住两点——传入的函数不会立刻执行完，而是在未来某个事件触发时才调用；<code>fn</code> 内部必然要有成功和失败两条分支。</p>
 <ul>
 <li>传入一个事件函数，不调用，当触发时，才调用</li>
-<li>p1 Promise对象发送了异步操作，必然会有一个未来事件，在未来执行，这个过程有传入函数对象fn执行。函数fn里必然需要有成功执行和失败执行的函数</li>
+<li><code>p1</code> Promise 对象发送了异步操作，必然会有一个未来事件在未来执行，这个过程由传入的函数对象 <code>fn</code> 执行；函数 <code>fn</code> 里必然需要有成功执行和失败执行的函数</li>
 </ul>
-<h3 id="创建类构造对象"><a href="#创建类构造对象" class="headerlink" title="创建类构造对象"></a>创建类构造对象</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">LcPromise</span>&#123;</span><br><span class="line">	<span class="comment">// ①指向代码</span></span><br><span class="line">	<span class="title function_">constructor</span>(<span class="params">fn</span>) &#123;</span><br><span class="line">		<span class="comment">// 将成功的事件函数集成在successList数组里</span></span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">successList</span> = []</span><br><span class="line">		<span class="comment">// 将失败的事件函数集成在failList数组里</span></span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">failList</span> = []</span><br><span class="line">		<span class="comment">// pending,fullfilled,rejected</span></span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">state</span> = <span class="string">&quot;pending&quot;</span></span><br><span class="line">		<span class="comment">// 传入的函数对象（异步操作的函数内容）</span></span><br><span class="line">		<span class="title function_">fn</span>(<span class="variable language_">this</span>.<span class="property">resolveFn</span>.<span class="title function_">bind</span>(<span class="variable language_">this</span>,<span class="variable language_">this</span>.<span class="property">rejectFn</span>.<span class="title function_">bind</span>(<span class="variable language_">this</span>)))</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// ②指向代码</span></span><br><span class="line">	<span class="title function_">then</span>(<span class="params">successFn,failFn</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="keyword">typeof</span> successFn == <span class="string">&quot;function&quot;</span>) &#123;</span><br><span class="line">			<span class="variable language_">this</span>.<span class="property">successList</span>.<span class="title function_">push</span>(successFn)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(<span class="keyword">typeof</span> failFn == <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">			<span class="variable language_">this</span>.<span class="property">failFn</span>.<span class="title function_">push</span>(failFn)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">catch</span>(failFn)&#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="keyword">typeof</span> failFn == <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">			<span class="variable language_">this</span>.<span class="property">failList</span>.<span class="title function_">push</span>(failFn)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// ③指向代码</span></span><br><span class="line">	<span class="title function_">resolveFn</span>(<span class="params">res</span>) &#123;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">state</span> = <span class="string">&quot;fullfilled&quot;</span></span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">successList</span>.<span class="title function_">forEach</span>(<span class="keyword">function</span> (<span class="params">item, index</span>) &#123;</span><br><span class="line">			<span class="comment">// 将成功的事件循环调用</span></span><br><span class="line">			<span class="title function_">item</span>(res)</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;.<span class="title function_">rejectFn</span>(<span class="params">res</span>) &#123;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">state</span> = <span class="string">&#x27;rejected&#x27;</span></span><br><span class="line">		<span class="comment">// 注册到的失败所有事件进行调用</span></span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">failList</span>.<span class="title function_">forEach</span>(<span class="keyword">function</span>(<span class="params">item,index</span>)&#123;</span><br><span class="line">			<span class="title function_">item</span>(res)</span><br><span class="line">		&#125;)</span><br><span class="line">		<span class="keyword">throw</span> <span class="title class_">Error</span>(res)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：示例里用的是自定义的 <code>LcPromise</code>，原生写法是 <code>new Promise(fn)</code>；另外 <code>p1.then(...)</code> 与 <code>p1.catch(...)</code> 是两次独立注册，并没有形成 <code>then().catch()</code> 的链式调用。</p>
+<h2 id="4-手写-LcPromise：状态加两个回调队列"><a href="#4-手写-LcPromise：状态加两个回调队列" class="headerlink" title="4. 手写 LcPromise：状态加两个回调队列"></a>4. 手写 <code>LcPromise</code>：状态加两个回调队列</h2><p>一句话：核心只有三件事——构造时准备成功&#x2F;失败回调数组并初始化状态、<code>then</code>&#x2F;<code>catch</code> 时把回调塞进对应数组、<code>resolve</code>&#x2F;<code>reject</code> 触发时把数组里的回调依次执行。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">LcPromise</span> &#123;</span><br><span class="line">  <span class="comment">// ① 构造函数</span></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">fn</span>) &#123;</span><br><span class="line">    <span class="comment">// 将成功的事件函数集成在 successList 数组里</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">successList</span> = []</span><br><span class="line">    <span class="comment">// 将失败的事件函数集成在 failList 数组里</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">failList</span> = []</span><br><span class="line">    <span class="comment">// pending, fullfilled, rejected</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = <span class="string">&quot;pending&quot;</span></span><br><span class="line">    <span class="comment">// 传入的函数对象（异步操作的函数内容）</span></span><br><span class="line">    <span class="title function_">fn</span>(<span class="variable language_">this</span>.<span class="property">resolveFn</span>.<span class="title function_">bind</span>(<span class="variable language_">this</span>, <span class="variable language_">this</span>.<span class="property">rejectFn</span>.<span class="title function_">bind</span>(<span class="variable language_">this</span>)))</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// ② 注册回调</span></span><br><span class="line">  <span class="title function_">then</span>(<span class="params">successFn, failFn</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> successFn == <span class="string">&quot;function&quot;</span>) &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">successList</span>.<span class="title function_">push</span>(successFn)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> failFn == <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">failFn</span>.<span class="title function_">push</span>(failFn)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">catch</span>(failFn) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> failFn == <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">failList</span>.<span class="title function_">push</span>(failFn)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// ③ 触发回调</span></span><br><span class="line">  <span class="title function_">resolveFn</span>(<span class="params">res</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = <span class="string">&quot;fullfilled&quot;</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">successList</span>.<span class="title function_">forEach</span>(<span class="keyword">function</span> (<span class="params">item, index</span>) &#123;</span><br><span class="line">      <span class="comment">// 将成功的事件循环调用</span></span><br><span class="line">      <span class="title function_">item</span>(res)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;.<span class="title function_">rejectFn</span>(<span class="params">res</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = <span class="string">&#x27;rejected&#x27;</span></span><br><span class="line">    <span class="comment">// 注册到的失败所有事件进行调用</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">failList</span>.<span class="title function_">forEach</span>(<span class="keyword">function</span> (<span class="params">item, index</span>) &#123;</span><br><span class="line">      <span class="title function_">item</span>(res)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">throw</span> <span class="title class_">Error</span>(res)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一句话：把上面三块职责拆开看，就能对应到 Promise 规范里的状态机和回调队列。</p>
 <ul>
-<li>构造函数的作用①<ul>
+<li>构造函数的作用 ①<ul>
 <li>声明成功函数放置的数组对象</li>
 <li>声明失败函数放置的数组对象</li>
 <li>定义初始化状态</li>
-<li>调用传入进行执行异步内容的函数(<span class="desc">在未来有成功的结构时调用传入进去的成功函数，在未来失败时调用传入进去的失败函数</span>)</li>
+<li>调用传入的函数去执行异步内容（<span class="desc">在未来有成功的结果时调用传进去的成功函数，在未来失败时调用传进去的失败函数</span>）</li>
 </ul>
 </li>
-<li>将传入成功或者失败时需要调用的函数作用②：<ul>
-<li>将成功和失败的函数传入成功成功和失败的数组里</li>
+<li>将传入成功或者失败时需要调用的函数作用 ②<ul>
+<li>将成功和失败的函数分别传入成功和失败的数组里</li>
 </ul>
 </li>
-<li>定义调用和失败的函数作用③:<ul>
+<li>定义调用成功和失败的函数作用 ③<ul>
 <li>成功时调用成功数组里所有的函数，失败时调用失败数组里所有的函数</li>
 </ul>
 </li>
 </ul>
+<h2 id="5-这段实现里的问题"><a href="#5-这段实现里的问题" class="headerlink" title="5. 这段实现里的问题"></a>5. 这段实现里的问题</h2><ol>
+<li><code>then</code> 里写的是 <code>this.failFn.push(failFn)</code>，而构造函数声明的数组叫 <code>failList</code>，一调用 <code>then(成功, 失败)</code> 就会因为 <code>this.failFn</code> 为 <code>undefined</code> 而报错，应改为 <code>this.failList.push(failFn)</code>。</li>
+<li><code>resolveFn</code> 与 <code>rejectFn</code> 之间用 <code>.</code> 连接（<code>&#125;.rejectFn(res) &#123;</code>）是语法错误，类的方法不能这样接，应拆成独立的 <code>rejectFn(res) &#123; ... &#125;</code>。</li>
+<li><code>fn(this.resolveFn.bind(this, this.rejectFn.bind(this)))</code> 的传参方式不对：<code>this.rejectFn.bind(this)</code> 被当成了 <code>resolveFn</code> 的第一个实参，执行器实际只收到一个”已经绑定了 <code>this</code> 的 resolve”，拿不到 reject。正确形态是 <code>fn(this.resolveFn.bind(this), this.rejectFn.bind(this))</code>。</li>
+<li>状态拼写 <code>fullfilled</code> 是笔误，标准写法是 <code>fulfilled</code>；如果后续要按状态判断，拼写必须统一。</li>
+<li>这只是演示主流程的最小实现：没有”状态只能从 pending 迁移一次”的校验，<code>then</code> 不返回新 Promise 因而无法链式调用，也没有值穿透、微任务调度这类原生行为。</li>
+</ol>
+<h2 id="踩坑与注意点"><a href="#踩坑与注意点" class="headerlink" title="踩坑与注意点"></a>踩坑与注意点</h2><ol>
+<li><code>then</code> &#x2F; <code>catch</code> 必须注册到同一个数组变量上，拼错属性名时报错位置往往不在本行，排查时先看构造函数里声明的字段名。</li>
+<li>执行器函数要把 <code>resolve</code> 和 <code>reject</code> 分别作为独立参数传入，<code>bind</code> 只用来固定 <code>this</code>。</li>
+<li>手写实现只在回调已经注册之后才触发才有效；先 <code>resolve</code> 后 <code>then</code> 的场景，原生 Promise 会把回调排进微任务，这份实现拿不到。</li>
+<li><code>throw Error(res)</code> 放在 <code>rejectFn</code> 末尾会变成全局未捕获异常，原生 Promise 是把 rejection 交给 <code>.catch</code> 处理。</li>
+<li>原文示例直接操作 <code>document.body</code>，是浏览器环境；在 Node 里运行需要改成 <code>console.log</code> 或去掉这部分。</li>
+</ol>
 
 </article>
     
@@ -587,11 +617,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/01/react/1.%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/react/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86useState%E4%B8%8Ereducer/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">React-基础知识</h6>
+                <h6 class="trm-op-title">状态管理useState 与 reducer</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -608,11 +638,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/31/node/7NPM%E4%B8%8A%E4%BC%A0%E5%8C%85/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/31/node/1%E5%9F%BA%E7%A1%80/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">NPM上传包</h6>
+                <h6 class="trm-op-title">Node基础</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -684,7 +714,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-3" title="ES5与promise与async总结："><a rel="nofollow" class="trm-toc-link" href="#ES5与promise与async总结："><span class="trm-toc-number">1.</span> <span class="trm-toc-text">ES5与promise与async总结：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Promise 实现原理"><a rel="nofollow" class="trm-toc-link" href="#Promise-实现原理"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">Promise 实现原理</span></a></li><li class="trm-toc-item trm-toc-level-3" title="创建类构造对象"><a rel="nofollow" class="trm-toc-link" href="#创建类构造对象"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">创建类构造对象</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景：从回调到 Promise"><a rel="nofollow" class="trm-toc-link" href="#背景：从回调到-Promise"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景：从回调到 Promise</span></a></li><li class="trm-toc-item trm-toc-level-2" title="1. 三种写法对照"><a rel="nofollow" class="trm-toc-link" href="#1-三种写法对照"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">1. 三种写法对照</span></a></li><li class="trm-toc-item trm-toc-level-2" title="2. 三者的关系"><a rel="nofollow" class="trm-toc-link" href="#2-三者的关系"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">2. 三者的关系</span></a></li><li class="trm-toc-item trm-toc-level-2" title="3. 先看 Promise 的使用形态"><a rel="nofollow" class="trm-toc-link" href="#3-先看-Promise-的使用形态"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">3. 先看 Promise 的使用形态</span></a></li><li class="trm-toc-item trm-toc-level-2" title="4. 手写 LcPromise：状态加两个回调队列"><a rel="nofollow" class="trm-toc-link" href="#4-手写-LcPromise：状态加两个回调队列"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">4. 手写 LcPromise：状态加两个回调队列</span></a></li><li class="trm-toc-item trm-toc-level-2" title="5. 这段实现里的问题"><a rel="nofollow" class="trm-toc-link" href="#5-这段实现里的问题"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">5. 这段实现里的问题</span></a></li><li class="trm-toc-item trm-toc-level-2" title="踩坑与注意点"><a rel="nofollow" class="trm-toc-link" href="#踩坑与注意点"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">踩坑与注意点</span></a></li></ol>
       </div>
     </div>
 
@@ -808,6 +838,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

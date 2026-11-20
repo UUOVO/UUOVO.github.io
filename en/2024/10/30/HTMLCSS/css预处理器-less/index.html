@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="基础 css 的预处理语言 css 的增强版 新特性：对变量的支持、对 mixin 的支持等 语法大体上和 css 一致，但是增添了许多对 css 的扩展 less 转 css 才能在浏览器上执行 单行注释的内容不会被解析到 css 中 &amp;：表示外层的父元素 :extend(): 对当前选择器扩展指定选择器的样式（选择器分组） mixin 混合: 在『类选择器后边添加()，实际上就创">
+<meta name="description" content="按基础语法、变量、混合与函数四部分整理 Less，附逻辑、字符串、列表、数学等常用函数示例">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS预处理器-less语法">
 <meta property="og:url" content="http://example.com/en/2024/10/30/HTMLCSS/css%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8-less/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="基础 css 的预处理语言 css 的增强版 新特性：对变量的支持、对 mixin 的支持等 语法大体上和 css 一致，但是增添了许多对 css 的扩展 less 转 css 才能在浏览器上执行 单行注释的内容不会被解析到 css 中 &amp;：表示外层的父元素 :extend(): 对当前选择器扩展指定选择器的样式（选择器分组） mixin 混合: 在『类选择器后边添加()，实际上就创">
+<meta property="og:description" content="按基础语法、变量、混合与函数四部分整理 Less，附逻辑、字符串、列表、数学等常用函数示例">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-10-30T07:29:10.961Z">
-<meta property="article:modified_time" content="2025-07-29T08:27:30.843Z">
+<meta property="article:published_time" content="2024-10-30T07:29:10.000Z">
+<meta property="article:modified_time" content="2026-11-18T09:30:42.076Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="css预处理器">
 <meta property="article:tag" content="less">
@@ -69,7 +69,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-29 16:27:30"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-18 17:30:42"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -84,6 +84,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -198,13 +200,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -240,7 +242,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -258,13 +260,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -533,229 +535,232 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>这篇是 Less 的速查手册，按「基础语法 → 变量 → 混合 → 函数工具」组织，目标是让你能把一段原生 CSS 平滑改写成 Less。结论：Less 是 CSS 的增强版，新增变量、mixin、运算和内置函数，但最终仍要编译成 CSS 才能在浏览器执行；单行注释不会进入编译结果。</p>
+<span id="more"></span>
 
-<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><ul>
-<li>css 的预处理语言</li>
-<li>css 的增强版</li>
-<li>新特性：对变量的支持、对 mixin 的支持等</li>
-<li>语法大体上和 css 一致，但是增添了许多对 css 的扩展</li>
-<li>less 转 css 才能在浏览器上执行</li>
-<li>单行注释的内容不会被解析到 css 中</li>
-<li>&amp;：表示外层的父元素</li>
-<li>:extend(): 对当前选择器扩展指定选择器的样式（选择器分组）</li>
-<li>mixin 混合: 在<span class="key_words">『类选择器后边添加()，实际上就创建了一个mixins』</span></li>
-<li>@import：用来引入到其它 less 文件到当前 less 文件<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&quot;syntax2.less&quot;</span>;</span><br></pre></td></tr></table></figure></li>
-<li><span class="key_words">『所有的数值都可以直接进行运算』</span><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">width</span>: <span class="number">100px</span> + <span class="number">100px</span>;</span><br></pre></td></tr></table></figure></li>
+<h2 id="背景：Less-是什么"><a href="#背景：Less-是什么" class="headerlink" title="背景：Less 是什么"></a>背景：Less 是什么</h2><ul>
+<li>CSS 的预处理语言，可以理解为 CSS 的增强版。</li>
+<li>新特性包括对变量的支持、对 mixin 的支持等。</li>
+<li>语法大体和 CSS 一致，但增加了许多对 CSS 的扩展。</li>
+<li>Less 必须转成 CSS 才能在浏览器上执行。</li>
+<li>单行注释的内容不会被解析到 CSS 中。</li>
 </ul>
+<h2 id="一、基础语法"><a href="#一、基础语法" class="headerlink" title="一、基础语法"></a>一、基础语法</h2><h3 id="引入其他-Less-文件"><a href="#引入其他-Less-文件" class="headerlink" title="引入其他 Less 文件"></a>引入其他 Less 文件</h3><p>用 <code>@import</code> 把其他 Less 文件引入当前文件。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&quot;syntax2.less&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="父元素与选择器扩展"><a href="#父元素与选择器扩展" class="headerlink" title="父元素与选择器扩展"></a>父元素与选择器扩展</h3><ul>
+<li><code>&amp;</code>：表示外层的父元素。</li>
+<li><code>:extend()</code>：对当前选择器扩展指定选择器的样式，相当于选择器分组。</li>
+</ul>
+<h3 id="创建-mixin"><a href="#创建-mixin" class="headerlink" title="创建 mixin"></a>创建 mixin</h3><p>在类选择器后边添加 <code>()</code>，实际上就创建了一个 mixin。</p>
+<h3 id="数值运算"><a href="#数值运算" class="headerlink" title="数值运算"></a>数值运算</h3><p>Less 中所有的数值都可以直接进行运算。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">width</span>: <span class="number">100px</span> + <span class="number">100px</span>;</span><br></pre></td></tr></table></figure>
+
 <h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><ul>
-<li>定义：<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$变量名：<span class="selector-tag">xxx</span>;</span><br></pre></td></tr></table></figure></li>
-<li>使用：<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$变量名</span><br></pre></td></tr></table></figure>
+<li>定义变量：</li>
+</ul>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@变量名: <span class="selector-tag">xxx</span>;</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>作为类名，或者一部分值使用时必须以<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;变量名&#125;</span><br></pre></td></tr></table></figure></li>
-<li>示例：<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.$&#123;<span class="selector-tag">c</span>&#125;&#123; <span class="attribute">background-image</span>: url(<span class="string">&quot;$&#123;c&#125;/1.png&quot;</span>);&#125;</span><br></pre></td></tr></table></figure></li>
+<li>使用变量：</li>
 </ul>
-</li>
-<li>发生<span class="key_words">『重名时，会优先使用近的』</span></li>
-<li><span class="key_words">『声明前可以使用』</span></li>
-<li>旧版语法：@变量名</li>
-</ul>
-<h3 id="混合函数-相当于形参实参混合"><a href="#混合函数-相当于形参实参混合" class="headerlink" title="混合函数 相当于形参实参混合"></a>混合函数 相当于形参实参混合</h3><ul>
-<li>在混合函数中可以直接设置变量</li>
-<li>调用混合函数，按顺序传递参数</li>
-<li>示例：<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.test</span>(<span class="variable">@w</span>:<span class="number">100px</span>,<span class="variable">@h</span>:<span class="number">200px</span>,<span class="variable">@bg-color</span>:red)&#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="variable">@w</span>;</span><br><span class="line">	<span class="attribute">height</span>: <span class="variable">@h</span>;</span><br><span class="line">	<span class="attribute">border</span>: <span class="number">1px</span> solid <span class="variable">@bg-color</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">  <span class="selector-class">.test</span>(<span class="number">200px</span>,<span class="number">300px</span>,<span class="number">#bfa</span>); <span class="comment">// 调用</span></span><br><span class="line">	<span class="selector-class">.test</span>(<span class="number">300px</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="函数工具"><a href="#函数工具" class="headerlink" title="函数工具"></a><a target="_blank" rel="noopener" href="https://lesscss.org/functions/#functions-overview">函数工具</a></h2><h3 id="逻辑函数"><a href="#逻辑函数" class="headerlink" title="逻辑函数"></a>逻辑函数</h3><h4 id="if-根据条件返回两个值之一"><a href="#if-根据条件返回两个值之一" class="headerlink" title="if: 根据条件返回两个值之一"></a>if: 根据条件返回两个值之一</h4><ul>
-<li>相关布尔表达式：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">and === &amp;&amp;</span><br><span class="line">or === ||</span><br><span class="line">not === !</span><br></pre></td></tr></table></figure></li>
-<li>参数<ul>
-<li>condition：布尔表达式, less3.6 之前要加()</li>
-<li>value1：为 true，返回</li>
-<li>value2：为 false，返回</li>
-</ul>
-</li>
-<li>示例：<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@some:</span> foo</span><br><span class="line">div &#123;</span><br><span class="line">	<span class="attribute">margin</span>: <span class="built_in">if</span>((<span class="number">2</span>&gt;<span class="number">1</span>), <span class="number">0</span>,<span class="number">3px</span>) <span class="comment">// 假设为真，0</span></span><br><span class="line">	<span class="attribute">color</span>: <span class="built_in">if</span>((<span class="built_in">iscolor</span>(<span class="variable">@some</span>)), <span class="variable">@some</span>,black) <span class="comment">// 假设为假， black</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="boolean-计算结果为-true-或-false-一般与-if-搭配使用"><a href="#boolean-计算结果为-true-或-false-一般与-if-搭配使用" class="headerlink" title="boolean: 计算结果为 true 或 false, 一般与 if 搭配使用"></a>boolean: 计算结果为 true 或 false, 一般与 if 搭配使用</h4><ul>
-<li>参数：<ul>
-<li>condition — 布尔表达式</li>
-</ul>
-</li>
-<li>示例<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@bg:</span> black</span><br><span class="line"><span class="variable">@bg-light</span>: <span class="built_in">boolean</span>(<span class="built_in">luma</span>(<span class="variable">@bg</span>) &gt; <span class="number">50%</span>)</span><br><span class="line">div &#123;</span><br><span class="line">	<span class="attribute">background</span>: <span class="variable">@bg</span>;</span><br><span class="line">	<span class="attribute">color</span>: <span class="built_in">if</span>(<span class="variable">@bg-light</span>, black, white)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h3><ul>
-<li>escape(<span class="desc">将 URL 编码应用于在输入字符串中找到的特殊字符</span>)<ul>
-<li>最常见的编码字符：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\&lt;space\&gt;、#、^、( 、)、&#123; 、&#125;、|、:、&gt;、&lt;、;、[、]、=</span><br></pre></td></tr></table></figure></li>
-<li>未编码的字符：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">,、/、?、@、&amp;、+、&#x27;、~、!、$</span><br></pre></td></tr></table></figure></li>
-<li>参数：要转义的字符串</li>
-<li>返回：不带引号的转义内容</li>
-<li>示例: <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">escape</span>(<span class="string">&#x27;a=1&#x27;</span>) <span class="comment">// a%3D1, 将 = 转义为 URL 编码,非字符串输出 undefined</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>e(<span class="desc">字符串转义</span>)<ul>
-<li>参数：要转义的字符串</li>
-<li>返回：不带引号的转义的字符串</li>
-<li>示例：<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@mscode:</span> <span class="string">&quot;ms:alwaysHasItsOwnSyntax.For.Stuff()&quot;</span></span><br><span class="line"><span class="attribute">filter</span>: <span class="built_in">e</span>(<span class="variable">@mscode</span>);</span><br><span class="line">输出： ms:alwaysHasItsOwnSyntax.For.Stuff()</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>%(<span class="desc">设置字符串格式</span>)<ul>
-<li>参数：<ul>
-<li>带有占位符的字符串</li>
-<li>用于替换占位符的值</li>
-</ul>
-</li>
-<li>返回值：格式化的字符串</li>
-<li>占位值：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%s、 %S、 %d、 %D、 %a、%A、 %%</span><br></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@变量名</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>d, D, a, A — 可以替换为任何类型的参数，与字符串结合，则将使用整个字符串包括其引号，不会转义</li>
-<li>s, S — 可以替换为任何表达式，<code>与字符串结合</code>，则使用字符串值，<code>省略引号</code></li>
-<li>注：小写占位符保留特殊字符，大写会转义特殊字符，除<code>()&#39;~!空格</code>编码为<code>%20</code></li>
+<li>作为类名或一部分值使用时，必须使用插值：</li>
 </ul>
-</li>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@&#123;变量名&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>示例：</li>
 </ul>
-</li>
-<li>replace(<span class="desc">替换字符串中的文本</span>)<ul>
-<li>参数：<ul>
-<li>string：要搜索和替换的字符串</li>
-<li>pattern： 要搜索的字符串或正则表达式模式</li>
-<li>replacement：要用来替换匹配模式的字符串</li>
-<li>flags：（可选）正则表达式标志</li>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.@&#123;c&#125;</span> &#123; <span class="attribute">background-image</span>: url(<span class="string">&quot;$&#123;c&#125;/1.png&quot;</span>); &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>变量重名时，会优先使用距离更近的那一个。</li>
+<li>变量声明前也可以使用。</li>
 </ul>
-</li>
-<li>返回：带有替换值的字符串</li>
-<li>示例：<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">replace</span>(<span class="string">&#x27;Hello, Mars?&#x27;</span>, <span class="string">&#x27;Mars?&#x27;</span>, <span class="string">&#x27;Earth!&#x27;</span>) <span class="comment">// Hello, Earth!</span></span><br><span class="line"><span class="selector-tag">replace</span>(<span class="string">&#x27;One + one = 4&#x27;</span>, <span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;gi&#x27;</span>) <span class="comment">// 全局匹配忽略大小写，2 + 2 = 4</span></span><br><span class="line"><span class="selector-tag">replace</span>(<span class="string">&#x27;This is a string.&#x27;</span>, <span class="string">&#x27;(string).$&#x27;</span>, <span class="string">&#x27;new $1.&#x27;</span>) <span class="comment">// 匹配在第一个匹配模式的字符串前添加new &#x27;This is a new string.&#x27;;</span></span><br><span class="line"><span class="selector-tag">replace</span>(<span class="string">~&#x27;bar-1&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>) <span class="comment">// bar-2</span></span><br></pre></td></tr></table></figure></li>
+<h3 id="混合函数（mixin）"><a href="#混合函数（mixin）" class="headerlink" title="混合函数（mixin）"></a>混合函数（mixin）</h3><p>混合函数相当于形参和实参的组合：</p>
+<ul>
+<li>在混合函数中可以直接设置变量。</li>
+<li>调用混合函数时，按顺序传递参数。</li>
 </ul>
-</li>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.test</span>(<span class="variable">@w</span>: <span class="number">100px</span>, <span class="variable">@h</span>: <span class="number">200px</span>, <span class="variable">@bg-color</span>: red) &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="variable">@w</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="variable">@h</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="variable">@bg-color</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="selector-class">.test</span>(<span class="number">200px</span>, <span class="number">300px</span>, <span class="number">#bfa</span>); <span class="comment">// 调用</span></span><br><span class="line">  <span class="selector-class">.test</span>(<span class="number">300px</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、函数工具"><a href="#二、函数工具" class="headerlink" title="二、函数工具"></a>二、函数工具</h2><p>函数总览见 <a target="_blank" rel="noopener" href="https://lesscss.org/functions/#functions-overview">Less 函数文档</a>。</p>
+<h3 id="逻辑函数"><a href="#逻辑函数" class="headerlink" title="逻辑函数"></a>逻辑函数</h3><h4 id="if：根据条件返回两个值之一"><a href="#if：根据条件返回两个值之一" class="headerlink" title="if：根据条件返回两个值之一"></a>if：根据条件返回两个值之一</h4><p>相关布尔表达式：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">and === &amp;&amp;</span><br><span class="line">or === ||</span><br><span class="line">not === !</span><br></pre></td></tr></table></figure>
+
+<p>参数：</p>
+<ul>
+<li><code>condition</code>：布尔表达式；Less 3.6 之前需要加 <code>()</code>。</li>
+<li><code>value1</code>：条件为 true 时返回。</li>
+<li><code>value2</code>：条件为 false 时返回。</li>
 </ul>
+<p>示例：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@some:</span> foo;</span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="built_in">if</span>((<span class="number">2</span> &gt; <span class="number">1</span>), <span class="number">0</span>, <span class="number">3px</span>); <span class="comment">// 条件为真，取 0</span></span><br><span class="line">  <span class="attribute">color</span>: <span class="built_in">if</span>((<span class="built_in">iscolor</span>(<span class="variable">@some</span>)), <span class="variable">@some</span>, black); <span class="comment">// 条件为假，取 black</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="boolean：计算结果为-true-或-false"><a href="#boolean：计算结果为-true-或-false" class="headerlink" title="boolean：计算结果为 true 或 false"></a>boolean：计算结果为 true 或 false</h4><p>一般与 <code>if</code> 搭配使用。</p>
+<ul>
+<li>参数 <code>condition</code>：布尔表达式。</li>
+</ul>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@bg:</span> black;</span><br><span class="line"><span class="variable">@bg-light:</span> <span class="built_in">boolean</span>(<span class="built_in">luma</span>(<span class="variable">@bg</span>) &gt; <span class="number">50%</span>);</span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="variable">@bg</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="built_in">if</span>(<span class="variable">@bg-light</span>, black, white);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h3><h4 id="escape：URL-编码"><a href="#escape：URL-编码" class="headerlink" title="escape：URL 编码"></a>escape：URL 编码</h4><p>将 URL 编码应用于输入字符串中找到的特殊字符。</p>
+<p>最常见的编码字符：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\&lt;space\&gt;、#、^、( 、)、&#123; 、&#125;、|、:、&gt;、&lt;、;、[、]、=</span><br></pre></td></tr></table></figure>
+
+<p>未编码的字符：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">,、/、?、@、&amp;、+、&#x27;、~、!、$</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>参数：要转义的字符串。</li>
+<li>返回：不带引号的转义内容。</li>
+</ul>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">escape</span>(<span class="string">&#x27;a=1&#x27;</span>) <span class="comment">// a%3D1，将 = 转义为 URL 编码；非字符串输出 undefined</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="e：字符串转义"><a href="#e：字符串转义" class="headerlink" title="e：字符串转义"></a>e：字符串转义</h4><ul>
+<li>参数：要转义的字符串。</li>
+<li>返回：不带引号的转义字符串。</li>
+</ul>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@mscode:</span> <span class="string">&quot;ms:alwaysHasItsOwnSyntax.For.Stuff()&quot;</span>;</span><br><span class="line"><span class="attribute">filter</span>: <span class="built_in">e</span>(<span class="variable">@mscode</span>);</span><br><span class="line"><span class="comment">// 输出：ms:alwaysHasItsOwnSyntax.For.Stuff()</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="：设置字符串格式"><a href="#：设置字符串格式" class="headerlink" title="%：设置字符串格式"></a>%：设置字符串格式</h4><p>参数：</p>
+<ul>
+<li>带有占位符的字符串。</li>
+<li>用于替换占位符的值。</li>
+</ul>
+<p>返回值：格式化后的字符串。</p>
+<p>占位值：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%s、 %S、 %d、 %D、 %a、%A、 %%</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>d</code>、<code>D</code>、<code>a</code>、<code>A</code>：可以替换为任何类型的参数；与字符串结合时，会使用整个字符串（包括引号），不会转义。</li>
+<li><code>s</code>、<code>S</code>：可以替换为任何表达式；与字符串结合时，使用字符串值并省略引号。</li>
+<li>注：小写占位符保留特殊字符，大写会转义特殊字符，<code>()&#39;~!</code> 和空格会编码为 <code>%20</code>。</li>
+</ul>
+<h4 id="replace：替换字符串中的文本"><a href="#replace：替换字符串中的文本" class="headerlink" title="replace：替换字符串中的文本"></a>replace：替换字符串中的文本</h4><p>参数：</p>
+<ul>
+<li><code>string</code>：要搜索和替换的字符串。</li>
+<li><code>pattern</code>：要搜索的字符串或正则表达式模式。</li>
+<li><code>replacement</code>：用来替换匹配模式的字符串。</li>
+<li><code>flags</code>（可选）：正则表达式标志。</li>
+</ul>
+<p>返回：带有替换值的字符串。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">replace</span>(<span class="string">&#x27;Hello, Mars?&#x27;</span>, <span class="string">&#x27;Mars?&#x27;</span>, <span class="string">&#x27;Earth!&#x27;</span>) <span class="comment">// Hello, Earth!</span></span><br><span class="line"><span class="selector-tag">replace</span>(<span class="string">&#x27;One + one = 4&#x27;</span>, <span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;gi&#x27;</span>) <span class="comment">// 全局匹配并忽略大小写，结果为 2 + 2 = 4</span></span><br><span class="line"><span class="selector-tag">replace</span>(<span class="string">&#x27;This is a string.&#x27;</span>, <span class="string">&#x27;(string).$&#x27;</span>, <span class="string">&#x27;new $1.&#x27;</span>) <span class="comment">// 在匹配到的字符串前添加 new，得到 &#x27;This is a new string.&#x27;</span></span><br><span class="line"><span class="selector-tag">replace</span>(<span class="string">~&#x27;bar-1&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>) <span class="comment">// bar-2</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="列表函数"><a href="#列表函数" class="headerlink" title="列表函数"></a>列表函数</h3><ul>
-<li>length: 返回列表的长度<ul>
-<li>参数：list：逗号或空格分割的值列表</li>
+<li><code>length</code>：返回列表的长度。<ul>
+<li>参数 <code>list</code>：逗号或空格分隔的值列表。</li>
 </ul>
 </li>
-<li>extract: 返回列表中指定位置的值<ul>
-<li>参数：<ul>
-<li>list：逗号或空格分割的值列表</li>
-<li>index：number，指定要返回的列表元素的位置，从 1 开始数</li>
+<li><code>extract</code>：返回列表中指定位置的值。<ul>
+<li>参数 <code>list</code>：逗号或空格分隔的值列表。</li>
+<li>参数 <code>index</code>：数字，指定要返回的列表元素位置，从 1 开始。</li>
 </ul>
 </li>
+<li><code>range</code>：生成一系列值的列表。<ul>
+<li>参数 <code>start</code>（可选）：起始值，默认 1。</li>
+<li>参数 <code>end</code>：结束值。</li>
+<li>参数 <code>step</code>（可选）：递增间隔。</li>
 </ul>
 </li>
-<li>range: 生成一系列值的列表<ul>
-<li>参数：<ul>
-<li>start：可选，起始值，默认 1</li>
-<li>end：结束值</li>
-<li>step：可选，要递增的间隔</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>each: 将列表中的元素绑定给规则及中的每一项<ul>
-<li>参数：<ul>
-<li>list：逗号或空格分割的值列表</li>
-<li>rules：匿名规则集&#x2F;混合</li>
-</ul>
-</li>
-<li>示例：<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@list:</span> apple, pear, conconut, orange</span><br><span class="line"><span class="variable">@selectors</span>: blue,green,red; <span class="comment">// 如果是结构化的对象还有@&#123;key&#125;,@&#123;index&#125;</span></span><br><span class="line">n: length(@list) // 4</span><br><span class="line">length(1px solid pink) // 3</span><br><span class="line">value: extract(@list, 3) // cocunt</span><br><span class="line">value1：range(4) // value1: 1,2,3,4</span><br><span class="line">each(@selectors,&#123;</span><br><span class="line">	.sel-@&#123;value&#125; &#123;</span><br><span class="line">		a:b;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"># 在<span class="selector-tag">each</span>()中设置变量名称</span><br><span class="line"><span class="selector-class">.set-2</span>() &#123;</span><br><span class="line">	one:blue</span><br><span class="line">	two:green</span><br><span class="line">	three:red</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.set-2</span> &#123;</span><br><span class="line">	<span class="selector-tag">each</span>(.<span class="built_in">set-2</span>(), .(<span class="variable">@v</span>,<span class="variable">@k</span>,<span class="variable">@i</span>)&#123;</span><br><span class="line">		<span class="variable">@&#123;k&#125;</span><span class="selector-tag">-</span><span class="variable">@&#123;i&#125;</span>:@<span class="selector-tag">v</span> <span class="comment">// each将.set-2()里面的值按顺序赋值绑定给@v,@k,@i</span></span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 将<span class="selector-tag">each</span>与<span class="selector-tag">range</span>结合使用创建循环</span><br><span class="line"><span class="selector-tag">each</span>(<span class="built_in">range</span>(<span class="number">4</span>), &#123;</span><br><span class="line">	<span class="selector-class">.col-</span><span class="variable">@&#123;value&#125;</span> &#123;</span><br><span class="line">		<span class="attribute">height</span>: (<span class="variable">@value</span> * <span class="number">50px</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li><code>each</code>：将列表中的元素依次绑定给规则中的每一项。<ul>
+<li>参数 <code>list</code>：逗号或空格分隔的值列表。</li>
+<li>参数 <code>rules</code>：匿名规则集或混合。</li>
 </ul>
 </li>
 </ul>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@list:</span> apple, pear, conconut, orange;</span><br><span class="line"><span class="variable">@selectors:</span> blue, green, red; <span class="comment">// 如果是结构化的对象，还可以用 @&#123;key&#125;、@&#123;index&#125;</span></span><br><span class="line">n: length(@list); <span class="comment">// 4</span></span><br><span class="line"><span class="selector-tag">length</span>(<span class="number">1px</span> solid pink); <span class="comment">// 3</span></span><br><span class="line"><span class="selector-tag">value</span>: <span class="selector-tag">extract</span>(<span class="variable">@list</span>, <span class="number">3</span>); <span class="comment">// conconut</span></span><br><span class="line"><span class="selector-tag">value1</span>: <span class="selector-tag">range</span>(<span class="number">4</span>); <span class="comment">// 1, 2, 3, 4</span></span><br><span class="line"><span class="selector-tag">each</span>(<span class="variable">@selectors</span>, &#123;</span><br><span class="line">  <span class="selector-class">.sel-</span><span class="variable">@&#123;value&#125;</span> &#123;</span><br><span class="line">    a: b;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>each()</code> 中设置变量名称：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.set-2</span>() &#123;</span><br><span class="line">  one: blue;</span><br><span class="line">  two: green;</span><br><span class="line">  three: red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.set-2</span> &#123;</span><br><span class="line">  <span class="selector-tag">each</span>(.<span class="built_in">set-2</span>(), .(<span class="variable">@v</span>, <span class="variable">@k</span>, <span class="variable">@i</span>) &#123;</span><br><span class="line">    <span class="variable">@&#123;k&#125;</span><span class="selector-tag">-</span><span class="variable">@&#123;i&#125;</span>: @<span class="selector-tag">v</span>; <span class="comment">// each 将 .set-2() 里的值按顺序绑定给 @v、@k、@i</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将 <code>each</code> 与 <code>range</code> 结合创建循环：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">each</span>(<span class="built_in">range</span>(<span class="number">4</span>), &#123;</span><br><span class="line">  <span class="selector-class">.col-</span><span class="variable">@&#123;value&#125;</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: (<span class="variable">@value</span> * <span class="number">50px</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
 <h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><ul>
-<li>ceil: 向上取整</li>
-<li>floor: 向下取整</li>
-<li>percentage: 将浮点数转换为百分比字符串</li>
-<li>round: 四舍五入<ul>
-<li>参数：<ul>
-<li>number：浮点数</li>
-<li>decimalPlaces：可选，要舍入到的小数位数，默认值 0</li>
+<li><code>ceil</code>：向上取整。</li>
+<li><code>floor</code>：向下取整。</li>
+<li><code>percentage</code>：将浮点数转换为百分比字符串。</li>
+<li><code>round</code>：四舍五入。<ul>
+<li>参数 <code>number</code>：浮点数。</li>
+<li>参数 <code>decimalPlaces</code>（可选）：要舍入到的小数位数，默认 0。</li>
+<li>返回：<code>number</code>。</li>
 </ul>
 </li>
-<li>返回：number</li>
-<li>示例：<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">round</span>(<span class="number">1.67</span>,<span class="number">1</span>) <span class="comment">// 1.7</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-<li>sqrt: 计算数字平方根，单位不变</li>
-<li>abs: 计算数值的绝对值，单位不变</li>
-<li>pi: 返回 Π</li>
-<li>pow: 返回参数的幂，幂为第二参数</li>
-<li>min: 返回一个或多个值中的最小值</li>
-<li>max: 返回一个或多个值中的最大值</li>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">round</span>(<span class="number">1.67</span>, <span class="number">1</span>) <span class="comment">// 1.7</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>sqrt</code>：计算数字的平方根，单位不变。</li>
+<li><code>abs</code>：计算数值的绝对值，单位不变。</li>
+<li><code>pi</code>：返回 π。</li>
+<li><code>pow</code>：返回参数的幂，幂为第二个参数。</li>
+<li><code>min</code>：返回一个或多个值中的最小值。</li>
+<li><code>max</code>：返回一个或多个值中的最大值。</li>
 </ul>
 <h3 id="类型函数"><a href="#类型函数" class="headerlink" title="类型函数"></a>类型函数</h3><ul>
-<li>isnumber: 判断数值是否为数字，返回 true or false</li>
-<li>isstring: 判断数值是否为字符串，返回 true or false</li>
-<li>iscolor: 判断数值是否为颜色值，返回 true or false</li>
-<li>iskeyword: 判断值是否为 keyword，返回 true or false</li>
-<li>isurl: 判断值是否为 url()，返回 true or false</li>
-<li>isunit: 判断值是否为指定单位的数字，返回 true or false<ul>
-<li>参数：<ul>
-<li>value：要评估的值</li>
-<li>unit：要测试的单位标识符（可选）</li>
-</ul>
-</li>
-<li>示例：<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">isunit</span>(<span class="number">7.8%</span>, px) <span class="comment">// false</span></span><br></pre></td></tr></table></figure></li>
+<li><code>isnumber</code>：判断值是否为数字，返回 true 或 false。</li>
+<li><code>isstring</code>：判断值是否为字符串，返回 true 或 false。</li>
+<li><code>iscolor</code>：判断值是否为颜色值，返回 true 或 false。</li>
+<li><code>iskeyword</code>：判断值是否为 keyword，返回 true 或 false。</li>
+<li><code>isurl</code>：判断值是否为 <code>url()</code>，返回 true 或 false。</li>
+<li><code>isunit</code>：判断值是否为指定单位的数字，返回 true 或 false。<ul>
+<li>参数 <code>value</code>：要评估的值。</li>
+<li>参数 <code>unit</code>（可选）：要测试的单位标识符。</li>
 </ul>
 </li>
 </ul>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">isunit</span>(<span class="number">7.8%</span>, px) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="杂项函数"><a href="#杂项函数" class="headerlink" title="杂项函数"></a>杂项函数</h3><ul>
-<li>image-size<ul>
-<li>从文件中获取图像大小,目前仅在节点环境中可用。</li>
-<li>示例：<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">image</span><span class="selector-tag">-size</span>(<span class="string">&quot;file.png&quot;</span>) <span class="comment">// 10px 10px</span></span><br></pre></td></tr></table></figure></li>
+<li><code>image-size</code>：从文件中获取图像大小，目前仅在 Node 环境中可用。</li>
 </ul>
-</li>
-<li>image-width<ul>
-<li>从文件中获取图像宽度,目前仅在节点环境中可用。</li>
-</ul>
-</li>
-<li>image-height<ul>
-<li>从文件中获取图像高度,目前仅在节点环境中可用。</li>
-</ul>
-</li>
-<li>convert<ul>
-<li>转换单位,只转换兼容的单位，单位不兼容返回第一个参数</li>
-<li>参数：<ul>
-<li>带单位的数字</li>
-<li>单位</li>
-</ul>
-</li>
-<li>示例：<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">convert</span>(<span class="number">9s</span>,<span class="string">&#x27;ms&#x27;</span>) <span class="comment">// 9000</span></span><br></pre></td></tr></table></figure></li>
-<li>兼容的设备组：<ul>
-<li>长度：m、cm、mm、in、pt、pc</li>
-<li>时间：s、ms</li>
-<li>角度：rad、deg、grad、turn</li>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">image</span><span class="selector-tag">-size</span>(<span class="string">&quot;file.png&quot;</span>) <span class="comment">// 10px 10px</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>image-width</code>：从文件中获取图像宽度，目前仅在 Node 环境中可用。</li>
+<li><code>image-height</code>：从文件中获取图像高度，目前仅在 Node 环境中可用。</li>
+<li><code>convert</code>：转换单位，只转换兼容的单位；单位不兼容时返回第一个参数。<ul>
+<li>参数：带单位的数字、目标单位。</li>
 </ul>
 </li>
 </ul>
-</li>
+<p>示例：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">convert</span>(<span class="number">9s</span>, <span class="string">&#x27;ms&#x27;</span>) <span class="comment">// 9000</span></span><br></pre></td></tr></table></figure>
+
+<p>兼容的单位组：</p>
+<ul>
+<li>长度：<code>m</code>、<code>cm</code>、<code>mm</code>、<code>in</code>、<code>pt</code>、<code>pc</code></li>
+<li>时间：<code>s</code>、<code>ms</code></li>
+<li>角度：<code>rad</code>、<code>deg</code>、<code>grad</code>、<code>turn</code></li>
 </ul>
 <h3 id="色彩操作功能"><a href="#色彩操作功能" class="headerlink" title="色彩操作功能"></a>色彩操作功能</h3><ul>
-<li>fadein<ul>
-<li>降低颜色的透明度（或增加不透明度），使其更加不透明</li>
+<li><code>fadein</code>：降低颜色的透明度（或增加不透明度），使其更加不透明。</li>
+<li><code>fadeout</code>：增加颜色的透明度（或降低不透明度），使其不那么不透明。<ul>
+<li>参数 <code>color</code>：颜色对象。</li>
+<li>参数 <code>amount</code>：百分比，0–100%。</li>
+<li>参数 <code>method</code>（可选）：设为 <code>relative</code> 时相对于当前值调整。</li>
 </ul>
 </li>
-<li>fadeout<ul>
-<li>增加颜色的透明度（或降低不透明度），使其不那么不透明。</li>
-<li>参数：<ul>
-<li>color：颜色对象</li>
-<li>amount：百分比 0-100%</li>
-<li>method：可选，设置为 relative 来调整相对于当前值</li>
+<li><code>mix</code>：将不同比例的颜色混合在一起。<ul>
+<li>参数 <code>color1</code>：颜色对象。</li>
+<li>参数 <code>color2</code>：颜色对象。</li>
+<li>参数 <code>weight</code>（可选）：两种颜色之间的百分比平衡点，默认 50%。</li>
 </ul>
 </li>
+<li><code>shade</code>：以可变比例将颜色与黑色混合。</li>
 </ul>
-</li>
-<li>mix<ul>
-<li>将不同比例的颜色混合在一起</li>
-<li>参数<ul>
-<li>color1：颜色对象</li>
-<li>color2：颜色对象</li>
-<li>weight：可选，两种颜色之间的百分比平衡点，默认为 50%</li>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
+<li>单行注释 <code>//</code> 不会输出到 CSS；需要保留到产物的注释应使用 <code>/* */</code>。</li>
+<li>混合函数按参数顺序传值，带默认值的参数可以省略。</li>
+<li><code>if</code> 的 <code>condition</code> 在 Less 3.6 之前必须用括号包起来。</li>
+<li><code>image-size</code>、<code>image-width</code>、<code>image-height</code> 依赖 Node 环境，浏览器端无法使用。</li>
+<li><code>convert</code> 只处理兼容单位，跨单位组会原样返回第一个参数。</li>
 </ul>
-</li>
-</ul>
-</li>
-<li>shade<ul>
-<li>以可变比例将颜色与黑色混合</li>
-</ul>
-</li>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://lesscss.org/functions/#functions-overview">Less 函数总览</a></li>
 </ul>
 
 </article>
@@ -776,11 +781,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/css%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8-sass/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/css%E6%A0%B7%E5%BC%8F-%E7%89%B9%E6%95%88%E9%9B%86/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">CSS预处理器-sass语法</h6>
+                <h6 class="trm-op-title">CSS样式-特效集</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -797,11 +802,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/css%E6%A0%B7%E5%BC%8F-%E7%89%B9%E6%95%88%E9%9B%86/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/30/HTMLCSS/css%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8-sass/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">CSS样式-特效集</h6>
+                <h6 class="trm-op-title">CSS预处理器-sass语法</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -873,7 +878,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="基础"><a rel="nofollow" class="trm-toc-link" href="#基础"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">基础</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="变量"><a rel="nofollow" class="trm-toc-link" href="#变量"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">变量</span></a></li><li class="trm-toc-item trm-toc-level-3" title="混合函数 相当于形参实参混合"><a rel="nofollow" class="trm-toc-link" href="#混合函数-相当于形参实参混合"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">混合函数 相当于形参实参混合</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="函数工具"><a rel="nofollow" class="trm-toc-link" href="#函数工具"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">函数工具</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="逻辑函数"><a rel="nofollow" class="trm-toc-link" href="#逻辑函数"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">逻辑函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="字符串函数"><a rel="nofollow" class="trm-toc-link" href="#字符串函数"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">字符串函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="列表函数"><a rel="nofollow" class="trm-toc-link" href="#列表函数"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">列表函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="数学函数"><a rel="nofollow" class="trm-toc-link" href="#数学函数"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">数学函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="类型函数"><a rel="nofollow" class="trm-toc-link" href="#类型函数"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">类型函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="杂项函数"><a rel="nofollow" class="trm-toc-link" href="#杂项函数"><span class="trm-toc-number">2.6.</span> <span class="trm-toc-text">杂项函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="色彩操作功能"><a rel="nofollow" class="trm-toc-link" href="#色彩操作功能"><span class="trm-toc-number">2.7.</span> <span class="trm-toc-text">色彩操作功能</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景：Less 是什么"><a rel="nofollow" class="trm-toc-link" href="#背景：Less-是什么"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景：Less 是什么</span></a></li><li class="trm-toc-item trm-toc-level-2" title="一、基础语法"><a rel="nofollow" class="trm-toc-link" href="#一、基础语法"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">一、基础语法</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="引入其他 Less 文件"><a rel="nofollow" class="trm-toc-link" href="#引入其他-Less-文件"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">引入其他 Less 文件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="父元素与选择器扩展"><a rel="nofollow" class="trm-toc-link" href="#父元素与选择器扩展"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">父元素与选择器扩展</span></a></li><li class="trm-toc-item trm-toc-level-3" title="创建 mixin"><a rel="nofollow" class="trm-toc-link" href="#创建-mixin"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">创建 mixin</span></a></li><li class="trm-toc-item trm-toc-level-3" title="数值运算"><a rel="nofollow" class="trm-toc-link" href="#数值运算"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">数值运算</span></a></li><li class="trm-toc-item trm-toc-level-3" title="变量"><a rel="nofollow" class="trm-toc-link" href="#变量"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">变量</span></a></li><li class="trm-toc-item trm-toc-level-3" title="混合函数（mixin）"><a rel="nofollow" class="trm-toc-link" href="#混合函数（mixin）"><span class="trm-toc-number">2.6.</span> <span class="trm-toc-text">混合函数（mixin）</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="二、函数工具"><a rel="nofollow" class="trm-toc-link" href="#二、函数工具"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">二、函数工具</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="逻辑函数"><a rel="nofollow" class="trm-toc-link" href="#逻辑函数"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">逻辑函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="字符串函数"><a rel="nofollow" class="trm-toc-link" href="#字符串函数"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">字符串函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="列表函数"><a rel="nofollow" class="trm-toc-link" href="#列表函数"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">列表函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="数学函数"><a rel="nofollow" class="trm-toc-link" href="#数学函数"><span class="trm-toc-number">3.4.</span> <span class="trm-toc-text">数学函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="类型函数"><a rel="nofollow" class="trm-toc-link" href="#类型函数"><span class="trm-toc-number">3.5.</span> <span class="trm-toc-text">类型函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="杂项函数"><a rel="nofollow" class="trm-toc-link" href="#杂项函数"><span class="trm-toc-number">3.6.</span> <span class="trm-toc-text">杂项函数</span></a></li><li class="trm-toc-item trm-toc-level-3" title="色彩操作功能"><a rel="nofollow" class="trm-toc-link" href="#色彩操作功能"><span class="trm-toc-number">3.7.</span> <span class="trm-toc-text">色彩操作功能</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="注意点"><a rel="nofollow" class="trm-toc-link" href="#注意点"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">注意点</span></a></li><li class="trm-toc-item trm-toc-level-2" title="参考"><a rel="nofollow" class="trm-toc-link" href="#参考"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">参考</span></a></li></ol>
       </div>
     </div>
 
@@ -997,6 +1002,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

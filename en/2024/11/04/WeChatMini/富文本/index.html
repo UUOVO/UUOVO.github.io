@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="步骤 使用已封装好的mp-html 组件,方便处理图片、视频，便于高效地开发 在要使用的页面的 json 文件中引入该组件 在 wxml 文件中使用，id 作为标识该组件的唯一标识， content 则是将 html 代码渲染出来的容器 使用 selectComponent(‘id’)获取组件实例 如果要处理富文本的而其中一个标签则需要有匹配规则 获取单个标签的，然后统一处理，在然后再替换回">
+<meta name="description" content="借助 mp-html 在小程序中渲染富文本，并用正则和组件实例处理图片、视频与标签文本">
 <meta property="og:type" content="article">
-<meta property="og:title" content="微信小程序-富文本">
+<meta property="og:title" content="富文本">
 <meta property="og:url" content="http://example.com/en/2024/11/04/WeChatMini/%E5%AF%8C%E6%96%87%E6%9C%AC/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="步骤 使用已封装好的mp-html 组件,方便处理图片、视频，便于高效地开发 在要使用的页面的 json 文件中引入该组件 在 wxml 文件中使用，id 作为标识该组件的唯一标识， content 则是将 html 代码渲染出来的容器 使用 selectComponent(‘id’)获取组件实例 如果要处理富文本的而其中一个标签则需要有匹配规则 获取单个标签的，然后统一处理，在然后再替换回">
+<meta property="og:description" content="借助 mp-html 在小程序中渲染富文本，并用正则和组件实例处理图片、视频与标签文本">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-11-04T01:57:32.050Z">
-<meta property="article:modified_time" content="2025-07-23T07:10:24.625Z">
+<meta property="article:published_time" content="2024-11-04T01:57:32.000Z">
+<meta property="article:modified_time" content="2026-11-19T06:26:04.646Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="富文本">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <meta name="keywords" content="微信小程序">
 
 
-<title >微信小程序-富文本</title>
+<title >富文本</title>
 
 <!-- Favicon -->
 
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-23 15:10:24"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-19 14:26:04"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -83,6 +83,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -197,13 +199,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -239,7 +241,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -257,13 +259,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -385,7 +387,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            微信小程序-富文本
+                            富文本
                         </h1>
 
                         
@@ -532,28 +534,85 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>小程序原生的 <code>rich-text</code> 只能把 HTML 渲染出来，很难在渲染后拿到具体节点做二次处理。这篇给出可复现的做法：用 <a target="_blank" rel="noopener" href="https://gitee.com/jin-yufeng/mp-html/#/overview/quickstart">mp-html</a> 渲染富文本，再通过 <code>selectComponent</code> 拿到组件实例，用正则或实例上的图片&#x2F;视频数组完成处理，最后把结果替换回原 HTML。</p>
+<span id="more"></span>
 
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
-<li>使用已封装好的<a target="_blank" rel="noopener" href="https://gitee.com/jin-yufeng/mp-html/#/overview/quickstart">mp-html 组件</a>,方便处理图片、视频，便于高效地开发</li>
-<li>在要使用的页面的 json 文件中引入该组件</li>
-<li>在 wxml 文件中使用，id 作为标识该组件的唯一标识， content 则是将 html 代码渲染出来的容器</li>
-<li>使用 selectComponent(‘id’)获取组件实例</li>
-<li>如果要处理富文本的而其中一个标签则需要有匹配规则</li>
-<li>获取单个标签的，然后统一处理，在然后再替换回原来的 html 中</li>
-</ol>
-<h2 id="匹配规则"><a href="#匹配规则" class="headerlink" title="匹配规则"></a>匹配规则</h2><ul>
-<li>图片的匹配规则： <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\/&lt;(img)[^&gt;]*&gt;/gi</span><br></pre></td></tr></table></figure></li>
-<li>匹配标签之间的文本: <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(?&lt;=&gt;)[^&gt;]+(?=&lt;[\/]?\w+.*&gt;)/g</span><br></pre></td></tr></table></figure></li>
-<li>视频的匹配规则: <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/&lt;(video)[^&gt;]*&gt;/gi</span><br></pre></td></tr></table></figure></li>
-<li>空字符串的匹配规则: <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(\s)/g</span><br></pre></td></tr></table></figure></li>
-<li>过滤并做替换处理:<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(html.<span class="title function_">match</span>(reg) <span class="keyword">as</span> <span class="title class_">RegExpMatchArray</span>).<span class="title function_">toString</span>().<span class="title function_">replace</span>(<span class="string">&#x27;,&#x27;</span> , <span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
-<li>遍历实例上的图片数组&#x2F;视频数组，进行处理:<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="property">imgList</span>.<span class="title function_">forEach</span>(<span class="function">(<span class="params">src: string, i: number ,array: any </span>) =&gt;</span> &#123;</span><br><span class="line">  array[i] = src.<span class="title function_">replace</span>(<span class="string">&#x27;thumb&#x27;</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<h2 id="背景与场景"><a href="#背景与场景" class="headerlink" title="背景与场景"></a>背景与场景</h2><p>后端返回的 HTML 片段通常不能直接使用：图片可能是相对路径或带 <code>thumb</code> 后缀的缩略图，视频标签需要换成自己的播放器，标签之间的文本还可能要单独提取出来做摘要或换行。<code>rich-text</code> 渲染后拿不到这些节点，所以这里选择 mp-html 这类会把节点解析成组件、并对外暴露实例数据的方案。</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="1-引入-mp-html-组件"><a href="#1-引入-mp-html-组件" class="headerlink" title="1. 引入 mp-html 组件"></a>1. 引入 mp-html 组件</h3><p>使用已封装好的 <a target="_blank" rel="noopener" href="https://gitee.com/jin-yufeng/mp-html/#/overview/quickstart">mp-html 组件</a>，它已经处理了图片、视频等节点的渲染，便于高效地开发。可以按文档用 npm 安装，也可以把组件目录拷进项目，下文以本地组件路径为例。</p>
+<h3 id="2-在页面的-json-文件中引入组件"><a href="#2-在页面的-json-文件中引入组件" class="headerlink" title="2. 在页面的 json 文件中引入组件"></a>2. 在页面的 json 文件中引入组件</h3><p>在要使用富文本的页面同名 json 里注册组件。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;usingComponents&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;mp-html&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/components/mp-html/index&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-在-wxml-文件中使用组件"><a href="#3-在-wxml-文件中使用组件" class="headerlink" title="3. 在 wxml 文件中使用组件"></a>3. 在 wxml 文件中使用组件</h3><p><code>id</code> 用来标识该组件的唯一身份，后面 <code>selectComponent</code> 靠它定位；<code>content</code> 则是把 HTML 代码渲染出来的容器，传入的是 HTML 字符串。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mp-html</span> <span class="attr">id</span>=<span class="string">&quot;article&quot;</span> <span class="attr">content</span>=<span class="string">&quot;&#123;&#123;html&#125;&#125;&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-用-selectComponent-‘id’-获取组件实例"><a href="#4-用-selectComponent-‘id’-获取组件实例" class="headerlink" title="4. 用 selectComponent(‘id’) 获取组件实例"></a>4. 用 selectComponent(‘id’) 获取组件实例</h3><p>在页面生命周期里用 <code>this.selectComponent(&#39;#article&#39;)</code> 取实例，注意要等节点渲染完成（<code>onReady</code> 之后）再取，否则可能拿到 <code>null</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// pages/detail/detail.js</span></span><br><span class="line"><span class="title class_">Page</span>(&#123;</span><br><span class="line">  <span class="attr">data</span>: &#123;</span><br><span class="line">    <span class="attr">html</span>: <span class="string">&#x27;&lt;p&gt;正文&lt;/p&gt;&lt;img src=&quot;https://cdn.a.com/thumb-1.png&quot;&gt;&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">onReady</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// #article 就是 wxml 里写的 id</span></span><br><span class="line">    <span class="keyword">const</span> ctx = <span class="variable language_">this</span>.<span class="title function_">selectComponent</span>(<span class="string">&#x27;#article&#x27;</span>)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(ctx.<span class="property">imgList</span>)   <span class="comment">// 组件解析出的图片地址数组</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(ctx.<span class="property">videoList</span>) <span class="comment">// 组件解析出的视频地址数组</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-为要处理的标签写匹配规则"><a href="#5-为要处理的标签写匹配规则" class="headerlink" title="5. 为要处理的标签写匹配规则"></a>5. 为要处理的标签写匹配规则</h3><p>如果要处理富文本里的某一个标签，就需要有对应的匹配规则，先把目标标签从 HTML 字符串里取出来。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原文写法：开头的 \/ 表示 &lt;img 前面紧跟一个 /</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">IMG_REG</span> = <span class="regexp">/\/\&lt;(img)[^&gt;]*&gt;/gi</span></span><br><span class="line"><span class="comment">// 若 HTML 里 &lt;img 前并没有 /，用这个不带前缀的版本</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">IMG_REG_LOOSE</span> = <span class="regexp">/&lt;(img)[^&gt;]*&gt;/gi</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">VIDEO_REG</span> = <span class="regexp">/&lt;(video)[^&gt;]*&gt;/gi</span></span><br><span class="line"></span><br><span class="line"><span class="variable constant_">IMG_REG_LOOSE</span>.<span class="title function_">test</span>(<span class="string">&#x27;&lt;p&gt;正文&lt;/p&gt;&lt;img src=&quot;a.png&quot;&gt;&#x27;</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="6-取出单个标签，统一处理后替换回原-HTML"><a href="#6-取出单个标签，统一处理后替换回原-HTML" class="headerlink" title="6. 取出单个标签，统一处理后替换回原 HTML"></a>6. 取出单个标签，统一处理后替换回原 HTML</h3><p>先拿到单个标签，统一做处理，再替换回原来的 HTML 中，这样不会破坏其余结构。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 取出所有 img 标签 → 逐个处理 → 替换回原 html</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">normalizeImgTags</span>(<span class="params">html</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> tags = html.<span class="title function_">match</span>(<span class="variable constant_">IMG_REG_LOOSE</span>) || []</span><br><span class="line">  tags.<span class="title function_">forEach</span>(<span class="function">(<span class="params">tag</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> matched = tag.<span class="title function_">match</span>(<span class="regexp">/src=&quot;([^&quot;]+)&quot;/</span>)</span><br><span class="line">    <span class="keyword">if</span> (!matched) <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">const</span> src = matched[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">const</span> newTag = tag.<span class="title function_">replace</span>(src, src.<span class="title function_">replace</span>(<span class="string">&#x27;thumb&#x27;</span>, <span class="string">&#x27;&#x27;</span>))</span><br><span class="line">    html = html.<span class="title function_">replace</span>(tag, newTag)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> html</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">normalizeImgTags</span>(<span class="string">&#x27;&lt;p&gt;正文&lt;/p&gt;&lt;img src=&quot;https://cdn.a.com/thumb1.png&quot;&gt;&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&lt;p&gt;正文&lt;/p&gt;&lt;img src=&quot;https://cdn.a.com/1.png&quot;&gt;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果只是想让组件内的图片预览、视频播放使用处理后的地址，也可以直接遍历实例上的图片数组&#x2F;视频数组。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 遍历实例上的图片数组/视频数组，进行处理（这里去掉地址里的 thumb）</span></span><br><span class="line">ctx.<span class="property">imgList</span>.<span class="title function_">forEach</span>(<span class="function">(<span class="params"><span class="attr">src</span>: <span class="built_in">string</span>, <span class="attr">i</span>: <span class="built_in">number</span>, <span class="attr">array</span>: <span class="built_in">any</span></span>) =&gt;</span> &#123;</span><br><span class="line">  array[i] = src.<span class="title function_">replace</span>(<span class="string">&#x27;thumb&#x27;</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 视频同理</span></span><br><span class="line">ctx.<span class="property">videoList</span>.<span class="title function_">forEach</span>(<span class="function">(<span class="params"><span class="attr">src</span>: <span class="built_in">string</span>, <span class="attr">i</span>: <span class="built_in">number</span>, <span class="attr">array</span>: <span class="built_in">any</span></span>) =&gt;</span> &#123;</span><br><span class="line">  array[i] = src.<span class="title function_">replace</span>(<span class="string">&#x27;thumb&#x27;</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="匹配规则"><a href="#匹配规则" class="headerlink" title="匹配规则"></a>匹配规则</h2><table>
+<thead>
+<tr>
+<th>用途</th>
+<th>正则</th>
+<th>输入</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>图片标签</td>
+<td><code>/\&lt;(img)[^&gt;]*&gt;/gi</code></td>
+<td><code>&lt;img src=&quot;a.png&quot; alt=&quot;封面&quot;&gt;</code></td>
+<td><code>[&#39;&lt;img src=&quot;a.png&quot; alt=&quot;封面&quot;&gt;&#39;]</code></td>
+</tr>
+<tr>
+<td>视频标签</td>
+<td><code>/&lt;(video)[^&gt;]*&gt;/gi</code></td>
+<td><code>&lt;video src=&quot;a.mp4&quot;&gt;&lt;/video&gt;</code></td>
+<td><code>[&#39;&lt;video src=&quot;a.mp4&quot;&gt;&#39;]</code></td>
+</tr>
+<tr>
+<td>标签之间的文本</td>
+<td><code>/(?&lt;=&gt;)[^&gt;]+(?=&lt;[\/]?\w+.*&gt;)/g</code></td>
+<td><code>&lt;p&gt;你好&lt;/p&gt;</code></td>
+<td><code>[&#39;你好&#39;]</code></td>
+</tr>
+<tr>
+<td>空白字符</td>
+<td><code>/(\s)/g</code></td>
+<td><code>&#39; a b &#39;</code></td>
+<td><code>[&#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;]</code>（配合 <code>replaceAll</code> 得到 <code>&#39;ab&#39;</code>）</td>
+</tr>
+</tbody></table>
+<p>过滤并做替换处理，把 <code>match</code> 返回的数组转成字符串并去掉分隔用的逗号：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 输入：[&#x27;&lt;img src=&quot;a&quot;&gt;&#x27;, &#x27;&lt;img src=&quot;b&quot;&gt;&#x27;]</span></span><br><span class="line"><span class="comment">// 输出：&#x27;&lt;img src=&quot;a&quot;&gt;&lt;img src=&quot;b&quot;&gt;&#x27;</span></span><br><span class="line"><span class="keyword">const</span> result = (html.<span class="title function_">match</span>(<span class="variable constant_">IMG_REG_LOOSE</span>) <span class="keyword">as</span> <span class="title class_">RegExpMatchArray</span>)</span><br><span class="line">  .<span class="title function_">toString</span>()</span><br><span class="line">  .<span class="title function_">replace</span>(<span class="string">&#x27;,&#x27;</span>, <span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>遍历实例上的图片数组&#x2F;视频数组，进行处理：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="property">imgList</span>.<span class="title function_">forEach</span>(<span class="function">(<span class="params"><span class="attr">src</span>: <span class="built_in">string</span>, <span class="attr">i</span>: <span class="built_in">number</span>, <span class="attr">array</span>: <span class="built_in">any</span></span>) =&gt;</span> &#123;</span><br><span class="line">  array[i] = src.<span class="title function_">replace</span>(<span class="string">&#x27;thumb&#x27;</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="文字换行"><a href="#文字换行" class="headerlink" title="文字换行"></a>文字换行</h3><p>后端把多个状态用逗号拼成一个字符串时，渲染前按逗号拆成数组，wxml 里循环就能换行。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> statuslist = _buyCarList.<span class="title function_">map</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//有逗号分隔的情况</span></span><br><span class="line">  <span class="keyword">return</span> item.<span class="property">status</span>.<span class="title function_">split</span>(<span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">  <span class="comment">//无逗号分隔的情况</span></span><br><span class="line">  <span class="comment">// if (item.status.length &gt; 5) &#123;</span></span><br><span class="line">  <span class="comment">//   const status1 = item.status.slice(0, 3)</span></span><br><span class="line">  <span class="comment">//   const status2 = item.status.slice(3)</span></span><br><span class="line">  <span class="comment">//   const status = status1.concat(&#x27;,&#x27;, status2).split(&#x27;,&#x27;)</span></span><br><span class="line">  <span class="comment">//   return status</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">  <span class="comment">// return [item.status]</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="去掉字符串文本的空格"><a href="#去掉字符串文本的空格" class="headerlink" title="去掉字符串文本的空格"></a>去掉字符串文本的空格</h3><p>用 <code>/(\s)/g</code> 匹配所有空白字符，再整体替换为空字符串。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> reg = <span class="regexp">/(\s)/g</span></span><br><span class="line"><span class="keyword">let</span> title = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">if</span> (carModelName) &#123;</span><br><span class="line">  title = (carModelName).<span class="title function_">replaceAll</span>(reg, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
+<li>标签文本正则用了后行断言 <code>(?&lt;=&gt;)</code>，旧版运行环境（如部分低版本 iOS&#x2F;Android WebView）并不支持，可能直接抛语法错误。若目标环境不保证支持，可改成捕获组 <code>/&gt;([^&lt;]+)&lt;/g</code> 再取 <code>$1</code>，具体以真机验证为准。</li>
+<li><code>.replace(&#39;,&#39;, &#39;&#39;)</code> 只会去掉第一个逗号，有多个匹配结果时要写成 <code>.replace(/,/g, &#39;&#39;)</code> 或直接用 <code>.join(&#39;&#39;)</code>。</li>
+<li><code>as RegExpMatchArray</code> 是 TypeScript 的类型断言，只能写在 <code>.ts</code> 文件里，纯 JS 去掉即可；<code>html.match()</code> 可能返回 <code>null</code>，取值前先兜底 <code>|| []</code>。</li>
+<li><code>selectComponent</code> 要放在 <code>onReady</code> 之后调用；<code>id</code> 是组件的选择器标识，不是普通 DOM 的 id。</li>
+<li><code>String.prototype.replaceAll</code> 需要较新的基础库&#x2F;运行时，旧环境可退回 <code>replace(reg, &#39;&#39;)</code>（正则带 <code>g</code>）。</li>
 </ul>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="文字换行"><a href="#文字换行" class="headerlink" title="文字换行"></a>文字换行</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> statuslist = _buyCarList.<span class="title function_">map</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//有逗号分隔的情况</span></span><br><span class="line">  <span class="keyword">return</span> item.<span class="property">status</span>.<span class="title function_">split</span>(<span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">	<span class="comment">//无逗号分隔的情况</span></span><br><span class="line">  <span class="comment">// if (item.status.length &gt; 5) &#123;</span></span><br><span class="line">  <span class="comment">//   const status1 = item.status.slice(0, 3)</span></span><br><span class="line">  <span class="comment">//   const status2 = item.status.slice(3)</span></span><br><span class="line">  <span class="comment">//   const status = status1.concat(&#x27;,&#x27;, status2).split(&#x27;,&#x27;)</span></span><br><span class="line">  <span class="comment">//   return status</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">  <span class="comment">// return [item.status]</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="去掉字符串文本的空格"><a href="#去掉字符串文本的空格" class="headerlink" title="去掉字符串文本的空格"></a>去掉字符串文本的空格</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> reg = <span class="regexp">/(\s)/g</span></span><br><span class="line"><span class="keyword">let</span> title = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">if</span> (carModelName) &#123;</span><br><span class="line">  title = (carModelName).<span class="title function_">replaceAll</span>(reg, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://gitee.com/jin-yufeng/mp-html/#/overview/quickstart">mp-html 快速开始</a></li>
+</ul>
 
 </article>
     
@@ -573,11 +632,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/%E6%B5%B7%E6%8A%A5%E7%94%9F%E6%88%90/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/%E5%A4%8D%E6%9D%82%E7%BB%84%E4%BB%B6%E7%9A%84%E5%BA%94%E7%94%A8/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">微信小程序-海报生成</h6>
+                <h6 class="trm-op-title">复杂组件的应用</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -594,11 +653,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/%E5%A4%8D%E6%9D%82%E7%BB%84%E4%BB%B6%E7%9A%84%E5%BA%94%E7%94%A8/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/04/WeChatMini/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BC%98%E5%8C%96/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">微信小程序-复杂组件的应用</h6>
+                <h6 class="trm-op-title">小程序优化 | 学习笔记</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -670,7 +729,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="步骤"><a rel="nofollow" class="trm-toc-link" href="#步骤"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">步骤</span></a></li><li class="trm-toc-item trm-toc-level-2" title="匹配规则"><a rel="nofollow" class="trm-toc-link" href="#匹配规则"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">匹配规则</span></a></li><li class="trm-toc-item trm-toc-level-2" title="示例"><a rel="nofollow" class="trm-toc-link" href="#示例"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">示例</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="文字换行"><a rel="nofollow" class="trm-toc-link" href="#文字换行"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">文字换行</span></a></li><li class="trm-toc-item trm-toc-level-3" title="去掉字符串文本的空格"><a rel="nofollow" class="trm-toc-link" href="#去掉字符串文本的空格"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">去掉字符串文本的空格</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景与场景"><a rel="nofollow" class="trm-toc-link" href="#背景与场景"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景与场景</span></a></li><li class="trm-toc-item trm-toc-level-2" title="步骤"><a rel="nofollow" class="trm-toc-link" href="#步骤"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">步骤</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="1. 引入 mp-html 组件"><a rel="nofollow" class="trm-toc-link" href="#1-引入-mp-html-组件"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">1. 引入 mp-html 组件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="2. 在页面的 json 文件中引入组件"><a rel="nofollow" class="trm-toc-link" href="#2-在页面的-json-文件中引入组件"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">2. 在页面的 json 文件中引入组件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3. 在 wxml 文件中使用组件"><a rel="nofollow" class="trm-toc-link" href="#3-在-wxml-文件中使用组件"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">3. 在 wxml 文件中使用组件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="4. 用 selectComponent(‘id’) 获取组件实例"><a rel="nofollow" class="trm-toc-link" href="#4-用-selectComponent-‘id’-获取组件实例"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">4. 用 selectComponent(‘id’) 获取组件实例</span></a></li><li class="trm-toc-item trm-toc-level-3" title="5. 为要处理的标签写匹配规则"><a rel="nofollow" class="trm-toc-link" href="#5-为要处理的标签写匹配规则"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">5. 为要处理的标签写匹配规则</span></a></li><li class="trm-toc-item trm-toc-level-3" title="6. 取出单个标签，统一处理后替换回原 HTML"><a rel="nofollow" class="trm-toc-link" href="#6-取出单个标签，统一处理后替换回原-HTML"><span class="trm-toc-number">2.6.</span> <span class="trm-toc-text">6. 取出单个标签，统一处理后替换回原 HTML</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="匹配规则"><a rel="nofollow" class="trm-toc-link" href="#匹配规则"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">匹配规则</span></a></li><li class="trm-toc-item trm-toc-level-2" title="示例"><a rel="nofollow" class="trm-toc-link" href="#示例"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">示例</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="文字换行"><a rel="nofollow" class="trm-toc-link" href="#文字换行"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">文字换行</span></a></li><li class="trm-toc-item trm-toc-level-3" title="去掉字符串文本的空格"><a rel="nofollow" class="trm-toc-link" href="#去掉字符串文本的空格"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">去掉字符串文本的空格</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="注意点"><a rel="nofollow" class="trm-toc-link" href="#注意点"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">注意点</span></a></li><li class="trm-toc-item trm-toc-level-2" title="参考"><a rel="nofollow" class="trm-toc-link" href="#参考"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">参考</span></a></li></ol>
       </div>
     </div>
 
@@ -794,6 +853,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

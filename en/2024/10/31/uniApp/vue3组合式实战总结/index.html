@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="开发规范 页面文件向导Vue单文件组件(SFC)规范 页面标签靠近小程序规范 API靠近微信小程序规范，但是wx需替换为uni 数据绑定及时间处理同Vue.js规范 为了兼容，建议使用flex布局  uniApp 在VScode中开发（因为uniapp的ts校验差） 安装ts类型校验 安装：1npm i -D @types&#x2F;wechat-miniprogram @uni-helper&#x2F;uni">
+<meta name="description" content="uni-app 配 Vue3 组合式的实战清单：开发规范、生命周期、路由跳转与传参、分包、Pinia 与跨端条件编译">
 <meta property="og:type" content="article">
 <meta property="og:title" content="uniApp + vue3组合式开发">
 <meta property="og:url" content="http://example.com/en/2024/10/31/uniApp/vue3%E7%BB%84%E5%90%88%E5%BC%8F%E5%AE%9E%E6%88%98%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="开发规范 页面文件向导Vue单文件组件(SFC)规范 页面标签靠近小程序规范 API靠近微信小程序规范，但是wx需替换为uni 数据绑定及时间处理同Vue.js规范 为了兼容，建议使用flex布局  uniApp 在VScode中开发（因为uniapp的ts校验差） 安装ts类型校验 安装：1npm i -D @types&#x2F;wechat-miniprogram @uni-helper&#x2F;uni">
+<meta property="og:description" content="uni-app 配 Vue3 组合式的实战清单：开发规范、生命周期、路由跳转与传参、分包、Pinia 与跨端条件编译">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-10-31T07:20:57.293Z">
-<meta property="article:modified_time" content="2025-08-04T03:45:52.129Z">
+<meta property="article:published_time" content="2024-10-31T07:20:57.000Z">
+<meta property="article:modified_time" content="2026-11-19T09:03:03.107Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="uniapp">
 <meta property="article:tag" content="vue3">
@@ -69,7 +69,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-08-04 11:45:52"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-19 17:03:03"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -84,6 +84,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -198,13 +200,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -240,7 +242,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -258,13 +260,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -533,67 +535,56 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>这篇是 uni-app + Vue3 组合式的实战速查：先定开发规范，再按“应用生命周期 → 页面生命周期 → 路由跳转与传参 → 分包 → 组件与全局事件 → Pinia → 跨端判断”的顺序把常用写法过一遍。每段都能直接抄进项目，遇到对应场景回查即可。</p>
+<span id="more"></span>
 
-<h2 id="开发规范"><a href="#开发规范" class="headerlink" title="开发规范"></a>开发规范</h2><ul>
-<li>页面文件向导Vue单文件组件(SFC)规范</li>
+<h2 id="一、开发规范"><a href="#一、开发规范" class="headerlink" title="一、开发规范"></a>一、开发规范</h2><ul>
+<li>页面文件遵循 Vue 单文件组件（SFC）规范</li>
 <li>页面标签靠近小程序规范</li>
-<li>API靠近微信小程序规范，但是wx需替换为uni</li>
-<li>数据绑定及时间处理同Vue.js规范</li>
-<li>为了兼容，建议使用flex布局</li>
+<li>API 靠近微信小程序规范，但是 <code>wx</code> 需替换为 <code>uni</code></li>
+<li>数据绑定及事件处理同 Vue.js 规范</li>
+<li>为了兼容，建议使用 flex 布局</li>
 </ul>
-<h2 id="uniApp-在VScode中开发（因为uniapp的ts校验差）"><a href="#uniApp-在VScode中开发（因为uniapp的ts校验差）" class="headerlink" title="uniApp 在VScode中开发（因为uniapp的ts校验差）"></a>uniApp 在VScode中开发（因为uniapp的ts校验差）</h2><ul>
-<li>安装ts类型校验<ul>
-<li>安装：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -D @types/wechat-miniprogram @uni-helper/uni-app-types</span><br></pre></td></tr></table></figure></li>
-<li>配置tsconfig.json<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">	<span class="string">&quot;types&quot;</span>: [</span><br><span class="line">		<span class="string">&quot;@dcloudio/types&quot;</span>,</span><br><span class="line">		<span class="string">&quot;@types/wechat-miniprogram&quot;</span>,</span><br><span class="line">		<span class="string">&quot;@uni-helper/uni-app-types&quot;</span></span><br><span class="line">	]</span><br><span class="line">&#125;,</span><br><span class="line"><span class="string">&quot;vueCompilerOptions&quot;</span>: &#123;</span><br><span class="line">	<span class="string">&quot;experimentalRuntimeMode&quot;</span>: <span class="string">&quot;runtime-uni-app&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<h2 id="二、在-VSCode-中开发-uni-app"><a href="#二、在-VSCode-中开发-uni-app" class="headerlink" title="二、在 VSCode 中开发 uni-app"></a>二、在 VSCode 中开发 uni-app</h2><p>选择 VSCode 的原因是 uni-app 的 TS 校验较弱，需要借助插件补齐。先安装类型声明：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -D @types/wechat-miniprogram @uni-helper/uni-app-types</span><br></pre></td></tr></table></figure>
+
+<p>再在 <code>tsconfig.json</code> 中声明类型并开启运行时模式：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;types&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">		<span class="string">&quot;@dcloudio/types&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="string">&quot;@types/wechat-miniprogram&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="string">&quot;@uni-helper/uni-app-types&quot;</span></span><br><span class="line">	<span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;vueCompilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;experimentalRuntimeMode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;runtime-uni-app&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>JSON 文件没有高亮时，按下面两步设置文件关联：先确认项目中是否有 <code>manifest.json</code>，没有就创建；然后在设置中搜索“文件关联”或 Association，把 <code>manifest.json</code>、<code>pages.json</code> 的关联值都设为 <code>jsonc</code>。</p>
+<h2 id="三、应用生命周期"><a href="#三、应用生命周期" class="headerlink" title="三、应用生命周期"></a>三、应用生命周期</h2><ul>
+<li><code>onLaunch</code>：当 uni-app 初始化完成时触发（全局只触发一次）</li>
+<li><code>onShow</code>：当 uni-app 启动时，或从后台进入前台显示</li>
+<li><code>onHide</code>：当 uni-app 从前台进入后台</li>
+<li><code>onError</code>：当 uni-app 报错时触发</li>
+<li><code>onUniNViewMessage</code>：对 nvue 页面发送的数据进行监听，可参考 nvue 向 vue 通讯</li>
+<li><code>onUnhandledRejection</code>：对未处理的 Promise 拒绝事件监听函数</li>
+<li><code>onPageNotFound</code>：页面不存在监听函数</li>
+<li><code>onThemeChange</code>：监听系统主题变化</li>
 </ul>
-</li>
-<li>json文件问题<ul>
-<li>在项目中看是否有manifest.json,没有就创建然后在设置中搜文件关联或者Association</li>
-<li>然后设置 项为manifest.json 值为jsonc，</li>
-<li>项为pages.json 值为jsonc</li>
+<h2 id="四、页面生命周期"><a href="#四、页面生命周期" class="headerlink" title="四、页面生命周期"></a>四、页面生命周期</h2><ul>
+<li><code>onLoad</code>：监听页面加载，其参数为上个页面传递的数据，参数类型为 Object</li>
+<li><code>onShow</code>：监听页面显示。页面每次出现在屏幕上都触发，包括从下级页面点返回露出当前页面</li>
+<li><code>onReady</code>：监听页面初次渲染完成。注意如果渲染速度快，会在页面进入动画完成前触发</li>
+<li><code>onHide</code>：监听页面隐藏</li>
+<li><code>onUnload</code>：监听页面卸载</li>
+<li><code>onResize</code>：监听窗口尺寸变化</li>
+<li><code>onPullDownRefresh</code>：监听用户下拉动作，一般用于下拉刷新</li>
+<li><code>onReachBottom</code>：页面滚动到底部的事件，常用于上拉加载下一页数据</li>
+<li><code>onTabItemTap</code>：点击 tab 时触发，参数为 Object</li>
+<li><code>onShareAppMessage</code>：用户点击右上角分享</li>
+<li><code>onPageScroll</code>：监听页面滚动，参数为 Object</li>
+<li><code>onNavigationBarButtonTap</code>：监听原生标题栏按钮点击事件，参数为 Object</li>
+<li><code>onBackPress</code>：监听页面返回</li>
+<li><code>onNavigationBarSearchInputChanged</code>：监听原生标题栏搜索输入框输入内容变化事件</li>
+<li><code>onNavigationBarSearchInputConfirmed</code>：监听原生标题栏搜索输入框搜索事件，用户点击软键盘上的“搜索”按钮时触发</li>
+<li><code>onNavigationBarSearchInputClicked</code>：监听原生标题栏搜索输入框点击事件</li>
+<li><code>onShareTimeline</code>：监听用户点击右上角转发到朋友圈</li>
+<li><code>onAddToFavorites</code>：监听用户点击右上角收藏</li>
 </ul>
-</li>
-</ul>
-<h2 id="uniApp生命周期"><a href="#uniApp生命周期" class="headerlink" title="uniApp生命周期"></a>uniApp生命周期</h2><ul>
-<li>onLaunch:当uni-app初始化完成时触发(全局只触发一次)</li>
-<li>onShow：当uni-app启动时，或从后台进入前台显示</li>
-<li>onHide：当uni-app从前台进入后台</li>
-<li>onError： 当uni-app报错时触发</li>
-<li>onUniNViewMessage：当 nvue 页面发送数据进行监听，可参考 nvue 向 vue 通讯</li>
-<li>onUnhandledRejection：对未处理的 Promise 拒绝事件监听函数</li>
-<li>onPageNotFound：页面不存在监听函数</li>
-<li>onThemeChange：监听系统主题变化</li>
-</ul>
-<h2 id="页面生命周期"><a href="#页面生命周期" class="headerlink" title="页面生命周期"></a>页面生命周期</h2><ul>
-<li>onLoad：监听页面加载,其参数为上个页面传递的数据，参数类型为Object</li>
-<li>onShow：监听页面显示。页面每次出现在屏幕上都触发，包括从下级页面点返回露出当前页面</li>
-<li>onReady：监听页面初次渲染完成。注意如果渲染速度快，会在页面进入动画完成前触发</li>
-<li>onHide：监听页面隐藏</li>
-<li>onUnload： 监听页面卸载</li>
-<li>onResize：监听窗口尺寸变化</li>
-<li>onPullDownRefresh：监听用户下拉动作，一般用于下拉刷新</li>
-<li>onREachBottom：页面滚动到底部的事件，常用于下拉下一页数据</li>
-<li>onTabItemTap：点击tab时触发，参数为Object</li>
-<li>onShareAppMessage：用户点击右上角分享</li>
-<li>onPageScroll：监听页面滚动，参数为Object</li>
-<li>onNavigationBarButtonTap：监听原生标题栏按钮点击事件，参数为Object</li>
-<li>onBackPress：监听页面返回</li>
-<li>onNavigationBarSearchInputChanged：监听原生标题栏搜索输入框输入内容变化事件</li>
-<li>onNavigationBarSearchInputConfirmed：监听原生标题栏搜索输入框搜索事件，用户点击软键盘上的“搜索”按钮时触发</li>
-<li>onNavigationBarSearchInputClicked：监听原生标题栏搜索输入框点击事件</li>
-<li>onShareTimeline：监听用户点击右上角转发到朋友圈</li>
-<li>onAddToFavorites：监听用户点击右上角收藏</li>
-</ul>
-<h2 id="路由跳转"><a href="#路由跳转" class="headerlink" title="路由跳转"></a>路由跳转</h2><ul>
-<li><p>方式一标签式导航：navigator 组件跳转</p>
-<ul>
-<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;navigator url=<span class="string">&quot;/pages/404/404&quot;</span>&gt;<span class="number">404</span>页面&lt;/navigator&gt;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>方式二编程式导航：调用API跳转</p>
-<table>
+<h2 id="五、路由跳转"><a href="#五、路由跳转" class="headerlink" title="五、路由跳转"></a>五、路由跳转</h2><h3 id="方式一：标签式导航，用-navigator-组件"><a href="#方式一：标签式导航，用-navigator-组件" class="headerlink" title="方式一：标签式导航，用 navigator 组件"></a>方式一：标签式导航，用 navigator 组件</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">navigator</span> <span class="attr">url</span>=<span class="string">&quot;/pages/404/404&quot;</span>&gt;</span>404页面<span class="tag">&lt;/<span class="name">navigator</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="方式二：编程式导航，调用-API"><a href="#方式二：编程式导航，调用-API" class="headerlink" title="方式二：编程式导航，调用 API"></a>方式二：编程式导航，调用 API</h3><table>
 <thead>
 <tr>
 <th>路由方式</th>
@@ -604,103 +595,96 @@
 <tbody><tr>
 <td>初始化</td>
 <td>新页面入栈</td>
-<td>uni-app打开的第一个页面</td>
+<td>uni-app 打开的第一个页面</td>
 </tr>
 <tr>
 <td>打开新页面</td>
 <td>新页面入栈</td>
-<td>调用API uni.navigateTo、<br /> 使用组件<navigator open-type="navigate" /></td>
+<td>调用 API <code>uni.navigateTo</code>、<br /> 使用组件 <code>&lt;navigator open-type=&quot;navigate&quot; /&gt;</code></td>
 </tr>
 <tr>
 <td>页面重定向</td>
 <td>当前页面出栈，新页面入栈</td>
-<td>调用API uni.redirectTo、<br /> 使用组件</td>
+<td>调用 API <code>uni.redirectTo</code>、<br /> 使用组件</td>
 </tr>
 <tr>
 <td>页面返回</td>
 <td>页面不断出栈，直到目标返回页</td>
-<td>调用API uni.navigateBack、<br /> 使用组件、<br /> 用户按左上角返回按钮、安卓用户点击物理back按键</td>
+<td>调用 API <code>uni.navigateBack</code>、<br /> 使用组件、<br /> 用户按左上角返回按钮、安卓用户点击物理 back 按键</td>
 </tr>
 <tr>
-<td>Tab切换</td>
-<td>页面全部出栈，只留下新的Tab页面</td>
-<td>调用API uni.switchTab、<br /> 使用组件、 <br /> 用户切换Tab</td>
+<td>Tab 切换</td>
+<td>页面全部出栈，只留下新的 Tab 页面</td>
+<td>调用 API <code>uni.switchTab</code>、<br /> 使用组件、<br /> 用户切换 Tab</td>
 </tr>
 <tr>
 <td>重加载</td>
 <td>页面全部出栈，只留下新的页面</td>
-<td>调用API uni.reLaunch、<br /> 使用组件</td>
+<td>调用 API <code>uni.reLaunch</code>、<br /> 使用组件</td>
 </tr>
 </tbody></table>
-</li>
-<li><p>注意：<span class="desc">没有配置tabbar(就是类似于微信下面的那个图标状态栏点击可切换的)时，可以使用navigator来跳转任意页面，但是配置tabbar后，只能使用switchTab来跳转到tabbar配置的页面</span></p>
-</li>
-</ul>
-<h2 id="获取当前页面栈"><a href="#获取当前页面栈" class="headerlink" title="获取当前页面栈"></a>获取当前页面栈</h2><ul>
-<li>getCurrentPages()函数，以数组形式按照栈的顺序。第一个元素为首页，最后一个元素为当前页面</li>
-</ul>
-<h2 id="路由传参与接收"><a href="#路由传参与接收" class="headerlink" title="路由传参与接收"></a>路由传参与接收</h2><ul>
-<li>页面生命周期的onLoad()监听页面加载，其参数为上个页面传递的数据</li>
-<li>如在上个页面通过url在路径中携带参数,?后为所携带参数，用&amp;连接多个参数，以键&#x3D;值的形式传递，pagePath为所要跳转的页面<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">uni.<span class="title function_">navigateTo</span>(&#123;</span><br><span class="line">	<span class="attr">url</span>:<span class="string">&quot;pagePath?name=lily&amp;age=18&quot;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-<li>可以在pagePath页面中使用onLoad获取参数<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">onLoad：<span class="keyword">function</span>(<span class="params">option</span>) &#123;</span><br><span class="line">	conosle.<span class="title function_">log</span>(option.<span class="property">name</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>注意：<span class="desc">url有长度限制，所以对于复杂的参数建议使用encodeURI、decodeURI进行处理后传递</span></li>
-</ul>
-<h2 id="小程序路由分包配置"><a href="#小程序路由分包配置" class="headerlink" title="小程序路由分包配置"></a>小程序路由分包配置</h2><ul>
-<li>在pages.json中在subPackges中配置分包的路径和分包下的页面<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;subPackages&quot;</span>: [&#123;</span><br><span class="line">	<span class="string">&quot;root&quot;</span>: <span class="string">&quot;subpages&quot;</span>, <span class="comment">// 配置分包名</span></span><br><span class="line">	<span class="string">&quot;pages&quot;</span>: [&#123;</span><br><span class="line">		<span class="string">&quot;path&quot;</span>: <span class="string">&quot;news/news&quot;</span>, <span class="comment">// 分包中的页面路径</span></span><br><span class="line">		<span class="string">&quot;style&quot;</span>: </span><br><span class="line">		&#123;</span><br><span class="line">			<span class="string">&quot;navigationBarTitleText&quot;</span>: <span class="string">&quot;新闻中心&quot;</span>,</span><br><span class="line">			<span class="string">&quot;enablePullDownRefresh&quot;</span>: <span class="literal">false</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;],</span><br><span class="line">&#125;],</span><br><span class="line"><span class="comment">// 预下载分包设置</span></span><br><span class="line"><span class="string">&quot;preloadRule&quot;</span>: &#123;</span><br><span class="line">	<span class="string">&quot;pages/index&quot;</span>: &#123; <span class="comment">// 进入那个页面才会预下载</span></span><br><span class="line">		<span class="string">&quot;network&quot;</span>: <span class="string">&quot;all&quot;</span>, <span class="comment">// all | wifi 在上面环境下下载</span></span><br><span class="line">		<span class="string">&quot;packages&quot;</span>: [<span class="string">&quot;subpages&quot;</span>]  <span class="comment">// 进入该页面后预下载的分包的root或name，以字符串数组的方式传递。__APP__ 表示主包。</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="自定义组件"><a href="#自定义组件" class="headerlink" title="自定义组件"></a>自定义组件</h2><ul>
-<li>使用的两种方式：全局注册 和 页面引入</li>
-<li>使用步骤：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导入 </span></span><br><span class="line"><span class="keyword">import</span> xxx <span class="keyword">from</span> <span class="string">&quot;xxx&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 注册 </span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="string">&#x27;xx&#x27;</span>,xx) 或者在script中添加 <span class="attr">components</span>:&#123;xxx&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 </span></span><br><span class="line">&lt;xx /&gt;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="全局事件定义与通信"><a href="#全局事件定义与通信" class="headerlink" title="全局事件定义与通信"></a>全局事件定义与通信</h3><ul>
-<li>1.在整个应用的任何地方均可以使用uni.$on创建一个全局事件<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">在任意页面使用</span><br><span class="line">uni.$on(<span class="string">&#x27;getInfo&#x27;</span>, <span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">anyvar</span> = value <span class="comment">// 可以定义一个变量然后改变时可以看见效果</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;我的全局事件被触发了&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>要先点击我的页面然后在回去按按钮就会有效果，因为放在onLoad事件中要先加载这个页面</li>
-</ul>
-</li>
-<li>2.在整个应用的任何地方也均可以使用uni.$emit来触发全局事件，实现多组件间的数据通信<ul>
-<li>在任意要触发的地方使用uni.$emit(‘getInfo’,’全局事件的传参’)</li>
-<li>这个getInfo为全局事件</li>
-</ul>
-</li>
-</ul>
-<h2 id="Pinia-状态管理（官方推荐使用，钩子与vuex三件套一样-不需要mutation）"><a href="#Pinia-状态管理（官方推荐使用，钩子与vuex三件套一样-不需要mutation）" class="headerlink" title="Pinia 状态管理（官方推荐使用，钩子与vuex三件套一样,不需要mutation）"></a>Pinia 状态管理（官方推荐使用，钩子与vuex三件套一样,不需要mutation）</h2><ul>
-<li>多个组件间共享数据或状态</li>
-<li>State：存储状态数据</li>
-<li>Getter：从状态数据派生数据，相当于State的计算属性</li>
-<li>Mutation：存储用于同步更改状态数据的方法，默认传入的参数为State</li>
-<li>Action：存储用于异步更改状态数据，但不是直接更改，而是通过触发Mutation方法实现，默认参数为context</li>
-<li>Module：Vuex模块化</li>
-</ul>
-<h3 id="在项目中使用Pinia"><a href="#在项目中使用Pinia" class="headerlink" title="在项目中使用Pinia"></a>在项目中使用Pinia</h3><ul>
-<li><p>首先在main.js文件中引入store文件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createSSRApp &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> <span class="title class_">Pinia</span> <span class="keyword">from</span> <span class="string">&#x27;pinia&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">createApp</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> app = <span class="title function_">createSSRApp</span>(<span class="title class_">App</span>)</span><br><span class="line">	app.<span class="title function_">use</span>(<span class="title class_">Pinia</span>.<span class="title function_">createPinia</span>())</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    app,</span><br><span class="line">		<span class="title class_">Pinia</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>新建一个store的目录并且在该目录下新建一个js文件，形式大概按照一下形式</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineStore &#125; <span class="keyword">from</span> <span class="string">&#x27;pinia&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> useUserStore = <span class="title function_">defineStore</span>(<span class="string">&#x27;userStore&#x27;</span>,&#123;</span><br><span class="line">	<span class="attr">id</span>: <span class="string">&#x27;user&#x27;</span>,</span><br><span class="line">	<span class="attr">state</span>: <span class="function">() =&gt;</span> (&#123; <span class="attr">userName</span>: <span class="string">&#x27;未登录用户&#x27;</span> &#125;),</span><br><span class="line">	<span class="attr">actions</span>: &#123;</span><br><span class="line">		<span class="title function_">login</span>(<span class="params">userName</span>) &#123;</span><br><span class="line">			<span class="variable language_">this</span>.<span class="property">userName</span> = userName</span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="title function_">logout</span>(<span class="params"></span>)&#123;</span><br><span class="line">			<span class="variable language_">this</span>.<span class="property">userName</span> = <span class="string">&quot;退出登录&quot;</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="在文件中调用全局事件"><a href="#在文件中调用全局事件" class="headerlink" title="在文件中调用全局事件"></a>在文件中调用全局事件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;view&gt;</span><br><span class="line">	<span class="language-xml"><span class="tag">&lt;<span class="name">text</span>&gt;</span>通讯录<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span></span><br><span class="line">	<span class="language-xml"><span class="tag">&lt;<span class="name">text</span>&gt;</span>&#123;&#123;userStore.userName&#125;&#125;<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span></span><br><span class="line">	<span class="language-xml"><span class="tag">&lt;<span class="name">view</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;default&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;userStore.login(&#x27;lemon&#x27;)&quot;</span>&gt;</span>登陆<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;default&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;userStore.logout()&quot;</span>&gt;</span>退出<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">	<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span></span><br><span class="line">&lt;/view&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">setup</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	<span class="keyword">import</span> &#123; useUserStore &#125; <span class="keyword">from</span> <span class="string">&#x27;@/store/index.js&#x27;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">	<span class="keyword">const</span> userStore = <span class="title function_">useUserStore</span>()</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>注意：没有配置 tabbar（就是类似于微信下面那个可点击切换的图标状态栏）时，可以使用 <code>navigator</code> 跳转任意页面；配置 tabbar 后，只能使用 <code>switchTab</code> 跳转到 tabbar 配置的页面。</p>
+<h2 id="六、获取当前页面栈"><a href="#六、获取当前页面栈" class="headerlink" title="六、获取当前页面栈"></a>六、获取当前页面栈</h2><p><code>getCurrentPages()</code> 函数返回页面栈数组，按栈的顺序排列：第一个元素为首页，最后一个元素为当前页面。</p>
+<h2 id="七、路由传参与接收"><a href="#七、路由传参与接收" class="headerlink" title="七、路由传参与接收"></a>七、路由传参与接收</h2><p>页面生命周期的 <code>onLoad()</code> 监听页面加载，其参数就是上个页面传递的数据。</p>
+<p>在上个页面通过 url 在路径中携带参数，<code>?</code> 后为携带的参数，多个参数用 <code>&amp;</code> 连接，以 <code>键=值</code> 的形式传递，<code>pagePath</code> 为要跳转的页面：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">uni.<span class="title function_">navigateTo</span>(&#123;</span><br><span class="line">	<span class="attr">url</span>:<span class="string">&quot;pagePath?name=lily&amp;age=18&quot;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<h2 id="运行环境判断与跨端兼容"><a href="#运行环境判断与跨端兼容" class="headerlink" title="运行环境判断与跨端兼容"></a>运行环境判断与跨端兼容</h2><h3 id="开发环境和生产环境"><a href="#开发环境和生产环境" class="headerlink" title="开发环境和生产环境"></a>开发环境和生产环境</h3><ul>
-<li>测试时可以通过uniApp上方导航栏的发行来测试二者的效果<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(process.<span class="property">env</span>.<span class="property">NODE_ENV</span> === <span class="string">&#x27;development&#x27;</span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;开发环境&#x27;</span>)</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;生产环境&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<p>在目标页面中用 <code>onLoad</code> 获取参数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">onLoad</span>: <span class="keyword">function</span>(<span class="params">option</span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(option.<span class="property">name</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：url 有长度限制，所以对于复杂的参数建议使用 <code>encodeURI</code>、<code>decodeURI</code> 处理后再传递。</p>
+<h2 id="八、小程序路由分包配置"><a href="#八、小程序路由分包配置" class="headerlink" title="八、小程序路由分包配置"></a>八、小程序路由分包配置</h2><p>在 <code>pages.json</code> 的 <code>subPackages</code> 中配置分包路径和分包下的页面：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;subPackages&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;root&quot;</span><span class="punctuation">:</span> <span class="string">&quot;subpages&quot;</span><span class="punctuation">,</span> <span class="comment">// 配置分包名</span></span><br><span class="line">	<span class="attr">&quot;pages&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;news/news&quot;</span><span class="punctuation">,</span> <span class="comment">// 分包中的页面路径</span></span><br><span class="line">		<span class="attr">&quot;style&quot;</span><span class="punctuation">:</span></span><br><span class="line">		<span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;navigationBarTitleText&quot;</span><span class="punctuation">:</span> <span class="string">&quot;新闻中心&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;enablePullDownRefresh&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line">		<span class="punctuation">&#125;</span></span><br><span class="line">	<span class="punctuation">&#125;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="comment">// 预下载分包设置</span></span><br><span class="line"><span class="attr">&quot;preloadRule&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;pages/index&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="comment">// 进入哪个页面才会预下载</span></span><br><span class="line">		<span class="attr">&quot;network&quot;</span><span class="punctuation">:</span> <span class="string">&quot;all&quot;</span><span class="punctuation">,</span> <span class="comment">// all | wifi 在上面环境下下载</span></span><br><span class="line">		<span class="attr">&quot;packages&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;subpages&quot;</span><span class="punctuation">]</span>  <span class="comment">// 进入该页面后预下载的分包的root或name，以字符串数组的方式传递。__APP__ 表示主包。</span></span><br><span class="line">	<span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="九、自定义组件"><a href="#九、自定义组件" class="headerlink" title="九、自定义组件"></a>九、自定义组件</h2><p>使用的两种方式：全局注册和页面引入。</p>
+<p>使用步骤依次是导入、注册、使用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导入</span></span><br><span class="line"><span class="keyword">import</span> xxx <span class="keyword">from</span> <span class="string">&quot;xxx&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 注册</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="string">&#x27;xx&#x27;</span>,xx) 或者在script中添加 <span class="attr">components</span>:&#123;xxx&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">&lt;xx /&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="全局事件定义与通信"><a href="#全局事件定义与通信" class="headerlink" title="全局事件定义与通信"></a>全局事件定义与通信</h3><p>在整个应用的任何地方都可以用 <code>uni.$on</code> 创建一个全局事件。下面的写法放在任意页面，事件触发时就能拿到传参：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在任意页面使用</span></span><br><span class="line">uni.$on(<span class="string">&#x27;getInfo&#x27;</span>, <span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">anyvar</span> = value <span class="comment">// 可以定义一个变量然后改变时可以看见效果</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;我的全局事件被触发了&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>要先点击“我的”页面加载监听，再回到按钮所在页面触发，才会有效果，因为监听写在 <code>onLoad</code> 里，需要先进入该页面。</p>
+<p>在整个应用的任何地方也都可以用 <code>uni.$emit</code> 触发全局事件，实现多组件间的数据通信。下面这句里的 <code>getInfo</code> 就是前面注册的全局事件名：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uni.$emit(<span class="string">&#x27;getInfo&#x27;</span>,<span class="string">&#x27;全局事件的传参&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="十、Pinia-状态管理"><a href="#十、Pinia-状态管理" class="headerlink" title="十、Pinia 状态管理"></a>十、Pinia 状态管理</h2><p>Pinia 官方推荐使用，钩子与 Vuex 三件套一样，不需要 <code>mutation</code>。它用于多个组件间共享数据或状态。</p>
+<p>先明确几个概念：</p>
+<ul>
+<li>State：存储状态数据</li>
+<li>Getter：从状态数据派生数据，相当于 State 的计算属性</li>
+<li>Mutation：存储用于同步更改状态数据的方法，默认传入的参数为 State</li>
+<li>Action：存储用于异步更改状态数据，但不是直接更改，而是通过触发 Mutation 方法实现，默认参数为 <code>context</code></li>
+<li>Module：Vuex 模块化</li>
 </ul>
-<h3 id="判断平台"><a href="#判断平台" class="headerlink" title="判断平台"></a>判断平台</h3><ul>
-<li>存在两种场景，一种实在编译器判断，一种是运行期判断</li>
-</ul>
-<h4 id="编译器判断：即条件编译-不同平台在编译出包后已经是不同的代码"><a href="#编译器判断：即条件编译-不同平台在编译出包后已经是不同的代码" class="headerlink" title="编译器判断：即条件编译,不同平台在编译出包后已经是不同的代码"></a>编译器判断：即条件编译,不同平台在编译出包后已经是不同的代码</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// #ifdef H5</span></span><br><span class="line"><span class="title function_">alert</span>(<span class="string">&quot;只有在H平台上才会有这个方法&quot;</span>)</span><br><span class="line"><span class="comment">// #endif</span></span><br></pre></td></tr></table></figure>
-<h4 id="运行期判断：是指代码已经打入包中，仍然需要在运行期判断平台"><a href="#运行期判断：是指代码已经打入包中，仍然需要在运行期判断平台" class="headerlink" title="运行期判断：是指代码已经打入包中，仍然需要在运行期判断平台"></a>运行期判断：是指代码已经打入包中，仍然需要在运行期判断平台</h4><ul>
-<li>使用 uni.getSystemInfoSync().platform 判断客户端环境是Android、iOS还是小程序开发工具<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(uni.<span class="title function_">getSystemInfoSync</span>().<span class="property">platform</span>) &#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">&#x27;android&#x27;</span>:</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">&#x27;iOS&#x27;</span>:</span><br><span class="line">		<span class="keyword">break</span></span><br><span class="line">	<span class="attr">default</span>:</span><br><span class="line">		<span class="keyword">break</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="跨端兼容"><a href="#跨端兼容" class="headerlink" title="跨端兼容"></a>跨端兼容</h4><ul>
-<li>条件编译写法： 以#ifdef 或 #ifndef 加 %PLATFORM% 开头，以 #endif 结尾</li>
-<li>#ifdef: if defined 仅在某平台存在</li>
-<li>#ifndef：if not defined 除了某平台均存在</li>
-<li>%PLATFORM%：平台名称</li>
+<h3 id="在项目中使用-Pinia"><a href="#在项目中使用-Pinia" class="headerlink" title="在项目中使用 Pinia"></a>在项目中使用 Pinia</h3><p>第一步，在 <code>main.js</code> 中引入并注册 Pinia：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createSSRApp &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> <span class="title class_">Pinia</span> <span class="keyword">from</span> <span class="string">&#x27;pinia&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">createApp</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> app = <span class="title function_">createSSRApp</span>(<span class="title class_">App</span>)</span><br><span class="line">	app.<span class="title function_">use</span>(<span class="title class_">Pinia</span>.<span class="title function_">createPinia</span>())</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    app,</span><br><span class="line">		<span class="title class_">Pinia</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第二步，新建一个 <code>store</code> 目录，并在该目录下新建一个 js 文件，形式大致如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineStore &#125; <span class="keyword">from</span> <span class="string">&#x27;pinia&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> useUserStore = <span class="title function_">defineStore</span>(<span class="string">&#x27;userStore&#x27;</span>,&#123;</span><br><span class="line">	<span class="attr">id</span>: <span class="string">&#x27;user&#x27;</span>,</span><br><span class="line">	<span class="attr">state</span>: <span class="function">() =&gt;</span> (&#123; <span class="attr">userName</span>: <span class="string">&#x27;未登录用户&#x27;</span> &#125;),</span><br><span class="line">	<span class="attr">actions</span>: &#123;</span><br><span class="line">		<span class="title function_">login</span>(<span class="params">userName</span>) &#123;</span><br><span class="line">			<span class="variable language_">this</span>.<span class="property">userName</span> = userName</span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="title function_">logout</span>(<span class="params"></span>)&#123;</span><br><span class="line">			<span class="variable language_">this</span>.<span class="property">userName</span> = <span class="string">&quot;退出登录&quot;</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="在页面中调用-store"><a href="#在页面中调用-store" class="headerlink" title="在页面中调用 store"></a>在页面中调用 store</h3><p>页面里直接读 <code>store</code> 上的状态、调 <code>store</code> 上的方法，不需要再写 <code>mapState</code>：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">text</span>&gt;</span>通讯录<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">text</span>&gt;</span>&#123;&#123;userStore.userName&#125;&#125;<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;default&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;userStore.login(&#x27;lemon&#x27;)&quot;</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;default&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;userStore.logout()&quot;</span>&gt;</span>退出<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	<span class="keyword">import</span> &#123; useUserStore &#125; <span class="keyword">from</span> <span class="string">&#x27;@/store/index.js&#x27;</span></span></span><br><span class="line"><span class="language-javascript">	<span class="keyword">const</span> userStore = <span class="title function_">useUserStore</span>()</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="十一、运行环境判断与跨端兼容"><a href="#十一、运行环境判断与跨端兼容" class="headerlink" title="十一、运行环境判断与跨端兼容"></a>十一、运行环境判断与跨端兼容</h2><h3 id="开发环境和生产环境"><a href="#开发环境和生产环境" class="headerlink" title="开发环境和生产环境"></a>开发环境和生产环境</h3><p>测试时可以通过 uni-app 上方导航栏的“发行”来切换两种环境，代码里用 <code>NODE_ENV</code> 判断：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(process.<span class="property">env</span>.<span class="property">NODE_ENV</span> === <span class="string">&#x27;development&#x27;</span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;开发环境&#x27;</span>)</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;生产环境&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="判断平台"><a href="#判断平台" class="headerlink" title="判断平台"></a>判断平台</h3><p>存在两种场景，一种是在编译期判断，一种是运行期判断。</p>
+<h4 id="编译期判断：条件编译"><a href="#编译期判断：条件编译" class="headerlink" title="编译期判断：条件编译"></a>编译期判断：条件编译</h4><p>不同平台在编译出包后已经是不同的代码，下面这段只在 H5 平台存在：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// #ifdef H5</span></span><br><span class="line"><span class="title function_">alert</span>(<span class="string">&quot;只有在H5平台上才会有这个方法&quot;</span>)</span><br><span class="line"><span class="comment">// #endif</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="运行期判断"><a href="#运行期判断" class="headerlink" title="运行期判断"></a>运行期判断</h4><p>代码已经打进包中，仍然需要在运行期判断平台时，使用 <code>uni.getSystemInfoSync().platform</code> 判断客户端环境是 Android、iOS 还是小程序开发工具：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(uni.<span class="title function_">getSystemInfoSync</span>().<span class="property">platform</span>) &#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">&#x27;android&#x27;</span>:</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">&#x27;iOS&#x27;</span>:</span><br><span class="line">		<span class="keyword">break</span></span><br><span class="line">	<span class="attr">default</span>:</span><br><span class="line">		<span class="keyword">break</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="跨端兼容"><a href="#跨端兼容" class="headerlink" title="跨端兼容"></a>跨端兼容</h4><p>条件编译的写法：以 <code>#ifdef</code> 或 <code>#ifndef</code> 加 <code>%PLATFORM%</code> 开头，以 <code>#endif</code> 结尾。</p>
+<ul>
+<li><code>#ifdef</code>：if defined，仅在某平台存在</li>
+<li><code>#ifndef</code>：if not defined，除了某平台均存在</li>
+<li><code>%PLATFORM%</code>：平台名称</li>
 </ul>
 <table>
 <thead>
 <tr>
-<th>%PLATFORM%的值</th>
+<th>%PLATFORM% 的值</th>
 <th>平台</th>
 </tr>
 </thead>
@@ -734,11 +718,11 @@
 </tr>
 <tr>
 <td>MP-QQ</td>
-<td>QQ小程序</td>
+<td>QQ 小程序</td>
 </tr>
 <tr>
 <td>MP-360</td>
-<td>360小程序</td>
+<td>360 小程序</td>
 </tr>
 <tr>
 <td>MP</td>
@@ -757,39 +741,69 @@
 <td>含以上所有快应用通用</td>
 </tr>
 </tbody></table>
-<h2 id="vue3中的使用方式"><a href="#vue3中的使用方式" class="headerlink" title="vue3中的使用方式"></a>vue3中的使用方式</h2><h3 id="template部分"><a href="#template部分" class="headerlink" title="template部分"></a>template部分</h3><ul>
-<li>循环：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v-<span class="keyword">for</span>=<span class="string">&quot;(item,index) in list&quot;</span> :key=<span class="string">&quot;index&quot;</span></span><br></pre></td></tr></table></figure></li>
-<li>判断：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v-<span class="keyword">if</span>=<span class="string">&quot;!item.isMe&quot;</span></span><br></pre></td></tr></table></figure></li>
-<li>事件：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@click=<span class="string">&quot;sendMsg&quot;</span></span><br></pre></td></tr></table></figure></li>
-<li>组件上的属性需要动态的 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:src=<span class="string">&quot;item.img&quot;</span></span><br></pre></td></tr></table></figure></li>
-<li>插入页面的文本：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;item.<span class="property">content</span>&#125;&#125;</span><br></pre></td></tr></table></figure></li>
+<h2 id="十二、Vue3-中的使用方式"><a href="#十二、Vue3-中的使用方式" class="headerlink" title="十二、Vue3 中的使用方式"></a>十二、Vue3 中的使用方式</h2><h3 id="template-部分"><a href="#template-部分" class="headerlink" title="template 部分"></a>template 部分</h3><p>循环渲染列表：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v-for=&quot;(item,index) in list&quot; :key=&quot;index&quot;</span><br></pre></td></tr></table></figure>
+
+<p>条件判断：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v-if=&quot;!item.isMe&quot;</span><br></pre></td></tr></table></figure>
+
+<p>绑定事件：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@click=&quot;sendMsg&quot;</span><br></pre></td></tr></table></figure>
+
+<p>组件上的属性需要动态绑定时用 <code>:</code>：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:src=&quot;item.img&quot;</span><br></pre></td></tr></table></figure>
+
+<p>插入页面的文本用双大括号：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;item.content&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="在-script-setup-标签中"><a href="#在-script-setup-标签中" class="headerlink" title="在 script setup 标签中"></a>在 script setup 标签中</h3><h4 id="生命周期按这种方式书写"><a href="#生命周期按这种方式书写" class="headerlink" title="生命周期按这种方式书写"></a>生命周期按这种方式书写</h4><p>首先从 <code>@dcloudio/uni-app</code> 引入对应的生命周期：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; onLoad &#125; <span class="keyword">from</span> <span class="string">&quot;@dcloudio/uni-app&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>然后直接调用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">onLoad</span>(<span class="function">() =&gt;</span> &#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="定义一个变量和赋值"><a href="#定义一个变量和赋值" class="headerlink" title="定义一个变量和赋值"></a>定义一个变量和赋值</h4><ul>
+<li><code>reactive</code> 一般使用场景是数组和对象，<code>ref</code> 一般是基本数据类型</li>
+<li>使用 <code>reactive</code> 响应的数据，最好是调用数据中的某一项；如果是添加 <code>push</code> 一整个数组，用 <code>ref</code> 比较好，否则不会实时更新</li>
 </ul>
-<h3 id="在-script-setup标签中"><a href="#在-script-setup标签中" class="headerlink" title="在 script setup标签中"></a>在 script setup标签中</h3><h4 id="生命周期按这种方式书写"><a href="#生命周期按这种方式书写" class="headerlink" title="生命周期按这种方式书写"></a>生命周期按这种方式书写</h4><ul>
-<li>首先引入对应的生命周期：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; onLoad &#125; <span class="keyword">from</span> <span class="string">&quot;@dcloudio/uni-app&quot;</span>;</span><br></pre></td></tr></table></figure></li>
-<li>使用：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">onLoad</span>(<span class="function">() =&gt;</span> &#123;&#125;)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="定义一个变量和赋值："><a href="#定义一个变量和赋值：" class="headerlink" title="定义一个变量和赋值："></a>定义一个变量和赋值：</h4><ul>
-<li>reactive一般使用场景是数组和对象，ref一般是基本数据类型</li>
-<li>使用reactive响应的数据，最好是调用数据中的某一项，如果是添加push一整个数组使用ref比较好。不然不实时更新</li>
-<li>定义ref 和使用<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="title function_">ref</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">name.<span class="property">value</span> =<span class="string">&#x27;123&#x27;</span></span><br></pre></td></tr></table></figure></li>
-<li>定义reactive 和使用<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> list = <span class="title function_">reactive</span>([])</span><br><span class="line">list.<span class="title function_">push</span>()</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="定义一个方法："><a href="#定义一个方法：" class="headerlink" title="定义一个方法："></a>定义一个方法：</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">clickfn</span> = (<span class="params"></span>) =&gt; &#123;&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="props："><a href="#props：" class="headerlink" title="props："></a>props：</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineEmits,defineProps &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="title function_">defineProps</span>(&#123;</span><br><span class="line">	<span class="attr">msg</span>: <span class="title class_">String</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="emit："><a href="#emit：" class="headerlink" title="emit："></a>emit：</h4><ul>
-<li>将事件定义好<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> emits = <span class="title function_">defineEmits</span>([<span class="string">&#x27;childEvent&#x27;</span>,<span class="string">&#x27;getInfo&#x27;</span>])		</span><br></pre></td></tr></table></figure></li>
-<li>调用：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">emits</span>(<span class="string">&#x27;childEvent&#x27;</span>,<span class="string">&#x27;传递的参数&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="全局emit"><a href="#全局emit" class="headerlink" title="全局emit"></a>全局emit</h4><ul>
-<li>将事件定义好<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> emits = <span class="title function_">defineEmits</span>([<span class="string">&#x27;childEvent&#x27;</span>,<span class="string">&#x27;getInfo&#x27;</span>])	</span><br></pre></td></tr></table></figure></li>
-<li>使用：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uni.$emit(<span class="string">&#x27;getInfo&#x27;</span>,<span class="string">&#x27;全局事件的传参&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
-<li>调用：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uni.$on(<span class="string">&#x27;getInfo&#x27;</span>, <span class="function">(<span class="params">value</span>) =&gt;</span> &#123;	name.<span class="property">value</span> = value &#125;)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="实时滚动到页面底部"><a href="#实时滚动到页面底部" class="headerlink" title="实时滚动到页面底部"></a>实时滚动到页面底部</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">nextTick</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">	uni.<span class="title function_">pageScrollTo</span>(&#123;</span><br><span class="line">		<span class="attr">scrollTop</span>: <span class="number">999999</span>,</span><br><span class="line">		<span class="attr">duration</span>:<span class="number">0</span></span><br><span class="line">	&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>定义 <code>ref</code> 并赋值：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="title function_">ref</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">name.<span class="property">value</span> =<span class="string">&#x27;123&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>定义 <code>reactive</code> 并使用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> list = <span class="title function_">reactive</span>([])</span><br><span class="line">list.<span class="title function_">push</span>()</span><br></pre></td></tr></table></figure>
+
+<h4 id="定义一个方法"><a href="#定义一个方法" class="headerlink" title="定义一个方法"></a>定义一个方法</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">clickfn</span> = (<span class="params"></span>) =&gt; &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="props"><a href="#props" class="headerlink" title="props"></a>props</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineEmits,defineProps &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="title function_">defineProps</span>(&#123;</span><br><span class="line">	<span class="attr">msg</span>: <span class="title class_">String</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="emit"><a href="#emit" class="headerlink" title="emit"></a>emit</h4><p>先把事件定义好：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> emits = <span class="title function_">defineEmits</span>([<span class="string">&#x27;childEvent&#x27;</span>,<span class="string">&#x27;getInfo&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<p>再调用并传参：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">emits</span>(<span class="string">&#x27;childEvent&#x27;</span>,<span class="string">&#x27;传递的参数&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="全局-emit"><a href="#全局-emit" class="headerlink" title="全局 emit"></a>全局 emit</h4><p>同样先定义事件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> emits = <span class="title function_">defineEmits</span>([<span class="string">&#x27;childEvent&#x27;</span>,<span class="string">&#x27;getInfo&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<p>使用 <code>uni.$emit</code> 触发：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uni.$emit(<span class="string">&#x27;getInfo&#x27;</span>,<span class="string">&#x27;全局事件的传参&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在需要接收的地方用 <code>uni.$on</code> 监听：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uni.$on(<span class="string">&#x27;getInfo&#x27;</span>, <span class="function">(<span class="params">value</span>) =&gt;</span> &#123;	name.<span class="property">value</span> = value &#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="实时滚动到页面底部"><a href="#实时滚动到页面底部" class="headerlink" title="实时滚动到页面底部"></a>实时滚动到页面底部</h4><p><code>nextTick</code> 之后调用 <code>pageScrollTo</code>，把 <code>scrollTop</code> 设成一个足够大的值即可滚到底：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">nextTick</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">	uni.<span class="title function_">pageScrollTo</span>(&#123;</span><br><span class="line">		<span class="attr">scrollTop</span>: <span class="number">999999</span>,</span><br><span class="line">		<span class="attr">duration</span>:<span class="number">0</span></span><br><span class="line">	&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 <h4 id="设置登录缓存后，退出清除缓存"><a href="#设置登录缓存后，退出清除缓存" class="headerlink" title="设置登录缓存后，退出清除缓存"></a>设置登录缓存后，退出清除缓存</h4><ul>
-<li>使用uni.removeStorageSync(key),只清除这个key的缓存</li>
-<li>使用uni.clearStorageSync()，清除本地缓存，全部清除</li>
+<li>使用 <code>uni.removeStorageSync(key)</code>，只清除这个 key 的缓存</li>
+<li>使用 <code>uni.clearStorageSync()</code>，清除本地缓存，全部清除</li>
 </ul>
+<h2 id="踩坑与注意点"><a href="#踩坑与注意点" class="headerlink" title="踩坑与注意点"></a>踩坑与注意点</h2><ol>
+<li><code>defineStore</code> 的第二个参数里写了 <code>id: &#39;user&#39;</code>，Pinia 的 store id 取第一个参数 <code>&#39;userStore&#39;</code>，这个 <code>id</code> 字段不参与识别。</li>
+<li>全局事件 <code>uni.$on</code> 注册在 <code>onLoad</code> 中，页面未加载就 <code>$emit</code> 是收不到的；另外重复进入页面会重复注册，建议在 <code>onUnload</code> 里 <code>uni.$off</code>。</li>
+<li><code>Vue.use(&#39;xx&#39;,xx)</code> 是 Vue2 的全局注册写法，Vue3 应使用 <code>app.component(&#39;xx&#39;, xx)</code>。</li>
+<li>条件编译注释的语法位置很敏感，<code>// #ifdef H5</code> 必须单独成行，写在行尾不生效。</li>
+</ol>
 
 </article>
     
@@ -809,17 +823,17 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/31/uniApp/%E4%BD%BF%E7%94%A8%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/31/uniApp/uniapp-vue3/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">HBuilder X快捷键</h6>
+                <h6 class="trm-op-title">vue3</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
                 <li>24/10/31</li>
                 <li>15:20</li>
-                <li>uniapp</li>
+                <li>uniapp,Vue</li>
             </ul>
         </div>
     </div>
@@ -830,11 +844,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/31/uniApp/uniCloud/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/31/uniApp/%E4%BD%BF%E7%94%A8%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">uniCloud</h6>
+                <h6 class="trm-op-title">HBuilder X快捷键</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -906,7 +920,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="开发规范"><a rel="nofollow" class="trm-toc-link" href="#开发规范"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">开发规范</span></a></li><li class="trm-toc-item trm-toc-level-2" title="uniApp 在VScode中开发（因为uniapp的ts校验差）"><a rel="nofollow" class="trm-toc-link" href="#uniApp-在VScode中开发（因为uniapp的ts校验差）"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">uniApp 在VScode中开发（因为uniapp的ts校验差）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="uniApp生命周期"><a rel="nofollow" class="trm-toc-link" href="#uniApp生命周期"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">uniApp生命周期</span></a></li><li class="trm-toc-item trm-toc-level-2" title="页面生命周期"><a rel="nofollow" class="trm-toc-link" href="#页面生命周期"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">页面生命周期</span></a></li><li class="trm-toc-item trm-toc-level-2" title="路由跳转"><a rel="nofollow" class="trm-toc-link" href="#路由跳转"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">路由跳转</span></a></li><li class="trm-toc-item trm-toc-level-2" title="获取当前页面栈"><a rel="nofollow" class="trm-toc-link" href="#获取当前页面栈"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">获取当前页面栈</span></a></li><li class="trm-toc-item trm-toc-level-2" title="路由传参与接收"><a rel="nofollow" class="trm-toc-link" href="#路由传参与接收"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">路由传参与接收</span></a></li><li class="trm-toc-item trm-toc-level-2" title="小程序路由分包配置"><a rel="nofollow" class="trm-toc-link" href="#小程序路由分包配置"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">小程序路由分包配置</span></a></li><li class="trm-toc-item trm-toc-level-2" title="自定义组件"><a rel="nofollow" class="trm-toc-link" href="#自定义组件"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">自定义组件</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="全局事件定义与通信"><a rel="nofollow" class="trm-toc-link" href="#全局事件定义与通信"><span class="trm-toc-number">9.1.</span> <span class="trm-toc-text">全局事件定义与通信</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="Pinia 状态管理（官方推荐使用，钩子与vuex三件套一样,不需要mutation）"><a rel="nofollow" class="trm-toc-link" href="#Pinia-状态管理（官方推荐使用，钩子与vuex三件套一样-不需要mutation）"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">Pinia 状态管理（官方推荐使用，钩子与vuex三件套一样,不需要mutation）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="在项目中使用Pinia"><a rel="nofollow" class="trm-toc-link" href="#在项目中使用Pinia"><span class="trm-toc-number">10.1.</span> <span class="trm-toc-text">在项目中使用Pinia</span></a></li><li class="trm-toc-item trm-toc-level-3" title="在文件中调用全局事件"><a rel="nofollow" class="trm-toc-link" href="#在文件中调用全局事件"><span class="trm-toc-number">10.2.</span> <span class="trm-toc-text">在文件中调用全局事件</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="运行环境判断与跨端兼容"><a rel="nofollow" class="trm-toc-link" href="#运行环境判断与跨端兼容"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">运行环境判断与跨端兼容</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="开发环境和生产环境"><a rel="nofollow" class="trm-toc-link" href="#开发环境和生产环境"><span class="trm-toc-number">11.1.</span> <span class="trm-toc-text">开发环境和生产环境</span></a></li><li class="trm-toc-item trm-toc-level-3" title="判断平台"><a rel="nofollow" class="trm-toc-link" href="#判断平台"><span class="trm-toc-number">11.2.</span> <span class="trm-toc-text">判断平台</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="vue3中的使用方式"><a rel="nofollow" class="trm-toc-link" href="#vue3中的使用方式"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">vue3中的使用方式</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="template部分"><a rel="nofollow" class="trm-toc-link" href="#template部分"><span class="trm-toc-number">12.1.</span> <span class="trm-toc-text">template部分</span></a></li><li class="trm-toc-item trm-toc-level-3" title="在 script setup标签中"><a rel="nofollow" class="trm-toc-link" href="#在-script-setup标签中"><span class="trm-toc-number">12.2.</span> <span class="trm-toc-text">在 script setup标签中</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="一、开发规范"><a rel="nofollow" class="trm-toc-link" href="#一、开发规范"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">一、开发规范</span></a></li><li class="trm-toc-item trm-toc-level-2" title="二、在 VSCode 中开发 uni-app"><a rel="nofollow" class="trm-toc-link" href="#二、在-VSCode-中开发-uni-app"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">二、在 VSCode 中开发 uni-app</span></a></li><li class="trm-toc-item trm-toc-level-2" title="三、应用生命周期"><a rel="nofollow" class="trm-toc-link" href="#三、应用生命周期"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">三、应用生命周期</span></a></li><li class="trm-toc-item trm-toc-level-2" title="四、页面生命周期"><a rel="nofollow" class="trm-toc-link" href="#四、页面生命周期"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">四、页面生命周期</span></a></li><li class="trm-toc-item trm-toc-level-2" title="五、路由跳转"><a rel="nofollow" class="trm-toc-link" href="#五、路由跳转"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">五、路由跳转</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="方式一：标签式导航，用 navigator 组件"><a rel="nofollow" class="trm-toc-link" href="#方式一：标签式导航，用-navigator-组件"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">方式一：标签式导航，用 navigator 组件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="方式二：编程式导航，调用 API"><a rel="nofollow" class="trm-toc-link" href="#方式二：编程式导航，调用-API"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">方式二：编程式导航，调用 API</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="六、获取当前页面栈"><a rel="nofollow" class="trm-toc-link" href="#六、获取当前页面栈"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">六、获取当前页面栈</span></a></li><li class="trm-toc-item trm-toc-level-2" title="七、路由传参与接收"><a rel="nofollow" class="trm-toc-link" href="#七、路由传参与接收"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">七、路由传参与接收</span></a></li><li class="trm-toc-item trm-toc-level-2" title="八、小程序路由分包配置"><a rel="nofollow" class="trm-toc-link" href="#八、小程序路由分包配置"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">八、小程序路由分包配置</span></a></li><li class="trm-toc-item trm-toc-level-2" title="九、自定义组件"><a rel="nofollow" class="trm-toc-link" href="#九、自定义组件"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">九、自定义组件</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="全局事件定义与通信"><a rel="nofollow" class="trm-toc-link" href="#全局事件定义与通信"><span class="trm-toc-number">9.1.</span> <span class="trm-toc-text">全局事件定义与通信</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="十、Pinia 状态管理"><a rel="nofollow" class="trm-toc-link" href="#十、Pinia-状态管理"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">十、Pinia 状态管理</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="在项目中使用 Pinia"><a rel="nofollow" class="trm-toc-link" href="#在项目中使用-Pinia"><span class="trm-toc-number">10.1.</span> <span class="trm-toc-text">在项目中使用 Pinia</span></a></li><li class="trm-toc-item trm-toc-level-3" title="在页面中调用 store"><a rel="nofollow" class="trm-toc-link" href="#在页面中调用-store"><span class="trm-toc-number">10.2.</span> <span class="trm-toc-text">在页面中调用 store</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="十一、运行环境判断与跨端兼容"><a rel="nofollow" class="trm-toc-link" href="#十一、运行环境判断与跨端兼容"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">十一、运行环境判断与跨端兼容</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="开发环境和生产环境"><a rel="nofollow" class="trm-toc-link" href="#开发环境和生产环境"><span class="trm-toc-number">11.1.</span> <span class="trm-toc-text">开发环境和生产环境</span></a></li><li class="trm-toc-item trm-toc-level-3" title="判断平台"><a rel="nofollow" class="trm-toc-link" href="#判断平台"><span class="trm-toc-number">11.2.</span> <span class="trm-toc-text">判断平台</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="十二、Vue3 中的使用方式"><a rel="nofollow" class="trm-toc-link" href="#十二、Vue3-中的使用方式"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">十二、Vue3 中的使用方式</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="template 部分"><a rel="nofollow" class="trm-toc-link" href="#template-部分"><span class="trm-toc-number">12.1.</span> <span class="trm-toc-text">template 部分</span></a></li><li class="trm-toc-item trm-toc-level-3" title="在 script setup 标签中"><a rel="nofollow" class="trm-toc-link" href="#在-script-setup-标签中"><span class="trm-toc-number">12.2.</span> <span class="trm-toc-text">在 script setup 标签中</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="踩坑与注意点"><a rel="nofollow" class="trm-toc-link" href="#踩坑与注意点"><span class="trm-toc-number">13.</span> <span class="trm-toc-text">踩坑与注意点</span></a></li></ol>
       </div>
     </div>
 
@@ -1030,6 +1044,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

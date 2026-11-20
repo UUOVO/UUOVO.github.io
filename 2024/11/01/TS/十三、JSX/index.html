@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="基本用法 1.文件命名使用.tsx后缀 2.启用jSX选项(preserve，react和react-native): 可通过在命令行里使用–jsx标记 或tsconfig.json里的选项来指定模式       模式 输入 输出 输出文件扩展名    preserve &lt;div &#x2F;&gt; &lt;div &#x2F;&gt; .jsx   react &lt;div &#x2F;&gt; React.">
+<meta name="description" content="介绍 .tsx 文件的 JSX 基本用法、as 操作符与类型检查，以及工厂函数的配置">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TS-JSX">
+<meta property="og:title" content="JSX">
 <meta property="og:url" content="http://example.com/2024/11/01/TS/%E5%8D%81%E4%B8%89%E3%80%81JSX/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="基本用法 1.文件命名使用.tsx后缀 2.启用jSX选项(preserve，react和react-native): 可通过在命令行里使用–jsx标记 或tsconfig.json里的选项来指定模式       模式 输入 输出 输出文件扩展名    preserve &lt;div &#x2F;&gt; &lt;div &#x2F;&gt; .jsx   react &lt;div &#x2F;&gt; React.">
+<meta property="og:description" content="介绍 .tsx 文件的 JSX 基本用法、as 操作符与类型检查，以及工厂函数的配置">
 <meta property="og:locale">
-<meta property="article:published_time" content="2024-11-01T03:40:57.340Z">
-<meta property="article:modified_time" content="2025-07-18T03:36:57.218Z">
+<meta property="article:published_time" content="2024-11-01T03:40:57.000Z">
+<meta property="article:modified_time" content="2026-11-17T02:28:22.215Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="TypeScript">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <meta name="keywords" content="ts">
 
 
-<title >TS-JSX</title>
+<title >JSX</title>
 
 <!-- Favicon -->
 
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-18 11:36:57"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-17 10:28:22"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -83,6 +83,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -197,13 +199,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -239,7 +241,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -257,13 +259,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -385,7 +387,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            TS-JSX
+                            JSX
                         </h1>
 
                         
@@ -532,17 +534,12 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <h2 id="结论先行"><a href="#结论先行" class="headerlink" title="结论先行"></a>结论先行</h2><p>在 TypeScript 里写 JSX，要做两件事：文件用 <code>.tsx</code> 后缀，并启用 <code>jsx</code> 编译选项（<code>preserve</code>、<code>react</code>、<code>react-native</code> 三选一）。<code>.tsx</code> 中不能用尖括号写类型断言，改用行为等价的 <code>as</code>。类型检查的关键是区分两类元素：固有元素（如 <code>&lt;div /&gt;</code>）从 <code>JSX.IntrinsicElements</code> 取属性类型，基于值的元素（自定义组件）则按标识符在作用域里查找，属性类型取决于 <code>JSX.ElementAttributesProperty</code>。</p>
+<span id="more"></span>
 
-<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><ul>
-<li>1.文件命名使用.tsx后缀</li>
-<li>2.启用jSX选项(preserve，react和react-native):<ul>
-<li>可通过在命令行里使用–jsx标记</li>
-<li>或tsconfig.json里的选项来指定模式</li>
-</ul>
-</li>
-</ul>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>JSX 本身是语法糖，最终会变成工厂函数调用（默认是 <code>React.createElement</code>）。TypeScript 需要知道把这些标签编译成什么、每个标签上有哪些合法属性，因此除了语法支持，还要有一套元素类型和属性类型的查找规则。</p>
+<h2 id="步骤一：开启-JSX-支持"><a href="#步骤一：开启-JSX-支持" class="headerlink" title="步骤一：开启 JSX 支持"></a>步骤一：开启 JSX 支持</h2><p>文件命名使用 <code>.tsx</code> 后缀，然后启用 <code>jsx</code> 选项，可选值为 <code>preserve</code>、<code>react</code> 和 <code>react-native</code>。启用方式有两种：在命令行里使用 <code>--jsx</code> 标记，或在 <code>tsconfig.json</code> 的选项里指定模式。</p>
+<p>三种模式对同一个 <code>&lt;div /&gt;</code> 的编译结果如下。</p>
 <table>
 <thead>
 <tr>
@@ -571,49 +568,44 @@
 <td>.js</td>
 </tr>
 </tbody></table>
+<p>注意：<code>React</code> 标识符是写死的硬编码，所以必须保证 <code>React</code> 是可用的。</p>
+<h2 id="步骤二：用-as-操作符做类型断言"><a href="#步骤二：用-as-操作符做类型断言" class="headerlink" title="步骤二：用 as 操作符做类型断言"></a>步骤二：用 as 操作符做类型断言</h2><p><code>as</code> 操作符在 <code>.ts</code> 和 <code>.tsx</code> 里都可以使用，并且与尖括号形式的类型断言行为等价，因此在 <code>.tsx</code> 里可以用它替代尖括号断言。</p>
+<h2 id="步骤三：区分固有元素与基于值的元素"><a href="#步骤三：区分固有元素与基于值的元素" class="headerlink" title="步骤三：区分固有元素与基于值的元素"></a>步骤三：区分固有元素与基于值的元素</h2><p>两者的区别要先理解清楚：对于 React，固有元素会生成字符串（<code>React.createElement(&quot;div&quot;)</code>），自定义的组件却不会。同时，传入 JSX 元素里的属性类型，查找方式也不同：固有元素的属性本身就支持，自定义组件则要自己去指定它具备哪些属性。</p>
+<h3 id="固有元素"><a href="#固有元素" class="headerlink" title="固有元素"></a>固有元素</h3><p>固有元素通过 <code>JSX.IntrinsicElements</code> 查找。下面声明了 <code>foo</code>，因此只有 <code>&lt;foo /&gt;</code> 符合要求。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">IntrinsicElements</span> &#123; </span><br><span class="line">	<span class="attr">foo</span>: <span class="built_in">any</span> </span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">// 只有&lt;foo /&gt; 才符合要求</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="基于值的元素"><a href="#基于值的元素" class="headerlink" title="基于值的元素"></a>基于值的元素</h3><p>基于值的元素在所在作用域里按标识符查找。下面的 <code>MyComponent</code> 先被导入，随后就能作为标签使用。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">MyComponent</span> <span class="keyword">from</span> <span class="string">&quot;./myComponent&quot;</span></span><br><span class="line">&lt;<span class="title class_">MyComponent</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="步骤四：处理函数组件与类组件"><a href="#步骤四：处理函数组件与类组件" class="headerlink" title="步骤四：处理函数组件与类组件"></a>步骤四：处理函数组件与类组件</h2><h3 id="无状态函数组件（SFC）"><a href="#无状态函数组件（SFC）" class="headerlink" title="无状态函数组件（SFC）"></a>无状态函数组件（SFC）</h3><p>函数组件的第一个参数是 prop 对象，TypeScript 会强制它的返回值给 <code>JSX.Element</code>。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">ClickableProps</span> &#123; <span class="attr">children</span>: <span class="variable constant_">JSX</span>.<span class="property">Element</span>[] | <span class="variable constant_">JSX</span>.<span class="property">Element</span> &#125;</span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">SideProps</span> <span class="keyword">extends</span> <span class="title class_">ClickableProps</span> &#123; <span class="attr">side</span>: <span class="variable constant_">JSX</span>.<span class="property">Element</span> | <span class="built_in">string</span>; &#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">MainButton</span>(<span class="params"><span class="attr">prop</span>: <span class="title class_">SideProps</span></span>): <span class="variable constant_">JSX</span>.<span class="property">Element</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="类组件"><a href="#类组件" class="headerlink" title="类组件"></a>类组件</h3><p>类组件涉及两个概念。</p>
 <ul>
-<li>注意：<span class="key_words">React标识符是写死的硬编码，所以必须保证React是可用的。</span></li>
-</ul>
-<h2 id="as操作符-在-ts和-tsx里都可用"><a href="#as操作符-在-ts和-tsx里都可用" class="headerlink" title="as操作符:在.ts和.tsx里都可用"></a>as操作符:在.ts和.tsx里都可用</h2><ul>
-<li>并且与尖括号<span class="key_words">『类型断言』</span>行为是等价的</li>
-</ul>
-<h2 id="类型检查"><a href="#类型检查" class="headerlink" title="类型检查"></a>类型检查</h2><h3 id="理解固有元素与基于值的元素之间的区别"><a href="#理解固有元素与基于值的元素之间的区别" class="headerlink" title="理解固有元素与基于值的元素之间的区别:"></a>理解固有元素与基于值的元素之间的区别:</h3><ul>
-<li>对于React，固有元素会生成字符串（React.createElement(“div”)），然而自定义的组件却不会</li>
-<li>传入JSX元素里的属性类型的查找方式不同。固有元素属性本身就支持，然而自定义的组件会自己去指定它们具有哪个属性。</li>
-</ul>
-<h3 id="固有元素"><a href="#固有元素" class="headerlink" title="固有元素:"></a>固有元素:</h3><ul>
-<li>使用JSX.IntrinsicElements来查找<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">IntrinsicElements</span> &#123; </span><br><span class="line">	<span class="attr">foo</span>: <span class="built_in">any</span> </span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">// 只有&lt;foo /&gt; 才符合要求</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="基于值的元素-在所在作用域里按标识符查找"><a href="#基于值的元素-在所在作用域里按标识符查找" class="headerlink" title="基于值的元素: 在所在作用域里按标识符查找"></a>基于值的元素: 在所在作用域里按标识符查找</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">MyComponent</span> <span class="keyword">from</span> <span class="string">&quot;./myComponent&quot;</span></span><br><span class="line">&lt;<span class="title class_">MyComponent</span> /&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="无状态函数组件-SFC"><a href="#无状态函数组件-SFC" class="headerlink" title="无状态函数组件(SFC):"></a>无状态函数组件(SFC):</h4><ul>
-<li>第一个参数是prop对象,ts会强制它的返回值给JSX.Element<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">ClickableProps</span> &#123; <span class="attr">children</span>: <span class="variable constant_">JSX</span>.<span class="property">Element</span>[] | <span class="variable constant_">JSX</span>.<span class="property">Element</span> &#125;</span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">SideProps</span> <span class="keyword">extends</span> <span class="title class_">ClickableProps</span> &#123; <span class="attr">side</span>: <span class="variable constant_">JSX</span>.<span class="property">Element</span> | <span class="built_in">string</span>; &#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">MainButton</span>(<span class="params"><span class="attr">prop</span>: <span class="title class_">SideProps</span></span>): <span class="variable constant_">JSX</span>.<span class="property">Element</span> &#123;&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="类组件"><a href="#类组件" class="headerlink" title="类组件:"></a>类组件:</h4><ul>
-<li><span class="key_words">元素类的类型</span><ul>
-<li>如<code>&lt;Expr /&gt;</code> 元素类的类型为Expr的类型，如果Expr是个工厂函数，类类型就是这个函数</li>
-</ul>
-</li>
-<li><span class="key_words">元素的实例类型</span><ul>
-<li>在es6类的情况下,实例类型为这个类的实例的类型</li>
-<li>工厂函数: 实例类型就是这个函数返回值类型</li>
-<li>类类型：实例类型就是类类型调用签名的返回值与构造签名的联合类型</li>
-<li>必须赋值给JSX.ElementClass或抛出一个错误。默认的JSX.ElementClass为{}</li>
+<li>元素类的类型：例如 <code>&lt;Expr /&gt;</code> 元素类的类型为 <code>Expr</code> 的类型；如果 <code>Expr</code> 是个工厂函数，类类型就是这个函数。</li>
+<li>元素的实例类型：<ul>
+<li>在 ES6 类的情况下，实例类型为这个类的实例的类型。</li>
+<li>工厂函数：实例类型就是这个函数的返回值类型。</li>
+<li>类类型：实例类型就是类类型调用签名的返回值与构造签名的联合类型。</li>
+<li>实例类型必须赋值给 <code>JSX.ElementClass</code>，否则会抛出一个错误。默认的 <code>JSX.ElementClass</code> 为 <code>&#123;&#125;</code>。</li>
 </ul>
 </li>
 </ul>
-<h3 id="属性类型检查"><a href="#属性类型检查" class="headerlink" title="属性类型检查"></a>属性类型检查</h3><ul>
-<li>对于固有元素，是JSX.IntrinsicElements属性的类型</li>
-<li>对于基于值得元素，取决于JSX.ElementAttributesProperty</li>
-<li>元素属性类型用于的JSX里进行属性的类型检查。支持可选属性和必须属性。<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="keyword">namespace</span> <span class="title class_">JSX</span> &#123;</span><br><span class="line">	<span class="keyword">interface</span> <span class="title class_">IntrinsicElements</span> &#123;</span><br><span class="line">		<span class="attr">foo</span>: &#123; <span class="attr">requiredProp</span>: <span class="built_in">string</span>; optionalProp?: <span class="built_in">number</span> &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;foo requiredProp=<span class="string">&quot;bar&quot;</span> /&gt;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="子孙类型检查："><a href="#子孙类型检查：" class="headerlink" title="子孙类型检查："></a>子孙类型检查：</h3><ul>
-<li>children是元素属性(attribute)类型的一个属性(property)</li>
-<li>利用JSX.ElementChildrenAttribute来决定children名</li>
-<li>指定方式：<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">PropType</span> &#123;</span><br><span class="line">	<span class="attr">children</span>: <span class="variable constant_">JSX</span>.<span class="property">Element</span></span><br><span class="line">	<span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Component</span> = memo&lt;<span class="title class_">PropType</span>&gt;(<span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;children&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="JSX结果类型：默认地JSX表达式结果的类型为any"><a href="#JSX结果类型：默认地JSX表达式结果的类型为any" class="headerlink" title="JSX结果类型：默认地JSX表达式结果的类型为any"></a>JSX结果类型：默认地JSX表达式结果的类型为any</h3><h3 id="嵌入的表达式：JSX允许使用-标签来内嵌表达式"><a href="#嵌入的表达式：JSX允许使用-标签来内嵌表达式" class="headerlink" title="嵌入的表达式：JSX允许使用{}标签来内嵌表达式"></a>嵌入的表达式：JSX允许使用{}标签来内嵌表达式</h3><h3 id="React整合：使用React类型定义"><a href="#React整合：使用React类型定义" class="headerlink" title="React整合：使用React类型定义"></a>React整合：使用React类型定义</h3><h2 id="工厂函数"><a href="#工厂函数" class="headerlink" title="工厂函数"></a>工厂函数</h2><ul>
-<li>jsx: react编译选项使用的工厂函数是可配置的，使用jsxFactory命令行选项或内联的@jsx注释指令在每个文件上设置。</li>
-<li>如果工厂函数使用React.createElement定义（默认），编译器会先检查React.JSX，之后才检查全局的JSX。</li>
+<h2 id="步骤五：检查属性类型"><a href="#步骤五：检查属性类型" class="headerlink" title="步骤五：检查属性类型"></a>步骤五：检查属性类型</h2><p>对于固有元素，属性类型来自 <code>JSX.IntrinsicElements</code> 属性的类型；对于基于值的元素，取决于 <code>JSX.ElementAttributesProperty</code>。元素属性类型用于在 JSX 里进行属性类型检查，支持可选属性和必须属性。</p>
+<p>下面声明 <code>foo</code> 的 <code>requiredProp</code> 必填、<code>optionalProp</code> 可选，因此使用时只传必填项也能通过检查。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="keyword">namespace</span> <span class="title class_">JSX</span> &#123;</span><br><span class="line">	<span class="keyword">interface</span> <span class="title class_">IntrinsicElements</span> &#123;</span><br><span class="line">		<span class="attr">foo</span>: &#123; <span class="attr">requiredProp</span>: <span class="built_in">string</span>; optionalProp?: <span class="built_in">number</span> &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;foo requiredProp=<span class="string">&quot;bar&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="步骤六：检查子孙类型"><a href="#步骤六：检查子孙类型" class="headerlink" title="步骤六：检查子孙类型"></a>步骤六：检查子孙类型</h2><p><code>children</code> 是元素属性（attribute）类型的一个属性（property）。至于哪个名字代表 children，由 <code>JSX.ElementChildrenAttribute</code> 决定。</p>
+<p>指定 children 类型的写法如下，把 <code>children</code> 声明在 <code>PropType</code> 上即可。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">PropType</span> &#123;</span><br><span class="line">	<span class="attr">children</span>: <span class="variable constant_">JSX</span>.<span class="property">Element</span></span><br><span class="line">	<span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Component</span> = memo&lt;<span class="title class_">PropType</span>&gt;(<span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;children&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="步骤七：了解-JSX-结果类型与内嵌表达式"><a href="#步骤七：了解-JSX-结果类型与内嵌表达式" class="headerlink" title="步骤七：了解 JSX 结果类型与内嵌表达式"></a>步骤七：了解 JSX 结果类型与内嵌表达式</h2><p>默认情况下，JSX 表达式结果的类型为 <code>any</code>。JSX 允许使用 <code>&#123;&#125;</code> 标签来内嵌表达式。与 React 整合时，直接使用 React 的类型定义即可。</p>
+<h2 id="步骤八：配置工厂函数"><a href="#步骤八：配置工厂函数" class="headerlink" title="步骤八：配置工厂函数"></a>步骤八：配置工厂函数</h2><p><code>jsx: react</code> 编译选项使用的工厂函数是可配置的，通过 <code>jsxFactory</code> 命令行选项，或文件内联的 <code>@jsx</code> 注释指令来设置。</p>
+<p>如果工厂函数使用 <code>React.createElement</code> 定义（默认情况），编译器会先检查 <code>React.JSX</code>，之后才检查全局的 <code>JSX</code>。</p>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
+<li><code>React</code> 标识符是硬编码的，使用 <code>jsx: react</code> 模式时必须保证作用域里有可用的 <code>React</code>。</li>
+<li><code>.tsx</code> 里尖括号会被当成 JSX 标签，因此类型断言只能用 <code>as</code>。</li>
+<li>子孙类型示例里直接使用了 <code>children</code>，但函数组件拿到的 <code>props</code> 需要先解构出 <code>children</code>，否则这个变量在作用域里并不存在；示例只演示类型声明方式。</li>
 </ul>
 
 </article>
@@ -634,11 +626,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/01/TS/%E5%8D%81%E4%B8%80%E3%80%81%E6%A8%A1%E5%9D%97%E8%A7%A3%E6%9E%90/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/TS/%E5%8D%81%E3%80%81%E6%A8%A1%E5%9D%97%E5%92%8C%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">TS-模块解析</h6>
+                <h6 class="trm-op-title">模块和命名空间</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -655,11 +647,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/01/TS/%E5%8D%81%E4%BA%94%E3%80%81js%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/TS/%E5%8D%81%E4%BA%8C%E3%80%81%E5%A3%B0%E6%98%8E%E5%90%88%E5%B9%B6/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">TS-JS文件类型检查</h6>
+                <h6 class="trm-op-title">声明合并</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -731,7 +723,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="基本用法"><a rel="nofollow" class="trm-toc-link" href="#基本用法"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">基本用法</span></a></li><li class="trm-toc-item trm-toc-level-2" title="as操作符:在.ts和.tsx里都可用"><a rel="nofollow" class="trm-toc-link" href="#as操作符-在-ts和-tsx里都可用"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">as操作符:在.ts和.tsx里都可用</span></a></li><li class="trm-toc-item trm-toc-level-2" title="类型检查"><a rel="nofollow" class="trm-toc-link" href="#类型检查"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">类型检查</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="理解固有元素与基于值的元素之间的区别:"><a rel="nofollow" class="trm-toc-link" href="#理解固有元素与基于值的元素之间的区别"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">理解固有元素与基于值的元素之间的区别:</span></a></li><li class="trm-toc-item trm-toc-level-3" title="固有元素:"><a rel="nofollow" class="trm-toc-link" href="#固有元素"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">固有元素:</span></a></li><li class="trm-toc-item trm-toc-level-3" title="基于值的元素: 在所在作用域里按标识符查找"><a rel="nofollow" class="trm-toc-link" href="#基于值的元素-在所在作用域里按标识符查找"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">基于值的元素: 在所在作用域里按标识符查找</span></a></li><li class="trm-toc-item trm-toc-level-3" title="属性类型检查"><a rel="nofollow" class="trm-toc-link" href="#属性类型检查"><span class="trm-toc-number">3.4.</span> <span class="trm-toc-text">属性类型检查</span></a></li><li class="trm-toc-item trm-toc-level-3" title="子孙类型检查："><a rel="nofollow" class="trm-toc-link" href="#子孙类型检查："><span class="trm-toc-number">3.5.</span> <span class="trm-toc-text">子孙类型检查：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="JSX结果类型：默认地JSX表达式结果的类型为any"><a rel="nofollow" class="trm-toc-link" href="#JSX结果类型：默认地JSX表达式结果的类型为any"><span class="trm-toc-number">3.6.</span> <span class="trm-toc-text">JSX结果类型：默认地JSX表达式结果的类型为any</span></a></li><li class="trm-toc-item trm-toc-level-3" title="嵌入的表达式：JSX允许使用{}标签来内嵌表达式"><a rel="nofollow" class="trm-toc-link" href="#嵌入的表达式：JSX允许使用-标签来内嵌表达式"><span class="trm-toc-number">3.7.</span> <span class="trm-toc-text">嵌入的表达式：JSX允许使用{}标签来内嵌表达式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="React整合：使用React类型定义"><a rel="nofollow" class="trm-toc-link" href="#React整合：使用React类型定义"><span class="trm-toc-number">3.8.</span> <span class="trm-toc-text">React整合：使用React类型定义</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="工厂函数"><a rel="nofollow" class="trm-toc-link" href="#工厂函数"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">工厂函数</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="结论先行"><a rel="nofollow" class="trm-toc-link" href="#结论先行"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">结论先行</span></a></li><li class="trm-toc-item trm-toc-level-2" title="背景"><a rel="nofollow" class="trm-toc-link" href="#背景"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">背景</span></a></li><li class="trm-toc-item trm-toc-level-2" title="步骤一：开启 JSX 支持"><a rel="nofollow" class="trm-toc-link" href="#步骤一：开启-JSX-支持"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">步骤一：开启 JSX 支持</span></a></li><li class="trm-toc-item trm-toc-level-2" title="步骤二：用 as 操作符做类型断言"><a rel="nofollow" class="trm-toc-link" href="#步骤二：用-as-操作符做类型断言"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">步骤二：用 as 操作符做类型断言</span></a></li><li class="trm-toc-item trm-toc-level-2" title="步骤三：区分固有元素与基于值的元素"><a rel="nofollow" class="trm-toc-link" href="#步骤三：区分固有元素与基于值的元素"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">步骤三：区分固有元素与基于值的元素</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="固有元素"><a rel="nofollow" class="trm-toc-link" href="#固有元素"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">固有元素</span></a></li><li class="trm-toc-item trm-toc-level-3" title="基于值的元素"><a rel="nofollow" class="trm-toc-link" href="#基于值的元素"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">基于值的元素</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="步骤四：处理函数组件与类组件"><a rel="nofollow" class="trm-toc-link" href="#步骤四：处理函数组件与类组件"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">步骤四：处理函数组件与类组件</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="无状态函数组件（SFC）"><a rel="nofollow" class="trm-toc-link" href="#无状态函数组件（SFC）"><span class="trm-toc-number">6.1.</span> <span class="trm-toc-text">无状态函数组件（SFC）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="类组件"><a rel="nofollow" class="trm-toc-link" href="#类组件"><span class="trm-toc-number">6.2.</span> <span class="trm-toc-text">类组件</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="步骤五：检查属性类型"><a rel="nofollow" class="trm-toc-link" href="#步骤五：检查属性类型"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">步骤五：检查属性类型</span></a></li><li class="trm-toc-item trm-toc-level-2" title="步骤六：检查子孙类型"><a rel="nofollow" class="trm-toc-link" href="#步骤六：检查子孙类型"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">步骤六：检查子孙类型</span></a></li><li class="trm-toc-item trm-toc-level-2" title="步骤七：了解 JSX 结果类型与内嵌表达式"><a rel="nofollow" class="trm-toc-link" href="#步骤七：了解-JSX-结果类型与内嵌表达式"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">步骤七：了解 JSX 结果类型与内嵌表达式</span></a></li><li class="trm-toc-item trm-toc-level-2" title="步骤八：配置工厂函数"><a rel="nofollow" class="trm-toc-link" href="#步骤八：配置工厂函数"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">步骤八：配置工厂函数</span></a></li><li class="trm-toc-item trm-toc-level-2" title="注意点"><a rel="nofollow" class="trm-toc-link" href="#注意点"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">注意点</span></a></li></ol>
       </div>
     </div>
 
@@ -855,6 +847,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

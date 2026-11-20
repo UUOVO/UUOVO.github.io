@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="useState分散逻辑 vs reducer 聚合逻辑  useState React 的一个Hook，在函数组件中管理组件的状态，并在状态更新时，重新渲染组件 缺点： 当有多个状态时，需要写多个，维护困难  reducer 先定义好reducer，就是把要操作的行为定义好，之后使用useReducer 示例1234567891011const reducer &#x3D; (state,acti">
+<meta name="description" content="对比 useState 与 useReducer 的状态管理方式，说明多状态维护时如何取舍，以及 reducer 的初始值与 dispatch 用法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React-状态管理useState 与 reducer">
+<meta property="og:title" content="状态管理useState 与 reducer">
 <meta property="og:url" content="http://example.com/en/2024/11/01/react/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86useState%E4%B8%8Ereducer/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="useState分散逻辑 vs reducer 聚合逻辑  useState React 的一个Hook，在函数组件中管理组件的状态，并在状态更新时，重新渲染组件 缺点： 当有多个状态时，需要写多个，维护困难  reducer 先定义好reducer，就是把要操作的行为定义好，之后使用useReducer 示例1234567891011const reducer &#x3D; (state,acti">
+<meta property="og:description" content="对比 useState 与 useReducer 的状态管理方式，说明多状态维护时如何取舍，以及 reducer 的初始值与 dispatch 用法">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-11-01T01:41:47.880Z">
-<meta property="article:modified_time" content="2025-07-17T09:22:56.056Z">
+<meta property="article:published_time" content="2024-11-01T01:41:47.000Z">
+<meta property="article:modified_time" content="2026-11-18T07:49:48.471Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="React">
 <meta property="article:tag" content="状态管理库">
@@ -24,7 +24,7 @@
     <meta name="keywords" content="react">
 
 
-<title >React-状态管理useState 与 reducer</title>
+<title >状态管理useState 与 reducer</title>
 
 <!-- Favicon -->
 
@@ -69,7 +69,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-17 17:22:56"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-18 15:49:48"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -84,6 +84,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -198,13 +200,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -240,7 +242,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -258,13 +260,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -386,7 +388,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            React-状态管理useState 与 reducer
+                            状态管理useState 与 reducer
                         </h1>
 
                         
@@ -533,27 +535,29 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>这篇解决“状态一多，<code>useState</code> 就写成一排、改起来互相牵连”的问题。结论是：状态彼此独立、更新简单时用 <code>useState</code>；状态之间有关联、更新逻辑集中时用 <code>useReducer</code>，把“能做什么”收敛到 reducer 里。</p>
+<span id="more"></span>
 
-<blockquote>
-<p>useState分散逻辑 vs reducer 聚合逻辑</p>
-</blockquote>
-<h3 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h3><ul>
-<li>React 的一个Hook，在函数组件中管理组件的状态，并在状态更新时，重新渲染组件</li>
-<li>缺点： 当有多个状态时，需要写多个，维护困难</li>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>状态管理的选择可以先记一句话：useState 分散逻辑，reducer 聚合逻辑。前者把每个状态独立声明，后者把一组相关状态和它们的更新动作收进同一个函数。</p>
+<h2 id="一、useState"><a href="#一、useState" class="headerlink" title="一、useState"></a>一、useState</h2><p>React 的一个 Hook，在函数组件中管理组件状态，并在状态更新时重新渲染组件。</p>
+<p>缺点是：当有多个状态时，需要写多个 <code>useState</code>，维护困难。</p>
+<h2 id="二、reducer-的写法"><a href="#二、reducer-的写法" class="headerlink" title="二、reducer 的写法"></a>二、reducer 的写法</h2><p>思路是先定义好 reducer，也就是把要操作的行为定义好，之后再用 <code>useReducer</code> 调用。</p>
+<p>下面的 reducer 用 <code>switch</code> 分发三种行为：新增、删除、默认返回原状态。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">reducer</span> = (<span class="params">state,action</span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">switch</span> (action.<span class="property">type</span>) &#123; <span class="comment">// 这里拿到action.type</span></span><br><span class="line">		<span class="keyword">case</span> <span class="string">&#x27;Add&#x27;</span>: &#123; </span><br><span class="line">			<span class="keyword">const</span> id = state.<span class="property">length</span> +<span class="number">1</span></span><br><span class="line">			<span class="keyword">return</span> [...state, &#123;<span class="attr">id</span>:id, <span class="attr">title</span>: action.<span class="property">payload</span>, <span class="attr">show</span>: <span class="literal">false</span>&#125;]</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">&#x27;Delete&#x27;</span>:</span><br><span class="line">			<span class="keyword">return</span> state.<span class="title function_">filter</span>(<span class="function"><span class="params">task</span> =&gt;</span> task.<span class="property">id</span> !== action.<span class="property">payload</span>)</span><br><span class="line">		<span class="attr">default</span>: </span><br><span class="line">			<span class="keyword">return</span> state</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="用-useReducer-初始化并调用"><a href="#用-useReducer-初始化并调用" class="headerlink" title="用 useReducer 初始化并调用"></a>用 useReducer 初始化并调用</h3><p><code>useReducer</code> 接收 reducer 和初始 state，返回当前 state 与 dispatch。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, dispatch] = <span class="title function_">useReducer</span>(reducer, [</span><br><span class="line">	&#123;<span class="attr">id</span>:<span class="number">1</span>, <span class="attr">title</span>:<span class="string">&quot;第一条&quot;</span>,<span class="attr">show</span>: <span class="literal">false</span>&#125;,</span><br><span class="line">	&#123;<span class="attr">id</span>:<span class="number">2</span>, <span class="attr">title</span>:<span class="string">&quot;第二条&quot;</span>,<span class="attr">show</span>: <span class="literal">false</span>&#125;,</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用和调用方法"><a href="#使用和调用方法" class="headerlink" title="使用和调用方法"></a>使用和调用方法</h3><ul>
+<li><code>state</code> 就是数据，也是 <code>useState</code> 里的值；<code>dispatch</code> 相当于 <code>setState</code>；</li>
+<li>调用方法：<code>dispatch(&#123;type:&#39;Delete&#39;, payload: id&#125;)</code>。<code>type</code> 传要执行的操作，<code>payload</code> 传该事件中要改变的内容，具体含义在 reducer 中定义。</li>
 </ul>
-<h3 id="reducer"><a href="#reducer" class="headerlink" title="reducer"></a>reducer</h3><ul>
-<li>先定义好reducer，就是把要操作的行为定义好，之后使用useReducer</li>
-<li>示例<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">reducer</span> = (<span class="params">state,action</span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">switch</span>(state, type) &#123; <span class="comment">// 这里拿到state</span></span><br><span class="line">		<span class="keyword">case</span> <span class="string">&#x27;Add&#x27;</span>: <span class="comment">// 对state进行添加操作</span></span><br><span class="line">			<span class="keyword">const</span> id = state.<span class="property">length</span> +<span class="number">1</span></span><br><span class="line">			<span class="keyword">return</span> [...state, &#123;<span class="attr">id</span>:id, <span class="attr">title</span>: action.<span class="property">payload</span>, <span class="attr">show</span>: <span class="literal">false</span>&#125;]</span><br><span class="line">		<span class="keyword">case</span> <span class="string">&#x27;Delete&#x27;</span>:</span><br><span class="line">			<span class="keyword">return</span> state.<span class="title function_">filter</span>(<span class="function"><span class="params">task</span> =&gt;</span> task.<span class="property">id</span> !== action.<span class="property">payload</span>)</span><br><span class="line">		<span class="attr">default</span>: </span><br><span class="line">			<span class="keyword">return</span> state</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>使用useReducer来调用reducer的操作和初始化state</li>
-<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, dispatch] = <span class="title function_">useReducer</span>(reducer, [</span><br><span class="line">	&#123;<span class="attr">id</span>:<span class="number">1</span>, <span class="attr">title</span>:<span class="string">&quot;第一条&quot;</span>,<span class="attr">show</span>: <span class="literal">false</span>&#125;,</span><br><span class="line">	&#123;<span class="attr">id</span>:<span class="number">2</span>, <span class="attr">title</span>:<span class="string">&quot;第二条&quot;</span>,<span class="attr">show</span>: <span class="literal">false</span>&#125;,</span><br><span class="line">])</span><br></pre></td></tr></table></figure></li>
-<li>使用和调取方法<ul>
-<li>state 就是数据，也是usestate里的值，dispatch就相当于setState</li>
-<li>调用方法：dispatch({type:’Delete’, payload: id}) &#x2F;&#x2F; type传要执行的操作，payload传在该事件中要改变什么，在reducer中要定义</li>
-</ul>
-</li>
-<li>如果有生成初始值的函数，为避免性能浪费，可以把函数也一起传进useReducer<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果createState不能计算除初始值，需要定义一个默认，如果可以直接传null</span></span><br><span class="line"><span class="keyword">const</span> [state, dispatch] = <span class="title function_">useReducer</span>(reducer, <span class="literal">null</span> ,createInitState)  </span><br></pre></td></tr></table></figure></li>
+<h3 id="惰性初始化"><a href="#惰性初始化" class="headerlink" title="惰性初始化"></a>惰性初始化</h3><p>如果有生成初始值的函数，为避免性能浪费，可以把函数也一起传进 <code>useReducer</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果createState不能计算出初始值，需要定义一个默认；如果可以直接传null</span></span><br><span class="line"><span class="keyword">const</span> [state, dispatch] = <span class="title function_">useReducer</span>(reducer, <span class="literal">null</span> ,createInitState)  </span><br></pre></td></tr></table></figure>
+
+<h2 id="踩坑与注意点"><a href="#踩坑与注意点" class="headerlink" title="踩坑与注意点"></a>踩坑与注意点</h2><ul>
+<li>reducer 必须是纯函数：不能修改 <code>state</code>，只能返回新对象或新数组，否则组件不会按预期重新渲染。</li>
+<li><code>payload</code> 的语义由 reducer 决定：删除时传 id，新增时传标题，调用前要统一约定。</li>
 </ul>
 
 </article>
@@ -574,17 +578,17 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/01/threeJS/3d%E5%AE%98%E7%BD%91%E6%A1%88%E4%BE%8B/">
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/react/%E5%9C%A8react%E9%A1%B9%E7%9B%AE%E9%81%87%E8%A7%81%E7%9A%84%E9%97%AE%E9%A2%98/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">threeJS-3D官网步骤</h6>
+                <h6 class="trm-op-title">在项目中遇到的问题</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
                 <li>24/11/01</li>
-                <li>11:01</li>
-                <li>ThreeJS</li>
+                <li>09:41</li>
+                <li>React</li>
             </ul>
         </div>
     </div>
@@ -595,17 +599,17 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/01/react/12.%E9%BC%A0%E6%A0%87%E7%A7%BB%E5%8A%A8%E5%B0%BE%E6%95%88%E7%9A%84%E4%BC%98%E5%8C%96%E4%B8%8E%E5%AD%A6%E4%B9%A0/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/31/ES6/promise%E5%92%8Casync%E7%9A%84%E6%80%BB%E7%BB%93/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">React-鼠标移动尾效的优化与学习</h6>
+                <h6 class="trm-op-title">Promise/async 与es5总结</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
-                <li>24/11/01</li>
-                <li>09:41</li>
-                <li>React</li>
+                <li>24/10/31</li>
+                <li>17:15</li>
+                <li>ES6</li>
             </ul>
         </div>
     </div>
@@ -671,7 +675,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-3" title="useState"><a rel="nofollow" class="trm-toc-link" href="#useState"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">useState</span></a></li><li class="trm-toc-item trm-toc-level-3" title="reducer"><a rel="nofollow" class="trm-toc-link" href="#reducer"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">reducer</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景"><a rel="nofollow" class="trm-toc-link" href="#背景"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景</span></a></li><li class="trm-toc-item trm-toc-level-2" title="一、useState"><a rel="nofollow" class="trm-toc-link" href="#一、useState"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">一、useState</span></a></li><li class="trm-toc-item trm-toc-level-2" title="二、reducer 的写法"><a rel="nofollow" class="trm-toc-link" href="#二、reducer-的写法"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">二、reducer 的写法</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="用 useReducer 初始化并调用"><a rel="nofollow" class="trm-toc-link" href="#用-useReducer-初始化并调用"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">用 useReducer 初始化并调用</span></a></li><li class="trm-toc-item trm-toc-level-3" title="使用和调用方法"><a rel="nofollow" class="trm-toc-link" href="#使用和调用方法"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">使用和调用方法</span></a></li><li class="trm-toc-item trm-toc-level-3" title="惰性初始化"><a rel="nofollow" class="trm-toc-link" href="#惰性初始化"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">惰性初始化</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="踩坑与注意点"><a rel="nofollow" class="trm-toc-link" href="#踩坑与注意点"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">踩坑与注意点</span></a></li></ol>
       </div>
     </div>
 
@@ -795,6 +799,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

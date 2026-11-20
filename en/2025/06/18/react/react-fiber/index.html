@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="React 核心机制是跟踪组件的状态变化，并将更新的状态映射到新的界面，这个过程称为协调。 React Fiber 是React核心算法的一次重新实现  从问题来理解为什么react需要FiberQ1：React的设计理念是构建快速响应的大型Web应用程序。制约快速响应的因素？反映算法不足 CPU瓶颈：大量的同步计算任务阻塞了浏览器的UI渲染，造成页面卡顿。而 React 的 Reconc">
+<meta name="description" content="从协调机制面临的问题出发，讲解 React 三层架构、Fiber 节点的数据结构、双缓存机制与可中断的执行过程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React-协调算法|背后的核心算法React Fiber">
+<meta property="og:title" content="协调算法|背后的核心算法React Fiber">
 <meta property="og:url" content="http://example.com/en/2025/06/18/react/react-fiber/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="React 核心机制是跟踪组件的状态变化，并将更新的状态映射到新的界面，这个过程称为协调。 React Fiber 是React核心算法的一次重新实现  从问题来理解为什么react需要FiberQ1：React的设计理念是构建快速响应的大型Web应用程序。制约快速响应的因素？反映算法不足 CPU瓶颈：大量的同步计算任务阻塞了浏览器的UI渲染，造成页面卡顿。而 React 的 Reconc">
+<meta property="og:description" content="从协调机制面临的问题出发，讲解 React 三层架构、Fiber 节点的数据结构、双缓存机制与可中断的执行过程">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-06-18T08:08:22.679Z">
-<meta property="article:modified_time" content="2025-07-18T02:04:35.332Z">
+<meta property="article:published_time" content="2025-06-18T08:08:22.000Z">
+<meta property="article:modified_time" content="2026-11-18T07:52:48.924Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="React">
@@ -25,7 +25,7 @@
     <meta name="keywords" content="react">
 
 
-<title >React-协调算法|背后的核心算法React Fiber</title>
+<title >协调算法|背后的核心算法React Fiber</title>
 
 <!-- Favicon -->
 
@@ -70,7 +70,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-18 10:04:35"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-18 15:52:48"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -85,6 +85,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -199,13 +201,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -241,7 +243,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -259,13 +261,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -387,7 +389,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            React-协调算法|背后的核心算法React Fiber
+                            协调算法|背后的核心算法React Fiber
                         </h1>
 
                         
@@ -534,94 +536,96 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>这篇回答三个问题：React 为什么需要 Fiber、Fiber 用什么数据结构解决了问题、以及一次更新在 Fiber 架构下到底怎么跑。读完应当能解释“为什么 <code>componentWillMount</code> 可能执行多次”，也能说清 current 树与 workInProgress 树的关系。</p>
+<span id="more"></span>
 
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><ul>
+<li>React 的核心机制是跟踪组件的状态变化，并将更新后的状态映射到新的界面，这个过程称为协调（Reconciliation）；</li>
+<li>React Fiber 是 React 核心算法的一次重新实现。</li>
+</ul>
+<h2 id="一、从问题理解为什么需要-Fiber"><a href="#一、从问题理解为什么需要-Fiber" class="headerlink" title="一、从问题理解为什么需要 Fiber"></a>一、从问题理解为什么需要 Fiber</h2><h3 id="Q1：React-的设计理念是构建快速响应的大型-Web-应用程序，制约快速响应的因素是什么？"><a href="#Q1：React-的设计理念是构建快速响应的大型-Web-应用程序，制约快速响应的因素是什么？" class="headerlink" title="Q1：React 的设计理念是构建快速响应的大型 Web 应用程序，制约快速响应的因素是什么？"></a>Q1：React 的设计理念是构建快速响应的大型 Web 应用程序，制约快速响应的因素是什么？</h3><blockquote>
+<p>这一问反映的是算法层面的不足。</p>
+</blockquote>
 <ul>
-<li>React 核心机制是跟踪组件的状态变化，并将更新的状态映射到新的界面，这个过程称为协调。</li>
-<li>React Fiber 是React核心算法的一次重新实现</li>
+<li><strong>CPU 瓶颈</strong>：大量的同步计算任务阻塞了浏览器的 UI 渲染，造成页面卡顿。而 React 的 Reconciliation 是 CPU 密集型操作；React 15 使用的 Virtual DOM 协调算法<span class="desc">（因为它在内部使用堆栈，也被称为堆栈协调器）</span>共享一个协调器，可能会导致混淆。</li>
+<li><strong>IO 瓶颈</strong>：网络请求响应不及时，造成白屏。</li>
 </ul>
-<h2 id="从问题来理解为什么react需要Fiber"><a href="#从问题来理解为什么react需要Fiber" class="headerlink" title="从问题来理解为什么react需要Fiber"></a>从问题来理解为什么react需要Fiber</h2><h3 id="Q1：React的设计理念是构建快速响应的大型Web应用程序。制约快速响应的因素？反映算法不足"><a href="#Q1：React的设计理念是构建快速响应的大型Web应用程序。制约快速响应的因素？反映算法不足" class="headerlink" title="Q1：React的设计理念是构建快速响应的大型Web应用程序。制约快速响应的因素？反映算法不足"></a>Q1：React的设计理念是构建快速响应的大型Web应用程序。制约快速响应的因素？<span class="desc">反映算法不足</span></h3><ul>
-<li>CPU瓶颈：大量的同步计算任务阻塞了浏览器的UI渲染，造成页面卡顿。而 React 的 Reconcilation 是 CPU 密集型的操作，React 15使用的Virtual DOM协调算法<span class="desc">(因为它在内部使用堆栈也被称为堆栈协调器)</span>，共享一个协调器,可能会导致混淆。</li>
-<li>IO的瓶颈：网络请求响应不及时，造成白屏</li>
+<h3 id="Q2：Vue3-动静结合的-DOM-Diff-与-React-的对比？"><a href="#Q2：Vue3-动静结合的-DOM-Diff-与-React-的对比？" class="headerlink" title="Q2：Vue3 动静结合的 DOM Diff 与 React 的对比？"></a>Q2：Vue3 动静结合的 DOM Diff 与 React 的对比？</h3><blockquote>
+<p>这一问反映的是编译时优化的不足。</p>
+</blockquote>
+<ul>
+<li>Vue3 的 DOM Diff 在预编译阶段进行优化：预编译时静态分析模板，分析出视图依赖了哪些数据，再进行响应式处理。Template 模板是一种非常有约束的语言，你只能以某种方式去编写模板。</li>
+<li>React 是局部渲染，无法从模板层面进行静态分析。JSX 具有 JavaScript 的完整表现力，可以构建非常复杂的组件；但灵活的语法也意味着引擎难以理解，无法预判开发者的意图，从而难以优化性能。</li>
 </ul>
-<h3 id="Q2：Vue3-动静结合的DOM-Diff-与-React的对比？反映编译时优化不足"><a href="#Q2：Vue3-动静结合的DOM-Diff-与-React的对比？反映编译时优化不足" class="headerlink" title="Q2：Vue3 动静结合的DOM Diff 与 React的对比？反映编译时优化不足"></a>Q2：Vue3 动静结合的DOM Diff 与 React的对比？<span class="desc">反映编译时优化不足</span></h3><ul>
-<li>Vue3的DOM Diff在预编译进行优化，在预编译阶段静态分析模版，分析出视图依赖了哪些数据，进行响应式处理。Template 模板是一种非常有约束的语言，你只能以某种方式去编写模板。</li>
-<li>而React 是局部渲染，无法从模板层面进行静态分析。JSX 具有 JavaScript 的完整表现力，可以构建非常复杂的组件。但是灵活的语法，也意味着引擎难以理解，无法预判开发者的用户意图，从而难以优化性能。</li>
+<h2 id="二、React-的三层架构"><a href="#二、React-的三层架构" class="headerlink" title="二、React 的三层架构"></a>二、React 的三层架构</h2><ul>
+<li><strong>调度器（Scheduler）</strong>：调度任务优先级，高优先级任务优先进入协调器；不使用 <code>requestIdleCallback</code>（兼容性不好）。</li>
+<li><strong>协调器（Reconciler）</strong>：负责找出更改的组件，把更新工作从递归变成可以中断的循环过程，内部采用 Fiber 架构。</li>
+<li><strong>渲染器（Renderer）</strong>：将变化的组件渲染到页面上。</li>
 </ul>
-<h2 id="React-架构"><a href="#React-架构" class="headerlink" title="React 架构"></a>React 架构</h2><ul>
-<li>调度器(Scheduler)：调度任务优先级，高级任务优先进入协调器，不使用requestIdleCallback(兼容性不好)。</li>
-<li>协调器(Reconciler)：负责找出更改的组件，更新工作从递归变成可以中断的循环过程。内部采用Fiber架构</li>
-<li>渲染器(Renderer)：将变化的组件渲染到页面上</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/v19.1.0/packages/scheduler/src/forks/Scheduler.js">源码地址</a></p>
-<h3 id="调度器"><a href="#调度器" class="headerlink" title="调度器"></a>调度器</h3><ul>
-<li>以浏览器是否有剩余时间作为任务中断的标准，当浏览器有剩余时间时通知我们。</li>
-</ul>
+<p>源码地址：<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/v19.1.0/packages/scheduler/src/forks/Scheduler.js">packages&#x2F;scheduler&#x2F;src&#x2F;forks&#x2F;Scheduler.js</a>。</p>
+<h3 id="调度器"><a href="#调度器" class="headerlink" title="调度器"></a>调度器</h3><p>以浏览器是否有剩余时间作为任务中断的标准，当浏览器有剩余时间时通知我们。</p>
 <h3 id="协调器"><a href="#协调器" class="headerlink" title="协调器"></a>协调器</h3><ul>
-<li>更新工作从15递归变成了16+可以中断的循环过程。每次循环都会调用shouldYield判断当前是否有剩余时间。</li>
-<li>当Scheduler将任务交给Reconciler后，Reconciler会为变化的虚拟 DOM 打上代表增&#x2F;删&#x2F;更新的标记</li>
-<li>整个Scheduler与Reconciler的工作都在内存中进行。只有当所有组件都完成Reconciler的工作，才会统一交给Renderer。</li>
+<li>更新工作从 React 15 的递归，变成了 16+ 可以中断的循环过程，每次循环都会调用 <code>shouldYield</code> 判断当前是否有剩余时间；</li>
+<li>当 Scheduler 将任务交给 Reconciler 后，Reconciler 会为变化的虚拟 DOM 打上代表增&#x2F;删&#x2F;更新的标记；</li>
+<li>整个 Scheduler 与 Reconciler 的工作都在内存中进行，只有当所有组件都完成 Reconciler 的工作，才会统一交给 Renderer。</li>
 </ul>
-<h3 id="渲染器"><a href="#渲染器" class="headerlink" title="渲染器"></a>渲染器</h3><ul>
-<li>根据Reconciler为虚拟 DOM 打的标记，同步执行对应的 DOM 操作</li>
-</ul>
-<h2 id="Fiber"><a href="#Fiber" class="headerlink" title="Fiber"></a>Fiber</h2><ul>
-<li>本质是『虚拟DOM』。Fiber节点可以保存对应的DOM节点，Fiber节点构成的Fiber树就对应DOM树</li>
-<li>从数据结构看，每个Fiber节点对应一个React Element，保存了该组件的类型(函数组件、类组件、原生组件)、对应的DOM节点等信息</li>
-<li>从工作单元看，每个Fiber节点保存了本次更新中该组件改变的状态、要执行的工作（删除、插入、更新）</li>
+<h3 id="渲染器"><a href="#渲染器" class="headerlink" title="渲染器"></a>渲染器</h3><p>根据 Reconciler 为虚拟 DOM 打的标记，同步执行对应的 DOM 操作。</p>
+<h2 id="三、Fiber-是什么"><a href="#三、Fiber-是什么" class="headerlink" title="三、Fiber 是什么"></a>三、Fiber 是什么</h2><ul>
+<li>本质是『虚拟 DOM』：Fiber 节点可以保存对应的 DOM 节点，Fiber 节点构成的 Fiber 树对应 DOM 树；</li>
+<li>从数据结构看，每个 Fiber 节点对应一个 React Element，保存了该组件的类型（函数组件、类组件、原生组件）、对应的 DOM 节点等信息；</li>
+<li>从工作单元看，每个 Fiber 节点保存了本次更新中该组件改变的状态、要执行的工作（删除、插入、更新）。</li>
 </ul>
 <h3 id="Fiber-树"><a href="#Fiber-树" class="headerlink" title="Fiber 树"></a>Fiber 树</h3><ul>
-<li>特点：链表结构，将协调的『递归遍历』改为『循环遍历』</li>
-<li>React 第一次渲染时，会通过 React.createElement 创建一颗 Element 树，可以称之为 Virtual DOM Tree，由于要记录上下文信息，加入了 Fiber，每一个 Element 会对应一个 Fiber Node，将 Fiber Node 链接起来的结构成为 Fiber Tree。</li>
-<li>多个节点如何连接成树？<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">return</span> = <span class="literal">null</span>  <span class="comment">// 指向父Fiber节点</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">child</span> = <span class="literal">null</span>   <span class="comment">// 指向子Fiber节点</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">sibling</span> = <span class="literal">null</span> <span class="comment">// 指向右边第一个兄弟Fiber节点</span></span><br></pre></td></tr></table></figure></li>
+<li>特点：链表结构，将协调的『递归遍历』改为『循环遍历』；</li>
+<li>React 第一次渲染时，会通过 <code>React.createElement</code> 创建一棵 Element 树，可以称之为 Virtual DOM Tree。由于要记录上下文信息，加入了 Fiber：每一个 Element 会对应一个 Fiber Node，将 Fiber Node 链接起来的结构称为 Fiber Tree。</li>
 </ul>
-<h2 id="Fiber-架构的工作原理"><a href="#Fiber-架构的工作原理" class="headerlink" title="Fiber 架构的工作原理"></a>Fiber 架构的工作原理</h2><ul>
-<li>双缓存：在内存中构建并直接替换</li>
-<li>双缓存树：在React中最多会同时存在两棵Fiber树。<ul>
-<li>当前屏幕显示内容对应的Fiber树称为current Fiber树（即上次渲染构建的Fiber树）。</li>
-<li>正在内存中构建的Fiber树称为workInProgress Fiber树。（<span class="en">无论是创建还是更新、挂起、恢复、终止操作都是发生在W树创建过程中。W树构建过程其实就是循环的执行任务和创建下一个任务。</span>）</li>
+<p>多个节点通过三个指针连接成树。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">return</span> = <span class="literal">null</span>  <span class="comment">// 指向父Fiber节点</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">child</span> = <span class="literal">null</span>   <span class="comment">// 指向子Fiber节点</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">sibling</span> = <span class="literal">null</span> <span class="comment">// 指向右边第一个兄弟Fiber节点</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="四、Fiber-架构的工作原理"><a href="#四、Fiber-架构的工作原理" class="headerlink" title="四、Fiber 架构的工作原理"></a>四、Fiber 架构的工作原理</h2><ul>
+<li><strong>双缓存</strong>：在内存中构建，然后直接替换；</li>
+<li><strong>双缓存树</strong>：React 中最多会同时存在两棵 Fiber 树：<ul>
+<li>当前屏幕显示内容对应的 Fiber 树称为 current Fiber 树（即上次渲染构建的 Fiber 树）；</li>
+<li>正在内存中构建的 Fiber 树称为 workInProgress Fiber 树。无论是创建、更新、挂起、恢复还是终止，都发生在 W 树（workInProgress 树）的创建过程中；W 树的构建过程其实就是循环地执行任务和创建下一个任务。</li>
 </ul>
 </li>
 </ul>
 <h3 id="初次渲染的构建流程"><a href="#初次渲染的构建流程" class="headerlink" title="初次渲染的构建流程"></a>初次渲染的构建流程</h3><ol>
-<li>创建阶段：首次执行ReactDOM.render 会创建 fiberRootNode（整个应用的根节点）和 rootFiber（<code>&lt;App /&gt;</code>所在组件树的根节点）。由于首屏渲染，页面没有挂载任何DOM，所以fiberRootNode.current指向的rootFiber没有任何子Fiber节点（即current Fiber树为空）。</li>
-<li>render阶段：进入render阶段，根据组件返回的JSX载内存中一次创建Fiber节点并连接在一起构建Fiber树，被称为『workInProgress Fiber树』。在构建W树时会尝试复用C树中已有的Fiber节点内的属性。在首屏渲染时，只有rootFiber存在对应的current Fiber(即rootFiber.alternate)</li>
-<li>commit阶段：进入commit阶段，已构建完的workInProgress Fiber树渲染到页面上</li>
+<li><strong>创建阶段</strong>：首次执行 <code>ReactDOM.render</code> 会创建 <code>fiberRootNode</code>（整个应用的根节点）和 <code>rootFiber</code>（<code>&lt;App /&gt;</code> 所在组件树的根节点）。由于是首屏渲染，页面没有挂载任何 DOM，所以 <code>fiberRootNode.current</code> 指向的 <code>rootFiber</code> 没有任何子 Fiber 节点（即 current Fiber 树为空）。</li>
+<li><strong>render 阶段</strong>：根据组件返回的 JSX，在内存中依次创建 Fiber 节点并连接在一起构建 Fiber 树，这棵树被称为『workInProgress Fiber 树』。构建 W 树时会尝试复用 C 树（current 树）中已有 Fiber 节点内的属性；首屏渲染时，只有 <code>rootFiber</code> 存在对应的 current Fiber（即 <code>rootFiber.alternate</code>）。</li>
+<li><strong>commit 阶段</strong>：把已构建完的 workInProgress Fiber 树渲染到页面上。</li>
 </ol>
 <h3 id="更新阶段的构建流程"><a href="#更新阶段的构建流程" class="headerlink" title="更新阶段的构建流程"></a>更新阶段的构建流程</h3><ol>
-<li>开启新一轮的render阶段并构建新一颗W树。创建时复用C树的对应节点数据</li>
-<li>已构建完的W树渲染到页面上。渲染完成W树变成C树。</li>
+<li>开启新一轮的 render 阶段并构建新的一棵 W 树，创建时复用 C 树对应节点的数据；</li>
+<li>把已构建完的 W 树渲染到页面上，渲染完成后 W 树变成 C 树。</li>
 </ol>
-<h3 id="JSX-Fiber节点"><a href="#JSX-Fiber节点" class="headerlink" title="JSX &amp; Fiber节点"></a>JSX &amp; Fiber节点</h3><ul>
-<li>在组件mount时，Reconciler『根据JSX描述』的组件内容生成组件对应的『Fiber节点』。</li>
-<li>在update时，Reconciler将JSX与Fiber节点保存的『数据对比』，生成组件对应的Fiber节点，并根据对比结果为Fiber节点打上标记。</li>
+<h3 id="JSX-与-Fiber-节点"><a href="#JSX-与-Fiber-节点" class="headerlink" title="JSX 与 Fiber 节点"></a>JSX 与 Fiber 节点</h3><ul>
+<li>在组件 mount 时，Reconciler『根据 JSX 描述』的组件内容生成组件对应的『Fiber 节点』；</li>
+<li>在 update 时，Reconciler 将 JSX 与 Fiber 节点保存的『数据对比』，生成组件对应的 Fiber 节点，并根据对比结果为 Fiber 节点打上标记。</li>
 </ul>
-<h2 id="React-Fiber-执行过程"><a href="#React-Fiber-执行过程" class="headerlink" title="React Fiber 执行过程"></a>React Fiber 执行过程</h2><h3 id="任务拆分"><a href="#任务拆分" class="headerlink" title="任务拆分"></a>任务拆分</h3><ul>
-<li>在调和阶段递归遍历 VDOM 这个大任务分成若干小任务，每个任务只负责一个节点的处理。</li>
-</ul>
+<h2 id="五、React-Fiber-的执行过程"><a href="#五、React-Fiber-的执行过程" class="headerlink" title="五、React Fiber 的执行过程"></a>五、React Fiber 的执行过程</h2><h3 id="任务拆分"><a href="#任务拆分" class="headerlink" title="任务拆分"></a>任务拆分</h3><p>在调和阶段递归遍历 VDOM 时，把这个大任务分成若干小任务，每个任务只负责一个节点的处理。</p>
 <h3 id="任务挂起、恢复、终止"><a href="#任务挂起、恢复、终止" class="headerlink" title="任务挂起、恢复、终止"></a>任务挂起、恢复、终止</h3><ul>
-<li>当当前分配的任务完成后，先判断这一帧是否还有空闲时间，没有就挂起下一个任务的执行，记住当前挂起的节点，让出控制权给浏览器执行更高优先级任务</li>
-</ul>
-<h3 id="任务恢复"><a href="#任务恢复" class="headerlink" title="任务恢复"></a>任务恢复</h3><ul>
-<li>在浏览器渲染完一帧后，判断当前帧是否有剩余时间，如果有就恢复执行之前挂起的任务。如果没有任务需要处理，代表调和阶段完成，可以开始进入渲染阶段。</li>
-<li>判断一帧是否用空闲时间，使用 RequestIdleCallback</li>
-<li>恢复执行时通过链表获取下一个任务</li>
-</ul>
-<h3 id="任务终止"><a href="#任务终止" class="headerlink" title="任务终止"></a>任务终止</h3><ul>
-<li>不是每次更新都会走到提交阶段。当在调和过程中触发了新的更新，在执行下一个任务的时候，判断是否有优先级更高的执行任务，如果有就终止原来将要执行的任务，开始新的 workInProgressFiber 树构建过程，开始新的更新流程。这样可以避免重复更新操作。这也是在 React 16 以后生命周期函数 componentWillMount 有可能会执行多次的原因。</li>
-</ul>
-<h3 id="任务具备优先级"><a href="#任务具备优先级" class="headerlink" title="任务具备优先级"></a>任务具备优先级</h3><ul>
-<li>在任务执行过程中收集到的每个FiberNode的副作用，形成的副作用链表。到commit阶段时，直接遍历副作用链完成DOM更新。更新DOM的过程不可中断。</li>
-<li>任务优先级有六种<ul>
-<li>synchronous：与之前的堆栈协调器操作一样，同步执行</li>
-<li>task：在next tick之前执行</li>
-<li>animation：下一帧之前执行</li>
-<li>high：在不久的将来立即执行</li>
-<li>low：稍微延迟执行也没关系</li>
-<li>offscreen：下一次render 或scroll 时执行</li>
+<li><strong>挂起</strong>：当前分配的任务完成后，先判断这一帧是否还有空闲时间；没有就挂起下一个任务的执行，记住当前挂起的节点，让出控制权给浏览器执行更高优先级任务。</li>
+<li><strong>恢复</strong>：浏览器渲染完一帧后，判断当前帧是否有剩余时间，如果有就恢复执行之前挂起的任务；如果没有任务需要处理，代表调和阶段完成，可以开始进入渲染阶段。<ul>
+<li>判断一帧是否有空闲时间，使用 <code>MessageChannel</code>；</li>
+<li>恢复执行时通过链表获取下一个任务。</li>
 </ul>
 </li>
+<li><strong>终止</strong>：不是每次更新都会走到提交阶段。当在调和过程中触发了新的更新，在执行下一个任务时会判断是否有优先级更高的任务；如果有，就终止原来将要执行的任务，开始新的 workInProgressFiber 树构建过程，开始新的更新流程。这样可以避免重复更新操作，这也是 React 16 以后生命周期函数 <code>componentWillMount</code> 有可能会执行多次的原因。</li>
+</ul>
+<h3 id="任务具备优先级"><a href="#任务具备优先级" class="headerlink" title="任务具备优先级"></a>任务具备优先级</h3><p>在任务执行过程中收集到的每个 FiberNode 的副作用，会形成副作用链表；到 commit 阶段时，直接遍历副作用链完成 DOM 更新，更新 DOM 的过程不可中断。</p>
+<p>任务优先级有六种：</p>
+<ul>
+<li><code>synchronous</code>：与之前的堆栈协调器操作一样，同步执行；</li>
+<li><code>task</code>：在 next tick 之前执行；</li>
+<li><code>animation</code>：下一帧之前执行；</li>
+<li><code>high</code>：在不久的将来立即执行；</li>
+<li><code>low</code>：稍微延迟执行也没关系；</li>
+<li><code>offscreen</code>：下一次 render 或 scroll 时执行。</li>
+</ul>
+<h2 id="踩坑与注意点"><a href="#踩坑与注意点" class="headerlink" title="踩坑与注意点"></a>踩坑与注意点</h2><ul>
+<li><code>ReactDOM.render</code> 是 React 18 之前的入口；React 18 起应使用 <code>createRoot().render()</code>，但“fiberRootNode &#x2F; rootFiber &#x2F; 双缓存”的原理不变。</li>
+<li>“W 树”“C 树”是 workInProgress 树与 current 树的简称，阅读源码时对应 <code>workInProgress</code> 与 <code>current</code> 两个字段。</li>
 </ul>
 
 </article>
@@ -646,7 +650,7 @@
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">React-组件通信方式</h6>
+                <h6 class="trm-op-title">组件通信方式</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -667,7 +671,7 @@
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">NestJs --- 可扩展Node.js服务器端应用的框架</h6>
+                <h6 class="trm-op-title">NestJs —— 可扩展Node.js服务器端应用的框架</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -739,7 +743,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="从问题来理解为什么react需要Fiber"><a rel="nofollow" class="trm-toc-link" href="#从问题来理解为什么react需要Fiber"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">从问题来理解为什么react需要Fiber</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="Q1：React的设计理念是构建快速响应的大型Web应用程序。制约快速响应的因素？反映算法不足"><a rel="nofollow" class="trm-toc-link" href="#Q1：React的设计理念是构建快速响应的大型Web应用程序。制约快速响应的因素？反映算法不足"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">Q1：React的设计理念是构建快速响应的大型Web应用程序。制约快速响应的因素？反映算法不足</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Q2：Vue3 动静结合的DOM Diff 与 React的对比？反映编译时优化不足"><a rel="nofollow" class="trm-toc-link" href="#Q2：Vue3-动静结合的DOM-Diff-与-React的对比？反映编译时优化不足"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">Q2：Vue3 动静结合的DOM Diff 与 React的对比？反映编译时优化不足</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="React 架构"><a rel="nofollow" class="trm-toc-link" href="#React-架构"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">React 架构</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="调度器"><a rel="nofollow" class="trm-toc-link" href="#调度器"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">调度器</span></a></li><li class="trm-toc-item trm-toc-level-3" title="协调器"><a rel="nofollow" class="trm-toc-link" href="#协调器"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">协调器</span></a></li><li class="trm-toc-item trm-toc-level-3" title="渲染器"><a rel="nofollow" class="trm-toc-link" href="#渲染器"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">渲染器</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="Fiber"><a rel="nofollow" class="trm-toc-link" href="#Fiber"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">Fiber</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="Fiber 树"><a rel="nofollow" class="trm-toc-link" href="#Fiber-树"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">Fiber 树</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="Fiber 架构的工作原理"><a rel="nofollow" class="trm-toc-link" href="#Fiber-架构的工作原理"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">Fiber 架构的工作原理</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="初次渲染的构建流程"><a rel="nofollow" class="trm-toc-link" href="#初次渲染的构建流程"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">初次渲染的构建流程</span></a></li><li class="trm-toc-item trm-toc-level-3" title="更新阶段的构建流程"><a rel="nofollow" class="trm-toc-link" href="#更新阶段的构建流程"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">更新阶段的构建流程</span></a></li><li class="trm-toc-item trm-toc-level-3" title="JSX &amp; Fiber节点"><a rel="nofollow" class="trm-toc-link" href="#JSX-Fiber节点"><span class="trm-toc-number">4.3.</span> <span class="trm-toc-text">JSX &amp; Fiber节点</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="React Fiber 执行过程"><a rel="nofollow" class="trm-toc-link" href="#React-Fiber-执行过程"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">React Fiber 执行过程</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="任务拆分"><a rel="nofollow" class="trm-toc-link" href="#任务拆分"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">任务拆分</span></a></li><li class="trm-toc-item trm-toc-level-3" title="任务挂起、恢复、终止"><a rel="nofollow" class="trm-toc-link" href="#任务挂起、恢复、终止"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">任务挂起、恢复、终止</span></a></li><li class="trm-toc-item trm-toc-level-3" title="任务恢复"><a rel="nofollow" class="trm-toc-link" href="#任务恢复"><span class="trm-toc-number">5.3.</span> <span class="trm-toc-text">任务恢复</span></a></li><li class="trm-toc-item trm-toc-level-3" title="任务终止"><a rel="nofollow" class="trm-toc-link" href="#任务终止"><span class="trm-toc-number">5.4.</span> <span class="trm-toc-text">任务终止</span></a></li><li class="trm-toc-item trm-toc-level-3" title="任务具备优先级"><a rel="nofollow" class="trm-toc-link" href="#任务具备优先级"><span class="trm-toc-number">5.5.</span> <span class="trm-toc-text">任务具备优先级</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景"><a rel="nofollow" class="trm-toc-link" href="#背景"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景</span></a></li><li class="trm-toc-item trm-toc-level-2" title="一、从问题理解为什么需要 Fiber"><a rel="nofollow" class="trm-toc-link" href="#一、从问题理解为什么需要-Fiber"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">一、从问题理解为什么需要 Fiber</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="Q1：React 的设计理念是构建快速响应的大型 Web 应用程序，制约快速响应的因素是什么？"><a rel="nofollow" class="trm-toc-link" href="#Q1：React-的设计理念是构建快速响应的大型-Web-应用程序，制约快速响应的因素是什么？"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">Q1：React 的设计理念是构建快速响应的大型 Web 应用程序，制约快速响应的因素是什么？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Q2：Vue3 动静结合的 DOM Diff 与 React 的对比？"><a rel="nofollow" class="trm-toc-link" href="#Q2：Vue3-动静结合的-DOM-Diff-与-React-的对比？"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">Q2：Vue3 动静结合的 DOM Diff 与 React 的对比？</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="二、React 的三层架构"><a rel="nofollow" class="trm-toc-link" href="#二、React-的三层架构"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">二、React 的三层架构</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="调度器"><a rel="nofollow" class="trm-toc-link" href="#调度器"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">调度器</span></a></li><li class="trm-toc-item trm-toc-level-3" title="协调器"><a rel="nofollow" class="trm-toc-link" href="#协调器"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">协调器</span></a></li><li class="trm-toc-item trm-toc-level-3" title="渲染器"><a rel="nofollow" class="trm-toc-link" href="#渲染器"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">渲染器</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="三、Fiber 是什么"><a rel="nofollow" class="trm-toc-link" href="#三、Fiber-是什么"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">三、Fiber 是什么</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="Fiber 树"><a rel="nofollow" class="trm-toc-link" href="#Fiber-树"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">Fiber 树</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="四、Fiber 架构的工作原理"><a rel="nofollow" class="trm-toc-link" href="#四、Fiber-架构的工作原理"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">四、Fiber 架构的工作原理</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="初次渲染的构建流程"><a rel="nofollow" class="trm-toc-link" href="#初次渲染的构建流程"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">初次渲染的构建流程</span></a></li><li class="trm-toc-item trm-toc-level-3" title="更新阶段的构建流程"><a rel="nofollow" class="trm-toc-link" href="#更新阶段的构建流程"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">更新阶段的构建流程</span></a></li><li class="trm-toc-item trm-toc-level-3" title="JSX 与 Fiber 节点"><a rel="nofollow" class="trm-toc-link" href="#JSX-与-Fiber-节点"><span class="trm-toc-number">5.3.</span> <span class="trm-toc-text">JSX 与 Fiber 节点</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="五、React Fiber 的执行过程"><a rel="nofollow" class="trm-toc-link" href="#五、React-Fiber-的执行过程"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">五、React Fiber 的执行过程</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="任务拆分"><a rel="nofollow" class="trm-toc-link" href="#任务拆分"><span class="trm-toc-number">6.1.</span> <span class="trm-toc-text">任务拆分</span></a></li><li class="trm-toc-item trm-toc-level-3" title="任务挂起、恢复、终止"><a rel="nofollow" class="trm-toc-link" href="#任务挂起、恢复、终止"><span class="trm-toc-number">6.2.</span> <span class="trm-toc-text">任务挂起、恢复、终止</span></a></li><li class="trm-toc-item trm-toc-level-3" title="任务具备优先级"><a rel="nofollow" class="trm-toc-link" href="#任务具备优先级"><span class="trm-toc-number">6.3.</span> <span class="trm-toc-text">任务具备优先级</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="踩坑与注意点"><a rel="nofollow" class="trm-toc-link" href="#踩坑与注意点"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">踩坑与注意点</span></a></li></ol>
       </div>
     </div>
 
@@ -863,6 +867,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

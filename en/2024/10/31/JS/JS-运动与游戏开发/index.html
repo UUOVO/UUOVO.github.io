@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="通过循环不断使用 js 代码来改变元素的位置，样式，动画等  具备要素 canvas 元素(画布)：用于渲染游戏画面 audio 元素(音频)：用于添加音效和背景音乐 image 元素(图像)：用于加载游戏图像并在 canvas 中显示 浏览器中的计时函数和循环函数：用于实现动画  Canvas(关键) 步骤：开始路径 - 绘制路径 - 关闭路径 - 设置颜色 - 填充  API   方法">
+<meta name="description" content="说明 canvas 与 audio 在小游戏中的作用，讲清运动与游戏开发需要具备的要素">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS-运动与游戏开发">
+<meta property="og:title" content="运动与游戏开发">
 <meta property="og:url" content="http://example.com/en/2024/10/31/JS/JS-%E8%BF%90%E5%8A%A8%E4%B8%8E%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="通过循环不断使用 js 代码来改变元素的位置，样式，动画等  具备要素 canvas 元素(画布)：用于渲染游戏画面 audio 元素(音频)：用于添加音效和背景音乐 image 元素(图像)：用于加载游戏图像并在 canvas 中显示 浏览器中的计时函数和循环函数：用于实现动画  Canvas(关键) 步骤：开始路径 - 绘制路径 - 关闭路径 - 设置颜色 - 填充  API   方法">
+<meta property="og:description" content="说明 canvas 与 audio 在小游戏中的作用，讲清运动与游戏开发需要具备的要素">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-10-31T03:05:32.071Z">
-<meta property="article:modified_time" content="2025-07-31T09:33:14.642Z">
+<meta property="article:published_time" content="2024-10-31T03:05:32.000Z">
+<meta property="article:modified_time" content="2026-11-17T02:04:39.352Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="canvas">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <meta name="keywords" content="js,canvas">
 
 
-<title >JS-运动与游戏开发</title>
+<title >运动与游戏开发</title>
 
 <!-- Favicon -->
 
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-31 17:33:14"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-17 10:04:39"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -83,6 +83,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -197,13 +199,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -239,7 +241,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -257,13 +259,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -385,7 +387,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            JS-运动与游戏开发
+                            运动与游戏开发
                         </h1>
 
                         
@@ -532,22 +534,20 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>运动与游戏开发的本质，是通过循环不断用 js 代码改变元素的位置、样式和动画。本篇先把所需的基础要素列清楚，再按绘制流程整理 canvas 的常用 API，方便按步骤查用。</p>
+<span id="more"></span>
 
-<blockquote>
-<p>通过循环不断使用 js 代码来改变元素的位置，样式，动画等</p>
-</blockquote>
-<h2 id="具备要素"><a href="#具备要素" class="headerlink" title="具备要素"></a>具备要素</h2><ul>
-<li>canvas 元素(画布)：用于渲染游戏画面</li>
-<li>audio 元素(音频)：用于添加音效和背景音乐</li>
-<li>image 元素(图像)：用于加载游戏图像并在 canvas 中显示</li>
-<li>浏览器中的计时函数和循环函数：用于实现动画</li>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>浏览器里做运动效果和小游戏，核心是每一帧重新绘制画面。绘制发生在 canvas 画布上，所有绘图方法都通过 canvas 的绘图上下文（示例中的 <code>context</code>）调用。</p>
+<h2 id="分步骤准备"><a href="#分步骤准备" class="headerlink" title="分步骤准备"></a>分步骤准备</h2><h3 id="第一步：备齐四类要素"><a href="#第一步：备齐四类要素" class="headerlink" title="第一步：备齐四类要素"></a>第一步：备齐四类要素</h3><p>一个最小的游戏通常需要以下四类要素：</p>
+<ul>
+<li>canvas 元素（画布）：用于渲染游戏画面；</li>
+<li>audio 元素（音频）：用于添加音效和背景音乐；</li>
+<li>image 元素（图像）：用于加载游戏图像并在 canvas 中显示；</li>
+<li>浏览器中的计时函数和循环函数：用于实现动画。</li>
 </ul>
-<h2 id="Canvas-关键"><a href="#Canvas-关键" class="headerlink" title="Canvas(关键)"></a>Canvas(关键)</h2><ul>
-<li>步骤：开始路径 - 绘制路径 - 关闭路径 - 设置颜色 - 填充</li>
-</ul>
-<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><table>
+<h3 id="第二步：记住-Canvas-的绘制流程"><a href="#第二步：记住-Canvas-的绘制流程" class="headerlink" title="第二步：记住 Canvas 的绘制流程"></a>第二步：记住 Canvas 的绘制流程</h3><p>canvas 绘制一条路径的基本顺序是：开始路径 → 绘制路径 → 关闭路径 → 设置颜色 → 填充。</p>
+<h3 id="第三步：查常用绘制-API"><a href="#第三步：查常用绘制-API" class="headerlink" title="第三步：查常用绘制 API"></a>第三步：查常用绘制 API</h3><p>下表是 canvas 常用的路径与矩形绘制方法。</p>
+<table>
 <thead>
 <tr>
 <th>方法</th>
@@ -619,10 +619,11 @@
 <td>如果指定的点位于当前路径中，则返回 true，否则返回 false</td>
 </tr>
 </tbody></table>
-<ul>
-<li>语法: <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">context<span class="selector-class">.arc</span>(圆心 <span class="attribute">x</span> 的坐标,圆心 <span class="attribute">y</span> 的坐标, 半径, 起始角 sSingle,结束角 eSingle,false 顺时针 true 逆时针绘图)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="改变样式"><a href="#改变样式" class="headerlink" title="改变样式"></a>改变样式</h3><table>
+<h3 id="第四步：用-arc-画圆弧"><a href="#第四步：用-arc-画圆弧" class="headerlink" title="第四步：用 arc() 画圆弧"></a>第四步：用 arc() 画圆弧</h3><p><code>arc()</code> 的语法如下，最后一个参数用 <code>false</code> 表示顺时针绘图、<code>true</code> 表示逆时针绘图：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">context.<span class="title function_">arc</span>(圆心 x 的坐标, 圆心 y 的坐标, 半径, 起始角 sSingle, 结束角 eSingle, <span class="literal">false</span> 顺时针 <span class="literal">true</span> 逆时针绘图)</span><br></pre></td></tr></table></figure>
+
+<h3 id="第五步：改变填充、描边与阴影样式"><a href="#第五步：改变填充、描边与阴影样式" class="headerlink" title="第五步：改变填充、描边与阴影样式"></a>第五步：改变填充、描边与阴影样式</h3><p>下表是控制填充、描边和阴影的样式属性。</p>
+<table>
 <thead>
 <tr>
 <th>属性</th>
@@ -654,7 +655,8 @@
 <td>设置或返回阴影距形状的垂直距离</td>
 </tr>
 </tbody></table>
-<h3 id="直线添加样式"><a href="#直线添加样式" class="headerlink" title="直线添加样式"></a>直线添加样式</h3><table>
+<h3 id="第六步：设置直线样式"><a href="#第六步：设置直线样式" class="headerlink" title="第六步：设置直线样式"></a>第六步：设置直线样式</h3><p>下表是控制线条端点、拐角和宽度的属性。</p>
+<table>
 <thead>
 <tr>
 <th>样式</th>
@@ -678,7 +680,8 @@
 <td>设置或返回最大斜接长度</td>
 </tr>
 </tbody></table>
-<h3 id="设置渐变"><a href="#设置渐变" class="headerlink" title="设置渐变"></a>设置渐变</h3><table>
+<h3 id="第七步：创建渐变"><a href="#第七步：创建渐变" class="headerlink" title="第七步：创建渐变"></a>第七步：创建渐变</h3><p>下表是创建线性渐变、径向渐变和重复图案的方法。</p>
+<table>
 <thead>
 <tr>
 <th>方法</th>
@@ -702,7 +705,8 @@
 <td>规定渐变对象中的颜色和停止位置</td>
 </tr>
 </tbody></table>
-<h3 id="图形转换"><a href="#图形转换" class="headerlink" title="图形转换"></a>图形转换</h3><table>
+<h3 id="第八步：做图形变换"><a href="#第八步：做图形变换" class="headerlink" title="第八步：做图形变换"></a>第八步：做图形变换</h3><p>下表是缩放、旋转、平移和矩阵变换相关的方法。</p>
+<table>
 <thead>
 <tr>
 <th>方法</th>
@@ -727,21 +731,28 @@
 </tr>
 <tr>
 <td>setTransform()</td>
-<td>将当前转换重置为单位矩阵，然后运行  transform()</td>
+<td>将当前转换重置为单位矩阵，然后运行 transform()</td>
 </tr>
 </tbody></table>
-<h3 id="图像绘制"><a href="#图像绘制" class="headerlink" title="图像绘制"></a>图像绘制</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">context.<span class="title function_">drawImage</span>(img,sx?,sy?,swidth?,sheight?,x,y,width?,height?);</span><br></pre></td></tr></table></figure>
+<h3 id="第九步：绘制图像"><a href="#第九步：绘制图像" class="headerlink" title="第九步：绘制图像"></a>第九步：绘制图像</h3><p><code>drawImage()</code> 用于向画布上绘制图像、画布或视频，语法如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">context.<span class="title function_">drawImage</span>(img, sx?, sy?, swidth?, sheight?, x, y, width?, height?);</span><br></pre></td></tr></table></figure>
+
+<p>各参数含义：</p>
 <ul>
-<li>drawImage():向画布上绘制图像、画布或视频</li>
-<li>img：规定要使用的图像、画布或视频</li>
-<li>sx：可选。开始剪切的 x 坐标位置</li>
-<li>sy：可选。开始剪切的 y 坐标位置</li>
-<li>swidth：可选。被剪切图像的宽度</li>
-<li>sheight：可选。被剪切图像的高度</li>
-<li>x：在画布上放置图像的 x 坐标位置</li>
-<li>y：在画布上放置图像的 y 坐标位置</li>
-<li>width：可选。要使用的图像的宽度（伸展或缩小图像）</li>
-<li>height：可选。要使用的图像的高度（伸展或缩小图像）</li>
+<li><code>img</code>：规定要使用的图像、画布或视频；</li>
+<li><code>sx</code>：可选，开始剪切的 x 坐标位置；</li>
+<li><code>sy</code>：可选，开始剪切的 y 坐标位置；</li>
+<li><code>swidth</code>：可选，被剪切图像的宽度；</li>
+<li><code>sheight</code>：可选，被剪切图像的高度；</li>
+<li><code>x</code>：在画布上放置图像的 x 坐标位置；</li>
+<li><code>y</code>：在画布上放置图像的 y 坐标位置；</li>
+<li><code>width</code>：可选，要使用的图像的宽度（伸展或缩小图像）；</li>
+<li><code>height</code>：可选，要使用的图像的高度（伸展或缩小图像）。</li>
+</ul>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
+<li><code>drawImage()</code> 的可选参数不能随意跳着传，通常按 3 参数、5 参数、9 参数三种组合使用。</li>
+<li>表格中的方法都挂在绘图上下文上，调用前需要先取得 canvas 的 2D 上下文。</li>
+<li><code>arc()</code> 的角度参数是弧度制，不是角度制；原文未展开说明，使用时请留意。</li>
 </ul>
 
 </article>
@@ -762,11 +773,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/31/JS/JS-h5%E5%B0%8F%E6%B8%B8%E6%88%8F%E7%9A%84%E5%9F%BA%E7%A1%80%E5%B8%83%E5%B1%80/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/31/JS/JS-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">实现h5小游戏基本步骤</h6>
+                <h6 class="trm-op-title">正则表达式</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -783,11 +794,11 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/10/31/JS/JS-%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E4%BE%8B%E5%AD%90/">
+            <a class="trm-op-top trm-anima-link" href="/2024/10/31/JS/JS-%E9%81%8D%E5%8E%86%E5%AF%B9%E8%B1%A1%E4%B8%8E%E6%98%A0%E5%B0%84/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
                 </span>
-                <h6 class="trm-op-title">案例-常用例子</h6>
+                <h6 class="trm-op-title">遍历对象与映射</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
@@ -859,7 +870,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="具备要素"><a rel="nofollow" class="trm-toc-link" href="#具备要素"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">具备要素</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Canvas(关键)"><a rel="nofollow" class="trm-toc-link" href="#Canvas-关键"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">Canvas(关键)</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="API"><a rel="nofollow" class="trm-toc-link" href="#API"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">API</span></a></li><li class="trm-toc-item trm-toc-level-3" title="改变样式"><a rel="nofollow" class="trm-toc-link" href="#改变样式"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">改变样式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="直线添加样式"><a rel="nofollow" class="trm-toc-link" href="#直线添加样式"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">直线添加样式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="设置渐变"><a rel="nofollow" class="trm-toc-link" href="#设置渐变"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">设置渐变</span></a></li><li class="trm-toc-item trm-toc-level-3" title="图形转换"><a rel="nofollow" class="trm-toc-link" href="#图形转换"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">图形转换</span></a></li><li class="trm-toc-item trm-toc-level-3" title="图像绘制"><a rel="nofollow" class="trm-toc-link" href="#图像绘制"><span class="trm-toc-number">2.6.</span> <span class="trm-toc-text">图像绘制</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景"><a rel="nofollow" class="trm-toc-link" href="#背景"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景</span></a></li><li class="trm-toc-item trm-toc-level-2" title="分步骤准备"><a rel="nofollow" class="trm-toc-link" href="#分步骤准备"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">分步骤准备</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="第一步：备齐四类要素"><a rel="nofollow" class="trm-toc-link" href="#第一步：备齐四类要素"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">第一步：备齐四类要素</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第二步：记住 Canvas 的绘制流程"><a rel="nofollow" class="trm-toc-link" href="#第二步：记住-Canvas-的绘制流程"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">第二步：记住 Canvas 的绘制流程</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第三步：查常用绘制 API"><a rel="nofollow" class="trm-toc-link" href="#第三步：查常用绘制-API"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">第三步：查常用绘制 API</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第四步：用 arc() 画圆弧"><a rel="nofollow" class="trm-toc-link" href="#第四步：用-arc-画圆弧"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">第四步：用 arc() 画圆弧</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第五步：改变填充、描边与阴影样式"><a rel="nofollow" class="trm-toc-link" href="#第五步：改变填充、描边与阴影样式"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">第五步：改变填充、描边与阴影样式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第六步：设置直线样式"><a rel="nofollow" class="trm-toc-link" href="#第六步：设置直线样式"><span class="trm-toc-number">2.6.</span> <span class="trm-toc-text">第六步：设置直线样式</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第七步：创建渐变"><a rel="nofollow" class="trm-toc-link" href="#第七步：创建渐变"><span class="trm-toc-number">2.7.</span> <span class="trm-toc-text">第七步：创建渐变</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第八步：做图形变换"><a rel="nofollow" class="trm-toc-link" href="#第八步：做图形变换"><span class="trm-toc-number">2.8.</span> <span class="trm-toc-text">第八步：做图形变换</span></a></li><li class="trm-toc-item trm-toc-level-3" title="第九步：绘制图像"><a rel="nofollow" class="trm-toc-link" href="#第九步：绘制图像"><span class="trm-toc-number">2.9.</span> <span class="trm-toc-text">第九步：绘制图像</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="注意点"><a rel="nofollow" class="trm-toc-link" href="#注意点"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">注意点</span></a></li></ol>
       </div>
     </div>
 
@@ -983,6 +994,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 

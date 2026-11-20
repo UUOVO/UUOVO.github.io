@@ -7,15 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="父子数据同步 v-model指令，可以收集表单数据（注：v-model收集checkbox需要用数组收集） 属性修饰符.sync，可以实现父子数据同步。  父传子 props 插槽  props 传递数据类型： 函数 — 实质子组件想给父亲传递数据 非函数 — 实质就是父亲给子组件传递数据   示例： 传递动态：1&lt;child :msg&#x3D;&quot;动态数据&quot; updateC">
+<meta name="description" content="归纳 v-model、.sync、父子传值与插槽、跨级通信和全局事件总线等 Vue 组件通信方式及其适用场景">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VUE-组件通信">
 <meta property="og:url" content="http://example.com/en/2024/11/01/vue2/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E7%9A%84%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="父子数据同步 v-model指令，可以收集表单数据（注：v-model收集checkbox需要用数组收集） 属性修饰符.sync，可以实现父子数据同步。  父传子 props 插槽  props 传递数据类型： 函数 — 实质子组件想给父亲传递数据 非函数 — 实质就是父亲给子组件传递数据   示例： 传递动态：1&lt;child :msg&#x3D;&quot;动态数据&quot; updateC">
+<meta property="og:description" content="归纳 v-model、.sync、父子传值与插槽、跨级通信和全局事件总线等 Vue 组件通信方式及其适用场景">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-11-01T05:58:26.603Z">
-<meta property="article:modified_time" content="2025-08-04T08:37:04.939Z">
+<meta property="article:published_time" content="2024-11-01T05:58:26.000Z">
+<meta property="article:modified_time" content="2026-11-17T02:34:32.559Z">
 <meta property="article:author" content="UUOVO">
 <meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary">
@@ -68,7 +68,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"The blog has been lovely to run undefined day"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-08-04 16:37:04"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-11-17 10:34:32"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -83,6 +83,8 @@
 
 
     
+<link rel="stylesheet" href="/css/global.css">
+
     
 
 
@@ -197,13 +199,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/react/" target="">
+                        <a  href="/categories/React/" target="">
                             React
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/vue/" target="">
+                        <a  href="/categories/Vue/" target="">
                             VUE
                         </a>
                     </li>
@@ -239,7 +241,7 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/threeJS/" target="">
+                        <a  href="/categories/ThreeJS/" target="">
                             ThreeJS
                         </a>
                     </li>
@@ -257,13 +259,13 @@
                     </li>
                     
                     <li>
-                        <a  href="/categories/es6/" target="">
+                        <a  href="/categories/ES6/" target="">
                             ES6
                         </a>
                     </li>
                     
                     <li>
-                        <a  href="/categories/ajax/" target="">
+                        <a  href="/categories/AJAX/" target="">
                             AJAX
                         </a>
                     </li>
@@ -532,110 +534,159 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <script src="/js/enChangegreen.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/global.css">
+    <p>Vue 组件通信可以按「关系」来选方案：<strong>父子之间优先 props &#x2F; 自定义事件，父组件想调用子组件或拿子组件实例用 ref，跨层级用 <code>$attrs</code> &#x2F; <code>$listeners</code>，关系说不清时用全局事件总线或 pubsub</strong>。本文按父子数据同步 → 父传子 → 子传父 → 跨级 → 万能方案这条顺序整理，每种方式都给出最小写法，方便按场景直接查。</p>
+<span id="more"></span>
 
-<h2 id="父子数据同步"><a href="#父子数据同步" class="headerlink" title="父子数据同步"></a>父子数据同步</h2><ul>
-<li>v-model指令，可以收集表单数据（<span class="desc">注：v-model收集checkbox需要用数组收集</span>）</li>
-<li>属性修饰符.sync，可以实现父子数据同步。</li>
+<h2 id="背景：先分清方向"><a href="#背景：先分清方向" class="headerlink" title="背景：先分清方向"></a>背景：先分清方向</h2><p>通信的本质只有两件事：数据往下走还是往上走。往下走用 props（或插槽传结构），往上走用事件，横着走（兄弟、跨级）才需要总线和订阅发布。另外，<code>v-model</code> 和 <code>.sync</code> 都是「父子数据同步」的语法糖，理解了它们，后面的写法会顺很多。</p>
+<h2 id="第-1-步：父子数据同步"><a href="#第-1-步：父子数据同步" class="headerlink" title="第 1 步：父子数据同步"></a>第 1 步：父子数据同步</h2><ul>
+<li><code>v-model</code> 指令，可以收集表单数据（<span class="desc">注：v-model 收集 checkbox 需要用数组收集</span>）。</li>
+<li>属性修饰符 <code>.sync</code>，可以实现父子数据同步。</li>
 </ul>
-<h2 id="父传子"><a href="#父传子" class="headerlink" title="父传子"></a>父传子</h2><ul>
+<h2 id="第-2-步：父传子"><a href="#第-2-步：父传子" class="headerlink" title="第 2 步：父传子"></a>第 2 步：父传子</h2><ul>
 <li>props</li>
 <li>插槽</li>
 </ul>
-<h3 id="props"><a href="#props" class="headerlink" title="props"></a>props</h3><ul>
-<li>传递数据类型：<ul>
-<li>函数 — <span class="desc">实质子组件想给父亲传递数据</span></li>
-<li>非函数 — <span class="desc">实质就是父亲给子组件传递数据</span></li>
-</ul>
-</li>
-<li>示例：<ul>
-<li>传递动态：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;child :msg=<span class="string">&quot;动态数据&quot;</span> updateChecked=<span class="string">&quot;hander&quot;</span>&gt;</span><br></pre></td></tr></table></figure></li>
-<li>传递静态数据：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;child msg=<span class="string">&quot;父组件定义一个属性向子组件传递信息&quot;</span>/&gt;</span><br></pre></td></tr></table></figure></li>
-<li>子组件在data前面添加props: [‘msg’],然后可以直接使用<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;view&gt;&#123;&#123;msg&#125;&#125;&lt;/view&gt;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>特殊情况：路由传递props<ul>
-<li>布尔值类型，把路由中params参数映射为组件props数据</li>
-<li>对象，静态数据</li>
-<li>函数，可以把路由中params|query参数映射为组件props数据</li>
-</ul>
-</li>
-</ul>
-<h3 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h3><ul>
-<li>作用：<ol>
-<li>父组件通过调用子组件内部嵌套html内容作为slot分发给子组件</li>
-<li>子组件通过在slot标签上添加属性，向父组件通信数据，作用域插槽</li>
-</ol>
-</li>
-<li>分类：默认插槽、具名插槽、作用域插槽</li>
-</ul>
-<h4 id="默认插槽name-”default”："><a href="#默认插槽name-”default”：" class="headerlink" title="默认插槽name&#x3D;”default”："></a>默认插槽name&#x3D;”default”：</h4><ul>
-<li>父组件使用子组件标签，并在开始和结束标签中间添加内容，单标签不添加内容</li>
-<li>子组件在页面中使用<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;slot&gt;父组件传递的内容会插入slot中&lt;/slot&gt;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="具名插槽："><a href="#具名插槽：" class="headerlink" title="具名插槽："></a>具名插槽：</h4><ul>
-<li>适用于多个插槽</li>
-<li>父组件在页面中使用子组件标签时，添加内容的模板标签上指定插槽名<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;template v-<span class="attr">slot</span>:slotname&gt;&lt;<span class="regexp">/template&gt; /</span>/ v-slot只能用在template上</span><br></pre></td></tr></table></figure></li>
-<li>子组件在页面中使用<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;slot name=<span class="string">&quot;slotname&quot;</span>&gt;父组件传递的内容会插入slot中&lt;/slot&gt;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="作用域插槽："><a href="#作用域插槽：" class="headerlink" title="作用域插槽："></a>作用域插槽：</h4><ul>
-<li>理解：<span class="key_words">『在父组件中访问子组件的数据，但是展示的样式由父组件决定』</span></li>
-<li>在子组件的插槽标签上中绑定数据：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;slot :<span class="keyword">var</span>=<span class="string">&quot;data&quot;</span> name=<span class="string">&quot;slotname&quot;</span>&gt;&#123;&#123;data&#125;&#125;&lt;<span class="regexp">/slot&gt; /</span>/ data是在子组件中定义的</span><br></pre></td></tr></table></figure></li>
-<li>父组件使用子组件标签，在内容区域使用<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;template v-<span class="attr">slot</span>:slotname=<span class="string">&quot;接收数据的变量名，且等于子组件的data&quot;</span>&gt;...&lt;/template&gt;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="子传父"><a href="#子传父" class="headerlink" title="子传父"></a>子传父</h2><ul>
-<li>自定义事件</li>
-<li>ref：在父组件内部获取子组件</li>
-<li>$children：在父组件内部获取全部的子组件<span class="key_words">『返回数组』</span></li>
-<li>$parent：在子组件内部获取唯一的父组件<span class="key_words">『返回组件实例』</span></li>
-</ul>
-<h3 id="自定义事件-emit-on-简写"><a href="#自定义事件-emit-on-简写" class="headerlink" title="自定义事件($emit, $on[简写@])"></a>自定义事件($emit, $on[简写@])</h3><ul>
-<li>使用场景：A是父组件，B是子组件，B想给A传数据，那么就要在A中给B绑定自定义事件，<span class="key_words">『事件的回调在A中』</span></li>
-<li>绑定自定义事件, 方式一在父组件中：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">Child</span> @childEvent=<span class="string">&quot;要触发的事件&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="props"><a href="#props" class="headerlink" title="props"></a>props</h3><p>传递的数据分两类：</p>
 <ul>
-<li>要触发的事件要在父组件的methods中定义</li>
-<li>父组件可以通过该事件的参数获取子组件传递的信息</li>
-<li>子组件也要定义任意一个事件，在该事件要触发<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.$emit(<span class="string">&#x27;childEvent&#x27;</span>，<span class="string">&#x27;要传递的参数&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+<li>函数 —— <span class="desc">实质是子组件想给父亲传递数据</span>。</li>
+<li>非函数 —— <span class="desc">实质就是父亲给子组件传递数据</span>。</li>
 </ul>
-</li>
-<li>绑定自定义事件, 方式二，在父组件中给组件：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">Demo</span> ref=<span class="string">&quot;实例名&quot;</span>/&gt;</span><br><span class="line"><span class="title function_">mounted</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">$refs</span>.实例名.$on(<span class="string">&#x27;事件名&#x27;</span>,<span class="variable language_">this</span>.<span class="property">test</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>若想让自定义事件只能触发一次，可以使用 once修饰符，或 $once方法</li>
-<li>自定义事件名：父组件通过该事件的参数获取子组件传递过来的数据，名字随意</li>
-<li>子组件触发自定义事件：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.$emit(<span class="string">&#x27;事件名&#x27;</span>,数据)</span><br></pre></td></tr></table></figure></li>
-<li>子组件解绑自定义事件<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.$off(<span class="string">&#x27;事件名&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
-<li>组件上也可以绑定原生DOM事件，需要使用 native修饰符</li>
-<li>注意：<span class="desc">通过 this.$refs.实例名.$on(‘事件名’,获取事件的回调)，回调要事先在methods中定义或用箭头函数</span></li>
+<p>传递动态数据时，用 <code>:</code> 绑定变量：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">child</span> <span class="attr">:msg</span>=<span class="string">&quot;动态数据&quot;</span> <span class="attr">updateChecked</span>=<span class="string">&quot;hander&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>传递静态数据时，直接写字符串：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">child</span> <span class="attr">msg</span>=<span class="string">&quot;父组件定义一个属性向子组件传递信息&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>子组件在 data 前面添加 <code>props: [&#39;msg&#39;]</code>，然后就可以直接使用：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>特殊情况是路由传递 props：</p>
+<ul>
+<li>布尔值类型，把路由中 params 参数映射为组件 props 数据。</li>
+<li>对象，静态数据。</li>
+<li>函数，可以把路由中 params | query 参数映射为组件 props 数据。</li>
 </ul>
-<h2 id="跨级组件通信"><a href="#跨级组件通信" class="headerlink" title="跨级组件通信"></a>跨级组件通信</h2><ul>
-<li>$attrs：组件实例的属性，可以获取到父亲传递的props数据（前提子组件没有通过props接受）</li>
-<li>$listeners：组件实例的属性，可以获取到父亲传递自定义事件（对象形式呈现）</li>
+<h3 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h3><p>作用有两个：</p>
+<ol>
+<li>父组件通过调用子组件内部嵌套的 html 内容作为 slot 分发给子组件。</li>
+<li>子组件通过在 slot 标签上添加属性，向父组件通信数据，即作用域插槽。</li>
+</ol>
+<p>分类：默认插槽、具名插槽、作用域插槽。</p>
+<h4 id="默认插槽-name-”default”"><a href="#默认插槽-name-”default”" class="headerlink" title="默认插槽 name&#x3D;”default”"></a>默认插槽 name&#x3D;”default”</h4><p>父组件使用子组件标签，并在开始和结束标签中间添加内容，单标签不能添加内容。子组件用下面的标签承接：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">slot</span>&gt;</span>父组件传递的内容会插入slot中<span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="具名插槽"><a href="#具名插槽" class="headerlink" title="具名插槽"></a>具名插槽</h4><p>适用于多个插槽的场景。父组件在页面中使用子组件标签时，在内容模板标签上指定插槽名：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:slotname</span>&gt;</span><span class="tag">&lt;/<span class="name">template</span>&gt;</span> // v-slot只能用在template上</span><br></pre></td></tr></table></figure>
+
+<p>子组件在页面中使用同名插槽：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">slot</span> <span class="attr">name</span>=<span class="string">&quot;slotname&quot;</span>&gt;</span>父组件传递的内容会插入slot中<span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="作用域插槽"><a href="#作用域插槽" class="headerlink" title="作用域插槽"></a>作用域插槽</h4><p>理解：<span class="key_words">『在父组件中访问子组件的数据，但是展示的样式由父组件决定』</span>。</p>
+<p>先在子组件的插槽标签上绑定数据：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">slot</span> <span class="attr">:var</span>=<span class="string">&quot;data&quot;</span> <span class="attr">name</span>=<span class="string">&quot;slotname&quot;</span>&gt;</span>&#123;&#123;data&#125;&#125;<span class="tag">&lt;/<span class="name">slot</span>&gt;</span> // data是在子组件中定义的</span><br></pre></td></tr></table></figure>
+
+<p>父组件使用子组件标签，在内容区域接收这个变量：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:slotname</span>=<span class="string">&quot;接收数据的变量名，且等于子组件的data&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="第-3-步：子传父"><a href="#第-3-步：子传父" class="headerlink" title="第 3 步：子传父"></a>第 3 步：子传父</h2><p>可用手段有四种：</p>
+<ul>
+<li>自定义事件。</li>
+<li>ref：在父组件内部获取子组件。</li>
+<li><code>$children</code>：在父组件内部获取全部的子组件，<span class="key_words">『返回数组』</span>。</li>
+<li><code>$parent</code>：在子组件内部获取唯一的父组件，<span class="key_words">『返回组件实例』</span>。</li>
 </ul>
-<h2 id="万能"><a href="#万能" class="headerlink" title="万能"></a>万能</h2><ul>
+<h3 id="自定义事件（-emit、-on-简写-）"><a href="#自定义事件（-emit、-on-简写-）" class="headerlink" title="自定义事件（$emit、$on[简写 @]）"></a>自定义事件（$emit、$on[简写 @]）</h3><p>使用场景：A 是父组件，B 是子组件，B 想给 A 传数据，那么就要在 A 中给 B 绑定自定义事件，<span class="key_words">『事件的回调在 A 中』</span>。</p>
+<p>方式一，在父组件的模板上绑定：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Child</span> @<span class="attr">childEvent</span>=<span class="string">&quot;要触发的事件&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>要触发的事件要在父组件的 methods 中定义。</li>
+<li>父组件可以通过该事件的参数获取子组件传递的信息。</li>
+<li>子组件也要定义任意一个事件，在该事件中触发。</li>
+</ul>
+<p>子组件触发时用 <code>$emit</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.$emit(<span class="string">&#x27;childEvent&#x27;</span>, <span class="string">&#x27;要传递的参数&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>方式二，在父组件中通过 ref 给组件实例绑定：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Demo</span> <span class="attr">ref</span>=<span class="string">&quot;实例名&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">mounted</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">$refs</span>.实例名.$on(<span class="string">&#x27;事件名&#x27;</span>,<span class="variable language_">this</span>.<span class="property">test</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>若想让自定义事件只能触发一次，可以使用 once 修饰符，或 <code>$once</code> 方法。</p>
+<p>自定义事件名：父组件通过该事件的参数获取子组件传递过来的数据，名字随意。</p>
+<p>子组件触发自定义事件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.$emit(<span class="string">&#x27;事件名&#x27;</span>,数据)</span><br></pre></td></tr></table></figure>
+
+<p>子组件解绑自定义事件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.$off(<span class="string">&#x27;事件名&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>组件上也可以绑定原生 DOM 事件，需要使用 native 修饰符。</p>
+<p>注意：<span class="desc">通过 <code>this.$refs.实例名.$on(&#39;事件名&#39;, 获取事件的回调)</code> 绑定的事件，回调要事先在 methods 中定义，或者用箭头函数</span>。</p>
+<h2 id="第-4-步：跨级组件通信"><a href="#第-4-步：跨级组件通信" class="headerlink" title="第 4 步：跨级组件通信"></a>第 4 步：跨级组件通信</h2><ul>
+<li><code>$attrs</code>：组件实例的属性，可以获取到父亲传递的 props 数据（前提是子组件没有通过 props 接收）。</li>
+<li><code>$listeners</code>：组件实例的属性，可以获取到父亲传递的自定义事件（对象形式呈现）。</li>
+</ul>
+<h2 id="第-5-步：万能方案"><a href="#第-5-步：万能方案" class="headerlink" title="第 5 步：万能方案"></a>第 5 步：万能方案</h2><ul>
 <li>全局事件总线</li>
 <li>pubsub</li>
 </ul>
-<h3 id="bus全局事件总线（GlobalEventBus）"><a href="#bus全局事件总线（GlobalEventBus）" class="headerlink" title="$bus全局事件总线（GlobalEventBus）"></a>$bus全局事件总线（GlobalEventBus）</h3><ul>
-<li>安装全局事件总线：在main.js的new Vue中添加<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">beforeCreate</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$bus</span> = <span class="variable language_">this</span> <span class="comment">//安装全局事件总线，$bus就是当前应用的vm</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
-</ul>
+<h3 id="bus-全局事件总线（GlobalEventBus）"><a href="#bus-全局事件总线（GlobalEventBus）" class="headerlink" title="$bus 全局事件总线（GlobalEventBus）"></a>$bus 全局事件总线（GlobalEventBus）</h3><p>先在 main.js 的 new Vue 中把它挂到原型上：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">beforeCreate</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$bus</span> = <span class="variable language_">this</span> <span class="comment">//安装全局事件总线，$bus就是当前应用的vm</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
 <ol>
-<li>接收数据：A组件想接收数据，则在A组件中给$bus绑定自定义事件，<span class="key_words">『事件的回调留在A组件自身』</span><ul>
-<li>在mounted中使用<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">$bus</span>.$on(<span class="string">&#x27;自定义事件名&#x27;</span>,事件的回调函数)</span><br></pre></td></tr></table></figure></li>
-<li>在beforeDestroy中解绑<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">$bus</span>.$off(<span class="string">&#x27;自定义事件名&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+<li>接收数据：A 组件想接收数据，则在 A 组件中给 <code>$bus</code> 绑定自定义事件，<span class="key_words">『事件的回调留在 A 组件自身』</span>。<ul>
+<li>在 mounted 中使用：</li>
 </ul>
 </li>
-<li>提供数据：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">$bus</span>.$emit(<span class="string">&#x27;自定义事件名&#x27;</span>,数据)</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h3 id="pubsub-js-消息订阅与发布"><a href="#pubsub-js-消息订阅与发布" class="headerlink" title="pubsub-js[消息订阅与发布]"></a>pubsub-js[消息订阅与发布]</h3><ol>
-<li>安装：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i pubsub-js</span><br></pre></td></tr></table></figure></li>
-<li>引入：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pubsub <span class="keyword">from</span> <span class="string">&#x27;pubsub-js&#x27;</span></span><br></pre></td></tr></table></figure></li>
-<li>接收数据：A组件接收数据，则在A组件中订阅消息，订阅的<span class="key_words">『回调留在A组件自身』</span><ul>
-<li>在mounted中添加<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">pid</span> = pubsub.<span class="title function_">subscribe</span>(<span class="string">&#x27;自定义事件名&#x27;</span>,回调事件)</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">$bus</span>.$on(<span class="string">&#x27;自定义事件名&#x27;</span>,事件的回调函数)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在 beforeDestroy 中解绑：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">$bus</span>.$off(<span class="string">&#x27;自定义事件名&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>提供数据：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">$bus</span>.$emit(<span class="string">&#x27;自定义事件名&#x27;</span>,数据)</span><br></pre></td></tr></table></figure>
+
+<h3 id="pubsub-js（消息订阅与发布）"><a href="#pubsub-js（消息订阅与发布）" class="headerlink" title="pubsub-js（消息订阅与发布）"></a>pubsub-js（消息订阅与发布）</h3><ol>
+<li>安装：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i pubsub-js</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>引入：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pubsub <span class="keyword">from</span> <span class="string">&#x27;pubsub-js&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>接收数据：A 组件接收数据，则在 A 组件中订阅消息，订阅的<span class="key_words">『回调留在 A 组件自身』</span>。<ul>
+<li>在 mounted 中添加：</li>
 </ul>
 </li>
-<li>提供数据：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pubsub.<span class="title function_">publish</span>(<span class="string">&#x27;自定义事件名&#x27;</span>,数据)</span><br></pre></td></tr></table></figure></li>
-<li>在beforeDestroy中，用<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">PubSub</span>.<span class="title function_">unsubscribe</span>(pid) <span class="comment">// 取消订阅</span></span><br></pre></td></tr></table></figure></li>
 </ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">pid</span> = pubsub.<span class="title function_">subscribe</span>(<span class="string">&#x27;自定义事件名&#x27;</span>,回调事件)</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>提供数据：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pubsub.<span class="title function_">publish</span>(<span class="string">&#x27;自定义事件名&#x27;</span>,数据)</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>在 beforeDestroy 中取消订阅：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">PubSub</span>.<span class="title function_">unsubscribe</span>(pid) <span class="comment">// 取消订阅</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="踩坑与注意点"><a href="#踩坑与注意点" class="headerlink" title="踩坑与注意点"></a>踩坑与注意点</h2><ul>
+<li>用 ref 方式绑定自定义事件时，回调必须提前在 methods 中定义或用箭头函数，否则 this 会丢。</li>
+<li>自定义事件要在 beforeDestroy 中解绑，全局总线尤其容易忘记，会造成重复触发和内存泄漏。</li>
+<li><code>$children</code> 返回数组，顺序不保证；能用 ref 精确定位子组件时优先用 ref。</li>
+<li><code>$attrs</code> 取不到已经被 props 声明过的属性，这是它“透传”的前提。</li>
+<li>插槽里的 <code>v-slot</code> 只能写在 <code>&lt;template&gt;</code> 上；单标签组件不能承载默认插槽内容。</li>
+<li><code>v-model</code> 收集 checkbox 时要用数组收集，否则拿到的是布尔值。</li>
+</ul>
 
 </article>
     
@@ -655,27 +706,6 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/11/01/vue3/Pinia/">
-                <span class="trm-op-cover">
-                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
-                </span>
-                <h6 class="trm-op-title">VUE3-Pinia</h6>
-            </a>
-            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
-            <ul class="trm-card-data trm-label">
-                <li>24/11/01</li>
-                <li>14:39</li>
-                <li>VUE</li>
-            </ul>
-        </div>
-    </div>
-</div>
-    
-    
-        <div class="col-lg-6">
-    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
-        <div class="trm-older-publication">
-            
             <a class="trm-op-top trm-anima-link" href="/2024/11/01/vue2/%E6%8B%93%E5%B1%95/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
@@ -686,7 +716,28 @@
             <ul class="trm-card-data trm-label">
                 <li>24/11/01</li>
                 <li>13:58</li>
-                <li>VUE</li>
+                <li>Vue</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/2024/11/01/vue2/%E8%BF%9B%E9%98%B6/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/cover/cover-1.jpg">
+                </span>
+                <h6 class="trm-op-title">VUE2-进阶（主了解）</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/01</li>
+                <li>13:58</li>
+                <li>Vue</li>
             </ul>
         </div>
     </div>
@@ -752,7 +803,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="父子数据同步"><a rel="nofollow" class="trm-toc-link" href="#父子数据同步"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">父子数据同步</span></a></li><li class="trm-toc-item trm-toc-level-2" title="父传子"><a rel="nofollow" class="trm-toc-link" href="#父传子"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">父传子</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="props"><a rel="nofollow" class="trm-toc-link" href="#props"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">props</span></a></li><li class="trm-toc-item trm-toc-level-3" title="插槽"><a rel="nofollow" class="trm-toc-link" href="#插槽"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">插槽</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="子传父"><a rel="nofollow" class="trm-toc-link" href="#子传父"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">子传父</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="自定义事件($emit, $on[简写@])"><a rel="nofollow" class="trm-toc-link" href="#自定义事件-emit-on-简写"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">自定义事件($emit, $on[简写@])</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="跨级组件通信"><a rel="nofollow" class="trm-toc-link" href="#跨级组件通信"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">跨级组件通信</span></a></li><li class="trm-toc-item trm-toc-level-2" title="万能"><a rel="nofollow" class="trm-toc-link" href="#万能"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">万能</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="$bus全局事件总线（GlobalEventBus）"><a rel="nofollow" class="trm-toc-link" href="#bus全局事件总线（GlobalEventBus）"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">$bus全局事件总线（GlobalEventBus）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="pubsub-js[消息订阅与发布]"><a rel="nofollow" class="trm-toc-link" href="#pubsub-js-消息订阅与发布"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">pubsub-js[消息订阅与发布]</span></a></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="背景：先分清方向"><a rel="nofollow" class="trm-toc-link" href="#背景：先分清方向"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">背景：先分清方向</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 1 步：父子数据同步"><a rel="nofollow" class="trm-toc-link" href="#第-1-步：父子数据同步"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">第 1 步：父子数据同步</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 2 步：父传子"><a rel="nofollow" class="trm-toc-link" href="#第-2-步：父传子"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">第 2 步：父传子</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="props"><a rel="nofollow" class="trm-toc-link" href="#props"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">props</span></a></li><li class="trm-toc-item trm-toc-level-3" title="插槽"><a rel="nofollow" class="trm-toc-link" href="#插槽"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">插槽</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="第 3 步：子传父"><a rel="nofollow" class="trm-toc-link" href="#第-3-步：子传父"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">第 3 步：子传父</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="自定义事件（$emit、$on[简写 @]）"><a rel="nofollow" class="trm-toc-link" href="#自定义事件（-emit、-on-简写-）"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">自定义事件（$emit、$on[简写 @]）</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="第 4 步：跨级组件通信"><a rel="nofollow" class="trm-toc-link" href="#第-4-步：跨级组件通信"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">第 4 步：跨级组件通信</span></a></li><li class="trm-toc-item trm-toc-level-2" title="第 5 步：万能方案"><a rel="nofollow" class="trm-toc-link" href="#第-5-步：万能方案"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">第 5 步：万能方案</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="$bus 全局事件总线（GlobalEventBus）"><a rel="nofollow" class="trm-toc-link" href="#bus-全局事件总线（GlobalEventBus）"><span class="trm-toc-number">6.1.</span> <span class="trm-toc-text">$bus 全局事件总线（GlobalEventBus）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="pubsub-js（消息订阅与发布）"><a rel="nofollow" class="trm-toc-link" href="#pubsub-js（消息订阅与发布）"><span class="trm-toc-number">6.2.</span> <span class="trm-toc-text">pubsub-js（消息订阅与发布）</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="踩坑与注意点"><a rel="nofollow" class="trm-toc-link" href="#踩坑与注意点"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">踩坑与注意点</span></a></li></ol>
       </div>
     </div>
 
@@ -876,6 +927,10 @@
     
 
     
+
+    
+        
+<script src="/js/enChangegreen.js" defer></script>
 
     
 
