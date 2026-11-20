@@ -61,7 +61,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"UUOVO","root":"/","typed_text":["Web Developer"],"theme_version":"2.2.3","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/sitelogo32.svg","icon16":"/img/sitelogo16.svg","icon32":"/img/sitelogo32.svg","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"10/30/2024 17:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner"},"covers":["/img/cover/cover-1.jpg","/img/cover/cover-2.jpg","/img/cover/cover-3.jpg","/img/cover/cover-4.jpg","/img/cover/cover-5.jpg","/img/cover/cover-6.jpg","/img/cover/cover-7.jpg","/img/cover/cover-8.png","/img/cover/cover-9.png","/img/cover/cover-10.jpg","/img/cover/cover-11.jpg"],"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":false,"isHome":false,"postUpdate":"2026-11-19 17:40:38"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":false,"isHome":false,"postUpdate":"2026-11-20 14:21:26"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.3" id="trm-switch-style">
@@ -637,70 +637,6 @@
                         <div class="trm-card-header">
                             <div class="trm-left-side">
                                 <h6>
-                                    <a href="/2024/11/01/vue3/vuex/" class="trm-anima-link">
-                                        VUE3-VUEX(状态管理库) 不推荐
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">11/01</li>
-                                        <li class="trm-accent-color">14:39</li>
-                                        
-                                        <li>3k</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                            <div class="trm-publication trm-mt-15">
-                                <p>结论先行：Vuex 是 Vue 的集中式状态管理插件，核心是一个 store（仓库），里面放 <code>state</code>、<code>getters</code>、<code>mutations</code>、<code>actions</code> 和 <code>modules</code>。读状态走 <code>store.state</code> &#x2F; <code>getters</code>，改状态只能 <code>commit</code> mutation，异步逻辑放 action 里再 <code>commit</code>。Vue3 项目里它的写法是 <code>createStore()</code> + <code>useStore()</code>；新项目官方更推荐 Pinia，这篇作为 Vuex 的用法备忘保留。</p>
-                            </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2024/11/01/vue3/vue%E6%BA%90%E7%A0%81%E7%B3%BB%E5%88%97/" class="trm-anima-link">
-                                        VUE3-源码系列
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">11/01</li>
-                                        <li class="trm-accent-color">14:39</li>
-                                        
-                                        <li>9k</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                            <div class="trm-publication trm-mt-15">
-                                <p>结论先行：Vue3 的渲染链路同样可以概括成 <code>UI = render(state)</code>，但每一段都换了实现。<code>reactive</code> 用 <code>Proxy</code> 把数据变成“可观测”的，渲染 <code>effect</code> 在读取时 <code>track</code> 收集依赖、写入时 <code>trigger</code> 触发更新，再由调度器把更新推入微任务队列批量执行；视图用 VNode + <code>ShapeFlags</code> + <code>PatchFlags</code> 描述，patch 时对有 key 的子节点使用“首尾预处理 + key 映射 + 最长递增子序列”复用节点；模板则经 <code>parse</code> → <code>transform</code> → <code>generate</code> 生成 render 函数，并用静态提升、Block Tree 减少运行时开销。Vue2 的对应实现用「Vue2 对照」注释保留，方便对比版本差异。</p>
-                            </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
                                     <a href="/2024/11/01/vue3/vue%E5%B8%B8%E7%94%A8%E7%9A%84%E4%BF%AE%E9%A5%B0%E7%AC%A6/" class="trm-anima-link">
                                         VUE3-常用的修饰符
                                     </a>
@@ -733,8 +669,8 @@
                         <div class="trm-card-header">
                             <div class="trm-left-side">
                                 <h6>
-                                    <a href="/2024/11/01/vue3/%E5%86%85%E7%BD%AE%E7%BB%84%E4%BB%B6/" class="trm-anima-link">
-                                        VUE3-内置组件
+                                    <a href="/2024/11/01/vue3/vuex/" class="trm-anima-link">
+                                        VUE3-VUEX(状态管理库) 不推荐
                                     </a>
                                 </h6>
                                 <div class="trm-text-sm trm-accent-color trm-mt-15">
@@ -742,7 +678,7 @@
                                         <li class="trm-accent-color">11/01</li>
                                         <li class="trm-accent-color">14:39</li>
                                         
-                                        <li>1.8k</li>
+                                        <li>3k</li>
                                         
                                     </ul>
                                 </div>
@@ -750,7 +686,7 @@
                         </div>
                         
                             <div class="trm-publication trm-mt-15">
-                                <p>结论先行：Vue3 有三个常用的内置组件。<code>Transition</code> 负责单个元素或组件进入、离开 DOM 时的动画，<code>TransitionGroup</code> 负责 <code>v-for</code> 列表项的插入、移动和移除动画，<code>KeepAlive</code> 负责缓存被切走的组件实例，<code>Teleport</code> 负责把内容渲染到应用外部的指定容器。这篇按“什么时候触发 → 用哪些 class → 怎么命名和定制 → 生命周期与属性”的顺序，给出四者的最小可用写法。</p>
+                                <p>结论先行：Vuex 是 Vue 的集中式状态管理插件，核心是一个 store（仓库），里面放 <code>state</code>、<code>getters</code>、<code>mutations</code>、<code>actions</code> 和 <code>modules</code>。读状态走 <code>store.state</code> &#x2F; <code>getters</code>，改状态只能 <code>commit</code> mutation，异步逻辑放 action 里再 <code>commit</code>。Vue3 项目里它的写法是 <code>createStore()</code> + <code>useStore()</code>；新项目官方更推荐 Pinia，这篇作为 Vuex 的用法备忘保留。</p>
                             </div>
                         
                     
@@ -797,38 +733,6 @@
                         <div class="trm-card-header">
                             <div class="trm-left-side">
                                 <h6>
-                                    <a href="/2024/11/01/vue3/%E5%BA%94%E7%94%A8%E8%A7%84%E6%A8%A1%E5%8C%96/" class="trm-anima-link">
-                                        VUE3-应用规模化
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">11/01</li>
-                                        <li class="trm-accent-color">14:39</li>
-                                        
-                                        <li>1.6k</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                            <div class="trm-publication trm-mt-15">
-                                <p>这篇解决什么问题：当页面从单个 demo 变成一个需要多人维护的项目时，代码怎么组织、路由和状态放在哪里、首屏怎么优化。本文按单文件组件、脚手架、路由、状态管理、SSR、性能优化六个方面，把 Vue3 规模化开发的关键点串起来。</p>
-                            </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
                                     <a href="/2024/11/01/vue3/%E6%8F%92%E4%BB%B6/" class="trm-anima-link">
                                         VUE3-插件
                                     </a>
@@ -847,6 +751,102 @@
                         
                             <div class="trm-publication trm-mt-15">
                                 <p>这篇解决什么问题：当一组全局能力（组件、指令、<code>provide</code> 资源、全局属性）需要在多个地方复用时，不必在每个组件里重复注册，而是封装成一个插件，通过 <code>app.use()</code> 一次性安装。本文说明插件的结构、<code>install</code> 的职责和常见使用场景。</p>
+                            </div>
+                        
+                    
+                </div>
+            </div>
+            
+            <div class="trm-timeline-item trm-scroll-animation">
+                <div class="trm-timeline-mark-light"></div>
+                <div class="trm-timeline-mark"></div>
+                <div class="trm-timeline-content more">
+                    
+                        <div class="trm-card-header">
+                            <div class="trm-left-side">
+                                <h6>
+                                    <a href="/2024/11/01/vue3/%E5%86%85%E7%BD%AE%E7%BB%84%E4%BB%B6/" class="trm-anima-link">
+                                        VUE3-内置组件
+                                    </a>
+                                </h6>
+                                <div class="trm-text-sm trm-accent-color trm-mt-15">
+                                    <ul class="trm-card-data trm-label ">
+                                        <li class="trm-accent-color">11/01</li>
+                                        <li class="trm-accent-color">14:39</li>
+                                        
+                                        <li>1.8k</li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                            <div class="trm-publication trm-mt-15">
+                                <p>结论先行：Vue3 有三个常用的内置组件。<code>Transition</code> 负责单个元素或组件进入、离开 DOM 时的动画，<code>TransitionGroup</code> 负责 <code>v-for</code> 列表项的插入、移动和移除动画，<code>KeepAlive</code> 负责缓存被切走的组件实例，<code>Teleport</code> 负责把内容渲染到应用外部的指定容器。这篇按“什么时候触发 → 用哪些 class → 怎么命名和定制 → 生命周期与属性”的顺序，给出四者的最小可用写法。</p>
+                            </div>
+                        
+                    
+                </div>
+            </div>
+            
+            <div class="trm-timeline-item trm-scroll-animation">
+                <div class="trm-timeline-mark-light"></div>
+                <div class="trm-timeline-mark"></div>
+                <div class="trm-timeline-content more">
+                    
+                        <div class="trm-card-header">
+                            <div class="trm-left-side">
+                                <h6>
+                                    <a href="/2024/11/01/vue3/vue%E6%BA%90%E7%A0%81%E7%B3%BB%E5%88%97/" class="trm-anima-link">
+                                        VUE3-源码系列
+                                    </a>
+                                </h6>
+                                <div class="trm-text-sm trm-accent-color trm-mt-15">
+                                    <ul class="trm-card-data trm-label ">
+                                        <li class="trm-accent-color">11/01</li>
+                                        <li class="trm-accent-color">14:39</li>
+                                        
+                                        <li>9k</li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                            <div class="trm-publication trm-mt-15">
+                                <p>结论先行：Vue3 的渲染链路同样可以概括成 <code>UI = render(state)</code>，但每一段都换了实现。<code>reactive</code> 用 <code>Proxy</code> 把数据变成“可观测”的，渲染 <code>effect</code> 在读取时 <code>track</code> 收集依赖、写入时 <code>trigger</code> 触发更新，再由调度器把更新推入微任务队列批量执行；视图用 VNode + <code>ShapeFlags</code> + <code>PatchFlags</code> 描述，patch 时对有 key 的子节点使用“首尾预处理 + key 映射 + 最长递增子序列”复用节点；模板则经 <code>parse</code> → <code>transform</code> → <code>generate</code> 生成 render 函数，并用静态提升、Block Tree 减少运行时开销。Vue2 的对应实现用「Vue2 对照」注释保留，方便对比版本差异。</p>
+                            </div>
+                        
+                    
+                </div>
+            </div>
+            
+            <div class="trm-timeline-item trm-scroll-animation">
+                <div class="trm-timeline-mark-light"></div>
+                <div class="trm-timeline-mark"></div>
+                <div class="trm-timeline-content more">
+                    
+                        <div class="trm-card-header">
+                            <div class="trm-left-side">
+                                <h6>
+                                    <a href="/2024/11/01/vue3/%E5%BA%94%E7%94%A8%E8%A7%84%E6%A8%A1%E5%8C%96/" class="trm-anima-link">
+                                        VUE3-应用规模化
+                                    </a>
+                                </h6>
+                                <div class="trm-text-sm trm-accent-color trm-mt-15">
+                                    <ul class="trm-card-data trm-label ">
+                                        <li class="trm-accent-color">11/01</li>
+                                        <li class="trm-accent-color">14:39</li>
+                                        
+                                        <li>1.6k</li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                            <div class="trm-publication trm-mt-15">
+                                <p>这篇解决什么问题：当页面从单个 demo 变成一个需要多人维护的项目时，代码怎么组织、路由和状态放在哪里、首屏怎么优化。本文按单文件组件、脚手架、路由、状态管理、SSR、性能优化六个方面，把 Vue3 规模化开发的关键点串起来。</p>
                             </div>
                         
                     
